@@ -73,7 +73,7 @@ BO_ 7 FEB_Dash_Message: 1 Vector__XXX
  SG_ button4 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ button3 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ button2 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ button1_ready-to-drive : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ button1_ready_to_drive : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ buzzer_state : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 8 FEB_DART_TACH_measurements: 5 Vector__XXX
