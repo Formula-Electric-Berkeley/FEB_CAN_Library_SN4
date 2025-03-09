@@ -11,7 +11,7 @@ def get_dash_buttons(frame_id: int):
         is_signed=False,
     )
     button1 = cantools.db.Signal(
-        name="button1_ready-to-drive",
+        name="button1_ready_to_drive",
         start=1,
         length=1,
         byte_order="little_endian",
