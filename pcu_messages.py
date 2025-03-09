@@ -57,10 +57,18 @@ def rms_param_msg(frame_id: int):
 
 def rms_command_msg(frame_id: int):
 
-    torque_signal = cantools.db.Signal(
-        name="torque_signal",
+    torque_signal_big = cantools.db.Signal(
+        name="torque_signal_big",
         start=0,
-        length=16,
+        length=8,
+        byte_order="big_endian",
+        is_signed=False
+    )
+
+    torque_signal_small = cantools.db.Signal(
+        name="torque_signal_small",
+        start=8,
+        length=8,
         byte_order="big_endian",
         is_signed=False
     )
@@ -125,7 +133,7 @@ def rms_command_msg(frame_id: int):
         frame_id=frame_id,
         name="rms_command_msg",
         length=8,
-        signals=[torque_signal, speed_signal_big, speed_signal_small, direction_value, inverter_enable, inverter_disregard, speed_mode, commmand_torque_limited],
+        signals=[torque_signal_big, torque_signal_small, speed_signal_big, speed_signal_small, direction_value, inverter_enable, inverter_disregard, speed_mode, commmand_torque_limited],
         comment="rms_command message.",
         strict=True
     )
