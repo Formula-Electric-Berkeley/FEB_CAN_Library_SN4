@@ -1,7 +1,7 @@
 import cantools
 from cantools.database.conversion import BaseConversion
 
-def get_lvpdb_flag_bus_voltage(frame_id: int):
+def get_lvpdb_flag_bus_voltage_lv_current(frame_id: int):
     flag_signal = cantools.db.Signal(
         name="flags",
         start=0,

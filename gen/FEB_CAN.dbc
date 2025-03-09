@@ -46,27 +46,44 @@ BO_ 1 FEB_IVMeter: 4 Vector__XXX
  SG_ high_range_current : 8|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ low_range_current : 0|8@0+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 2 FEB_LVPDB_Flags_Bus_Voltage: 8 Vector__XXX
- SG_ bus_voltage : 32|32@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 2 FEB_LVPDB_Flags_Bus_Voltage_LV_C: 8 Vector__XXX
+ SG_ lv_current : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ bus_voltage : 32|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ flags : 0|32@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 3 FEB_LVPDB_LV_CP_Current: 8 Vector__XXX
- SG_ cp_voltage : 32|32@1+ (1,0) [0|0] "" Vector__XXX
- SG_ lv_current : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 3 FEB_LVPDB_CP_AF_RF_SH_Current: 8 Vector__XXX
+ SG_ sh_voltage : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ rf_current : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ af_current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ cp_current : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 4 FEB_LVPDB_AF_RF_Current: 8 Vector__XXX
- SG_ rf_voltage : 32|32@1+ (1,0) [0|0] "" Vector__XXX
- SG_ af_current : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 4 FEB_LVPDB_L_AS_AB_Current: 8 Vector__XXX
+ SG_ ab_voltage : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ as_voltage : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ l_current : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 5 FEB_LVPDB_SH_L_Current: 8 Vector__XXX
- SG_ l_voltage : 32|32@1+ (1,0) [0|0] "" Vector__XXX
- SG_ sh_current : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 5 normalized_brake: 5 Vector__XXX
+ SG_ normalized_break : 0|40@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 6 FEB_LVPDB_AS_AB_Current: 8 Vector__XXX
- SG_ cp_voltage : 32|32@1+ (1,0) [0|0] "" Vector__XXX
- SG_ lv_current : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 6 rms_param_msg: 8 Vector__XXX
+ SG_ data : 24|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ read_write_command : 16|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ addr : 0|8@0+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 7 FEB_Dash_Message: 1 Vector__XXX
+BO_ 7 rms_command_msg: 8 Vector__XXX
+ SG_ command_torque_limited : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ inverter_enable : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ direction_value : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ speed_signal : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ torque_signal : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 8 bspd: 1 Vector__XXX
+ SG_ bspd_state : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 9 tps_current: 5 Vector__XXX
+ SG_ current : 0|40@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 10 FEB_Dash_Message: 1 Vector__XXX
  SG_ accumulator_fan_switch : 7|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ radiator_fan_switch : 6|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ coolant_pump_switch : 5|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -76,23 +93,23 @@ BO_ 7 FEB_Dash_Message: 1 Vector__XXX
  SG_ button1_ready_to_drive : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ buzzer_state : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 8 FEB_DART_TACH_measurements: 5 Vector__XXX
+BO_ 11 FEB_DART_TACH_measurements: 5 Vector__XXX
  SG_ fan5_speed : 32|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ fan4_speed : 24|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ fan3_speed : 16|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ fan2_speed : 8|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ fan1_speed : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 9 FEB_PING_PONG_counter1: 8 Vector__XXX
+BO_ 12 FEB_PING_PONG_counter1: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 10 FEB_PING_PONG_counter2: 8 Vector__XXX
+BO_ 13 FEB_PING_PONG_counter2: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 11 FEB_PING_PONG_counter3: 8 Vector__XXX
+BO_ 14 FEB_PING_PONG_counter3: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 12 FEB_PING_PONG_counter4: 8 Vector__XXX
+BO_ 15 FEB_PING_PONG_counter4: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
 
@@ -100,29 +117,24 @@ BO_ 12 FEB_PING_PONG_counter4: 8 Vector__XXX
 
 CM_ BO_ 0 "BMS message for cell voltage.";
 CM_ BO_ 1 "ivMeter message for low and high range current and HV voltage.";
-CM_ BO_ 2 "LVPDB message for flags and bus voltage.";
-CM_ BO_ 3 "LVPDB message for Low Voltage and Coolant Pump Current.";
-CM_ BO_ 4 "LVPDB message for Rad Fans and Acc Fans Current.";
-CM_ BO_ 5 "LVPDB message for Shutdown and Lidar Current.";
-CM_ BO_ 6 "LVPDB message for Auton Steering and Auton Braking Current.";
-CM_ BO_ 7 "Dash message";
-CM_ BO_ 8 "DART message for Tachometer measurements.";
-CM_ BO_ 9 "PING PONG counter1.";
-CM_ BO_ 10 "PING PONG counter2.";
-CM_ BO_ 11 "PING PONG counter3.";
-CM_ BO_ 12 "PING PONG counter4.";
+CM_ BO_ 2 "LVPDB message for flags, bus voltage, LV current.";
+CM_ BO_ 3 "LVPDB message for Coolant Pump Current, Accumulator Fans, Radiator Fans, Shutdown Source.";
+CM_ BO_ 4 "LVPDB message for .";
+CM_ BO_ 5 "PCU normalized brake message";
+CM_ BO_ 6 "param_message.";
+CM_ BO_ 7 "rms_command message.";
+CM_ BO_ 8 "bspd message.";
+CM_ BO_ 9 "tps current message.";
+CM_ BO_ 10 "Dash message";
+CM_ BO_ 11 "DART message for Tachometer measurements.";
+CM_ BO_ 12 "PING PONG counter1.";
+CM_ BO_ 13 "PING PONG counter2.";
+CM_ BO_ 14 "PING PONG counter3.";
+CM_ BO_ 15 "PING PONG counter4.";
+BA_DEF_ BO_  "SystemMessageLongSymbol" STRING ;
+BA_DEF_DEF_  "SystemMessageLongSymbol" "";
+BA_ "SystemMessageLongSymbol" BO_ 2 "FEB_LVPDB_Flags_Bus_Voltage_LV_Current";
 
 
-
-
-SIG_VALTYPE_ 2 bus_voltage : 1;
-SIG_VALTYPE_ 3 lv_current : 1;
-SIG_VALTYPE_ 3 cp_voltage : 1;
-SIG_VALTYPE_ 4 af_current : 1;
-SIG_VALTYPE_ 4 rf_voltage : 1;
-SIG_VALTYPE_ 5 sh_current : 1;
-SIG_VALTYPE_ 5 l_voltage : 1;
-SIG_VALTYPE_ 6 lv_current : 1;
-SIG_VALTYPE_ 6 cp_voltage : 1;
 
 
