@@ -66,16 +66,33 @@ BO_ 6 FEB_LVPDB_AS_AB_Current: 8 Vector__XXX
  SG_ cp_voltage : 32|32@1+ (1,0) [0|0] "" Vector__XXX
  SG_ lv_current : 0|32@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 7 FEB_PING_PONG_counter1: 8 Vector__XXX
+BO_ 7 FEB_Dash_Message: 1 Vector__XXX
+ SG_ accumulator_fan_switch : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ radiator_fan_switch : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ coolant_pump_switch : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ button4 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ button3 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ button2 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ button1_ready-to-drive : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ buzzer_state : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 8 FEB_DART_TACH_measurements: 5 Vector__XXX
+ SG_ fan5_speed : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ fan4_speed : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ fan3_speed : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ fan2_speed : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ fan1_speed : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 9 FEB_PING_PONG_counter1: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 8 FEB_PING_PONG_counter2: 8 Vector__XXX
+BO_ 10 FEB_PING_PONG_counter2: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 9 FEB_PING_PONG_counter3: 8 Vector__XXX
+BO_ 11 FEB_PING_PONG_counter3: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 10 FEB_PING_PONG_counter4: 8 Vector__XXX
+BO_ 12 FEB_PING_PONG_counter4: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
 
@@ -88,10 +105,12 @@ CM_ BO_ 3 "LVPDB message for Low Voltage and Coolant Pump Current.";
 CM_ BO_ 4 "LVPDB message for Rad Fans and Acc Fans Current.";
 CM_ BO_ 5 "LVPDB message for Shutdown and Lidar Current.";
 CM_ BO_ 6 "LVPDB message for Auton Steering and Auton Braking Current.";
-CM_ BO_ 7 "PING PONG counter1.";
-CM_ BO_ 8 "PING PONG counter2.";
-CM_ BO_ 9 "PING PONG counter3.";
-CM_ BO_ 10 "PING PONG counter4.";
+CM_ BO_ 7 "Dash message";
+CM_ BO_ 8 "DART message for Tachometer measurements.";
+CM_ BO_ 9 "PING PONG counter1.";
+CM_ BO_ 10 "PING PONG counter2.";
+CM_ BO_ 11 "PING PONG counter3.";
+CM_ BO_ 12 "PING PONG counter4.";
 
 
 

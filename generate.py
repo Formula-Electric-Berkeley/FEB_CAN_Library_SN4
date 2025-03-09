@@ -6,6 +6,8 @@ import bms_messages as bms_msg
 import ping_pong_messages as ping_pong_msg
 import lvpdb_messages as lvpdb_msg
 import iv_meter_messages as iv_meter_msg
+import dash_messages as dash_msg
+import dart_messages as dart_msg
 
 # List of functions, used to generate CAN messages.
 MESSAGE_GEN_LIST = [
@@ -16,6 +18,8 @@ MESSAGE_GEN_LIST = [
     lvpdb_msg.get_lvpdb_af_rf_current,
     lvpdb_msg.get_lvpdb_sh_l_current,
     lvpdb_msg.get_lvpdb_as_ab_current,
+    dash_msg.get_dash_buttons,
+    dart_msg.get_measured_fan_speeds,
     ping_pong_msg.get_ping_pong_counter1,
     ping_pong_msg.get_ping_pong_counter2,
     ping_pong_msg.get_ping_pong_counter3,

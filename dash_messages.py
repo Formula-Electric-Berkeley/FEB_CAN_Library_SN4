@@ -4,56 +4,56 @@ from cantools.database.conversion import BaseConversion
 
 def get_dash_buttons(frame_id: int):
     buzzer_state = cantools.db.Signal(
-        name="Buzzer State",
+        name="buzzer_state",
         start=0,
         length=1,
         byte_order="little_endian",
         is_signed=False,
     )
     button1 = cantools.db.Signal(
-        name="Button1 Ready-to-drive"
+        name="button1_ready-to-drive",
         start=1,
         length=1,
         byte_order="little_endian",
         is_signed=False,
     )
     button2 = cantools.db.Signal(
-        name="Button2",
+        name="button2",
         start=2,
         length=1,
         byte_order="little_endian",
         is_signed=False,
     )
     button3 = cantools.db.Signal(
-        name="Button3",
+        name="button3",
         start=3,
         length=1,
         byte_order="little_endian",
         is_signed=False,
     )
     button4 = cantools.db.Signal(
-        name="Button4",
+        name="button4",
         start=4,
         length=1,
         byte_order="little_endian",
         is_signed=False,
     )
     switch1 = cantools.db.Signal(
-        name="Coolant Pump Switch",
+        name="coolant_pump_switch",
         start=5,
         length=1,
         byte_order="little_endian",
         is_signed=False,
     )
     switch2 = cantools.db.Signal(
-        name="Radiator Fan Switch",
+        name="radiator_fan_switch",
         start=6,
         length=1,
         byte_order="little_endian",
         is_signed=False,
     )
     switch3 = cantools.db.Signal(
-        name="Accumulator Fan Switch",
+        name="accumulator_fan_switch",
         start=7,
         length=1,
         byte_order="little_endian",
@@ -70,4 +70,4 @@ def get_dash_buttons(frame_id: int):
         strict=True
     )
 
-    return ms
+    return msg
