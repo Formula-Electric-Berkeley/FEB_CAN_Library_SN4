@@ -62,8 +62,7 @@ def get_ivMeter_data(frame_id: int):
         length=8,
         byte_order="big_endian",
         is_signed=False,
-        conversion=BaseConversion.factory(scale=1e-3),
-        unit="mV",
+        unit="V",
     )
 
     msg = cantools.db.Message(
