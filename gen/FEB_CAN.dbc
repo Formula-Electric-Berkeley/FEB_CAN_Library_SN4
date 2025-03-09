@@ -41,14 +41,69 @@ BO_ 0 FEB_BMS_Cell_Voltage: 4 Vector__XXX
  SG_ cell_number : 8|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bank_number : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
+BO_ 1 FEB_IVMeter: 4 Vector__XXX
+ SG_ hv_voltage : 16|8@0+ (1,0) [0|0] "V" Vector__XXX
+ SG_ high_range_current : 8|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ low_range_current : 0|8@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 2 FEB_LVPDB_Flags_Bus_Voltage: 8 Vector__XXX
+ SG_ bus_voltage : 32|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ flags : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 3 FEB_LVPDB_LV_CP_Current: 8 Vector__XXX
+ SG_ cp_voltage : 32|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ lv_current : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 4 FEB_LVPDB_AF_RF_Current: 8 Vector__XXX
+ SG_ rf_voltage : 32|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ af_current : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 5 FEB_LVPDB_SH_L_Current: 8 Vector__XXX
+ SG_ l_voltage : 32|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ sh_current : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 6 FEB_LVPDB_AS_AB_Current: 8 Vector__XXX
+ SG_ cp_voltage : 32|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ lv_current : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 7 FEB_PING_PONG_counter1: 8 Vector__XXX
+ SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 8 FEB_PING_PONG_counter2: 8 Vector__XXX
+ SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 9 FEB_PING_PONG_counter3: 8 Vector__XXX
+ SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 10 FEB_PING_PONG_counter4: 8 Vector__XXX
+ SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
+
 
 
 
 CM_ BO_ 0 "BMS message for cell voltage.";
+CM_ BO_ 1 "ivMeter message for low and high range current and HV voltage.";
+CM_ BO_ 2 "LVPDB message for flags and bus voltage.";
+CM_ BO_ 3 "LVPDB message for Low Voltage and Coolant Pump Current.";
+CM_ BO_ 4 "LVPDB message for Rad Fans and Acc Fans Current.";
+CM_ BO_ 5 "LVPDB message for Shutdown and Lidar Current.";
+CM_ BO_ 6 "LVPDB message for Auton Steering and Auton Braking Current.";
+CM_ BO_ 7 "PING PONG counter1.";
+CM_ BO_ 8 "PING PONG counter2.";
+CM_ BO_ 9 "PING PONG counter3.";
+CM_ BO_ 10 "PING PONG counter4.";
 
 
 
 
-
+SIG_VALTYPE_ 2 bus_voltage : 1;
+SIG_VALTYPE_ 3 lv_current : 1;
+SIG_VALTYPE_ 3 cp_voltage : 1;
+SIG_VALTYPE_ 4 af_current : 1;
+SIG_VALTYPE_ 4 rf_voltage : 1;
+SIG_VALTYPE_ 5 sh_current : 1;
+SIG_VALTYPE_ 5 l_voltage : 1;
+SIG_VALTYPE_ 6 lv_current : 1;
+SIG_VALTYPE_ 6 cp_voltage : 1;
 
 

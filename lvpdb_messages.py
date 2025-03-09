@@ -15,7 +15,7 @@ def get_lvpdb_flag_bus_voltage(frame_id: int):
         start=32,
         length=32,
         byte_order="little_endian",
-        is_float=True,
+        conversion=BaseConversion.factory(scale=1,is_float=True),
     )
 
     msg = cantools.db.Message(
@@ -35,7 +35,7 @@ def get_lvpdb_lv_cp_current(frame_id: int):
         start=0,
         length=32,
         byte_order="little_endian",
-        is_float=True
+        conversion=BaseConversion.factory(scale=1,is_float=True),
     )
     
     cp_current_signal = cantools.db.Signal(
@@ -43,7 +43,7 @@ def get_lvpdb_lv_cp_current(frame_id: int):
         start=32,
         length=32,
         byte_order="little_endian",
-        is_float=True,
+        conversion=BaseConversion.factory(scale=1,is_float=True),
     )
 
     msg = cantools.db.Message(
@@ -63,7 +63,7 @@ def get_lvpdb_af_rf_current(frame_id: int):
         start=0,
         length=32,
         byte_order="little_endian",
-        is_float=True
+        conversion=BaseConversion.factory(scale=1,is_float=True),
     )
     
     rf_current_signal = cantools.db.Signal(
@@ -71,7 +71,7 @@ def get_lvpdb_af_rf_current(frame_id: int):
         start=32,
         length=32,
         byte_order="little_endian",
-        is_float=True,
+        conversion=BaseConversion.factory(scale=1,is_float=True),
     )
 
     msg = cantools.db.Message(
@@ -91,7 +91,7 @@ def get_lvpdb_sh_l_current(frame_id: int):
         start=0,
         length=32,
         byte_order="little_endian",
-        is_float=True
+        conversion=BaseConversion.factory(scale=1,is_float=True),
     )
     
     l_current_signal = cantools.db.Signal(
@@ -99,7 +99,7 @@ def get_lvpdb_sh_l_current(frame_id: int):
         start=32,
         length=32,
         byte_order="little_endian",
-        is_float=True,
+        conversion=BaseConversion.factory(scale=1,is_float=True),
     )
 
     msg = cantools.db.Message(
@@ -119,7 +119,7 @@ def get_lvpdb_as_ab_current(frame_id: int):
         start=0,
         length=32,
         byte_order="little_endian",
-        is_float=True
+        conversion=BaseConversion.factory(scale=1,is_float=True),
     )
     
     ab_current_signal = cantools.db.Signal(
@@ -127,7 +127,7 @@ def get_lvpdb_as_ab_current(frame_id: int):
         start=32,
         length=32,
         byte_order="little_endian",
-        is_float=True,
+        conversion=BaseConversion.factory(scale=1,is_float=True),
     )
 
     msg = cantools.db.Message(

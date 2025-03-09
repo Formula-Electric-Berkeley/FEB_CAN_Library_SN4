@@ -9,17 +9,17 @@ import iv_meter_messages as iv_meter_msg
 
 # List of functions, used to generate CAN messages.
 MESSAGE_GEN_LIST = [
-    bms_msg.get_bms_cell_voltage
-    iv_meter_msg.get_iv_meter_data
-    lvpdb_msg.get_lvpdb_flag_bus_voltage
-    lvpdb_msg.get_lvpdb_lv_cp_current
-    lvpdb_msg.get_lvpdb_af_rf_current
-    lvpdb_msg.get_lvpdb_sh_l_current
-    lvpdb_msg.get_lvpdb_as_ab_current
-    ping_pong_msg.get_ping_pong_counter
-    ping_pong_msg.get_ping_pong_counter
-    ping_pong_msg.get_ping_pong_counter
-    ping_pong_msg.get_ping_pong_counter
+    bms_msg.get_bms_cell_voltage,
+    iv_meter_msg.get_iv_meter_data,
+    lvpdb_msg.get_lvpdb_flag_bus_voltage,
+    lvpdb_msg.get_lvpdb_lv_cp_current,
+    lvpdb_msg.get_lvpdb_af_rf_current,
+    lvpdb_msg.get_lvpdb_sh_l_current,
+    lvpdb_msg.get_lvpdb_as_ab_current,
+    ping_pong_msg.get_ping_pong_counter1,
+    ping_pong_msg.get_ping_pong_counter2,
+    ping_pong_msg.get_ping_pong_counter3,
+    ping_pong_msg.get_ping_pong_counter4,
 ]
 
 def main():
