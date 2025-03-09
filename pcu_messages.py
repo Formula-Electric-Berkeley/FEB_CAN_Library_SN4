@@ -2,8 +2,8 @@ import cantools
 from cantools.database.conversion import BaseConversion
 
 def normalized_brake(framd_id: int):
-    normalized_break = cantools.db.Signal(
-        name="normalized_break",
+    normalized_brake = cantools.db.Signal(
+        name="normalized_brake",
         start=0,
         length=40,
         byte_order="big_endian",
@@ -117,7 +117,7 @@ def rms_command_msg(frame_id: int):
         frame_id=frame_id,
         name="rms_command_msg",
         length=8,
-        signals=[torque_signal, speed_signal,direction_value, inverter_enable, inverter_disregard, speed_mode, commmand_torque_limited],
+        signals=[torque_signal, speed_signal, direction_value, inverter_enable, inverter_disregard, speed_mode, commmand_torque_limited],
         comment="rms_command message.",
         strict=True
     )
