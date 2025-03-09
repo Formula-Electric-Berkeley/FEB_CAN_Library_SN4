@@ -1,7 +1,7 @@
 import cantools
 from cantools.database.conversion import BaseConversion
 
-def normalized_brake(framd_id: int):
+def normalized_brake(frame_id: int):
     normalized_brake = cantools.db.Signal(
         name="normalized_brake",
         start=0,
@@ -19,7 +19,7 @@ def normalized_brake(framd_id: int):
     )
     return msg 
 
-def rms_param_msg(framd_id: int):
+def rms_param_msg(frame_id: int):
     addr = cantools.db.Signal(
         name="addr",
         start=0,
@@ -131,7 +131,7 @@ def rms_command_msg(frame_id: int):
     )
     return msg
 
-def bspd(framd_id: int):
+def bspd(frame_id: int):
     bspd_state = cantools.db.Signal(
         name="bspd_state",
         start=0,
@@ -149,7 +149,7 @@ def bspd(framd_id: int):
     )
     return msg 
 
-def current(framd_id: int):
+def current(frame_id: int):
     tps_current = cantools.db.Signal(
         name="current",
         start=0,
