@@ -38,8 +38,3 @@ def get_bms_cell_voltage(frame_id: int):
     )
 
     return msg
-
-def get_dash_data(frame_id: int):
-
-
-    return msg
