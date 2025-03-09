@@ -65,10 +65,18 @@ def rms_command_msg(frame_id: int):
         is_signed=False
     )
 
-    speed_signal = cantools.db.Signal(
+    speed_signal_big = cantools.db.Signal(
         name="speed_signal",
         start=16,
-        length=16,
+        length=8,
+        byte_order="big_endian",
+        is_signed=False
+    )
+
+    speed_signal_small = cantools.db.Signal(
+        name="speed_signal_small",
+        start=24,
+        length=8,
         byte_order="big_endian",
         is_signed=False
     )
@@ -117,7 +125,7 @@ def rms_command_msg(frame_id: int):
         frame_id=frame_id,
         name="rms_command_msg",
         length=8,
-        signals=[torque_signal, speed_signal, direction_value, inverter_enable, inverter_disregard, speed_mode, commmand_torque_limited],
+        signals=[torque_signal, speed_signal_big, speed_signal_small, direction_value, inverter_enable, inverter_disregard, speed_mode, commmand_torque_limited],
         comment="rms_command message.",
         strict=True
     )
