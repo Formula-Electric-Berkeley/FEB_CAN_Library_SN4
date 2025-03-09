@@ -1,7 +1,7 @@
 import cantools
 from cantools.database.conversion import BaseConversion
 
-def get_ivMeter_data(frame_id: int):
+def get_iv_meter_data(frame_id: int):
     low_range_current = cantools.db.Signal(
         name="low_range_current",
         start=0,

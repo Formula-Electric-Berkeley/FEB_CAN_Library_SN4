@@ -13,7 +13,7 @@ def get_ping_pong_counter(frame_id: int):
     msg = cantools.db.Message(
         frame_id=frame_id,
         name="FEB_PING_PONG_counter",
-        length=4,
+        length=8,
         signals=[counter_signal],
         comment="PING PONG counter.",
         strict=True
