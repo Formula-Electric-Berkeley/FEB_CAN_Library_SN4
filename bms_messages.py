@@ -76,3 +76,7 @@ def get_ivMeter_data(frame_id: int):
     )
 
     return msg
+def get_dash_data(frame_id: int):
+
+
+    return msg
