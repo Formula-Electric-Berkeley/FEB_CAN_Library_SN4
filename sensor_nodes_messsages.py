@@ -1,24 +1,7 @@
 import cantools
 from cantools.database.conversion import BaseConversion
 
-def get_bms_cell_voltage(frame_id: int):
-    bank_signal = cantools.db.Signal(
-        name="bank_number",
-        start=0,
-        length=8,
-        byte_order="little_endian",
-        is_signed=False,
-    )
-    msg = cantools.db.Message(
-        frame_id=frame_id,
-        name="FEB_BMS_Cell_Voltage",
-        length=4,
-        signals=[bank_signal, cell_signal, voltage_signal],
-        comment="BMS message for cell voltage.",
-        strict=True
-    )
 
-    return msg
 
 def get_steering_data(frame_id: int):
     can_counter = cantools.db.Signal(
@@ -257,4 +240,56 @@ def get_imu_data(frame_id: int):
         comment="Message for imu data.",
         strict=True
     )
+    return msg
+
+def get_wss_data_front(frame_id: int):
+    wss_right_front = cantools.db.Message(
+        name = "wss_right_front",
+        start = 0,
+        length = 8,
+        byte_order="big_endian",
+        is_signed = False,
+    )
+    wss_left_front = cantools.db.Message(
+        name = "wss_left_front",
+        start = 8,
+        length = 8,
+        byte_order="big_endian",
+        is_signed = False,
+    )
+    msg = cantools.db.Message(
+        frame_id = frame_id,
+        name = "get_wss_front_data",
+        length = 8,
+        signals = [can_counter, flags, angle],
+        comment = "wheel speed sensor data for left and right front wheels.",
+        strict = True
+    )
+    
+    return msg
+    
+def get_wss_data_rear(frame_id: int):
+    wss_right_rear = cantools.db.Message(
+        name = "wss_right_rear",
+        start = 0,
+        length = 8,
+        byte_order="big_endian",
+        is_signed = False,
+    )
+    wss_left_rear = cantools.db.Message(
+        name = "wss_right_rear",
+        start = 8,
+        length = 8,
+        byte_order="big_endian",
+        is_signed = False,
+    )
+    msg = cantools.db.Message(
+        frame_id = frame_id,
+        name = "get_wss_data_rear",
+        length = 8,
+        signals = [can_counter, flags, angle],
+        comment = "wheel speed sensor data for left and right rear wheels.",
+        strict = True
+    )
+    
     return msg
