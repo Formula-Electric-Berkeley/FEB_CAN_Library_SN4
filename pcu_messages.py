@@ -88,21 +88,21 @@ def rms_command_msg(frame_id: int):
         is_signed=False
     )
 
-#    inverter_disregard = cantools.db.Signal(
-#        name="inverter_disregard",
-#        start=41,
-#        length=1,
-#        byte_order="big_endian",
-#        is_signed=False
-#    )
-#
-#    speed_mode = cantools.db.Signal(
-#        name="speed_mode",
-#        start=42,
-#        length=1,
-#        byte_order="big_endian",
-#        is_signed=False
-#    )
+   inverter_disregard = cantools.db.Signal(
+       name="inverter_disregard",
+       start=41,
+       length=1,
+       byte_order="little_endian",
+       is_signed=False
+   )
+
+   speed_mode = cantools.db.Signal(
+       name="speed_mode",
+       start=42,
+       length=1,
+       byte_order="little_endian",
+       is_signed=False
+   )
 
     commmand_torque_limited = cantools.db.Signal(
         name="command_torque_limited",
