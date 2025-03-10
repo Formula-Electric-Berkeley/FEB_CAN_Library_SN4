@@ -63,7 +63,7 @@ BO_ 4 FEB_LVPDB_L_AS_AB_Current: 8 Vector__XXX
  SG_ l_current : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 5 normalized_brake: 5 Vector__XXX
- SG_ normalized_break : 0|40@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ normalized_brake : 0|40@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 6 rms_param_msg: 8 Vector__XXX
  SG_ data : 24|16@0+ (1,0) [0|0] "" Vector__XXX
@@ -75,7 +75,7 @@ BO_ 7 rms_command_msg: 8 Vector__XXX
  SG_ inverter_enable : 40|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ direction_value : 32|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ speed_signal : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ torque_signal : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ torque_signal_small : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 8 bspd: 1 Vector__XXX
  SG_ bspd_state : 0|8@1+ (1,0) [0|0] "" Vector__XXX
