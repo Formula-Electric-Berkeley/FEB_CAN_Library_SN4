@@ -248,18 +248,12 @@ def get_imu_data(frame_id: int):
         byte_order="big_endian",
         is_signed=False,
     )
-    padding = cantools.db.Signal(
-        name="padding",
-        start=48,
-        length=16,
-        byte_order="big_endian",
-        is_signed=False,
-    )
+    
     msg = cantools.db.Message(
         frame_id=frame_id,
         name="FEB_imu_data",
-        length=8,
-        signals=[accelX, accelY, accelZ, padding],
+        length=6,
+        signals=[accelX, accelY, accelZ],
         comment="Message for imu data.",
         strict=True
     )
