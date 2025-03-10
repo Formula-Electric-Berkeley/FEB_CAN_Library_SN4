@@ -220,3 +220,47 @@ def get_front_right_tire_temp_data(frame_id: int):
     )
 
     return msg
+
+
+
+
+
+
+def get_imu_data(frame_id: int):
+    accelX = cantools.db.Signal(
+        name="acceleration x",
+        start=0,
+        length=16,
+        byte_order="big_endian",
+        is_signed=False,
+    )
+    accelY = cantools.db.Signal(
+        name="acceleration y",
+        start=16,
+        length=32,
+        byte_order="big_endian",
+        is_signed=False,
+    )
+    accelZ = cantools.db.Signal(
+        name="acceleration z",
+        start=32,
+        length=16,
+        byte_order="big_endian",
+        is_signed=False,
+    )
+    padding = cantools.db.Signal(
+        name="padding",
+        start=48,
+        length=16,
+        byte_order="big_endian",
+        is_signed=False,
+    )
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="FEB_imu_data",
+        length=8,
+        signals=[accelX, accelY, accelZ, padding],
+        comment="Message for imu data.",
+        strict=True
+    )
+    return msg
