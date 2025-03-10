@@ -260,7 +260,7 @@ def get_wss_data_front(frame_id: int):
     msg = cantools.db.Message(
         frame_id = frame_id,
         name = "get_wss_front_data",
-        length = 8,
+        length = 2,
         signals = [can_counter, flags, angle],
         comment = "wheel speed sensor data for left and right front wheels.",
         strict = True
@@ -286,7 +286,7 @@ def get_wss_data_rear(frame_id: int):
     msg = cantools.db.Message(
         frame_id = frame_id,
         name = "get_wss_data_rear",
-        length = 8,
+        length = 2,
         signals = [can_counter, flags, angle],
         comment = "wheel speed sensor data for left and right rear wheels.",
         strict = True
