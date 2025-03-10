@@ -293,3 +293,48 @@ def get_wss_data_rear(frame_id: int):
     )
     
     return msg
+
+def get_potentiometer_conversion_and_coolant_pressure(frame_id: int):
+     linear_potentiometer_conversion_1 = cantools.db.Signal(
+         name="linear_potrentiometer_conversion_1",
+         start=0,
+         length=16, 
+         byte_order="big_endian",
+         is_signed=False,
+     )
+
+     linear_potentiometer_conversion_2 = cantools.db.Signal(
+         name="linear_potrentiometer_conversion_2",
+         start=16,
+         length=16, 
+         byte_order="big_endian",
+         is_signed=False,
+     )
+
+     coolant_pressure_1 = cantools.db.Signal(
+         name="coolant_pressure_1",
+         start=32,
+         length=16, 
+         byte_order="big_endian",
+         is_signed=False,
+     )
+
+     coolant_pressure_2 = cantools.db.Signal(
+         name="coolant_pressure_2",
+         start=48,
+         length=16, 
+         byte_order="big_endian",
+         is_signed=False,
+     )
+
+
+     msg = cantools.db.Message(
+         frame_id=frame_id,
+         name="linear_potentiometer_conversion and coolant_pressure",
+         length=8,
+         signals=[linear_potentiometer_conversion_1, linear_potentiometer_conversion_2, coolant_pressure_1, coolant_pressure_2],
+         comment="Linear Potentiometer and Coolant Pressure message.",
+         strict=True
+     )
+ 
+     return msg
