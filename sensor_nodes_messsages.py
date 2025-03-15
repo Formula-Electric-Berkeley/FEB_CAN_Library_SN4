@@ -39,28 +39,28 @@ def get_steering_data(frame_id: int):
 def get_rear_left_tire_temp_data(frame_id: int):
     
     leftmost_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="leftmost_temp_RL",
         start=0,
         length=16,
         byte_order="big_endian",
         is_signed=False,
     )
     center_left_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="center_left_temp_RL",
         start=16,
         length=16,
         byte_order="big_endian",
         is_signed=False,
     )
     center_right_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="center_right_temp_RL",
         start=32,
         length=16,
         byte_order="big_endian",
         is_signed=False,
     )
     rightmost_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="rightmost_temp_RL",
         start=48,
         length=16,
         byte_order="big_endian",
@@ -71,7 +71,7 @@ def get_rear_left_tire_temp_data(frame_id: int):
         frame_id=frame_id,
         name="FEB_rear_left_tire_temp_data",
         length=8,
-        signals=[can_counter, flags, angle],
+        signals=[leftmost_temp, center_left_temp, center_right_temp, rightmost_temp],
         comment="Message for rear left tire temp data.",
         strict=True
     )
@@ -81,28 +81,28 @@ def get_rear_left_tire_temp_data(frame_id: int):
 def get_rear_right_tire_temp_data(frame_id: int):
     
     leftmost_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="leftmost_temp_RR",
         start=0,
         length=16,
         byte_order="big_endian",
         is_signed=False,
     )
     center_left_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="center_left_temp_RR",
         start=16,
         length=16,
         byte_order="big_endian",
         is_signed=False,
     )
     center_right_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="center_right_temp_RR",
         start=32,
         length=16,
         byte_order="big_endian",
         is_signed=False,
     )
     rightmost_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="rightmost_temp_RR",
         start=48,
         length=16,
         byte_order="big_endian",
@@ -113,7 +113,7 @@ def get_rear_right_tire_temp_data(frame_id: int):
         frame_id=frame_id,
         name="FEB_rear_right_tire_temp_data",
         length=8,
-        signals=[can_counter, flags, angle],
+        signals=[leftmost_temp, center_left_temp, center_right_temp, rightmost_temp],
         comment="Message for rear right tire temp data.",
         strict=True
     )
@@ -123,28 +123,28 @@ def get_rear_right_tire_temp_data(frame_id: int):
 def get_front_left_tire_temp_data(frame_id: int):
     
     leftmost_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="leftmost_temp_FL",
         start=0,
         length=16,
         byte_order="big_endian",
         is_signed=False,
     )
     center_left_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="center_left_temp_FL",
         start=16,
         length=16,
         byte_order="big_endian",
         is_signed=False,
     )
     center_right_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="center_right_temp_FL",
         start=32,
         length=16,
         byte_order="big_endian",
         is_signed=False,
     )
     rightmost_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="rightmost_temp_FL",
         start=48,
         length=16,
         byte_order="big_endian",
@@ -155,7 +155,7 @@ def get_front_left_tire_temp_data(frame_id: int):
         frame_id=frame_id,
         name="FEB_front_left_tire_temp_data",
         length=8,
-        signals=[can_counter, flags, angle],
+        signals=[leftmost_temp, center_left_temp, center_right_temp, rightmost_temp],
         comment="Message for front left tire temp data.",
         strict=True
     )
@@ -165,28 +165,28 @@ def get_front_left_tire_temp_data(frame_id: int):
 def get_front_right_tire_temp_data(frame_id: int):
     
     leftmost_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="leftmost_temp_FR",
         start=0,
         length=16,
         byte_order="big_endian",
         is_signed=False,
     )
     center_left_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="center_left_temp_FR",
         start=16,
         length=16,
         byte_order="big_endian",
         is_signed=False,
     )
     center_right_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="center_right_temp_FR",
         start=32,
         length=16,
         byte_order="big_endian",
         is_signed=False,
     )
     rightmost_temp = cantools.db.Signal(
-        name="leftmost_temp",
+        name="rightmost_temp_FR",
         start=48,
         length=16,
         byte_order="big_endian",
@@ -197,7 +197,7 @@ def get_front_right_tire_temp_data(frame_id: int):
         frame_id=frame_id,
         name="FEB_front_right_tire_temp_data",
         length=8,
-        signals=[can_counter, flags, angle],
+        signals=[leftmost_temp, center_left_temp, center_right_temp, rightmost_temp],
         comment="Message for front right tire temp data.",
         strict=True
     )
