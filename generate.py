@@ -28,6 +28,8 @@ MESSAGE_GEN_LIST = [
     ping_pong_msg.get_ping_pong_counter2,
     ping_pong_msg.get_ping_pong_counter3,
     ping_pong_msg.get_ping_pong_counter4,
+    dart_msg.get_measured_fan_speeds
+
 ]
 
 def main():
