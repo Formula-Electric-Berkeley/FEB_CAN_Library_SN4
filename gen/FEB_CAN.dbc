@@ -93,31 +93,26 @@ BO_ 10 FEB_Dash_Message: 1 Vector__XXX
  SG_ button1_ready_to_drive : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ buzzer_state : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 11 FEB_DART_TACH_measurements: 5 Vector__XXX
- SG_ fan5_speed : 32|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ fan4_speed : 24|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ fan3_speed : 16|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ fan2_speed : 8|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ fan1_speed : 0|8@1+ (1,0) [0|0] "" Vector__XXX
-
-BO_ 12 FEB_PING_PONG_counter1: 8 Vector__XXX
+BO_ 11 FEB_PING_PONG_counter1: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 13 FEB_PING_PONG_counter2: 8 Vector__XXX
+BO_ 12 FEB_PING_PONG_counter2: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 14 FEB_PING_PONG_counter3: 8 Vector__XXX
+BO_ 13 FEB_PING_PONG_counter3: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 15 FEB_PING_PONG_counter4: 8 Vector__XXX
+BO_ 14 FEB_PING_PONG_counter4: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 16 FEB_DART_TACH_measurements: 5 Vector__XXX
- SG_ fan5_speed : 32|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ fan4_speed : 24|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ fan3_speed : 16|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ fan2_speed : 8|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ fan1_speed : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 15 FEB_DART_TACH_measurements_1234: 8 Vector__XXX
+ SG_ fan4_speed : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ fan3_speed : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ fan2_speed : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ fan1_speed : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 16 FEB_DART_TACH_measurements_5: 2 Vector__XXX
+ SG_ fan5_speed : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
 
 
@@ -133,12 +128,12 @@ CM_ BO_ 7 "rms_command message.";
 CM_ BO_ 8 "bspd message.";
 CM_ BO_ 9 "tps current message.";
 CM_ BO_ 10 "Dash message";
-CM_ BO_ 11 "DART message for Tachometer measurements.";
-CM_ BO_ 12 "PING PONG counter1.";
-CM_ BO_ 13 "PING PONG counter2.";
-CM_ BO_ 14 "PING PONG counter3.";
-CM_ BO_ 15 "PING PONG counter4.";
-CM_ BO_ 16 "DART message for Tachometer measurements.";
+CM_ BO_ 11 "PING PONG counter1.";
+CM_ BO_ 12 "PING PONG counter2.";
+CM_ BO_ 13 "PING PONG counter3.";
+CM_ BO_ 14 "PING PONG counter4.";
+CM_ BO_ 15 "DART message for Tachometer measurements first 4 fan speeds.";
+CM_ BO_ 16 "DART message for Tachometer measurements 5th fan speed.";
 BA_DEF_ BO_  "SystemMessageLongSymbol" STRING ;
 BA_DEF_DEF_  "SystemMessageLongSymbol" "";
 BA_ "SystemMessageLongSymbol" BO_ 2 "FEB_LVPDB_Flags_Bus_Voltage_LV_Current";

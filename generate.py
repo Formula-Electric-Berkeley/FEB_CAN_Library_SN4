@@ -23,12 +23,12 @@ MESSAGE_GEN_LIST = [
     pcu_msg.bspd,
     pcu_msg.current,
     dash_msg.get_dash_buttons,
-    dart_msg.get_measured_fan_speeds,
     ping_pong_msg.get_ping_pong_counter1,
     ping_pong_msg.get_ping_pong_counter2,
     ping_pong_msg.get_ping_pong_counter3,
     ping_pong_msg.get_ping_pong_counter4,
-    dart_msg.get_measured_fan_speeds
+    dart_msg.get_measured_fan_speeds_1234,
+    dart_msg.get_measured_fan_speeds_5
 
 ]
 
