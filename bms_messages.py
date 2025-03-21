@@ -87,7 +87,7 @@ def get_bms_cell_data(frame_id: int):
     )
 
     bms_send_time = cantools.db.Signal(
-        name="bms_temperature",
+        name="bms_send_time",
         start=48,
         length=16,
         byte_order="little_endian",
