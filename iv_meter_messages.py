@@ -29,7 +29,7 @@ def get_iv_meter_data(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="FEB_IVMeter",
+        name="IVMeter",
         length=4,
         signals=[low_range_current, high_range_current, hv_voltage],
         comment="ivMeter message for low and high range current and HV voltage.",

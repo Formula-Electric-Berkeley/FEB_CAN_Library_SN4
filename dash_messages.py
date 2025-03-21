@@ -63,7 +63,7 @@ def get_dash_buttons(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="FEB_Dash_Message",
+        name="Dash_Message",
         length=1,
         signals=[buzzer_state, button1, button2, button3, button4, switch1, switch2, switch3],
         comment="Dash message",

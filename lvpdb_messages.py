@@ -26,7 +26,7 @@ def get_lvpdb_flag_bus_voltage_lv_current(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="FEB_LVPDB_Flags_Bus_Voltage_LV_Current",
+        name="LVPDB_Flags_Bus_Voltage_LV_Current",
         length=8,
         signals=[flag_signal, bus_voltage_signal, lv_current_signal],
         comment="LVPDB message for flags, bus voltage, LV current.",
@@ -66,7 +66,7 @@ def get_lvpdb_cp_af_rf_sh_current(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="FEB_LVPDB_CP_AF_RF_SH_Current",
+        name="LVPDB_CP_AF_RF_SH_Current",
         length=8,
         signals=[cp_current_signal, af_current_signal, rf_current_signal, sh_current_signal],
         comment="LVPDB message for Coolant Pump Current, Accumulator Fans, Radiator Fans, Shutdown Source.",
@@ -99,7 +99,7 @@ def get_lvpdb_L_AS_AB_current(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="FEB_LVPDB_L_AS_AB_Current",
+        name="LVPDB_L_AS_AB_Current",
         length=8,
         signals=[l_current_signal, as_current_signal, ab_current_signal],
         comment="LVPDB message for .",

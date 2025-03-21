@@ -5,26 +5,28 @@ def normalized_brake(frame_id: int):
     normalized_brake = cantools.db.Signal(
         name="normalized_brake",
         start=0,
-        length=40,
+        length=8,
         byte_order="little_endian",
         is_signed=False
     )
+
     msg = cantools.db.Message(
         frame_id=frame_id,
         name="normalized_brake",
-        length=5,
+        length=1,
         signals=[normalized_brake],
         comment="PCU normalized brake message",
         strict=True
     )
+    
     return msg 
 
 def rms_param_msg(frame_id: int):
     addr = cantools.db.Signal(
-        name="addr",
+        name="address",
         start=0,
         length=8,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False
     )
 
@@ -32,15 +34,15 @@ def rms_param_msg(frame_id: int):
         name="read_write_command",
         start=16,
         length=8,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False
     )
 
     data = cantools.db.Signal(
         name="data",
-        start=24,
+        start=32,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False
     )
 
@@ -52,6 +54,7 @@ def rms_param_msg(frame_id: int):
         comment="param_message.",
         strict=True
     )
+    
     return msg 
 
 
@@ -75,7 +78,7 @@ def rms_command_msg(frame_id: int):
     direction_value = cantools.db.Signal(
         name="direction_value",
         start=32,
-        length=8,
+        length=1,
         byte_order="little_endian",
         is_signed=False
     )
@@ -83,21 +86,21 @@ def rms_command_msg(frame_id: int):
     inverter_enable = cantools.db.Signal(
         name="inverter_enable",
         start=40,
-        length=8,
+        length=1,
         byte_order="little_endian",
         is_signed=False
     )
 
-    inverter_disregard = cantools.db.Signal(
-       name="inverter_disregard",
+    inverter_dicharge = cantools.db.Signal(
+       name="inverter_dicharge",
        start=41,
        length=1,
        byte_order="little_endian",
        is_signed=False
     )
 
-    speed_mode = cantools.db.Signal(
-       name="speed_mode",
+    speed_mspeed_mode_enabledode = cantools.db.Signal(
+       name="speed_mode_enabled",
        start=42,
        length=1,
        byte_order="little_endian",
@@ -116,10 +119,11 @@ def rms_command_msg(frame_id: int):
         frame_id=frame_id,
         name="rms_command_msg",
         length=8,
-        signals=[torque_signal, speed_signal,direction_value, inverter_enable, commmand_torque_limited],
-        comment="rms_command message.",
+        signals=[torque_signal, speed_signal,direction_value, inverter_enable, inverter_dicharge, speed_mspeed_mode_enabledode, commmand_torque_limited],
+        comment="RMS command message.",
         strict=True
     )
+
     return msg
 
 def bspd(frame_id: int):
@@ -130,31 +134,34 @@ def bspd(frame_id: int):
         byte_order="little_endian",
         is_signed=False
     )
+    
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="bspd",
+        name="BSPD_State",
         length=1,
         signals=[bspd_state],
-        comment="bspd message.",
+        comment="BSPD message.",
         strict=True
     )
+
     return msg 
 
 def current(frame_id: int):
     tps_current = cantools.db.Signal(
-        name="current",
+        name="tps_current",
         start=0,
-        length=40,
+        length=16,
         byte_order="little_endian",
         is_signed=False
     )
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="tps_current",
-        length=5,
+        name="PCU_TPS",
+        length=2,
         signals=[tps_current],
-        comment="tps current message.",
+        comment="PCU TPS chip reading",
         strict=True
     )
+    
     return msg 

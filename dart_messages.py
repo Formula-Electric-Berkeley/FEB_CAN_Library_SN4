@@ -37,7 +37,7 @@ def get_measured_fan_speeds_1234(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="FEB_DART_TACH_measurements_1234",
+        name="DART_TACH_measurements_1234",
         length=8,
         signals=[fan1_speed_signal,fan2_speed_signal,fan3_speed_signal,fan4_speed_signal],
         comment="DART message for Tachometer measurements first 4 fan speeds.",
@@ -58,7 +58,7 @@ def get_measured_fan_speeds_5(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="FEB_DART_TACH_measurements_5",
+        name="DART_TACH_measurements_5",
         length=2,
         signals=[fan5_speed_signal],
         comment="DART message for Tachometer measurements 5th fan speed.",
