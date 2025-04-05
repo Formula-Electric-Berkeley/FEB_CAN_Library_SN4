@@ -114,33 +114,49 @@ static inline uint32_t unpack_right_shift_u32(
 }
 
 int feb_can_bms_state_pack(
+int feb_can_bms_state_pack(
     uint8_t *dst_p,
+    const struct feb_can_bms_state_t *src_p,
     const struct feb_can_bms_state_t *src_p,
     size_t size)
 {
     if (size < 2u) {
+    if (size < 2u) {
         return (-EINVAL);
     }
 
+    memset(&dst_p[0], 0, 2);
     memset(&dst_p[0], 0, 2);
 
     dst_p[0] |= pack_left_shift_u8(src_p->bms_state, 0u, 0x1fu);
     dst_p[0] |= pack_left_shift_u8(src_p->ping_alive, 5u, 0xe0u);
     dst_p[1] |= pack_left_shift_u8(src_p->relay_state, 0u, 0x07u);
     dst_p[1] |= pack_left_shift_u8(src_p->gpio_sense, 3u, 0xf8u);
+    dst_p[0] |= pack_left_shift_u8(src_p->bms_state, 0u, 0x1fu);
+    dst_p[0] |= pack_left_shift_u8(src_p->ping_alive, 5u, 0xe0u);
+    dst_p[1] |= pack_left_shift_u8(src_p->relay_state, 0u, 0x07u);
+    dst_p[1] |= pack_left_shift_u8(src_p->gpio_sense, 3u, 0xf8u);
 
+    return (2);
     return (2);
 }
 
+int feb_can_bms_state_unpack(
+    struct feb_can_bms_state_t *dst_p,
 int feb_can_bms_state_unpack(
     struct feb_can_bms_state_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
     if (size < 2u) {
+    if (size < 2u) {
         return (-EINVAL);
     }
 
+    dst_p->bms_state = unpack_right_shift_u8(src_p[0], 0u, 0x1fu);
+    dst_p->ping_alive = unpack_right_shift_u8(src_p[0], 5u, 0xe0u);
+    dst_p->relay_state = unpack_right_shift_u8(src_p[1], 0u, 0x07u);
+    dst_p->gpio_sense = unpack_right_shift_u8(src_p[1], 3u, 0xf8u);
     dst_p->bms_state = unpack_right_shift_u8(src_p[0], 0u, 0x1fu);
     dst_p->ping_alive = unpack_right_shift_u8(src_p[0], 5u, 0xe0u);
     dst_p->relay_state = unpack_right_shift_u8(src_p[1], 0u, 0x07u);
@@ -150,56 +166,77 @@ int feb_can_bms_state_unpack(
 }
 
 int feb_can_bms_state_init(struct feb_can_bms_state_t *msg_p)
+int feb_can_bms_state_init(struct feb_can_bms_state_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
+    memset(msg_p, 0, sizeof(struct feb_can_bms_state_t));
     memset(msg_p, 0, sizeof(struct feb_can_bms_state_t));
 
     return 0;
 }
 
 uint8_t feb_can_bms_state_bms_state_encode(double value)
+uint8_t feb_can_bms_state_bms_state_encode(double value)
 {
     return (uint8_t)(value);
 }
 
+double feb_can_bms_state_bms_state_decode(uint8_t value)
 double feb_can_bms_state_bms_state_decode(uint8_t value)
 {
     return ((double)value);
 }
 
 bool feb_can_bms_state_bms_state_is_in_range(uint8_t value)
+bool feb_can_bms_state_bms_state_is_in_range(uint8_t value)
 {
+    return (value <= 31u);
     return (value <= 31u);
 }
 
+uint8_t feb_can_bms_state_ping_alive_encode(double value)
 uint8_t feb_can_bms_state_ping_alive_encode(double value)
 {
     return (uint8_t)(value);
 }
 
 double feb_can_bms_state_ping_alive_decode(uint8_t value)
+double feb_can_bms_state_ping_alive_decode(uint8_t value)
 {
     return ((double)value);
 }
 
 bool feb_can_bms_state_ping_alive_is_in_range(uint8_t value)
+bool feb_can_bms_state_ping_alive_is_in_range(uint8_t value)
 {
+    return (value <= 7u);
     return (value <= 7u);
 }
 
 uint8_t feb_can_bms_state_relay_state_encode(double value)
+uint8_t feb_can_bms_state_relay_state_encode(double value)
 {
+    return (uint8_t)(value);
     return (uint8_t)(value);
 }
 
 double feb_can_bms_state_relay_state_decode(uint8_t value)
+double feb_can_bms_state_relay_state_decode(uint8_t value)
 {
+    return ((double)value);
     return ((double)value);
 }
 
 bool feb_can_bms_state_relay_state_is_in_range(uint8_t value)
+bool feb_can_bms_state_relay_state_is_in_range(uint8_t value)
 {
+    return (value <= 7u);
+}
+
+uint8_t feb_can_bms_state_gpio_sense_encode(double value)
+{
+    return (uint8_t)(value);
     return (value <= 7u);
 }
 
@@ -219,14 +256,28 @@ bool feb_can_bms_state_gpio_sense_is_in_range(uint8_t value)
 }
 
 int feb_can_bms_cell_data_pack(
+double feb_can_bms_state_gpio_sense_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_state_gpio_sense_is_in_range(uint8_t value)
+{
+    return (value <= 31u);
+}
+
+int feb_can_bms_cell_data_pack(
     uint8_t *dst_p,
+    const struct feb_can_bms_cell_data_t *src_p,
     const struct feb_can_bms_cell_data_t *src_p,
     size_t size)
 {
     if (size < 8u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
+    memset(&dst_p[0], 0, 8);
     memset(&dst_p[0], 0, 8);
 
     dst_p[0] |= pack_left_shift_u8(src_p->bms_flags, 0u, 0x0fu);
@@ -238,19 +289,41 @@ int feb_can_bms_cell_data_pack(
     dst_p[5] |= pack_right_shift_u16(src_p->bms_temperature, 8u, 0xffu);
     dst_p[6] |= pack_left_shift_u16(src_p->bms_send_time, 0u, 0xffu);
     dst_p[7] |= pack_right_shift_u16(src_p->bms_send_time, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u8(src_p->bms_flags, 0u, 0x0fu);
+    dst_p[1] |= pack_left_shift_u8(src_p->bms_cell, 0u, 0x0fu);
+    dst_p[1] |= pack_left_shift_u8(src_p->bms_bank, 4u, 0xf0u);
+    dst_p[2] |= pack_left_shift_u16(src_p->bms_voltage, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->bms_voltage, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->bms_temperature, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->bms_temperature, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->bms_send_time, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->bms_send_time, 8u, 0xffu);
 
+    return (8);
     return (8);
 }
 
+int feb_can_bms_cell_data_unpack(
+    struct feb_can_bms_cell_data_t *dst_p,
 int feb_can_bms_cell_data_unpack(
     struct feb_can_bms_cell_data_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
     if (size < 8u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
+    dst_p->bms_flags = unpack_right_shift_u8(src_p[0], 0u, 0x0fu);
+    dst_p->bms_cell = unpack_right_shift_u8(src_p[1], 0u, 0x0fu);
+    dst_p->bms_bank = unpack_right_shift_u8(src_p[1], 4u, 0xf0u);
+    dst_p->bms_voltage = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->bms_voltage |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->bms_temperature = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->bms_temperature |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->bms_send_time = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->bms_send_time |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
     dst_p->bms_flags = unpack_right_shift_u8(src_p[0], 0u, 0x0fu);
     dst_p->bms_cell = unpack_right_shift_u8(src_p[1], 0u, 0x0fu);
     dst_p->bms_bank = unpack_right_shift_u8(src_p[1], 4u, 0xf0u);
@@ -265,24 +338,74 @@ int feb_can_bms_cell_data_unpack(
 }
 
 int feb_can_bms_cell_data_init(struct feb_can_bms_cell_data_t *msg_p)
+int feb_can_bms_cell_data_init(struct feb_can_bms_cell_data_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
+    memset(msg_p, 0, sizeof(struct feb_can_bms_cell_data_t));
     memset(msg_p, 0, sizeof(struct feb_can_bms_cell_data_t));
 
     return 0;
 }
 
 uint8_t feb_can_bms_cell_data_bms_flags_encode(double value)
+uint8_t feb_can_bms_cell_data_bms_flags_encode(double value)
 {
     return (uint8_t)(value);
 }
 
 double feb_can_bms_cell_data_bms_flags_decode(uint8_t value)
+double feb_can_bms_cell_data_bms_flags_decode(uint8_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_bms_cell_data_bms_flags_is_in_range(uint8_t value)
+{
+    return (value <= 15u);
+}
+
+uint8_t feb_can_bms_cell_data_bms_cell_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_bms_cell_data_bms_cell_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_cell_data_bms_cell_is_in_range(uint8_t value)
+{
+    return (value <= 15u);
+}
+
+uint8_t feb_can_bms_cell_data_bms_bank_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_bms_cell_data_bms_bank_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_cell_data_bms_bank_is_in_range(uint8_t value)
+{
+    return (value <= 15u);
+}
+
+uint16_t feb_can_bms_cell_data_bms_voltage_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_cell_data_bms_voltage_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_cell_data_bms_voltage_is_in_range(uint16_t value)
 bool feb_can_bms_cell_data_bms_flags_is_in_range(uint8_t value)
 {
     return (value <= 15u);
@@ -336,15 +459,19 @@ bool feb_can_bms_cell_data_bms_voltage_is_in_range(uint16_t value)
 }
 
 uint16_t feb_can_bms_cell_data_bms_temperature_encode(double value)
+uint16_t feb_can_bms_cell_data_bms_temperature_encode(double value)
 {
+    return (uint16_t)(value);
     return (uint16_t)(value);
 }
 
+double feb_can_bms_cell_data_bms_temperature_decode(uint16_t value)
 double feb_can_bms_cell_data_bms_temperature_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_bms_cell_data_bms_temperature_is_in_range(uint16_t value)
 bool feb_can_bms_cell_data_bms_temperature_is_in_range(uint16_t value)
 {
     (void)value;
@@ -353,15 +480,19 @@ bool feb_can_bms_cell_data_bms_temperature_is_in_range(uint16_t value)
 }
 
 uint16_t feb_can_bms_cell_data_bms_send_time_encode(double value)
+uint16_t feb_can_bms_cell_data_bms_send_time_encode(double value)
 {
+    return (uint16_t)(value);
     return (uint16_t)(value);
 }
 
+double feb_can_bms_cell_data_bms_send_time_decode(uint16_t value)
 double feb_can_bms_cell_data_bms_send_time_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_bms_cell_data_bms_send_time_is_in_range(uint16_t value)
 bool feb_can_bms_cell_data_bms_send_time_is_in_range(uint16_t value)
 {
     (void)value;
@@ -370,7 +501,9 @@ bool feb_can_bms_cell_data_bms_send_time_is_in_range(uint16_t value)
 }
 
 int feb_can_bms_accumulator_voltage_pack(
+int feb_can_bms_accumulator_voltage_pack(
     uint8_t *dst_p,
+    const struct feb_can_bms_accumulator_voltage_t *src_p,
     const struct feb_can_bms_accumulator_voltage_t *src_p,
     size_t size)
 {
@@ -388,10 +521,20 @@ int feb_can_bms_accumulator_voltage_pack(
     dst_p[5] |= pack_right_shift_u16(src_p->max_cell_voltage, 8u, 0xffu);
     dst_p[6] |= pack_left_shift_u16(src_p->send_time, 0u, 0xffu);
     dst_p[7] |= pack_right_shift_u16(src_p->send_time, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->total_pack_voltage, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->total_pack_voltage, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->min_cell_voltage, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->min_cell_voltage, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->max_cell_voltage, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->max_cell_voltage, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->send_time, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->send_time, 8u, 0xffu);
 
     return (8);
 }
 
+int feb_can_bms_accumulator_voltage_unpack(
+    struct feb_can_bms_accumulator_voltage_t *dst_p,
 int feb_can_bms_accumulator_voltage_unpack(
     struct feb_can_bms_accumulator_voltage_t *dst_p,
     const uint8_t *src_p,
@@ -409,29 +552,43 @@ int feb_can_bms_accumulator_voltage_unpack(
     dst_p->max_cell_voltage |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
     dst_p->send_time = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
     dst_p->send_time |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->total_pack_voltage = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->total_pack_voltage |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->min_cell_voltage = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->min_cell_voltage |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->max_cell_voltage = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->max_cell_voltage |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->send_time = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->send_time |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
 
     return (0);
 }
 
 int feb_can_bms_accumulator_voltage_init(struct feb_can_bms_accumulator_voltage_t *msg_p)
+int feb_can_bms_accumulator_voltage_init(struct feb_can_bms_accumulator_voltage_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
+    memset(msg_p, 0, sizeof(struct feb_can_bms_accumulator_voltage_t));
     memset(msg_p, 0, sizeof(struct feb_can_bms_accumulator_voltage_t));
 
     return 0;
 }
 
 uint16_t feb_can_bms_accumulator_voltage_total_pack_voltage_encode(double value)
+uint16_t feb_can_bms_accumulator_voltage_total_pack_voltage_encode(double value)
 {
+    return (uint16_t)(value);
     return (uint16_t)(value);
 }
 
+double feb_can_bms_accumulator_voltage_total_pack_voltage_decode(uint16_t value)
 double feb_can_bms_accumulator_voltage_total_pack_voltage_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_bms_accumulator_voltage_total_pack_voltage_is_in_range(uint16_t value)
 bool feb_can_bms_accumulator_voltage_total_pack_voltage_is_in_range(uint16_t value)
 {
     (void)value;
@@ -440,15 +597,18 @@ bool feb_can_bms_accumulator_voltage_total_pack_voltage_is_in_range(uint16_t val
 }
 
 uint16_t feb_can_bms_accumulator_voltage_min_cell_voltage_encode(double value)
+uint16_t feb_can_bms_accumulator_voltage_min_cell_voltage_encode(double value)
 {
     return (uint16_t)(value);
 }
 
 double feb_can_bms_accumulator_voltage_min_cell_voltage_decode(uint16_t value)
+double feb_can_bms_accumulator_voltage_min_cell_voltage_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_bms_accumulator_voltage_min_cell_voltage_is_in_range(uint16_t value)
 bool feb_can_bms_accumulator_voltage_min_cell_voltage_is_in_range(uint16_t value)
 {
     (void)value;
@@ -457,15 +617,18 @@ bool feb_can_bms_accumulator_voltage_min_cell_voltage_is_in_range(uint16_t value
 }
 
 uint16_t feb_can_bms_accumulator_voltage_max_cell_voltage_encode(double value)
+uint16_t feb_can_bms_accumulator_voltage_max_cell_voltage_encode(double value)
 {
     return (uint16_t)(value);
 }
 
 double feb_can_bms_accumulator_voltage_max_cell_voltage_decode(uint16_t value)
+double feb_can_bms_accumulator_voltage_max_cell_voltage_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_bms_accumulator_voltage_max_cell_voltage_is_in_range(uint16_t value)
 bool feb_can_bms_accumulator_voltage_max_cell_voltage_is_in_range(uint16_t value)
 {
     (void)value;
@@ -491,7 +654,26 @@ bool feb_can_bms_accumulator_voltage_send_time_is_in_range(uint16_t value)
 }
 
 int feb_can_bms_accumulator_temperature_pack(
+uint16_t feb_can_bms_accumulator_voltage_send_time_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_accumulator_voltage_send_time_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_accumulator_voltage_send_time_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_accumulator_temperature_pack(
     uint8_t *dst_p,
+    const struct feb_can_bms_accumulator_temperature_t *src_p,
     const struct feb_can_bms_accumulator_temperature_t *src_p,
     size_t size)
 {
@@ -509,10 +691,20 @@ int feb_can_bms_accumulator_temperature_pack(
     dst_p[5] |= pack_right_shift_u16(src_p->max_cell_temperature, 8u, 0xffu);
     dst_p[6] |= pack_left_shift_u16(src_p->send_time, 0u, 0xffu);
     dst_p[7] |= pack_right_shift_u16(src_p->send_time, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->average_pack_temperature, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->average_pack_temperature, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->min_cell_temperature, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->min_cell_temperature, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->max_cell_temperature, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->max_cell_temperature, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->send_time, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->send_time, 8u, 0xffu);
 
     return (8);
 }
 
+int feb_can_bms_accumulator_temperature_unpack(
+    struct feb_can_bms_accumulator_temperature_t *dst_p,
 int feb_can_bms_accumulator_temperature_unpack(
     struct feb_can_bms_accumulator_temperature_t *dst_p,
     const uint8_t *src_p,
@@ -530,29 +722,42 @@ int feb_can_bms_accumulator_temperature_unpack(
     dst_p->max_cell_temperature |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
     dst_p->send_time = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
     dst_p->send_time |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->average_pack_temperature = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->average_pack_temperature |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->min_cell_temperature = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->min_cell_temperature |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->max_cell_temperature = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->max_cell_temperature |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->send_time = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->send_time |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
 
     return (0);
 }
 
 int feb_can_bms_accumulator_temperature_init(struct feb_can_bms_accumulator_temperature_t *msg_p)
+int feb_can_bms_accumulator_temperature_init(struct feb_can_bms_accumulator_temperature_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
+    memset(msg_p, 0, sizeof(struct feb_can_bms_accumulator_temperature_t));
     memset(msg_p, 0, sizeof(struct feb_can_bms_accumulator_temperature_t));
 
     return 0;
 }
 
 uint16_t feb_can_bms_accumulator_temperature_average_pack_temperature_encode(double value)
+uint16_t feb_can_bms_accumulator_temperature_average_pack_temperature_encode(double value)
 {
     return (uint16_t)(value);
 }
 
 double feb_can_bms_accumulator_temperature_average_pack_temperature_decode(uint16_t value)
+double feb_can_bms_accumulator_temperature_average_pack_temperature_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_bms_accumulator_temperature_average_pack_temperature_is_in_range(uint16_t value)
 bool feb_can_bms_accumulator_temperature_average_pack_temperature_is_in_range(uint16_t value)
 {
     (void)value;
@@ -561,15 +766,18 @@ bool feb_can_bms_accumulator_temperature_average_pack_temperature_is_in_range(ui
 }
 
 uint16_t feb_can_bms_accumulator_temperature_min_cell_temperature_encode(double value)
+uint16_t feb_can_bms_accumulator_temperature_min_cell_temperature_encode(double value)
 {
     return (uint16_t)(value);
 }
 
 double feb_can_bms_accumulator_temperature_min_cell_temperature_decode(uint16_t value)
+double feb_can_bms_accumulator_temperature_min_cell_temperature_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_bms_accumulator_temperature_min_cell_temperature_is_in_range(uint16_t value)
 bool feb_can_bms_accumulator_temperature_min_cell_temperature_is_in_range(uint16_t value)
 {
     (void)value;
@@ -578,15 +786,18 @@ bool feb_can_bms_accumulator_temperature_min_cell_temperature_is_in_range(uint16
 }
 
 uint16_t feb_can_bms_accumulator_temperature_max_cell_temperature_encode(double value)
+uint16_t feb_can_bms_accumulator_temperature_max_cell_temperature_encode(double value)
 {
     return (uint16_t)(value);
 }
 
 double feb_can_bms_accumulator_temperature_max_cell_temperature_decode(uint16_t value)
+double feb_can_bms_accumulator_temperature_max_cell_temperature_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_bms_accumulator_temperature_max_cell_temperature_is_in_range(uint16_t value)
 bool feb_can_bms_accumulator_temperature_max_cell_temperature_is_in_range(uint16_t value)
 {
     (void)value;
@@ -595,15 +806,18 @@ bool feb_can_bms_accumulator_temperature_max_cell_temperature_is_in_range(uint16
 }
 
 uint16_t feb_can_bms_accumulator_temperature_send_time_encode(double value)
+uint16_t feb_can_bms_accumulator_temperature_send_time_encode(double value)
 {
     return (uint16_t)(value);
 }
 
 double feb_can_bms_accumulator_temperature_send_time_decode(uint16_t value)
+double feb_can_bms_accumulator_temperature_send_time_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_bms_accumulator_temperature_send_time_is_in_range(uint16_t value)
 bool feb_can_bms_accumulator_temperature_send_time_is_in_range(uint16_t value)
 {
     (void)value;
@@ -612,16 +826,23 @@ bool feb_can_bms_accumulator_temperature_send_time_is_in_range(uint16_t value)
 }
 
 int feb_can_normalized_brake_pack(
+int feb_can_normalized_brake_pack(
     uint8_t *dst_p,
+    const struct feb_can_normalized_brake_t *src_p,
     const struct feb_can_normalized_brake_t *src_p,
     size_t size)
 {
+    if (size < 1u) {
     if (size < 1u) {
         return (-EINVAL);
     }
 
     memset(&dst_p[0], 0, 1);
+    memset(&dst_p[0], 0, 1);
 
+    dst_p[0] |= pack_left_shift_u8(src_p->normalized_brake, 0u, 0xffu);
+
+    return (1);
     dst_p[0] |= pack_left_shift_u8(src_p->normalized_brake, 0u, 0xffu);
 
     return (1);
@@ -629,37 +850,47 @@ int feb_can_normalized_brake_pack(
 
 int feb_can_normalized_brake_unpack(
     struct feb_can_normalized_brake_t *dst_p,
+int feb_can_normalized_brake_unpack(
+    struct feb_can_normalized_brake_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
     if (size < 1u) {
+    if (size < 1u) {
         return (-EINVAL);
     }
 
+    dst_p->normalized_brake = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
     dst_p->normalized_brake = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
 
     return (0);
 }
 
 int feb_can_normalized_brake_init(struct feb_can_normalized_brake_t *msg_p)
+int feb_can_normalized_brake_init(struct feb_can_normalized_brake_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
+    memset(msg_p, 0, sizeof(struct feb_can_normalized_brake_t));
     memset(msg_p, 0, sizeof(struct feb_can_normalized_brake_t));
 
     return 0;
 }
 
 uint8_t feb_can_normalized_brake_normalized_brake_encode(double value)
+uint8_t feb_can_normalized_brake_normalized_brake_encode(double value)
 {
+    return (uint8_t)(value);
     return (uint8_t)(value);
 }
 
+double feb_can_normalized_brake_normalized_brake_decode(uint8_t value)
 double feb_can_normalized_brake_normalized_brake_decode(uint8_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_normalized_brake_normalized_brake_is_in_range(uint8_t value)
 bool feb_can_normalized_brake_normalized_brake_is_in_range(uint8_t value)
 {
     (void)value;
@@ -671,7 +902,20 @@ int feb_can_bspd_state_pack(
     uint8_t *dst_p,
     const struct feb_can_bspd_state_t *src_p,
     size_t size)
+int feb_can_bspd_state_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bspd_state_t *src_p,
+    size_t size)
 {
+    if (size < 1u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 1);
+
+    dst_p[0] |= pack_left_shift_u8(src_p->bspd_state, 0u, 0xffu);
+
+    return (1);
     if (size < 1u) {
         return (-EINVAL);
     }
@@ -687,7 +931,18 @@ int feb_can_bspd_state_unpack(
     struct feb_can_bspd_state_t *dst_p,
     const uint8_t *src_p,
     size_t size)
+int feb_can_bspd_state_unpack(
+    struct feb_can_bspd_state_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
 {
+    if (size < 1u) {
+        return (-EINVAL);
+    }
+
+    dst_p->bspd_state = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+
+    return (0);
     if (size < 1u) {
         return (-EINVAL);
     }
@@ -702,20 +957,30 @@ int feb_can_bspd_state_init(struct feb_can_bspd_state_t *msg_p)
     if (msg_p == NULL) return -1;
 
     memset(msg_p, 0, sizeof(struct feb_can_bspd_state_t));
+int feb_can_bspd_state_init(struct feb_can_bspd_state_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
 
+    memset(msg_p, 0, sizeof(struct feb_can_bspd_state_t));
+
+    return 0;
     return 0;
 }
 
 uint8_t feb_can_bspd_state_bspd_state_encode(double value)
+uint8_t feb_can_bspd_state_bspd_state_encode(double value)
 {
+    return (uint8_t)(value);
     return (uint8_t)(value);
 }
 
+double feb_can_bspd_state_bspd_state_decode(uint8_t value)
 double feb_can_bspd_state_bspd_state_decode(uint8_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_bspd_state_bspd_state_is_in_range(uint8_t value)
 bool feb_can_bspd_state_bspd_state_is_in_range(uint8_t value)
 {
     (void)value;
@@ -724,14 +989,18 @@ bool feb_can_bspd_state_bspd_state_is_in_range(uint8_t value)
 }
 
 int feb_can_dash_message_pack(
+int feb_can_dash_message_pack(
     uint8_t *dst_p,
+    const struct feb_can_dash_message_t *src_p,
     const struct feb_can_dash_message_t *src_p,
     size_t size)
 {
     if (size < 1u) {
+    if (size < 1u) {
         return (-EINVAL);
     }
 
+    memset(&dst_p[0], 0, 1);
     memset(&dst_p[0], 0, 1);
 
     dst_p[0] |= pack_left_shift_u8(src_p->buzzer_state, 0u, 0x01u);
@@ -742,19 +1011,39 @@ int feb_can_dash_message_pack(
     dst_p[0] |= pack_left_shift_u8(src_p->coolant_pump_switch, 5u, 0x20u);
     dst_p[0] |= pack_left_shift_u8(src_p->radiator_fan_switch, 6u, 0x40u);
     dst_p[0] |= pack_left_shift_u8(src_p->accumulator_fan_switch, 7u, 0x80u);
+    dst_p[0] |= pack_left_shift_u8(src_p->buzzer_state, 0u, 0x01u);
+    dst_p[0] |= pack_left_shift_u8(src_p->button1_ready_to_drive, 1u, 0x02u);
+    dst_p[0] |= pack_left_shift_u8(src_p->button2, 2u, 0x04u);
+    dst_p[0] |= pack_left_shift_u8(src_p->button3, 3u, 0x08u);
+    dst_p[0] |= pack_left_shift_u8(src_p->button4, 4u, 0x10u);
+    dst_p[0] |= pack_left_shift_u8(src_p->coolant_pump_switch, 5u, 0x20u);
+    dst_p[0] |= pack_left_shift_u8(src_p->radiator_fan_switch, 6u, 0x40u);
+    dst_p[0] |= pack_left_shift_u8(src_p->accumulator_fan_switch, 7u, 0x80u);
 
+    return (1);
     return (1);
 }
 
+int feb_can_dash_message_unpack(
+    struct feb_can_dash_message_t *dst_p,
 int feb_can_dash_message_unpack(
     struct feb_can_dash_message_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
     if (size < 1u) {
+    if (size < 1u) {
         return (-EINVAL);
     }
 
+    dst_p->buzzer_state = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
+    dst_p->button1_ready_to_drive = unpack_right_shift_u8(src_p[0], 1u, 0x02u);
+    dst_p->button2 = unpack_right_shift_u8(src_p[0], 2u, 0x04u);
+    dst_p->button3 = unpack_right_shift_u8(src_p[0], 3u, 0x08u);
+    dst_p->button4 = unpack_right_shift_u8(src_p[0], 4u, 0x10u);
+    dst_p->coolant_pump_switch = unpack_right_shift_u8(src_p[0], 5u, 0x20u);
+    dst_p->radiator_fan_switch = unpack_right_shift_u8(src_p[0], 6u, 0x40u);
+    dst_p->accumulator_fan_switch = unpack_right_shift_u8(src_p[0], 7u, 0x80u);
     dst_p->buzzer_state = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
     dst_p->button1_ready_to_drive = unpack_right_shift_u8(src_p[0], 1u, 0x02u);
     dst_p->button2 = unpack_right_shift_u8(src_p[0], 2u, 0x04u);
@@ -768,24 +1057,90 @@ int feb_can_dash_message_unpack(
 }
 
 int feb_can_dash_message_init(struct feb_can_dash_message_t *msg_p)
+int feb_can_dash_message_init(struct feb_can_dash_message_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
+    memset(msg_p, 0, sizeof(struct feb_can_dash_message_t));
     memset(msg_p, 0, sizeof(struct feb_can_dash_message_t));
 
     return 0;
 }
 
 uint8_t feb_can_dash_message_buzzer_state_encode(double value)
+uint8_t feb_can_dash_message_buzzer_state_encode(double value)
 {
+    return (uint8_t)(value);
     return (uint8_t)(value);
 }
 
+double feb_can_dash_message_buzzer_state_decode(uint8_t value)
 double feb_can_dash_message_buzzer_state_decode(uint8_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_dash_message_buzzer_state_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_dash_message_button1_ready_to_drive_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_dash_message_button1_ready_to_drive_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_dash_message_button1_ready_to_drive_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_dash_message_button2_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_dash_message_button2_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_dash_message_button2_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_dash_message_button3_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_dash_message_button3_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_dash_message_button3_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_dash_message_button4_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_dash_message_button4_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_dash_message_button4_is_in_range(uint8_t value)
 bool feb_can_dash_message_buzzer_state_is_in_range(uint8_t value)
 {
     return (value <= 1u);
@@ -869,6 +1224,27 @@ bool feb_can_dash_message_coolant_pump_switch_is_in_range(uint8_t value)
 uint8_t feb_can_dash_message_radiator_fan_switch_encode(double value)
 {
     return (uint8_t)(value);
+    return (value <= 1u);
+}
+
+uint8_t feb_can_dash_message_coolant_pump_switch_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_dash_message_coolant_pump_switch_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_dash_message_coolant_pump_switch_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_dash_message_radiator_fan_switch_encode(double value)
+{
+    return (uint8_t)(value);
 }
 
 double feb_can_dash_message_radiator_fan_switch_decode(uint8_t value)
@@ -897,7 +1273,34 @@ bool feb_can_dash_message_accumulator_fan_switch_is_in_range(uint8_t value)
 }
 
 int feb_can_lvpdb_flags_bus_voltage_lv_current_pack(
+double feb_can_dash_message_radiator_fan_switch_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_dash_message_radiator_fan_switch_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_dash_message_accumulator_fan_switch_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_dash_message_accumulator_fan_switch_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_dash_message_accumulator_fan_switch_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+int feb_can_lvpdb_flags_bus_voltage_lv_current_pack(
     uint8_t *dst_p,
+    const struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *src_p,
     const struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *src_p,
     size_t size)
 {
@@ -915,10 +1318,20 @@ int feb_can_lvpdb_flags_bus_voltage_lv_current_pack(
     dst_p[5] |= pack_right_shift_u16(src_p->bus_voltage, 8u, 0xffu);
     dst_p[6] |= pack_left_shift_u16(src_p->lv_current, 0u, 0xffu);
     dst_p[7] |= pack_right_shift_u16(src_p->lv_current, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u32(src_p->flags, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u32(src_p->flags, 8u, 0xffu);
+    dst_p[2] |= pack_right_shift_u32(src_p->flags, 16u, 0xffu);
+    dst_p[3] |= pack_right_shift_u32(src_p->flags, 24u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->bus_voltage, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->bus_voltage, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->lv_current, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->lv_current, 8u, 0xffu);
 
     return (8);
 }
 
+int feb_can_lvpdb_flags_bus_voltage_lv_current_unpack(
+    struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *dst_p,
 int feb_can_lvpdb_flags_bus_voltage_lv_current_unpack(
     struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *dst_p,
     const uint8_t *src_p,
@@ -936,29 +1349,43 @@ int feb_can_lvpdb_flags_bus_voltage_lv_current_unpack(
     dst_p->bus_voltage |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
     dst_p->lv_current = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
     dst_p->lv_current |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->flags = unpack_right_shift_u32(src_p[0], 0u, 0xffu);
+    dst_p->flags |= unpack_left_shift_u32(src_p[1], 8u, 0xffu);
+    dst_p->flags |= unpack_left_shift_u32(src_p[2], 16u, 0xffu);
+    dst_p->flags |= unpack_left_shift_u32(src_p[3], 24u, 0xffu);
+    dst_p->bus_voltage = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->bus_voltage |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->lv_current = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->lv_current |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
 
     return (0);
 }
 
 int feb_can_lvpdb_flags_bus_voltage_lv_current_init(struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *msg_p)
+int feb_can_lvpdb_flags_bus_voltage_lv_current_init(struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
+    memset(msg_p, 0, sizeof(struct feb_can_lvpdb_flags_bus_voltage_lv_current_t));
     memset(msg_p, 0, sizeof(struct feb_can_lvpdb_flags_bus_voltage_lv_current_t));
 
     return 0;
 }
 
 uint32_t feb_can_lvpdb_flags_bus_voltage_lv_current_flags_encode(double value)
+uint32_t feb_can_lvpdb_flags_bus_voltage_lv_current_flags_encode(double value)
 {
+    return (uint32_t)(value);
     return (uint32_t)(value);
 }
 
+double feb_can_lvpdb_flags_bus_voltage_lv_current_flags_decode(uint32_t value)
 double feb_can_lvpdb_flags_bus_voltage_lv_current_flags_decode(uint32_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_lvpdb_flags_bus_voltage_lv_current_flags_is_in_range(uint32_t value)
 bool feb_can_lvpdb_flags_bus_voltage_lv_current_flags_is_in_range(uint32_t value)
 {
     (void)value;
@@ -967,15 +1394,19 @@ bool feb_can_lvpdb_flags_bus_voltage_lv_current_flags_is_in_range(uint32_t value
 }
 
 uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_encode(double value)
+uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_encode(double value)
 {
+    return (uint16_t)(value);
     return (uint16_t)(value);
 }
 
+double feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_decode(uint16_t value)
 double feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_is_in_range(uint16_t value)
 bool feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_is_in_range(uint16_t value)
 {
     (void)value;
@@ -984,15 +1415,18 @@ bool feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_is_in_range(uint16_t
 }
 
 uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_encode(double value)
+uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_encode(double value)
 {
     return (uint16_t)(value);
 }
 
 double feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_decode(uint16_t value)
+double feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_is_in_range(uint16_t value)
 bool feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_is_in_range(uint16_t value)
 {
     (void)value;
@@ -1001,7 +1435,9 @@ bool feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_is_in_range(uint16_t 
 }
 
 int feb_can_lvpdb_cp_af_rf_sh_current_pack(
+int feb_can_lvpdb_cp_af_rf_sh_current_pack(
     uint8_t *dst_p,
+    const struct feb_can_lvpdb_cp_af_rf_sh_current_t *src_p,
     const struct feb_can_lvpdb_cp_af_rf_sh_current_t *src_p,
     size_t size)
 {
@@ -1019,10 +1455,20 @@ int feb_can_lvpdb_cp_af_rf_sh_current_pack(
     dst_p[5] |= pack_right_shift_u16(src_p->rf_current, 8u, 0xffu);
     dst_p[6] |= pack_left_shift_u16(src_p->sh_voltage, 0u, 0xffu);
     dst_p[7] |= pack_right_shift_u16(src_p->sh_voltage, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->cp_current, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->cp_current, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->af_current, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->af_current, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->rf_current, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->rf_current, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->sh_voltage, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->sh_voltage, 8u, 0xffu);
 
     return (8);
 }
 
+int feb_can_lvpdb_cp_af_rf_sh_current_unpack(
+    struct feb_can_lvpdb_cp_af_rf_sh_current_t *dst_p,
 int feb_can_lvpdb_cp_af_rf_sh_current_unpack(
     struct feb_can_lvpdb_cp_af_rf_sh_current_t *dst_p,
     const uint8_t *src_p,
@@ -1040,29 +1486,42 @@ int feb_can_lvpdb_cp_af_rf_sh_current_unpack(
     dst_p->rf_current |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
     dst_p->sh_voltage = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
     dst_p->sh_voltage |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->cp_current = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->cp_current |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->af_current = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->af_current |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->rf_current = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->rf_current |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->sh_voltage = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->sh_voltage |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
 
     return (0);
 }
 
 int feb_can_lvpdb_cp_af_rf_sh_current_init(struct feb_can_lvpdb_cp_af_rf_sh_current_t *msg_p)
+int feb_can_lvpdb_cp_af_rf_sh_current_init(struct feb_can_lvpdb_cp_af_rf_sh_current_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
+    memset(msg_p, 0, sizeof(struct feb_can_lvpdb_cp_af_rf_sh_current_t));
     memset(msg_p, 0, sizeof(struct feb_can_lvpdb_cp_af_rf_sh_current_t));
 
     return 0;
 }
 
 uint16_t feb_can_lvpdb_cp_af_rf_sh_current_cp_current_encode(double value)
+uint16_t feb_can_lvpdb_cp_af_rf_sh_current_cp_current_encode(double value)
 {
     return (uint16_t)(value);
 }
 
 double feb_can_lvpdb_cp_af_rf_sh_current_cp_current_decode(uint16_t value)
+double feb_can_lvpdb_cp_af_rf_sh_current_cp_current_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_lvpdb_cp_af_rf_sh_current_cp_current_is_in_range(uint16_t value)
 bool feb_can_lvpdb_cp_af_rf_sh_current_cp_current_is_in_range(uint16_t value)
 {
     (void)value;
@@ -1071,15 +1530,18 @@ bool feb_can_lvpdb_cp_af_rf_sh_current_cp_current_is_in_range(uint16_t value)
 }
 
 uint16_t feb_can_lvpdb_cp_af_rf_sh_current_af_current_encode(double value)
+uint16_t feb_can_lvpdb_cp_af_rf_sh_current_af_current_encode(double value)
 {
     return (uint16_t)(value);
 }
 
 double feb_can_lvpdb_cp_af_rf_sh_current_af_current_decode(uint16_t value)
+double feb_can_lvpdb_cp_af_rf_sh_current_af_current_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_lvpdb_cp_af_rf_sh_current_af_current_is_in_range(uint16_t value)
 bool feb_can_lvpdb_cp_af_rf_sh_current_af_current_is_in_range(uint16_t value)
 {
     (void)value;
@@ -1088,15 +1550,19 @@ bool feb_can_lvpdb_cp_af_rf_sh_current_af_current_is_in_range(uint16_t value)
 }
 
 uint16_t feb_can_lvpdb_cp_af_rf_sh_current_rf_current_encode(double value)
+uint16_t feb_can_lvpdb_cp_af_rf_sh_current_rf_current_encode(double value)
 {
+    return (uint16_t)(value);
     return (uint16_t)(value);
 }
 
+double feb_can_lvpdb_cp_af_rf_sh_current_rf_current_decode(uint16_t value)
 double feb_can_lvpdb_cp_af_rf_sh_current_rf_current_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_lvpdb_cp_af_rf_sh_current_rf_current_is_in_range(uint16_t value)
 bool feb_can_lvpdb_cp_af_rf_sh_current_rf_current_is_in_range(uint16_t value)
 {
     (void)value;
@@ -1105,15 +1571,19 @@ bool feb_can_lvpdb_cp_af_rf_sh_current_rf_current_is_in_range(uint16_t value)
 }
 
 uint16_t feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_encode(double value)
+uint16_t feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_encode(double value)
 {
+    return (uint16_t)(value);
     return (uint16_t)(value);
 }
 
+double feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_decode(uint16_t value)
 double feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_is_in_range(uint16_t value)
 bool feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_is_in_range(uint16_t value)
 {
     (void)value;
@@ -1171,15 +1641,67 @@ int feb_can_lvpdb_l_as_ab_current_init(struct feb_can_lvpdb_l_as_ab_current_t *m
 }
 
 uint16_t feb_can_lvpdb_l_as_ab_current_l_current_encode(double value)
+int feb_can_lvpdb_l_as_ab_current_pack(
+    uint8_t *dst_p,
+    const struct feb_can_lvpdb_l_as_ab_current_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->l_current, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->l_current, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->as_voltage, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->as_voltage, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->ab_voltage, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->ab_voltage, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_lvpdb_l_as_ab_current_unpack(
+    struct feb_can_lvpdb_l_as_ab_current_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->l_current = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->l_current |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->as_voltage = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->as_voltage |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->ab_voltage = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->ab_voltage |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_lvpdb_l_as_ab_current_init(struct feb_can_lvpdb_l_as_ab_current_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_lvpdb_l_as_ab_current_t));
+
+    return 0;
+}
+
+uint16_t feb_can_lvpdb_l_as_ab_current_l_current_encode(double value)
 {
     return (uint16_t)(value);
 }
 
 double feb_can_lvpdb_l_as_ab_current_l_current_decode(uint16_t value)
+double feb_can_lvpdb_l_as_ab_current_l_current_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_lvpdb_l_as_ab_current_l_current_is_in_range(uint16_t value)
 bool feb_can_lvpdb_l_as_ab_current_l_current_is_in_range(uint16_t value)
 {
     (void)value;
@@ -1222,16 +1744,64 @@ bool feb_can_lvpdb_l_as_ab_current_ab_voltage_is_in_range(uint16_t value)
 }
 
 int feb_can_dart_tach_measurements_1234_pack(
+uint16_t feb_can_lvpdb_l_as_ab_current_as_voltage_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_lvpdb_l_as_ab_current_as_voltage_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_lvpdb_l_as_ab_current_as_voltage_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_lvpdb_l_as_ab_current_ab_voltage_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_lvpdb_l_as_ab_current_ab_voltage_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_lvpdb_l_as_ab_current_ab_voltage_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_dart_tach_measurements_1234_pack(
     uint8_t *dst_p,
+    const struct feb_can_dart_tach_measurements_1234_t *src_p,
     const struct feb_can_dart_tach_measurements_1234_t *src_p,
     size_t size)
 {
+    if (size < 8u) {
     if (size < 8u) {
         return (-EINVAL);
     }
 
     memset(&dst_p[0], 0, 8);
+    memset(&dst_p[0], 0, 8);
 
+    dst_p[0] |= pack_left_shift_u16(src_p->fan1_speed, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->fan1_speed, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->fan2_speed, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->fan2_speed, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->fan3_speed, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->fan3_speed, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->fan4_speed, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->fan4_speed, 8u, 0xffu);
+
+    return (8);
     dst_p[0] |= pack_left_shift_u16(src_p->fan1_speed, 0u, 0xffu);
     dst_p[1] |= pack_right_shift_u16(src_p->fan1_speed, 8u, 0xffu);
     dst_p[2] |= pack_left_shift_u16(src_p->fan2_speed, 0u, 0xffu);
@@ -1246,13 +1816,24 @@ int feb_can_dart_tach_measurements_1234_pack(
 
 int feb_can_dart_tach_measurements_1234_unpack(
     struct feb_can_dart_tach_measurements_1234_t *dst_p,
+int feb_can_dart_tach_measurements_1234_unpack(
+    struct feb_can_dart_tach_measurements_1234_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
     if (size < 8u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
+    dst_p->fan1_speed = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->fan1_speed |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->fan2_speed = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->fan2_speed |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->fan3_speed = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->fan3_speed |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->fan4_speed = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->fan4_speed |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
     dst_p->fan1_speed = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
     dst_p->fan1_speed |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
     dst_p->fan2_speed = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
@@ -1266,24 +1847,30 @@ int feb_can_dart_tach_measurements_1234_unpack(
 }
 
 int feb_can_dart_tach_measurements_1234_init(struct feb_can_dart_tach_measurements_1234_t *msg_p)
+int feb_can_dart_tach_measurements_1234_init(struct feb_can_dart_tach_measurements_1234_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
+    memset(msg_p, 0, sizeof(struct feb_can_dart_tach_measurements_1234_t));
     memset(msg_p, 0, sizeof(struct feb_can_dart_tach_measurements_1234_t));
 
     return 0;
 }
 
 uint16_t feb_can_dart_tach_measurements_1234_fan1_speed_encode(double value)
+uint16_t feb_can_dart_tach_measurements_1234_fan1_speed_encode(double value)
 {
+    return (uint16_t)(value);
     return (uint16_t)(value);
 }
 
+double feb_can_dart_tach_measurements_1234_fan1_speed_decode(uint16_t value)
 double feb_can_dart_tach_measurements_1234_fan1_speed_decode(uint16_t value)
 {
     return ((double)value);
 }
 
+bool feb_can_dart_tach_measurements_1234_fan1_speed_is_in_range(uint16_t value)
 bool feb_can_dart_tach_measurements_1234_fan1_speed_is_in_range(uint16_t value)
 {
     (void)value;
@@ -1343,31 +1930,94 @@ bool feb_can_dart_tach_measurements_1234_fan4_speed_is_in_range(uint16_t value)
 }
 
 int feb_can_dart_tach_measurements_5_pack(
+uint16_t feb_can_dart_tach_measurements_1234_fan2_speed_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_dart_tach_measurements_1234_fan2_speed_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_dart_tach_measurements_1234_fan2_speed_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_dart_tach_measurements_1234_fan3_speed_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_dart_tach_measurements_1234_fan3_speed_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_dart_tach_measurements_1234_fan3_speed_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_dart_tach_measurements_1234_fan4_speed_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_dart_tach_measurements_1234_fan4_speed_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_dart_tach_measurements_1234_fan4_speed_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_dart_tach_measurements_5_pack(
     uint8_t *dst_p,
+    const struct feb_can_dart_tach_measurements_5_t *src_p,
     const struct feb_can_dart_tach_measurements_5_t *src_p,
     size_t size)
 {
+    if (size < 2u) {
     if (size < 2u) {
         return (-EINVAL);
     }
 
     memset(&dst_p[0], 0, 2);
+    memset(&dst_p[0], 0, 2);
 
+    dst_p[0] |= pack_left_shift_u16(src_p->fan5_speed, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->fan5_speed, 8u, 0xffu);
     dst_p[0] |= pack_left_shift_u16(src_p->fan5_speed, 0u, 0xffu);
     dst_p[1] |= pack_right_shift_u16(src_p->fan5_speed, 8u, 0xffu);
 
     return (2);
+    return (2);
 }
 
+int feb_can_dart_tach_measurements_5_unpack(
+    struct feb_can_dart_tach_measurements_5_t *dst_p,
 int feb_can_dart_tach_measurements_5_unpack(
     struct feb_can_dart_tach_measurements_5_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
     if (size < 2u) {
+    if (size < 2u) {
         return (-EINVAL);
     }
 
+    dst_p->fan5_speed = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->fan5_speed |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
     dst_p->fan5_speed = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
     dst_p->fan5_speed |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
 
@@ -1375,26 +2025,35 @@ int feb_can_dart_tach_measurements_5_unpack(
 }
 
 int feb_can_dart_tach_measurements_5_init(struct feb_can_dart_tach_measurements_5_t *msg_p)
+int feb_can_dart_tach_measurements_5_init(struct feb_can_dart_tach_measurements_5_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
+    memset(msg_p, 0, sizeof(struct feb_can_dart_tach_measurements_5_t));
     memset(msg_p, 0, sizeof(struct feb_can_dart_tach_measurements_5_t));
 
     return 0;
 }
 
 uint16_t feb_can_dart_tach_measurements_5_fan5_speed_encode(double value)
+uint16_t feb_can_dart_tach_measurements_5_fan5_speed_encode(double value)
 {
+    return (uint16_t)(value);
     return (uint16_t)(value);
 }
 
+double feb_can_dart_tach_measurements_5_fan5_speed_decode(uint16_t value)
 double feb_can_dart_tach_measurements_5_fan5_speed_decode(uint16_t value)
 {
     return ((double)value);
 }
 
 bool feb_can_dart_tach_measurements_5_fan5_speed_is_in_range(uint16_t value)
+bool feb_can_dart_tach_measurements_5_fan5_speed_is_in_range(uint16_t value)
 {
+    (void)value;
+
+    return (true);
     (void)value;
 
     return (true);
@@ -1406,9 +2065,11 @@ int feb_can_rms_command_msg_pack(
     size_t size)
 {
     if (size < 8u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
+    memset(&dst_p[0], 0, 8);
     memset(&dst_p[0], 0, 8);
 
     dst_p[0] |= pack_left_shift_u16(src_p->torque_signal_small, 0u, 0xffu);
@@ -1423,6 +2084,7 @@ int feb_can_rms_command_msg_pack(
     dst_p[7] |= pack_right_shift_u16(src_p->command_torque_limited, 8u, 0xffu);
 
     return (8);
+    return (8);
 }
 
 int feb_can_rms_command_msg_unpack(
@@ -1430,6 +2092,7 @@ int feb_can_rms_command_msg_unpack(
     const uint8_t *src_p,
     size_t size)
 {
+    if (size < 8u) {
     if (size < 8u) {
         return (-EINVAL);
     }
@@ -1472,6 +2135,9 @@ bool feb_can_rms_command_msg_torque_signal_small_is_in_range(uint16_t value)
     (void)value;
 
     return (true);
+    (void)value;
+
+    return (true);
 }
 
 uint16_t feb_can_rms_command_msg_speed_signal_encode(double value)
@@ -1489,11 +2155,14 @@ bool feb_can_rms_command_msg_speed_signal_is_in_range(uint16_t value)
     (void)value;
 
     return (true);
+    (void)value;
+
+    return (true);
 }
 
 uint8_t feb_can_rms_command_msg_direction_value_encode(double value)
 {
-    return (uint8_t)(value);
+    return (uint16_t)(value);
 }
 
 double feb_can_rms_command_msg_direction_value_decode(uint8_t value)
@@ -1508,7 +2177,7 @@ bool feb_can_rms_command_msg_direction_value_is_in_range(uint8_t value)
 
 uint8_t feb_can_rms_command_msg_inverter_enable_encode(double value)
 {
-    return (uint8_t)(value);
+    return (uint16_t)(value);
 }
 
 double feb_can_rms_command_msg_inverter_enable_decode(uint8_t value)
@@ -1518,7 +2187,14 @@ double feb_can_rms_command_msg_inverter_enable_decode(uint8_t value)
 
 bool feb_can_rms_command_msg_inverter_enable_is_in_range(uint8_t value)
 {
-    return (value <= 1u);
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_rms_command_msg_speed_signal_encode(double value)
+{
+    return (uint16_t)(value);
 }
 
 uint8_t feb_can_rms_command_msg_inverter_dicharge_encode(double value)

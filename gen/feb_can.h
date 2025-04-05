@@ -89,6 +89,10 @@ extern "C" {
 #define FEB_CAN_BMS_CELL_DATA_IS_EXTENDED (0)
 #define FEB_CAN_BMS_ACCUMULATOR_VOLTAGE_IS_EXTENDED (0)
 #define FEB_CAN_BMS_ACCUMULATOR_TEMPERATURE_IS_EXTENDED (0)
+#define FEB_CAN_BMS_STATE_IS_EXTENDED (0)
+#define FEB_CAN_BMS_CELL_DATA_IS_EXTENDED (0)
+#define FEB_CAN_BMS_ACCUMULATOR_VOLTAGE_IS_EXTENDED (0)
+#define FEB_CAN_BMS_ACCUMULATOR_TEMPERATURE_IS_EXTENDED (0)
 #define FEB_CAN_NORMALIZED_BRAKE_IS_EXTENDED (0)
 #define FEB_CAN_BSPD_STATE_IS_EXTENDED (0)
 #define FEB_CAN_DASH_MESSAGE_IS_EXTENDED (0)
@@ -115,6 +119,10 @@ extern "C" {
 #define FEB_CAN_BMS_CELL_DATA_NAME "BMS_Cell_Data"
 #define FEB_CAN_BMS_ACCUMULATOR_VOLTAGE_NAME "BMS_Accumulator_Voltage"
 #define FEB_CAN_BMS_ACCUMULATOR_TEMPERATURE_NAME "BMS_Accumulator_Temperature"
+#define FEB_CAN_BMS_STATE_NAME "BMS_State"
+#define FEB_CAN_BMS_CELL_DATA_NAME "BMS_Cell_Data"
+#define FEB_CAN_BMS_ACCUMULATOR_VOLTAGE_NAME "BMS_Accumulator_Voltage"
+#define FEB_CAN_BMS_ACCUMULATOR_TEMPERATURE_NAME "BMS_Accumulator_Temperature"
 #define FEB_CAN_NORMALIZED_BRAKE_NAME "normalized_brake"
 #define FEB_CAN_BSPD_STATE_NAME "BSPD_State"
 #define FEB_CAN_DASH_MESSAGE_NAME "Dash_Message"
@@ -131,6 +139,24 @@ extern "C" {
 #define FEB_CAN_FEB_PING_PONG_COUNTER4_NAME "FEB_PING_PONG_counter4"
 
 /* Signal Names. */
+#define FEB_CAN_BMS_STATE_BMS_STATE_NAME "bms_state"
+#define FEB_CAN_BMS_STATE_PING_ALIVE_NAME "ping_alive"
+#define FEB_CAN_BMS_STATE_RELAY_STATE_NAME "relay_state"
+#define FEB_CAN_BMS_STATE_GPIO_SENSE_NAME "gpio_sense"
+#define FEB_CAN_BMS_CELL_DATA_BMS_FLAGS_NAME "bms_flags"
+#define FEB_CAN_BMS_CELL_DATA_BMS_CELL_NAME "bms_cell"
+#define FEB_CAN_BMS_CELL_DATA_BMS_BANK_NAME "bms_bank"
+#define FEB_CAN_BMS_CELL_DATA_BMS_VOLTAGE_NAME "bms_voltage"
+#define FEB_CAN_BMS_CELL_DATA_BMS_TEMPERATURE_NAME "bms_temperature"
+#define FEB_CAN_BMS_CELL_DATA_BMS_SEND_TIME_NAME "bms_send_time"
+#define FEB_CAN_BMS_ACCUMULATOR_VOLTAGE_TOTAL_PACK_VOLTAGE_NAME "total_pack_voltage"
+#define FEB_CAN_BMS_ACCUMULATOR_VOLTAGE_MIN_CELL_VOLTAGE_NAME "min_cell_voltage"
+#define FEB_CAN_BMS_ACCUMULATOR_VOLTAGE_MAX_CELL_VOLTAGE_NAME "max_cell_voltage"
+#define FEB_CAN_BMS_ACCUMULATOR_VOLTAGE_SEND_TIME_NAME "send_time"
+#define FEB_CAN_BMS_ACCUMULATOR_TEMPERATURE_AVERAGE_PACK_TEMPERATURE_NAME "average_pack_temperature"
+#define FEB_CAN_BMS_ACCUMULATOR_TEMPERATURE_MIN_CELL_TEMPERATURE_NAME "min_cell_temperature"
+#define FEB_CAN_BMS_ACCUMULATOR_TEMPERATURE_MAX_CELL_TEMPERATURE_NAME "max_cell_temperature"
+#define FEB_CAN_BMS_ACCUMULATOR_TEMPERATURE_SEND_TIME_NAME "send_time"
 #define FEB_CAN_BMS_STATE_BMS_STATE_NAME "bms_state"
 #define FEB_CAN_BMS_STATE_PING_ALIVE_NAME "ping_alive"
 #define FEB_CAN_BMS_STATE_RELAY_STATE_NAME "relay_state"
@@ -180,6 +206,8 @@ extern "C" {
 #define FEB_CAN_RMS_COMMAND_MSG_INVERTER_ENABLE_NAME "inverter_enable"
 #define FEB_CAN_RMS_COMMAND_MSG_INVERTER_DICHARGE_NAME "inverter_dicharge"
 #define FEB_CAN_RMS_COMMAND_MSG_SPEED_MODE_ENABLED_NAME "speed_mode_enabled"
+#define FEB_CAN_RMS_COMMAND_MSG_INVERTER_DICHARGE_NAME "inverter_dicharge"
+#define FEB_CAN_RMS_COMMAND_MSG_SPEED_MODE_ENABLED_NAME "speed_mode_enabled"
 #define FEB_CAN_RMS_COMMAND_MSG_COMMAND_TORQUE_LIMITED_NAME "command_torque_limited"
 #define FEB_CAN_RMS_PARAM_MSG_ADDRESS_NAME "address"
 #define FEB_CAN_RMS_PARAM_MSG_READ_WRITE_COMMAND_NAME "read_write_command"
@@ -191,17 +219,21 @@ extern "C" {
 
 /**
  * Signals in message BMS_State.
+ * Signals in message BMS_State.
  *
+ * BMS message for BMS state.
  * BMS message for BMS state.
  *
  * All signal values are as on the CAN bus.
  */
+struct feb_can_bms_state_t {
 struct feb_can_bms_state_t {
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint8_t bms_state;
     uint8_t bms_state;
 
     /**
@@ -210,12 +242,22 @@ struct feb_can_bms_state_t {
      * Offset: 0
      */
     uint8_t ping_alive;
+    uint8_t ping_alive;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t relay_state;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint8_t gpio_sense;
     uint8_t relay_state;
 
     /**
@@ -228,11 +270,14 @@ struct feb_can_bms_state_t {
 
 /**
  * Signals in message BMS_Cell_Data.
+ * Signals in message BMS_Cell_Data.
  *
+ * BMS message for cell data.
  * BMS message for cell data.
  *
  * All signal values are as on the CAN bus.
  */
+struct feb_can_bms_cell_data_t {
 struct feb_can_bms_cell_data_t {
     /**
      * Range: -
@@ -240,12 +285,14 @@ struct feb_can_bms_cell_data_t {
      * Offset: 0
      */
     uint8_t bms_flags;
+    uint8_t bms_flags;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint8_t bms_cell;
     uint8_t bms_cell;
 
     /**
@@ -255,11 +302,14 @@ struct feb_can_bms_cell_data_t {
      */
     uint8_t bms_bank;
 
+    uint8_t bms_bank;
+
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint16_t bms_voltage;
     uint16_t bms_voltage;
 
     /**
@@ -268,6 +318,7 @@ struct feb_can_bms_cell_data_t {
      * Offset: 0
      */
     uint16_t bms_temperature;
+    uint16_t bms_temperature;
 
     /**
      * Range: -
@@ -275,21 +326,26 @@ struct feb_can_bms_cell_data_t {
      * Offset: 0
      */
     uint16_t bms_send_time;
+    uint16_t bms_send_time;
 };
 
 /**
  * Signals in message BMS_Accumulator_Voltage.
+ * Signals in message BMS_Accumulator_Voltage.
  *
+ * BMS message for accumulator voltage.
  * BMS message for accumulator voltage.
  *
  * All signal values are as on the CAN bus.
  */
+struct feb_can_bms_accumulator_voltage_t {
 struct feb_can_bms_accumulator_voltage_t {
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint16_t total_pack_voltage;
     uint16_t total_pack_voltage;
 
     /**
@@ -298,12 +354,14 @@ struct feb_can_bms_accumulator_voltage_t {
      * Offset: 0
      */
     uint16_t min_cell_voltage;
+    uint16_t min_cell_voltage;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint16_t max_cell_voltage;
     uint16_t max_cell_voltage;
 
     /**
@@ -312,21 +370,26 @@ struct feb_can_bms_accumulator_voltage_t {
      * Offset: 0
      */
     uint16_t send_time;
+    uint16_t send_time;
 };
 
 /**
  * Signals in message BMS_Accumulator_Temperature.
+ * Signals in message BMS_Accumulator_Temperature.
  *
+ * BMS message for accumulator temperature.
  * BMS message for accumulator temperature.
  *
  * All signal values are as on the CAN bus.
  */
+struct feb_can_bms_accumulator_temperature_t {
 struct feb_can_bms_accumulator_temperature_t {
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint16_t average_pack_temperature;
     uint16_t average_pack_temperature;
 
     /**
@@ -335,12 +398,21 @@ struct feb_can_bms_accumulator_temperature_t {
      * Offset: 0
      */
     uint16_t min_cell_temperature;
+    uint16_t min_cell_temperature;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint16_t max_cell_temperature;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t send_time;
     uint16_t max_cell_temperature;
 
     /**
@@ -365,15 +437,19 @@ struct feb_can_normalized_brake_t {
      * Offset: 0
      */
     uint8_t normalized_brake;
+    uint8_t normalized_brake;
 };
 
 /**
  * Signals in message BSPD_State.
+ * Signals in message BSPD_State.
  *
+ * BSPD message.
  * BSPD message.
  *
  * All signal values are as on the CAN bus.
  */
+struct feb_can_bspd_state_t {
 struct feb_can_bspd_state_t {
     /**
      * Range: -
@@ -382,7 +458,17 @@ struct feb_can_bspd_state_t {
      */
     uint8_t bspd_state;
 };
+    uint8_t bspd_state;
+};
 
+/**
+ * Signals in message Dash_Message.
+ *
+ * Dash message
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_dash_message_t {
 /**
  * Signals in message Dash_Message.
  *
@@ -396,6 +482,7 @@ struct feb_can_dash_message_t {
      * Scale: 1
      * Offset: 0
      */
+    uint8_t buzzer_state;
     uint8_t buzzer_state;
 
     /**
@@ -412,11 +499,21 @@ struct feb_can_dash_message_t {
      */
     uint8_t button2;
 
+    uint8_t button1_ready_to_drive;
+
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint8_t button2;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t button3;
     uint8_t button3;
 
     /**
@@ -425,12 +522,14 @@ struct feb_can_dash_message_t {
      * Offset: 0
      */
     uint8_t button4;
+    uint8_t button4;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint8_t coolant_pump_switch;
     uint8_t coolant_pump_switch;
 
     /**
@@ -439,6 +538,7 @@ struct feb_can_dash_message_t {
      * Offset: 0
      */
     uint8_t radiator_fan_switch;
+    uint8_t radiator_fan_switch;
 
     /**
      * Range: -
@@ -446,15 +546,19 @@ struct feb_can_dash_message_t {
      * Offset: 0
      */
     uint8_t accumulator_fan_switch;
+    uint8_t accumulator_fan_switch;
 };
 
 /**
  * Signals in message LVPDB_Flags_Bus_Voltage_LV_Current.
+ * Signals in message LVPDB_Flags_Bus_Voltage_LV_Current.
  *
+ * LVPDB message for flags, bus voltage, LV current.
  * LVPDB message for flags, bus voltage, LV current.
  *
  * All signal values are as on the CAN bus.
  */
+struct feb_can_lvpdb_flags_bus_voltage_lv_current_t {
 struct feb_can_lvpdb_flags_bus_voltage_lv_current_t {
     /**
      * Range: -
@@ -470,27 +574,41 @@ struct feb_can_lvpdb_flags_bus_voltage_lv_current_t {
      */
     uint16_t bus_voltage;
 
+    uint32_t flags;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t bus_voltage;
+
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
     uint16_t lv_current;
+    uint16_t lv_current;
 };
 
 /**
  * Signals in message LVPDB_CP_AF_RF_SH_Current.
+ * Signals in message LVPDB_CP_AF_RF_SH_Current.
  *
+ * LVPDB message for Coolant Pump Current, Accumulator Fans, Radiator Fans, Shutdown Source.
  * LVPDB message for Coolant Pump Current, Accumulator Fans, Radiator Fans, Shutdown Source.
  *
  * All signal values are as on the CAN bus.
  */
+struct feb_can_lvpdb_cp_af_rf_sh_current_t {
 struct feb_can_lvpdb_cp_af_rf_sh_current_t {
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint16_t cp_current;
     uint16_t cp_current;
 
     /**
@@ -499,12 +617,14 @@ struct feb_can_lvpdb_cp_af_rf_sh_current_t {
      * Offset: 0
      */
     uint16_t af_current;
+    uint16_t af_current;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint16_t rf_current;
     uint16_t rf_current;
 
     /**
@@ -523,11 +643,23 @@ struct feb_can_lvpdb_cp_af_rf_sh_current_t {
  * All signal values are as on the CAN bus.
  */
 struct feb_can_lvpdb_l_as_ab_current_t {
+    uint16_t sh_voltage;
+};
+
+/**
+ * Signals in message LVPDB_L_AS_AB_Current.
+ *
+ * LVPDB message for .
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_lvpdb_l_as_ab_current_t {
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint16_t l_current;
     uint16_t l_current;
 
     /**
@@ -536,6 +668,7 @@ struct feb_can_lvpdb_l_as_ab_current_t {
      * Offset: 0
      */
     uint16_t as_voltage;
+    uint16_t as_voltage;
 
     /**
      * Range: -
@@ -543,21 +676,34 @@ struct feb_can_lvpdb_l_as_ab_current_t {
      * Offset: 0
      */
     uint16_t ab_voltage;
+    uint16_t ab_voltage;
 };
 
 /**
  * Signals in message DART_TACH_measurements_1234.
+ * Signals in message DART_TACH_measurements_1234.
  *
+ * DART message for Tachometer measurements first 4 fan speeds.
  * DART message for Tachometer measurements first 4 fan speeds.
  *
  * All signal values are as on the CAN bus.
  */
+struct feb_can_dart_tach_measurements_1234_t {
 struct feb_can_dart_tach_measurements_1234_t {
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint16_t fan1_speed;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t fan2_speed;
+
     uint16_t fan1_speed;
 
     /**
@@ -580,21 +726,33 @@ struct feb_can_dart_tach_measurements_1234_t {
      * Offset: 0
      */
     uint16_t fan4_speed;
+    uint16_t fan3_speed;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t fan4_speed;
 };
 
 /**
  * Signals in message DART_TACH_measurements_5.
+ * Signals in message DART_TACH_measurements_5.
  *
+ * DART message for Tachometer measurements 5th fan speed.
  * DART message for Tachometer measurements 5th fan speed.
  *
  * All signal values are as on the CAN bus.
  */
+struct feb_can_dart_tach_measurements_5_t {
 struct feb_can_dart_tach_measurements_5_t {
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
+    uint16_t fan5_speed;
     uint16_t fan5_speed;
 };
 
@@ -716,6 +874,7 @@ struct feb_can_feb_ping_pong_counter2_t {
      * Offset: 0
      */
     int32_t counter;
+    int32_t counter;
 };
 
 /**
@@ -760,11 +919,14 @@ struct feb_can_feb_ping_pong_counter4_t {
  * @return Size of packed data, or negative error code.
  */
 int feb_can_bms_state_pack(
+int feb_can_bms_state_pack(
     uint8_t *dst_p,
+    const struct feb_can_bms_state_t *src_p,
     const struct feb_can_bms_state_t *src_p,
     size_t size);
 
 /**
+ * Unpack message BMS_State.
  * Unpack message BMS_State.
  *
  * @param[out] dst_p Object to unpack the message into.
@@ -775,16 +937,20 @@ int feb_can_bms_state_pack(
  */
 int feb_can_bms_state_unpack(
     struct feb_can_bms_state_t *dst_p,
+int feb_can_bms_state_unpack(
+    struct feb_can_bms_state_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
+ * Init message fields to default values from BMS_State.
  * Init message fields to default values from BMS_State.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
+int feb_can_bms_state_init(struct feb_can_bms_state_t *msg_p);
 int feb_can_bms_state_init(struct feb_can_bms_state_t *msg_p);
 
 /**
@@ -795,6 +961,7 @@ int feb_can_bms_state_init(struct feb_can_bms_state_t *msg_p);
  * @return Encoded signal.
  */
 uint8_t feb_can_bms_state_bms_state_encode(double value);
+uint8_t feb_can_bms_state_bms_state_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -803,6 +970,7 @@ uint8_t feb_can_bms_state_bms_state_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_bms_state_bms_state_decode(uint8_t value);
 double feb_can_bms_state_bms_state_decode(uint8_t value);
 
 /**
@@ -813,6 +981,7 @@ double feb_can_bms_state_bms_state_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_bms_state_bms_state_is_in_range(uint8_t value);
+bool feb_can_bms_state_bms_state_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -821,6 +990,7 @@ bool feb_can_bms_state_bms_state_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
+uint8_t feb_can_bms_state_ping_alive_encode(double value);
 uint8_t feb_can_bms_state_ping_alive_encode(double value);
 
 /**
@@ -831,6 +1001,7 @@ uint8_t feb_can_bms_state_ping_alive_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_bms_state_ping_alive_decode(uint8_t value);
+double feb_can_bms_state_ping_alive_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -839,6 +1010,7 @@ double feb_can_bms_state_ping_alive_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_bms_state_ping_alive_is_in_range(uint8_t value);
 bool feb_can_bms_state_ping_alive_is_in_range(uint8_t value);
 
 /**
@@ -849,6 +1021,7 @@ bool feb_can_bms_state_ping_alive_is_in_range(uint8_t value);
  * @return Encoded signal.
  */
 uint8_t feb_can_bms_state_relay_state_encode(double value);
+uint8_t feb_can_bms_state_relay_state_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -857,6 +1030,7 @@ uint8_t feb_can_bms_state_relay_state_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_bms_state_relay_state_decode(uint8_t value);
 double feb_can_bms_state_relay_state_decode(uint8_t value);
 
 /**
@@ -894,8 +1068,37 @@ double feb_can_bms_state_gpio_sense_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_bms_state_gpio_sense_is_in_range(uint8_t value);
+bool feb_can_bms_state_relay_state_is_in_range(uint8_t value);
 
 /**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_bms_state_gpio_sense_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_bms_state_gpio_sense_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_bms_state_gpio_sense_is_in_range(uint8_t value);
+
+/**
+ * Pack message BMS_Cell_Data.
  * Pack message BMS_Cell_Data.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -905,11 +1108,14 @@ bool feb_can_bms_state_gpio_sense_is_in_range(uint8_t value);
  * @return Size of packed data, or negative error code.
  */
 int feb_can_bms_cell_data_pack(
+int feb_can_bms_cell_data_pack(
     uint8_t *dst_p,
+    const struct feb_can_bms_cell_data_t *src_p,
     const struct feb_can_bms_cell_data_t *src_p,
     size_t size);
 
 /**
+ * Unpack message BMS_Cell_Data.
  * Unpack message BMS_Cell_Data.
  *
  * @param[out] dst_p Object to unpack the message into.
@@ -920,16 +1126,20 @@ int feb_can_bms_cell_data_pack(
  */
 int feb_can_bms_cell_data_unpack(
     struct feb_can_bms_cell_data_t *dst_p,
+int feb_can_bms_cell_data_unpack(
+    struct feb_can_bms_cell_data_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
+ * Init message fields to default values from BMS_Cell_Data.
  * Init message fields to default values from BMS_Cell_Data.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
+int feb_can_bms_cell_data_init(struct feb_can_bms_cell_data_t *msg_p);
 int feb_can_bms_cell_data_init(struct feb_can_bms_cell_data_t *msg_p);
 
 /**
@@ -940,6 +1150,7 @@ int feb_can_bms_cell_data_init(struct feb_can_bms_cell_data_t *msg_p);
  * @return Encoded signal.
  */
 uint8_t feb_can_bms_cell_data_bms_flags_encode(double value);
+uint8_t feb_can_bms_cell_data_bms_flags_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -948,6 +1159,7 @@ uint8_t feb_can_bms_cell_data_bms_flags_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_bms_cell_data_bms_flags_decode(uint8_t value);
 double feb_can_bms_cell_data_bms_flags_decode(uint8_t value);
 
 /**
@@ -958,6 +1170,7 @@ double feb_can_bms_cell_data_bms_flags_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_bms_cell_data_bms_flags_is_in_range(uint8_t value);
+bool feb_can_bms_cell_data_bms_flags_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -966,6 +1179,7 @@ bool feb_can_bms_cell_data_bms_flags_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
+uint8_t feb_can_bms_cell_data_bms_cell_encode(double value);
 uint8_t feb_can_bms_cell_data_bms_cell_encode(double value);
 
 /**
@@ -976,6 +1190,7 @@ uint8_t feb_can_bms_cell_data_bms_cell_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_bms_cell_data_bms_cell_decode(uint8_t value);
+double feb_can_bms_cell_data_bms_cell_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -984,6 +1199,7 @@ double feb_can_bms_cell_data_bms_cell_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_bms_cell_data_bms_cell_is_in_range(uint8_t value);
 bool feb_can_bms_cell_data_bms_cell_is_in_range(uint8_t value);
 
 /**
@@ -994,6 +1210,7 @@ bool feb_can_bms_cell_data_bms_cell_is_in_range(uint8_t value);
  * @return Encoded signal.
  */
 uint8_t feb_can_bms_cell_data_bms_bank_encode(double value);
+uint8_t feb_can_bms_cell_data_bms_bank_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1002,6 +1219,7 @@ uint8_t feb_can_bms_cell_data_bms_bank_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_bms_cell_data_bms_bank_decode(uint8_t value);
 double feb_can_bms_cell_data_bms_bank_decode(uint8_t value);
 
 /**
@@ -1012,6 +1230,7 @@ double feb_can_bms_cell_data_bms_bank_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_bms_cell_data_bms_bank_is_in_range(uint8_t value);
+bool feb_can_bms_cell_data_bms_bank_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -1020,6 +1239,7 @@ bool feb_can_bms_cell_data_bms_bank_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
+uint16_t feb_can_bms_cell_data_bms_voltage_encode(double value);
 uint16_t feb_can_bms_cell_data_bms_voltage_encode(double value);
 
 /**
@@ -1030,6 +1250,7 @@ uint16_t feb_can_bms_cell_data_bms_voltage_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_bms_cell_data_bms_voltage_decode(uint16_t value);
+double feb_can_bms_cell_data_bms_voltage_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -1038,6 +1259,7 @@ double feb_can_bms_cell_data_bms_voltage_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_bms_cell_data_bms_voltage_is_in_range(uint16_t value);
 bool feb_can_bms_cell_data_bms_voltage_is_in_range(uint16_t value);
 
 /**
@@ -1048,6 +1270,7 @@ bool feb_can_bms_cell_data_bms_voltage_is_in_range(uint16_t value);
  * @return Encoded signal.
  */
 uint16_t feb_can_bms_cell_data_bms_temperature_encode(double value);
+uint16_t feb_can_bms_cell_data_bms_temperature_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1056,6 +1279,7 @@ uint16_t feb_can_bms_cell_data_bms_temperature_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_bms_cell_data_bms_temperature_decode(uint16_t value);
 double feb_can_bms_cell_data_bms_temperature_decode(uint16_t value);
 
 /**
@@ -1066,6 +1290,7 @@ double feb_can_bms_cell_data_bms_temperature_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_bms_cell_data_bms_temperature_is_in_range(uint16_t value);
+bool feb_can_bms_cell_data_bms_temperature_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -1074,6 +1299,7 @@ bool feb_can_bms_cell_data_bms_temperature_is_in_range(uint16_t value);
  *
  * @return Encoded signal.
  */
+uint16_t feb_can_bms_cell_data_bms_send_time_encode(double value);
 uint16_t feb_can_bms_cell_data_bms_send_time_encode(double value);
 
 /**
@@ -1084,6 +1310,7 @@ uint16_t feb_can_bms_cell_data_bms_send_time_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_bms_cell_data_bms_send_time_decode(uint16_t value);
+double feb_can_bms_cell_data_bms_send_time_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -1093,8 +1320,10 @@ double feb_can_bms_cell_data_bms_send_time_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_bms_cell_data_bms_send_time_is_in_range(uint16_t value);
+bool feb_can_bms_cell_data_bms_send_time_is_in_range(uint16_t value);
 
 /**
+ * Pack message BMS_Accumulator_Voltage.
  * Pack message BMS_Accumulator_Voltage.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -1104,11 +1333,14 @@ bool feb_can_bms_cell_data_bms_send_time_is_in_range(uint16_t value);
  * @return Size of packed data, or negative error code.
  */
 int feb_can_bms_accumulator_voltage_pack(
+int feb_can_bms_accumulator_voltage_pack(
     uint8_t *dst_p,
+    const struct feb_can_bms_accumulator_voltage_t *src_p,
     const struct feb_can_bms_accumulator_voltage_t *src_p,
     size_t size);
 
 /**
+ * Unpack message BMS_Accumulator_Voltage.
  * Unpack message BMS_Accumulator_Voltage.
  *
  * @param[out] dst_p Object to unpack the message into.
@@ -1119,16 +1351,20 @@ int feb_can_bms_accumulator_voltage_pack(
  */
 int feb_can_bms_accumulator_voltage_unpack(
     struct feb_can_bms_accumulator_voltage_t *dst_p,
+int feb_can_bms_accumulator_voltage_unpack(
+    struct feb_can_bms_accumulator_voltage_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
+ * Init message fields to default values from BMS_Accumulator_Voltage.
  * Init message fields to default values from BMS_Accumulator_Voltage.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
+int feb_can_bms_accumulator_voltage_init(struct feb_can_bms_accumulator_voltage_t *msg_p);
 int feb_can_bms_accumulator_voltage_init(struct feb_can_bms_accumulator_voltage_t *msg_p);
 
 /**
@@ -1139,6 +1375,7 @@ int feb_can_bms_accumulator_voltage_init(struct feb_can_bms_accumulator_voltage_
  * @return Encoded signal.
  */
 uint16_t feb_can_bms_accumulator_voltage_total_pack_voltage_encode(double value);
+uint16_t feb_can_bms_accumulator_voltage_total_pack_voltage_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1147,6 +1384,7 @@ uint16_t feb_can_bms_accumulator_voltage_total_pack_voltage_encode(double value)
  *
  * @return Decoded signal.
  */
+double feb_can_bms_accumulator_voltage_total_pack_voltage_decode(uint16_t value);
 double feb_can_bms_accumulator_voltage_total_pack_voltage_decode(uint16_t value);
 
 /**
@@ -1157,6 +1395,7 @@ double feb_can_bms_accumulator_voltage_total_pack_voltage_decode(uint16_t value)
  * @return true if in range, false otherwise.
  */
 bool feb_can_bms_accumulator_voltage_total_pack_voltage_is_in_range(uint16_t value);
+bool feb_can_bms_accumulator_voltage_total_pack_voltage_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -1165,6 +1404,7 @@ bool feb_can_bms_accumulator_voltage_total_pack_voltage_is_in_range(uint16_t val
  *
  * @return Encoded signal.
  */
+uint16_t feb_can_bms_accumulator_voltage_min_cell_voltage_encode(double value);
 uint16_t feb_can_bms_accumulator_voltage_min_cell_voltage_encode(double value);
 
 /**
@@ -1175,6 +1415,7 @@ uint16_t feb_can_bms_accumulator_voltage_min_cell_voltage_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_bms_accumulator_voltage_min_cell_voltage_decode(uint16_t value);
+double feb_can_bms_accumulator_voltage_min_cell_voltage_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -1183,6 +1424,7 @@ double feb_can_bms_accumulator_voltage_min_cell_voltage_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_bms_accumulator_voltage_min_cell_voltage_is_in_range(uint16_t value);
 bool feb_can_bms_accumulator_voltage_min_cell_voltage_is_in_range(uint16_t value);
 
 /**
@@ -1193,6 +1435,7 @@ bool feb_can_bms_accumulator_voltage_min_cell_voltage_is_in_range(uint16_t value
  * @return Encoded signal.
  */
 uint16_t feb_can_bms_accumulator_voltage_max_cell_voltage_encode(double value);
+uint16_t feb_can_bms_accumulator_voltage_max_cell_voltage_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1201,6 +1444,7 @@ uint16_t feb_can_bms_accumulator_voltage_max_cell_voltage_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_bms_accumulator_voltage_max_cell_voltage_decode(uint16_t value);
 double feb_can_bms_accumulator_voltage_max_cell_voltage_decode(uint16_t value);
 
 /**
@@ -1211,6 +1455,7 @@ double feb_can_bms_accumulator_voltage_max_cell_voltage_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_bms_accumulator_voltage_max_cell_voltage_is_in_range(uint16_t value);
+bool feb_can_bms_accumulator_voltage_max_cell_voltage_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -1219,6 +1464,7 @@ bool feb_can_bms_accumulator_voltage_max_cell_voltage_is_in_range(uint16_t value
  *
  * @return Encoded signal.
  */
+uint16_t feb_can_bms_accumulator_voltage_send_time_encode(double value);
 uint16_t feb_can_bms_accumulator_voltage_send_time_encode(double value);
 
 /**
@@ -1229,6 +1475,7 @@ uint16_t feb_can_bms_accumulator_voltage_send_time_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_bms_accumulator_voltage_send_time_decode(uint16_t value);
+double feb_can_bms_accumulator_voltage_send_time_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -1238,8 +1485,10 @@ double feb_can_bms_accumulator_voltage_send_time_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_bms_accumulator_voltage_send_time_is_in_range(uint16_t value);
+bool feb_can_bms_accumulator_voltage_send_time_is_in_range(uint16_t value);
 
 /**
+ * Pack message BMS_Accumulator_Temperature.
  * Pack message BMS_Accumulator_Temperature.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -1249,11 +1498,14 @@ bool feb_can_bms_accumulator_voltage_send_time_is_in_range(uint16_t value);
  * @return Size of packed data, or negative error code.
  */
 int feb_can_bms_accumulator_temperature_pack(
+int feb_can_bms_accumulator_temperature_pack(
     uint8_t *dst_p,
+    const struct feb_can_bms_accumulator_temperature_t *src_p,
     const struct feb_can_bms_accumulator_temperature_t *src_p,
     size_t size);
 
 /**
+ * Unpack message BMS_Accumulator_Temperature.
  * Unpack message BMS_Accumulator_Temperature.
  *
  * @param[out] dst_p Object to unpack the message into.
@@ -1264,16 +1516,20 @@ int feb_can_bms_accumulator_temperature_pack(
  */
 int feb_can_bms_accumulator_temperature_unpack(
     struct feb_can_bms_accumulator_temperature_t *dst_p,
+int feb_can_bms_accumulator_temperature_unpack(
+    struct feb_can_bms_accumulator_temperature_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
+ * Init message fields to default values from BMS_Accumulator_Temperature.
  * Init message fields to default values from BMS_Accumulator_Temperature.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
+int feb_can_bms_accumulator_temperature_init(struct feb_can_bms_accumulator_temperature_t *msg_p);
 int feb_can_bms_accumulator_temperature_init(struct feb_can_bms_accumulator_temperature_t *msg_p);
 
 /**
@@ -1284,6 +1540,7 @@ int feb_can_bms_accumulator_temperature_init(struct feb_can_bms_accumulator_temp
  * @return Encoded signal.
  */
 uint16_t feb_can_bms_accumulator_temperature_average_pack_temperature_encode(double value);
+uint16_t feb_can_bms_accumulator_temperature_average_pack_temperature_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1292,6 +1549,7 @@ uint16_t feb_can_bms_accumulator_temperature_average_pack_temperature_encode(dou
  *
  * @return Decoded signal.
  */
+double feb_can_bms_accumulator_temperature_average_pack_temperature_decode(uint16_t value);
 double feb_can_bms_accumulator_temperature_average_pack_temperature_decode(uint16_t value);
 
 /**
@@ -1302,6 +1560,7 @@ double feb_can_bms_accumulator_temperature_average_pack_temperature_decode(uint1
  * @return true if in range, false otherwise.
  */
 bool feb_can_bms_accumulator_temperature_average_pack_temperature_is_in_range(uint16_t value);
+bool feb_can_bms_accumulator_temperature_average_pack_temperature_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -1310,6 +1569,7 @@ bool feb_can_bms_accumulator_temperature_average_pack_temperature_is_in_range(ui
  *
  * @return Encoded signal.
  */
+uint16_t feb_can_bms_accumulator_temperature_min_cell_temperature_encode(double value);
 uint16_t feb_can_bms_accumulator_temperature_min_cell_temperature_encode(double value);
 
 /**
@@ -1320,6 +1580,7 @@ uint16_t feb_can_bms_accumulator_temperature_min_cell_temperature_encode(double 
  * @return Decoded signal.
  */
 double feb_can_bms_accumulator_temperature_min_cell_temperature_decode(uint16_t value);
+double feb_can_bms_accumulator_temperature_min_cell_temperature_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -1328,6 +1589,7 @@ double feb_can_bms_accumulator_temperature_min_cell_temperature_decode(uint16_t 
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_bms_accumulator_temperature_min_cell_temperature_is_in_range(uint16_t value);
 bool feb_can_bms_accumulator_temperature_min_cell_temperature_is_in_range(uint16_t value);
 
 /**
@@ -1338,6 +1600,7 @@ bool feb_can_bms_accumulator_temperature_min_cell_temperature_is_in_range(uint16
  * @return Encoded signal.
  */
 uint16_t feb_can_bms_accumulator_temperature_max_cell_temperature_encode(double value);
+uint16_t feb_can_bms_accumulator_temperature_max_cell_temperature_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1347,6 +1610,7 @@ uint16_t feb_can_bms_accumulator_temperature_max_cell_temperature_encode(double 
  * @return Decoded signal.
  */
 double feb_can_bms_accumulator_temperature_max_cell_temperature_decode(uint16_t value);
+double feb_can_bms_accumulator_temperature_max_cell_temperature_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -1355,6 +1619,34 @@ double feb_can_bms_accumulator_temperature_max_cell_temperature_decode(uint16_t 
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_bms_accumulator_temperature_max_cell_temperature_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_bms_accumulator_temperature_send_time_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_bms_accumulator_temperature_send_time_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_bms_accumulator_temperature_send_time_is_in_range(uint16_t value);
 bool feb_can_bms_accumulator_temperature_max_cell_temperature_is_in_range(uint16_t value);
 
 /**
@@ -1429,6 +1721,7 @@ int feb_can_normalized_brake_init(struct feb_can_normalized_brake_t *msg_p);
  * @return Encoded signal.
  */
 uint8_t feb_can_normalized_brake_normalized_brake_encode(double value);
+uint8_t feb_can_normalized_brake_normalized_brake_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1437,6 +1730,7 @@ uint8_t feb_can_normalized_brake_normalized_brake_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_normalized_brake_normalized_brake_decode(uint8_t value);
 double feb_can_normalized_brake_normalized_brake_decode(uint8_t value);
 
 /**
@@ -1447,8 +1741,10 @@ double feb_can_normalized_brake_normalized_brake_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_normalized_brake_normalized_brake_is_in_range(uint8_t value);
+bool feb_can_normalized_brake_normalized_brake_is_in_range(uint8_t value);
 
 /**
+ * Pack message BSPD_State.
  * Pack message BSPD_State.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -1458,11 +1754,14 @@ bool feb_can_normalized_brake_normalized_brake_is_in_range(uint8_t value);
  * @return Size of packed data, or negative error code.
  */
 int feb_can_bspd_state_pack(
+int feb_can_bspd_state_pack(
     uint8_t *dst_p,
+    const struct feb_can_bspd_state_t *src_p,
     const struct feb_can_bspd_state_t *src_p,
     size_t size);
 
 /**
+ * Unpack message BSPD_State.
  * Unpack message BSPD_State.
  *
  * @param[out] dst_p Object to unpack the message into.
@@ -1473,16 +1772,20 @@ int feb_can_bspd_state_pack(
  */
 int feb_can_bspd_state_unpack(
     struct feb_can_bspd_state_t *dst_p,
+int feb_can_bspd_state_unpack(
+    struct feb_can_bspd_state_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
+ * Init message fields to default values from BSPD_State.
  * Init message fields to default values from BSPD_State.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
+int feb_can_bspd_state_init(struct feb_can_bspd_state_t *msg_p);
 int feb_can_bspd_state_init(struct feb_can_bspd_state_t *msg_p);
 
 /**
@@ -1493,6 +1796,7 @@ int feb_can_bspd_state_init(struct feb_can_bspd_state_t *msg_p);
  * @return Encoded signal.
  */
 uint8_t feb_can_bspd_state_bspd_state_encode(double value);
+uint8_t feb_can_bspd_state_bspd_state_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1501,6 +1805,7 @@ uint8_t feb_can_bspd_state_bspd_state_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_bspd_state_bspd_state_decode(uint8_t value);
 double feb_can_bspd_state_bspd_state_decode(uint8_t value);
 
 /**
@@ -1548,6 +1853,44 @@ int feb_can_dash_message_unpack(
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
 int feb_can_dash_message_init(struct feb_can_dash_message_t *msg_p);
+bool feb_can_bspd_state_bspd_state_is_in_range(uint8_t value);
+
+/**
+ * Pack message Dash_Message.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_dash_message_pack(
+    uint8_t *dst_p,
+    const struct feb_can_dash_message_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message Dash_Message.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_dash_message_unpack(
+    struct feb_can_dash_message_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from Dash_Message.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_dash_message_init(struct feb_can_dash_message_t *msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -1556,6 +1899,7 @@ int feb_can_dash_message_init(struct feb_can_dash_message_t *msg_p);
  *
  * @return Encoded signal.
  */
+uint8_t feb_can_dash_message_buzzer_state_encode(double value);
 uint8_t feb_can_dash_message_buzzer_state_encode(double value);
 
 /**
@@ -1566,6 +1910,7 @@ uint8_t feb_can_dash_message_buzzer_state_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_dash_message_buzzer_state_decode(uint8_t value);
+double feb_can_dash_message_buzzer_state_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -1574,6 +1919,7 @@ double feb_can_dash_message_buzzer_state_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_dash_message_buzzer_state_is_in_range(uint8_t value);
 bool feb_can_dash_message_buzzer_state_is_in_range(uint8_t value);
 
 /**
@@ -1584,6 +1930,7 @@ bool feb_can_dash_message_buzzer_state_is_in_range(uint8_t value);
  * @return Encoded signal.
  */
 uint8_t feb_can_dash_message_button1_ready_to_drive_encode(double value);
+uint8_t feb_can_dash_message_button1_ready_to_drive_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1592,6 +1939,7 @@ uint8_t feb_can_dash_message_button1_ready_to_drive_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_dash_message_button1_ready_to_drive_decode(uint8_t value);
 double feb_can_dash_message_button1_ready_to_drive_decode(uint8_t value);
 
 /**
@@ -1602,32 +1950,45 @@ double feb_can_dash_message_button1_ready_to_drive_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_dash_message_button1_ready_to_drive_is_in_range(uint8_t value);
+bool feb_can_dash_message_button1_ready_to_drive_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
+ * Encode given signal by applying scaling and offset.
  *
+ * @param[in] value Signal to encode.
  * @param[in] value Signal to encode.
  *
  * @return Encoded signal.
+ * @return Encoded signal.
  */
+uint8_t feb_can_dash_message_button2_encode(double value);
 uint8_t feb_can_dash_message_button2_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
+ * Decode given signal by applying scaling and offset.
  *
+ * @param[in] value Signal to decode.
  * @param[in] value Signal to decode.
  *
  * @return Decoded signal.
+ * @return Decoded signal.
  */
+double feb_can_dash_message_button2_decode(uint8_t value);
 double feb_can_dash_message_button2_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
+ * Check that given signal is in allowed range.
  *
+ * @param[in] value Signal to check.
  * @param[in] value Signal to check.
  *
  * @return true if in range, false otherwise.
+ * @return true if in range, false otherwise.
  */
+bool feb_can_dash_message_button2_is_in_range(uint8_t value);
 bool feb_can_dash_message_button2_is_in_range(uint8_t value);
 
 /**
@@ -1638,6 +1999,7 @@ bool feb_can_dash_message_button2_is_in_range(uint8_t value);
  * @return Encoded signal.
  */
 uint8_t feb_can_dash_message_button3_encode(double value);
+uint8_t feb_can_dash_message_button3_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1646,6 +2008,7 @@ uint8_t feb_can_dash_message_button3_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_dash_message_button3_decode(uint8_t value);
 double feb_can_dash_message_button3_decode(uint8_t value);
 
 /**
@@ -1656,6 +2019,7 @@ double feb_can_dash_message_button3_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_dash_message_button3_is_in_range(uint8_t value);
+bool feb_can_dash_message_button3_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -1664,6 +2028,7 @@ bool feb_can_dash_message_button3_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
+uint8_t feb_can_dash_message_button4_encode(double value);
 uint8_t feb_can_dash_message_button4_encode(double value);
 
 /**
@@ -1674,6 +2039,7 @@ uint8_t feb_can_dash_message_button4_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_dash_message_button4_decode(uint8_t value);
+double feb_can_dash_message_button4_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -1682,6 +2048,7 @@ double feb_can_dash_message_button4_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_dash_message_button4_is_in_range(uint8_t value);
 bool feb_can_dash_message_button4_is_in_range(uint8_t value);
 
 /**
@@ -1692,6 +2059,7 @@ bool feb_can_dash_message_button4_is_in_range(uint8_t value);
  * @return Encoded signal.
  */
 uint8_t feb_can_dash_message_coolant_pump_switch_encode(double value);
+uint8_t feb_can_dash_message_coolant_pump_switch_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1700,6 +2068,7 @@ uint8_t feb_can_dash_message_coolant_pump_switch_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_dash_message_coolant_pump_switch_decode(uint8_t value);
 double feb_can_dash_message_coolant_pump_switch_decode(uint8_t value);
 
 /**
@@ -1710,6 +2079,7 @@ double feb_can_dash_message_coolant_pump_switch_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_dash_message_coolant_pump_switch_is_in_range(uint8_t value);
+bool feb_can_dash_message_coolant_pump_switch_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -1718,6 +2088,7 @@ bool feb_can_dash_message_coolant_pump_switch_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
+uint8_t feb_can_dash_message_radiator_fan_switch_encode(double value);
 uint8_t feb_can_dash_message_radiator_fan_switch_encode(double value);
 
 /**
@@ -1728,6 +2099,7 @@ uint8_t feb_can_dash_message_radiator_fan_switch_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_dash_message_radiator_fan_switch_decode(uint8_t value);
+double feb_can_dash_message_radiator_fan_switch_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -1736,6 +2108,7 @@ double feb_can_dash_message_radiator_fan_switch_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_dash_message_radiator_fan_switch_is_in_range(uint8_t value);
 bool feb_can_dash_message_radiator_fan_switch_is_in_range(uint8_t value);
 
 /**
@@ -1746,6 +2119,7 @@ bool feb_can_dash_message_radiator_fan_switch_is_in_range(uint8_t value);
  * @return Encoded signal.
  */
 uint8_t feb_can_dash_message_accumulator_fan_switch_encode(double value);
+uint8_t feb_can_dash_message_accumulator_fan_switch_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1754,6 +2128,7 @@ uint8_t feb_can_dash_message_accumulator_fan_switch_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_dash_message_accumulator_fan_switch_decode(uint8_t value);
 double feb_can_dash_message_accumulator_fan_switch_decode(uint8_t value);
 
 /**
@@ -1764,8 +2139,10 @@ double feb_can_dash_message_accumulator_fan_switch_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_dash_message_accumulator_fan_switch_is_in_range(uint8_t value);
+bool feb_can_dash_message_accumulator_fan_switch_is_in_range(uint8_t value);
 
 /**
+ * Pack message LVPDB_Flags_Bus_Voltage_LV_Current.
  * Pack message LVPDB_Flags_Bus_Voltage_LV_Current.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -1775,11 +2152,14 @@ bool feb_can_dash_message_accumulator_fan_switch_is_in_range(uint8_t value);
  * @return Size of packed data, or negative error code.
  */
 int feb_can_lvpdb_flags_bus_voltage_lv_current_pack(
+int feb_can_lvpdb_flags_bus_voltage_lv_current_pack(
     uint8_t *dst_p,
+    const struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *src_p,
     const struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *src_p,
     size_t size);
 
 /**
+ * Unpack message LVPDB_Flags_Bus_Voltage_LV_Current.
  * Unpack message LVPDB_Flags_Bus_Voltage_LV_Current.
  *
  * @param[out] dst_p Object to unpack the message into.
@@ -1790,16 +2170,20 @@ int feb_can_lvpdb_flags_bus_voltage_lv_current_pack(
  */
 int feb_can_lvpdb_flags_bus_voltage_lv_current_unpack(
     struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *dst_p,
+int feb_can_lvpdb_flags_bus_voltage_lv_current_unpack(
+    struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
+ * Init message fields to default values from LVPDB_Flags_Bus_Voltage_LV_Current.
  * Init message fields to default values from LVPDB_Flags_Bus_Voltage_LV_Current.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
+int feb_can_lvpdb_flags_bus_voltage_lv_current_init(struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *msg_p);
 int feb_can_lvpdb_flags_bus_voltage_lv_current_init(struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *msg_p);
 
 /**
@@ -1810,6 +2194,7 @@ int feb_can_lvpdb_flags_bus_voltage_lv_current_init(struct feb_can_lvpdb_flags_b
  * @return Encoded signal.
  */
 uint32_t feb_can_lvpdb_flags_bus_voltage_lv_current_flags_encode(double value);
+uint32_t feb_can_lvpdb_flags_bus_voltage_lv_current_flags_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1818,6 +2203,7 @@ uint32_t feb_can_lvpdb_flags_bus_voltage_lv_current_flags_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_lvpdb_flags_bus_voltage_lv_current_flags_decode(uint32_t value);
 double feb_can_lvpdb_flags_bus_voltage_lv_current_flags_decode(uint32_t value);
 
 /**
@@ -1828,32 +2214,45 @@ double feb_can_lvpdb_flags_bus_voltage_lv_current_flags_decode(uint32_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_lvpdb_flags_bus_voltage_lv_current_flags_is_in_range(uint32_t value);
+bool feb_can_lvpdb_flags_bus_voltage_lv_current_flags_is_in_range(uint32_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
+ * Encode given signal by applying scaling and offset.
  *
+ * @param[in] value Signal to encode.
  * @param[in] value Signal to encode.
  *
  * @return Encoded signal.
+ * @return Encoded signal.
  */
+uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_encode(double value);
 uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
+ * Decode given signal by applying scaling and offset.
  *
+ * @param[in] value Signal to decode.
  * @param[in] value Signal to decode.
  *
  * @return Decoded signal.
+ * @return Decoded signal.
  */
+double feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_decode(uint16_t value);
 double feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
+ * Check that given signal is in allowed range.
  *
+ * @param[in] value Signal to check.
  * @param[in] value Signal to check.
  *
  * @return true if in range, false otherwise.
+ * @return true if in range, false otherwise.
  */
+bool feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_is_in_range(uint16_t value);
 bool feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_is_in_range(uint16_t value);
 
 /**
@@ -1864,6 +2263,7 @@ bool feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_is_in_range(uint16_t
  * @return Encoded signal.
  */
 uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_encode(double value);
+uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1872,6 +2272,7 @@ uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_encode(double val
  *
  * @return Decoded signal.
  */
+double feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_decode(uint16_t value);
 double feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_decode(uint16_t value);
 
 /**
@@ -1882,8 +2283,10 @@ double feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_decode(uint16_t val
  * @return true if in range, false otherwise.
  */
 bool feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_is_in_range(uint16_t value);
+bool feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_is_in_range(uint16_t value);
 
 /**
+ * Pack message LVPDB_CP_AF_RF_SH_Current.
  * Pack message LVPDB_CP_AF_RF_SH_Current.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -1893,11 +2296,14 @@ bool feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_is_in_range(uint16_t 
  * @return Size of packed data, or negative error code.
  */
 int feb_can_lvpdb_cp_af_rf_sh_current_pack(
+int feb_can_lvpdb_cp_af_rf_sh_current_pack(
     uint8_t *dst_p,
+    const struct feb_can_lvpdb_cp_af_rf_sh_current_t *src_p,
     const struct feb_can_lvpdb_cp_af_rf_sh_current_t *src_p,
     size_t size);
 
 /**
+ * Unpack message LVPDB_CP_AF_RF_SH_Current.
  * Unpack message LVPDB_CP_AF_RF_SH_Current.
  *
  * @param[out] dst_p Object to unpack the message into.
@@ -1908,16 +2314,20 @@ int feb_can_lvpdb_cp_af_rf_sh_current_pack(
  */
 int feb_can_lvpdb_cp_af_rf_sh_current_unpack(
     struct feb_can_lvpdb_cp_af_rf_sh_current_t *dst_p,
+int feb_can_lvpdb_cp_af_rf_sh_current_unpack(
+    struct feb_can_lvpdb_cp_af_rf_sh_current_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
+ * Init message fields to default values from LVPDB_CP_AF_RF_SH_Current.
  * Init message fields to default values from LVPDB_CP_AF_RF_SH_Current.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
+int feb_can_lvpdb_cp_af_rf_sh_current_init(struct feb_can_lvpdb_cp_af_rf_sh_current_t *msg_p);
 int feb_can_lvpdb_cp_af_rf_sh_current_init(struct feb_can_lvpdb_cp_af_rf_sh_current_t *msg_p);
 
 /**
@@ -1928,6 +2338,7 @@ int feb_can_lvpdb_cp_af_rf_sh_current_init(struct feb_can_lvpdb_cp_af_rf_sh_curr
  * @return Encoded signal.
  */
 uint16_t feb_can_lvpdb_cp_af_rf_sh_current_cp_current_encode(double value);
+uint16_t feb_can_lvpdb_cp_af_rf_sh_current_cp_current_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1936,6 +2347,7 @@ uint16_t feb_can_lvpdb_cp_af_rf_sh_current_cp_current_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_lvpdb_cp_af_rf_sh_current_cp_current_decode(uint16_t value);
 double feb_can_lvpdb_cp_af_rf_sh_current_cp_current_decode(uint16_t value);
 
 /**
@@ -1946,6 +2358,7 @@ double feb_can_lvpdb_cp_af_rf_sh_current_cp_current_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_lvpdb_cp_af_rf_sh_current_cp_current_is_in_range(uint16_t value);
+bool feb_can_lvpdb_cp_af_rf_sh_current_cp_current_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -1954,6 +2367,7 @@ bool feb_can_lvpdb_cp_af_rf_sh_current_cp_current_is_in_range(uint16_t value);
  *
  * @return Encoded signal.
  */
+uint16_t feb_can_lvpdb_cp_af_rf_sh_current_af_current_encode(double value);
 uint16_t feb_can_lvpdb_cp_af_rf_sh_current_af_current_encode(double value);
 
 /**
@@ -1964,6 +2378,7 @@ uint16_t feb_can_lvpdb_cp_af_rf_sh_current_af_current_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_lvpdb_cp_af_rf_sh_current_af_current_decode(uint16_t value);
+double feb_can_lvpdb_cp_af_rf_sh_current_af_current_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -1972,6 +2387,7 @@ double feb_can_lvpdb_cp_af_rf_sh_current_af_current_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_lvpdb_cp_af_rf_sh_current_af_current_is_in_range(uint16_t value);
 bool feb_can_lvpdb_cp_af_rf_sh_current_af_current_is_in_range(uint16_t value);
 
 /**
@@ -1982,6 +2398,7 @@ bool feb_can_lvpdb_cp_af_rf_sh_current_af_current_is_in_range(uint16_t value);
  * @return Encoded signal.
  */
 uint16_t feb_can_lvpdb_cp_af_rf_sh_current_rf_current_encode(double value);
+uint16_t feb_can_lvpdb_cp_af_rf_sh_current_rf_current_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1990,6 +2407,7 @@ uint16_t feb_can_lvpdb_cp_af_rf_sh_current_rf_current_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_lvpdb_cp_af_rf_sh_current_rf_current_decode(uint16_t value);
 double feb_can_lvpdb_cp_af_rf_sh_current_rf_current_decode(uint16_t value);
 
 /**
@@ -2000,6 +2418,7 @@ double feb_can_lvpdb_cp_af_rf_sh_current_rf_current_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_lvpdb_cp_af_rf_sh_current_rf_current_is_in_range(uint16_t value);
+bool feb_can_lvpdb_cp_af_rf_sh_current_rf_current_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -2008,6 +2427,7 @@ bool feb_can_lvpdb_cp_af_rf_sh_current_rf_current_is_in_range(uint16_t value);
  *
  * @return Encoded signal.
  */
+uint16_t feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_encode(double value);
 uint16_t feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_encode(double value);
 
 /**
@@ -2018,6 +2438,7 @@ uint16_t feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_decode(uint16_t value);
+double feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -2027,16 +2448,26 @@ double feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_is_in_range(uint16_t value);
+bool feb_can_lvpdb_cp_af_rf_sh_current_sh_voltage_is_in_range(uint16_t value);
 
 /**
+ * Pack message LVPDB_L_AS_AB_Current.
  * Pack message LVPDB_L_AS_AB_Current.
  *
  * @param[out] dst_p Buffer to pack the message into.
  * @param[in] src_p Data to pack.
  * @param[in] size Size of dst_p.
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
  *
  * @return Size of packed data, or negative error code.
+ * @return Size of packed data, or negative error code.
  */
+int feb_can_lvpdb_l_as_ab_current_pack(
+    uint8_t *dst_p,
+    const struct feb_can_lvpdb_l_as_ab_current_t *src_p,
+    size_t size);
 int feb_can_lvpdb_l_as_ab_current_pack(
     uint8_t *dst_p,
     const struct feb_can_lvpdb_l_as_ab_current_t *src_p,
@@ -2044,13 +2475,22 @@ int feb_can_lvpdb_l_as_ab_current_pack(
 
 /**
  * Unpack message LVPDB_L_AS_AB_Current.
+ * Unpack message LVPDB_L_AS_AB_Current.
  *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
  * @param[out] dst_p Object to unpack the message into.
  * @param[in] src_p Message to unpack.
  * @param[in] size Size of src_p.
  *
  * @return zero(0) or negative error code.
+ * @return zero(0) or negative error code.
  */
+int feb_can_lvpdb_l_as_ab_current_unpack(
+    struct feb_can_lvpdb_l_as_ab_current_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
 int feb_can_lvpdb_l_as_ab_current_unpack(
     struct feb_can_lvpdb_l_as_ab_current_t *dst_p,
     const uint8_t *src_p,
@@ -2058,11 +2498,15 @@ int feb_can_lvpdb_l_as_ab_current_unpack(
 
 /**
  * Init message fields to default values from LVPDB_L_AS_AB_Current.
+ * Init message fields to default values from LVPDB_L_AS_AB_Current.
  *
+ * @param[in] msg_p Message to init.
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
+ * @return zero(0) on success or (-1) in case of nullptr argument.
  */
+int feb_can_lvpdb_l_as_ab_current_init(struct feb_can_lvpdb_l_as_ab_current_t *msg_p);
 int feb_can_lvpdb_l_as_ab_current_init(struct feb_can_lvpdb_l_as_ab_current_t *msg_p);
 
 /**
@@ -2073,6 +2517,7 @@ int feb_can_lvpdb_l_as_ab_current_init(struct feb_can_lvpdb_l_as_ab_current_t *m
  * @return Encoded signal.
  */
 uint16_t feb_can_lvpdb_l_as_ab_current_l_current_encode(double value);
+uint16_t feb_can_lvpdb_l_as_ab_current_l_current_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -2081,6 +2526,7 @@ uint16_t feb_can_lvpdb_l_as_ab_current_l_current_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_lvpdb_l_as_ab_current_l_current_decode(uint16_t value);
 double feb_can_lvpdb_l_as_ab_current_l_current_decode(uint16_t value);
 
 /**
@@ -2091,6 +2537,7 @@ double feb_can_lvpdb_l_as_ab_current_l_current_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_lvpdb_l_as_ab_current_l_current_is_in_range(uint16_t value);
+bool feb_can_lvpdb_l_as_ab_current_l_current_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -2099,6 +2546,7 @@ bool feb_can_lvpdb_l_as_ab_current_l_current_is_in_range(uint16_t value);
  *
  * @return Encoded signal.
  */
+uint16_t feb_can_lvpdb_l_as_ab_current_as_voltage_encode(double value);
 uint16_t feb_can_lvpdb_l_as_ab_current_as_voltage_encode(double value);
 
 /**
@@ -2109,6 +2557,7 @@ uint16_t feb_can_lvpdb_l_as_ab_current_as_voltage_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_lvpdb_l_as_ab_current_as_voltage_decode(uint16_t value);
+double feb_can_lvpdb_l_as_ab_current_as_voltage_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -2117,6 +2566,7 @@ double feb_can_lvpdb_l_as_ab_current_as_voltage_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_lvpdb_l_as_ab_current_as_voltage_is_in_range(uint16_t value);
 bool feb_can_lvpdb_l_as_ab_current_as_voltage_is_in_range(uint16_t value);
 
 /**
@@ -2127,6 +2577,7 @@ bool feb_can_lvpdb_l_as_ab_current_as_voltage_is_in_range(uint16_t value);
  * @return Encoded signal.
  */
 uint16_t feb_can_lvpdb_l_as_ab_current_ab_voltage_encode(double value);
+uint16_t feb_can_lvpdb_l_as_ab_current_ab_voltage_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -2135,6 +2586,7 @@ uint16_t feb_can_lvpdb_l_as_ab_current_ab_voltage_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_lvpdb_l_as_ab_current_ab_voltage_decode(uint16_t value);
 double feb_can_lvpdb_l_as_ab_current_ab_voltage_decode(uint16_t value);
 
 /**
@@ -2145,8 +2597,10 @@ double feb_can_lvpdb_l_as_ab_current_ab_voltage_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_lvpdb_l_as_ab_current_ab_voltage_is_in_range(uint16_t value);
+bool feb_can_lvpdb_l_as_ab_current_ab_voltage_is_in_range(uint16_t value);
 
 /**
+ * Pack message DART_TACH_measurements_1234.
  * Pack message DART_TACH_measurements_1234.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -2156,11 +2610,14 @@ bool feb_can_lvpdb_l_as_ab_current_ab_voltage_is_in_range(uint16_t value);
  * @return Size of packed data, or negative error code.
  */
 int feb_can_dart_tach_measurements_1234_pack(
+int feb_can_dart_tach_measurements_1234_pack(
     uint8_t *dst_p,
+    const struct feb_can_dart_tach_measurements_1234_t *src_p,
     const struct feb_can_dart_tach_measurements_1234_t *src_p,
     size_t size);
 
 /**
+ * Unpack message DART_TACH_measurements_1234.
  * Unpack message DART_TACH_measurements_1234.
  *
  * @param[out] dst_p Object to unpack the message into.
@@ -2171,16 +2628,20 @@ int feb_can_dart_tach_measurements_1234_pack(
  */
 int feb_can_dart_tach_measurements_1234_unpack(
     struct feb_can_dart_tach_measurements_1234_t *dst_p,
+int feb_can_dart_tach_measurements_1234_unpack(
+    struct feb_can_dart_tach_measurements_1234_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
+ * Init message fields to default values from DART_TACH_measurements_1234.
  * Init message fields to default values from DART_TACH_measurements_1234.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
+int feb_can_dart_tach_measurements_1234_init(struct feb_can_dart_tach_measurements_1234_t *msg_p);
 int feb_can_dart_tach_measurements_1234_init(struct feb_can_dart_tach_measurements_1234_t *msg_p);
 
 /**
@@ -2191,6 +2652,7 @@ int feb_can_dart_tach_measurements_1234_init(struct feb_can_dart_tach_measuremen
  * @return Encoded signal.
  */
 uint16_t feb_can_dart_tach_measurements_1234_fan1_speed_encode(double value);
+uint16_t feb_can_dart_tach_measurements_1234_fan1_speed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -2200,6 +2662,7 @@ uint16_t feb_can_dart_tach_measurements_1234_fan1_speed_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_dart_tach_measurements_1234_fan1_speed_decode(uint16_t value);
+double feb_can_dart_tach_measurements_1234_fan1_speed_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -2208,6 +2671,52 @@ double feb_can_dart_tach_measurements_1234_fan1_speed_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_dart_tach_measurements_1234_fan1_speed_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_dart_tach_measurements_1234_fan2_speed_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_dart_tach_measurements_1234_fan2_speed_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_dart_tach_measurements_1234_fan2_speed_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_dart_tach_measurements_1234_fan3_speed_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_dart_tach_measurements_1234_fan3_speed_decode(uint16_t value);
 bool feb_can_dart_tach_measurements_1234_fan1_speed_is_in_range(uint16_t value);
 
 /**
@@ -2293,6 +2802,43 @@ bool feb_can_dart_tach_measurements_1234_fan4_speed_is_in_range(uint16_t value);
 
 /**
  * Pack message DART_TACH_measurements_5.
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_dart_tach_measurements_1234_fan3_speed_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_dart_tach_measurements_1234_fan4_speed_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_dart_tach_measurements_1234_fan4_speed_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_dart_tach_measurements_1234_fan4_speed_is_in_range(uint16_t value);
+
+/**
+ * Pack message DART_TACH_measurements_5.
  *
  * @param[out] dst_p Buffer to pack the message into.
  * @param[in] src_p Data to pack.
@@ -2301,11 +2847,14 @@ bool feb_can_dart_tach_measurements_1234_fan4_speed_is_in_range(uint16_t value);
  * @return Size of packed data, or negative error code.
  */
 int feb_can_dart_tach_measurements_5_pack(
+int feb_can_dart_tach_measurements_5_pack(
     uint8_t *dst_p,
+    const struct feb_can_dart_tach_measurements_5_t *src_p,
     const struct feb_can_dart_tach_measurements_5_t *src_p,
     size_t size);
 
 /**
+ * Unpack message DART_TACH_measurements_5.
  * Unpack message DART_TACH_measurements_5.
  *
  * @param[out] dst_p Object to unpack the message into.
@@ -2316,16 +2865,20 @@ int feb_can_dart_tach_measurements_5_pack(
  */
 int feb_can_dart_tach_measurements_5_unpack(
     struct feb_can_dart_tach_measurements_5_t *dst_p,
+int feb_can_dart_tach_measurements_5_unpack(
+    struct feb_can_dart_tach_measurements_5_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
+ * Init message fields to default values from DART_TACH_measurements_5.
  * Init message fields to default values from DART_TACH_measurements_5.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
+int feb_can_dart_tach_measurements_5_init(struct feb_can_dart_tach_measurements_5_t *msg_p);
 int feb_can_dart_tach_measurements_5_init(struct feb_can_dart_tach_measurements_5_t *msg_p);
 
 /**
@@ -2336,6 +2889,7 @@ int feb_can_dart_tach_measurements_5_init(struct feb_can_dart_tach_measurements_
  * @return Encoded signal.
  */
 uint16_t feb_can_dart_tach_measurements_5_fan5_speed_encode(double value);
+uint16_t feb_can_dart_tach_measurements_5_fan5_speed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -2345,6 +2899,7 @@ uint16_t feb_can_dart_tach_measurements_5_fan5_speed_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_dart_tach_measurements_5_fan5_speed_decode(uint16_t value);
+double feb_can_dart_tach_measurements_5_fan5_speed_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -2353,6 +2908,7 @@ double feb_can_dart_tach_measurements_5_fan5_speed_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_dart_tach_measurements_5_fan5_speed_is_in_range(uint16_t value);
 bool feb_can_dart_tach_measurements_5_fan5_speed_is_in_range(uint16_t value);
 
 /**
@@ -2709,11 +3265,14 @@ bool feb_can_rms_param_msg_data_is_in_range(uint16_t value);
  * @return Size of packed data, or negative error code.
  */
 int feb_can_feb_ping_pong_counter1_pack(
+int feb_can_feb_ping_pong_counter1_pack(
     uint8_t *dst_p,
+    const struct feb_can_feb_ping_pong_counter1_t *src_p,
     const struct feb_can_feb_ping_pong_counter1_t *src_p,
     size_t size);
 
 /**
+ * Unpack message FEB_PING_PONG_counter1.
  * Unpack message FEB_PING_PONG_counter1.
  *
  * @param[out] dst_p Object to unpack the message into.
@@ -2724,16 +3283,20 @@ int feb_can_feb_ping_pong_counter1_pack(
  */
 int feb_can_feb_ping_pong_counter1_unpack(
     struct feb_can_feb_ping_pong_counter1_t *dst_p,
+int feb_can_feb_ping_pong_counter1_unpack(
+    struct feb_can_feb_ping_pong_counter1_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
+ * Init message fields to default values from FEB_PING_PONG_counter1.
  * Init message fields to default values from FEB_PING_PONG_counter1.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
+int feb_can_feb_ping_pong_counter1_init(struct feb_can_feb_ping_pong_counter1_t *msg_p);
 int feb_can_feb_ping_pong_counter1_init(struct feb_can_feb_ping_pong_counter1_t *msg_p);
 
 /**
@@ -2744,6 +3307,7 @@ int feb_can_feb_ping_pong_counter1_init(struct feb_can_feb_ping_pong_counter1_t 
  * @return Encoded signal.
  */
 int32_t feb_can_feb_ping_pong_counter1_counter_encode(double value);
+int32_t feb_can_feb_ping_pong_counter1_counter_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -2752,6 +3316,7 @@ int32_t feb_can_feb_ping_pong_counter1_counter_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_feb_ping_pong_counter1_counter_decode(int32_t value);
 double feb_can_feb_ping_pong_counter1_counter_decode(int32_t value);
 
 /**
@@ -2762,16 +3327,26 @@ double feb_can_feb_ping_pong_counter1_counter_decode(int32_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_feb_ping_pong_counter1_counter_is_in_range(int32_t value);
+bool feb_can_feb_ping_pong_counter1_counter_is_in_range(int32_t value);
 
 /**
+ * Pack message FEB_PING_PONG_counter2.
  * Pack message FEB_PING_PONG_counter2.
  *
  * @param[out] dst_p Buffer to pack the message into.
  * @param[in] src_p Data to pack.
  * @param[in] size Size of dst_p.
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
  *
  * @return Size of packed data, or negative error code.
+ * @return Size of packed data, or negative error code.
  */
+int feb_can_feb_ping_pong_counter2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_feb_ping_pong_counter2_t *src_p,
+    size_t size);
 int feb_can_feb_ping_pong_counter2_pack(
     uint8_t *dst_p,
     const struct feb_can_feb_ping_pong_counter2_t *src_p,
@@ -2779,13 +3354,22 @@ int feb_can_feb_ping_pong_counter2_pack(
 
 /**
  * Unpack message FEB_PING_PONG_counter2.
+ * Unpack message FEB_PING_PONG_counter2.
  *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
  * @param[out] dst_p Object to unpack the message into.
  * @param[in] src_p Message to unpack.
  * @param[in] size Size of src_p.
  *
  * @return zero(0) or negative error code.
+ * @return zero(0) or negative error code.
  */
+int feb_can_feb_ping_pong_counter2_unpack(
+    struct feb_can_feb_ping_pong_counter2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
 int feb_can_feb_ping_pong_counter2_unpack(
     struct feb_can_feb_ping_pong_counter2_t *dst_p,
     const uint8_t *src_p,
@@ -2793,11 +3377,15 @@ int feb_can_feb_ping_pong_counter2_unpack(
 
 /**
  * Init message fields to default values from FEB_PING_PONG_counter2.
+ * Init message fields to default values from FEB_PING_PONG_counter2.
  *
+ * @param[in] msg_p Message to init.
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
+ * @return zero(0) on success or (-1) in case of nullptr argument.
  */
+int feb_can_feb_ping_pong_counter2_init(struct feb_can_feb_ping_pong_counter2_t *msg_p);
 int feb_can_feb_ping_pong_counter2_init(struct feb_can_feb_ping_pong_counter2_t *msg_p);
 
 /**
@@ -2808,6 +3396,7 @@ int feb_can_feb_ping_pong_counter2_init(struct feb_can_feb_ping_pong_counter2_t 
  * @return Encoded signal.
  */
 int32_t feb_can_feb_ping_pong_counter2_counter_encode(double value);
+int32_t feb_can_feb_ping_pong_counter2_counter_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -2816,6 +3405,7 @@ int32_t feb_can_feb_ping_pong_counter2_counter_encode(double value);
  *
  * @return Decoded signal.
  */
+double feb_can_feb_ping_pong_counter2_counter_decode(int32_t value);
 double feb_can_feb_ping_pong_counter2_counter_decode(int32_t value);
 
 /**
@@ -2863,6 +3453,44 @@ int feb_can_feb_ping_pong_counter3_unpack(
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
 int feb_can_feb_ping_pong_counter3_init(struct feb_can_feb_ping_pong_counter3_t *msg_p);
+bool feb_can_feb_ping_pong_counter2_counter_is_in_range(int32_t value);
+
+/**
+ * Pack message FEB_PING_PONG_counter3.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_feb_ping_pong_counter3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_feb_ping_pong_counter3_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message FEB_PING_PONG_counter3.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_feb_ping_pong_counter3_unpack(
+    struct feb_can_feb_ping_pong_counter3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from FEB_PING_PONG_counter3.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_feb_ping_pong_counter3_init(struct feb_can_feb_ping_pong_counter3_t *msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -2871,6 +3499,7 @@ int feb_can_feb_ping_pong_counter3_init(struct feb_can_feb_ping_pong_counter3_t 
  *
  * @return Encoded signal.
  */
+int32_t feb_can_feb_ping_pong_counter3_counter_encode(double value);
 int32_t feb_can_feb_ping_pong_counter3_counter_encode(double value);
 
 /**
@@ -2881,6 +3510,7 @@ int32_t feb_can_feb_ping_pong_counter3_counter_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_feb_ping_pong_counter3_counter_decode(int32_t value);
+double feb_can_feb_ping_pong_counter3_counter_decode(int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -2890,8 +3520,10 @@ double feb_can_feb_ping_pong_counter3_counter_decode(int32_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_feb_ping_pong_counter3_counter_is_in_range(int32_t value);
+bool feb_can_feb_ping_pong_counter3_counter_is_in_range(int32_t value);
 
 /**
+ * Pack message FEB_PING_PONG_counter4.
  * Pack message FEB_PING_PONG_counter4.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -2901,11 +3533,14 @@ bool feb_can_feb_ping_pong_counter3_counter_is_in_range(int32_t value);
  * @return Size of packed data, or negative error code.
  */
 int feb_can_feb_ping_pong_counter4_pack(
+int feb_can_feb_ping_pong_counter4_pack(
     uint8_t *dst_p,
+    const struct feb_can_feb_ping_pong_counter4_t *src_p,
     const struct feb_can_feb_ping_pong_counter4_t *src_p,
     size_t size);
 
 /**
+ * Unpack message FEB_PING_PONG_counter4.
  * Unpack message FEB_PING_PONG_counter4.
  *
  * @param[out] dst_p Object to unpack the message into.
@@ -2916,16 +3551,20 @@ int feb_can_feb_ping_pong_counter4_pack(
  */
 int feb_can_feb_ping_pong_counter4_unpack(
     struct feb_can_feb_ping_pong_counter4_t *dst_p,
+int feb_can_feb_ping_pong_counter4_unpack(
+    struct feb_can_feb_ping_pong_counter4_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
+ * Init message fields to default values from FEB_PING_PONG_counter4.
  * Init message fields to default values from FEB_PING_PONG_counter4.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
+int feb_can_feb_ping_pong_counter4_init(struct feb_can_feb_ping_pong_counter4_t *msg_p);
 int feb_can_feb_ping_pong_counter4_init(struct feb_can_feb_ping_pong_counter4_t *msg_p);
 
 /**
@@ -2936,6 +3575,7 @@ int feb_can_feb_ping_pong_counter4_init(struct feb_can_feb_ping_pong_counter4_t 
  * @return Encoded signal.
  */
 int32_t feb_can_feb_ping_pong_counter4_counter_encode(double value);
+int32_t feb_can_feb_ping_pong_counter4_counter_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -2945,6 +3585,7 @@ int32_t feb_can_feb_ping_pong_counter4_counter_encode(double value);
  * @return Decoded signal.
  */
 double feb_can_feb_ping_pong_counter4_counter_decode(int32_t value);
+double feb_can_feb_ping_pong_counter4_counter_decode(int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -2953,6 +3594,7 @@ double feb_can_feb_ping_pong_counter4_counter_decode(int32_t value);
  *
  * @return true if in range, false otherwise.
  */
+bool feb_can_feb_ping_pong_counter4_counter_is_in_range(int32_t value);
 bool feb_can_feb_ping_pong_counter4_counter_is_in_range(int32_t value);
 
 
