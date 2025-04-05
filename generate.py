@@ -43,8 +43,8 @@ MESSAGE_GEN_LIST = [
     #RMS messages from inverter
     
     #0xc0-0xc1
-    pcu_msg.rms_param_msg,
     pcu_msg.rms_command_msg, 
+    pcu_msg.rms_param_msg,
 
     #0xe0-0xe0
     ping_pong_msg.get_ping_pong_counter1,
