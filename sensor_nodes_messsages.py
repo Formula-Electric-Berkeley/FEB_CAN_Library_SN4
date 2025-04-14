@@ -33,6 +33,7 @@ def get_steering_data(frame_id: int):
         comment="Message for steering data.",
         strict=True
     )
+
     return msg
 
 def get_rear_left_tire_temp_data(frame_id: int):
@@ -288,95 +289,87 @@ def get_wss_data_rear(frame_id: int):
     
     return msg
 
-def get_LinPot_CoolantPressure_Front(frame_id: int):
+def get_LinPot_Front(frame_id: int):
+    lin_pot_1 = cantools.db.Signal(
+        name="linear_potrentiometer_1_front",
+        start=0,
+        length=16, 
+        byte_order="big_endian",
+        is_signed=False,
+     )
+    
+    lin_pot_2 = cantools.db.Signal(
+        name="linear_potrentiometer_2_front",
+        start=16,
+        length=16, 
+        byte_order="big_endian",
+        is_signed=False,
+     )
+    
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="linear_potentiometer_front",
+        length=4,
+        signals=[lin_pot_1, lin_pot_2],
+        comment="Linear Potentiometer Front.",
+        strict=True
+     )
+ 
+    return msg
+
+def get_LinPot_Rear(frame_id: int):
      lin_pot_1 = cantools.db.Signal(
-         name="linear_potrentiometer_1_front",
-         start=0,
-         length=16, 
-         byte_order="big_endian",
-         is_signed=False,
+        name="linear_potrentiometer_1_rear",
+        start=0,
+        length=16, 
+        byte_order="big_endian",
+        is_signed=False,
      )
 
      lin_pot_2 = cantools.db.Signal(
-         name="linear_potrentiometer_2_front",
-         start=16,
-         length=16, 
-         byte_order="big_endian",
-         is_signed=False,
+        name="linear_potrentiometer_2_rear",
+        start=16,
+        length=16, 
+        byte_order="big_endian",
+        is_signed=False,
      )
-
-     coolant_pressure_1 = cantools.db.Signal(
-         name="coolant_pressure_1_front",
-         start=32,
-         length=16, 
-         byte_order="big_endian",
-         is_signed=False,
-     )
-
-     coolant_pressure_2 = cantools.db.Signal(
-         name="coolant_pressure_2_front",
-         start=48,
-         length=16, 
-         byte_order="big_endian",
-         is_signed=False,
-     )
-
 
      msg = cantools.db.Message(
-         frame_id=frame_id,
-         name="linear_potentiometer_coolant_pressure_front",
-         length=8,
-         signals=[lin_pot_1, lin_pot_2, coolant_pressure_1, coolant_pressure_2],
-         comment="Linear Potentiometer and Coolant Pressure Front.",
-         strict=True
+        frame_id=frame_id,
+        name="linear_potentiometer_rear",
+        length=4,
+        signals=[lin_pot_1, lin_pot_2],
+        comment="Linear Potentiometer Rear.",
+        strict=True
      )
  
      return msg
 
-def get_LinPot_CoolantPressure_Front(frame_id: int):
-     lin_pot_1 = cantools.db.Signal(
-         name="linear_potrentiometer_1_rear",
-         start=0,
-         length=16, 
-         byte_order="big_endian",
-         is_signed=False,
+def get_CoolantPressure(frame_id: int):
+    coolant_pressure_1 = cantools.db.Signal(
+        name="coolant_pressure_1",
+        start=0,
+        length=16, 
+        byte_order="big_endian",
+        is_signed=False,
+     )
+    coolant_pressure_2 = cantools.db.Signal(
+        name="coolant_pressure_2",
+        start=16,
+        length=16, 
+        byte_order="big_endian",
+        is_signed=False,
      )
 
-     lin_pot_2 = cantools.db.Signal(
-         name="linear_potrentiometer_2_rear",
-         start=16,
-         length=16, 
-         byte_order="big_endian",
-         is_signed=False,
-     )
-
-     coolant_pressure_1 = cantools.db.Signal(
-         name="coolant_pressure_1_rear",
-         start=32,
-         length=16, 
-         byte_order="big_endian",
-         is_signed=False,
-     )
-
-     coolant_pressure_2 = cantools.db.Signal(
-         name="coolant_pressure_2_rear",
-         start=48,
-         length=16, 
-         byte_order="big_endian",
-         is_signed=False,
-     )
-
-
-     msg = cantools.db.Message(
-         frame_id=frame_id,
-         name="linear_potentiometer_coolant_pressure_rear",
-         length=8,
-         signals=[lin_pot_1, lin_pot_2, coolant_pressure_1, coolant_pressure_2],
-         comment="Linear Potentiometer and Coolant Pressure Rear.",
-         strict=True
-     )
- 
-     return msg
+    msg = cantools.db.Message(
+            frame_id=frame_id,
+            name="coolant_pressure",
+            length=4,
+            signals=[coolant_pressure_1, coolant_pressure_2],
+            comment="Coolant Pressure",
+            strict=True
+         )
+    return msg
 
 def get_front_sensor_heartbeat(frame_id: int):
     error0 = cantools.db.Signal(name="error0", start=0, length=1, byte_order="little_endian", is_signed=False)
