@@ -36,13 +36,13 @@ BS_:
 BU_: 
 
 
-BO_ 0 BMS_State: 2 Vector__XXX
+BO_ 0 bms_state: 2 Vector__XXX
  SG_ gpio_sense : 11|5@1+ (1,0) [0|0] "" Vector__XXX
  SG_ relay_state : 8|3@1+ (1,0) [0|0] "" Vector__XXX
- SG_ ping_alive : 5|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ping_lv_nodes : 5|3@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bms_state : 0|5@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 1 BMS_Cell_Data: 8 Vector__XXX
+BO_ 1 bms_cell_data: 8 Vector__XXX
  SG_ bms_send_time : 48|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bms_temperature : 32|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bms_voltage : 16|16@1+ (1,0) [0|0] "" Vector__XXX
@@ -50,49 +50,49 @@ BO_ 1 BMS_Cell_Data: 8 Vector__XXX
  SG_ bms_cell : 8|4@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bms_flags : 0|4@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 2 BMS_Accumulator_Voltage: 8 Vector__XXX
+BO_ 2 bms_accumulator_voltage: 8 Vector__XXX
  SG_ send_time : 48|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ max_cell_voltage : 32|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ min_cell_voltage : 16|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ total_pack_voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 3 BMS_Accumulator_Temperature: 8 Vector__XXX
+BO_ 3 bms_accumulator_temperature: 8 Vector__XXX
  SG_ send_time : 48|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ max_cell_temperature : 32|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ min_cell_temperature : 16|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ average_pack_temperature : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 9 normalized_brake: 1 Vector__XXX
- SG_ normalized_brake : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 9 brake: 1 Vector__XXX
+ SG_ brake_percent : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 10 BSPD_State: 1 Vector__XXX
+BO_ 10 bspd_state: 1 Vector__XXX
  SG_ bspd_state : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 16 Dash_Message: 1 Vector__XXX
- SG_ accumulator_fan_switch : 7|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ radiator_fan_switch : 6|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ coolant_pump_switch : 5|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ button4 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ button3 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ button2 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ button1_ready_to_drive : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 16 dash_io: 1 Vector__XXX
+ SG_ s3_accumulator_fan : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ s2_radiator_fan : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ s1_coolant_pump : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ b4 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ b3 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ b2_data_logging : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ b1_ready_to_drive : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ buzzer_state : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 22 LVPDB_Flags_Bus_Voltage_LV_Curre: 8 Vector__XXX
+BO_ 22 lvpdb_flags_bus_voltage_lv_curre: 8 Vector__XXX
  SG_ lv_current : 48|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bus_voltage : 32|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ flags : 0|32@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 23 LVPDB_CP_AF_RF_SH_Current: 8 Vector__XXX
- SG_ sh_voltage : 48|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ rf_current : 32|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ af_current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ cp_current : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 23 lvpdb_coolant_fans_shutdown: 8 Vector__XXX
+ SG_ shutdown_voltage : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ radiator_fans_current : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ accumulator_fans_current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ coolant_pump_current : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 24 LVPDB_L_AS_AB_Current: 8 Vector__XXX
- SG_ ab_voltage : 48|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ as_voltage : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ l_current : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 24 lvpdb_autonomous: 8 Vector__XXX
+ SG_ auto_breaking_voltage : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ auto_steering_voltage : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ lidar_current : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 45 DART_TACH_measurements_1234: 8 Vector__XXX
  SG_ fan4_speed : 48|16@1+ (1,0) [0|0] "" Vector__XXX
@@ -103,7 +103,23 @@ BO_ 45 DART_TACH_measurements_1234: 8 Vector__XXX
 BO_ 46 DART_TACH_measurements_5: 2 Vector__XXX
  SG_ fan5_speed : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 192 rms_command_msg: 8 Vector__XXX
+BO_ 52 bbb_tps: 4 Vector__XXX
+ SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 53 pcu_tps: 4 Vector__XXX
+ SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 54 dash_tps: 4 Vector__XXX
+ SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 55 dcu_tps: 4 Vector__XXX
+ SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 192 rms_command: 8 Vector__XXX
  SG_ command_torque_limited : 48|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ speed_mode_enabled : 42|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ inverter_dicharge : 41|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -112,12 +128,12 @@ BO_ 192 rms_command_msg: 8 Vector__XXX
  SG_ speed_signal : 16|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ torque_signal_small : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 193 rms_param_msg: 8 Vector__XXX
+BO_ 193 rms_param: 8 Vector__XXX
  SG_ data : 32|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ read_write_command : 16|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ address : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 208 pcu_heartbeat_message: 8 Vector__XXX
+BO_ 208 pcu_heartbeate: 8 Vector__XXX
  SG_ error63 : 63|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error62 : 62|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error61 : 61|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -183,7 +199,7 @@ BO_ 208 pcu_heartbeat_message: 8 Vector__XXX
  SG_ error1 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error0 : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 209 dash_heartbeat_message: 8 Vector__XXX
+BO_ 209 dash_heartbeat: 8 Vector__XXX
  SG_ error63 : 63|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error62 : 62|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error61 : 61|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -249,7 +265,7 @@ BO_ 209 dash_heartbeat_message: 8 Vector__XXX
  SG_ error1 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error0 : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 210 lvpdb_heartbeat_message: 8 Vector__XXX
+BO_ 210 lvpdb_heartbeat: 8 Vector__XXX
  SG_ error63 : 63|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error62 : 62|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error61 : 61|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -468,15 +484,19 @@ CM_ BO_ 2 "BMS message for accumulator voltage.";
 CM_ BO_ 3 "BMS message for accumulator temperature.";
 CM_ BO_ 9 "PCU normalized brake message";
 CM_ BO_ 10 "BSPD message.";
-CM_ BO_ 16 "Dash message";
-CM_ BO_ 22 "LVPDB message for flags, bus voltage, LV current.";
-CM_ BO_ 23 "LVPDB message for Coolant Pump Current, Accumulator Fans, Radiator Fans, Shutdown Source.";
-CM_ BO_ 24 "LVPDB message for .";
+CM_ BO_ 16 "Dash button and switch message";
+CM_ BO_ 22 "LVPDB message for flags, bus voltage, and LV current.";
+CM_ BO_ 23 "LVPDB message for Coolant Pump, Accumulator Fans, Radiator Fans, Shutdown.";
+CM_ BO_ 24 "LVPDB message for autonomous systems.";
 CM_ BO_ 45 "DART message for Tachometer measurements first 4 fan speeds.";
 CM_ BO_ 46 "DART message for Tachometer measurements 5th fan speed.";
+CM_ BO_ 52 "BBB TPS Chip";
+CM_ BO_ 53 "PCU TPS Chip";
+CM_ BO_ 54 "Dash TPS Chip";
+CM_ BO_ 55 "DCU TPS Chip";
 CM_ BO_ 192 "RMS command message.";
-CM_ BO_ 193 "param_message.";
-CM_ BO_ 208 "PCU Heartbeat";
+CM_ BO_ 193 "RMS parameter message.";
+CM_ BO_ 208 "PCU heartbeat";
 CM_ BO_ 209 "Dash Heartbeat";
 CM_ BO_ 210 "LVPDB Heartbeat";
 CM_ BO_ 211 "Front Sensor Heartbeat";
@@ -487,7 +507,7 @@ CM_ BO_ 226 "PING PONG counter3.";
 CM_ BO_ 227 "PING PONG counter4.";
 BA_DEF_ BO_  "SystemMessageLongSymbol" STRING ;
 BA_DEF_DEF_  "SystemMessageLongSymbol" "";
-BA_ "SystemMessageLongSymbol" BO_ 22 "LVPDB_Flags_Bus_Voltage_LV_Current";
+BA_ "SystemMessageLongSymbol" BO_ 22 "lvpdb_flags_bus_voltage_lv_current";
 
 
 

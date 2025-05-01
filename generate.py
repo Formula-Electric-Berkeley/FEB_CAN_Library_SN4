@@ -64,11 +64,11 @@ MESSAGE_GEN_LIST = [
 
     #Leaving 5 IDs for space
 
-    #0X34 - 039
-    #finalize all board tps here
-    #pcu
-    #dash
-    #dcu
+    #0X34 - 0x3A
+    bms_msg.get_tps_voltage_current,
+    pcu_msg.get_tps_voltage_current,
+    dash_msg.get_tps_voltage_current,
+    dcu_msg.get_tps_voltage_current,
     #front_sensor
     #rear_sensor
     
@@ -114,7 +114,7 @@ MESSAGE_GEN_ID = [
     45, 46,
 
     #TPS Chips (Excluding LVPDB)
-    #52, 53, 54, 55, 56, 57,
+    52, 53, 54, 55, #56, 57,
 
     #PCU RMS (Inverter) Parameter and Command
     192, 193,

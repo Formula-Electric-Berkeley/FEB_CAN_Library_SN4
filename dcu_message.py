@@ -2,6 +2,32 @@
 import cantools
 from cantools.database.conversion import BaseConversion
 
+def get_tps_voltage_current(frame_id: int):    
+    dcu_voltage_signal = cantools.db.Signal(
+        name="voltage",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+    )
+    
+    dcu_current_signal = cantools.db.Signal(
+        name="current",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="dcu_tps",
+        length=4,
+        signals=[dcu_voltage_signal, dcu_current_signal],
+        comment="DCU TPS Chip",
+        strict=True
+    )
+
+    return msg
+
 def get_dcu_heartbeat(frame_id: int):
     error0 = cantools.db.Signal(name="error0", start=0, length=1, byte_order="little_endian", is_signed=False)
     error1 = cantools.db.Signal(name="error1", start=1, length=1, byte_order="little_endian", is_signed=False)
@@ -70,7 +96,7 @@ def get_dcu_heartbeat(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="dcu_heartbeat_Message",
+        name="dcu_heartbeat",
         length=8,
         signals=[
             error0, error1, error2, error3, error4, error5, error6, error7,

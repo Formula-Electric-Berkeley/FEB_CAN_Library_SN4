@@ -3,7 +3,7 @@ from cantools.database.conversion import BaseConversion
 
 def normalized_brake(frame_id: int):
     normalized_brake = cantools.db.Signal(
-        name="normalized_brake",
+        name="brake_percent",
         start=0,
         length=8,
         byte_order="little_endian",
@@ -12,7 +12,7 @@ def normalized_brake(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="normalized_brake",
+        name="brake",
         length=1,
         signals=[normalized_brake],
         comment="PCU normalized brake message",
@@ -48,10 +48,10 @@ def rms_param_msg(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="rms_param_msg",
+        name="rms_param",
         length=8,
         signals=[addr, read_write_command, data],
-        comment="param_message.",
+        comment="RMS parameter message.",
         strict=True
     )
     
@@ -117,7 +117,7 @@ def rms_command_msg(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="rms_command_msg",
+        name="rms_command",
         length=8,
         signals=[torque_signal, speed_signal,direction_value, inverter_enable, inverter_dicharge, speed_mspeed_mode_enabledode, commmand_torque_limited],
         comment="RMS command message.",
@@ -137,7 +137,7 @@ def bspd(frame_id: int):
     
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="BSPD_State",
+        name="bspd_state",
         length=1,
         signals=[bspd_state],
         comment="BSPD message.",
@@ -146,25 +146,31 @@ def bspd(frame_id: int):
 
     return msg 
 
-def current(frame_id: int):
-    tps_current = cantools.db.Signal(
-        name="tps_current",
+def get_tps_voltage_current(frame_id: int):    
+    pcu_voltage_signal = cantools.db.Signal(
+        name="voltage",
         start=0,
         length=16,
         byte_order="little_endian",
-        is_signed=False
+    )
+    
+    pcu_current_signal = cantools.db.Signal(
+        name="current",
+        start=16,
+        length=16,
+        byte_order="little_endian",
     )
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="PCU_TPS",
-        length=2,
-        signals=[tps_current],
-        comment="PCU TPS chip reading",
+        name="pcu_tps",
+        length=4,
+        signals=[pcu_voltage_signal, pcu_current_signal],
+        comment="PCU TPS Chip",
         strict=True
     )
-    
-    return msg 
+
+    return msg
 
 def get_pcu_heartbeat(frame_id: int):
     error0 = cantools.db.Signal(name="error0", start=0, length=1, byte_order="little_endian", is_signed=False)
@@ -234,7 +240,7 @@ def get_pcu_heartbeat(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="pcu_heartbeat_message",
+        name="pcu_heartbeate",
         length=8,
         signals=[
             error0, error1, error2, error3, error4, error5, error6, error7,
@@ -246,7 +252,7 @@ def get_pcu_heartbeat(frame_id: int):
             error48, error49, error50, error51, error52, error53, error54, error55,
             error56, error57, error58, error59, error60, error61, error62, error63
         ],
-        comment="PCU Heartbeat",
+        comment="PCU heartbeat",
         strict=True
     )
 

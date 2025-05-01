@@ -26,10 +26,10 @@ def get_lvpdb_flag_bus_voltage_lv_current(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="LVPDB_Flags_Bus_Voltage_LV_Current",
+        name="lvpdb_flags_bus_voltage_lv_current",
         length=8,
         signals=[flag_signal, bus_voltage_signal, lv_current_signal],
-        comment="LVPDB message for flags, bus voltage, LV current.",
+        comment="LVPDB message for flags, bus voltage, and LV current.",
         strict=True
     )
 
@@ -37,28 +37,28 @@ def get_lvpdb_flag_bus_voltage_lv_current(frame_id: int):
 
 def get_lvpdb_cp_af_rf_sh_current(frame_id: int):
     cp_current_signal = cantools.db.Signal(
-        name="cp_current",
+        name="coolant_pump_current",
         start=0,
         length=16,
         byte_order="little_endian",
     )
     
     af_current_signal = cantools.db.Signal(
-        name="af_current",
+        name="accumulator_fans_current",
         start=16,
         length=16,
         byte_order="little_endian",
     )
     
     rf_current_signal = cantools.db.Signal(
-        name="rf_current",
+        name="radiator_fans_current",
         start=32,
         length=16,
         byte_order="little_endian",
     )
     
     sh_current_signal = cantools.db.Signal(
-        name="sh_voltage",
+        name="shutdown_voltage",
         start=48,
         length=16,
         byte_order="little_endian",
@@ -66,10 +66,10 @@ def get_lvpdb_cp_af_rf_sh_current(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="LVPDB_CP_AF_RF_SH_Current",
+        name="lvpdb_coolant_fans_shutdown",
         length=8,
         signals=[cp_current_signal, af_current_signal, rf_current_signal, sh_current_signal],
-        comment="LVPDB message for Coolant Pump Current, Accumulator Fans, Radiator Fans, Shutdown Source.",
+        comment="LVPDB message for Coolant Pump, Accumulator Fans, Radiator Fans, Shutdown.",
         strict=True
     )
 
@@ -77,21 +77,21 @@ def get_lvpdb_cp_af_rf_sh_current(frame_id: int):
 
 def get_lvpdb_L_AS_AB_current(frame_id: int):
     l_current_signal = cantools.db.Signal(
-        name="l_current",
+        name="lidar_current",
         start=0,
         length=16,
         byte_order="little_endian",
     )
     
     as_current_signal = cantools.db.Signal(
-        name="as_voltage",
+        name="auto_steering_voltage",
         start=16,
         length=16,
         byte_order="little_endian",
     )
 
     ab_current_signal = cantools.db.Signal(
-        name="ab_voltage",
+        name="auto_breaking_voltage",
         start=48,
         length=16,
         byte_order="little_endian",
@@ -99,10 +99,10 @@ def get_lvpdb_L_AS_AB_current(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="LVPDB_L_AS_AB_Current",
+        name="lvpdb_autonomous",
         length=8,
         signals=[l_current_signal, as_current_signal, ab_current_signal],
-        comment="LVPDB message for .",
+        comment="LVPDB message for autonomous systems.",
         strict=True
     )
 
@@ -176,7 +176,7 @@ def get_lvpdb_heartbeat(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="lvpdb_heartbeat_message",
+        name="lvpdb_heartbeat",
         length=8,
         signals=[
             error0, error1, error2, error3, error4, error5, error6, error7,

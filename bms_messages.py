@@ -10,8 +10,8 @@ def get_bms_state(frame_id: int):
         is_signed=False,
     )
 
-    ping_alive = cantools.db.Signal(
-        name="ping_alive",
+    ping_lv_nodes = cantools.db.Signal(
+        name="ping_lv_nodes",
         start=5,
         length=3,
         byte_order="little_endian",
@@ -36,9 +36,9 @@ def get_bms_state(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="BMS_State",
+        name="bms_state",
         length=2,
-        signals=[bms_state, ping_alive, relay_state, gpio_sense],
+        signals=[bms_state, ping_lv_nodes, relay_state, gpio_sense],
         comment="BMS message for BMS state.",
         strict=True
     )
@@ -96,7 +96,7 @@ def get_bms_cell_data(frame_id: int):
     
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="BMS_Cell_Data",
+        name="bms_cell_data",
         length=8,
         signals=[bms_flags, bms_cell, bms_bank, bms_voltage, bms_temperature, bms_send_time],
         comment="BMS message for cell data.",
@@ -140,7 +140,7 @@ def get_accumulator_voltage(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="BMS_Accumulator_Voltage",
+        name="bms_accumulator_voltage",
         length=8,
         signals=[total_pack_voltage, min_cell_voltage, max_cell_voltage, send_time],
         comment="BMS message for accumulator voltage.",
@@ -184,10 +184,36 @@ def get_accumulator_temperature(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="BMS_Accumulator_Temperature",
+        name="bms_accumulator_temperature",
         length=8,
         signals=[total_pack_voltage, min_cell_temperature, max_cell_temperature, send_time],
         comment="BMS message for accumulator temperature.",
+        strict=True
+    )
+
+    return msg
+
+def get_tps_voltage_current(frame_id: int):    
+    bbb_voltage_signal = cantools.db.Signal(
+        name="voltage",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+    )
+    
+    bbb_current_signal = cantools.db.Signal(
+        name="current",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="bbb_tps",
+        length=4,
+        signals=[bbb_voltage_signal, bbb_current_signal],
+        comment="BBB TPS Chip",
         strict=True
     )
 

@@ -11,49 +11,49 @@ def get_dash_buttons(frame_id: int):
         is_signed=False,
     )
     button1 = cantools.db.Signal(
-        name="button1_ready_to_drive",
+        name="b1_ready_to_drive",
         start=1,
         length=1,
         byte_order="little_endian",
         is_signed=False,
     )
     button2 = cantools.db.Signal(
-        name="button2",
+        name="b2_data_logging",
         start=2,
         length=1,
         byte_order="little_endian",
         is_signed=False,
     )
     button3 = cantools.db.Signal(
-        name="button3",
+        name="b3",
         start=3,
         length=1,
         byte_order="little_endian",
         is_signed=False,
     )
     button4 = cantools.db.Signal(
-        name="button4",
+        name="b4",
         start=4,
         length=1,
         byte_order="little_endian",
         is_signed=False,
     )
     switch1 = cantools.db.Signal(
-        name="coolant_pump_switch",
+        name="s1_coolant_pump",
         start=5,
         length=1,
         byte_order="little_endian",
         is_signed=False,
     )
     switch2 = cantools.db.Signal(
-        name="radiator_fan_switch",
+        name="s2_radiator_fan",
         start=6,
         length=1,
         byte_order="little_endian",
         is_signed=False,
     )
     switch3 = cantools.db.Signal(
-        name="accumulator_fan_switch",
+        name="s3_accumulator_fan",
         start=7,
         length=1,
         byte_order="little_endian",
@@ -63,10 +63,36 @@ def get_dash_buttons(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="Dash_Message",
+        name="dash_io",
         length=1,
         signals=[buzzer_state, button1, button2, button3, button4, switch1, switch2, switch3],
-        comment="Dash message",
+        comment="Dash button and switch message",
+        strict=True
+    )
+
+    return msg
+
+def get_tps_voltage_current(frame_id: int):    
+    dash_voltage_signal = cantools.db.Signal(
+        name="voltage",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+    )
+    
+    dash_current_signal = cantools.db.Signal(
+        name="current",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="dash_tps",
+        length=4,
+        signals=[dash_voltage_signal, dash_current_signal],
+        comment="Dash TPS Chip",
         strict=True
     )
 
@@ -140,7 +166,7 @@ def get_dash_heartbeat(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="dash_heartbeat_message",
+        name="dash_heartbeat",
         length=8,
         signals=[
             error0, error1, error2, error3, error4, error5, error6, error7,
