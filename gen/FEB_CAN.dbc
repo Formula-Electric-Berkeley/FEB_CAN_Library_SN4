@@ -133,7 +133,7 @@ BO_ 193 rms_param: 8 Vector__XXX
  SG_ read_write_command : 16|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ address : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 208 pcu_heartbeate: 8 Vector__XXX
+BO_ 208 pcu_heartbeat: 8 Vector__XXX
  SG_ error63 : 63|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error62 : 62|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error61 : 61|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -331,7 +331,11 @@ BO_ 210 lvpdb_heartbeat: 8 Vector__XXX
  SG_ error1 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error0 : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 211 front_sensor_heartbeat_message: 8 Vector__XXX
+BO_ 211 dcu_tps: 4 Vector__XXX
+ SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 212 front_sensor_heartbeat_message: 8 Vector__XXX
  SG_ error63 : 63|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error62 : 62|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error61 : 61|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -397,7 +401,7 @@ BO_ 211 front_sensor_heartbeat_message: 8 Vector__XXX
  SG_ error1 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error0 : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 212 rear_sensor_heartbeat_message: 8 Vector__XXX
+BO_ 213 rear_sensor_heartbeat_message: 8 Vector__XXX
  SG_ error63 : 63|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error62 : 62|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error61 : 61|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -499,8 +503,9 @@ CM_ BO_ 193 "RMS parameter message.";
 CM_ BO_ 208 "PCU heartbeat";
 CM_ BO_ 209 "Dash Heartbeat";
 CM_ BO_ 210 "LVPDB Heartbeat";
-CM_ BO_ 211 "Front Sensor Heartbeat";
-CM_ BO_ 212 "Rear Sensor Heartbeat";
+CM_ BO_ 211 "DCU TPS Chip";
+CM_ BO_ 212 "Front Sensor Heartbeat";
+CM_ BO_ 213 "Rear Sensor Heartbeat";
 CM_ BO_ 224 "PING PONG counter1.";
 CM_ BO_ 225 "PING PONG counter2.";
 CM_ BO_ 226 "PING PONG counter3.";

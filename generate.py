@@ -83,6 +83,7 @@ MESSAGE_GEN_LIST = [
     pcu_msg.get_pcu_heartbeat,
     dash_msg.get_dash_heartbeat, 
     lvpdb_msg.get_lvpdb_heartbeat,
+    dcu_msg.get_tps_voltage_current,
     sensor_msg.get_front_sensor_heartbeat,
     sensor_msg.get_rear_sensor_heartbeat,
 
@@ -120,7 +121,7 @@ MESSAGE_GEN_ID = [
     192, 193,
 
     #Heartbeats
-    208, 209, 210, 211, 212,
+    208, 209, 210, 211, 212, 213,
 
     #PING PONG
     224, 225, 226, 227

@@ -240,7 +240,7 @@ def get_pcu_heartbeat(frame_id: int):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="pcu_heartbeate",
+        name="pcu_heartbeat",
         length=8,
         signals=[
             error0, error1, error2, error3, error4, error5, error6, error7,
