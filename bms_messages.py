@@ -83,7 +83,7 @@ def get_bms_cell_data(frame_id: int):
         start=32,
         length=16,
         byte_order="little_endian",
-        is_signed=False,
+        is_signed=True,
     )
 
     bms_send_time = cantools.db.Signal(
@@ -155,7 +155,7 @@ def get_accumulator_temperature(frame_id: int):
         start=0,
         length=16,
         byte_order="little_endian",
-        is_signed=False,
+        is_signed=True,
     )
 
     min_cell_temperature = cantools.db.Signal(
@@ -163,7 +163,7 @@ def get_accumulator_temperature(frame_id: int):
         start=16,
         length=16,
         byte_order="little_endian",
-        is_signed=False,
+        is_signed=True,
     )
 
     max_cell_temperature = cantools.db.Signal(
@@ -171,7 +171,7 @@ def get_accumulator_temperature(frame_id: int):
         start=32,
         length=16,
         byte_order="little_endian",
-        is_signed=False,
+        is_signed=True,
     )
 
     send_time = cantools.db.Signal(

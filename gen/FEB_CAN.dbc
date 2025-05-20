@@ -44,7 +44,7 @@ BO_ 0 bms_state: 2 Vector__XXX
 
 BO_ 1 bms_cell_data: 8 Vector__XXX
  SG_ bms_send_time : 48|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ bms_temperature : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ bms_temperature : 32|16@1- (1,0) [0|0] "" Vector__XXX
  SG_ bms_voltage : 16|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bms_bank : 12|4@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bms_cell : 8|4@1+ (1,0) [0|0] "" Vector__XXX
@@ -58,9 +58,9 @@ BO_ 2 bms_accumulator_voltage: 8 Vector__XXX
 
 BO_ 3 bms_accumulator_temperature: 8 Vector__XXX
  SG_ send_time : 48|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ max_cell_temperature : 32|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ min_cell_temperature : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ average_pack_temperature : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ max_cell_temperature : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ min_cell_temperature : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ average_pack_temperature : 0|16@1- (1,0) [0|0] "" Vector__XXX
 
 BO_ 9 brake: 1 Vector__XXX
  SG_ brake_percent : 0|8@1+ (1,0) [0|0] "" Vector__XXX
