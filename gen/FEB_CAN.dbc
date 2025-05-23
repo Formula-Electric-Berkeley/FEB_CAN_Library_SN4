@@ -62,6 +62,10 @@ BO_ 3 bms_accumulator_temperature: 8 Vector__XXX
  SG_ min_cell_temperature : 16|16@1- (1,0) [0|0] "" Vector__XXX
  SG_ average_pack_temperature : 0|16@1- (1,0) [0|0] "" Vector__XXX
 
+BO_ 4 accumulator_faults: 4 Vector__XXX
+ SG_ imd_fault : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ bms_fault : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
 BO_ 9 brake: 1 Vector__XXX
  SG_ brake_percent : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
@@ -548,6 +552,7 @@ CM_ BO_ 0 "BMS message for BMS state.";
 CM_ BO_ 1 "BMS message for cell data.";
 CM_ BO_ 2 "BMS message for accumulator voltage.";
 CM_ BO_ 3 "BMS message for accumulator temperature.";
+CM_ BO_ 4 "Accumulator Faults";
 CM_ BO_ 9 "PCU normalized brake message";
 CM_ BO_ 10 "BSPD message.";
 CM_ BO_ 16 "Dash button and switch message";
