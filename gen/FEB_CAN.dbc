@@ -62,9 +62,9 @@ BO_ 3 bms_accumulator_temperature: 8 Vector__XXX
  SG_ min_cell_temperature : 16|16@1- (1,0) [0|0] "" Vector__XXX
  SG_ average_pack_temperature : 0|16@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 4 accumulator_faults: 4 Vector__XXX
- SG_ imd_fault : 8|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ bms_fault : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 4 accumulator_faults: 1 Vector__XXX
+ SG_ imd_fault : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ bms_fault : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 9 brake: 1 Vector__XXX
  SG_ brake_percent : 0|8@1+ (1,0) [0|0] "" Vector__XXX
