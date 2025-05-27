@@ -553,7 +553,7 @@ CM_ BO_ 1 "BMS message for cell data.";
 CM_ BO_ 2 "BMS message for accumulator voltage.";
 CM_ BO_ 3 "BMS message for accumulator temperature.";
 CM_ BO_ 4 "Accumulator Faults";
-CM_ BO_ 9 "PCU normalized brake message";
+CM_ BO_ 9 "PCU brake message";
 CM_ BO_ 10 "BSPD message.";
 CM_ BO_ 16 "Dash button and switch message";
 CM_ BO_ 22 "LVPDB message for flags, bus voltage, and LV current.";
