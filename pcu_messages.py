@@ -20,7 +20,7 @@ def normalized_brake(frame_id: int):
 
     brake2_psi = cantools.db.Signal(
         name="brake2_psi",
-        start=16,
+        start=24,
         length=16,
         byte_order="little_endian",
         is_signed=False
@@ -29,8 +29,8 @@ def normalized_brake(frame_id: int):
     msg = cantools.db.Message(
         frame_id=frame_id,
         name="brake",
-        length=1,
-        signals=[normalized_brake],
+        length=5,
+        signals=[normalized_brake, brake1_psi, brake2_psi],
         comment="PCU brake message",
         strict=True
     )
