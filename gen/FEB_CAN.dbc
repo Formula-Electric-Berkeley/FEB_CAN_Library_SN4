@@ -36,13 +36,16 @@ BS_:
 BU_: 
 
 
-BO_ 0 bms_state: 2 Vector__XXX
+BO_ 0 res_state: 2 Vector__XXX
+ SG_ res_state : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1 bms_state: 2 Vector__XXX
  SG_ gpio_sense : 11|5@1+ (1,0) [0|0] "" Vector__XXX
  SG_ relay_state : 8|3@1+ (1,0) [0|0] "" Vector__XXX
  SG_ ping_lv_nodes : 5|3@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bms_state : 0|5@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 1 bms_cell_data: 8 Vector__XXX
+BO_ 2 bms_cell_data: 8 Vector__XXX
  SG_ bms_send_time : 48|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bms_temperature : 32|16@1- (1,0) [0|0] "" Vector__XXX
  SG_ bms_voltage : 16|16@1+ (1,0) [0|0] "" Vector__XXX
@@ -50,19 +53,19 @@ BO_ 1 bms_cell_data: 8 Vector__XXX
  SG_ bms_cell : 8|4@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bms_flags : 0|4@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 2 bms_accumulator_voltage: 8 Vector__XXX
+BO_ 3 bms_accumulator_voltage: 8 Vector__XXX
  SG_ send_time : 48|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ max_cell_voltage : 32|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ min_cell_voltage : 16|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ total_pack_voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 3 bms_accumulator_temperature: 8 Vector__XXX
+BO_ 4 bms_accumulator_temperature: 8 Vector__XXX
  SG_ send_time : 48|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ max_cell_temperature : 32|16@1- (1,0) [0|0] "" Vector__XXX
  SG_ min_cell_temperature : 16|16@1- (1,0) [0|0] "" Vector__XXX
  SG_ average_pack_temperature : 0|16@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 4 accumulator_faults: 1 Vector__XXX
+BO_ 5 accumulator_faults: 1 Vector__XXX
  SG_ imd_fault : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bms_fault : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
@@ -550,11 +553,12 @@ BO_ 227 FEB_PING_PONG_counter4: 8 Vector__XXX
 
 
 
-CM_ BO_ 0 "BMS message for BMS state.";
-CM_ BO_ 1 "BMS message for cell data.";
-CM_ BO_ 2 "BMS message for accumulator voltage.";
-CM_ BO_ 3 "BMS message for accumulator temperature.";
-CM_ BO_ 4 "Accumulator Faults";
+CM_ BO_ 0 "RES message for RES state.";
+CM_ BO_ 1 "BMS message for BMS state.";
+CM_ BO_ 2 "BMS message for cell data.";
+CM_ BO_ 3 "BMS message for accumulator voltage.";
+CM_ BO_ 4 "BMS message for accumulator temperature.";
+CM_ BO_ 5 "Accumulator Faults";
 CM_ BO_ 9 "PCU brake message";
 CM_ BO_ 10 "BSPD message.";
 CM_ BO_ 16 "Dash button and switch message";
