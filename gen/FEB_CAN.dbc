@@ -116,9 +116,9 @@ BO_ 52 bbb_tps: 4 Vector__XXX
  SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 53 pcu_tps: 4 Vector__XXX
- SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 53 pcu_raw_acc: 4 Vector__XXX
+ SG_ acc1 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ acc0 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 54 dash_tps: 4 Vector__XXX
  SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
@@ -568,7 +568,7 @@ CM_ BO_ 24 "LVPDB message for autonomous systems.";
 CM_ BO_ 45 "DART message for Tachometer measurements first 4 fan speeds.";
 CM_ BO_ 46 "DART message for Tachometer measurements 5th fan speed.";
 CM_ BO_ 52 "BBB TPS Chip";
-CM_ BO_ 53 "PCU TPS Chip";
+CM_ BO_ 53 "PCU RAW ACC ADC";
 CM_ BO_ 54 "Dash TPS Chip";
 CM_ BO_ 55 "DCU TPS Chip";
 CM_ BO_ 192 "RMS command message.";
