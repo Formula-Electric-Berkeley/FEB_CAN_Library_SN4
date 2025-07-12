@@ -116,9 +116,9 @@ BO_ 52 bbb_tps: 4 Vector__XXX
  SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 53 pcu_raw_acc: 4 Vector__XXX
- SG_ acc1 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ acc0 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 53 pcu_tps: 4 Vector__XXX
+ SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 54 dash_tps: 4 Vector__XXX
  SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
@@ -550,6 +550,10 @@ BO_ 226 FEB_PING_PONG_counter3: 8 Vector__XXX
 BO_ 227 FEB_PING_PONG_counter4: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
+BO_ 255 pcu_raw_acc: 4 Vector__XXX
+ SG_ acc1 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ acc0 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
 
 
 
@@ -568,7 +572,7 @@ CM_ BO_ 24 "LVPDB message for autonomous systems.";
 CM_ BO_ 45 "DART message for Tachometer measurements first 4 fan speeds.";
 CM_ BO_ 46 "DART message for Tachometer measurements 5th fan speed.";
 CM_ BO_ 52 "BBB TPS Chip";
-CM_ BO_ 53 "PCU RAW ACC ADC";
+CM_ BO_ 53 "PCU TPS Chip";
 CM_ BO_ 54 "Dash TPS Chip";
 CM_ BO_ 55 "DCU TPS Chip";
 CM_ BO_ 192 "RMS command message.";
@@ -583,6 +587,7 @@ CM_ BO_ 224 "PING PONG counter1.";
 CM_ BO_ 225 "PING PONG counter2.";
 CM_ BO_ 226 "PING PONG counter3.";
 CM_ BO_ 227 "PING PONG counter4.";
+CM_ BO_ 255 "PCU RAW ACC ADC";
 BA_DEF_ BO_  "SystemMessageLongSymbol" STRING ;
 BA_DEF_DEF_  "SystemMessageLongSymbol" "";
 BA_ "SystemMessageLongSymbol" BO_ 22 "lvpdb_flags_bus_voltage_lv_current";

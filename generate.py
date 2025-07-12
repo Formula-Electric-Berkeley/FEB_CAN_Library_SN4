@@ -96,7 +96,10 @@ MESSAGE_GEN_LIST = [
     ping_pong_msg.get_ping_pong_counter1,
     ping_pong_msg.get_ping_pong_counter2,
     ping_pong_msg.get_ping_pong_counter3,
-    ping_pong_msg.get_ping_pong_counter4
+    ping_pong_msg.get_ping_pong_counter4,
+
+    #0xff
+    pcu_msg.get_raw_acc,
 ]
 
 # List of priority assignments for each CAN message above
@@ -132,7 +135,10 @@ MESSAGE_GEN_ID = [
     208, 209, 210, 211, 212, 213,
 
     #PING PONG
-    224, 225, 226, 227
+    224, 225, 226, 227,
+
+    #RAW ACC
+    255,
 ]
 
 def main():

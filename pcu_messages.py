@@ -188,7 +188,7 @@ def get_tps_voltage_current(frame_id: int):
 
     return msg
 
-def get_tps_voltage_current(frame_id: int):    
+def get_raw_acc(frame_id: int):    
     pcu_acc0_signal = cantools.db.Signal(
         name="acc0",
         start=0,
