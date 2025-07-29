@@ -20,9 +20,9 @@ import res_messages as res_msg
 # List of functions, used to generate CAN messages.
 MESSAGE_GEN_LIST = [
     #0x0
-    res_msg.get_res_state,
+    #res_msg.get_res_state,
 
-    #0x1-0x5
+    #0x0-0x4
     bms_msg.get_bms_state,
     bms_msg.get_bms_cell_data,
     bms_msg.get_accumulator_voltage, 
@@ -105,10 +105,10 @@ MESSAGE_GEN_LIST = [
 # List of priority assignments for each CAN message above
 MESSAGE_GEN_ID = [
     #RES
-    0,
+    #0,
 
     #BMS
-    1, 2, 3, 4, 5,
+    0, 1, 2, 3, 4,
 
     #PCU break and BSDPD
     9, 10,
