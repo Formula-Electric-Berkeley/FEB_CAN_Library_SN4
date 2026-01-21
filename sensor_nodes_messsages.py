@@ -37,33 +37,33 @@ def get_steering_data(frame_id: int):
     return msg
 
 def get_rear_left_tire_temp_data(frame_id: int):
-    
+
     leftmost_temp = cantools.db.Signal(
         name="leftmost_temp_RL",
         start=0,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     center_left_temp = cantools.db.Signal(
         name="center_left_temp_RL",
         start=16,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     center_right_temp = cantools.db.Signal(
         name="center_right_temp_RL",
         start=32,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     rightmost_temp = cantools.db.Signal(
         name="rightmost_temp_RL",
         start=48,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     
@@ -79,33 +79,33 @@ def get_rear_left_tire_temp_data(frame_id: int):
     return msg
 
 def get_rear_right_tire_temp_data(frame_id: int):
-    
+
     leftmost_temp = cantools.db.Signal(
         name="leftmost_temp_RR",
         start=0,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     center_left_temp = cantools.db.Signal(
         name="center_left_temp_RR",
         start=16,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     center_right_temp = cantools.db.Signal(
         name="center_right_temp_RR",
         start=32,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     rightmost_temp = cantools.db.Signal(
         name="rightmost_temp_RR",
         start=48,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     
@@ -121,33 +121,33 @@ def get_rear_right_tire_temp_data(frame_id: int):
     return msg
 
 def get_front_left_tire_temp_data(frame_id: int):
-    
+
     leftmost_temp = cantools.db.Signal(
         name="leftmost_temp_FL",
         start=0,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     center_left_temp = cantools.db.Signal(
         name="center_left_temp_FL",
         start=16,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     center_right_temp = cantools.db.Signal(
         name="center_right_temp_FL",
         start=32,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     rightmost_temp = cantools.db.Signal(
         name="rightmost_temp_FL",
         start=48,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     
@@ -163,33 +163,33 @@ def get_front_left_tire_temp_data(frame_id: int):
     return msg
 
 def get_front_right_tire_temp_data(frame_id: int):
-    
+
     leftmost_temp = cantools.db.Signal(
         name="leftmost_temp_FR",
         start=0,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     center_left_temp = cantools.db.Signal(
         name="center_left_temp_FR",
         start=16,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     center_right_temp = cantools.db.Signal(
         name="center_right_temp_FR",
         start=32,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     rightmost_temp = cantools.db.Signal(
         name="rightmost_temp_FR",
         start=48,
         length=16,
-        byte_order="big_endian",
+        byte_order="little_endian",
         is_signed=False,
     )
     
@@ -206,27 +206,27 @@ def get_front_right_tire_temp_data(frame_id: int):
 
 def get_imu_data(frame_id: int):
     accelX = cantools.db.Signal(
-        name="acceleration x",
+        name="acceleration_x",
         start=0,
         length=16,
-        byte_order="big_endian",
-        is_signed=False,
+        byte_order="little_endian",
+        is_signed=True,
     )
     accelY = cantools.db.Signal(
-        name="acceleration y",
+        name="acceleration_y",
         start=16,
-        length=32,
-        byte_order="big_endian",
-        is_signed=False,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
     )
     accelZ = cantools.db.Signal(
-        name="acceleration z",
+        name="acceleration_z",
         start=32,
         length=16,
-        byte_order="big_endian",
-        is_signed=False,
+        byte_order="little_endian",
+        is_signed=True,
     )
-    
+
     msg = cantools.db.Message(
         frame_id=frame_id,
         name="FEB_imu_data",
@@ -238,74 +238,74 @@ def get_imu_data(frame_id: int):
     return msg
 
 def get_wss_data_front(frame_id: int):
-    wss_right_front = cantools.db.Message(
-        name = "wss_right_front",
-        start = 0,
-        length = 8,
-        byte_order="big_endian",
-        is_signed = False,
+    wss_right_front = cantools.db.Signal(
+        name="wss_right_front",
+        start=0,
+        length=8,
+        byte_order="little_endian",
+        is_signed=False,
     )
-    wss_left_front = cantools.db.Message(
-        name = "wss_left_front",
-        start = 8,
-        length = 8,
-        byte_order="big_endian",
-        is_signed = False,
+    wss_left_front = cantools.db.Signal(
+        name="wss_left_front",
+        start=8,
+        length=8,
+        byte_order="little_endian",
+        is_signed=False,
     )
     msg = cantools.db.Message(
-        frame_id = frame_id,
-        name = "get_wss_front_data",
-        length = 2,
-        signals = [wss_right_front, wss_left_front],
-        comment = "wheel speed sensor data for left and right front wheels.",
-        strict = True
+        frame_id=frame_id,
+        name="wss_front_data",
+        length=2,
+        signals=[wss_right_front, wss_left_front],
+        comment="Wheel speed sensor data for left and right front wheels.",
+        strict=True
     )
-    
+
     return msg
-    
+
 def get_wss_data_rear(frame_id: int):
-    wss_right_rear = cantools.db.Message(
-        name = "wss_right_rear",
-        start = 0,
-        length = 8,
-        byte_order="big_endian",
-        is_signed = False,
+    wss_right_rear = cantools.db.Signal(
+        name="wss_right_rear",
+        start=0,
+        length=8,
+        byte_order="little_endian",
+        is_signed=False,
     )
-    wss_left_rear = cantools.db.Message(
-        name = "wss_left_rear",
-        start = 8,
-        length = 8,
-        byte_order="big_endian",
-        is_signed = False,
+    wss_left_rear = cantools.db.Signal(
+        name="wss_left_rear",
+        start=8,
+        length=8,
+        byte_order="little_endian",
+        is_signed=False,
     )
     msg = cantools.db.Message(
-        frame_id = frame_id,
-        name = "get_wss_data_rear",
-        length = 2,
-        signals = [wss_right_rear, wss_left_rear],
-        comment = "wheel speed sensor data for left and right rear wheels.",
-        strict = True
+        frame_id=frame_id,
+        name="wss_rear_data",
+        length=2,
+        signals=[wss_right_rear, wss_left_rear],
+        comment="Wheel speed sensor data for left and right rear wheels.",
+        strict=True
     )
-    
+
     return msg
 
 def get_LinPot_Front(frame_id: int):
     lin_pot_1 = cantools.db.Signal(
-        name="linear_potrentiometer_1_front",
+        name="linear_potentiometer_1_front",
         start=0,
-        length=16, 
-        byte_order="big_endian",
+        length=16,
+        byte_order="little_endian",
         is_signed=False,
-     )
-    
+    )
+
     lin_pot_2 = cantools.db.Signal(
-        name="linear_potrentiometer_2_front",
+        name="linear_potentiometer_2_front",
         start=16,
-        length=16, 
-        byte_order="big_endian",
+        length=16,
+        byte_order="little_endian",
         is_signed=False,
-     )
-    
+    )
+
     msg = cantools.db.Message(
         frame_id=frame_id,
         name="linear_potentiometer_front",
@@ -313,62 +313,62 @@ def get_LinPot_Front(frame_id: int):
         signals=[lin_pot_1, lin_pot_2],
         comment="Linear Potentiometer Front.",
         strict=True
-     )
- 
+    )
+
     return msg
 
 def get_LinPot_Rear(frame_id: int):
-     lin_pot_1 = cantools.db.Signal(
-        name="linear_potrentiometer_1_rear",
+    lin_pot_1 = cantools.db.Signal(
+        name="linear_potentiometer_1_rear",
         start=0,
-        length=16, 
-        byte_order="big_endian",
+        length=16,
+        byte_order="little_endian",
         is_signed=False,
-     )
+    )
 
-     lin_pot_2 = cantools.db.Signal(
-        name="linear_potrentiometer_2_rear",
+    lin_pot_2 = cantools.db.Signal(
+        name="linear_potentiometer_2_rear",
         start=16,
-        length=16, 
-        byte_order="big_endian",
+        length=16,
+        byte_order="little_endian",
         is_signed=False,
-     )
+    )
 
-     msg = cantools.db.Message(
+    msg = cantools.db.Message(
         frame_id=frame_id,
         name="linear_potentiometer_rear",
         length=4,
         signals=[lin_pot_1, lin_pot_2],
         comment="Linear Potentiometer Rear.",
         strict=True
-     )
- 
-     return msg
+    )
+
+    return msg
 
 def get_CoolantPressure(frame_id: int):
     coolant_pressure_1 = cantools.db.Signal(
         name="coolant_pressure_1",
         start=0,
-        length=16, 
-        byte_order="big_endian",
+        length=16,
+        byte_order="little_endian",
         is_signed=False,
-     )
+    )
     coolant_pressure_2 = cantools.db.Signal(
         name="coolant_pressure_2",
         start=16,
-        length=16, 
-        byte_order="big_endian",
+        length=16,
+        byte_order="little_endian",
         is_signed=False,
-     )
+    )
 
     msg = cantools.db.Message(
-            frame_id=frame_id,
-            name="coolant_pressure",
-            length=4,
-            signals=[coolant_pressure_1, coolant_pressure_2],
-            comment="Coolant Pressure",
-            strict=True
-         )
+        frame_id=frame_id,
+        name="coolant_pressure",
+        length=4,
+        signals=[coolant_pressure_1, coolant_pressure_2],
+        comment="Coolant Pressure",
+        strict=True
+    )
     return msg
 
 def get_front_sensor_heartbeat(frame_id: int):

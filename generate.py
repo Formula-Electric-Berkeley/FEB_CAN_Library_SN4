@@ -48,20 +48,20 @@ MESSAGE_GEN_LIST = [
 
     #Leaving 5 IDs for space
 
-    #0x1E - 0x27
-    #finalize sensor node here
-    # 4 tire - E
-    # 2 linear - F
-    # 2 strain - 20
-    # 1 coolant PRES
-    # 1 ther
-    # 1 coolant read
-    # 1 imu
-    # 1 gps 
-    # 1 steerring
-    # 2 wheel speed - 27
+    #0x1E - 0x28 Sensor Nodes
+    sensor_msg.get_steering_data,
+    sensor_msg.get_rear_left_tire_temp_data,
+    sensor_msg.get_rear_right_tire_temp_data,
+    sensor_msg.get_front_left_tire_temp_data,
+    sensor_msg.get_front_right_tire_temp_data,
+    sensor_msg.get_imu_data,
+    sensor_msg.get_wss_data_front,
+    sensor_msg.get_wss_data_rear,
+    sensor_msg.get_LinPot_Front,
+    sensor_msg.get_LinPot_Rear,
+    sensor_msg.get_CoolantPressure,
 
-    #Leaving 5 IDs for space
+    #Leaving 4 IDs for space
 
     #0x2D - 0x2E
     dart_msg.get_measured_fan_speeds_1234,
@@ -100,12 +100,15 @@ MESSAGE_GEN_LIST = [
 
     #0xff
     pcu_msg.get_raw_acc,
+
+    #0x500
+    pcu_msg.get_ebs_pressure_status,
 ]
 
 # List of priority assignments for each CAN message above
 MESSAGE_GEN_ID = [
-    #RES
-    0,
+    #RES (moved from 0 to avoid CANopen NMT conflict)
+    11,
 
     #BMS
     1, 2, 3, 4, 5,
@@ -114,19 +117,19 @@ MESSAGE_GEN_ID = [
     9, 10,
 
     #DASH
-    16, 
+    16,
 
     #LVPDB TPS
-    22, 23, 24, 
+    22, 23, 24,
 
-    #Sensor Node
-    # 30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
+    #Sensor Nodes (0x1E - 0x28)
+    30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
 
     #DART
     45, 46,
 
     #TPS Chips (Excluding LVPDB)
-    52, 53, 54, 55, #56, 57,
+    52, 53, 54, 55,
 
     #PCU RMS (Inverter) Parameter and Command
     192, 193,
@@ -137,8 +140,11 @@ MESSAGE_GEN_ID = [
     #PING PONG
     224, 225, 226, 227,
 
-    #RAW ACC
-    255,
+    #RAW ACC (moved from 255 to avoid CANopen Emergency conflict)
+    56,
+
+    #EBS Pressure Status (0x500)
+    1280,
 ]
 
 def main():

@@ -214,6 +214,51 @@ def get_raw_acc(frame_id: int):
 
     return msg
 
+def get_ebs_pressure_status(frame_id: int):
+    # Scale factor: 1/16 (0.0625), Unit: bar
+    ebs_pressure_1 = cantools.db.Signal(
+        name="ebs_pressure_1",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    ebs_pressure_2 = cantools.db.Signal(
+        name="ebs_pressure_2",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    ebs_pressure_3 = cantools.db.Signal(
+        name="ebs_pressure_3",
+        start=32,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    ebs_pressure_4 = cantools.db.Signal(
+        name="ebs_pressure_4",
+        start=48,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="ebs_pressure_status",
+        length=8,
+        signals=[ebs_pressure_1, ebs_pressure_2, ebs_pressure_3, ebs_pressure_4],
+        comment="EBS Pressure Status - 4 pressure sensors (scale: 1/16, unit: bar)",
+        strict=True
+    )
+
+    return msg
+
 def get_pcu_heartbeat(frame_id: int):
     error0 = cantools.db.Signal(name="error0", start=0, length=1, byte_order="little_endian", is_signed=False)
     error1 = cantools.db.Signal(name="error1", start=1, length=1, byte_order="little_endian", is_signed=False)
