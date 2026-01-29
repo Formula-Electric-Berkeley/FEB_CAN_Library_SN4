@@ -99,6 +99,8 @@ check() {
     strip_timestamp "$TEMP_DIR/feb_can.c.orig"
 
     log_info "Generating fresh files for comparison..."
+    log_info "Using cantools version: $(python -c 'import cantools; print(cantools.__version__)')"
+    log_info "Python version: $(python --version)"
     python generate.py
 
     python -m cantools generate_c_source -o "$TEMP_DIR" gen/FEB_CAN.dbc
@@ -117,6 +119,9 @@ check() {
 
     if ! diff -q "$TEMP_DIR/FEB_CAN.dbc" "$TEMP_DIR/FEB_CAN.dbc.orig" > /dev/null 2>&1; then
         log_error "gen/FEB_CAN.dbc differs from committed version"
+        echo "--- Diff output ---"
+        diff "$TEMP_DIR/FEB_CAN.dbc.orig" "$TEMP_DIR/FEB_CAN.dbc" | head -50 || true
+        echo "-------------------"
         DIFF_FOUND=true
     else
         echo "  gen/FEB_CAN.dbc: OK"
@@ -124,7 +129,9 @@ check() {
 
     if ! diff -q "$TEMP_DIR/feb_can.h" "$TEMP_DIR/feb_can.h.orig" > /dev/null 2>&1; then
         log_error "gen/feb_can.h differs from committed version"
-        diff "$TEMP_DIR/feb_can.h.orig" "$TEMP_DIR/feb_can.h" || true
+        echo "--- Diff output ---"
+        diff "$TEMP_DIR/feb_can.h.orig" "$TEMP_DIR/feb_can.h" | head -50 || true
+        echo "-------------------"
         DIFF_FOUND=true
     else
         echo "  gen/feb_can.h: OK"
@@ -132,6 +139,9 @@ check() {
 
     if ! diff -q "$TEMP_DIR/feb_can.c" "$TEMP_DIR/feb_can.c.orig" > /dev/null 2>&1; then
         log_error "gen/feb_can.c differs from committed version"
+        echo "--- Diff output ---"
+        diff "$TEMP_DIR/feb_can.c.orig" "$TEMP_DIR/feb_can.c" | head -50 || true
+        echo "-------------------"
         DIFF_FOUND=true
     else
         echo "  gen/feb_can.c: OK"
