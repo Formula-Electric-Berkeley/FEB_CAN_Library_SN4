@@ -17,16 +17,16 @@ import sys
 from typing import Callable, Dict, Tuple
 
 # CAN message modules
-import bms_messages as bms_msg
-import pcu_messages as pcu_msg
-import dash_messages as dash_msg
-import lvpdb_messages as lvpdb_msg
-import dcu_message as dcu_msg
-import sensor_nodes_messsages as sensor_msg
-import dart_messages as dart_msg
-import iv_meter_messages as iv_meter_msg
-import ping_pong_messages as ping_pong_msg
-import res_messages as res_msg
+from msg_defs import bms_messages as bms_msg
+from msg_defs import pcu_messages as pcu_msg
+from msg_defs import dash_messages as dash_msg
+from msg_defs import lvpdb_messages as lvpdb_msg
+from msg_defs import dcu_message as dcu_msg
+from msg_defs import sensor_nodes_messsages as sensor_msg
+from msg_defs import dart_messages as dart_msg
+from msg_defs import iv_meter_messages as iv_meter_msg
+from msg_defs import ping_pong_messages as ping_pong_msg
+from msg_defs import res_messages as res_msg
 
 # =============================================================================
 # MESSAGE REGISTRY
