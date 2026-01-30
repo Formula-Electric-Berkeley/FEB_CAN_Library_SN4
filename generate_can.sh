@@ -3,8 +3,13 @@
 # CAN Library Generation Script
 #
 # Usage:
-#   ./generate_can.sh          # Generate CAN library files
-#   ./generate_can.sh --check  # Check if files are up to date (for CI)
+#   ./generate_can.sh                  # Generate CAN library files
+#   ./generate_can.sh --check          # Check if files are up to date (for CI)
+#   ./generate_can.sh --list   | -l    # List all registered messages
+#   ./generate_can.sh --ids    | -i    # Show frame ID allocation map
+#   ./generate_can.sh --validate | -v  # Validate message definitions
+#   ./generate_can.sh --dump   | -d    # Visualize the DBC file
+#   ./generate_can.sh --help   | -h    # Show this help
 #
 set -e
 
@@ -17,6 +22,7 @@ GEN_DIR="$SCRIPT_DIR/gen"
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 log_info() {
@@ -29,6 +35,10 @@ log_warn() {
 
 log_error() {
     echo -e "${RED}[ERROR]${NC} $1"
+}
+
+log_header() {
+    echo -e "\n${BLUE}=== $1 ===${NC}\n"
 }
 
 # Set up virtual environment and install cantools
@@ -168,15 +178,99 @@ check() {
     fi
 }
 
+# List all registered messages
+cmd_list() {
+    cd "$SCRIPT_DIR"
+    log_header "Registered CAN Messages"
+    python generate.py --list
+}
+
+# Show frame ID allocation
+cmd_ids() {
+    cd "$SCRIPT_DIR"
+    log_header "Frame ID Allocation"
+    python generate.py --ids
+}
+
+# Validate message definitions
+cmd_validate() {
+    cd "$SCRIPT_DIR"
+    log_header "Validating Message Registry"
+    if python generate.py --validate; then
+        log_info "All validations passed!"
+    else
+        log_error "Validation failed!"
+        exit 1
+    fi
+}
+
+# Dump/visualize DBC file
+cmd_dump() {
+    cd "$SCRIPT_DIR"
+    log_header "DBC File Contents"
+    if [ -f "$GEN_DIR/FEB_CAN.dbc" ]; then
+        python -m cantools dump "$GEN_DIR/FEB_CAN.dbc"
+    else
+        log_error "DBC file not found. Run './generate_can.sh' first."
+        exit 1
+    fi
+}
+
+# Show help
+cmd_help() {
+    echo "FEB CAN Library Generator"
+    echo ""
+    echo "Usage: ./generate_can.sh [option]"
+    echo ""
+    echo "Options:"
+    echo "  (none)              Generate CAN library files (default)"
+    echo "  -c, --check         Check if files are up to date (for CI)"
+    echo "  -l, --list          List all registered messages with IDs"
+    echo "  -i, --ids           Show frame ID allocation map"
+    echo "  -v, --validate      Validate message definitions only"
+    echo "  -d, --dump          Visualize the generated DBC file"
+    echo "  -h, --help          Show this help message"
+    echo ""
+    echo "Examples:"
+    echo "  ./generate_can.sh              # Regenerate all files"
+    echo "  ./generate_can.sh --list       # See what messages exist"
+    echo "  ./generate_can.sh --ids        # Check available ID ranges"
+    echo "  ./generate_can.sh --check      # CI mode: verify files are current"
+}
+
 # Main
 main() {
     setup_env
 
-    if [ "$1" = "--check" ]; then
-        check
-    else
-        generate
-    fi
+    case "${1:-}" in
+        -c|--check)
+            check
+            ;;
+        -l|--list)
+            cmd_list
+            ;;
+        -i|--ids)
+            cmd_ids
+            ;;
+        -v|--validate)
+            cmd_validate
+            ;;
+        -d|--dump)
+            cmd_dump
+            ;;
+        -h|--help)
+            cmd_help
+            ;;
+        "")
+            generate
+            ;;
+        *)
+            log_error "Unknown option: $1"
+            echo ""
+            cmd_help
+            exit 1
+            ;;
+    esac
 }
 
 main "$@"
