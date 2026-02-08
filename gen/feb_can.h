@@ -22,9 +22,9 @@ extern "C" {
 #define FEB_CAN_BRAKE_FRAME_ID (0x09u)
 #define FEB_CAN_BSPD_STATE_FRAME_ID (0x0au)
 #define FEB_CAN_DASH_IO_FRAME_ID (0x10u)
-#define FEB_CAN_LVPDB_FLAGS_BUS_VOLTAGE_LV_CURRENT_FRAME_ID (0x16u)
-#define FEB_CAN_LVPDB_COOLANT_FANS_SHUTDOWN_FRAME_ID (0x17u)
-#define FEB_CAN_LVPDB_AUTONOMOUS_FRAME_ID (0x18u)
+#define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_FRAME_ID (0x16u)
+#define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_FRAME_ID (0x17u)
+#define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_FRAME_ID (0x18u)
 #define FEB_CAN_LINEAR_POTENTIOMETER_FRONT_FRAME_ID (0x1eu)
 #define FEB_CAN_LINEAR_POTENTIOMETER_REAR_FRAME_ID (0x1fu)
 #define FEB_CAN_FRONT_LEFT_TIRE_TEMP_FRAME_ID (0x20u)
@@ -62,9 +62,9 @@ extern "C" {
 #define FEB_CAN_BRAKE_LENGTH (5u)
 #define FEB_CAN_BSPD_STATE_LENGTH (1u)
 #define FEB_CAN_DASH_IO_LENGTH (1u)
-#define FEB_CAN_LVPDB_FLAGS_BUS_VOLTAGE_LV_CURRENT_LENGTH (8u)
-#define FEB_CAN_LVPDB_COOLANT_FANS_SHUTDOWN_LENGTH (8u)
-#define FEB_CAN_LVPDB_AUTONOMOUS_LENGTH (8u)
+#define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_LENGTH (4u)
+#define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_LENGTH (8u)
+#define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_LENGTH (8u)
 #define FEB_CAN_LINEAR_POTENTIOMETER_FRONT_LENGTH (4u)
 #define FEB_CAN_LINEAR_POTENTIOMETER_REAR_LENGTH (4u)
 #define FEB_CAN_FRONT_LEFT_TIRE_TEMP_LENGTH (8u)
@@ -102,9 +102,9 @@ extern "C" {
 #define FEB_CAN_BRAKE_IS_EXTENDED (0)
 #define FEB_CAN_BSPD_STATE_IS_EXTENDED (0)
 #define FEB_CAN_DASH_IO_IS_EXTENDED (0)
-#define FEB_CAN_LVPDB_FLAGS_BUS_VOLTAGE_LV_CURRENT_IS_EXTENDED (0)
-#define FEB_CAN_LVPDB_COOLANT_FANS_SHUTDOWN_IS_EXTENDED (0)
-#define FEB_CAN_LVPDB_AUTONOMOUS_IS_EXTENDED (0)
+#define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_IS_EXTENDED (0)
+#define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_IS_EXTENDED (0)
+#define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_IS_EXTENDED (0)
 #define FEB_CAN_LINEAR_POTENTIOMETER_FRONT_IS_EXTENDED (0)
 #define FEB_CAN_LINEAR_POTENTIOMETER_REAR_IS_EXTENDED (0)
 #define FEB_CAN_FRONT_LEFT_TIRE_TEMP_IS_EXTENDED (0)
@@ -148,9 +148,9 @@ extern "C" {
 #define FEB_CAN_BRAKE_NAME "brake"
 #define FEB_CAN_BSPD_STATE_NAME "bspd_state"
 #define FEB_CAN_DASH_IO_NAME "dash_io"
-#define FEB_CAN_LVPDB_FLAGS_BUS_VOLTAGE_LV_CURRENT_NAME "lvpdb_flags_bus_voltage_lv_current"
-#define FEB_CAN_LVPDB_COOLANT_FANS_SHUTDOWN_NAME "lvpdb_coolant_fans_shutdown"
-#define FEB_CAN_LVPDB_AUTONOMOUS_NAME "lvpdb_autonomous"
+#define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_NAME "lvpdb_lv_24v_bus_and_12v_bus_voltages"
+#define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_NAME "lvpdb_lv_sh_lt_bm_l_currents"
+#define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_NAME "lvpdb_sm_af1_af2_cp_rf_currents"
 #define FEB_CAN_LINEAR_POTENTIOMETER_FRONT_NAME "linear_potentiometer_front"
 #define FEB_CAN_LINEAR_POTENTIOMETER_REAR_NAME "linear_potentiometer_rear"
 #define FEB_CAN_FRONT_LEFT_TIRE_TEMP_NAME "front_left_tire_temp"
@@ -212,16 +212,15 @@ extern "C" {
 #define FEB_CAN_DASH_IO_S1_COOLANT_PUMP_NAME "s1_coolant_pump"
 #define FEB_CAN_DASH_IO_S2_RADIATOR_FAN_NAME "s2_radiator_fan"
 #define FEB_CAN_DASH_IO_S3_ACCUMULATOR_FAN_NAME "s3_accumulator_fan"
-#define FEB_CAN_LVPDB_FLAGS_BUS_VOLTAGE_LV_CURRENT_FLAGS_NAME "flags"
-#define FEB_CAN_LVPDB_FLAGS_BUS_VOLTAGE_LV_CURRENT_BUS_VOLTAGE_NAME "bus_voltage"
-#define FEB_CAN_LVPDB_FLAGS_BUS_VOLTAGE_LV_CURRENT_LV_CURRENT_NAME "lv_current"
-#define FEB_CAN_LVPDB_COOLANT_FANS_SHUTDOWN_COOLANT_PUMP_CURRENT_NAME "coolant_pump_current"
-#define FEB_CAN_LVPDB_COOLANT_FANS_SHUTDOWN_ACCUMULATOR_FANS_CURRENT_NAME "accumulator_fans_current"
-#define FEB_CAN_LVPDB_COOLANT_FANS_SHUTDOWN_RADIATOR_FANS_CURRENT_NAME "radiator_fans_current"
-#define FEB_CAN_LVPDB_COOLANT_FANS_SHUTDOWN_SHUTDOWN_VOLTAGE_NAME "shutdown_voltage"
-#define FEB_CAN_LVPDB_AUTONOMOUS_LIDAR_CURRENT_NAME "lidar_current"
-#define FEB_CAN_LVPDB_AUTONOMOUS_AUTO_STEERING_VOLTAGE_NAME "auto_steering_voltage"
-#define FEB_CAN_LVPDB_AUTONOMOUS_AUTO_BREAKING_VOLTAGE_NAME "auto_breaking_voltage"
+#define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_LV_24V_VOLTAGE_NAME "lv_24v_voltage"
+#define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_LV_12V_VOLTAGE_NAME "lv_12v_voltage"
+#define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_LV_CURRENT_NAME "lv_current"
+#define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_SH_CURRENT_NAME "sh_current"
+#define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_LT_CURRENT_NAME "lt_current"
+#define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_BM_L_CURRENT_NAME "bm_l_current"
+#define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_SM_CURRENT_NAME "sm_current"
+#define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_AF1_AF2_CURRENT_NAME "af1_af2_current"
+#define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_CP_RF_CURRENT_NAME "cp_rf_current"
 #define FEB_CAN_LINEAR_POTENTIOMETER_FRONT_LINEAR_POTRENTIOMETER_1_FRONT_NAME "linear_potrentiometer_1_front"
 #define FEB_CAN_LINEAR_POTENTIOMETER_FRONT_LINEAR_POTRENTIOMETER_2_FRONT_NAME "linear_potrentiometer_2_front"
 #define FEB_CAN_LINEAR_POTENTIOMETER_REAR_LINEAR_POTRENTIOMETER_1_REAR_NAME "linear_potrentiometer_1_rear"
@@ -957,100 +956,93 @@ struct feb_can_dash_io_t {
 };
 
 /**
- * Signals in message lvpdb_flags_bus_voltage_lv_current.
+ * Signals in message lvpdb_lv_24v_bus_and_12v_bus_voltages.
  *
- * LVPDB message for flags, bus voltage, and LV current.
+ * LVPDB message for voltages of 24v bus and 12v bus
  *
  * All signal values are as on the CAN bus.
  */
-struct feb_can_lvpdb_flags_bus_voltage_lv_current_t {
+struct feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_t {
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint32_t flags;
+    uint16_t lv_24v_voltage;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint16_t bus_voltage;
+    uint16_t lv_12v_voltage;
+};
 
+/**
+ * Signals in message lvpdb_lv_sh_lt_bm_l_currents.
+ *
+ * LVPDB message for currents of LV, SH, LT, BM_L
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_lvpdb_lv_sh_lt_bm_l_currents_t {
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
     uint16_t lv_current;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t sh_current;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t lt_current;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t bm_l_current;
 };
 
 /**
- * Signals in message lvpdb_coolant_fans_shutdown.
+ * Signals in message lvpdb_sm_af1_af2_cp_rf_currents.
  *
- * LVPDB message for Coolant Pump, Accumulator Fans, Radiator Fans, Shutdown.
- *
- * All signal values are as on the CAN bus.
- */
-struct feb_can_lvpdb_coolant_fans_shutdown_t {
-    /**
-     * Range: -
-     * Scale: 1
-     * Offset: 0
-     */
-    uint16_t coolant_pump_current;
-
-    /**
-     * Range: -
-     * Scale: 1
-     * Offset: 0
-     */
-    uint16_t accumulator_fans_current;
-
-    /**
-     * Range: -
-     * Scale: 1
-     * Offset: 0
-     */
-    uint16_t radiator_fans_current;
-
-    /**
-     * Range: -
-     * Scale: 1
-     * Offset: 0
-     */
-    uint16_t shutdown_voltage;
-};
-
-/**
- * Signals in message lvpdb_autonomous.
- *
- * LVPDB message for autonomous systems.
+ * LVPDB message for currents of SM, AF1_AF2, CP_RF
  *
  * All signal values are as on the CAN bus.
  */
-struct feb_can_lvpdb_autonomous_t {
+struct feb_can_lvpdb_sm_af1_af2_cp_rf_currents_t {
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint16_t lidar_current;
+    uint16_t sm_current;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint16_t auto_steering_voltage;
+    uint16_t af1_af2_current;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint16_t auto_breaking_voltage;
+    uint16_t cp_rf_current;
 };
 
 /**
@@ -5516,7 +5508,7 @@ double feb_can_dash_io_s3_accumulator_fan_decode(uint8_t value);
 bool feb_can_dash_io_s3_accumulator_fan_is_in_range(uint8_t value);
 
 /**
- * Pack message lvpdb_flags_bus_voltage_lv_current.
+ * Pack message lvpdb_lv_24v_bus_and_12v_bus_voltages.
  *
  * @param[out] dst_p Buffer to pack the message into.
  * @param[in] src_p Data to pack.
@@ -5524,13 +5516,13 @@ bool feb_can_dash_io_s3_accumulator_fan_is_in_range(uint8_t value);
  *
  * @return Size of packed data, or negative error code.
  */
-int feb_can_lvpdb_flags_bus_voltage_lv_current_pack(
+int feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_pack(
     uint8_t *dst_p,
-    const struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *src_p,
+    const struct feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_t *src_p,
     size_t size);
 
 /**
- * Unpack message lvpdb_flags_bus_voltage_lv_current.
+ * Unpack message lvpdb_lv_24v_bus_and_12v_bus_voltages.
  *
  * @param[out] dst_p Object to unpack the message into.
  * @param[in] src_p Message to unpack.
@@ -5538,19 +5530,19 @@ int feb_can_lvpdb_flags_bus_voltage_lv_current_pack(
  *
  * @return zero(0) or negative error code.
  */
-int feb_can_lvpdb_flags_bus_voltage_lv_current_unpack(
-    struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *dst_p,
+int feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_unpack(
+    struct feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
- * Init message fields to default values from lvpdb_flags_bus_voltage_lv_current.
+ * Init message fields to default values from lvpdb_lv_24v_bus_and_12v_bus_voltages.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int feb_can_lvpdb_flags_bus_voltage_lv_current_init(struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *msg_p);
+int feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_init(struct feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_t *msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5559,7 +5551,7 @@ int feb_can_lvpdb_flags_bus_voltage_lv_current_init(struct feb_can_lvpdb_flags_b
  *
  * @return Encoded signal.
  */
-uint32_t feb_can_lvpdb_flags_bus_voltage_lv_current_flags_encode(double value);
+uint16_t feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_lv_24v_voltage_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5568,7 +5560,7 @@ uint32_t feb_can_lvpdb_flags_bus_voltage_lv_current_flags_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_flags_bus_voltage_lv_current_flags_decode(uint32_t value);
+double feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_lv_24v_voltage_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5577,7 +5569,7 @@ double feb_can_lvpdb_flags_bus_voltage_lv_current_flags_decode(uint32_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_flags_bus_voltage_lv_current_flags_is_in_range(uint32_t value);
+bool feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_lv_24v_voltage_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5586,7 +5578,7 @@ bool feb_can_lvpdb_flags_bus_voltage_lv_current_flags_is_in_range(uint32_t value
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_encode(double value);
+uint16_t feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_lv_12v_voltage_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5595,7 +5587,7 @@ uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_encode(double va
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_decode(uint16_t value);
+double feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_lv_12v_voltage_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5604,37 +5596,10 @@ double feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_decode(uint16_t va
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_is_in_range(uint16_t value);
+bool feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_lv_12v_voltage_is_in_range(uint16_t value);
 
 /**
- * Encode given signal by applying scaling and offset.
- *
- * @param[in] value Signal to encode.
- *
- * @return Encoded signal.
- */
-uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_encode(double value);
-
-/**
- * Decode given signal by applying scaling and offset.
- *
- * @param[in] value Signal to decode.
- *
- * @return Decoded signal.
- */
-double feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_decode(uint16_t value);
-
-/**
- * Check that given signal is in allowed range.
- *
- * @param[in] value Signal to check.
- *
- * @return true if in range, false otherwise.
- */
-bool feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_is_in_range(uint16_t value);
-
-/**
- * Pack message lvpdb_coolant_fans_shutdown.
+ * Pack message lvpdb_lv_sh_lt_bm_l_currents.
  *
  * @param[out] dst_p Buffer to pack the message into.
  * @param[in] src_p Data to pack.
@@ -5642,13 +5607,13 @@ bool feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_is_in_range(uint16_t 
  *
  * @return Size of packed data, or negative error code.
  */
-int feb_can_lvpdb_coolant_fans_shutdown_pack(
+int feb_can_lvpdb_lv_sh_lt_bm_l_currents_pack(
     uint8_t *dst_p,
-    const struct feb_can_lvpdb_coolant_fans_shutdown_t *src_p,
+    const struct feb_can_lvpdb_lv_sh_lt_bm_l_currents_t *src_p,
     size_t size);
 
 /**
- * Unpack message lvpdb_coolant_fans_shutdown.
+ * Unpack message lvpdb_lv_sh_lt_bm_l_currents.
  *
  * @param[out] dst_p Object to unpack the message into.
  * @param[in] src_p Message to unpack.
@@ -5656,19 +5621,19 @@ int feb_can_lvpdb_coolant_fans_shutdown_pack(
  *
  * @return zero(0) or negative error code.
  */
-int feb_can_lvpdb_coolant_fans_shutdown_unpack(
-    struct feb_can_lvpdb_coolant_fans_shutdown_t *dst_p,
+int feb_can_lvpdb_lv_sh_lt_bm_l_currents_unpack(
+    struct feb_can_lvpdb_lv_sh_lt_bm_l_currents_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
- * Init message fields to default values from lvpdb_coolant_fans_shutdown.
+ * Init message fields to default values from lvpdb_lv_sh_lt_bm_l_currents.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int feb_can_lvpdb_coolant_fans_shutdown_init(struct feb_can_lvpdb_coolant_fans_shutdown_t *msg_p);
+int feb_can_lvpdb_lv_sh_lt_bm_l_currents_init(struct feb_can_lvpdb_lv_sh_lt_bm_l_currents_t *msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5677,7 +5642,7 @@ int feb_can_lvpdb_coolant_fans_shutdown_init(struct feb_can_lvpdb_coolant_fans_s
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_lvpdb_coolant_fans_shutdown_coolant_pump_current_encode(double value);
+uint16_t feb_can_lvpdb_lv_sh_lt_bm_l_currents_lv_current_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5686,7 +5651,7 @@ uint16_t feb_can_lvpdb_coolant_fans_shutdown_coolant_pump_current_encode(double 
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_coolant_fans_shutdown_coolant_pump_current_decode(uint16_t value);
+double feb_can_lvpdb_lv_sh_lt_bm_l_currents_lv_current_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5695,7 +5660,7 @@ double feb_can_lvpdb_coolant_fans_shutdown_coolant_pump_current_decode(uint16_t 
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_coolant_fans_shutdown_coolant_pump_current_is_in_range(uint16_t value);
+bool feb_can_lvpdb_lv_sh_lt_bm_l_currents_lv_current_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5704,7 +5669,7 @@ bool feb_can_lvpdb_coolant_fans_shutdown_coolant_pump_current_is_in_range(uint16
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_lvpdb_coolant_fans_shutdown_accumulator_fans_current_encode(double value);
+uint16_t feb_can_lvpdb_lv_sh_lt_bm_l_currents_sh_current_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5713,7 +5678,7 @@ uint16_t feb_can_lvpdb_coolant_fans_shutdown_accumulator_fans_current_encode(dou
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_coolant_fans_shutdown_accumulator_fans_current_decode(uint16_t value);
+double feb_can_lvpdb_lv_sh_lt_bm_l_currents_sh_current_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5722,7 +5687,7 @@ double feb_can_lvpdb_coolant_fans_shutdown_accumulator_fans_current_decode(uint1
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_coolant_fans_shutdown_accumulator_fans_current_is_in_range(uint16_t value);
+bool feb_can_lvpdb_lv_sh_lt_bm_l_currents_sh_current_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5731,7 +5696,7 @@ bool feb_can_lvpdb_coolant_fans_shutdown_accumulator_fans_current_is_in_range(ui
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_lvpdb_coolant_fans_shutdown_radiator_fans_current_encode(double value);
+uint16_t feb_can_lvpdb_lv_sh_lt_bm_l_currents_lt_current_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5740,7 +5705,7 @@ uint16_t feb_can_lvpdb_coolant_fans_shutdown_radiator_fans_current_encode(double
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_coolant_fans_shutdown_radiator_fans_current_decode(uint16_t value);
+double feb_can_lvpdb_lv_sh_lt_bm_l_currents_lt_current_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5749,7 +5714,7 @@ double feb_can_lvpdb_coolant_fans_shutdown_radiator_fans_current_decode(uint16_t
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_coolant_fans_shutdown_radiator_fans_current_is_in_range(uint16_t value);
+bool feb_can_lvpdb_lv_sh_lt_bm_l_currents_lt_current_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5758,7 +5723,7 @@ bool feb_can_lvpdb_coolant_fans_shutdown_radiator_fans_current_is_in_range(uint1
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_lvpdb_coolant_fans_shutdown_shutdown_voltage_encode(double value);
+uint16_t feb_can_lvpdb_lv_sh_lt_bm_l_currents_bm_l_current_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5767,7 +5732,7 @@ uint16_t feb_can_lvpdb_coolant_fans_shutdown_shutdown_voltage_encode(double valu
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_coolant_fans_shutdown_shutdown_voltage_decode(uint16_t value);
+double feb_can_lvpdb_lv_sh_lt_bm_l_currents_bm_l_current_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5776,10 +5741,10 @@ double feb_can_lvpdb_coolant_fans_shutdown_shutdown_voltage_decode(uint16_t valu
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_coolant_fans_shutdown_shutdown_voltage_is_in_range(uint16_t value);
+bool feb_can_lvpdb_lv_sh_lt_bm_l_currents_bm_l_current_is_in_range(uint16_t value);
 
 /**
- * Pack message lvpdb_autonomous.
+ * Pack message lvpdb_sm_af1_af2_cp_rf_currents.
  *
  * @param[out] dst_p Buffer to pack the message into.
  * @param[in] src_p Data to pack.
@@ -5787,13 +5752,13 @@ bool feb_can_lvpdb_coolant_fans_shutdown_shutdown_voltage_is_in_range(uint16_t v
  *
  * @return Size of packed data, or negative error code.
  */
-int feb_can_lvpdb_autonomous_pack(
+int feb_can_lvpdb_sm_af1_af2_cp_rf_currents_pack(
     uint8_t *dst_p,
-    const struct feb_can_lvpdb_autonomous_t *src_p,
+    const struct feb_can_lvpdb_sm_af1_af2_cp_rf_currents_t *src_p,
     size_t size);
 
 /**
- * Unpack message lvpdb_autonomous.
+ * Unpack message lvpdb_sm_af1_af2_cp_rf_currents.
  *
  * @param[out] dst_p Object to unpack the message into.
  * @param[in] src_p Message to unpack.
@@ -5801,19 +5766,19 @@ int feb_can_lvpdb_autonomous_pack(
  *
  * @return zero(0) or negative error code.
  */
-int feb_can_lvpdb_autonomous_unpack(
-    struct feb_can_lvpdb_autonomous_t *dst_p,
+int feb_can_lvpdb_sm_af1_af2_cp_rf_currents_unpack(
+    struct feb_can_lvpdb_sm_af1_af2_cp_rf_currents_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
- * Init message fields to default values from lvpdb_autonomous.
+ * Init message fields to default values from lvpdb_sm_af1_af2_cp_rf_currents.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int feb_can_lvpdb_autonomous_init(struct feb_can_lvpdb_autonomous_t *msg_p);
+int feb_can_lvpdb_sm_af1_af2_cp_rf_currents_init(struct feb_can_lvpdb_sm_af1_af2_cp_rf_currents_t *msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5822,7 +5787,7 @@ int feb_can_lvpdb_autonomous_init(struct feb_can_lvpdb_autonomous_t *msg_p);
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_lvpdb_autonomous_lidar_current_encode(double value);
+uint16_t feb_can_lvpdb_sm_af1_af2_cp_rf_currents_sm_current_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5831,7 +5796,7 @@ uint16_t feb_can_lvpdb_autonomous_lidar_current_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_autonomous_lidar_current_decode(uint16_t value);
+double feb_can_lvpdb_sm_af1_af2_cp_rf_currents_sm_current_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5840,7 +5805,7 @@ double feb_can_lvpdb_autonomous_lidar_current_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_autonomous_lidar_current_is_in_range(uint16_t value);
+bool feb_can_lvpdb_sm_af1_af2_cp_rf_currents_sm_current_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5849,7 +5814,7 @@ bool feb_can_lvpdb_autonomous_lidar_current_is_in_range(uint16_t value);
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_lvpdb_autonomous_auto_steering_voltage_encode(double value);
+uint16_t feb_can_lvpdb_sm_af1_af2_cp_rf_currents_af1_af2_current_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5858,7 +5823,7 @@ uint16_t feb_can_lvpdb_autonomous_auto_steering_voltage_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_autonomous_auto_steering_voltage_decode(uint16_t value);
+double feb_can_lvpdb_sm_af1_af2_cp_rf_currents_af1_af2_current_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5867,7 +5832,7 @@ double feb_can_lvpdb_autonomous_auto_steering_voltage_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_autonomous_auto_steering_voltage_is_in_range(uint16_t value);
+bool feb_can_lvpdb_sm_af1_af2_cp_rf_currents_af1_af2_current_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5876,7 +5841,7 @@ bool feb_can_lvpdb_autonomous_auto_steering_voltage_is_in_range(uint16_t value);
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_lvpdb_autonomous_auto_breaking_voltage_encode(double value);
+uint16_t feb_can_lvpdb_sm_af1_af2_cp_rf_currents_cp_rf_current_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5885,7 +5850,7 @@ uint16_t feb_can_lvpdb_autonomous_auto_breaking_voltage_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_autonomous_auto_breaking_voltage_decode(uint16_t value);
+double feb_can_lvpdb_sm_af1_af2_cp_rf_currents_cp_rf_current_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5894,7 +5859,7 @@ double feb_can_lvpdb_autonomous_auto_breaking_voltage_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_autonomous_auto_breaking_voltage_is_in_range(uint16_t value);
+bool feb_can_lvpdb_sm_af1_af2_cp_rf_currents_cp_rf_current_is_in_range(uint16_t value);
 
 /**
  * Pack message linear_potentiometer_front.

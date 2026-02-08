@@ -998,9 +998,88 @@ bool feb_can_dash_io_s3_accumulator_fan_is_in_range(uint8_t value)
     return (value <= 1u);
 }
 
-int feb_can_lvpdb_flags_bus_voltage_lv_current_pack(
+int feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_pack(
     uint8_t *dst_p,
-    const struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *src_p,
+    const struct feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_t *src_p,
+    size_t size)
+{
+    if (size < 4u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 4);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->lv_24v_voltage, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->lv_24v_voltage, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->lv_12v_voltage, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->lv_12v_voltage, 8u, 0xffu);
+
+    return (4);
+}
+
+int feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_unpack(
+    struct feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 4u) {
+        return (-EINVAL);
+    }
+
+    dst_p->lv_24v_voltage = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->lv_24v_voltage |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->lv_12v_voltage = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->lv_12v_voltage |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_init(struct feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_t));
+
+    return 0;
+}
+
+uint16_t feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_lv_24v_voltage_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_lv_24v_voltage_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_lv_24v_voltage_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_lv_12v_voltage_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_lv_12v_voltage_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_lv_12v_voltage_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_lvpdb_lv_sh_lt_bm_l_currents_pack(
+    uint8_t *dst_p,
+    const struct feb_can_lvpdb_lv_sh_lt_bm_l_currents_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -1009,20 +1088,20 @@ int feb_can_lvpdb_flags_bus_voltage_lv_current_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u32(src_p->flags, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u32(src_p->flags, 8u, 0xffu);
-    dst_p[2] |= pack_right_shift_u32(src_p->flags, 16u, 0xffu);
-    dst_p[3] |= pack_right_shift_u32(src_p->flags, 24u, 0xffu);
-    dst_p[4] |= pack_left_shift_u16(src_p->bus_voltage, 0u, 0xffu);
-    dst_p[5] |= pack_right_shift_u16(src_p->bus_voltage, 8u, 0xffu);
-    dst_p[6] |= pack_left_shift_u16(src_p->lv_current, 0u, 0xffu);
-    dst_p[7] |= pack_right_shift_u16(src_p->lv_current, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->lv_current, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->lv_current, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->sh_current, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->sh_current, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->lt_current, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->lt_current, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->bm_l_current, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->bm_l_current, 8u, 0xffu);
 
     return (8);
 }
 
-int feb_can_lvpdb_flags_bus_voltage_lv_current_unpack(
-    struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *dst_p,
+int feb_can_lvpdb_lv_sh_lt_bm_l_currents_unpack(
+    struct feb_can_lvpdb_lv_sh_lt_bm_l_currents_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -1030,81 +1109,98 @@ int feb_can_lvpdb_flags_bus_voltage_lv_current_unpack(
         return (-EINVAL);
     }
 
-    dst_p->flags = unpack_right_shift_u32(src_p[0], 0u, 0xffu);
-    dst_p->flags |= unpack_left_shift_u32(src_p[1], 8u, 0xffu);
-    dst_p->flags |= unpack_left_shift_u32(src_p[2], 16u, 0xffu);
-    dst_p->flags |= unpack_left_shift_u32(src_p[3], 24u, 0xffu);
-    dst_p->bus_voltage = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
-    dst_p->bus_voltage |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
-    dst_p->lv_current = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
-    dst_p->lv_current |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->lv_current = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->lv_current |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->sh_current = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->sh_current |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->lt_current = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->lt_current |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->bm_l_current = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->bm_l_current |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
 
     return (0);
 }
 
-int feb_can_lvpdb_flags_bus_voltage_lv_current_init(struct feb_can_lvpdb_flags_bus_voltage_lv_current_t *msg_p)
+int feb_can_lvpdb_lv_sh_lt_bm_l_currents_init(struct feb_can_lvpdb_lv_sh_lt_bm_l_currents_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_lvpdb_flags_bus_voltage_lv_current_t));
+    memset(msg_p, 0, sizeof(struct feb_can_lvpdb_lv_sh_lt_bm_l_currents_t));
 
     return 0;
 }
 
-uint32_t feb_can_lvpdb_flags_bus_voltage_lv_current_flags_encode(double value)
-{
-    return (uint32_t)(value);
-}
-
-double feb_can_lvpdb_flags_bus_voltage_lv_current_flags_decode(uint32_t value)
-{
-    return ((double)value);
-}
-
-bool feb_can_lvpdb_flags_bus_voltage_lv_current_flags_is_in_range(uint32_t value)
-{
-    (void)value;
-
-    return (true);
-}
-
-uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_encode(double value)
+uint16_t feb_can_lvpdb_lv_sh_lt_bm_l_currents_lv_current_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_decode(uint16_t value)
+double feb_can_lvpdb_lv_sh_lt_bm_l_currents_lv_current_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_flags_bus_voltage_lv_current_bus_voltage_is_in_range(uint16_t value)
+bool feb_can_lvpdb_lv_sh_lt_bm_l_currents_lv_current_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_encode(double value)
+uint16_t feb_can_lvpdb_lv_sh_lt_bm_l_currents_sh_current_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_decode(uint16_t value)
+double feb_can_lvpdb_lv_sh_lt_bm_l_currents_sh_current_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_flags_bus_voltage_lv_current_lv_current_is_in_range(uint16_t value)
+bool feb_can_lvpdb_lv_sh_lt_bm_l_currents_sh_current_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_lvpdb_coolant_fans_shutdown_pack(
+uint16_t feb_can_lvpdb_lv_sh_lt_bm_l_currents_lt_current_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_lvpdb_lv_sh_lt_bm_l_currents_lt_current_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_lvpdb_lv_sh_lt_bm_l_currents_lt_current_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_lvpdb_lv_sh_lt_bm_l_currents_bm_l_current_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_lvpdb_lv_sh_lt_bm_l_currents_bm_l_current_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_lvpdb_lv_sh_lt_bm_l_currents_bm_l_current_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_lvpdb_sm_af1_af2_cp_rf_currents_pack(
     uint8_t *dst_p,
-    const struct feb_can_lvpdb_coolant_fans_shutdown_t *src_p,
+    const struct feb_can_lvpdb_sm_af1_af2_cp_rf_currents_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -1113,20 +1209,18 @@ int feb_can_lvpdb_coolant_fans_shutdown_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->coolant_pump_current, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->coolant_pump_current, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->accumulator_fans_current, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->accumulator_fans_current, 8u, 0xffu);
-    dst_p[4] |= pack_left_shift_u16(src_p->radiator_fans_current, 0u, 0xffu);
-    dst_p[5] |= pack_right_shift_u16(src_p->radiator_fans_current, 8u, 0xffu);
-    dst_p[6] |= pack_left_shift_u16(src_p->shutdown_voltage, 0u, 0xffu);
-    dst_p[7] |= pack_right_shift_u16(src_p->shutdown_voltage, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->sm_current, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->sm_current, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->af1_af2_current, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->af1_af2_current, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->cp_rf_current, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->cp_rf_current, 8u, 0xffu);
 
     return (8);
 }
 
-int feb_can_lvpdb_coolant_fans_shutdown_unpack(
-    struct feb_can_lvpdb_coolant_fans_shutdown_t *dst_p,
+int feb_can_lvpdb_sm_af1_af2_cp_rf_currents_unpack(
+    struct feb_can_lvpdb_sm_af1_af2_cp_rf_currents_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -1134,189 +1228,70 @@ int feb_can_lvpdb_coolant_fans_shutdown_unpack(
         return (-EINVAL);
     }
 
-    dst_p->coolant_pump_current = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->coolant_pump_current |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->accumulator_fans_current = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->accumulator_fans_current |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
-    dst_p->radiator_fans_current = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
-    dst_p->radiator_fans_current |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
-    dst_p->shutdown_voltage = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
-    dst_p->shutdown_voltage |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->sm_current = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->sm_current |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->af1_af2_current = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->af1_af2_current |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->cp_rf_current = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->cp_rf_current |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
 
     return (0);
 }
 
-int feb_can_lvpdb_coolant_fans_shutdown_init(struct feb_can_lvpdb_coolant_fans_shutdown_t *msg_p)
+int feb_can_lvpdb_sm_af1_af2_cp_rf_currents_init(struct feb_can_lvpdb_sm_af1_af2_cp_rf_currents_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_lvpdb_coolant_fans_shutdown_t));
+    memset(msg_p, 0, sizeof(struct feb_can_lvpdb_sm_af1_af2_cp_rf_currents_t));
 
     return 0;
 }
 
-uint16_t feb_can_lvpdb_coolant_fans_shutdown_coolant_pump_current_encode(double value)
+uint16_t feb_can_lvpdb_sm_af1_af2_cp_rf_currents_sm_current_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_lvpdb_coolant_fans_shutdown_coolant_pump_current_decode(uint16_t value)
+double feb_can_lvpdb_sm_af1_af2_cp_rf_currents_sm_current_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_coolant_fans_shutdown_coolant_pump_current_is_in_range(uint16_t value)
+bool feb_can_lvpdb_sm_af1_af2_cp_rf_currents_sm_current_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_lvpdb_coolant_fans_shutdown_accumulator_fans_current_encode(double value)
+uint16_t feb_can_lvpdb_sm_af1_af2_cp_rf_currents_af1_af2_current_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_lvpdb_coolant_fans_shutdown_accumulator_fans_current_decode(uint16_t value)
+double feb_can_lvpdb_sm_af1_af2_cp_rf_currents_af1_af2_current_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_coolant_fans_shutdown_accumulator_fans_current_is_in_range(uint16_t value)
+bool feb_can_lvpdb_sm_af1_af2_cp_rf_currents_af1_af2_current_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_lvpdb_coolant_fans_shutdown_radiator_fans_current_encode(double value)
+uint16_t feb_can_lvpdb_sm_af1_af2_cp_rf_currents_cp_rf_current_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_lvpdb_coolant_fans_shutdown_radiator_fans_current_decode(uint16_t value)
+double feb_can_lvpdb_sm_af1_af2_cp_rf_currents_cp_rf_current_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_coolant_fans_shutdown_radiator_fans_current_is_in_range(uint16_t value)
-{
-    (void)value;
-
-    return (true);
-}
-
-uint16_t feb_can_lvpdb_coolant_fans_shutdown_shutdown_voltage_encode(double value)
-{
-    return (uint16_t)(value);
-}
-
-double feb_can_lvpdb_coolant_fans_shutdown_shutdown_voltage_decode(uint16_t value)
-{
-    return ((double)value);
-}
-
-bool feb_can_lvpdb_coolant_fans_shutdown_shutdown_voltage_is_in_range(uint16_t value)
-{
-    (void)value;
-
-    return (true);
-}
-
-int feb_can_lvpdb_autonomous_pack(
-    uint8_t *dst_p,
-    const struct feb_can_lvpdb_autonomous_t *src_p,
-    size_t size)
-{
-    if (size < 8u) {
-        return (-EINVAL);
-    }
-
-    memset(&dst_p[0], 0, 8);
-
-    dst_p[0] |= pack_left_shift_u16(src_p->lidar_current, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->lidar_current, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->auto_steering_voltage, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->auto_steering_voltage, 8u, 0xffu);
-    dst_p[6] |= pack_left_shift_u16(src_p->auto_breaking_voltage, 0u, 0xffu);
-    dst_p[7] |= pack_right_shift_u16(src_p->auto_breaking_voltage, 8u, 0xffu);
-
-    return (8);
-}
-
-int feb_can_lvpdb_autonomous_unpack(
-    struct feb_can_lvpdb_autonomous_t *dst_p,
-    const uint8_t *src_p,
-    size_t size)
-{
-    if (size < 8u) {
-        return (-EINVAL);
-    }
-
-    dst_p->lidar_current = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->lidar_current |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->auto_steering_voltage = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->auto_steering_voltage |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
-    dst_p->auto_breaking_voltage = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
-    dst_p->auto_breaking_voltage |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
-
-    return (0);
-}
-
-int feb_can_lvpdb_autonomous_init(struct feb_can_lvpdb_autonomous_t *msg_p)
-{
-    if (msg_p == NULL) return -1;
-
-    memset(msg_p, 0, sizeof(struct feb_can_lvpdb_autonomous_t));
-
-    return 0;
-}
-
-uint16_t feb_can_lvpdb_autonomous_lidar_current_encode(double value)
-{
-    return (uint16_t)(value);
-}
-
-double feb_can_lvpdb_autonomous_lidar_current_decode(uint16_t value)
-{
-    return ((double)value);
-}
-
-bool feb_can_lvpdb_autonomous_lidar_current_is_in_range(uint16_t value)
-{
-    (void)value;
-
-    return (true);
-}
-
-uint16_t feb_can_lvpdb_autonomous_auto_steering_voltage_encode(double value)
-{
-    return (uint16_t)(value);
-}
-
-double feb_can_lvpdb_autonomous_auto_steering_voltage_decode(uint16_t value)
-{
-    return ((double)value);
-}
-
-bool feb_can_lvpdb_autonomous_auto_steering_voltage_is_in_range(uint16_t value)
-{
-    (void)value;
-
-    return (true);
-}
-
-uint16_t feb_can_lvpdb_autonomous_auto_breaking_voltage_encode(double value)
-{
-    return (uint16_t)(value);
-}
-
-double feb_can_lvpdb_autonomous_auto_breaking_voltage_decode(uint16_t value)
-{
-    return ((double)value);
-}
-
-bool feb_can_lvpdb_autonomous_auto_breaking_voltage_is_in_range(uint16_t value)
+bool feb_can_lvpdb_sm_af1_af2_cp_rf_currents_cp_rf_current_is_in_range(uint16_t value)
 {
     (void)value;
 

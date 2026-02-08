@@ -84,21 +84,20 @@ BO_ 16 dash_io: 1 Vector__XXX
  SG_ b1_ready_to_drive : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ buzzer_state : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 22 lvpdb_flags_bus_voltage_lv_curre: 8 Vector__XXX
- SG_ lv_current : 48|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ bus_voltage : 32|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ flags : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 22 lvpdb_lv_24v_bus_and_12v_bus_vol: 4 Vector__XXX
+ SG_ lv_12v_voltage : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ lv_24v_voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 23 lvpdb_coolant_fans_shutdown: 8 Vector__XXX
- SG_ shutdown_voltage : 48|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ radiator_fans_current : 32|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ accumulator_fans_current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ coolant_pump_current : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 23 lvpdb_lv_sh_lt_bm_l_currents: 8 Vector__XXX
+ SG_ bm_l_current : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ lt_current : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ sh_current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ lv_current : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 24 lvpdb_autonomous: 8 Vector__XXX
- SG_ auto_breaking_voltage : 48|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ auto_steering_voltage : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ lidar_current : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 24 lvpdb_sm_af1_af2_cp_rf_currents: 8 Vector__XXX
+ SG_ cp_rf_current : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ af1_af2_current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ sm_current : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 30 linear_potentiometer_front: 4 Vector__XXX
  SG_ linear_potrentiometer_2_front : 16|16@1+ (1,0) [0|0] "" Vector__XXX
@@ -602,9 +601,9 @@ CM_ BO_ 4 "Accumulator Faults";
 CM_ BO_ 9 "PCU brake message";
 CM_ BO_ 10 "BSPD message.";
 CM_ BO_ 16 "Dash button and switch message";
-CM_ BO_ 22 "LVPDB message for flags, bus voltage, and LV current.";
-CM_ BO_ 23 "LVPDB message for Coolant Pump, Accumulator Fans, Radiator Fans, Shutdown.";
-CM_ BO_ 24 "LVPDB message for autonomous systems.";
+CM_ BO_ 22 "LVPDB message for voltages of 24v bus and 12v bus";
+CM_ BO_ 23 "LVPDB message for currents of LV, SH, LT, BM_L";
+CM_ BO_ 24 "LVPDB message for currents of SM, AF1_AF2, CP_RF";
 CM_ BO_ 30 "Linear Potentiometer Front.";
 CM_ BO_ 31 "Linear Potentiometer Rear.";
 CM_ BO_ 32 "Message for front left tire temp data.";
@@ -634,7 +633,7 @@ CM_ BO_ 227 "PING PONG counter4.";
 CM_ BO_ 255 "PCU RAW ACC ADC";
 BA_DEF_ BO_  "SystemMessageLongSymbol" STRING ;
 BA_DEF_DEF_  "SystemMessageLongSymbol" "";
-BA_ "SystemMessageLongSymbol" BO_ 22 "lvpdb_flags_bus_voltage_lv_current";
+BA_ "SystemMessageLongSymbol" BO_ 22 "lvpdb_lv_24v_bus_and_12v_bus_voltages";
 
 
 

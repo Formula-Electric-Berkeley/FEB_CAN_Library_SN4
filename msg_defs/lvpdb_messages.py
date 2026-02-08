@@ -1,108 +1,108 @@
 import cantools
 from cantools.database.conversion import BaseConversion
 
-def get_lvpdb_flag_bus_voltage_lv_current(frame_id: int):
-    flag_signal = cantools.db.Signal(
-        name="flags",
+def get_lvpdb_lv_24v_bus_and_12v_bus_voltages(frame_id: int):
+    lv_24v_voltage = cantools.db.Signal(
+        name="lv_24v_voltage",
         start=0,
-        length=32,
+        length=16,
         byte_order="little_endian",
         is_signed=False
     )
     
-    bus_voltage_signal = cantools.db.Signal(
-        name="bus_voltage",
-        start=32,
+    lv_12v_voltage = cantools.db.Signal(
+        name="lv_12v_voltage",
+        start=16,
         length=16,
         byte_order="little_endian",
+        is_signed=False
     )
     
-    lv_current_signal = cantools.db.Signal(
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="lvpdb_lv_24v_bus_and_12v_bus_voltages",
+        length=4,
+        signals=[lv_24v_voltage, lv_12v_voltage],
+        comment="LVPDB message for voltages of 24v bus and 12v bus",
+        strict=True
+    )
+
+    return msg
+
+def get_lvpdb_lv_sh_lt_bm_l_currents(frame_id: int):
+    lv_current = cantools.db.Signal(
         name="lv_current",
-        start=48,
-        length=16,
-        byte_order="little_endian",
-    )
-
-    msg = cantools.db.Message(
-        frame_id=frame_id,
-        name="lvpdb_flags_bus_voltage_lv_current",
-        length=8,
-        signals=[flag_signal, bus_voltage_signal, lv_current_signal],
-        comment="LVPDB message for flags, bus voltage, and LV current.",
-        strict=True
-    )
-
-    return msg
-
-def get_lvpdb_cp_af_rf_sh_current(frame_id: int):
-    cp_current_signal = cantools.db.Signal(
-        name="coolant_pump_current",
         start=0,
         length=16,
         byte_order="little_endian",
+        is_signed=False
     )
     
-    af_current_signal = cantools.db.Signal(
-        name="accumulator_fans_current",
+    sh_current = cantools.db.Signal(
+        name="sh_current",
         start=16,
         length=16,
         byte_order="little_endian",
+        is_signed=False
     )
     
-    rf_current_signal = cantools.db.Signal(
-        name="radiator_fans_current",
+    lt_current = cantools.db.Signal(
+        name="lt_current",
         start=32,
         length=16,
         byte_order="little_endian",
+        is_signed=False
     )
     
-    sh_current_signal = cantools.db.Signal(
-        name="shutdown_voltage",
+    bm_l_current = cantools.db.Signal(
+        name="bm_l_current",
         start=48,
         length=16,
         byte_order="little_endian",
+        is_signed=False
     )
-
+    
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="lvpdb_coolant_fans_shutdown",
+        name="lvpdb_lv_sh_lt_bm_l_currents",
         length=8,
-        signals=[cp_current_signal, af_current_signal, rf_current_signal, sh_current_signal],
-        comment="LVPDB message for Coolant Pump, Accumulator Fans, Radiator Fans, Shutdown.",
+        signals=[lv_current, sh_current, lt_current, bm_l_current],
+        comment="LVPDB message for currents of LV, SH, LT, BM_L",
         strict=True
     )
 
     return msg
 
-def get_lvpdb_L_AS_AB_current(frame_id: int):
-    l_current_signal = cantools.db.Signal(
-        name="lidar_current",
-        start=0,
-        length=16,
-        byte_order="little_endian",
-    )
+def get_lvpdb_sm_af1_af2_cp_rf_currents(frame_id : int):
     
-    as_current_signal = cantools.db.Signal(
-        name="auto_steering_voltage",
-        start=16,
-        length=16,
+    sm_current = cantools.db.Signal (
+        name="sm_current",
+        start = 0,
+        length= 16,
         byte_order="little_endian",
-    )
-
-    ab_current_signal = cantools.db.Signal(
-        name="auto_breaking_voltage",
-        start=48,
-        length=16,
+        is_signed=False
+    ) 
+    af1_af2_current = cantools.db.Signal (
+        name="af1_af2_current",
+        start = 16,
+        length= 16,
         byte_order="little_endian",
-    )
-
+        is_signed=False
+    ) 
+    cp_rf_current = cantools.db.Signal (
+        name= "cp_rf_current",
+        start = 32,
+        length= 16,
+        byte_order="little_endian",
+        is_signed=False
+    ) 
+    
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="lvpdb_autonomous",
+        name="lvpdb_sm_af1_af2_cp_rf_currents",
         length=8,
-        signals=[l_current_signal, as_current_signal, ab_current_signal],
-        comment="LVPDB message for autonomous systems.",
+        signals=[sm_current, af1_af2_current, cp_rf_current],
+        comment="LVPDB message for currents of SM, AF1_AF2, CP_RF",
         strict=True
     )
 
