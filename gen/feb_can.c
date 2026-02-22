@@ -2139,6 +2139,103 @@ bool feb_can_wss_rear_data_wss_left_rear_is_in_range(uint32_t value)
     return (true);
 }
 
+int feb_can_gps_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_data_t *src_p,
+    size_t size)
+{
+    uint32_t gps_latitude;
+    uint32_t gps_longitude;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    gps_longitude = (uint32_t)src_p->gps_longitude;
+    dst_p[0] |= pack_left_shift_u32(gps_longitude, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u32(gps_longitude, 8u, 0xffu);
+    dst_p[2] |= pack_right_shift_u32(gps_longitude, 16u, 0xffu);
+    dst_p[3] |= pack_right_shift_u32(gps_longitude, 24u, 0xffu);
+    gps_latitude = (uint32_t)src_p->gps_latitude;
+    dst_p[4] |= pack_left_shift_u32(gps_latitude, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u32(gps_latitude, 8u, 0xffu);
+    dst_p[6] |= pack_right_shift_u32(gps_latitude, 16u, 0xffu);
+    dst_p[7] |= pack_right_shift_u32(gps_latitude, 24u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_gps_data_unpack(
+    struct feb_can_gps_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint32_t gps_latitude;
+    uint32_t gps_longitude;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    gps_longitude = unpack_right_shift_u32(src_p[0], 0u, 0xffu);
+    gps_longitude |= unpack_left_shift_u32(src_p[1], 8u, 0xffu);
+    gps_longitude |= unpack_left_shift_u32(src_p[2], 16u, 0xffu);
+    gps_longitude |= unpack_left_shift_u32(src_p[3], 24u, 0xffu);
+    dst_p->gps_longitude = (int32_t)gps_longitude;
+    gps_latitude = unpack_right_shift_u32(src_p[4], 0u, 0xffu);
+    gps_latitude |= unpack_left_shift_u32(src_p[5], 8u, 0xffu);
+    gps_latitude |= unpack_left_shift_u32(src_p[6], 16u, 0xffu);
+    gps_latitude |= unpack_left_shift_u32(src_p[7], 24u, 0xffu);
+    dst_p->gps_latitude = (int32_t)gps_latitude;
+
+    return (0);
+}
+
+int feb_can_gps_data_init(struct feb_can_gps_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_gps_data_t));
+
+    return 0;
+}
+
+int32_t feb_can_gps_data_gps_longitude_encode(double value)
+{
+    return (int32_t)(value);
+}
+
+double feb_can_gps_data_gps_longitude_decode(int32_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_data_gps_longitude_is_in_range(int32_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int32_t feb_can_gps_data_gps_latitude_encode(double value)
+{
+    return (int32_t)(value);
+}
+
+double feb_can_gps_data_gps_latitude_decode(int32_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_data_gps_latitude_is_in_range(int32_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
 int feb_can_dart_tach_measurements_1234_pack(
     uint8_t *dst_p,
     const struct feb_can_dart_tach_measurements_1234_t *src_p,

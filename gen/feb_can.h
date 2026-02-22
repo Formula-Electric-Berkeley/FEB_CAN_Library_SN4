@@ -33,6 +33,7 @@ extern "C" {
 #define FEB_CAN_REAR_RIGHT_TIRE_TEMP_FRAME_ID (0x23u)
 #define FEB_CAN_WSS_FRONT_DATA_FRAME_ID (0x24u)
 #define FEB_CAN_WSS_REAR_DATA_FRAME_ID (0x25u)
+#define FEB_CAN_GPS_DATA_FRAME_ID (0x26u)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_FRAME_ID (0x2du)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_5_FRAME_ID (0x2eu)
 #define FEB_CAN_BBB_TPS_FRAME_ID (0x34u)
@@ -73,6 +74,7 @@ extern "C" {
 #define FEB_CAN_REAR_RIGHT_TIRE_TEMP_LENGTH (8u)
 #define FEB_CAN_WSS_FRONT_DATA_LENGTH (8u)
 #define FEB_CAN_WSS_REAR_DATA_LENGTH (8u)
+#define FEB_CAN_GPS_DATA_LENGTH (8u)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_LENGTH (8u)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_5_LENGTH (2u)
 #define FEB_CAN_BBB_TPS_LENGTH (4u)
@@ -113,6 +115,7 @@ extern "C" {
 #define FEB_CAN_REAR_RIGHT_TIRE_TEMP_IS_EXTENDED (0)
 #define FEB_CAN_WSS_FRONT_DATA_IS_EXTENDED (0)
 #define FEB_CAN_WSS_REAR_DATA_IS_EXTENDED (0)
+#define FEB_CAN_GPS_DATA_IS_EXTENDED (0)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_IS_EXTENDED (0)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_5_IS_EXTENDED (0)
 #define FEB_CAN_BBB_TPS_IS_EXTENDED (0)
@@ -159,6 +162,7 @@ extern "C" {
 #define FEB_CAN_REAR_RIGHT_TIRE_TEMP_NAME "rear_right_tire_temp"
 #define FEB_CAN_WSS_FRONT_DATA_NAME "wss_front_data"
 #define FEB_CAN_WSS_REAR_DATA_NAME "wss_rear_data"
+#define FEB_CAN_GPS_DATA_NAME "gps_data"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_NAME "DART_TACH_measurements_1234"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_5_NAME "DART_TACH_measurements_5"
 #define FEB_CAN_BBB_TPS_NAME "bbb_tps"
@@ -246,6 +250,8 @@ extern "C" {
 #define FEB_CAN_WSS_FRONT_DATA_WSS_LEFT_FRONT_NAME "wss_left_front"
 #define FEB_CAN_WSS_REAR_DATA_WSS_RIGHT_REAR_NAME "wss_right_rear"
 #define FEB_CAN_WSS_REAR_DATA_WSS_LEFT_REAR_NAME "wss_left_rear"
+#define FEB_CAN_GPS_DATA_GPS_LONGITUDE_NAME "gps_longitude"
+#define FEB_CAN_GPS_DATA_GPS_LATITUDE_NAME "gps_latitude"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_FAN1_SPEED_NAME "fan1_speed"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_FAN2_SPEED_NAME "fan2_speed"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_FAN3_SPEED_NAME "fan3_speed"
@@ -1291,6 +1297,29 @@ struct feb_can_wss_rear_data_t {
      * Offset: 0
      */
     uint32_t wss_left_rear;
+};
+
+/**
+ * Signals in message gps_data.
+ *
+ * GPS longitude/latitude in float32 raw bytes.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_gps_data_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int32_t gps_longitude;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int32_t gps_latitude;
 };
 
 /**
@@ -6839,6 +6868,97 @@ double feb_can_wss_rear_data_wss_left_rear_decode(uint32_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_wss_rear_data_wss_left_rear_is_in_range(uint32_t value);
+
+/**
+ * Pack message gps_data.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_gps_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_data_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message gps_data.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_gps_data_unpack(
+    struct feb_can_gps_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from gps_data.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_gps_data_init(struct feb_can_gps_data_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int32_t feb_can_gps_data_gps_longitude_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_data_gps_longitude_decode(int32_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_data_gps_longitude_is_in_range(int32_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int32_t feb_can_gps_data_gps_latitude_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_data_gps_latitude_decode(int32_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_data_gps_latitude_is_in_range(int32_t value);
 
 /**
  * Pack message DART_TACH_measurements_1234.

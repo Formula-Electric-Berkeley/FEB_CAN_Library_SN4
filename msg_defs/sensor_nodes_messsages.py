@@ -549,3 +549,30 @@ def get_rear_sensor_heartbeat(frame_id: int):
     )
 
     return msg
+
+def get_gps_data(frame_id: int):
+    gps_longitude = cantools.db.Signal(
+        name="gps_longitude",
+        start=0,
+        length=32,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    gps_latitude = cantools.db.Signal(
+        name="gps_latitude",
+        start=32,
+        length=32,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="gps_data",
+        length=8,
+        signals=[gps_longitude, gps_latitude],
+        comment="GPS longitude/latitude in float32 raw bytes.",
+        strict=True,
+    )
+
+    return msg
