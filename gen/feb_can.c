@@ -2236,6 +2236,110 @@ bool feb_can_gps_data_gps_latitude_is_in_range(int32_t value)
     return (true);
 }
 
+int feb_can_feb_steering_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_feb_steering_data_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u32(src_p->can_counter, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u32(src_p->can_counter, 8u, 0xffu);
+    dst_p[2] |= pack_right_shift_u32(src_p->can_counter, 16u, 0xffu);
+    dst_p[3] |= pack_right_shift_u32(src_p->can_counter, 24u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->flags, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->flags, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->angle, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->angle, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_feb_steering_data_unpack(
+    struct feb_can_feb_steering_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->can_counter = unpack_right_shift_u32(src_p[0], 0u, 0xffu);
+    dst_p->can_counter |= unpack_left_shift_u32(src_p[1], 8u, 0xffu);
+    dst_p->can_counter |= unpack_left_shift_u32(src_p[2], 16u, 0xffu);
+    dst_p->can_counter |= unpack_left_shift_u32(src_p[3], 24u, 0xffu);
+    dst_p->flags = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->flags |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->angle = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->angle |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_feb_steering_data_init(struct feb_can_feb_steering_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_feb_steering_data_t));
+
+    return 0;
+}
+
+uint32_t feb_can_feb_steering_data_can_counter_encode(double value)
+{
+    return (uint32_t)(value);
+}
+
+double feb_can_feb_steering_data_can_counter_decode(uint32_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_feb_steering_data_can_counter_is_in_range(uint32_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_feb_steering_data_flags_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_feb_steering_data_flags_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_feb_steering_data_flags_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_feb_steering_data_angle_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_feb_steering_data_angle_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_feb_steering_data_angle_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
 int feb_can_dart_tach_measurements_1234_pack(
     uint8_t *dst_p,
     const struct feb_can_dart_tach_measurements_1234_t *src_p,
