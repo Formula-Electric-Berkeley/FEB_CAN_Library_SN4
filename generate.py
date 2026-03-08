@@ -22,7 +22,7 @@ from msg_defs import pcu_messages as pcu_msg
 from msg_defs import dash_messages as dash_msg
 from msg_defs import lvpdb_messages as lvpdb_msg
 from msg_defs import dcu_message as dcu_msg
-from msg_defs import sensor_nodes_messsages as sensor_msg
+from msg_defs import sensor_nodes_messages as sensor_msg
 from msg_defs import dart_messages as dart_msg
 from msg_defs import iv_meter_messages as iv_meter_msg
 from msg_defs import ping_pong_messages as ping_pong_msg
