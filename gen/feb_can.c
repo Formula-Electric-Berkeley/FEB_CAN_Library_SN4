@@ -9920,6 +9920,198 @@ bool feb_can_feb_ping_pong_counter4_counter_is_in_range(int32_t value)
     return (true);
 }
 
+int feb_can_res_status_pack(
+    uint8_t *dst_p,
+    const struct feb_can_res_status_t *src_p,
+    size_t size)
+{
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 2);
+
+    dst_p[0] |= pack_left_shift_u8(src_p->relay_state, 0u, 0x01u);
+    dst_p[0] |= pack_left_shift_u8(src_p->ts_activation, 1u, 0x02u);
+    dst_p[0] |= pack_left_shift_u8(src_p->bms_critical, 2u, 0x04u);
+    dst_p[0] |= pack_left_shift_u8(src_p->shutdown_open_fault, 3u, 0x08u);
+    dst_p[0] |= pack_left_shift_u8(src_p->emergency_latched, 4u, 0x10u);
+    dst_p[0] |= pack_left_shift_u8(src_p->relay_enable_allowed, 5u, 0x20u);
+    dst_p[0] |= pack_left_shift_u8(src_p->tps_power_good, 6u, 0x40u);
+    dst_p[0] |= pack_left_shift_u8(src_p->tps_alert, 7u, 0x80u);
+    dst_p[1] |= pack_left_shift_u8(src_p->status_counter, 0u, 0xffu);
+
+    return (2);
+}
+
+int feb_can_res_status_unpack(
+    struct feb_can_res_status_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    dst_p->relay_state = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
+    dst_p->ts_activation = unpack_right_shift_u8(src_p[0], 1u, 0x02u);
+    dst_p->bms_critical = unpack_right_shift_u8(src_p[0], 2u, 0x04u);
+    dst_p->shutdown_open_fault = unpack_right_shift_u8(src_p[0], 3u, 0x08u);
+    dst_p->emergency_latched = unpack_right_shift_u8(src_p[0], 4u, 0x10u);
+    dst_p->relay_enable_allowed = unpack_right_shift_u8(src_p[0], 5u, 0x20u);
+    dst_p->tps_power_good = unpack_right_shift_u8(src_p[0], 6u, 0x40u);
+    dst_p->tps_alert = unpack_right_shift_u8(src_p[0], 7u, 0x80u);
+    dst_p->status_counter = unpack_right_shift_u8(src_p[1], 0u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_res_status_init(struct feb_can_res_status_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_res_status_t));
+
+    return 0;
+}
+
+uint8_t feb_can_res_status_relay_state_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_res_status_relay_state_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_res_status_relay_state_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_res_status_ts_activation_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_res_status_ts_activation_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_res_status_ts_activation_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_res_status_bms_critical_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_res_status_bms_critical_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_res_status_bms_critical_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_res_status_shutdown_open_fault_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_res_status_shutdown_open_fault_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_res_status_shutdown_open_fault_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_res_status_emergency_latched_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_res_status_emergency_latched_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_res_status_emergency_latched_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_res_status_relay_enable_allowed_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_res_status_relay_enable_allowed_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_res_status_relay_enable_allowed_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_res_status_tps_power_good_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_res_status_tps_power_good_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_res_status_tps_power_good_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_res_status_tps_alert_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_res_status_tps_alert_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_res_status_tps_alert_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_res_status_status_counter_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_res_status_status_counter_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_res_status_status_counter_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
 int feb_can_pcu_raw_acc_pack(
     uint8_t *dst_p,
     const struct feb_can_pcu_raw_acc_t *src_p,

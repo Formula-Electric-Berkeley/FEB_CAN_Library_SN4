@@ -117,6 +117,7 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     # 0xE4-0xEF: Reserved for future debug messages
 
     # ----- Miscellaneous (0xF0-0xFF) -----
+    0xF0: (res_msg.get_res_status, "RES_EBS safety and relay status"),
     0xFF: (pcu_msg.get_raw_acc, "PCU raw accelerator ADC"),
 }
 

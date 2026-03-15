@@ -51,6 +51,7 @@ extern "C" {
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_FRAME_ID (0xe1u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_FRAME_ID (0xe2u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER4_FRAME_ID (0xe3u)
+#define FEB_CAN_RES_STATUS_FRAME_ID (0xf0u)
 #define FEB_CAN_PCU_RAW_ACC_FRAME_ID (0xffu)
 
 /* Frame lengths in bytes. */
@@ -91,6 +92,7 @@ extern "C" {
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_LENGTH (8u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_LENGTH (8u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER4_LENGTH (8u)
+#define FEB_CAN_RES_STATUS_LENGTH (2u)
 #define FEB_CAN_PCU_RAW_ACC_LENGTH (4u)
 
 /* Extended or standard frame types. */
@@ -131,6 +133,7 @@ extern "C" {
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_IS_EXTENDED (0)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_IS_EXTENDED (0)
 #define FEB_CAN_FEB_PING_PONG_COUNTER4_IS_EXTENDED (0)
+#define FEB_CAN_RES_STATUS_IS_EXTENDED (0)
 #define FEB_CAN_PCU_RAW_ACC_IS_EXTENDED (0)
 
 /* Frame cycle times in milliseconds. */
@@ -177,6 +180,7 @@ extern "C" {
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_NAME "FEB_PING_PONG_counter2"
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_NAME "FEB_PING_PONG_counter3"
 #define FEB_CAN_FEB_PING_PONG_COUNTER4_NAME "FEB_PING_PONG_counter4"
+#define FEB_CAN_RES_STATUS_NAME "res_status"
 #define FEB_CAN_PCU_RAW_ACC_NAME "pcu_raw_acc"
 
 /* Signal Names. */
@@ -657,6 +661,15 @@ extern "C" {
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_COUNTER_NAME "counter"
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_COUNTER_NAME "counter"
 #define FEB_CAN_FEB_PING_PONG_COUNTER4_COUNTER_NAME "counter"
+#define FEB_CAN_RES_STATUS_RELAY_STATE_NAME "relay_state"
+#define FEB_CAN_RES_STATUS_TS_ACTIVATION_NAME "ts_activation"
+#define FEB_CAN_RES_STATUS_BMS_CRITICAL_NAME "bms_critical"
+#define FEB_CAN_RES_STATUS_SHUTDOWN_OPEN_FAULT_NAME "shutdown_open_fault"
+#define FEB_CAN_RES_STATUS_EMERGENCY_LATCHED_NAME "emergency_latched"
+#define FEB_CAN_RES_STATUS_RELAY_ENABLE_ALLOWED_NAME "relay_enable_allowed"
+#define FEB_CAN_RES_STATUS_TPS_POWER_GOOD_NAME "tps_power_good"
+#define FEB_CAN_RES_STATUS_TPS_ALERT_NAME "tps_alert"
+#define FEB_CAN_RES_STATUS_STATUS_COUNTER_NAME "status_counter"
 #define FEB_CAN_PCU_RAW_ACC_ACC0_NAME "acc0"
 #define FEB_CAN_PCU_RAW_ACC_ACC1_NAME "acc1"
 
@@ -4330,6 +4343,78 @@ struct feb_can_feb_ping_pong_counter4_t {
      * Offset: 0
      */
     int32_t counter;
+};
+
+/**
+ * Signals in message res_status.
+ *
+ * RES_EBS safety and relay status.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_res_status_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t relay_state;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t ts_activation;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t bms_critical;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t shutdown_open_fault;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t emergency_latched;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t relay_enable_allowed;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t tps_power_good;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t tps_alert;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t status_counter;
 };
 
 /**
@@ -18602,6 +18687,286 @@ double feb_can_feb_ping_pong_counter4_counter_decode(int32_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_feb_ping_pong_counter4_counter_is_in_range(int32_t value);
+
+/**
+ * Pack message res_status.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_res_status_pack(
+    uint8_t *dst_p,
+    const struct feb_can_res_status_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message res_status.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_res_status_unpack(
+    struct feb_can_res_status_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from res_status.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_res_status_init(struct feb_can_res_status_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_res_status_relay_state_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_res_status_relay_state_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_res_status_relay_state_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_res_status_ts_activation_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_res_status_ts_activation_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_res_status_ts_activation_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_res_status_bms_critical_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_res_status_bms_critical_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_res_status_bms_critical_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_res_status_shutdown_open_fault_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_res_status_shutdown_open_fault_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_res_status_shutdown_open_fault_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_res_status_emergency_latched_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_res_status_emergency_latched_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_res_status_emergency_latched_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_res_status_relay_enable_allowed_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_res_status_relay_enable_allowed_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_res_status_relay_enable_allowed_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_res_status_tps_power_good_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_res_status_tps_power_good_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_res_status_tps_power_good_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_res_status_tps_alert_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_res_status_tps_alert_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_res_status_tps_alert_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_res_status_status_counter_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_res_status_status_counter_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_res_status_status_counter_is_in_range(uint8_t value);
 
 /**
  * Pack message pcu_raw_acc.

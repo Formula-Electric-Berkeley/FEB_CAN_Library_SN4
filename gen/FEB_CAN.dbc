@@ -587,6 +587,17 @@ BO_ 226 FEB_PING_PONG_counter3: 8 Vector__XXX
 BO_ 227 FEB_PING_PONG_counter4: 8 Vector__XXX
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
+BO_ 240 res_status: 2 Vector__XXX
+ SG_ status_counter : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_alert : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_power_good : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ relay_enable_allowed : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ emergency_latched : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ shutdown_open_fault : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ bms_critical : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ts_activation : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ relay_state : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
 BO_ 255 pcu_raw_acc: 4 Vector__XXX
  SG_ acc1 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ acc0 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
@@ -631,6 +642,7 @@ CM_ BO_ 224 "PING PONG counter1.";
 CM_ BO_ 225 "PING PONG counter2.";
 CM_ BO_ 226 "PING PONG counter3.";
 CM_ BO_ 227 "PING PONG counter4.";
+CM_ BO_ 240 "RES_EBS safety and relay status.";
 CM_ BO_ 255 "PCU RAW ACC ADC";
 BA_DEF_ BO_  "SystemMessageLongSymbol" STRING ;
 BA_DEF_DEF_  "SystemMessageLongSymbol" "";
