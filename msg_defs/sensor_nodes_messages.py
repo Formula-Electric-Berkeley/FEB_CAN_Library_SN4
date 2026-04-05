@@ -262,7 +262,21 @@ def get_imu_gyro_data(frame_id: int):
         byte_order="little_endian",
         is_signed=True,
     )
-    
+    gyroY = cantools.db.Signal(
+        name="gyro_y",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    gyroZ = cantools.db.Signal(
+        name="gyro_z",
+        start=32,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
     msg = cantools.db.Message(
         frame_id=frame_id,
         name="imu_gyro_data",
