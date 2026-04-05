@@ -2148,6 +2148,234 @@ bool feb_can_wss_rear_data_wss_left_rear_is_in_range(uint32_t value)
     return (true);
 }
 
+int feb_can_imu_acceleration_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_imu_acceleration_data_t *src_p,
+    size_t size)
+{
+    uint16_t acceleration_x;
+    uint16_t acceleration_y;
+    uint16_t acceleration_z;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 6);
+
+    acceleration_x = (uint16_t)src_p->acceleration_x;
+    dst_p[0] |= pack_left_shift_u16(acceleration_x, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(acceleration_x, 8u, 0xffu);
+    acceleration_y = (uint16_t)src_p->acceleration_y;
+    dst_p[2] |= pack_left_shift_u16(acceleration_y, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(acceleration_y, 8u, 0xffu);
+    acceleration_z = (uint16_t)src_p->acceleration_z;
+    dst_p[4] |= pack_left_shift_u16(acceleration_z, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(acceleration_z, 8u, 0xffu);
+
+    return (6);
+}
+
+int feb_can_imu_acceleration_data_unpack(
+    struct feb_can_imu_acceleration_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t acceleration_x;
+    uint16_t acceleration_y;
+    uint16_t acceleration_z;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    acceleration_x = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    acceleration_x |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->acceleration_x = (int16_t)acceleration_x;
+    acceleration_y = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    acceleration_y |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->acceleration_y = (int16_t)acceleration_y;
+    acceleration_z = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    acceleration_z |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->acceleration_z = (int16_t)acceleration_z;
+
+    return (0);
+}
+
+int feb_can_imu_acceleration_data_init(struct feb_can_imu_acceleration_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_imu_acceleration_data_t));
+
+    return 0;
+}
+
+int16_t feb_can_imu_acceleration_data_acceleration_x_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_imu_acceleration_data_acceleration_x_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_imu_acceleration_data_acceleration_x_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_imu_acceleration_data_acceleration_y_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_imu_acceleration_data_acceleration_y_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_imu_acceleration_data_acceleration_y_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_imu_acceleration_data_acceleration_z_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_imu_acceleration_data_acceleration_z_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_imu_acceleration_data_acceleration_z_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_imu_gyro_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_imu_gyro_data_t *src_p,
+    size_t size)
+{
+    uint16_t gyro_x;
+    uint16_t gyro_y;
+    uint16_t gyro_z;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 6);
+
+    gyro_x = (uint16_t)src_p->gyro_x;
+    dst_p[0] |= pack_left_shift_u16(gyro_x, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(gyro_x, 8u, 0xffu);
+    gyro_y = (uint16_t)src_p->gyro_y;
+    dst_p[2] |= pack_left_shift_u16(gyro_y, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(gyro_y, 8u, 0xffu);
+    gyro_z = (uint16_t)src_p->gyro_z;
+    dst_p[4] |= pack_left_shift_u16(gyro_z, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(gyro_z, 8u, 0xffu);
+
+    return (6);
+}
+
+int feb_can_imu_gyro_data_unpack(
+    struct feb_can_imu_gyro_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t gyro_x;
+    uint16_t gyro_y;
+    uint16_t gyro_z;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    gyro_x = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    gyro_x |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->gyro_x = (int16_t)gyro_x;
+    gyro_y = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    gyro_y |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->gyro_y = (int16_t)gyro_y;
+    gyro_z = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    gyro_z |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->gyro_z = (int16_t)gyro_z;
+
+    return (0);
+}
+
+int feb_can_imu_gyro_data_init(struct feb_can_imu_gyro_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_imu_gyro_data_t));
+
+    return 0;
+}
+
+int16_t feb_can_imu_gyro_data_gyro_x_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_imu_gyro_data_gyro_x_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_imu_gyro_data_gyro_x_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_imu_gyro_data_gyro_y_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_imu_gyro_data_gyro_y_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_imu_gyro_data_gyro_y_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_imu_gyro_data_gyro_z_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_imu_gyro_data_gyro_z_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_imu_gyro_data_gyro_z_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
 int feb_can_dart_tach_measurements_1234_pack(
     uint8_t *dst_p,
     const struct feb_can_dart_tach_measurements_1234_t *src_p,

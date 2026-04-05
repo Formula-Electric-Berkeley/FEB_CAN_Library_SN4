@@ -81,6 +81,23 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x23: (sensor_msg.get_rear_right_tire_temp_data, "Rear right tire temperature"),
     0x24: (sensor_msg.get_wss_data_front, "Front wheel speed sensors"),
     0x25: (sensor_msg.get_wss_data_rear, "Rear wheel speed sensors"),
+    
+    # IMU: accelerometer/gyro
+    0x26: (sensor_msg.get_imu_acceleration_data, "IMU accelerometer data"),
+    0x27: (sensor_msg.get_imu_gyro_data, "IMU gyro data"),
+
+    
+
+    # wheel speed , tire temp , 
+    # strain gauge, 
+    #steering wheel encoder, 
+    # accelerometer/gyro (imu)
+
+
+
+
+    # gps
+    # magnonmeter
     # 0x26-0x2C: Reserved for future sensor messages
 
     # ----- DART Messages (0x2D-0x33) -----

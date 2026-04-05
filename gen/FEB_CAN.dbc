@@ -141,6 +141,16 @@ BO_ 37 wss_rear_data: 8 Vector__XXX
  SG_ wss_left_rear : 32|32@1+ (1,0) [0|0] "" Vector__XXX
  SG_ wss_right_rear : 0|32@1+ (1,0) [0|0] "" Vector__XXX
 
+BO_ 38 imu_acceleration_data: 6 Vector__XXX
+ SG_ acceleration_z : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ acceleration_y : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ acceleration_x : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 39 imu_gyro_data: 6 Vector__XXX
+ SG_ gyro_z : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ gyro_y : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ gyro_x : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
 BO_ 45 DART_TACH_measurements_1234: 8 Vector__XXX
  SG_ fan4_speed : 48|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ fan3_speed : 32|16@1+ (1,0) [0|0] "" Vector__XXX
@@ -614,6 +624,8 @@ CM_ BO_ 34 "Message for rear left tire temp data.";
 CM_ BO_ 35 "Message for rear right tire temp data.";
 CM_ BO_ 36 "Wheel speed sensor data for left and right front wheels.";
 CM_ BO_ 37 "Wheel speed sensor data for left and right rear wheels.";
+CM_ BO_ 38 "IMU acceleration data message.";
+CM_ BO_ 39 "IMU gyro data message.";
 CM_ BO_ 45 "DART message for Tachometer measurements first 4 fan speeds.";
 CM_ BO_ 46 "DART message for Tachometer measurements 5th fan speed.";
 CM_ BO_ 52 "BBB TPS Chip";
