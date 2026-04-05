@@ -74,15 +74,17 @@ BO_ 9 brake: 5 Vector__XXX
 BO_ 10 bspd_state: 1 Vector__XXX
  SG_ bspd_state : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 16 dash_io: 1 Vector__XXX
- SG_ s3_accumulator_fan : 7|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ s2_radiator_fan : 6|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ s1_coolant_pump : 5|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ b4 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ b3 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ b2_data_logging : 2|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ b1_ready_to_drive : 1|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ buzzer_state : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 16 dash_state: 2 Vector__XXX
+ SG_ ready_to_drive : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ buzzer : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ switch4 : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ switch3 : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ switch2 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ switch1 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ button4 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ button3 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ button2 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ button1 : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 22 lvpdb_lv_24v_bus_and_12v_bus_vol: 4 Vector__XXX
  SG_ lv_12v_voltage : 16|16@1+ (1,0) [0|0] "" Vector__XXX
@@ -600,7 +602,7 @@ CM_ BO_ 3 "BMS message for accumulator temperature.";
 CM_ BO_ 4 "Accumulator Faults";
 CM_ BO_ 9 "PCU brake message";
 CM_ BO_ 10 "BSPD message.";
-CM_ BO_ 16 "Dash button and switch message";
+CM_ BO_ 16 "Dash state + buttons and switches";
 CM_ BO_ 22 "LVPDB message for voltages of 24v bus and 12v bus";
 CM_ BO_ 23 "LVPDB message for currents of LV, SH, LT, BM_L";
 CM_ BO_ 24 "LVPDB message for currents of SM, AF1_AF2, CP_RF";

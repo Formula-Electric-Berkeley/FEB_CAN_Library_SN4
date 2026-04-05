@@ -63,7 +63,7 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     # 0x0B-0x0F: Reserved for future PCU safety messages
 
     # ----- DASH Messages (0x10-0x15) -----
-    0x10: (dash_msg.get_dash_buttons, "Dashboard buttons and switches"),
+    0x10: (dash_msg.get_dash_state, "Dashboard state + buttons and switches"),
     # 0x11-0x15: Reserved for future DASH messages
 
     # ----- LVPDB Messages (0x16-0x1D) -----

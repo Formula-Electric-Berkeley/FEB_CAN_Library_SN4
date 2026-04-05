@@ -21,7 +21,7 @@ extern "C" {
 #define FEB_CAN_ACCUMULATOR_FAULTS_FRAME_ID (0x04u)
 #define FEB_CAN_BRAKE_FRAME_ID (0x09u)
 #define FEB_CAN_BSPD_STATE_FRAME_ID (0x0au)
-#define FEB_CAN_DASH_IO_FRAME_ID (0x10u)
+#define FEB_CAN_DASH_STATE_FRAME_ID (0x10u)
 #define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_FRAME_ID (0x16u)
 #define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_FRAME_ID (0x17u)
 #define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_FRAME_ID (0x18u)
@@ -61,7 +61,7 @@ extern "C" {
 #define FEB_CAN_ACCUMULATOR_FAULTS_LENGTH (1u)
 #define FEB_CAN_BRAKE_LENGTH (5u)
 #define FEB_CAN_BSPD_STATE_LENGTH (1u)
-#define FEB_CAN_DASH_IO_LENGTH (1u)
+#define FEB_CAN_DASH_STATE_LENGTH (2u)
 #define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_LENGTH (4u)
 #define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_LENGTH (8u)
 #define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_LENGTH (8u)
@@ -101,7 +101,7 @@ extern "C" {
 #define FEB_CAN_ACCUMULATOR_FAULTS_IS_EXTENDED (0)
 #define FEB_CAN_BRAKE_IS_EXTENDED (0)
 #define FEB_CAN_BSPD_STATE_IS_EXTENDED (0)
-#define FEB_CAN_DASH_IO_IS_EXTENDED (0)
+#define FEB_CAN_DASH_STATE_IS_EXTENDED (0)
 #define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_IS_EXTENDED (0)
 #define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_IS_EXTENDED (0)
 #define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_IS_EXTENDED (0)
@@ -147,7 +147,7 @@ extern "C" {
 #define FEB_CAN_ACCUMULATOR_FAULTS_NAME "accumulator_faults"
 #define FEB_CAN_BRAKE_NAME "brake"
 #define FEB_CAN_BSPD_STATE_NAME "bspd_state"
-#define FEB_CAN_DASH_IO_NAME "dash_io"
+#define FEB_CAN_DASH_STATE_NAME "dash_state"
 #define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_NAME "lvpdb_lv_24v_bus_and_12v_bus_voltages"
 #define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_NAME "lvpdb_lv_sh_lt_bm_l_currents"
 #define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_NAME "lvpdb_sm_af1_af2_cp_rf_currents"
@@ -204,14 +204,16 @@ extern "C" {
 #define FEB_CAN_BRAKE_BRAKE1_PSI_NAME "brake1_psi"
 #define FEB_CAN_BRAKE_BRAKE2_PSI_NAME "brake2_psi"
 #define FEB_CAN_BSPD_STATE_BSPD_STATE_NAME "bspd_state"
-#define FEB_CAN_DASH_IO_BUZZER_STATE_NAME "buzzer_state"
-#define FEB_CAN_DASH_IO_B1_READY_TO_DRIVE_NAME "b1_ready_to_drive"
-#define FEB_CAN_DASH_IO_B2_DATA_LOGGING_NAME "b2_data_logging"
-#define FEB_CAN_DASH_IO_B3_NAME "b3"
-#define FEB_CAN_DASH_IO_B4_NAME "b4"
-#define FEB_CAN_DASH_IO_S1_COOLANT_PUMP_NAME "s1_coolant_pump"
-#define FEB_CAN_DASH_IO_S2_RADIATOR_FAN_NAME "s2_radiator_fan"
-#define FEB_CAN_DASH_IO_S3_ACCUMULATOR_FAN_NAME "s3_accumulator_fan"
+#define FEB_CAN_DASH_STATE_BUTTON1_NAME "button1"
+#define FEB_CAN_DASH_STATE_BUTTON2_NAME "button2"
+#define FEB_CAN_DASH_STATE_BUTTON3_NAME "button3"
+#define FEB_CAN_DASH_STATE_BUTTON4_NAME "button4"
+#define FEB_CAN_DASH_STATE_SWITCH1_NAME "switch1"
+#define FEB_CAN_DASH_STATE_SWITCH2_NAME "switch2"
+#define FEB_CAN_DASH_STATE_SWITCH3_NAME "switch3"
+#define FEB_CAN_DASH_STATE_SWITCH4_NAME "switch4"
+#define FEB_CAN_DASH_STATE_BUZZER_NAME "buzzer"
+#define FEB_CAN_DASH_STATE_READY_TO_DRIVE_NAME "ready_to_drive"
 #define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_LV_24V_VOLTAGE_NAME "lv_24v_voltage"
 #define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_LV_12V_VOLTAGE_NAME "lv_12v_voltage"
 #define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_LV_CURRENT_NAME "lv_current"
@@ -891,68 +893,82 @@ struct feb_can_bspd_state_t {
 };
 
 /**
- * Signals in message dash_io.
+ * Signals in message dash_state.
  *
- * Dash button and switch message
+ * Dash state + buttons and switches
  *
  * All signal values are as on the CAN bus.
  */
-struct feb_can_dash_io_t {
+struct feb_can_dash_state_t {
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t buzzer_state;
+    uint8_t button1;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t b1_ready_to_drive;
+    uint8_t button2;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t b2_data_logging;
+    uint8_t button3;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t b3;
+    uint8_t button4;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t b4;
+    uint8_t switch1;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t s1_coolant_pump;
+    uint8_t switch2;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t s2_radiator_fan;
+    uint8_t switch3;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t s3_accumulator_fan;
+    uint8_t switch4;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t buzzer;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t ready_to_drive;
 };
 
 /**
@@ -5255,7 +5271,7 @@ double feb_can_bspd_state_bspd_state_decode(uint8_t value);
 bool feb_can_bspd_state_bspd_state_is_in_range(uint8_t value);
 
 /**
- * Pack message dash_io.
+ * Pack message dash_state.
  *
  * @param[out] dst_p Buffer to pack the message into.
  * @param[in] src_p Data to pack.
@@ -5263,13 +5279,13 @@ bool feb_can_bspd_state_bspd_state_is_in_range(uint8_t value);
  *
  * @return Size of packed data, or negative error code.
  */
-int feb_can_dash_io_pack(
+int feb_can_dash_state_pack(
     uint8_t *dst_p,
-    const struct feb_can_dash_io_t *src_p,
+    const struct feb_can_dash_state_t *src_p,
     size_t size);
 
 /**
- * Unpack message dash_io.
+ * Unpack message dash_state.
  *
  * @param[out] dst_p Object to unpack the message into.
  * @param[in] src_p Message to unpack.
@@ -5277,19 +5293,19 @@ int feb_can_dash_io_pack(
  *
  * @return zero(0) or negative error code.
  */
-int feb_can_dash_io_unpack(
-    struct feb_can_dash_io_t *dst_p,
+int feb_can_dash_state_unpack(
+    struct feb_can_dash_state_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
- * Init message fields to default values from dash_io.
+ * Init message fields to default values from dash_state.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int feb_can_dash_io_init(struct feb_can_dash_io_t *msg_p);
+int feb_can_dash_state_init(struct feb_can_dash_state_t *msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5298,7 +5314,7 @@ int feb_can_dash_io_init(struct feb_can_dash_io_t *msg_p);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_dash_io_buzzer_state_encode(double value);
+uint8_t feb_can_dash_state_button1_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5307,7 +5323,7 @@ uint8_t feb_can_dash_io_buzzer_state_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_dash_io_buzzer_state_decode(uint8_t value);
+double feb_can_dash_state_button1_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5316,7 +5332,7 @@ double feb_can_dash_io_buzzer_state_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_dash_io_buzzer_state_is_in_range(uint8_t value);
+bool feb_can_dash_state_button1_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5325,7 +5341,7 @@ bool feb_can_dash_io_buzzer_state_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_dash_io_b1_ready_to_drive_encode(double value);
+uint8_t feb_can_dash_state_button2_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5334,7 +5350,7 @@ uint8_t feb_can_dash_io_b1_ready_to_drive_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_dash_io_b1_ready_to_drive_decode(uint8_t value);
+double feb_can_dash_state_button2_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5343,7 +5359,7 @@ double feb_can_dash_io_b1_ready_to_drive_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_dash_io_b1_ready_to_drive_is_in_range(uint8_t value);
+bool feb_can_dash_state_button2_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5352,7 +5368,7 @@ bool feb_can_dash_io_b1_ready_to_drive_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_dash_io_b2_data_logging_encode(double value);
+uint8_t feb_can_dash_state_button3_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5361,7 +5377,7 @@ uint8_t feb_can_dash_io_b2_data_logging_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_dash_io_b2_data_logging_decode(uint8_t value);
+double feb_can_dash_state_button3_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5370,7 +5386,7 @@ double feb_can_dash_io_b2_data_logging_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_dash_io_b2_data_logging_is_in_range(uint8_t value);
+bool feb_can_dash_state_button3_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5379,7 +5395,7 @@ bool feb_can_dash_io_b2_data_logging_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_dash_io_b3_encode(double value);
+uint8_t feb_can_dash_state_button4_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5388,7 +5404,7 @@ uint8_t feb_can_dash_io_b3_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_dash_io_b3_decode(uint8_t value);
+double feb_can_dash_state_button4_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5397,7 +5413,7 @@ double feb_can_dash_io_b3_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_dash_io_b3_is_in_range(uint8_t value);
+bool feb_can_dash_state_button4_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5406,7 +5422,7 @@ bool feb_can_dash_io_b3_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_dash_io_b4_encode(double value);
+uint8_t feb_can_dash_state_switch1_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5415,7 +5431,7 @@ uint8_t feb_can_dash_io_b4_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_dash_io_b4_decode(uint8_t value);
+double feb_can_dash_state_switch1_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5424,7 +5440,7 @@ double feb_can_dash_io_b4_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_dash_io_b4_is_in_range(uint8_t value);
+bool feb_can_dash_state_switch1_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5433,7 +5449,7 @@ bool feb_can_dash_io_b4_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_dash_io_s1_coolant_pump_encode(double value);
+uint8_t feb_can_dash_state_switch2_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5442,7 +5458,7 @@ uint8_t feb_can_dash_io_s1_coolant_pump_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_dash_io_s1_coolant_pump_decode(uint8_t value);
+double feb_can_dash_state_switch2_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5451,7 +5467,7 @@ double feb_can_dash_io_s1_coolant_pump_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_dash_io_s1_coolant_pump_is_in_range(uint8_t value);
+bool feb_can_dash_state_switch2_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5460,7 +5476,7 @@ bool feb_can_dash_io_s1_coolant_pump_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_dash_io_s2_radiator_fan_encode(double value);
+uint8_t feb_can_dash_state_switch3_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5469,7 +5485,7 @@ uint8_t feb_can_dash_io_s2_radiator_fan_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_dash_io_s2_radiator_fan_decode(uint8_t value);
+double feb_can_dash_state_switch3_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5478,7 +5494,7 @@ double feb_can_dash_io_s2_radiator_fan_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_dash_io_s2_radiator_fan_is_in_range(uint8_t value);
+bool feb_can_dash_state_switch3_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5487,7 +5503,7 @@ bool feb_can_dash_io_s2_radiator_fan_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_dash_io_s3_accumulator_fan_encode(double value);
+uint8_t feb_can_dash_state_switch4_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -5496,7 +5512,7 @@ uint8_t feb_can_dash_io_s3_accumulator_fan_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_dash_io_s3_accumulator_fan_decode(uint8_t value);
+double feb_can_dash_state_switch4_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -5505,7 +5521,61 @@ double feb_can_dash_io_s3_accumulator_fan_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_dash_io_s3_accumulator_fan_is_in_range(uint8_t value);
+bool feb_can_dash_state_switch4_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_dash_state_buzzer_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_dash_state_buzzer_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_dash_state_buzzer_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_dash_state_ready_to_drive_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_dash_state_ready_to_drive_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_dash_state_ready_to_drive_is_in_range(uint8_t value);
 
 /**
  * Pack message lvpdb_lv_24v_bus_and_12v_bus_voltages.

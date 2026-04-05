@@ -825,175 +825,209 @@ bool feb_can_bspd_state_bspd_state_is_in_range(uint8_t value)
     return (true);
 }
 
-int feb_can_dash_io_pack(
+int feb_can_dash_state_pack(
     uint8_t *dst_p,
-    const struct feb_can_dash_io_t *src_p,
+    const struct feb_can_dash_state_t *src_p,
     size_t size)
 {
-    if (size < 1u) {
+    if (size < 2u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, 1);
+    memset(&dst_p[0], 0, 2);
 
-    dst_p[0] |= pack_left_shift_u8(src_p->buzzer_state, 0u, 0x01u);
-    dst_p[0] |= pack_left_shift_u8(src_p->b1_ready_to_drive, 1u, 0x02u);
-    dst_p[0] |= pack_left_shift_u8(src_p->b2_data_logging, 2u, 0x04u);
-    dst_p[0] |= pack_left_shift_u8(src_p->b3, 3u, 0x08u);
-    dst_p[0] |= pack_left_shift_u8(src_p->b4, 4u, 0x10u);
-    dst_p[0] |= pack_left_shift_u8(src_p->s1_coolant_pump, 5u, 0x20u);
-    dst_p[0] |= pack_left_shift_u8(src_p->s2_radiator_fan, 6u, 0x40u);
-    dst_p[0] |= pack_left_shift_u8(src_p->s3_accumulator_fan, 7u, 0x80u);
+    dst_p[0] |= pack_left_shift_u8(src_p->button1, 0u, 0x01u);
+    dst_p[0] |= pack_left_shift_u8(src_p->button2, 1u, 0x02u);
+    dst_p[0] |= pack_left_shift_u8(src_p->button3, 2u, 0x04u);
+    dst_p[0] |= pack_left_shift_u8(src_p->button4, 3u, 0x08u);
+    dst_p[0] |= pack_left_shift_u8(src_p->switch1, 4u, 0x10u);
+    dst_p[0] |= pack_left_shift_u8(src_p->switch2, 5u, 0x20u);
+    dst_p[0] |= pack_left_shift_u8(src_p->switch3, 6u, 0x40u);
+    dst_p[0] |= pack_left_shift_u8(src_p->switch4, 7u, 0x80u);
+    dst_p[1] |= pack_left_shift_u8(src_p->buzzer, 0u, 0x01u);
+    dst_p[1] |= pack_left_shift_u8(src_p->ready_to_drive, 1u, 0x02u);
 
-    return (1);
+    return (2);
 }
 
-int feb_can_dash_io_unpack(
-    struct feb_can_dash_io_t *dst_p,
+int feb_can_dash_state_unpack(
+    struct feb_can_dash_state_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
-    if (size < 1u) {
+    if (size < 2u) {
         return (-EINVAL);
     }
 
-    dst_p->buzzer_state = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
-    dst_p->b1_ready_to_drive = unpack_right_shift_u8(src_p[0], 1u, 0x02u);
-    dst_p->b2_data_logging = unpack_right_shift_u8(src_p[0], 2u, 0x04u);
-    dst_p->b3 = unpack_right_shift_u8(src_p[0], 3u, 0x08u);
-    dst_p->b4 = unpack_right_shift_u8(src_p[0], 4u, 0x10u);
-    dst_p->s1_coolant_pump = unpack_right_shift_u8(src_p[0], 5u, 0x20u);
-    dst_p->s2_radiator_fan = unpack_right_shift_u8(src_p[0], 6u, 0x40u);
-    dst_p->s3_accumulator_fan = unpack_right_shift_u8(src_p[0], 7u, 0x80u);
+    dst_p->button1 = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
+    dst_p->button2 = unpack_right_shift_u8(src_p[0], 1u, 0x02u);
+    dst_p->button3 = unpack_right_shift_u8(src_p[0], 2u, 0x04u);
+    dst_p->button4 = unpack_right_shift_u8(src_p[0], 3u, 0x08u);
+    dst_p->switch1 = unpack_right_shift_u8(src_p[0], 4u, 0x10u);
+    dst_p->switch2 = unpack_right_shift_u8(src_p[0], 5u, 0x20u);
+    dst_p->switch3 = unpack_right_shift_u8(src_p[0], 6u, 0x40u);
+    dst_p->switch4 = unpack_right_shift_u8(src_p[0], 7u, 0x80u);
+    dst_p->buzzer = unpack_right_shift_u8(src_p[1], 0u, 0x01u);
+    dst_p->ready_to_drive = unpack_right_shift_u8(src_p[1], 1u, 0x02u);
 
     return (0);
 }
 
-int feb_can_dash_io_init(struct feb_can_dash_io_t *msg_p)
+int feb_can_dash_state_init(struct feb_can_dash_state_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_dash_io_t));
+    memset(msg_p, 0, sizeof(struct feb_can_dash_state_t));
 
     return 0;
 }
 
-uint8_t feb_can_dash_io_buzzer_state_encode(double value)
+uint8_t feb_can_dash_state_button1_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_dash_io_buzzer_state_decode(uint8_t value)
+double feb_can_dash_state_button1_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_dash_io_buzzer_state_is_in_range(uint8_t value)
+bool feb_can_dash_state_button1_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_dash_io_b1_ready_to_drive_encode(double value)
+uint8_t feb_can_dash_state_button2_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_dash_io_b1_ready_to_drive_decode(uint8_t value)
+double feb_can_dash_state_button2_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_dash_io_b1_ready_to_drive_is_in_range(uint8_t value)
+bool feb_can_dash_state_button2_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_dash_io_b2_data_logging_encode(double value)
+uint8_t feb_can_dash_state_button3_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_dash_io_b2_data_logging_decode(uint8_t value)
+double feb_can_dash_state_button3_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_dash_io_b2_data_logging_is_in_range(uint8_t value)
+bool feb_can_dash_state_button3_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_dash_io_b3_encode(double value)
+uint8_t feb_can_dash_state_button4_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_dash_io_b3_decode(uint8_t value)
+double feb_can_dash_state_button4_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_dash_io_b3_is_in_range(uint8_t value)
+bool feb_can_dash_state_button4_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_dash_io_b4_encode(double value)
+uint8_t feb_can_dash_state_switch1_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_dash_io_b4_decode(uint8_t value)
+double feb_can_dash_state_switch1_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_dash_io_b4_is_in_range(uint8_t value)
+bool feb_can_dash_state_switch1_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_dash_io_s1_coolant_pump_encode(double value)
+uint8_t feb_can_dash_state_switch2_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_dash_io_s1_coolant_pump_decode(uint8_t value)
+double feb_can_dash_state_switch2_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_dash_io_s1_coolant_pump_is_in_range(uint8_t value)
+bool feb_can_dash_state_switch2_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_dash_io_s2_radiator_fan_encode(double value)
+uint8_t feb_can_dash_state_switch3_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_dash_io_s2_radiator_fan_decode(uint8_t value)
+double feb_can_dash_state_switch3_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_dash_io_s2_radiator_fan_is_in_range(uint8_t value)
+bool feb_can_dash_state_switch3_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_dash_io_s3_accumulator_fan_encode(double value)
+uint8_t feb_can_dash_state_switch4_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_dash_io_s3_accumulator_fan_decode(uint8_t value)
+double feb_can_dash_state_switch4_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_dash_io_s3_accumulator_fan_is_in_range(uint8_t value)
+bool feb_can_dash_state_switch4_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_dash_state_buzzer_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_dash_state_buzzer_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_dash_state_buzzer_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_dash_state_ready_to_drive_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_dash_state_ready_to_drive_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_dash_state_ready_to_drive_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
