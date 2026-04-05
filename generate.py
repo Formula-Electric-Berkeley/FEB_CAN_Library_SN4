@@ -81,7 +81,9 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x23: (sensor_msg.get_rear_right_tire_temp_data, "Rear right tire temperature"),
     0x24: (sensor_msg.get_wss_data_front, "Front wheel speed sensors"),
     0x25: (sensor_msg.get_wss_data_rear, "Rear wheel speed sensors"),
-    # 0x26-0x2C: Reserved for future sensor messages
+    0x26: (sensor_msg.get_imu_acceleration_data, "IMU acceleration data"),
+    0x27: (sensor_msg.get_imu_gyro_data, "IMU gyroscope data"),
+    # 0x28-0x2C: Reserved for future sensor messages
 
     # ----- DART Messages (0x2D-0x33) -----
     0x2D: (dart_msg.get_measured_fan_speeds_1234, "DART fan speeds 1-4"),

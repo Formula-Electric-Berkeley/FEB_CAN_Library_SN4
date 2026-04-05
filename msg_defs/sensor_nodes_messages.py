@@ -204,7 +204,7 @@ def get_front_right_tire_temp_data(frame_id: int):
 
     return msg
 
-def get_imu_data(frame_id: int):
+def get_imu_acceleration_data(frame_id: int):
     accelX = cantools.db.Signal(
         name="acceleration_x",
         start=0,
@@ -226,20 +226,47 @@ def get_imu_data(frame_id: int):
         byte_order="little_endian",
         is_signed=True,
     )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="imu_acceleration_data",
+        length=6,
+        signals=[accelX, accelY, accelZ],
+        comment="IMU acceleration data (X, Y, Z axes).",
+        strict=True
+    )
+    return msg
+
+
+def get_imu_gyro_data(frame_id: int):
     gyroX = cantools.db.Signal(
         name="gyro_x",
-        start=48,
+        start=0,
         length=16,
         byte_order="little_endian",
         is_signed=True,
     )
-    
+    gyroY = cantools.db.Signal(
+        name="gyro_y",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    gyroZ = cantools.db.Signal(
+        name="gyro_z",
+        start=32,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="imu_data",
-        length=8,
-        signals=[accelX, accelY, accelZ, gyroX],
-        comment="IMU data message.",
+        name="imu_gyro_data",
+        length=6,
+        signals=[gyroX, gyroY, gyroZ],
+        comment="IMU gyroscope data (X, Y, Z axes).",
         strict=True
     )
     return msg
