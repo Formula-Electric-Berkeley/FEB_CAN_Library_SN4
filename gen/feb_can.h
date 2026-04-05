@@ -1318,7 +1318,7 @@ struct feb_can_wss_rear_data_t {
 /**
  * Signals in message imu_acceleration_data.
  *
- * IMU acceleration data (X, Y, Z axes).
+ * IMU acceleration data message.
  *
  * All signal values are as on the CAN bus.
  */
@@ -1348,7 +1348,7 @@ struct feb_can_imu_acceleration_data_t {
 /**
  * Signals in message imu_gyro_data.
  *
- * IMU gyroscope data (X, Y, Z axes).
+ * IMU gyro data message.
  *
  * All signal values are as on the CAN bus.
  */
