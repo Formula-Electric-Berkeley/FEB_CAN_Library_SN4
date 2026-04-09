@@ -134,8 +134,8 @@ BO_ 35 rear_right_tire_temp: 8 Vector__XXX
  SG_ leftmost_temp_RR : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 36 wss_front_data: 8 Vector__XXX
- SG_ wss_left_front : 32|32@1+ (1,0) [0|0] "" Vector__XXX
- SG_ wss_right_front : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ wss_left_front : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ wss_right_front : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 37 wss_rear_data: 8 Vector__XXX
  SG_ wss_left_rear : 32|32@1+ (1,0) [0|0] "" Vector__XXX
@@ -146,10 +146,15 @@ BO_ 38 imu_acceleration_data: 6 Vector__XXX
  SG_ acceleration_y : 16|16@1- (1,0) [0|0] "" Vector__XXX
  SG_ acceleration_x : 0|16@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 39 imu_gyro_data: 6 Vector__XXX
+BO_ 40 imu_gyro_data: 6 Vector__XXX
  SG_ gyro_z : 32|16@1- (1,0) [0|0] "" Vector__XXX
  SG_ gyro_y : 16|16@1- (1,0) [0|0] "" Vector__XXX
  SG_ gyro_x : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 42 magnetometer_data: 6 Vector__XXX
+ SG_ magnetometer_z : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ magnetometer_y : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ magnetometer_x : 0|16@1- (1,0) [0|0] "" Vector__XXX
 
 BO_ 45 DART_TACH_measurements_1234: 8 Vector__XXX
  SG_ fan4_speed : 48|16@1+ (1,0) [0|0] "" Vector__XXX
@@ -625,7 +630,8 @@ CM_ BO_ 35 "Message for rear right tire temp data.";
 CM_ BO_ 36 "Wheel speed sensor data for left and right front wheels.";
 CM_ BO_ 37 "Wheel speed sensor data for left and right rear wheels.";
 CM_ BO_ 38 "IMU acceleration data message.";
-CM_ BO_ 39 "IMU gyro data message.";
+CM_ BO_ 40 "IMU gyro data message.";
+CM_ BO_ 42 "Magnetometer data message (raw values).";
 CM_ BO_ 45 "DART message for Tachometer measurements first 4 fan speeds.";
 CM_ BO_ 46 "DART message for Tachometer measurements 5th fan speed.";
 CM_ BO_ 52 "BBB TPS Chip";

@@ -204,7 +204,7 @@ def get_front_right_tire_temp_data(frame_id: int):
 
     return msg
 
-def get_imu_acceleration_data(frame_id: int):
+def get_imu_acceleration_data_front(frame_id: int):
     accelX = cantools.db.Signal(
         name="acceleration_x",
         start=0,
@@ -240,7 +240,7 @@ def get_imu_acceleration_data(frame_id: int):
 
 
 
-def get_imu_gyro_data(frame_id: int):
+def get_imu_gyro_data_front(frame_id: int):
     gyroX = cantools.db.Signal(
         name="gyro_x",
         start=0,
@@ -262,20 +262,7 @@ def get_imu_gyro_data(frame_id: int):
         byte_order="little_endian",
         is_signed=True,
     )
-    gyroY = cantools.db.Signal(
-        name="gyro_y",
-        start=16,
-        length=16,
-        byte_order="little_endian",
-        is_signed=True,
-    )
-    gyroZ = cantools.db.Signal(
-        name="gyro_z",
-        start=32,
-        length=16,
-        byte_order="little_endian",
-        is_signed=True,
-    )
+  
 
     msg = cantools.db.Message(
         frame_id=frame_id,
@@ -289,19 +276,54 @@ def get_imu_gyro_data(frame_id: int):
     return msg
 
 
+def get_magnetometer_data_front(frame_id: int):
+    magX = cantools.db.Signal(
+        name="magnetometer_x",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    magY = cantools.db.Signal(
+        name="magnetometer_y",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    magZ = cantools.db.Signal(
+        name="magnetometer_z",
+        start=32,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+  
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="magnetometer_data",
+        length=6,
+        signals=[magX, magY, magZ],
+        comment="Magnetometer data message (raw values).",
+        strict=True
+    )
+
+    return msg
+
 
 def get_wss_data_front(frame_id: int):
     wss_right_front = cantools.db.Signal(
         name = "wss_right_front",
-        start = 0,
-        length = 32,
+        start = 0,  
+        length = 8, #hetvi: ∆ frm prev code: 8 bits per WSS field instead of 32 bits 
         byte_order="little_endian",
         is_signed = False,
     )
     wss_left_front = cantools.db.Signal(
         name = "wss_left_front",
         start = 32,
-        length = 32,
+        length = 8, #hetvi: ∆ frm prev code: 8 bits per WSS field instead of 32 bits 
         byte_order="little_endian",
         is_signed = False,
     )

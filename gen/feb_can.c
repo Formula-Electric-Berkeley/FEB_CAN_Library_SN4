@@ -1985,14 +1985,8 @@ int feb_can_wss_front_data_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u32(src_p->wss_right_front, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u32(src_p->wss_right_front, 8u, 0xffu);
-    dst_p[2] |= pack_right_shift_u32(src_p->wss_right_front, 16u, 0xffu);
-    dst_p[3] |= pack_right_shift_u32(src_p->wss_right_front, 24u, 0xffu);
-    dst_p[4] |= pack_left_shift_u32(src_p->wss_left_front, 0u, 0xffu);
-    dst_p[5] |= pack_right_shift_u32(src_p->wss_left_front, 8u, 0xffu);
-    dst_p[6] |= pack_right_shift_u32(src_p->wss_left_front, 16u, 0xffu);
-    dst_p[7] |= pack_right_shift_u32(src_p->wss_left_front, 24u, 0xffu);
+    dst_p[0] |= pack_left_shift_u8(src_p->wss_right_front, 0u, 0xffu);
+    dst_p[4] |= pack_left_shift_u8(src_p->wss_left_front, 0u, 0xffu);
 
     return (8);
 }
@@ -2006,14 +2000,8 @@ int feb_can_wss_front_data_unpack(
         return (-EINVAL);
     }
 
-    dst_p->wss_right_front = unpack_right_shift_u32(src_p[0], 0u, 0xffu);
-    dst_p->wss_right_front |= unpack_left_shift_u32(src_p[1], 8u, 0xffu);
-    dst_p->wss_right_front |= unpack_left_shift_u32(src_p[2], 16u, 0xffu);
-    dst_p->wss_right_front |= unpack_left_shift_u32(src_p[3], 24u, 0xffu);
-    dst_p->wss_left_front = unpack_right_shift_u32(src_p[4], 0u, 0xffu);
-    dst_p->wss_left_front |= unpack_left_shift_u32(src_p[5], 8u, 0xffu);
-    dst_p->wss_left_front |= unpack_left_shift_u32(src_p[6], 16u, 0xffu);
-    dst_p->wss_left_front |= unpack_left_shift_u32(src_p[7], 24u, 0xffu);
+    dst_p->wss_right_front = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+    dst_p->wss_left_front = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
 
     return (0);
 }
@@ -2027,34 +2015,34 @@ int feb_can_wss_front_data_init(struct feb_can_wss_front_data_t *msg_p)
     return 0;
 }
 
-uint32_t feb_can_wss_front_data_wss_right_front_encode(double value)
+uint8_t feb_can_wss_front_data_wss_right_front_encode(double value)
 {
-    return (uint32_t)(value);
+    return (uint8_t)(value);
 }
 
-double feb_can_wss_front_data_wss_right_front_decode(uint32_t value)
+double feb_can_wss_front_data_wss_right_front_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_wss_front_data_wss_right_front_is_in_range(uint32_t value)
+bool feb_can_wss_front_data_wss_right_front_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint32_t feb_can_wss_front_data_wss_left_front_encode(double value)
+uint8_t feb_can_wss_front_data_wss_left_front_encode(double value)
 {
-    return (uint32_t)(value);
+    return (uint8_t)(value);
 }
 
-double feb_can_wss_front_data_wss_left_front_decode(uint32_t value)
+double feb_can_wss_front_data_wss_left_front_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_wss_front_data_wss_left_front_is_in_range(uint32_t value)
+bool feb_can_wss_front_data_wss_left_front_is_in_range(uint8_t value)
 {
     (void)value;
 
@@ -2370,6 +2358,120 @@ double feb_can_imu_gyro_data_gyro_z_decode(int16_t value)
 }
 
 bool feb_can_imu_gyro_data_gyro_z_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_magnetometer_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_magnetometer_data_t *src_p,
+    size_t size)
+{
+    uint16_t magnetometer_x;
+    uint16_t magnetometer_y;
+    uint16_t magnetometer_z;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 6);
+
+    magnetometer_x = (uint16_t)src_p->magnetometer_x;
+    dst_p[0] |= pack_left_shift_u16(magnetometer_x, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(magnetometer_x, 8u, 0xffu);
+    magnetometer_y = (uint16_t)src_p->magnetometer_y;
+    dst_p[2] |= pack_left_shift_u16(magnetometer_y, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(magnetometer_y, 8u, 0xffu);
+    magnetometer_z = (uint16_t)src_p->magnetometer_z;
+    dst_p[4] |= pack_left_shift_u16(magnetometer_z, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(magnetometer_z, 8u, 0xffu);
+
+    return (6);
+}
+
+int feb_can_magnetometer_data_unpack(
+    struct feb_can_magnetometer_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t magnetometer_x;
+    uint16_t magnetometer_y;
+    uint16_t magnetometer_z;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    magnetometer_x = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    magnetometer_x |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->magnetometer_x = (int16_t)magnetometer_x;
+    magnetometer_y = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    magnetometer_y |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->magnetometer_y = (int16_t)magnetometer_y;
+    magnetometer_z = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    magnetometer_z |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->magnetometer_z = (int16_t)magnetometer_z;
+
+    return (0);
+}
+
+int feb_can_magnetometer_data_init(struct feb_can_magnetometer_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_magnetometer_data_t));
+
+    return 0;
+}
+
+int16_t feb_can_magnetometer_data_magnetometer_x_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_magnetometer_data_magnetometer_x_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_magnetometer_data_magnetometer_x_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_magnetometer_data_magnetometer_y_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_magnetometer_data_magnetometer_y_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_magnetometer_data_magnetometer_y_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_magnetometer_data_magnetometer_z_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_magnetometer_data_magnetometer_z_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_magnetometer_data_magnetometer_z_is_in_range(int16_t value)
 {
     (void)value;
 

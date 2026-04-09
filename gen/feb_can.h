@@ -34,7 +34,8 @@ extern "C" {
 #define FEB_CAN_WSS_FRONT_DATA_FRAME_ID (0x24u)
 #define FEB_CAN_WSS_REAR_DATA_FRAME_ID (0x25u)
 #define FEB_CAN_IMU_ACCELERATION_DATA_FRAME_ID (0x26u)
-#define FEB_CAN_IMU_GYRO_DATA_FRAME_ID (0x27u)
+#define FEB_CAN_IMU_GYRO_DATA_FRAME_ID (0x28u)
+#define FEB_CAN_MAGNETOMETER_DATA_FRAME_ID (0x2au)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_FRAME_ID (0x2du)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_5_FRAME_ID (0x2eu)
 #define FEB_CAN_BBB_TPS_FRAME_ID (0x34u)
@@ -77,6 +78,7 @@ extern "C" {
 #define FEB_CAN_WSS_REAR_DATA_LENGTH (8u)
 #define FEB_CAN_IMU_ACCELERATION_DATA_LENGTH (6u)
 #define FEB_CAN_IMU_GYRO_DATA_LENGTH (6u)
+#define FEB_CAN_MAGNETOMETER_DATA_LENGTH (6u)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_LENGTH (8u)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_5_LENGTH (2u)
 #define FEB_CAN_BBB_TPS_LENGTH (4u)
@@ -119,6 +121,7 @@ extern "C" {
 #define FEB_CAN_WSS_REAR_DATA_IS_EXTENDED (0)
 #define FEB_CAN_IMU_ACCELERATION_DATA_IS_EXTENDED (0)
 #define FEB_CAN_IMU_GYRO_DATA_IS_EXTENDED (0)
+#define FEB_CAN_MAGNETOMETER_DATA_IS_EXTENDED (0)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_IS_EXTENDED (0)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_5_IS_EXTENDED (0)
 #define FEB_CAN_BBB_TPS_IS_EXTENDED (0)
@@ -167,6 +170,7 @@ extern "C" {
 #define FEB_CAN_WSS_REAR_DATA_NAME "wss_rear_data"
 #define FEB_CAN_IMU_ACCELERATION_DATA_NAME "imu_acceleration_data"
 #define FEB_CAN_IMU_GYRO_DATA_NAME "imu_gyro_data"
+#define FEB_CAN_MAGNETOMETER_DATA_NAME "magnetometer_data"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_NAME "DART_TACH_measurements_1234"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_5_NAME "DART_TACH_measurements_5"
 #define FEB_CAN_BBB_TPS_NAME "bbb_tps"
@@ -261,6 +265,9 @@ extern "C" {
 #define FEB_CAN_IMU_GYRO_DATA_GYRO_X_NAME "gyro_x"
 #define FEB_CAN_IMU_GYRO_DATA_GYRO_Y_NAME "gyro_y"
 #define FEB_CAN_IMU_GYRO_DATA_GYRO_Z_NAME "gyro_z"
+#define FEB_CAN_MAGNETOMETER_DATA_MAGNETOMETER_X_NAME "magnetometer_x"
+#define FEB_CAN_MAGNETOMETER_DATA_MAGNETOMETER_Y_NAME "magnetometer_y"
+#define FEB_CAN_MAGNETOMETER_DATA_MAGNETOMETER_Z_NAME "magnetometer_z"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_FAN1_SPEED_NAME "fan1_speed"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_FAN2_SPEED_NAME "fan2_speed"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_FAN3_SPEED_NAME "fan3_speed"
@@ -1282,14 +1289,14 @@ struct feb_can_wss_front_data_t {
      * Scale: 1
      * Offset: 0
      */
-    uint32_t wss_right_front;
+    uint8_t wss_right_front;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint32_t wss_left_front;
+    uint8_t wss_left_front;
 };
 
 /**
@@ -1373,6 +1380,36 @@ struct feb_can_imu_gyro_data_t {
      * Offset: 0
      */
     int16_t gyro_z;
+};
+
+/**
+ * Signals in message magnetometer_data.
+ *
+ * Magnetometer data message (raw values).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_magnetometer_data_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t magnetometer_x;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t magnetometer_y;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t magnetometer_z;
 };
 
 /**
@@ -6811,7 +6848,7 @@ int feb_can_wss_front_data_init(struct feb_can_wss_front_data_t *msg_p);
  *
  * @return Encoded signal.
  */
-uint32_t feb_can_wss_front_data_wss_right_front_encode(double value);
+uint8_t feb_can_wss_front_data_wss_right_front_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -6820,7 +6857,7 @@ uint32_t feb_can_wss_front_data_wss_right_front_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_wss_front_data_wss_right_front_decode(uint32_t value);
+double feb_can_wss_front_data_wss_right_front_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -6829,7 +6866,7 @@ double feb_can_wss_front_data_wss_right_front_decode(uint32_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_wss_front_data_wss_right_front_is_in_range(uint32_t value);
+bool feb_can_wss_front_data_wss_right_front_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6838,7 +6875,7 @@ bool feb_can_wss_front_data_wss_right_front_is_in_range(uint32_t value);
  *
  * @return Encoded signal.
  */
-uint32_t feb_can_wss_front_data_wss_left_front_encode(double value);
+uint8_t feb_can_wss_front_data_wss_left_front_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -6847,7 +6884,7 @@ uint32_t feb_can_wss_front_data_wss_left_front_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_wss_front_data_wss_left_front_decode(uint32_t value);
+double feb_can_wss_front_data_wss_left_front_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -6856,7 +6893,7 @@ double feb_can_wss_front_data_wss_left_front_decode(uint32_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_wss_front_data_wss_left_front_is_in_range(uint32_t value);
+bool feb_can_wss_front_data_wss_left_front_is_in_range(uint8_t value);
 
 /**
  * Pack message wss_rear_data.
@@ -7184,6 +7221,124 @@ double feb_can_imu_gyro_data_gyro_z_decode(int16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_imu_gyro_data_gyro_z_is_in_range(int16_t value);
+
+/**
+ * Pack message magnetometer_data.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_magnetometer_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_magnetometer_data_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message magnetometer_data.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_magnetometer_data_unpack(
+    struct feb_can_magnetometer_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from magnetometer_data.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_magnetometer_data_init(struct feb_can_magnetometer_data_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_magnetometer_data_magnetometer_x_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_magnetometer_data_magnetometer_x_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_magnetometer_data_magnetometer_x_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_magnetometer_data_magnetometer_y_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_magnetometer_data_magnetometer_y_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_magnetometer_data_magnetometer_y_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_magnetometer_data_magnetometer_z_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_magnetometer_data_magnetometer_z_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_magnetometer_data_magnetometer_z_is_in_range(int16_t value);
 
 /**
  * Pack message DART_TACH_measurements_1234.

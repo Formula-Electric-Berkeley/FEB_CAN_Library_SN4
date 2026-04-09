@@ -79,16 +79,31 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x21: (sensor_msg.get_front_right_tire_temp_data, "Front right tire temperature"),
     0x22: (sensor_msg.get_rear_left_tire_temp_data, "Rear left tire temperature"),
     0x23: (sensor_msg.get_rear_right_tire_temp_data, "Rear right tire temperature"),
-    0x24: (sensor_msg.get_wss_data_front, "Front wheel speed sensors"),
-    0x25: (sensor_msg.get_wss_data_rear, "Rear wheel speed sensors"),
-    
+
+    # WSS (Wheel Speed Sensors):
+    # FRONT
+    0x24: (sensor_msg.get_wss_data_front, "[WSS][FRONT] wheel speed sensor data"),
+    # REAR
+    0x25: (sensor_msg.get_wss_data_rear, "[WSS][REAR] wheel speed sensor data"),
+
     # IMU: accelerometer/gyro
-    0x26: (sensor_msg.get_imu_acceleration_data, "IMU accelerometer data"),
-    0x27: (sensor_msg.get_imu_gyro_data, "IMU gyro data"),
+    # FRONT
+    0x26: (sensor_msg.get_imu_acceleration_data_front, "[IMU] accelerometer data (raw)"),
+    0x28: (sensor_msg.get_imu_gyro_data_front, "[IMU] gyroscope data (raw)"),
+    # REAR
+    # 0x27: (sensor_msg.get_imu_acceleration_data_rear, "[IMU][REAR] accelerometer data (raw)"),
+    # 0x29: (sensor_msg.get_imu_gyro_data_rear, "[IMU][REAR] gyroscope data (raw)"),
+
+    # Magnetometer
+    # FRONT
+    0x2A: (sensor_msg.get_magnetometer_data_front, "[Magnetometer] data (raw)"),
+    # REAR
+    # 0x2B: (sensor_msg.get_magnetometer_data_rear, "[Magnetometer][REAR] data (raw)"),
 
     
-
-    # wheel speed , tire temp , 
+    
+    # 
+    # tire temp , 
     # strain gauge, 
     #steering wheel encoder, 
     # accelerometer/gyro (imu)
