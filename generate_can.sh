@@ -94,6 +94,9 @@ generate() {
     strip_header "$GEN_DIR/feb_can.h"
     strip_header "$GEN_DIR/feb_can.c"
 
+    log_info "Generating feb_can_latest.{h,c}..."
+    python generate.py --gen-state
+
     log_info "Generation complete!"
 }
 
@@ -109,6 +112,8 @@ check() {
     cp "$GEN_DIR/FEB_CAN.dbc" "$TEMP_DIR/FEB_CAN.dbc.orig"
     cp "$GEN_DIR/feb_can.h" "$TEMP_DIR/feb_can.h.orig"
     cp "$GEN_DIR/feb_can.c" "$TEMP_DIR/feb_can.c.orig"
+    cp "$GEN_DIR/feb_can_latest.h" "$TEMP_DIR/feb_can_latest.h.orig"
+    cp "$GEN_DIR/feb_can_latest.c" "$TEMP_DIR/feb_can_latest.c.orig"
 
     # Strip timestamps from originals for comparison
     strip_header "$TEMP_DIR/feb_can.h.orig"
@@ -124,6 +129,14 @@ check() {
     # Strip timestamps from newly generated files
     strip_header "$TEMP_DIR/feb_can.h"
     strip_header "$TEMP_DIR/feb_can.c"
+
+    # Regenerate state files (generate.py --gen-state writes to gen/, copy into temp for diffing)
+    python generate.py --gen-state
+    cp "$GEN_DIR/feb_can_latest.h" "$TEMP_DIR/feb_can_latest.h"
+    cp "$GEN_DIR/feb_can_latest.c" "$TEMP_DIR/feb_can_latest.c"
+    # Restore the committed versions in gen/ so --check never mutates the tree
+    cp "$TEMP_DIR/feb_can_latest.h.orig" "$GEN_DIR/feb_can_latest.h"
+    cp "$TEMP_DIR/feb_can_latest.c.orig" "$GEN_DIR/feb_can_latest.c"
 
     # Copy DBC to temp for comparison
     cp "$GEN_DIR/FEB_CAN.dbc" "$TEMP_DIR/FEB_CAN.dbc"
@@ -161,6 +174,26 @@ check() {
         DIFF_FOUND=true
     else
         echo "  gen/feb_can.c: OK"
+    fi
+
+    if ! diff -q "$TEMP_DIR/feb_can_latest.h" "$TEMP_DIR/feb_can_latest.h.orig" > /dev/null 2>&1; then
+        log_error "gen/feb_can_latest.h differs from committed version"
+        echo "--- Diff output ---"
+        diff "$TEMP_DIR/feb_can_latest.h.orig" "$TEMP_DIR/feb_can_latest.h" | head -50 || true
+        echo "-------------------"
+        DIFF_FOUND=true
+    else
+        echo "  gen/feb_can_latest.h: OK"
+    fi
+
+    if ! diff -q "$TEMP_DIR/feb_can_latest.c" "$TEMP_DIR/feb_can_latest.c.orig" > /dev/null 2>&1; then
+        log_error "gen/feb_can_latest.c differs from committed version"
+        echo "--- Diff output ---"
+        diff "$TEMP_DIR/feb_can_latest.c.orig" "$TEMP_DIR/feb_can_latest.c" | head -50 || true
+        echo "-------------------"
+        DIFF_FOUND=true
+    else
+        echo "  gen/feb_can_latest.c: OK"
     fi
 
     if [ "$DIFF_FOUND" = true ]; then
