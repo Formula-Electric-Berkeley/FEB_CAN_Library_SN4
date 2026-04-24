@@ -101,19 +101,20 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     # 0x2B: (sensor_msg.get_magnetometer_data_rear, "[Magnetometer][REAR] data (raw)"),
 
     
-    
+    ## GPS: Position, Altitude, Motion, Satellite info+Status
+
+
+
+
+
     # 
     # tire temp , 
     # strain gauge, 
     #steering wheel encoder, 
-    # accelerometer/gyro (imu)
 
 
 
 
-    # gps
-    # magnonmeter
-    # 0x26-0x2C: Reserved for future sensor messages
 
     # ----- DART Messages (0x2D-0x33) -----
     0x2D: (dart_msg.get_measured_fan_speeds_1234, "DART fan speeds 1-4"),
@@ -126,6 +127,18 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x36: (dash_msg.get_tps_voltage_current, "DASH TPS voltage/current"),
     0x37: (dcu_msg.get_tps_voltage_current, "DCU TPS voltage/current"),
     # 0x38-0x3F: Reserved for future TPS messages
+
+    # ----- Sensor Node Messages (part 2) (0x40-0x5F) -----
+    0x40: (sensor_msg.get_gps_latlon_data, "[GPS] latitude and longitude data"),
+    # 0x41: (sensor_msg.get_gps_altitude_data, "[GPS] altitude data"),
+    0x42: (sensor_msg.get_gps_motion_data, "[GPS] motion data (speed/course)"),
+    0x43: (sensor_msg.get_gps_time_data, "[GPS] time data (UTC)"),
+    0x44: (sensor_msg.get_gps_date_data, "[GPS] date data"),
+    
+    # 0x44-0x5F: Reserved for future sensor node messages (e.g. additional GPS data, new sensors, etc.)
+
+
+
 
     # ----- RMS/Inverter Messages (0xC0-0xCF) -----
     0xC0: (pcu_msg.rms_command_msg, "RMS inverter command"),
@@ -161,6 +174,7 @@ ID_RANGES = [
     (0x1E, 0x2C, "Sensor Nodes"),
     (0x2D, 0x33, "DART"),
     (0x34, 0x3F, "TPS Chips"),
+    (0x40, 0x5F, "Sensor Nodes (part 2)"),
     (0xC0, 0xCF, "RMS/Inverter"),
     (0xD0, 0xDF, "Heartbeats"),
     (0xE0, 0xEF, "Debug/Test"),

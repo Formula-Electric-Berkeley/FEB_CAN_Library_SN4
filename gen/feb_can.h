@@ -42,6 +42,10 @@ extern "C" {
 #define FEB_CAN_PCU_TPS_FRAME_ID (0x35u)
 #define FEB_CAN_DASH_TPS_FRAME_ID (0x36u)
 #define FEB_CAN_DCU_TPS_FRAME_ID (0x37u)
+#define FEB_CAN_GPS_LATLONG_DATA_FRAME_ID (0x40u)
+#define FEB_CAN_GPS_MOTION_DATA_FRAME_ID (0x42u)
+#define FEB_CAN_GPS_TIME_DATA_FRAME_ID (0x43u)
+#define FEB_CAN_GPS_DATE_DATA_FRAME_ID (0x44u)
 #define FEB_CAN_RMS_COMMAND_FRAME_ID (0xc0u)
 #define FEB_CAN_RMS_PARAM_FRAME_ID (0xc1u)
 #define FEB_CAN_PCU_HEARTBEAT_FRAME_ID (0xd0u)
@@ -85,6 +89,10 @@ extern "C" {
 #define FEB_CAN_PCU_TPS_LENGTH (4u)
 #define FEB_CAN_DASH_TPS_LENGTH (4u)
 #define FEB_CAN_DCU_TPS_LENGTH (4u)
+#define FEB_CAN_GPS_LATLONG_DATA_LENGTH (8u)
+#define FEB_CAN_GPS_MOTION_DATA_LENGTH (8u)
+#define FEB_CAN_GPS_TIME_DATA_LENGTH (3u)
+#define FEB_CAN_GPS_DATE_DATA_LENGTH (3u)
 #define FEB_CAN_RMS_COMMAND_LENGTH (8u)
 #define FEB_CAN_RMS_PARAM_LENGTH (8u)
 #define FEB_CAN_PCU_HEARTBEAT_LENGTH (8u)
@@ -128,6 +136,10 @@ extern "C" {
 #define FEB_CAN_PCU_TPS_IS_EXTENDED (0)
 #define FEB_CAN_DASH_TPS_IS_EXTENDED (0)
 #define FEB_CAN_DCU_TPS_IS_EXTENDED (0)
+#define FEB_CAN_GPS_LATLONG_DATA_IS_EXTENDED (0)
+#define FEB_CAN_GPS_MOTION_DATA_IS_EXTENDED (0)
+#define FEB_CAN_GPS_TIME_DATA_IS_EXTENDED (0)
+#define FEB_CAN_GPS_DATE_DATA_IS_EXTENDED (0)
 #define FEB_CAN_RMS_COMMAND_IS_EXTENDED (0)
 #define FEB_CAN_RMS_PARAM_IS_EXTENDED (0)
 #define FEB_CAN_PCU_HEARTBEAT_IS_EXTENDED (0)
@@ -177,6 +189,10 @@ extern "C" {
 #define FEB_CAN_PCU_TPS_NAME "pcu_tps"
 #define FEB_CAN_DASH_TPS_NAME "dash_tps"
 #define FEB_CAN_DCU_TPS_NAME "dcu_tps"
+#define FEB_CAN_GPS_LATLONG_DATA_NAME "gps_latlong_data"
+#define FEB_CAN_GPS_MOTION_DATA_NAME "gps_motion_data"
+#define FEB_CAN_GPS_TIME_DATA_NAME "gps_time_data"
+#define FEB_CAN_GPS_DATE_DATA_NAME "gps_date_data"
 #define FEB_CAN_RMS_COMMAND_NAME "rms_command"
 #define FEB_CAN_RMS_PARAM_NAME "rms_param"
 #define FEB_CAN_PCU_HEARTBEAT_NAME "pcu_heartbeat"
@@ -281,6 +297,16 @@ extern "C" {
 #define FEB_CAN_DASH_TPS_CURRENT_NAME "current"
 #define FEB_CAN_DCU_TPS_VOLTAGE_NAME "voltage"
 #define FEB_CAN_DCU_TPS_CURRENT_NAME "current"
+#define FEB_CAN_GPS_LATLONG_DATA_LATITUDE_NAME "latitude"
+#define FEB_CAN_GPS_LATLONG_DATA_LONGITUDE_NAME "longitude"
+#define FEB_CAN_GPS_MOTION_DATA_SPEED_NAME "speed"
+#define FEB_CAN_GPS_MOTION_DATA_COURSE_NAME "course"
+#define FEB_CAN_GPS_TIME_DATA_HOURS_NAME "hours"
+#define FEB_CAN_GPS_TIME_DATA_MINUTES_NAME "minutes"
+#define FEB_CAN_GPS_TIME_DATA_SECONDS_NAME "seconds"
+#define FEB_CAN_GPS_DATE_DATA_DAY_NAME "day"
+#define FEB_CAN_GPS_DATE_DATA_MONTH_NAME "month"
+#define FEB_CAN_GPS_DATE_DATA_YEAR_NAME "year"
 #define FEB_CAN_RMS_COMMAND_TORQUE_SIGNAL_SMALL_NAME "torque_signal_small"
 #define FEB_CAN_RMS_COMMAND_SPEED_SIGNAL_NAME "speed_signal"
 #define FEB_CAN_RMS_COMMAND_DIRECTION_VALUE_NAME "direction_value"
@@ -1555,6 +1581,112 @@ struct feb_can_dcu_tps_t {
      * Offset: 0
      */
     uint16_t current;
+};
+
+/**
+ * Signals in message gps_latlong_data.
+ *
+ * GPS Latitude and Longitude data message.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_gps_latlong_data_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t latitude;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t longitude;
+};
+
+/**
+ * Signals in message gps_motion_data.
+ *
+ * GPS Motion data message.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_gps_motion_data_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t speed;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t course;
+};
+
+/**
+ * Signals in message gps_time_data.
+ *
+ * GPS Time data message (UTC).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_gps_time_data_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int8_t hours;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int8_t minutes;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int8_t seconds;
+};
+
+/**
+ * Signals in message gps_date_data.
+ *
+ * GPS Date data message.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_gps_date_data_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int8_t day;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int8_t month;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int8_t year;
 };
 
 /**
@@ -7912,6 +8044,424 @@ double feb_can_dcu_tps_current_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_dcu_tps_current_is_in_range(uint16_t value);
+
+/**
+ * Pack message gps_latlong_data.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_gps_latlong_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_latlong_data_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message gps_latlong_data.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_gps_latlong_data_unpack(
+    struct feb_can_gps_latlong_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from gps_latlong_data.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_gps_latlong_data_init(struct feb_can_gps_latlong_data_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_gps_latlong_data_latitude_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_latlong_data_latitude_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_latlong_data_latitude_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_gps_latlong_data_longitude_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_latlong_data_longitude_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_latlong_data_longitude_is_in_range(int16_t value);
+
+/**
+ * Pack message gps_motion_data.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_gps_motion_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_motion_data_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message gps_motion_data.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_gps_motion_data_unpack(
+    struct feb_can_gps_motion_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from gps_motion_data.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_gps_motion_data_init(struct feb_can_gps_motion_data_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_gps_motion_data_speed_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_motion_data_speed_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_motion_data_speed_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_gps_motion_data_course_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_motion_data_course_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_motion_data_course_is_in_range(int16_t value);
+
+/**
+ * Pack message gps_time_data.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_gps_time_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_time_data_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message gps_time_data.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_gps_time_data_unpack(
+    struct feb_can_gps_time_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from gps_time_data.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_gps_time_data_init(struct feb_can_gps_time_data_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int8_t feb_can_gps_time_data_hours_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_time_data_hours_decode(int8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_time_data_hours_is_in_range(int8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int8_t feb_can_gps_time_data_minutes_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_time_data_minutes_decode(int8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_time_data_minutes_is_in_range(int8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int8_t feb_can_gps_time_data_seconds_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_time_data_seconds_decode(int8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_time_data_seconds_is_in_range(int8_t value);
+
+/**
+ * Pack message gps_date_data.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_gps_date_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_date_data_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message gps_date_data.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_gps_date_data_unpack(
+    struct feb_can_gps_date_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from gps_date_data.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_gps_date_data_init(struct feb_can_gps_date_data_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int8_t feb_can_gps_date_data_day_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_date_data_day_decode(int8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_date_data_day_is_in_range(int8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int8_t feb_can_gps_date_data_month_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_date_data_month_decode(int8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_date_data_month_is_in_range(int8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int8_t feb_can_gps_date_data_year_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_date_data_year_decode(int8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_date_data_year_is_in_range(int8_t value);
 
 /**
  * Pack message rms_command.

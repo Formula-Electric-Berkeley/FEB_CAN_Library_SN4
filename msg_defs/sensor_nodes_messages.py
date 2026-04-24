@@ -239,7 +239,6 @@ def get_imu_acceleration_data_front(frame_id: int):
     return msg
 
 
-
 def get_imu_gyro_data_front(frame_id: int):
     gyroX = cantools.db.Signal(
         name="gyro_x",
@@ -311,6 +310,157 @@ def get_magnetometer_data_front(frame_id: int):
 
     return msg
 
+
+
+def get_gps_latlong_data(frame_id: int):
+    latitude = cantools.db.Signal(
+        name="latitude",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    longitude = cantools.db.Signal(
+        name="longitude",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="gps_latlong_data",
+        length=8,
+        signals=[latitude, longitude],
+        comment="GPS Latitude and Longitude data message.",
+        strict=True
+    )
+
+    return msg
+
+def get_gps_latlon_data(frame_id: int):
+    latitude = cantools.db.Signal(
+        name="latitude",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    longitude = cantools.db.Signal(
+        name="longitude",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="gps_latlong_data",
+        length=8,
+        signals=[latitude, longitude],
+        comment="GPS Latitude and Longitude data message.",
+        strict=True
+    )
+
+    return msg
+
+def get_gps_motion_data(frame_id: int):
+    speed = cantools.db.Signal(
+        name="speed",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    course = cantools.db.Signal(
+        name="course",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="gps_motion_data",
+        length=8,
+        signals=[speed, course],
+        comment="GPS Motion data message.",
+        strict=True
+    )
+
+    return msg
+
+def get_gps_time_data(frame_id: int):
+    hours = cantools.db.Signal(
+        name="hours",
+        start=0,
+        length=8,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    minutes = cantools.db.Signal(
+        name="minutes",
+        start=8,
+        length=8,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    seconds = cantools.db.Signal(
+        name="seconds",
+        start=16,
+        length=8,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="gps_time_data",
+        length=3,
+        signals=[hours, minutes, seconds],
+        comment="GPS Time data message (UTC).",
+        strict=True
+    )
+
+    return msg
+
+def get_gps_date_data(frame_id: int):
+    day = cantools.db.Signal(
+        name="day",
+        start=0,
+        length=8,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    month = cantools.db.Signal(
+        name="month",
+        start=8,
+        length=8,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    year = cantools.db.Signal(
+        name="year",
+        start=16,
+        length=8,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="gps_date_data",
+        length=3,
+        signals=[day, month, year],
+        comment="GPS Date data message.",
+        strict=True
+    )
+
+    return msg
 
 def get_wss_data_front(frame_id: int):
     wss_right_front = cantools.db.Signal(
@@ -533,6 +683,8 @@ def get_front_sensor_heartbeat(frame_id: int):
     return msg
 
 def get_rear_sensor_heartbeat(frame_id: int):
+
+
     error0 = cantools.db.Signal(name="error0", start=0, length=1, byte_order="little_endian", is_signed=False)
     error1 = cantools.db.Signal(name="error1", start=1, length=1, byte_order="little_endian", is_signed=False)
     error2 = cantools.db.Signal(name="error2", start=2, length=1, byte_order="little_endian", is_signed=False)

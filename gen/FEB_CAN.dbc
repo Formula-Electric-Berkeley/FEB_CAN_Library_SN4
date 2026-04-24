@@ -181,6 +181,24 @@ BO_ 55 dcu_tps: 4 Vector__XXX
  SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
+BO_ 64 gps_latlong_data: 8 Vector__XXX
+ SG_ longitude : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ latitude : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 66 gps_motion_data: 8 Vector__XXX
+ SG_ course : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ speed : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 67 gps_time_data: 3 Vector__XXX
+ SG_ seconds : 16|8@1- (1,0) [0|0] "" Vector__XXX
+ SG_ minutes : 8|8@1- (1,0) [0|0] "" Vector__XXX
+ SG_ hours : 0|8@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 68 gps_date_data: 3 Vector__XXX
+ SG_ year : 16|8@1- (1,0) [0|0] "" Vector__XXX
+ SG_ month : 8|8@1- (1,0) [0|0] "" Vector__XXX
+ SG_ day : 0|8@1- (1,0) [0|0] "" Vector__XXX
+
 BO_ 192 rms_command: 8 Vector__XXX
  SG_ command_torque_limited : 48|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ speed_mode_enabled : 42|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -638,6 +656,10 @@ CM_ BO_ 52 "BBB TPS Chip";
 CM_ BO_ 53 "PCU TPS Chip";
 CM_ BO_ 54 "Dash TPS Chip";
 CM_ BO_ 55 "DCU TPS Chip";
+CM_ BO_ 64 "GPS Latitude and Longitude data message.";
+CM_ BO_ 66 "GPS Motion data message.";
+CM_ BO_ 67 "GPS Time data message (UTC).";
+CM_ BO_ 68 "GPS Date data message.";
 CM_ BO_ 192 "RMS command message.";
 CM_ BO_ 193 "RMS parameter message.";
 CM_ BO_ 208 "PCU heartbeat";

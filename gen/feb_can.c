@@ -2973,6 +2973,400 @@ bool feb_can_dcu_tps_current_is_in_range(uint16_t value)
     return (true);
 }
 
+int feb_can_gps_latlong_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_latlong_data_t *src_p,
+    size_t size)
+{
+    uint16_t latitude;
+    uint16_t longitude;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    latitude = (uint16_t)src_p->latitude;
+    dst_p[0] |= pack_left_shift_u16(latitude, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(latitude, 8u, 0xffu);
+    longitude = (uint16_t)src_p->longitude;
+    dst_p[2] |= pack_left_shift_u16(longitude, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(longitude, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_gps_latlong_data_unpack(
+    struct feb_can_gps_latlong_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t latitude;
+    uint16_t longitude;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    latitude = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    latitude |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->latitude = (int16_t)latitude;
+    longitude = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    longitude |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->longitude = (int16_t)longitude;
+
+    return (0);
+}
+
+int feb_can_gps_latlong_data_init(struct feb_can_gps_latlong_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_gps_latlong_data_t));
+
+    return 0;
+}
+
+int16_t feb_can_gps_latlong_data_latitude_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_gps_latlong_data_latitude_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_latlong_data_latitude_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_gps_latlong_data_longitude_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_gps_latlong_data_longitude_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_latlong_data_longitude_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_gps_motion_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_motion_data_t *src_p,
+    size_t size)
+{
+    uint16_t course;
+    uint16_t speed;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    speed = (uint16_t)src_p->speed;
+    dst_p[0] |= pack_left_shift_u16(speed, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(speed, 8u, 0xffu);
+    course = (uint16_t)src_p->course;
+    dst_p[2] |= pack_left_shift_u16(course, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(course, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_gps_motion_data_unpack(
+    struct feb_can_gps_motion_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t course;
+    uint16_t speed;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    speed = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    speed |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->speed = (int16_t)speed;
+    course = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    course |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->course = (int16_t)course;
+
+    return (0);
+}
+
+int feb_can_gps_motion_data_init(struct feb_can_gps_motion_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_gps_motion_data_t));
+
+    return 0;
+}
+
+int16_t feb_can_gps_motion_data_speed_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_gps_motion_data_speed_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_motion_data_speed_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_gps_motion_data_course_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_gps_motion_data_course_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_motion_data_course_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_gps_time_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_time_data_t *src_p,
+    size_t size)
+{
+    uint8_t hours;
+    uint8_t minutes;
+    uint8_t seconds;
+
+    if (size < 3u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 3);
+
+    hours = (uint8_t)src_p->hours;
+    dst_p[0] |= pack_left_shift_u8(hours, 0u, 0xffu);
+    minutes = (uint8_t)src_p->minutes;
+    dst_p[1] |= pack_left_shift_u8(minutes, 0u, 0xffu);
+    seconds = (uint8_t)src_p->seconds;
+    dst_p[2] |= pack_left_shift_u8(seconds, 0u, 0xffu);
+
+    return (3);
+}
+
+int feb_can_gps_time_data_unpack(
+    struct feb_can_gps_time_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint8_t hours;
+    uint8_t minutes;
+    uint8_t seconds;
+
+    if (size < 3u) {
+        return (-EINVAL);
+    }
+
+    hours = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+    dst_p->hours = (int8_t)hours;
+    minutes = unpack_right_shift_u8(src_p[1], 0u, 0xffu);
+    dst_p->minutes = (int8_t)minutes;
+    seconds = unpack_right_shift_u8(src_p[2], 0u, 0xffu);
+    dst_p->seconds = (int8_t)seconds;
+
+    return (0);
+}
+
+int feb_can_gps_time_data_init(struct feb_can_gps_time_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_gps_time_data_t));
+
+    return 0;
+}
+
+int8_t feb_can_gps_time_data_hours_encode(double value)
+{
+    return (int8_t)(value);
+}
+
+double feb_can_gps_time_data_hours_decode(int8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_time_data_hours_is_in_range(int8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int8_t feb_can_gps_time_data_minutes_encode(double value)
+{
+    return (int8_t)(value);
+}
+
+double feb_can_gps_time_data_minutes_decode(int8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_time_data_minutes_is_in_range(int8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int8_t feb_can_gps_time_data_seconds_encode(double value)
+{
+    return (int8_t)(value);
+}
+
+double feb_can_gps_time_data_seconds_decode(int8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_time_data_seconds_is_in_range(int8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_gps_date_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_date_data_t *src_p,
+    size_t size)
+{
+    uint8_t day;
+    uint8_t month;
+    uint8_t year;
+
+    if (size < 3u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 3);
+
+    day = (uint8_t)src_p->day;
+    dst_p[0] |= pack_left_shift_u8(day, 0u, 0xffu);
+    month = (uint8_t)src_p->month;
+    dst_p[1] |= pack_left_shift_u8(month, 0u, 0xffu);
+    year = (uint8_t)src_p->year;
+    dst_p[2] |= pack_left_shift_u8(year, 0u, 0xffu);
+
+    return (3);
+}
+
+int feb_can_gps_date_data_unpack(
+    struct feb_can_gps_date_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint8_t day;
+    uint8_t month;
+    uint8_t year;
+
+    if (size < 3u) {
+        return (-EINVAL);
+    }
+
+    day = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+    dst_p->day = (int8_t)day;
+    month = unpack_right_shift_u8(src_p[1], 0u, 0xffu);
+    dst_p->month = (int8_t)month;
+    year = unpack_right_shift_u8(src_p[2], 0u, 0xffu);
+    dst_p->year = (int8_t)year;
+
+    return (0);
+}
+
+int feb_can_gps_date_data_init(struct feb_can_gps_date_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_gps_date_data_t));
+
+    return 0;
+}
+
+int8_t feb_can_gps_date_data_day_encode(double value)
+{
+    return (int8_t)(value);
+}
+
+double feb_can_gps_date_data_day_decode(int8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_date_data_day_is_in_range(int8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int8_t feb_can_gps_date_data_month_encode(double value)
+{
+    return (int8_t)(value);
+}
+
+double feb_can_gps_date_data_month_decode(int8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_date_data_month_is_in_range(int8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int8_t feb_can_gps_date_data_year_encode(double value)
+{
+    return (int8_t)(value);
+}
+
+double feb_can_gps_date_data_year_decode(int8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_date_data_year_is_in_range(int8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
 int feb_can_rms_command_pack(
     uint8_t *dst_p,
     const struct feb_can_rms_command_t *src_p,
