@@ -129,7 +129,7 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     # 0x38-0x3F: Reserved for future TPS messages
 
     # ----- Sensor Node Messages (part 2) (0x40-0x5F) -----
-    0x40: (sensor_msg.get_gps_latlon_data, "[GPS] latitude and longitude data"),
+    0x40: (sensor_msg.get_gps_pos_data, "[GPS] latitude and longitude data"),
     # 0x41: (sensor_msg.get_gps_altitude_data, "[GPS] altitude data"),
     0x42: (sensor_msg.get_gps_motion_data, "[GPS] motion data (speed/course)"),
     0x43: (sensor_msg.get_gps_time_data, "[GPS] time data (UTC)"),

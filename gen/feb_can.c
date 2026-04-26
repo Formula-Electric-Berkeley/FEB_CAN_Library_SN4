@@ -2973,19 +2973,19 @@ bool feb_can_dcu_tps_current_is_in_range(uint16_t value)
     return (true);
 }
 
-int feb_can_gps_latlong_data_pack(
+int feb_can_gps_pos_data_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_latlong_data_t *src_p,
+    const struct feb_can_gps_pos_data_t *src_p,
     size_t size)
 {
     uint16_t latitude;
     uint16_t longitude;
 
-    if (size < 8u) {
+    if (size < 4u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, 8);
+    memset(&dst_p[0], 0, 4);
 
     latitude = (uint16_t)src_p->latitude;
     dst_p[0] |= pack_left_shift_u16(latitude, 0u, 0xffu);
@@ -2994,18 +2994,18 @@ int feb_can_gps_latlong_data_pack(
     dst_p[2] |= pack_left_shift_u16(longitude, 0u, 0xffu);
     dst_p[3] |= pack_right_shift_u16(longitude, 8u, 0xffu);
 
-    return (8);
+    return (4);
 }
 
-int feb_can_gps_latlong_data_unpack(
-    struct feb_can_gps_latlong_data_t *dst_p,
+int feb_can_gps_pos_data_unpack(
+    struct feb_can_gps_pos_data_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
     uint16_t latitude;
     uint16_t longitude;
 
-    if (size < 8u) {
+    if (size < 4u) {
         return (-EINVAL);
     }
 
@@ -3019,43 +3019,43 @@ int feb_can_gps_latlong_data_unpack(
     return (0);
 }
 
-int feb_can_gps_latlong_data_init(struct feb_can_gps_latlong_data_t *msg_p)
+int feb_can_gps_pos_data_init(struct feb_can_gps_pos_data_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_gps_latlong_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_gps_pos_data_t));
 
     return 0;
 }
 
-int16_t feb_can_gps_latlong_data_latitude_encode(double value)
+int16_t feb_can_gps_pos_data_latitude_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_gps_latlong_data_latitude_decode(int16_t value)
+double feb_can_gps_pos_data_latitude_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_latlong_data_latitude_is_in_range(int16_t value)
+bool feb_can_gps_pos_data_latitude_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_gps_latlong_data_longitude_encode(double value)
+int16_t feb_can_gps_pos_data_longitude_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_gps_latlong_data_longitude_decode(int16_t value)
+double feb_can_gps_pos_data_longitude_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_latlong_data_longitude_is_in_range(int16_t value)
+bool feb_can_gps_pos_data_longitude_is_in_range(int16_t value)
 {
     (void)value;
 

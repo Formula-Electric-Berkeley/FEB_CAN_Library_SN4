@@ -181,7 +181,7 @@ BO_ 55 dcu_tps: 4 Vector__XXX
  SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 64 gps_latlong_data: 8 Vector__XXX
+BO_ 64 gps_pos_data: 4 Vector__XXX
  SG_ longitude : 16|16@1- (1,0) [0|0] "" Vector__XXX
  SG_ latitude : 0|16@1- (1,0) [0|0] "" Vector__XXX
 

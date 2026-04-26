@@ -311,7 +311,7 @@ def get_magnetometer_data_front(frame_id: int):
     return msg
 
 
-
+# trash
 def get_gps_latlong_data(frame_id: int):
     latitude = cantools.db.Signal(
         name="latitude",
@@ -339,31 +339,39 @@ def get_gps_latlong_data(frame_id: int):
 
     return msg
 
-def get_gps_latlon_data(frame_id: int):
-    latitude = cantools.db.Signal(
+
+
+
+
+
+def get_gps_pos_data(frame_id: int):
+    lat = cantools.db.Signal(
         name="latitude",
         start=0,
         length=16,
         byte_order="little_endian",
         is_signed=True,
     )
-    longitude = cantools.db.Signal(
+    lon = cantools.db.Signal(
         name="longitude",
         start=16,
         length=16,
         byte_order="little_endian",
         is_signed=True,
     )
+    
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="gps_latlong_data",
-        length=8,
-        signals=[latitude, longitude],
+        name="gps_pos_data",
+        length=4,
+        signals=[lat, lon],
         comment="GPS Latitude and Longitude data message.",
         strict=True
     )
 
     return msg
+
+
 
 def get_gps_motion_data(frame_id: int):
     speed = cantools.db.Signal(

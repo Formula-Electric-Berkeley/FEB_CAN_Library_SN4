@@ -42,7 +42,7 @@ extern "C" {
 #define FEB_CAN_PCU_TPS_FRAME_ID (0x35u)
 #define FEB_CAN_DASH_TPS_FRAME_ID (0x36u)
 #define FEB_CAN_DCU_TPS_FRAME_ID (0x37u)
-#define FEB_CAN_GPS_LATLONG_DATA_FRAME_ID (0x40u)
+#define FEB_CAN_GPS_POS_DATA_FRAME_ID (0x40u)
 #define FEB_CAN_GPS_MOTION_DATA_FRAME_ID (0x42u)
 #define FEB_CAN_GPS_TIME_DATA_FRAME_ID (0x43u)
 #define FEB_CAN_GPS_DATE_DATA_FRAME_ID (0x44u)
@@ -89,7 +89,7 @@ extern "C" {
 #define FEB_CAN_PCU_TPS_LENGTH (4u)
 #define FEB_CAN_DASH_TPS_LENGTH (4u)
 #define FEB_CAN_DCU_TPS_LENGTH (4u)
-#define FEB_CAN_GPS_LATLONG_DATA_LENGTH (8u)
+#define FEB_CAN_GPS_POS_DATA_LENGTH (4u)
 #define FEB_CAN_GPS_MOTION_DATA_LENGTH (8u)
 #define FEB_CAN_GPS_TIME_DATA_LENGTH (3u)
 #define FEB_CAN_GPS_DATE_DATA_LENGTH (3u)
@@ -136,7 +136,7 @@ extern "C" {
 #define FEB_CAN_PCU_TPS_IS_EXTENDED (0)
 #define FEB_CAN_DASH_TPS_IS_EXTENDED (0)
 #define FEB_CAN_DCU_TPS_IS_EXTENDED (0)
-#define FEB_CAN_GPS_LATLONG_DATA_IS_EXTENDED (0)
+#define FEB_CAN_GPS_POS_DATA_IS_EXTENDED (0)
 #define FEB_CAN_GPS_MOTION_DATA_IS_EXTENDED (0)
 #define FEB_CAN_GPS_TIME_DATA_IS_EXTENDED (0)
 #define FEB_CAN_GPS_DATE_DATA_IS_EXTENDED (0)
@@ -189,7 +189,7 @@ extern "C" {
 #define FEB_CAN_PCU_TPS_NAME "pcu_tps"
 #define FEB_CAN_DASH_TPS_NAME "dash_tps"
 #define FEB_CAN_DCU_TPS_NAME "dcu_tps"
-#define FEB_CAN_GPS_LATLONG_DATA_NAME "gps_latlong_data"
+#define FEB_CAN_GPS_POS_DATA_NAME "gps_pos_data"
 #define FEB_CAN_GPS_MOTION_DATA_NAME "gps_motion_data"
 #define FEB_CAN_GPS_TIME_DATA_NAME "gps_time_data"
 #define FEB_CAN_GPS_DATE_DATA_NAME "gps_date_data"
@@ -297,8 +297,8 @@ extern "C" {
 #define FEB_CAN_DASH_TPS_CURRENT_NAME "current"
 #define FEB_CAN_DCU_TPS_VOLTAGE_NAME "voltage"
 #define FEB_CAN_DCU_TPS_CURRENT_NAME "current"
-#define FEB_CAN_GPS_LATLONG_DATA_LATITUDE_NAME "latitude"
-#define FEB_CAN_GPS_LATLONG_DATA_LONGITUDE_NAME "longitude"
+#define FEB_CAN_GPS_POS_DATA_LATITUDE_NAME "latitude"
+#define FEB_CAN_GPS_POS_DATA_LONGITUDE_NAME "longitude"
 #define FEB_CAN_GPS_MOTION_DATA_SPEED_NAME "speed"
 #define FEB_CAN_GPS_MOTION_DATA_COURSE_NAME "course"
 #define FEB_CAN_GPS_TIME_DATA_HOURS_NAME "hours"
@@ -1584,13 +1584,13 @@ struct feb_can_dcu_tps_t {
 };
 
 /**
- * Signals in message gps_latlong_data.
+ * Signals in message gps_pos_data.
  *
  * GPS Latitude and Longitude data message.
  *
  * All signal values are as on the CAN bus.
  */
-struct feb_can_gps_latlong_data_t {
+struct feb_can_gps_pos_data_t {
     /**
      * Range: -
      * Scale: 1
@@ -8046,7 +8046,7 @@ double feb_can_dcu_tps_current_decode(uint16_t value);
 bool feb_can_dcu_tps_current_is_in_range(uint16_t value);
 
 /**
- * Pack message gps_latlong_data.
+ * Pack message gps_pos_data.
  *
  * @param[out] dst_p Buffer to pack the message into.
  * @param[in] src_p Data to pack.
@@ -8054,13 +8054,13 @@ bool feb_can_dcu_tps_current_is_in_range(uint16_t value);
  *
  * @return Size of packed data, or negative error code.
  */
-int feb_can_gps_latlong_data_pack(
+int feb_can_gps_pos_data_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_latlong_data_t *src_p,
+    const struct feb_can_gps_pos_data_t *src_p,
     size_t size);
 
 /**
- * Unpack message gps_latlong_data.
+ * Unpack message gps_pos_data.
  *
  * @param[out] dst_p Object to unpack the message into.
  * @param[in] src_p Message to unpack.
@@ -8068,19 +8068,19 @@ int feb_can_gps_latlong_data_pack(
  *
  * @return zero(0) or negative error code.
  */
-int feb_can_gps_latlong_data_unpack(
-    struct feb_can_gps_latlong_data_t *dst_p,
+int feb_can_gps_pos_data_unpack(
+    struct feb_can_gps_pos_data_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
- * Init message fields to default values from gps_latlong_data.
+ * Init message fields to default values from gps_pos_data.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int feb_can_gps_latlong_data_init(struct feb_can_gps_latlong_data_t *msg_p);
+int feb_can_gps_pos_data_init(struct feb_can_gps_pos_data_t *msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -8089,7 +8089,7 @@ int feb_can_gps_latlong_data_init(struct feb_can_gps_latlong_data_t *msg_p);
  *
  * @return Encoded signal.
  */
-int16_t feb_can_gps_latlong_data_latitude_encode(double value);
+int16_t feb_can_gps_pos_data_latitude_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -8098,7 +8098,7 @@ int16_t feb_can_gps_latlong_data_latitude_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_gps_latlong_data_latitude_decode(int16_t value);
+double feb_can_gps_pos_data_latitude_decode(int16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -8107,7 +8107,7 @@ double feb_can_gps_latlong_data_latitude_decode(int16_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_gps_latlong_data_latitude_is_in_range(int16_t value);
+bool feb_can_gps_pos_data_latitude_is_in_range(int16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -8116,7 +8116,7 @@ bool feb_can_gps_latlong_data_latitude_is_in_range(int16_t value);
  *
  * @return Encoded signal.
  */
-int16_t feb_can_gps_latlong_data_longitude_encode(double value);
+int16_t feb_can_gps_pos_data_longitude_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -8125,7 +8125,7 @@ int16_t feb_can_gps_latlong_data_longitude_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_gps_latlong_data_longitude_decode(int16_t value);
+double feb_can_gps_pos_data_longitude_decode(int16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -8134,7 +8134,7 @@ double feb_can_gps_latlong_data_longitude_decode(int16_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_gps_latlong_data_longitude_is_in_range(int16_t value);
+bool feb_can_gps_pos_data_longitude_is_in_range(int16_t value);
 
 /**
  * Pack message gps_motion_data.
