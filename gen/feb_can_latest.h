@@ -19,11 +19,11 @@ typedef struct {
     bool     present;
 } FEB_CAN_State_Meta_t;
 
-typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_bms_state_t data; } FEB_CAN_State_bms_state_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_bms_cell_data_t data; } FEB_CAN_State_bms_cell_data_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_bms_accumulator_voltage_t data; } FEB_CAN_State_bms_accumulator_voltage_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_bms_accumulator_temperature_t data; } FEB_CAN_State_bms_accumulator_temperature_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_accumulator_faults_t data; } FEB_CAN_State_accumulator_faults_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_bms_state_t data; } FEB_CAN_State_bms_state_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_brake_t data; } FEB_CAN_State_brake_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_bspd_state_t data; } FEB_CAN_State_bspd_state_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_res_state_t data; } FEB_CAN_State_res_state_t;
@@ -49,8 +49,6 @@ typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_pcu_tps_t data; } FEB
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_dash_tps_t data; } FEB_CAN_State_dash_tps_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_dcu_tps_t data; } FEB_CAN_State_dcu_tps_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_pcu_raw_acc_t data; } FEB_CAN_State_pcu_raw_acc_t;
-typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_rms_command_t data; } FEB_CAN_State_rms_command_t;
-typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_rms_param_t data; } FEB_CAN_State_rms_param_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_pcu_heartbeat_t data; } FEB_CAN_State_pcu_heartbeat_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_dash_heartbeat_t data; } FEB_CAN_State_dash_heartbeat_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_lvpdb_heartbeat_t data; } FEB_CAN_State_lvpdb_heartbeat_t;
@@ -62,13 +60,36 @@ typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_feb_ping_pong_counter
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_feb_ping_pong_counter3_t data; } FEB_CAN_State_feb_ping_pong_counter3_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_feb_ping_pong_counter4_t data; } FEB_CAN_State_feb_ping_pong_counter4_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_ebs_pressure_status_t data; } FEB_CAN_State_ebs_pressure_status_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m160_temperature_set_1_t data; } FEB_CAN_State_m160_temperature_set_1_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m161_temperature_set_2_t data; } FEB_CAN_State_m161_temperature_set_2_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m162_temperature_set_3_t data; } FEB_CAN_State_m162_temperature_set_3_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m163_analog_input_voltages_t data; } FEB_CAN_State_m163_analog_input_voltages_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m164_digital_input_status_t data; } FEB_CAN_State_m164_digital_input_status_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m165_motor_position_info_t data; } FEB_CAN_State_m165_motor_position_info_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m166_current_info_t data; } FEB_CAN_State_m166_current_info_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m167_voltage_info_t data; } FEB_CAN_State_m167_voltage_info_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m168_flux_id_iq_info_t data; } FEB_CAN_State_m168_flux_id_iq_info_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m169_internal_voltages_t data; } FEB_CAN_State_m169_internal_voltages_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m170_internal_states_t data; } FEB_CAN_State_m170_internal_states_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m171_fault_codes_t data; } FEB_CAN_State_m171_fault_codes_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m172_torque_and_timer_info_t data; } FEB_CAN_State_m172_torque_and_timer_info_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m173_modulation_and_flux_info_t data; } FEB_CAN_State_m173_modulation_and_flux_info_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m174_firmware_info_t data; } FEB_CAN_State_m174_firmware_info_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m175_diag_data_message_t data; } FEB_CAN_State_m175_diag_data_message_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m176_fast_info_t data; } FEB_CAN_State_m176_fast_info_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m192_command_message_t data; } FEB_CAN_State_m192_command_message_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m193_read_write_param_command_t data; } FEB_CAN_State_m193_read_write_param_command_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m194_read_write_param_response_t data; } FEB_CAN_State_m194_read_write_param_response_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m188_u2_c_message_rxd_t data; } FEB_CAN_State_m188_u2_c_message_rxd_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m187_u2_c_command_txd_t data; } FEB_CAN_State_m187_u2_c_command_txd_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_bms_current_limit_t data; } FEB_CAN_State_bms_current_limit_t;
 
 typedef struct {
-    FEB_CAN_State_bms_state_t bms_state;
     FEB_CAN_State_bms_cell_data_t bms_cell_data;
     FEB_CAN_State_bms_accumulator_voltage_t bms_accumulator_voltage;
     FEB_CAN_State_bms_accumulator_temperature_t bms_accumulator_temperature;
     FEB_CAN_State_accumulator_faults_t accumulator_faults;
+    FEB_CAN_State_bms_state_t bms_state;
     FEB_CAN_State_brake_t brake;
     FEB_CAN_State_bspd_state_t bspd_state;
     FEB_CAN_State_res_state_t res_state;
@@ -94,8 +115,6 @@ typedef struct {
     FEB_CAN_State_dash_tps_t dash_tps;
     FEB_CAN_State_dcu_tps_t dcu_tps;
     FEB_CAN_State_pcu_raw_acc_t pcu_raw_acc;
-    FEB_CAN_State_rms_command_t rms_command;
-    FEB_CAN_State_rms_param_t rms_param;
     FEB_CAN_State_pcu_heartbeat_t pcu_heartbeat;
     FEB_CAN_State_dash_heartbeat_t dash_heartbeat;
     FEB_CAN_State_lvpdb_heartbeat_t lvpdb_heartbeat;
@@ -107,6 +126,29 @@ typedef struct {
     FEB_CAN_State_feb_ping_pong_counter3_t feb_ping_pong_counter3;
     FEB_CAN_State_feb_ping_pong_counter4_t feb_ping_pong_counter4;
     FEB_CAN_State_ebs_pressure_status_t ebs_pressure_status;
+    FEB_CAN_State_m160_temperature_set_1_t m160_temperature_set_1;
+    FEB_CAN_State_m161_temperature_set_2_t m161_temperature_set_2;
+    FEB_CAN_State_m162_temperature_set_3_t m162_temperature_set_3;
+    FEB_CAN_State_m163_analog_input_voltages_t m163_analog_input_voltages;
+    FEB_CAN_State_m164_digital_input_status_t m164_digital_input_status;
+    FEB_CAN_State_m165_motor_position_info_t m165_motor_position_info;
+    FEB_CAN_State_m166_current_info_t m166_current_info;
+    FEB_CAN_State_m167_voltage_info_t m167_voltage_info;
+    FEB_CAN_State_m168_flux_id_iq_info_t m168_flux_id_iq_info;
+    FEB_CAN_State_m169_internal_voltages_t m169_internal_voltages;
+    FEB_CAN_State_m170_internal_states_t m170_internal_states;
+    FEB_CAN_State_m171_fault_codes_t m171_fault_codes;
+    FEB_CAN_State_m172_torque_and_timer_info_t m172_torque_and_timer_info;
+    FEB_CAN_State_m173_modulation_and_flux_info_t m173_modulation_and_flux_info;
+    FEB_CAN_State_m174_firmware_info_t m174_firmware_info;
+    FEB_CAN_State_m175_diag_data_message_t m175_diag_data_message;
+    FEB_CAN_State_m176_fast_info_t m176_fast_info;
+    FEB_CAN_State_m192_command_message_t m192_command_message;
+    FEB_CAN_State_m193_read_write_param_command_t m193_read_write_param_command;
+    FEB_CAN_State_m194_read_write_param_response_t m194_read_write_param_response;
+    FEB_CAN_State_m188_u2_c_message_rxd_t m188_u2_c_message_rxd;
+    FEB_CAN_State_m187_u2_c_command_txd_t m187_u2_c_command_txd;
+    FEB_CAN_State_bms_current_limit_t bms_current_limit;
 } FEB_CAN_State_t;
 
 extern FEB_CAN_State_t feb_can_state;

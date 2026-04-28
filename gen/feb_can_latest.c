@@ -10,12 +10,6 @@ int FEB_CAN_State_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, ui
 {
     switch (frame_id)
     {
-    case FEB_CAN_BMS_STATE_FRAME_ID:
-        if (feb_can_bms_state_unpack(&feb_can_state.bms_state.data, data, dlc) < 0) return -2;
-        feb_can_state.bms_state.meta.present = true;
-        feb_can_state.bms_state.meta.last_rx_ms = now_ms;
-        feb_can_state.bms_state.meta.rx_count++;
-        return 0;
     case FEB_CAN_BMS_CELL_DATA_FRAME_ID:
         if (feb_can_bms_cell_data_unpack(&feb_can_state.bms_cell_data.data, data, dlc) < 0) return -2;
         feb_can_state.bms_cell_data.meta.present = true;
@@ -39,6 +33,12 @@ int FEB_CAN_State_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, ui
         feb_can_state.accumulator_faults.meta.present = true;
         feb_can_state.accumulator_faults.meta.last_rx_ms = now_ms;
         feb_can_state.accumulator_faults.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_STATE_FRAME_ID:
+        if (feb_can_bms_state_unpack(&feb_can_state.bms_state.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_state.meta.present = true;
+        feb_can_state.bms_state.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_state.meta.rx_count++;
         return 0;
     case FEB_CAN_BRAKE_FRAME_ID:
         if (feb_can_brake_unpack(&feb_can_state.brake.data, data, dlc) < 0) return -2;
@@ -190,18 +190,6 @@ int FEB_CAN_State_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, ui
         feb_can_state.pcu_raw_acc.meta.last_rx_ms = now_ms;
         feb_can_state.pcu_raw_acc.meta.rx_count++;
         return 0;
-    case FEB_CAN_RMS_COMMAND_FRAME_ID:
-        if (feb_can_rms_command_unpack(&feb_can_state.rms_command.data, data, dlc) < 0) return -2;
-        feb_can_state.rms_command.meta.present = true;
-        feb_can_state.rms_command.meta.last_rx_ms = now_ms;
-        feb_can_state.rms_command.meta.rx_count++;
-        return 0;
-    case FEB_CAN_RMS_PARAM_FRAME_ID:
-        if (feb_can_rms_param_unpack(&feb_can_state.rms_param.data, data, dlc) < 0) return -2;
-        feb_can_state.rms_param.meta.present = true;
-        feb_can_state.rms_param.meta.last_rx_ms = now_ms;
-        feb_can_state.rms_param.meta.rx_count++;
-        return 0;
     case FEB_CAN_PCU_HEARTBEAT_FRAME_ID:
         if (feb_can_pcu_heartbeat_unpack(&feb_can_state.pcu_heartbeat.data, data, dlc) < 0) return -2;
         feb_can_state.pcu_heartbeat.meta.present = true;
@@ -268,6 +256,144 @@ int FEB_CAN_State_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, ui
         feb_can_state.ebs_pressure_status.meta.last_rx_ms = now_ms;
         feb_can_state.ebs_pressure_status.meta.rx_count++;
         return 0;
+    case FEB_CAN_M160_TEMPERATURE_SET_1_FRAME_ID:
+        if (feb_can_m160_temperature_set_1_unpack(&feb_can_state.m160_temperature_set_1.data, data, dlc) < 0) return -2;
+        feb_can_state.m160_temperature_set_1.meta.present = true;
+        feb_can_state.m160_temperature_set_1.meta.last_rx_ms = now_ms;
+        feb_can_state.m160_temperature_set_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M161_TEMPERATURE_SET_2_FRAME_ID:
+        if (feb_can_m161_temperature_set_2_unpack(&feb_can_state.m161_temperature_set_2.data, data, dlc) < 0) return -2;
+        feb_can_state.m161_temperature_set_2.meta.present = true;
+        feb_can_state.m161_temperature_set_2.meta.last_rx_ms = now_ms;
+        feb_can_state.m161_temperature_set_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M162_TEMPERATURE_SET_3_FRAME_ID:
+        if (feb_can_m162_temperature_set_3_unpack(&feb_can_state.m162_temperature_set_3.data, data, dlc) < 0) return -2;
+        feb_can_state.m162_temperature_set_3.meta.present = true;
+        feb_can_state.m162_temperature_set_3.meta.last_rx_ms = now_ms;
+        feb_can_state.m162_temperature_set_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M163_ANALOG_INPUT_VOLTAGES_FRAME_ID:
+        if (feb_can_m163_analog_input_voltages_unpack(&feb_can_state.m163_analog_input_voltages.data, data, dlc) < 0) return -2;
+        feb_can_state.m163_analog_input_voltages.meta.present = true;
+        feb_can_state.m163_analog_input_voltages.meta.last_rx_ms = now_ms;
+        feb_can_state.m163_analog_input_voltages.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M164_DIGITAL_INPUT_STATUS_FRAME_ID:
+        if (feb_can_m164_digital_input_status_unpack(&feb_can_state.m164_digital_input_status.data, data, dlc) < 0) return -2;
+        feb_can_state.m164_digital_input_status.meta.present = true;
+        feb_can_state.m164_digital_input_status.meta.last_rx_ms = now_ms;
+        feb_can_state.m164_digital_input_status.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M165_MOTOR_POSITION_INFO_FRAME_ID:
+        if (feb_can_m165_motor_position_info_unpack(&feb_can_state.m165_motor_position_info.data, data, dlc) < 0) return -2;
+        feb_can_state.m165_motor_position_info.meta.present = true;
+        feb_can_state.m165_motor_position_info.meta.last_rx_ms = now_ms;
+        feb_can_state.m165_motor_position_info.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M166_CURRENT_INFO_FRAME_ID:
+        if (feb_can_m166_current_info_unpack(&feb_can_state.m166_current_info.data, data, dlc) < 0) return -2;
+        feb_can_state.m166_current_info.meta.present = true;
+        feb_can_state.m166_current_info.meta.last_rx_ms = now_ms;
+        feb_can_state.m166_current_info.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M167_VOLTAGE_INFO_FRAME_ID:
+        if (feb_can_m167_voltage_info_unpack(&feb_can_state.m167_voltage_info.data, data, dlc) < 0) return -2;
+        feb_can_state.m167_voltage_info.meta.present = true;
+        feb_can_state.m167_voltage_info.meta.last_rx_ms = now_ms;
+        feb_can_state.m167_voltage_info.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M168_FLUX_ID_IQ_INFO_FRAME_ID:
+        if (feb_can_m168_flux_id_iq_info_unpack(&feb_can_state.m168_flux_id_iq_info.data, data, dlc) < 0) return -2;
+        feb_can_state.m168_flux_id_iq_info.meta.present = true;
+        feb_can_state.m168_flux_id_iq_info.meta.last_rx_ms = now_ms;
+        feb_can_state.m168_flux_id_iq_info.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M169_INTERNAL_VOLTAGES_FRAME_ID:
+        if (feb_can_m169_internal_voltages_unpack(&feb_can_state.m169_internal_voltages.data, data, dlc) < 0) return -2;
+        feb_can_state.m169_internal_voltages.meta.present = true;
+        feb_can_state.m169_internal_voltages.meta.last_rx_ms = now_ms;
+        feb_can_state.m169_internal_voltages.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M170_INTERNAL_STATES_FRAME_ID:
+        if (feb_can_m170_internal_states_unpack(&feb_can_state.m170_internal_states.data, data, dlc) < 0) return -2;
+        feb_can_state.m170_internal_states.meta.present = true;
+        feb_can_state.m170_internal_states.meta.last_rx_ms = now_ms;
+        feb_can_state.m170_internal_states.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M171_FAULT_CODES_FRAME_ID:
+        if (feb_can_m171_fault_codes_unpack(&feb_can_state.m171_fault_codes.data, data, dlc) < 0) return -2;
+        feb_can_state.m171_fault_codes.meta.present = true;
+        feb_can_state.m171_fault_codes.meta.last_rx_ms = now_ms;
+        feb_can_state.m171_fault_codes.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M172_TORQUE_AND_TIMER_INFO_FRAME_ID:
+        if (feb_can_m172_torque_and_timer_info_unpack(&feb_can_state.m172_torque_and_timer_info.data, data, dlc) < 0) return -2;
+        feb_can_state.m172_torque_and_timer_info.meta.present = true;
+        feb_can_state.m172_torque_and_timer_info.meta.last_rx_ms = now_ms;
+        feb_can_state.m172_torque_and_timer_info.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M173_MODULATION_AND_FLUX_INFO_FRAME_ID:
+        if (feb_can_m173_modulation_and_flux_info_unpack(&feb_can_state.m173_modulation_and_flux_info.data, data, dlc) < 0) return -2;
+        feb_can_state.m173_modulation_and_flux_info.meta.present = true;
+        feb_can_state.m173_modulation_and_flux_info.meta.last_rx_ms = now_ms;
+        feb_can_state.m173_modulation_and_flux_info.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M174_FIRMWARE_INFO_FRAME_ID:
+        if (feb_can_m174_firmware_info_unpack(&feb_can_state.m174_firmware_info.data, data, dlc) < 0) return -2;
+        feb_can_state.m174_firmware_info.meta.present = true;
+        feb_can_state.m174_firmware_info.meta.last_rx_ms = now_ms;
+        feb_can_state.m174_firmware_info.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M175_DIAG_DATA_MESSAGE_FRAME_ID:
+        if (feb_can_m175_diag_data_message_unpack(&feb_can_state.m175_diag_data_message.data, data, dlc) < 0) return -2;
+        feb_can_state.m175_diag_data_message.meta.present = true;
+        feb_can_state.m175_diag_data_message.meta.last_rx_ms = now_ms;
+        feb_can_state.m175_diag_data_message.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M176_FAST_INFO_FRAME_ID:
+        if (feb_can_m176_fast_info_unpack(&feb_can_state.m176_fast_info.data, data, dlc) < 0) return -2;
+        feb_can_state.m176_fast_info.meta.present = true;
+        feb_can_state.m176_fast_info.meta.last_rx_ms = now_ms;
+        feb_can_state.m176_fast_info.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M192_COMMAND_MESSAGE_FRAME_ID:
+        if (feb_can_m192_command_message_unpack(&feb_can_state.m192_command_message.data, data, dlc) < 0) return -2;
+        feb_can_state.m192_command_message.meta.present = true;
+        feb_can_state.m192_command_message.meta.last_rx_ms = now_ms;
+        feb_can_state.m192_command_message.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M193_READ_WRITE_PARAM_COMMAND_FRAME_ID:
+        if (feb_can_m193_read_write_param_command_unpack(&feb_can_state.m193_read_write_param_command.data, data, dlc) < 0) return -2;
+        feb_can_state.m193_read_write_param_command.meta.present = true;
+        feb_can_state.m193_read_write_param_command.meta.last_rx_ms = now_ms;
+        feb_can_state.m193_read_write_param_command.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M194_READ_WRITE_PARAM_RESPONSE_FRAME_ID:
+        if (feb_can_m194_read_write_param_response_unpack(&feb_can_state.m194_read_write_param_response.data, data, dlc) < 0) return -2;
+        feb_can_state.m194_read_write_param_response.meta.present = true;
+        feb_can_state.m194_read_write_param_response.meta.last_rx_ms = now_ms;
+        feb_can_state.m194_read_write_param_response.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M188_U2_C_MESSAGE_RXD_FRAME_ID:
+        if (feb_can_m188_u2_c_message_rxd_unpack(&feb_can_state.m188_u2_c_message_rxd.data, data, dlc) < 0) return -2;
+        feb_can_state.m188_u2_c_message_rxd.meta.present = true;
+        feb_can_state.m188_u2_c_message_rxd.meta.last_rx_ms = now_ms;
+        feb_can_state.m188_u2_c_message_rxd.meta.rx_count++;
+        return 0;
+    case FEB_CAN_M187_U2_C_COMMAND_TXD_FRAME_ID:
+        if (feb_can_m187_u2_c_command_txd_unpack(&feb_can_state.m187_u2_c_command_txd.data, data, dlc) < 0) return -2;
+        feb_can_state.m187_u2_c_command_txd.meta.present = true;
+        feb_can_state.m187_u2_c_command_txd.meta.last_rx_ms = now_ms;
+        feb_can_state.m187_u2_c_command_txd.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_CURRENT_LIMIT_FRAME_ID:
+        if (feb_can_bms_current_limit_unpack(&feb_can_state.bms_current_limit.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_current_limit.meta.present = true;
+        feb_can_state.bms_current_limit.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_current_limit.meta.rx_count++;
+        return 0;
     default:
         return -1;
     }
@@ -277,11 +403,11 @@ void FEB_CAN_State_Print(int (*printf_fn)(const char *fmt, ...))
 {
     printf_fn("CAN state (present messages only):\r\n");
     printf_fn("  ID    name                                          last_rx_ms      rx_count\r\n");
-    if (feb_can_state.bms_state.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x00, "bms_state", (unsigned long)feb_can_state.bms_state.meta.last_rx_ms, (unsigned long)feb_can_state.bms_state.meta.rx_count);
     if (feb_can_state.bms_cell_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x01, "bms_cell_data", (unsigned long)feb_can_state.bms_cell_data.meta.last_rx_ms, (unsigned long)feb_can_state.bms_cell_data.meta.rx_count);
     if (feb_can_state.bms_accumulator_voltage.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x02, "bms_accumulator_voltage", (unsigned long)feb_can_state.bms_accumulator_voltage.meta.last_rx_ms, (unsigned long)feb_can_state.bms_accumulator_voltage.meta.rx_count);
     if (feb_can_state.bms_accumulator_temperature.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x03, "bms_accumulator_temperature", (unsigned long)feb_can_state.bms_accumulator_temperature.meta.last_rx_ms, (unsigned long)feb_can_state.bms_accumulator_temperature.meta.rx_count);
     if (feb_can_state.accumulator_faults.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x04, "accumulator_faults", (unsigned long)feb_can_state.accumulator_faults.meta.last_rx_ms, (unsigned long)feb_can_state.accumulator_faults.meta.rx_count);
+    if (feb_can_state.bms_state.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x05, "bms_state", (unsigned long)feb_can_state.bms_state.meta.last_rx_ms, (unsigned long)feb_can_state.bms_state.meta.rx_count);
     if (feb_can_state.brake.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x09, "brake", (unsigned long)feb_can_state.brake.meta.last_rx_ms, (unsigned long)feb_can_state.brake.meta.rx_count);
     if (feb_can_state.bspd_state.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x0A, "bspd_state", (unsigned long)feb_can_state.bspd_state.meta.last_rx_ms, (unsigned long)feb_can_state.bspd_state.meta.rx_count);
     if (feb_can_state.res_state.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x0B, "res_state", (unsigned long)feb_can_state.res_state.meta.last_rx_ms, (unsigned long)feb_can_state.res_state.meta.rx_count);
@@ -307,8 +433,6 @@ void FEB_CAN_State_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_state.dash_tps.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x36, "dash_tps", (unsigned long)feb_can_state.dash_tps.meta.last_rx_ms, (unsigned long)feb_can_state.dash_tps.meta.rx_count);
     if (feb_can_state.dcu_tps.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x37, "dcu_tps", (unsigned long)feb_can_state.dcu_tps.meta.last_rx_ms, (unsigned long)feb_can_state.dcu_tps.meta.rx_count);
     if (feb_can_state.pcu_raw_acc.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x38, "pcu_raw_acc", (unsigned long)feb_can_state.pcu_raw_acc.meta.last_rx_ms, (unsigned long)feb_can_state.pcu_raw_acc.meta.rx_count);
-    if (feb_can_state.rms_command.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xC0, "rms_command", (unsigned long)feb_can_state.rms_command.meta.last_rx_ms, (unsigned long)feb_can_state.rms_command.meta.rx_count);
-    if (feb_can_state.rms_param.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xC1, "rms_param", (unsigned long)feb_can_state.rms_param.meta.last_rx_ms, (unsigned long)feb_can_state.rms_param.meta.rx_count);
     if (feb_can_state.pcu_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD0, "pcu_heartbeat", (unsigned long)feb_can_state.pcu_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_state.pcu_heartbeat.meta.rx_count);
     if (feb_can_state.dash_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD1, "dash_heartbeat", (unsigned long)feb_can_state.dash_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_state.dash_heartbeat.meta.rx_count);
     if (feb_can_state.lvpdb_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD2, "lvpdb_heartbeat", (unsigned long)feb_can_state.lvpdb_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_state.lvpdb_heartbeat.meta.rx_count);
@@ -320,19 +444,33 @@ void FEB_CAN_State_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_state.feb_ping_pong_counter3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE2, "feb_ping_pong_counter3", (unsigned long)feb_can_state.feb_ping_pong_counter3.meta.last_rx_ms, (unsigned long)feb_can_state.feb_ping_pong_counter3.meta.rx_count);
     if (feb_can_state.feb_ping_pong_counter4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE3, "feb_ping_pong_counter4", (unsigned long)feb_can_state.feb_ping_pong_counter4.meta.last_rx_ms, (unsigned long)feb_can_state.feb_ping_pong_counter4.meta.rx_count);
     if (feb_can_state.ebs_pressure_status.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x500, "ebs_pressure_status", (unsigned long)feb_can_state.ebs_pressure_status.meta.last_rx_ms, (unsigned long)feb_can_state.ebs_pressure_status.meta.rx_count);
+    if (feb_can_state.m160_temperature_set_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xA0, "m160_temperature_set_1", (unsigned long)feb_can_state.m160_temperature_set_1.meta.last_rx_ms, (unsigned long)feb_can_state.m160_temperature_set_1.meta.rx_count);
+    if (feb_can_state.m161_temperature_set_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xA1, "m161_temperature_set_2", (unsigned long)feb_can_state.m161_temperature_set_2.meta.last_rx_ms, (unsigned long)feb_can_state.m161_temperature_set_2.meta.rx_count);
+    if (feb_can_state.m162_temperature_set_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xA2, "m162_temperature_set_3", (unsigned long)feb_can_state.m162_temperature_set_3.meta.last_rx_ms, (unsigned long)feb_can_state.m162_temperature_set_3.meta.rx_count);
+    if (feb_can_state.m163_analog_input_voltages.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xA3, "m163_analog_input_voltages", (unsigned long)feb_can_state.m163_analog_input_voltages.meta.last_rx_ms, (unsigned long)feb_can_state.m163_analog_input_voltages.meta.rx_count);
+    if (feb_can_state.m164_digital_input_status.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xA4, "m164_digital_input_status", (unsigned long)feb_can_state.m164_digital_input_status.meta.last_rx_ms, (unsigned long)feb_can_state.m164_digital_input_status.meta.rx_count);
+    if (feb_can_state.m165_motor_position_info.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xA5, "m165_motor_position_info", (unsigned long)feb_can_state.m165_motor_position_info.meta.last_rx_ms, (unsigned long)feb_can_state.m165_motor_position_info.meta.rx_count);
+    if (feb_can_state.m166_current_info.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xA6, "m166_current_info", (unsigned long)feb_can_state.m166_current_info.meta.last_rx_ms, (unsigned long)feb_can_state.m166_current_info.meta.rx_count);
+    if (feb_can_state.m167_voltage_info.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xA7, "m167_voltage_info", (unsigned long)feb_can_state.m167_voltage_info.meta.last_rx_ms, (unsigned long)feb_can_state.m167_voltage_info.meta.rx_count);
+    if (feb_can_state.m168_flux_id_iq_info.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xA8, "m168_flux_id_iq_info", (unsigned long)feb_can_state.m168_flux_id_iq_info.meta.last_rx_ms, (unsigned long)feb_can_state.m168_flux_id_iq_info.meta.rx_count);
+    if (feb_can_state.m169_internal_voltages.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xA9, "m169_internal_voltages", (unsigned long)feb_can_state.m169_internal_voltages.meta.last_rx_ms, (unsigned long)feb_can_state.m169_internal_voltages.meta.rx_count);
+    if (feb_can_state.m170_internal_states.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xAA, "m170_internal_states", (unsigned long)feb_can_state.m170_internal_states.meta.last_rx_ms, (unsigned long)feb_can_state.m170_internal_states.meta.rx_count);
+    if (feb_can_state.m171_fault_codes.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xAB, "m171_fault_codes", (unsigned long)feb_can_state.m171_fault_codes.meta.last_rx_ms, (unsigned long)feb_can_state.m171_fault_codes.meta.rx_count);
+    if (feb_can_state.m172_torque_and_timer_info.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xAC, "m172_torque_and_timer_info", (unsigned long)feb_can_state.m172_torque_and_timer_info.meta.last_rx_ms, (unsigned long)feb_can_state.m172_torque_and_timer_info.meta.rx_count);
+    if (feb_can_state.m173_modulation_and_flux_info.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xAD, "m173_modulation_and_flux_info", (unsigned long)feb_can_state.m173_modulation_and_flux_info.meta.last_rx_ms, (unsigned long)feb_can_state.m173_modulation_and_flux_info.meta.rx_count);
+    if (feb_can_state.m174_firmware_info.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xAE, "m174_firmware_info", (unsigned long)feb_can_state.m174_firmware_info.meta.last_rx_ms, (unsigned long)feb_can_state.m174_firmware_info.meta.rx_count);
+    if (feb_can_state.m175_diag_data_message.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xAF, "m175_diag_data_message", (unsigned long)feb_can_state.m175_diag_data_message.meta.last_rx_ms, (unsigned long)feb_can_state.m175_diag_data_message.meta.rx_count);
+    if (feb_can_state.m176_fast_info.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xB0, "m176_fast_info", (unsigned long)feb_can_state.m176_fast_info.meta.last_rx_ms, (unsigned long)feb_can_state.m176_fast_info.meta.rx_count);
+    if (feb_can_state.m192_command_message.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xC0, "m192_command_message", (unsigned long)feb_can_state.m192_command_message.meta.last_rx_ms, (unsigned long)feb_can_state.m192_command_message.meta.rx_count);
+    if (feb_can_state.m193_read_write_param_command.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xC1, "m193_read_write_param_command", (unsigned long)feb_can_state.m193_read_write_param_command.meta.last_rx_ms, (unsigned long)feb_can_state.m193_read_write_param_command.meta.rx_count);
+    if (feb_can_state.m194_read_write_param_response.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xC2, "m194_read_write_param_response", (unsigned long)feb_can_state.m194_read_write_param_response.meta.last_rx_ms, (unsigned long)feb_can_state.m194_read_write_param_response.meta.rx_count);
+    if (feb_can_state.m188_u2_c_message_rxd.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x1D5, "m188_u2_c_message_rxd", (unsigned long)feb_can_state.m188_u2_c_message_rxd.meta.last_rx_ms, (unsigned long)feb_can_state.m188_u2_c_message_rxd.meta.rx_count);
+    if (feb_can_state.m187_u2_c_command_txd.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x1D7, "m187_u2_c_command_txd", (unsigned long)feb_can_state.m187_u2_c_command_txd.meta.last_rx_ms, (unsigned long)feb_can_state.m187_u2_c_command_txd.meta.rx_count);
+    if (feb_can_state.bms_current_limit.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x202, "bms_current_limit", (unsigned long)feb_can_state.bms_current_limit.meta.last_rx_ms, (unsigned long)feb_can_state.bms_current_limit.meta.rx_count);
 }
 
 int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...))
 {
-    if (strcmp(name, "bms_state") == 0)
-    {
-        printf_fn("0x%02X  bms_state  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x00, (int)feb_can_state.bms_state.meta.present, (unsigned long)feb_can_state.bms_state.meta.last_rx_ms, (unsigned long)feb_can_state.bms_state.meta.rx_count);
-        printf_fn("  bms_state                        = %ld\r\n", (long)feb_can_state.bms_state.data.bms_state);
-        printf_fn("  ping_lv_nodes                    = %ld\r\n", (long)feb_can_state.bms_state.data.ping_lv_nodes);
-        printf_fn("  relay_state                      = %ld\r\n", (long)feb_can_state.bms_state.data.relay_state);
-        printf_fn("  gpio_sense                       = %ld\r\n", (long)feb_can_state.bms_state.data.gpio_sense);
-        return 0;
-    }
     if (strcmp(name, "bms_cell_data") == 0)
     {
         printf_fn("0x%02X  bms_cell_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x01, (int)feb_can_state.bms_cell_data.meta.present, (unsigned long)feb_can_state.bms_cell_data.meta.last_rx_ms, (unsigned long)feb_can_state.bms_cell_data.meta.rx_count);
@@ -367,6 +505,15 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
         printf_fn("0x%02X  accumulator_faults  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x04, (int)feb_can_state.accumulator_faults.meta.present, (unsigned long)feb_can_state.accumulator_faults.meta.last_rx_ms, (unsigned long)feb_can_state.accumulator_faults.meta.rx_count);
         printf_fn("  bms_fault                        = %ld\r\n", (long)feb_can_state.accumulator_faults.data.bms_fault);
         printf_fn("  imd_fault                        = %ld\r\n", (long)feb_can_state.accumulator_faults.data.imd_fault);
+        return 0;
+    }
+    if (strcmp(name, "bms_state") == 0)
+    {
+        printf_fn("0x%02X  bms_state  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x05, (int)feb_can_state.bms_state.meta.present, (unsigned long)feb_can_state.bms_state.meta.last_rx_ms, (unsigned long)feb_can_state.bms_state.meta.rx_count);
+        printf_fn("  bms_state                        = %ld\r\n", (long)feb_can_state.bms_state.data.bms_state);
+        printf_fn("  ping_lv_nodes                    = %ld\r\n", (long)feb_can_state.bms_state.data.ping_lv_nodes);
+        printf_fn("  relay_state                      = %ld\r\n", (long)feb_can_state.bms_state.data.relay_state);
+        printf_fn("  gpio_sense                       = %ld\r\n", (long)feb_can_state.bms_state.data.gpio_sense);
         return 0;
     }
     if (strcmp(name, "brake") == 0)
@@ -564,26 +711,10 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
         printf_fn("0x%02X  pcu_raw_acc  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x38, (int)feb_can_state.pcu_raw_acc.meta.present, (unsigned long)feb_can_state.pcu_raw_acc.meta.last_rx_ms, (unsigned long)feb_can_state.pcu_raw_acc.meta.rx_count);
         printf_fn("  acc0                             = %ld\r\n", (long)feb_can_state.pcu_raw_acc.data.acc0);
         printf_fn("  acc1                             = %ld\r\n", (long)feb_can_state.pcu_raw_acc.data.acc1);
-        return 0;
-    }
-    if (strcmp(name, "rms_command") == 0)
-    {
-        printf_fn("0x%02X  rms_command  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xC0, (int)feb_can_state.rms_command.meta.present, (unsigned long)feb_can_state.rms_command.meta.last_rx_ms, (unsigned long)feb_can_state.rms_command.meta.rx_count);
-        printf_fn("  torque_signal_small              = %ld\r\n", (long)feb_can_state.rms_command.data.torque_signal_small);
-        printf_fn("  speed_signal                     = %ld\r\n", (long)feb_can_state.rms_command.data.speed_signal);
-        printf_fn("  direction_value                  = %ld\r\n", (long)feb_can_state.rms_command.data.direction_value);
-        printf_fn("  inverter_enable                  = %ld\r\n", (long)feb_can_state.rms_command.data.inverter_enable);
-        printf_fn("  inverter_dicharge                = %ld\r\n", (long)feb_can_state.rms_command.data.inverter_dicharge);
-        printf_fn("  speed_mode_enabled               = %ld\r\n", (long)feb_can_state.rms_command.data.speed_mode_enabled);
-        printf_fn("  command_torque_limited           = %ld\r\n", (long)feb_can_state.rms_command.data.command_torque_limited);
-        return 0;
-    }
-    if (strcmp(name, "rms_param") == 0)
-    {
-        printf_fn("0x%02X  rms_param  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xC1, (int)feb_can_state.rms_param.meta.present, (unsigned long)feb_can_state.rms_param.meta.last_rx_ms, (unsigned long)feb_can_state.rms_param.meta.rx_count);
-        printf_fn("  address                          = %ld\r\n", (long)feb_can_state.rms_param.data.address);
-        printf_fn("  read_write_command               = %ld\r\n", (long)feb_can_state.rms_param.data.read_write_command);
-        printf_fn("  data                             = %ld\r\n", (long)feb_can_state.rms_param.data.data);
+        printf_fn("  accel                            = %ld\r\n", (long)feb_can_state.pcu_raw_acc.data.accel);
+        printf_fn("  plausible                        = %ld\r\n", (long)feb_can_state.pcu_raw_acc.data.plausible);
+        printf_fn("  short_circuit                    = %ld\r\n", (long)feb_can_state.pcu_raw_acc.data.short_circuit);
+        printf_fn("  open_circuit                     = %ld\r\n", (long)feb_can_state.pcu_raw_acc.data.open_circuit);
         return 0;
     }
     if (strcmp(name, "pcu_heartbeat") == 0)
@@ -1031,6 +1162,253 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
         printf_fn("  ebs_pressure_2                   = %ld\r\n", (long)feb_can_state.ebs_pressure_status.data.ebs_pressure_2);
         printf_fn("  ebs_pressure_3                   = %ld\r\n", (long)feb_can_state.ebs_pressure_status.data.ebs_pressure_3);
         printf_fn("  ebs_pressure_4                   = %ld\r\n", (long)feb_can_state.ebs_pressure_status.data.ebs_pressure_4);
+        return 0;
+    }
+    if (strcmp(name, "m160_temperature_set_1") == 0)
+    {
+        printf_fn("0x%02X  m160_temperature_set_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xA0, (int)feb_can_state.m160_temperature_set_1.meta.present, (unsigned long)feb_can_state.m160_temperature_set_1.meta.last_rx_ms, (unsigned long)feb_can_state.m160_temperature_set_1.meta.rx_count);
+        printf_fn("  inv_module_a                     = %ld\r\n", (long)feb_can_state.m160_temperature_set_1.data.inv_module_a);
+        printf_fn("  inv_module_b                     = %ld\r\n", (long)feb_can_state.m160_temperature_set_1.data.inv_module_b);
+        printf_fn("  inv_module_c                     = %ld\r\n", (long)feb_can_state.m160_temperature_set_1.data.inv_module_c);
+        printf_fn("  inv_gate_driver_board            = %ld\r\n", (long)feb_can_state.m160_temperature_set_1.data.inv_gate_driver_board);
+        return 0;
+    }
+    if (strcmp(name, "m161_temperature_set_2") == 0)
+    {
+        printf_fn("0x%02X  m161_temperature_set_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xA1, (int)feb_can_state.m161_temperature_set_2.meta.present, (unsigned long)feb_can_state.m161_temperature_set_2.meta.last_rx_ms, (unsigned long)feb_can_state.m161_temperature_set_2.meta.rx_count);
+        printf_fn("  inv_control_board_temperature    = %ld\r\n", (long)feb_can_state.m161_temperature_set_2.data.inv_control_board_temperature);
+        printf_fn("  inv_rtd1_temperature             = %ld\r\n", (long)feb_can_state.m161_temperature_set_2.data.inv_rtd1_temperature);
+        printf_fn("  inv_rtd2_temperature             = %ld\r\n", (long)feb_can_state.m161_temperature_set_2.data.inv_rtd2_temperature);
+        printf_fn("  inv_rtd3_temperature             = %ld\r\n", (long)feb_can_state.m161_temperature_set_2.data.inv_rtd3_temperature);
+        return 0;
+    }
+    if (strcmp(name, "m162_temperature_set_3") == 0)
+    {
+        printf_fn("0x%02X  m162_temperature_set_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xA2, (int)feb_can_state.m162_temperature_set_3.meta.present, (unsigned long)feb_can_state.m162_temperature_set_3.meta.last_rx_ms, (unsigned long)feb_can_state.m162_temperature_set_3.meta.rx_count);
+        printf_fn("  inv_rtd4_temperature             = %ld\r\n", (long)feb_can_state.m162_temperature_set_3.data.inv_rtd4_temperature);
+        printf_fn("  inv_rtd5_temperature             = %ld\r\n", (long)feb_can_state.m162_temperature_set_3.data.inv_rtd5_temperature);
+        printf_fn("  inv_motor_temperature            = %ld\r\n", (long)feb_can_state.m162_temperature_set_3.data.inv_motor_temperature);
+        printf_fn("  inv_torque_shudder               = %ld\r\n", (long)feb_can_state.m162_temperature_set_3.data.inv_torque_shudder);
+        return 0;
+    }
+    if (strcmp(name, "m163_analog_input_voltages") == 0)
+    {
+        printf_fn("0x%02X  m163_analog_input_voltages  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xA3, (int)feb_can_state.m163_analog_input_voltages.meta.present, (unsigned long)feb_can_state.m163_analog_input_voltages.meta.last_rx_ms, (unsigned long)feb_can_state.m163_analog_input_voltages.meta.rx_count);
+        printf_fn("  inv_analog_input_1               = %ld\r\n", (long)feb_can_state.m163_analog_input_voltages.data.inv_analog_input_1);
+        printf_fn("  inv_analog_input_2               = %ld\r\n", (long)feb_can_state.m163_analog_input_voltages.data.inv_analog_input_2);
+        printf_fn("  inv_analog_input_3               = %ld\r\n", (long)feb_can_state.m163_analog_input_voltages.data.inv_analog_input_3);
+        printf_fn("  inv_analog_input_4               = %ld\r\n", (long)feb_can_state.m163_analog_input_voltages.data.inv_analog_input_4);
+        printf_fn("  inv_analog_input_5               = %ld\r\n", (long)feb_can_state.m163_analog_input_voltages.data.inv_analog_input_5);
+        printf_fn("  inv_analog_input_6               = %ld\r\n", (long)feb_can_state.m163_analog_input_voltages.data.inv_analog_input_6);
+        return 0;
+    }
+    if (strcmp(name, "m164_digital_input_status") == 0)
+    {
+        printf_fn("0x%02X  m164_digital_input_status  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xA4, (int)feb_can_state.m164_digital_input_status.meta.present, (unsigned long)feb_can_state.m164_digital_input_status.meta.last_rx_ms, (unsigned long)feb_can_state.m164_digital_input_status.meta.rx_count);
+        printf_fn("  inv_digital_input_1              = %ld\r\n", (long)feb_can_state.m164_digital_input_status.data.inv_digital_input_1);
+        printf_fn("  inv_digital_input_2              = %ld\r\n", (long)feb_can_state.m164_digital_input_status.data.inv_digital_input_2);
+        printf_fn("  inv_digital_input_3              = %ld\r\n", (long)feb_can_state.m164_digital_input_status.data.inv_digital_input_3);
+        printf_fn("  inv_digital_input_4              = %ld\r\n", (long)feb_can_state.m164_digital_input_status.data.inv_digital_input_4);
+        printf_fn("  inv_digital_input_5              = %ld\r\n", (long)feb_can_state.m164_digital_input_status.data.inv_digital_input_5);
+        printf_fn("  inv_digital_input_6              = %ld\r\n", (long)feb_can_state.m164_digital_input_status.data.inv_digital_input_6);
+        printf_fn("  inv_digital_input_7              = %ld\r\n", (long)feb_can_state.m164_digital_input_status.data.inv_digital_input_7);
+        printf_fn("  inv_digital_input_8              = %ld\r\n", (long)feb_can_state.m164_digital_input_status.data.inv_digital_input_8);
+        return 0;
+    }
+    if (strcmp(name, "m165_motor_position_info") == 0)
+    {
+        printf_fn("0x%02X  m165_motor_position_info  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xA5, (int)feb_can_state.m165_motor_position_info.meta.present, (unsigned long)feb_can_state.m165_motor_position_info.meta.last_rx_ms, (unsigned long)feb_can_state.m165_motor_position_info.meta.rx_count);
+        printf_fn("  inv_motor_angle_electrical       = %ld\r\n", (long)feb_can_state.m165_motor_position_info.data.inv_motor_angle_electrical);
+        printf_fn("  inv_motor_speed                  = %ld\r\n", (long)feb_can_state.m165_motor_position_info.data.inv_motor_speed);
+        printf_fn("  inv_electrical_output_frequency  = %ld\r\n", (long)feb_can_state.m165_motor_position_info.data.inv_electrical_output_frequency);
+        printf_fn("  inv_delta_resolver_filtered      = %ld\r\n", (long)feb_can_state.m165_motor_position_info.data.inv_delta_resolver_filtered);
+        return 0;
+    }
+    if (strcmp(name, "m166_current_info") == 0)
+    {
+        printf_fn("0x%02X  m166_current_info  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xA6, (int)feb_can_state.m166_current_info.meta.present, (unsigned long)feb_can_state.m166_current_info.meta.last_rx_ms, (unsigned long)feb_can_state.m166_current_info.meta.rx_count);
+        printf_fn("  inv_phase_a_current              = %ld\r\n", (long)feb_can_state.m166_current_info.data.inv_phase_a_current);
+        printf_fn("  inv_phase_b_current              = %ld\r\n", (long)feb_can_state.m166_current_info.data.inv_phase_b_current);
+        printf_fn("  inv_phase_c_current              = %ld\r\n", (long)feb_can_state.m166_current_info.data.inv_phase_c_current);
+        printf_fn("  inv_dc_bus_current               = %ld\r\n", (long)feb_can_state.m166_current_info.data.inv_dc_bus_current);
+        return 0;
+    }
+    if (strcmp(name, "m167_voltage_info") == 0)
+    {
+        printf_fn("0x%02X  m167_voltage_info  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xA7, (int)feb_can_state.m167_voltage_info.meta.present, (unsigned long)feb_can_state.m167_voltage_info.meta.last_rx_ms, (unsigned long)feb_can_state.m167_voltage_info.meta.rx_count);
+        printf_fn("  inv_dc_bus_voltage               = %ld\r\n", (long)feb_can_state.m167_voltage_info.data.inv_dc_bus_voltage);
+        printf_fn("  inv_output_voltage               = %ld\r\n", (long)feb_can_state.m167_voltage_info.data.inv_output_voltage);
+        printf_fn("  inv_vab_vd_voltage               = %ld\r\n", (long)feb_can_state.m167_voltage_info.data.inv_vab_vd_voltage);
+        printf_fn("  inv_vbc_vq_voltage               = %ld\r\n", (long)feb_can_state.m167_voltage_info.data.inv_vbc_vq_voltage);
+        return 0;
+    }
+    if (strcmp(name, "m168_flux_id_iq_info") == 0)
+    {
+        printf_fn("0x%02X  m168_flux_id_iq_info  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xA8, (int)feb_can_state.m168_flux_id_iq_info.meta.present, (unsigned long)feb_can_state.m168_flux_id_iq_info.meta.last_rx_ms, (unsigned long)feb_can_state.m168_flux_id_iq_info.meta.rx_count);
+        printf_fn("  inv_flux_command                 = %ld\r\n", (long)feb_can_state.m168_flux_id_iq_info.data.inv_flux_command);
+        printf_fn("  inv_flux_feedback                = %ld\r\n", (long)feb_can_state.m168_flux_id_iq_info.data.inv_flux_feedback);
+        printf_fn("  inv_id                           = %ld\r\n", (long)feb_can_state.m168_flux_id_iq_info.data.inv_id);
+        printf_fn("  inv_iq                           = %ld\r\n", (long)feb_can_state.m168_flux_id_iq_info.data.inv_iq);
+        return 0;
+    }
+    if (strcmp(name, "m169_internal_voltages") == 0)
+    {
+        printf_fn("0x%02X  m169_internal_voltages  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xA9, (int)feb_can_state.m169_internal_voltages.meta.present, (unsigned long)feb_can_state.m169_internal_voltages.meta.last_rx_ms, (unsigned long)feb_can_state.m169_internal_voltages.meta.rx_count);
+        printf_fn("  inv_reference_voltage_1_5        = %ld\r\n", (long)feb_can_state.m169_internal_voltages.data.inv_reference_voltage_1_5);
+        printf_fn("  inv_reference_voltage_2_5        = %ld\r\n", (long)feb_can_state.m169_internal_voltages.data.inv_reference_voltage_2_5);
+        printf_fn("  inv_reference_voltage_5_0        = %ld\r\n", (long)feb_can_state.m169_internal_voltages.data.inv_reference_voltage_5_0);
+        printf_fn("  inv_reference_voltage_12_0       = %ld\r\n", (long)feb_can_state.m169_internal_voltages.data.inv_reference_voltage_12_0);
+        return 0;
+    }
+    if (strcmp(name, "m170_internal_states") == 0)
+    {
+        printf_fn("0x%02X  m170_internal_states  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xAA, (int)feb_can_state.m170_internal_states.meta.present, (unsigned long)feb_can_state.m170_internal_states.meta.last_rx_ms, (unsigned long)feb_can_state.m170_internal_states.meta.rx_count);
+        printf_fn("  inv_vsm_state                    = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_vsm_state);
+        printf_fn("  inv_pwm_frequency                = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_pwm_frequency);
+        printf_fn("  inv_inverter_state               = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_inverter_state);
+        printf_fn("  inv_relay_1_status               = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_relay_1_status);
+        printf_fn("  inv_relay_2_status               = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_relay_2_status);
+        printf_fn("  inv_relay_3_status               = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_relay_3_status);
+        printf_fn("  inv_relay_4_status               = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_relay_4_status);
+        printf_fn("  inv_relay_5_status               = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_relay_5_status);
+        printf_fn("  inv_relay_6_status               = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_relay_6_status);
+        printf_fn("  inv_inverter_run_mode            = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_inverter_run_mode);
+        printf_fn("  inv_inverter_discharge_state     = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_inverter_discharge_state);
+        printf_fn("  inv_inverter_command_mode        = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_inverter_command_mode);
+        printf_fn("  inv_rolling_counter              = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_rolling_counter);
+        printf_fn("  inv_inverter_enable_state        = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_inverter_enable_state);
+        printf_fn("  inv_start_mode_active            = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_start_mode_active);
+        printf_fn("  inv_inverter_enable_lockout      = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_inverter_enable_lockout);
+        printf_fn("  inv_direction_command            = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_direction_command);
+        printf_fn("  inv_bms_active                   = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_bms_active);
+        printf_fn("  inv_bms_torque_limiting          = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_bms_torque_limiting);
+        printf_fn("  inv_max_speed_limiting           = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_max_speed_limiting);
+        printf_fn("  inv_low_speed_limiting           = %ld\r\n", (long)feb_can_state.m170_internal_states.data.inv_low_speed_limiting);
+        return 0;
+    }
+    if (strcmp(name, "m171_fault_codes") == 0)
+    {
+        printf_fn("0x%02X  m171_fault_codes  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xAB, (int)feb_can_state.m171_fault_codes.meta.present, (unsigned long)feb_can_state.m171_fault_codes.meta.last_rx_ms, (unsigned long)feb_can_state.m171_fault_codes.meta.rx_count);
+        printf_fn("  inv_post_fault_lo                = %ld\r\n", (long)feb_can_state.m171_fault_codes.data.inv_post_fault_lo);
+        printf_fn("  inv_post_fault_hi                = %ld\r\n", (long)feb_can_state.m171_fault_codes.data.inv_post_fault_hi);
+        printf_fn("  inv_run_fault_lo                 = %ld\r\n", (long)feb_can_state.m171_fault_codes.data.inv_run_fault_lo);
+        printf_fn("  inv_run_fault_hi                 = %ld\r\n", (long)feb_can_state.m171_fault_codes.data.inv_run_fault_hi);
+        return 0;
+    }
+    if (strcmp(name, "m172_torque_and_timer_info") == 0)
+    {
+        printf_fn("0x%02X  m172_torque_and_timer_info  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xAC, (int)feb_can_state.m172_torque_and_timer_info.meta.present, (unsigned long)feb_can_state.m172_torque_and_timer_info.meta.last_rx_ms, (unsigned long)feb_can_state.m172_torque_and_timer_info.meta.rx_count);
+        printf_fn("  inv_commanded_torque             = %ld\r\n", (long)feb_can_state.m172_torque_and_timer_info.data.inv_commanded_torque);
+        printf_fn("  inv_torque_feedback              = %ld\r\n", (long)feb_can_state.m172_torque_and_timer_info.data.inv_torque_feedback);
+        printf_fn("  inv_power_on_timer               = %ld\r\n", (long)feb_can_state.m172_torque_and_timer_info.data.inv_power_on_timer);
+        return 0;
+    }
+    if (strcmp(name, "m173_modulation_and_flux_info") == 0)
+    {
+        printf_fn("0x%02X  m173_modulation_and_flux_info  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xAD, (int)feb_can_state.m173_modulation_and_flux_info.meta.present, (unsigned long)feb_can_state.m173_modulation_and_flux_info.meta.last_rx_ms, (unsigned long)feb_can_state.m173_modulation_and_flux_info.meta.rx_count);
+        printf_fn("  inv_modulation_index             = %ld\r\n", (long)feb_can_state.m173_modulation_and_flux_info.data.inv_modulation_index);
+        printf_fn("  inv_flux_weakening_output        = %ld\r\n", (long)feb_can_state.m173_modulation_and_flux_info.data.inv_flux_weakening_output);
+        printf_fn("  inv_id_command                   = %ld\r\n", (long)feb_can_state.m173_modulation_and_flux_info.data.inv_id_command);
+        printf_fn("  inv_iq_command                   = %ld\r\n", (long)feb_can_state.m173_modulation_and_flux_info.data.inv_iq_command);
+        return 0;
+    }
+    if (strcmp(name, "m174_firmware_info") == 0)
+    {
+        printf_fn("0x%02X  m174_firmware_info  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xAE, (int)feb_can_state.m174_firmware_info.meta.present, (unsigned long)feb_can_state.m174_firmware_info.meta.last_rx_ms, (unsigned long)feb_can_state.m174_firmware_info.meta.rx_count);
+        printf_fn("  inv_project_code_eep_ver         = %ld\r\n", (long)feb_can_state.m174_firmware_info.data.inv_project_code_eep_ver);
+        printf_fn("  inv_sw_version                   = %ld\r\n", (long)feb_can_state.m174_firmware_info.data.inv_sw_version);
+        printf_fn("  inv_date_code_mmdd               = %ld\r\n", (long)feb_can_state.m174_firmware_info.data.inv_date_code_mmdd);
+        printf_fn("  inv_date_code_yyyy               = %ld\r\n", (long)feb_can_state.m174_firmware_info.data.inv_date_code_yyyy);
+        return 0;
+    }
+    if (strcmp(name, "m175_diag_data_message") == 0)
+    {
+        printf_fn("0x%02X  m175_diag_data_message  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xAF, (int)feb_can_state.m175_diag_data_message.meta.present, (unsigned long)feb_can_state.m175_diag_data_message.meta.last_rx_ms, (unsigned long)feb_can_state.m175_diag_data_message.meta.rx_count);
+        printf_fn("  inv_diag_record                  = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_record);
+        printf_fn("  inv_diag_segment                 = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_segment);
+        printf_fn("  inv_diag_gamma_resolver          = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_gamma_resolver);
+        printf_fn("  inv_diag_cos                     = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_cos);
+        printf_fn("  inv_diag_ic                      = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_ic);
+        printf_fn("  inv_diag_id_cmd                  = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_id_cmd);
+        printf_fn("  inv_diag_vq_cmd                  = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_vq_cmd);
+        printf_fn("  inv_diag_12_v                    = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_12_v);
+        printf_fn("  inv_diag_gamma_observer          = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_gamma_observer);
+        printf_fn("  inv_diag_ia                      = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_ia);
+        printf_fn("  inv_diag_vdc                     = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_vdc);
+        printf_fn("  inv_diag_mod_index               = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_mod_index);
+        printf_fn("  inv_diag_vd_cmd                  = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_vd_cmd);
+        printf_fn("  inv_diag_run_faults_lo           = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_run_faults_lo);
+        printf_fn("  inv_diag_sin                     = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_sin);
+        printf_fn("  inv_diag_ib                      = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_ib);
+        printf_fn("  inv_diag_iq_cmd                  = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_iq_cmd);
+        printf_fn("  inv_diag_fw_output               = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_fw_output);
+        printf_fn("  inv_diag_vqs_cmd                 = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_vqs_cmd);
+        printf_fn("  inv_diag_run_faults_hi           = %ld\r\n", (long)feb_can_state.m175_diag_data_message.data.inv_diag_run_faults_hi);
+        return 0;
+    }
+    if (strcmp(name, "m176_fast_info") == 0)
+    {
+        printf_fn("0x%02X  m176_fast_info  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xB0, (int)feb_can_state.m176_fast_info.meta.present, (unsigned long)feb_can_state.m176_fast_info.meta.last_rx_ms, (unsigned long)feb_can_state.m176_fast_info.meta.rx_count);
+        printf_fn("  inv_fast_torque_command          = %ld\r\n", (long)feb_can_state.m176_fast_info.data.inv_fast_torque_command);
+        printf_fn("  inv_fast_torque_feedback         = %ld\r\n", (long)feb_can_state.m176_fast_info.data.inv_fast_torque_feedback);
+        printf_fn("  inv_fast_motor_speed             = %ld\r\n", (long)feb_can_state.m176_fast_info.data.inv_fast_motor_speed);
+        printf_fn("  inv_fast_dc_bus_voltage          = %ld\r\n", (long)feb_can_state.m176_fast_info.data.inv_fast_dc_bus_voltage);
+        return 0;
+    }
+    if (strcmp(name, "m192_command_message") == 0)
+    {
+        printf_fn("0x%02X  m192_command_message  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xC0, (int)feb_can_state.m192_command_message.meta.present, (unsigned long)feb_can_state.m192_command_message.meta.last_rx_ms, (unsigned long)feb_can_state.m192_command_message.meta.rx_count);
+        printf_fn("  vcu_inv_torque_command           = %ld\r\n", (long)feb_can_state.m192_command_message.data.vcu_inv_torque_command);
+        printf_fn("  vcu_inv_speed_command            = %ld\r\n", (long)feb_can_state.m192_command_message.data.vcu_inv_speed_command);
+        printf_fn("  vcu_inv_direction_command        = %ld\r\n", (long)feb_can_state.m192_command_message.data.vcu_inv_direction_command);
+        printf_fn("  vcu_inv_inverter_enable          = %ld\r\n", (long)feb_can_state.m192_command_message.data.vcu_inv_inverter_enable);
+        printf_fn("  vcu_inv_inverter_discharge       = %ld\r\n", (long)feb_can_state.m192_command_message.data.vcu_inv_inverter_discharge);
+        printf_fn("  vcu_inv_speed_mode_enable        = %ld\r\n", (long)feb_can_state.m192_command_message.data.vcu_inv_speed_mode_enable);
+        printf_fn("  vcu_inv_rolling_counter          = %ld\r\n", (long)feb_can_state.m192_command_message.data.vcu_inv_rolling_counter);
+        printf_fn("  vcu_inv_torque_limit_command     = %ld\r\n", (long)feb_can_state.m192_command_message.data.vcu_inv_torque_limit_command);
+        return 0;
+    }
+    if (strcmp(name, "m193_read_write_param_command") == 0)
+    {
+        printf_fn("0x%02X  m193_read_write_param_command  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xC1, (int)feb_can_state.m193_read_write_param_command.meta.present, (unsigned long)feb_can_state.m193_read_write_param_command.meta.last_rx_ms, (unsigned long)feb_can_state.m193_read_write_param_command.meta.rx_count);
+        printf_fn("  vcu_inv_parameter_address_command = %ld\r\n", (long)feb_can_state.m193_read_write_param_command.data.vcu_inv_parameter_address_command);
+        printf_fn("  vcu_inv_read_write_command       = %ld\r\n", (long)feb_can_state.m193_read_write_param_command.data.vcu_inv_read_write_command);
+        printf_fn("  vcu_inv_data_command             = %ld\r\n", (long)feb_can_state.m193_read_write_param_command.data.vcu_inv_data_command);
+        return 0;
+    }
+    if (strcmp(name, "m194_read_write_param_response") == 0)
+    {
+        printf_fn("0x%02X  m194_read_write_param_response  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xC2, (int)feb_can_state.m194_read_write_param_response.meta.present, (unsigned long)feb_can_state.m194_read_write_param_response.meta.last_rx_ms, (unsigned long)feb_can_state.m194_read_write_param_response.meta.rx_count);
+        printf_fn("  inv_parameter_address_response   = %ld\r\n", (long)feb_can_state.m194_read_write_param_response.data.inv_parameter_address_response);
+        printf_fn("  inv_write_success                = %ld\r\n", (long)feb_can_state.m194_read_write_param_response.data.inv_write_success);
+        printf_fn("  inv_data_response                = %ld\r\n", (long)feb_can_state.m194_read_write_param_response.data.inv_data_response);
+        return 0;
+    }
+    if (strcmp(name, "m188_u2_c_message_rxd") == 0)
+    {
+        printf_fn("0x%02X  m188_u2_c_message_rxd  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x1D5, (int)feb_can_state.m188_u2_c_message_rxd.meta.present, (unsigned long)feb_can_state.m188_u2_c_message_rxd.meta.last_rx_ms, (unsigned long)feb_can_state.m188_u2_c_message_rxd.meta.rx_count);
+        printf_fn("  inv_hv_input_current_sensor_validity = %ld\r\n", (long)feb_can_state.m188_u2_c_message_rxd.data.inv_hv_input_current_sensor_validity);
+        printf_fn("  inv_14_v_master_fault            = %ld\r\n", (long)feb_can_state.m188_u2_c_message_rxd.data.inv_14_v_master_fault);
+        printf_fn("  inv_hv_input_current             = %ld\r\n", (long)feb_can_state.m188_u2_c_message_rxd.data.inv_hv_input_current);
+        printf_fn("  inv_dtc_status                   = %ld\r\n", (long)feb_can_state.m188_u2_c_message_rxd.data.inv_dtc_status);
+        printf_fn("  inv_dtc_index                    = %ld\r\n", (long)feb_can_state.m188_u2_c_message_rxd.data.inv_dtc_index);
+        printf_fn("  inv_14_v_monitor                 = %ld\r\n", (long)feb_can_state.m188_u2_c_message_rxd.data.inv_14_v_monitor);
+        printf_fn("  inv_14_v_conditional             = %ld\r\n", (long)feb_can_state.m188_u2_c_message_rxd.data.inv_14_v_conditional);
+        printf_fn("  inv_14_v_current_monitor         = %ld\r\n", (long)feb_can_state.m188_u2_c_message_rxd.data.inv_14_v_current_monitor);
+        return 0;
+    }
+    if (strcmp(name, "m187_u2_c_command_txd") == 0)
+    {
+        printf_fn("0x%02X  m187_u2_c_command_txd  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x1D7, (int)feb_can_state.m187_u2_c_command_txd.meta.present, (unsigned long)feb_can_state.m187_u2_c_command_txd.meta.last_rx_ms, (unsigned long)feb_can_state.m187_u2_c_command_txd.meta.rx_count);
+        printf_fn("  u2_c_id_byte                     = %ld\r\n", (long)feb_can_state.m187_u2_c_command_txd.data.u2_c_id_byte);
+        printf_fn("  u2_c_setpoint_calc               = %ld\r\n", (long)feb_can_state.m187_u2_c_command_txd.data.u2_c_setpoint_calc);
+        return 0;
+    }
+    if (strcmp(name, "bms_current_limit") == 0)
+    {
+        printf_fn("0x%02X  bms_current_limit  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x202, (int)feb_can_state.bms_current_limit.meta.present, (unsigned long)feb_can_state.bms_current_limit.meta.last_rx_ms, (unsigned long)feb_can_state.bms_current_limit.meta.rx_count);
+        printf_fn("  inv_max_discharge_current        = %ld\r\n", (long)feb_can_state.bms_current_limit.data.inv_max_discharge_current);
+        printf_fn("  inv_max_charge_current           = %ld\r\n", (long)feb_can_state.bms_current_limit.data.inv_max_charge_current);
         return 0;
     }
     return -1;

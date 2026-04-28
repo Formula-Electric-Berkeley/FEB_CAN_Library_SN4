@@ -12,9 +12,41 @@ Usage:
     python generate.py -v, --validate   # Validate message registry
     python generate.py -h, --help       # Show help
 """
+import re
 import cantools
+import os
 import sys
-from typing import Callable, Dict, Tuple
+from typing import Callable, Dict, List, Tuple
+
+# ---------------------------------------------------------------------------
+# Cascadia PM100 inverter DBC — every message is merged verbatim into the
+# output FEB_CAN.dbc.  inverter.dbc is the single source of truth for all
+# inverter frames (including M192 / M193); our own Python definitions of those
+# messages are removed from MESSAGE_REGISTRY so there are no duplicate IDs.
+# The only frame excluded is the cantools VECTOR__INDEPENDENT_SIG_MSG sentinel
+# (ID 3221225472) which is a tool artifact, not a real CAN frame.
+# ---------------------------------------------------------------------------
+INVERTER_DBC = os.path.join(os.path.dirname(__file__), "inverter.dbc")
+_VECTOR_INDEPENDENT_ID = 3221225472     # cantools sentinel, not a real CAN frame
+
+# CANopen predefined connection set — these IDs MUST NOT be used for custom messages.
+# 0x000 NMT | 0x080 SYNC | 0x081 EMCY node-1 | 0x100 TIME
+# 0x181 TPDO1-n1 | 0x201 RPDO1-n1 | 0x581 SDO-tx-n1 | 0x601 SDO-rx-n1
+# 0x701 NMT heartbeat n1 | 0x7E4 LSS-tx | 0x7E5 LSS-rx
+CANOPEN_RESERVED_IDS: set = {
+    0x000, 0x080, 0x081, 0x100, 0x181, 0x201,
+    0x581, 0x601, 0x701, 0x7E4, 0x7E5,
+}
+
+
+def load_inverter_messages() -> List[cantools.db.Message]:
+    """Return all Cascadia PM100 messages from inverter.dbc."""
+    if not os.path.exists(INVERTER_DBC):
+        print(f"[WARN] {INVERTER_DBC} not found — skipping inverter merge",
+              file=sys.stderr)
+        return []
+    db = cantools.db.load_file(INVERTER_DBC)
+    return [m for m in db.messages if m.frame_id != _VECTOR_INDEPENDENT_ID]
 
 # CAN message modules
 from msg_defs import bms_messages as bms_msg
@@ -35,7 +67,8 @@ from msg_defs import res_messages as res_msg
 # Frame IDs are grouped by board/subsystem with reserved ranges for expansion.
 #
 # ID ALLOCATION STRATEGY:
-#   0x00-0x08:  BMS messages (5 used, 4 reserved)
+#   0x00:       CANopen NMT — RESERVED, DO NOT USE
+#   0x01-0x09:  BMS messages (5 used, 4 reserved)
 #   0x09-0x0F:  PCU safety-critical (brake, BSPD, RES) (3 used, 4 reserved)
 #   0x10-0x15:  DASH messages (1 used, 5 reserved)
 #   0x16-0x1D:  LVPDB messages (3 used, 5 reserved)
@@ -49,13 +82,14 @@ from msg_defs import res_messages as res_msg
 # =============================================================================
 
 MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = {
-    # ----- BMS Messages (0x00-0x08) -----
-    0x00: (bms_msg.get_bms_state, "BMS state machine status"),
+    # ----- BMS Messages (0x01-0x09) -----
+    # NOTE: 0x00 is CANopen NMT — RESERVED, DO NOT USE (see CANOPEN_RESERVED_IDS)
     0x01: (bms_msg.get_bms_cell_data, "BMS individual cell data"),
     0x02: (bms_msg.get_accumulator_voltage, "Accumulator pack voltage"),
     0x03: (bms_msg.get_accumulator_temperature, "Accumulator pack temperature"),
     0x04: (bms_msg.get_accumulator_faults, "Accumulator fault flags"),
-    # 0x05-0x08: Reserved for future BMS messages
+    0x05: (bms_msg.get_bms_state, "BMS state machine status"),
+    # 0x06-0x09: Reserved for future BMS messages
 
     # ----- PCU Safety Messages (0x09-0x0F) -----
     0x09: (pcu_msg.normalized_brake, "Normalized brake pressure"),
@@ -129,9 +163,11 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x38: (pcu_msg.get_raw_acc, "PCU raw accelerator ADC"),
     # 0x39-0x3F: Reserved for future TPS / PCU ADC messages
 
-    # ----- RMS/Inverter Messages (0xC0-0xCF) -----
-    0xC0: (pcu_msg.rms_command_msg, "RMS inverter command"),
-    0xC1: (pcu_msg.rms_param_msg, "RMS inverter parameters"),
+    # ----- RMS/Inverter Messages (0xA0-0xCF) -----
+    # IMMUTABLE: All IDs in this block come verbatim from inverter.dbc (Cascadia PM100).
+    # Do not add duplicate entries here; inverter.dbc is the single source of truth.
+    # 0xC0 (M192_Command_Message) and 0xC1 (M193_Read_Write_Param_Command)
+    # come from inverter.dbc — do not duplicate here.
     # 0xC2-0xCF: Reserved for future RMS messages
 
     # ----- Heartbeat Messages (0xD0-0xDF) -----
@@ -151,19 +187,22 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     # 0xE4-0xEF: Reserved for future debug messages
 
     # ----- EBS / Driverless Safety (0x500-0x50F) -----
+    # IMMUTABLE frame ID: 0x500 is the CANopen PDO-Tx slot used by the EBS ECU.
+    # Cycle time is fixed at 100 ms per CANopen specification — do not reduce it.
     0x500: (pcu_msg.ebs_pressure_status, "EBS pressure status (4 sensors)"),
     # 0x501-0x50F: Reserved for future EBS / driverless safety messages
 }
 
 # Frame ID allocation ranges for documentation and validation
 ID_RANGES = [
-    (0x00, 0x08, "BMS"),
+    (0x01, 0x09, "BMS"),
     (0x09, 0x0F, "PCU Safety"),
     (0x10, 0x15, "DASH"),
     (0x16, 0x1D, "LVPDB"),
     (0x1E, 0x2C, "Sensor Nodes"),
     (0x2D, 0x33, "DART"),
     (0x34, 0x3F, "TPS Chips / PCU ADC"),
+    (0xA0, 0xC2, "Inverter (Cascadia PM100, via inverter.dbc)"),
     (0xC0, 0xCF, "RMS/Inverter"),
     (0xD0, 0xDF, "Heartbeats"),
     (0xE0, 0xEF, "Debug/Test"),
@@ -174,6 +213,13 @@ ID_RANGES = [
 def validate_registry() -> bool:
     """Validate the message registry for common errors."""
     errors = []
+
+    # Check for CANopen reserved IDs
+    for frame_id in MESSAGE_REGISTRY.keys():
+        if frame_id in CANOPEN_RESERVED_IDS:
+            errors.append(
+                f"Frame ID 0x{frame_id:03X} is a CANopen reserved identifier"
+            )
 
     # Check for duplicate functions (same function registered twice)
     seen_funcs = {}
@@ -257,31 +303,50 @@ def show_id_map() -> None:
 
 
 def generate_dbc() -> None:
-    """Generate the DBC file from the message registry."""
+    """Generate the DBC file from the message registry merged with inverter.dbc."""
     messages = []
     for frame_id in sorted(MESSAGE_REGISTRY.keys()):
         func, _ = MESSAGE_REGISTRY[frame_id]
-        msg = func(frame_id)
-        messages.append(msg)
+        messages.append(func(frame_id))
+
+    inv_msgs = load_inverter_messages()
+    messages.extend(inv_msgs)
+    messages.sort(key=lambda m: m.frame_id)
 
     db = cantools.db.Database(messages=messages)
     cantools.db.dump_file(db, "gen/FEB_CAN.dbc")
-    print(f"Generated gen/FEB_CAN.dbc with {len(messages)} messages")
+    print(f"Generated gen/FEB_CAN.dbc with {len(messages)} messages "
+          f"({len(inv_msgs)} from inverter.dbc)")
+
+
+def _cantools_name(name: str) -> str:
+    """Replicate cantools generate_c_source identifier naming.
+
+    cantools splits the DBC name on '_', applies camelCase→snake_case conversion
+    to each component, rejoins with '_', then lowercases the result.
+    Simple .lower() is wrong for names like 'M188_U2C_Message_Rxd' where the
+    'U2C' component must become 'u2_c' (digit→letter boundary gets an underscore).
+    """
+    def _cvt(s: str) -> str:
+        s = re.sub(r'(.)([A-Z][a-z]+)', r'\1_\2', s)
+        s = re.sub(r'([a-z0-9])([A-Z])', r'\1_\2', s)
+        return s
+    return '_'.join(_cvt(p) for p in name.split('_')).lower()
 
 
 def _msg_c_name(msg) -> str:
     """Return the C identifier used by cantools generate_c_source for this message."""
-    return msg.name.lower()
+    return _cantools_name(msg.name)
 
 
 def _msg_macro_name(msg) -> str:
     """Return the FRAME_ID macro stem used by cantools."""
-    return msg.name.upper()
+    return _cantools_name(msg.name).upper()
 
 
 def _signal_c_name(sig) -> str:
     """Return the C struct field name used by cantools for a signal."""
-    return sig.name.lower()
+    return _cantools_name(sig.name)
 
 
 def generate_state_files() -> None:
@@ -296,6 +361,9 @@ def generate_state_files() -> None:
     for frame_id in sorted(MESSAGE_REGISTRY.keys()):
         func, _ = MESSAGE_REGISTRY[frame_id]
         messages.append((frame_id, func(frame_id)))
+
+    for inv_msg in sorted(load_inverter_messages(), key=lambda m: m.frame_id):
+        messages.append((inv_msg.frame_id, inv_msg))
 
     # ---- header ----
     h_lines = []
