@@ -26,6 +26,7 @@ typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_bms_accumulator_tempe
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_accumulator_faults_t data; } FEB_CAN_State_accumulator_faults_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_brake_t data; } FEB_CAN_State_brake_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_bspd_state_t data; } FEB_CAN_State_bspd_state_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_res_state_t data; } FEB_CAN_State_res_state_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_dash_state_t data; } FEB_CAN_State_dash_state_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_lvpdb_lv_24v_bus_and_12v_bus_voltages_t data; } FEB_CAN_State_lvpdb_lv_24v_bus_and_12v_bus_voltages_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_lvpdb_lv_sh_lt_bm_l_currents_t data; } FEB_CAN_State_lvpdb_lv_sh_lt_bm_l_currents_t;
@@ -47,6 +48,7 @@ typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_bbb_tps_t data; } FEB
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_pcu_tps_t data; } FEB_CAN_State_pcu_tps_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_dash_tps_t data; } FEB_CAN_State_dash_tps_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_dcu_tps_t data; } FEB_CAN_State_dcu_tps_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_pcu_raw_acc_t data; } FEB_CAN_State_pcu_raw_acc_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_rms_command_t data; } FEB_CAN_State_rms_command_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_rms_param_t data; } FEB_CAN_State_rms_param_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_pcu_heartbeat_t data; } FEB_CAN_State_pcu_heartbeat_t;
@@ -59,7 +61,7 @@ typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_feb_ping_pong_counter
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_feb_ping_pong_counter2_t data; } FEB_CAN_State_feb_ping_pong_counter2_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_feb_ping_pong_counter3_t data; } FEB_CAN_State_feb_ping_pong_counter3_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_feb_ping_pong_counter4_t data; } FEB_CAN_State_feb_ping_pong_counter4_t;
-typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_pcu_raw_acc_t data; } FEB_CAN_State_pcu_raw_acc_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_ebs_pressure_status_t data; } FEB_CAN_State_ebs_pressure_status_t;
 
 typedef struct {
     FEB_CAN_State_bms_state_t bms_state;
@@ -69,6 +71,7 @@ typedef struct {
     FEB_CAN_State_accumulator_faults_t accumulator_faults;
     FEB_CAN_State_brake_t brake;
     FEB_CAN_State_bspd_state_t bspd_state;
+    FEB_CAN_State_res_state_t res_state;
     FEB_CAN_State_dash_state_t dash_state;
     FEB_CAN_State_lvpdb_lv_24v_bus_and_12v_bus_voltages_t lvpdb_lv_24v_bus_and_12v_bus_voltages;
     FEB_CAN_State_lvpdb_lv_sh_lt_bm_l_currents_t lvpdb_lv_sh_lt_bm_l_currents;
@@ -90,6 +93,7 @@ typedef struct {
     FEB_CAN_State_pcu_tps_t pcu_tps;
     FEB_CAN_State_dash_tps_t dash_tps;
     FEB_CAN_State_dcu_tps_t dcu_tps;
+    FEB_CAN_State_pcu_raw_acc_t pcu_raw_acc;
     FEB_CAN_State_rms_command_t rms_command;
     FEB_CAN_State_rms_param_t rms_param;
     FEB_CAN_State_pcu_heartbeat_t pcu_heartbeat;
@@ -102,7 +106,7 @@ typedef struct {
     FEB_CAN_State_feb_ping_pong_counter2_t feb_ping_pong_counter2;
     FEB_CAN_State_feb_ping_pong_counter3_t feb_ping_pong_counter3;
     FEB_CAN_State_feb_ping_pong_counter4_t feb_ping_pong_counter4;
-    FEB_CAN_State_pcu_raw_acc_t pcu_raw_acc;
+    FEB_CAN_State_ebs_pressure_status_t ebs_pressure_status;
 } FEB_CAN_State_t;
 
 extern FEB_CAN_State_t feb_can_state;

@@ -36,16 +36,16 @@ from msg_defs import res_messages as res_msg
 #
 # ID ALLOCATION STRATEGY:
 #   0x00-0x08:  BMS messages (5 used, 4 reserved)
-#   0x09-0x0F:  PCU safety-critical (brake, BSPD) (2 used, 5 reserved)
+#   0x09-0x0F:  PCU safety-critical (brake, BSPD, RES) (3 used, 4 reserved)
 #   0x10-0x15:  DASH messages (1 used, 5 reserved)
 #   0x16-0x1D:  LVPDB messages (3 used, 5 reserved)
 #   0x1E-0x2C:  Sensor node messages (8 used, 7 reserved)
 #   0x2D-0x33:  DART messages (2 used, 5 reserved)
-#   0x34-0x3F:  TPS chip messages (4 used, 8 reserved)
+#   0x34-0x3F:  TPS chip / PCU ADC (5 used, 7 reserved)
 #   0xC0-0xCF:  PCU RMS commands (2 used, 14 reserved)
 #   0xD0-0xDF:  Heartbeat messages (6 used, 10 reserved)
 #   0xE0-0xEF:  Debug/test messages (4 used, 12 reserved)
-#   0xFF:       PCU raw ADC
+#   0x500-0x50F: EBS / Driverless safety (1 used, 15 reserved)
 # =============================================================================
 
 MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = {
@@ -60,7 +60,8 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     # ----- PCU Safety Messages (0x09-0x0F) -----
     0x09: (pcu_msg.normalized_brake, "Normalized brake pressure"),
     0x0A: (pcu_msg.bspd, "BSPD state"),
-    # 0x0B-0x0F: Reserved for future PCU safety messages
+    0x0B: (res_msg.get_res_state, "RES state"),
+    # 0x0C-0x0F: Reserved for future PCU safety messages
 
     # ----- DASH Messages (0x10-0x15) -----
     0x10: (dash_msg.get_dash_state, "Dashboard state + buttons and switches"),
@@ -125,7 +126,8 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x35: (pcu_msg.get_tps_voltage_current, "PCU TPS voltage/current"),
     0x36: (dash_msg.get_tps_voltage_current, "DASH TPS voltage/current"),
     0x37: (dcu_msg.get_tps_voltage_current, "DCU TPS voltage/current"),
-    # 0x38-0x3F: Reserved for future TPS messages
+    0x38: (pcu_msg.get_raw_acc, "PCU raw accelerator ADC"),
+    # 0x39-0x3F: Reserved for future TPS / PCU ADC messages
 
     # ----- RMS/Inverter Messages (0xC0-0xCF) -----
     0xC0: (pcu_msg.rms_command_msg, "RMS inverter command"),
@@ -148,8 +150,9 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0xE3: (ping_pong_msg.get_ping_pong_counter4, "Ping pong counter 4"),
     # 0xE4-0xEF: Reserved for future debug messages
 
-    # ----- Miscellaneous (0xF0-0xFF) -----
-    0xFF: (pcu_msg.get_raw_acc, "PCU raw accelerator ADC"),
+    # ----- EBS / Driverless Safety (0x500-0x50F) -----
+    0x500: (pcu_msg.ebs_pressure_status, "EBS pressure status (4 sensors)"),
+    # 0x501-0x50F: Reserved for future EBS / driverless safety messages
 }
 
 # Frame ID allocation ranges for documentation and validation
@@ -160,11 +163,11 @@ ID_RANGES = [
     (0x16, 0x1D, "LVPDB"),
     (0x1E, 0x2C, "Sensor Nodes"),
     (0x2D, 0x33, "DART"),
-    (0x34, 0x3F, "TPS Chips"),
+    (0x34, 0x3F, "TPS Chips / PCU ADC"),
     (0xC0, 0xCF, "RMS/Inverter"),
     (0xD0, 0xDF, "Heartbeats"),
     (0xE0, 0xEF, "Debug/Test"),
-    (0xF0, 0xFF, "Miscellaneous"),
+    (0x500, 0x50F, "EBS / Driverless Safety"),
 ]
 
 

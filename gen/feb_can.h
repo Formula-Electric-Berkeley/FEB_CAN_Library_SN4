@@ -21,6 +21,7 @@ extern "C" {
 #define FEB_CAN_ACCUMULATOR_FAULTS_FRAME_ID (0x04u)
 #define FEB_CAN_BRAKE_FRAME_ID (0x09u)
 #define FEB_CAN_BSPD_STATE_FRAME_ID (0x0au)
+#define FEB_CAN_RES_STATE_FRAME_ID (0x0bu)
 #define FEB_CAN_DASH_STATE_FRAME_ID (0x10u)
 #define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_FRAME_ID (0x16u)
 #define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_FRAME_ID (0x17u)
@@ -42,6 +43,7 @@ extern "C" {
 #define FEB_CAN_PCU_TPS_FRAME_ID (0x35u)
 #define FEB_CAN_DASH_TPS_FRAME_ID (0x36u)
 #define FEB_CAN_DCU_TPS_FRAME_ID (0x37u)
+#define FEB_CAN_PCU_RAW_ACC_FRAME_ID (0x38u)
 #define FEB_CAN_RMS_COMMAND_FRAME_ID (0xc0u)
 #define FEB_CAN_RMS_PARAM_FRAME_ID (0xc1u)
 #define FEB_CAN_PCU_HEARTBEAT_FRAME_ID (0xd0u)
@@ -54,7 +56,7 @@ extern "C" {
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_FRAME_ID (0xe1u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_FRAME_ID (0xe2u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER4_FRAME_ID (0xe3u)
-#define FEB_CAN_PCU_RAW_ACC_FRAME_ID (0xffu)
+#define FEB_CAN_EBS_PRESSURE_STATUS_FRAME_ID (0x500u)
 
 /* Frame lengths in bytes. */
 #define FEB_CAN_BMS_STATE_LENGTH (2u)
@@ -64,6 +66,7 @@ extern "C" {
 #define FEB_CAN_ACCUMULATOR_FAULTS_LENGTH (1u)
 #define FEB_CAN_BRAKE_LENGTH (5u)
 #define FEB_CAN_BSPD_STATE_LENGTH (1u)
+#define FEB_CAN_RES_STATE_LENGTH (2u)
 #define FEB_CAN_DASH_STATE_LENGTH (2u)
 #define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_LENGTH (4u)
 #define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_LENGTH (8u)
@@ -85,6 +88,7 @@ extern "C" {
 #define FEB_CAN_PCU_TPS_LENGTH (4u)
 #define FEB_CAN_DASH_TPS_LENGTH (4u)
 #define FEB_CAN_DCU_TPS_LENGTH (4u)
+#define FEB_CAN_PCU_RAW_ACC_LENGTH (4u)
 #define FEB_CAN_RMS_COMMAND_LENGTH (8u)
 #define FEB_CAN_RMS_PARAM_LENGTH (8u)
 #define FEB_CAN_PCU_HEARTBEAT_LENGTH (8u)
@@ -97,7 +101,7 @@ extern "C" {
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_LENGTH (8u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_LENGTH (8u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER4_LENGTH (8u)
-#define FEB_CAN_PCU_RAW_ACC_LENGTH (4u)
+#define FEB_CAN_EBS_PRESSURE_STATUS_LENGTH (8u)
 
 /* Extended or standard frame types. */
 #define FEB_CAN_BMS_STATE_IS_EXTENDED (0)
@@ -107,6 +111,7 @@ extern "C" {
 #define FEB_CAN_ACCUMULATOR_FAULTS_IS_EXTENDED (0)
 #define FEB_CAN_BRAKE_IS_EXTENDED (0)
 #define FEB_CAN_BSPD_STATE_IS_EXTENDED (0)
+#define FEB_CAN_RES_STATE_IS_EXTENDED (0)
 #define FEB_CAN_DASH_STATE_IS_EXTENDED (0)
 #define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_IS_EXTENDED (0)
 #define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_IS_EXTENDED (0)
@@ -128,6 +133,7 @@ extern "C" {
 #define FEB_CAN_PCU_TPS_IS_EXTENDED (0)
 #define FEB_CAN_DASH_TPS_IS_EXTENDED (0)
 #define FEB_CAN_DCU_TPS_IS_EXTENDED (0)
+#define FEB_CAN_PCU_RAW_ACC_IS_EXTENDED (0)
 #define FEB_CAN_RMS_COMMAND_IS_EXTENDED (0)
 #define FEB_CAN_RMS_PARAM_IS_EXTENDED (0)
 #define FEB_CAN_PCU_HEARTBEAT_IS_EXTENDED (0)
@@ -140,10 +146,11 @@ extern "C" {
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_IS_EXTENDED (0)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_IS_EXTENDED (0)
 #define FEB_CAN_FEB_PING_PONG_COUNTER4_IS_EXTENDED (0)
-#define FEB_CAN_PCU_RAW_ACC_IS_EXTENDED (0)
+#define FEB_CAN_EBS_PRESSURE_STATUS_IS_EXTENDED (0)
 
 /* Frame cycle times in milliseconds. */
-
+#define FEB_CAN_BRAKE_CYCLE_TIME_MS (20u)
+#define FEB_CAN_EBS_PRESSURE_STATUS_CYCLE_TIME_MS (20u)
 
 /* Signal choices. */
 
@@ -156,6 +163,7 @@ extern "C" {
 #define FEB_CAN_ACCUMULATOR_FAULTS_NAME "accumulator_faults"
 #define FEB_CAN_BRAKE_NAME "brake"
 #define FEB_CAN_BSPD_STATE_NAME "bspd_state"
+#define FEB_CAN_RES_STATE_NAME "res_state"
 #define FEB_CAN_DASH_STATE_NAME "dash_state"
 #define FEB_CAN_LVPDB_LV_24V_BUS_AND_12V_BUS_VOLTAGES_NAME "lvpdb_lv_24v_bus_and_12v_bus_voltages"
 #define FEB_CAN_LVPDB_LV_SH_LT_BM_L_CURRENTS_NAME "lvpdb_lv_sh_lt_bm_l_currents"
@@ -177,6 +185,7 @@ extern "C" {
 #define FEB_CAN_PCU_TPS_NAME "pcu_tps"
 #define FEB_CAN_DASH_TPS_NAME "dash_tps"
 #define FEB_CAN_DCU_TPS_NAME "dcu_tps"
+#define FEB_CAN_PCU_RAW_ACC_NAME "pcu_raw_acc"
 #define FEB_CAN_RMS_COMMAND_NAME "rms_command"
 #define FEB_CAN_RMS_PARAM_NAME "rms_param"
 #define FEB_CAN_PCU_HEARTBEAT_NAME "pcu_heartbeat"
@@ -189,7 +198,7 @@ extern "C" {
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_NAME "FEB_PING_PONG_counter2"
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_NAME "FEB_PING_PONG_counter3"
 #define FEB_CAN_FEB_PING_PONG_COUNTER4_NAME "FEB_PING_PONG_counter4"
-#define FEB_CAN_PCU_RAW_ACC_NAME "pcu_raw_acc"
+#define FEB_CAN_EBS_PRESSURE_STATUS_NAME "ebs_pressure_status"
 
 /* Signal Names. */
 #define FEB_CAN_BMS_STATE_BMS_STATE_NAME "bms_state"
@@ -216,6 +225,7 @@ extern "C" {
 #define FEB_CAN_BRAKE_BRAKE1_PSI_NAME "brake1_psi"
 #define FEB_CAN_BRAKE_BRAKE2_PSI_NAME "brake2_psi"
 #define FEB_CAN_BSPD_STATE_BSPD_STATE_NAME "bspd_state"
+#define FEB_CAN_RES_STATE_RES_STATE_NAME "res_state"
 #define FEB_CAN_DASH_STATE_BUTTON1_NAME "button1"
 #define FEB_CAN_DASH_STATE_BUTTON2_NAME "button2"
 #define FEB_CAN_DASH_STATE_BUTTON3_NAME "button3"
@@ -235,10 +245,10 @@ extern "C" {
 #define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_SM_CURRENT_NAME "sm_current"
 #define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_AF1_AF2_CURRENT_NAME "af1_af2_current"
 #define FEB_CAN_LVPDB_SM_AF1_AF2_CP_RF_CURRENTS_CP_RF_CURRENT_NAME "cp_rf_current"
-#define FEB_CAN_LINEAR_POTENTIOMETER_FRONT_LINEAR_POTRENTIOMETER_1_FRONT_NAME "linear_potrentiometer_1_front"
-#define FEB_CAN_LINEAR_POTENTIOMETER_FRONT_LINEAR_POTRENTIOMETER_2_FRONT_NAME "linear_potrentiometer_2_front"
-#define FEB_CAN_LINEAR_POTENTIOMETER_REAR_LINEAR_POTRENTIOMETER_1_REAR_NAME "linear_potrentiometer_1_rear"
-#define FEB_CAN_LINEAR_POTENTIOMETER_REAR_LINEAR_POTRENTIOMETER_2_REAR_NAME "linear_potrentiometer_2_rear"
+#define FEB_CAN_LINEAR_POTENTIOMETER_FRONT_LINEAR_POTENTIOMETER_1_FRONT_NAME "linear_potentiometer_1_front"
+#define FEB_CAN_LINEAR_POTENTIOMETER_FRONT_LINEAR_POTENTIOMETER_2_FRONT_NAME "linear_potentiometer_2_front"
+#define FEB_CAN_LINEAR_POTENTIOMETER_REAR_LINEAR_POTENTIOMETER_1_REAR_NAME "linear_potentiometer_1_rear"
+#define FEB_CAN_LINEAR_POTENTIOMETER_REAR_LINEAR_POTENTIOMETER_2_REAR_NAME "linear_potentiometer_2_rear"
 #define FEB_CAN_FRONT_LEFT_TIRE_TEMP_LEFTMOST_TEMP_FL_NAME "leftmost_temp_FL"
 #define FEB_CAN_FRONT_LEFT_TIRE_TEMP_CENTER_LEFT_TEMP_FL_NAME "center_left_temp_FL"
 #define FEB_CAN_FRONT_LEFT_TIRE_TEMP_CENTER_RIGHT_TEMP_FL_NAME "center_right_temp_FL"
@@ -281,6 +291,8 @@ extern "C" {
 #define FEB_CAN_DASH_TPS_CURRENT_NAME "current"
 #define FEB_CAN_DCU_TPS_VOLTAGE_NAME "voltage"
 #define FEB_CAN_DCU_TPS_CURRENT_NAME "current"
+#define FEB_CAN_PCU_RAW_ACC_ACC0_NAME "acc0"
+#define FEB_CAN_PCU_RAW_ACC_ACC1_NAME "acc1"
 #define FEB_CAN_RMS_COMMAND_TORQUE_SIGNAL_SMALL_NAME "torque_signal_small"
 #define FEB_CAN_RMS_COMMAND_SPEED_SIGNAL_NAME "speed_signal"
 #define FEB_CAN_RMS_COMMAND_DIRECTION_VALUE_NAME "direction_value"
@@ -679,8 +691,10 @@ extern "C" {
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_COUNTER_NAME "counter"
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_COUNTER_NAME "counter"
 #define FEB_CAN_FEB_PING_PONG_COUNTER4_COUNTER_NAME "counter"
-#define FEB_CAN_PCU_RAW_ACC_ACC0_NAME "acc0"
-#define FEB_CAN_PCU_RAW_ACC_ACC1_NAME "acc1"
+#define FEB_CAN_EBS_PRESSURE_STATUS_EBS_PRESSURE_1_NAME "ebs_pressure_1"
+#define FEB_CAN_EBS_PRESSURE_STATUS_EBS_PRESSURE_2_NAME "ebs_pressure_2"
+#define FEB_CAN_EBS_PRESSURE_STATUS_EBS_PRESSURE_3_NAME "ebs_pressure_3"
+#define FEB_CAN_EBS_PRESSURE_STATUS_EBS_PRESSURE_4_NAME "ebs_pressure_4"
 
 /**
  * Signals in message bms_state.
@@ -914,6 +928,22 @@ struct feb_can_bspd_state_t {
 };
 
 /**
+ * Signals in message res_state.
+ *
+ * RES message for RES state.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_res_state_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t res_state;
+};
+
+/**
  * Signals in message dash_state.
  *
  * Dash state + buttons and switches
@@ -1095,14 +1125,14 @@ struct feb_can_linear_potentiometer_front_t {
      * Scale: 1
      * Offset: 0
      */
-    uint16_t linear_potrentiometer_1_front;
+    uint16_t linear_potentiometer_1_front;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint16_t linear_potrentiometer_2_front;
+    uint16_t linear_potentiometer_2_front;
 };
 
 /**
@@ -1118,14 +1148,14 @@ struct feb_can_linear_potentiometer_rear_t {
      * Scale: 1
      * Offset: 0
      */
-    uint16_t linear_potrentiometer_1_rear;
+    uint16_t linear_potentiometer_1_rear;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint16_t linear_potrentiometer_2_rear;
+    uint16_t linear_potentiometer_2_rear;
 };
 
 /**
@@ -1289,14 +1319,14 @@ struct feb_can_wss_front_data_t {
      * Scale: 1
      * Offset: 0
      */
-    uint8_t wss_right_front;
+    uint32_t wss_right_front;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t wss_left_front;
+    uint32_t wss_left_front;
 };
 
 /**
@@ -1555,6 +1585,29 @@ struct feb_can_dcu_tps_t {
      * Offset: 0
      */
     uint16_t current;
+};
+
+/**
+ * Signals in message pcu_raw_acc.
+ *
+ * PCU RAW ACC ADC
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_pcu_raw_acc_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t acc0;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t acc1;
 };
 
 /**
@@ -4452,26 +4505,40 @@ struct feb_can_feb_ping_pong_counter4_t {
 };
 
 /**
- * Signals in message pcu_raw_acc.
+ * Signals in message ebs_pressure_status.
  *
- * PCU RAW ACC ADC
+ * EBS Pressure Status - 4 pressure sensors (scale: 1/16, unit: bar)
  *
  * All signal values are as on the CAN bus.
  */
-struct feb_can_pcu_raw_acc_t {
+struct feb_can_ebs_pressure_status_t {
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint16_t acc0;
+    int16_t ebs_pressure_1;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint16_t acc1;
+    int16_t ebs_pressure_2;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t ebs_pressure_3;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t ebs_pressure_4;
 };
 
 /**
@@ -5382,6 +5449,70 @@ double feb_can_bspd_state_bspd_state_decode(uint8_t value);
 bool feb_can_bspd_state_bspd_state_is_in_range(uint8_t value);
 
 /**
+ * Pack message res_state.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_res_state_pack(
+    uint8_t *dst_p,
+    const struct feb_can_res_state_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message res_state.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_res_state_unpack(
+    struct feb_can_res_state_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from res_state.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_res_state_init(struct feb_can_res_state_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_res_state_res_state_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_res_state_res_state_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_res_state_res_state_is_in_range(uint8_t value);
+
+/**
  * Pack message dash_state.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -6086,7 +6217,7 @@ int feb_can_linear_potentiometer_front_init(struct feb_can_linear_potentiometer_
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_linear_potentiometer_front_linear_potrentiometer_1_front_encode(double value);
+uint16_t feb_can_linear_potentiometer_front_linear_potentiometer_1_front_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -6095,7 +6226,7 @@ uint16_t feb_can_linear_potentiometer_front_linear_potrentiometer_1_front_encode
  *
  * @return Decoded signal.
  */
-double feb_can_linear_potentiometer_front_linear_potrentiometer_1_front_decode(uint16_t value);
+double feb_can_linear_potentiometer_front_linear_potentiometer_1_front_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -6104,7 +6235,7 @@ double feb_can_linear_potentiometer_front_linear_potrentiometer_1_front_decode(u
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_linear_potentiometer_front_linear_potrentiometer_1_front_is_in_range(uint16_t value);
+bool feb_can_linear_potentiometer_front_linear_potentiometer_1_front_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6113,7 +6244,7 @@ bool feb_can_linear_potentiometer_front_linear_potrentiometer_1_front_is_in_rang
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_linear_potentiometer_front_linear_potrentiometer_2_front_encode(double value);
+uint16_t feb_can_linear_potentiometer_front_linear_potentiometer_2_front_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -6122,7 +6253,7 @@ uint16_t feb_can_linear_potentiometer_front_linear_potrentiometer_2_front_encode
  *
  * @return Decoded signal.
  */
-double feb_can_linear_potentiometer_front_linear_potrentiometer_2_front_decode(uint16_t value);
+double feb_can_linear_potentiometer_front_linear_potentiometer_2_front_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -6131,7 +6262,7 @@ double feb_can_linear_potentiometer_front_linear_potrentiometer_2_front_decode(u
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_linear_potentiometer_front_linear_potrentiometer_2_front_is_in_range(uint16_t value);
+bool feb_can_linear_potentiometer_front_linear_potentiometer_2_front_is_in_range(uint16_t value);
 
 /**
  * Pack message linear_potentiometer_rear.
@@ -6177,7 +6308,7 @@ int feb_can_linear_potentiometer_rear_init(struct feb_can_linear_potentiometer_r
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_linear_potentiometer_rear_linear_potrentiometer_1_rear_encode(double value);
+uint16_t feb_can_linear_potentiometer_rear_linear_potentiometer_1_rear_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -6186,7 +6317,7 @@ uint16_t feb_can_linear_potentiometer_rear_linear_potrentiometer_1_rear_encode(d
  *
  * @return Decoded signal.
  */
-double feb_can_linear_potentiometer_rear_linear_potrentiometer_1_rear_decode(uint16_t value);
+double feb_can_linear_potentiometer_rear_linear_potentiometer_1_rear_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -6195,7 +6326,7 @@ double feb_can_linear_potentiometer_rear_linear_potrentiometer_1_rear_decode(uin
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_linear_potentiometer_rear_linear_potrentiometer_1_rear_is_in_range(uint16_t value);
+bool feb_can_linear_potentiometer_rear_linear_potentiometer_1_rear_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6204,7 +6335,7 @@ bool feb_can_linear_potentiometer_rear_linear_potrentiometer_1_rear_is_in_range(
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_linear_potentiometer_rear_linear_potrentiometer_2_rear_encode(double value);
+uint16_t feb_can_linear_potentiometer_rear_linear_potentiometer_2_rear_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -6213,7 +6344,7 @@ uint16_t feb_can_linear_potentiometer_rear_linear_potrentiometer_2_rear_encode(d
  *
  * @return Decoded signal.
  */
-double feb_can_linear_potentiometer_rear_linear_potrentiometer_2_rear_decode(uint16_t value);
+double feb_can_linear_potentiometer_rear_linear_potentiometer_2_rear_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -6222,7 +6353,7 @@ double feb_can_linear_potentiometer_rear_linear_potrentiometer_2_rear_decode(uin
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_linear_potentiometer_rear_linear_potrentiometer_2_rear_is_in_range(uint16_t value);
+bool feb_can_linear_potentiometer_rear_linear_potentiometer_2_rear_is_in_range(uint16_t value);
 
 /**
  * Pack message front_left_tire_temp.
@@ -6848,7 +6979,7 @@ int feb_can_wss_front_data_init(struct feb_can_wss_front_data_t *msg_p);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_wss_front_data_wss_right_front_encode(double value);
+uint32_t feb_can_wss_front_data_wss_right_front_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -6857,7 +6988,7 @@ uint8_t feb_can_wss_front_data_wss_right_front_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_wss_front_data_wss_right_front_decode(uint8_t value);
+double feb_can_wss_front_data_wss_right_front_decode(uint32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -6866,7 +6997,7 @@ double feb_can_wss_front_data_wss_right_front_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_wss_front_data_wss_right_front_is_in_range(uint8_t value);
+bool feb_can_wss_front_data_wss_right_front_is_in_range(uint32_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6875,7 +7006,7 @@ bool feb_can_wss_front_data_wss_right_front_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_wss_front_data_wss_left_front_encode(double value);
+uint32_t feb_can_wss_front_data_wss_left_front_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -6884,7 +7015,7 @@ uint8_t feb_can_wss_front_data_wss_left_front_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_wss_front_data_wss_left_front_decode(uint8_t value);
+double feb_can_wss_front_data_wss_left_front_decode(uint32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -6893,7 +7024,7 @@ double feb_can_wss_front_data_wss_left_front_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_wss_front_data_wss_left_front_is_in_range(uint8_t value);
+bool feb_can_wss_front_data_wss_left_front_is_in_range(uint32_t value);
 
 /**
  * Pack message wss_rear_data.
@@ -7912,6 +8043,97 @@ double feb_can_dcu_tps_current_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_dcu_tps_current_is_in_range(uint16_t value);
+
+/**
+ * Pack message pcu_raw_acc.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_pcu_raw_acc_pack(
+    uint8_t *dst_p,
+    const struct feb_can_pcu_raw_acc_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message pcu_raw_acc.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_pcu_raw_acc_unpack(
+    struct feb_can_pcu_raw_acc_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from pcu_raw_acc.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_pcu_raw_acc_init(struct feb_can_pcu_raw_acc_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_pcu_raw_acc_acc0_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_pcu_raw_acc_acc0_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_pcu_raw_acc_acc0_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_pcu_raw_acc_acc1_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_pcu_raw_acc_acc1_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_pcu_raw_acc_acc1_is_in_range(uint16_t value);
 
 /**
  * Pack message rms_command.
@@ -19104,7 +19326,7 @@ double feb_can_feb_ping_pong_counter4_counter_decode(int32_t value);
 bool feb_can_feb_ping_pong_counter4_counter_is_in_range(int32_t value);
 
 /**
- * Pack message pcu_raw_acc.
+ * Pack message ebs_pressure_status.
  *
  * @param[out] dst_p Buffer to pack the message into.
  * @param[in] src_p Data to pack.
@@ -19112,13 +19334,13 @@ bool feb_can_feb_ping_pong_counter4_counter_is_in_range(int32_t value);
  *
  * @return Size of packed data, or negative error code.
  */
-int feb_can_pcu_raw_acc_pack(
+int feb_can_ebs_pressure_status_pack(
     uint8_t *dst_p,
-    const struct feb_can_pcu_raw_acc_t *src_p,
+    const struct feb_can_ebs_pressure_status_t *src_p,
     size_t size);
 
 /**
- * Unpack message pcu_raw_acc.
+ * Unpack message ebs_pressure_status.
  *
  * @param[out] dst_p Object to unpack the message into.
  * @param[in] src_p Message to unpack.
@@ -19126,19 +19348,19 @@ int feb_can_pcu_raw_acc_pack(
  *
  * @return zero(0) or negative error code.
  */
-int feb_can_pcu_raw_acc_unpack(
-    struct feb_can_pcu_raw_acc_t *dst_p,
+int feb_can_ebs_pressure_status_unpack(
+    struct feb_can_ebs_pressure_status_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
- * Init message fields to default values from pcu_raw_acc.
+ * Init message fields to default values from ebs_pressure_status.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int feb_can_pcu_raw_acc_init(struct feb_can_pcu_raw_acc_t *msg_p);
+int feb_can_ebs_pressure_status_init(struct feb_can_ebs_pressure_status_t *msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -19147,7 +19369,7 @@ int feb_can_pcu_raw_acc_init(struct feb_can_pcu_raw_acc_t *msg_p);
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_pcu_raw_acc_acc0_encode(double value);
+int16_t feb_can_ebs_pressure_status_ebs_pressure_1_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -19156,7 +19378,7 @@ uint16_t feb_can_pcu_raw_acc_acc0_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_pcu_raw_acc_acc0_decode(uint16_t value);
+double feb_can_ebs_pressure_status_ebs_pressure_1_decode(int16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -19165,7 +19387,7 @@ double feb_can_pcu_raw_acc_acc0_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_pcu_raw_acc_acc0_is_in_range(uint16_t value);
+bool feb_can_ebs_pressure_status_ebs_pressure_1_is_in_range(int16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -19174,7 +19396,7 @@ bool feb_can_pcu_raw_acc_acc0_is_in_range(uint16_t value);
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_pcu_raw_acc_acc1_encode(double value);
+int16_t feb_can_ebs_pressure_status_ebs_pressure_2_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -19183,7 +19405,7 @@ uint16_t feb_can_pcu_raw_acc_acc1_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_pcu_raw_acc_acc1_decode(uint16_t value);
+double feb_can_ebs_pressure_status_ebs_pressure_2_decode(int16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -19192,7 +19414,61 @@ double feb_can_pcu_raw_acc_acc1_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_pcu_raw_acc_acc1_is_in_range(uint16_t value);
+bool feb_can_ebs_pressure_status_ebs_pressure_2_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_ebs_pressure_status_ebs_pressure_3_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_ebs_pressure_status_ebs_pressure_3_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_ebs_pressure_status_ebs_pressure_3_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_ebs_pressure_status_ebs_pressure_4_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_ebs_pressure_status_ebs_pressure_4_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_ebs_pressure_status_ebs_pressure_4_is_in_range(int16_t value);
 
 
 #ifdef __cplusplus

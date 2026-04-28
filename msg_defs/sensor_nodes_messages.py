@@ -315,15 +315,15 @@ def get_magnetometer_data_front(frame_id: int):
 def get_wss_data_front(frame_id: int):
     wss_right_front = cantools.db.Signal(
         name = "wss_right_front",
-        start = 0,  
-        length = 8, #hetvi: ∆ frm prev code: 8 bits per WSS field instead of 32 bits 
+        start = 0,
+        length = 32,
         byte_order="little_endian",
         is_signed = False,
     )
     wss_left_front = cantools.db.Signal(
         name = "wss_left_front",
         start = 32,
-        length = 8, #hetvi: ∆ frm prev code: 8 bits per WSS field instead of 32 bits 
+        length = 32,
         byte_order="little_endian",
         is_signed = False,
     )
@@ -366,7 +366,7 @@ def get_wss_data_rear(frame_id: int):
 
 def get_LinPot_Front(frame_id: int):
     lin_pot_1 = cantools.db.Signal(
-        name="linear_potrentiometer_1_front",
+        name="linear_potentiometer_1_front",
         start=0,
         length=16, 
         byte_order="little_endian",
@@ -374,7 +374,7 @@ def get_LinPot_Front(frame_id: int):
      )
     
     lin_pot_2 = cantools.db.Signal(
-        name="linear_potrentiometer_2_front",
+        name="linear_potentiometer_2_front",
         start=16,
         length=16, 
         byte_order="little_endian",
@@ -394,7 +394,7 @@ def get_LinPot_Front(frame_id: int):
 
 def get_LinPot_Rear(frame_id: int):
      lin_pot_1 = cantools.db.Signal(
-        name="linear_potrentiometer_1_rear",
+        name="linear_potentiometer_1_rear",
         start=0,
         length=16, 
         byte_order="little_endian",
@@ -402,7 +402,7 @@ def get_LinPot_Rear(frame_id: int):
      )
 
      lin_pot_2 = cantools.db.Signal(
-        name="linear_potrentiometer_2_rear",
+        name="linear_potentiometer_2_rear",
         start=16,
         length=16, 
         byte_order="little_endian",

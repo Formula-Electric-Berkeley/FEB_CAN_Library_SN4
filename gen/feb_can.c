@@ -825,6 +825,62 @@ bool feb_can_bspd_state_bspd_state_is_in_range(uint8_t value)
     return (true);
 }
 
+int feb_can_res_state_pack(
+    uint8_t *dst_p,
+    const struct feb_can_res_state_t *src_p,
+    size_t size)
+{
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 2);
+
+    dst_p[0] |= pack_left_shift_u8(src_p->res_state, 0u, 0xffu);
+
+    return (2);
+}
+
+int feb_can_res_state_unpack(
+    struct feb_can_res_state_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    dst_p->res_state = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_res_state_init(struct feb_can_res_state_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_res_state_t));
+
+    return 0;
+}
+
+uint8_t feb_can_res_state_res_state_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_res_state_res_state_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_res_state_res_state_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
 int feb_can_dash_state_pack(
     uint8_t *dst_p,
     const struct feb_can_dash_state_t *src_p,
@@ -1343,10 +1399,10 @@ int feb_can_linear_potentiometer_front_pack(
 
     memset(&dst_p[0], 0, 4);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->linear_potrentiometer_1_front, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->linear_potrentiometer_1_front, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->linear_potrentiometer_2_front, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->linear_potrentiometer_2_front, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->linear_potentiometer_1_front, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->linear_potentiometer_1_front, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->linear_potentiometer_2_front, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->linear_potentiometer_2_front, 8u, 0xffu);
 
     return (4);
 }
@@ -1360,10 +1416,10 @@ int feb_can_linear_potentiometer_front_unpack(
         return (-EINVAL);
     }
 
-    dst_p->linear_potrentiometer_1_front = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->linear_potrentiometer_1_front |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->linear_potrentiometer_2_front = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->linear_potrentiometer_2_front |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->linear_potentiometer_1_front = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->linear_potentiometer_1_front |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->linear_potentiometer_2_front = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->linear_potentiometer_2_front |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
 
     return (0);
 }
@@ -1377,34 +1433,34 @@ int feb_can_linear_potentiometer_front_init(struct feb_can_linear_potentiometer_
     return 0;
 }
 
-uint16_t feb_can_linear_potentiometer_front_linear_potrentiometer_1_front_encode(double value)
+uint16_t feb_can_linear_potentiometer_front_linear_potentiometer_1_front_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_linear_potentiometer_front_linear_potrentiometer_1_front_decode(uint16_t value)
+double feb_can_linear_potentiometer_front_linear_potentiometer_1_front_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_linear_potentiometer_front_linear_potrentiometer_1_front_is_in_range(uint16_t value)
+bool feb_can_linear_potentiometer_front_linear_potentiometer_1_front_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_linear_potentiometer_front_linear_potrentiometer_2_front_encode(double value)
+uint16_t feb_can_linear_potentiometer_front_linear_potentiometer_2_front_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_linear_potentiometer_front_linear_potrentiometer_2_front_decode(uint16_t value)
+double feb_can_linear_potentiometer_front_linear_potentiometer_2_front_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_linear_potentiometer_front_linear_potrentiometer_2_front_is_in_range(uint16_t value)
+bool feb_can_linear_potentiometer_front_linear_potentiometer_2_front_is_in_range(uint16_t value)
 {
     (void)value;
 
@@ -1422,10 +1478,10 @@ int feb_can_linear_potentiometer_rear_pack(
 
     memset(&dst_p[0], 0, 4);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->linear_potrentiometer_1_rear, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->linear_potrentiometer_1_rear, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->linear_potrentiometer_2_rear, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->linear_potrentiometer_2_rear, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->linear_potentiometer_1_rear, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->linear_potentiometer_1_rear, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->linear_potentiometer_2_rear, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->linear_potentiometer_2_rear, 8u, 0xffu);
 
     return (4);
 }
@@ -1439,10 +1495,10 @@ int feb_can_linear_potentiometer_rear_unpack(
         return (-EINVAL);
     }
 
-    dst_p->linear_potrentiometer_1_rear = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->linear_potrentiometer_1_rear |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->linear_potrentiometer_2_rear = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->linear_potrentiometer_2_rear |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->linear_potentiometer_1_rear = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->linear_potentiometer_1_rear |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->linear_potentiometer_2_rear = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->linear_potentiometer_2_rear |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
 
     return (0);
 }
@@ -1456,34 +1512,34 @@ int feb_can_linear_potentiometer_rear_init(struct feb_can_linear_potentiometer_r
     return 0;
 }
 
-uint16_t feb_can_linear_potentiometer_rear_linear_potrentiometer_1_rear_encode(double value)
+uint16_t feb_can_linear_potentiometer_rear_linear_potentiometer_1_rear_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_linear_potentiometer_rear_linear_potrentiometer_1_rear_decode(uint16_t value)
+double feb_can_linear_potentiometer_rear_linear_potentiometer_1_rear_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_linear_potentiometer_rear_linear_potrentiometer_1_rear_is_in_range(uint16_t value)
+bool feb_can_linear_potentiometer_rear_linear_potentiometer_1_rear_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_linear_potentiometer_rear_linear_potrentiometer_2_rear_encode(double value)
+uint16_t feb_can_linear_potentiometer_rear_linear_potentiometer_2_rear_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_linear_potentiometer_rear_linear_potrentiometer_2_rear_decode(uint16_t value)
+double feb_can_linear_potentiometer_rear_linear_potentiometer_2_rear_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_linear_potentiometer_rear_linear_potrentiometer_2_rear_is_in_range(uint16_t value)
+bool feb_can_linear_potentiometer_rear_linear_potentiometer_2_rear_is_in_range(uint16_t value)
 {
     (void)value;
 
@@ -1985,8 +2041,14 @@ int feb_can_wss_front_data_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u8(src_p->wss_right_front, 0u, 0xffu);
-    dst_p[4] |= pack_left_shift_u8(src_p->wss_left_front, 0u, 0xffu);
+    dst_p[0] |= pack_left_shift_u32(src_p->wss_right_front, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u32(src_p->wss_right_front, 8u, 0xffu);
+    dst_p[2] |= pack_right_shift_u32(src_p->wss_right_front, 16u, 0xffu);
+    dst_p[3] |= pack_right_shift_u32(src_p->wss_right_front, 24u, 0xffu);
+    dst_p[4] |= pack_left_shift_u32(src_p->wss_left_front, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u32(src_p->wss_left_front, 8u, 0xffu);
+    dst_p[6] |= pack_right_shift_u32(src_p->wss_left_front, 16u, 0xffu);
+    dst_p[7] |= pack_right_shift_u32(src_p->wss_left_front, 24u, 0xffu);
 
     return (8);
 }
@@ -2000,8 +2062,14 @@ int feb_can_wss_front_data_unpack(
         return (-EINVAL);
     }
 
-    dst_p->wss_right_front = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
-    dst_p->wss_left_front = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
+    dst_p->wss_right_front = unpack_right_shift_u32(src_p[0], 0u, 0xffu);
+    dst_p->wss_right_front |= unpack_left_shift_u32(src_p[1], 8u, 0xffu);
+    dst_p->wss_right_front |= unpack_left_shift_u32(src_p[2], 16u, 0xffu);
+    dst_p->wss_right_front |= unpack_left_shift_u32(src_p[3], 24u, 0xffu);
+    dst_p->wss_left_front = unpack_right_shift_u32(src_p[4], 0u, 0xffu);
+    dst_p->wss_left_front |= unpack_left_shift_u32(src_p[5], 8u, 0xffu);
+    dst_p->wss_left_front |= unpack_left_shift_u32(src_p[6], 16u, 0xffu);
+    dst_p->wss_left_front |= unpack_left_shift_u32(src_p[7], 24u, 0xffu);
 
     return (0);
 }
@@ -2015,34 +2083,34 @@ int feb_can_wss_front_data_init(struct feb_can_wss_front_data_t *msg_p)
     return 0;
 }
 
-uint8_t feb_can_wss_front_data_wss_right_front_encode(double value)
+uint32_t feb_can_wss_front_data_wss_right_front_encode(double value)
 {
-    return (uint8_t)(value);
+    return (uint32_t)(value);
 }
 
-double feb_can_wss_front_data_wss_right_front_decode(uint8_t value)
+double feb_can_wss_front_data_wss_right_front_decode(uint32_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_wss_front_data_wss_right_front_is_in_range(uint8_t value)
+bool feb_can_wss_front_data_wss_right_front_is_in_range(uint32_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_wss_front_data_wss_left_front_encode(double value)
+uint32_t feb_can_wss_front_data_wss_left_front_encode(double value)
 {
-    return (uint8_t)(value);
+    return (uint32_t)(value);
 }
 
-double feb_can_wss_front_data_wss_left_front_decode(uint8_t value)
+double feb_can_wss_front_data_wss_left_front_decode(uint32_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_wss_front_data_wss_left_front_is_in_range(uint8_t value)
+bool feb_can_wss_front_data_wss_left_front_is_in_range(uint32_t value)
 {
     (void)value;
 
@@ -2967,6 +3035,85 @@ double feb_can_dcu_tps_current_decode(uint16_t value)
 }
 
 bool feb_can_dcu_tps_current_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_pcu_raw_acc_pack(
+    uint8_t *dst_p,
+    const struct feb_can_pcu_raw_acc_t *src_p,
+    size_t size)
+{
+    if (size < 4u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 4);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->acc0, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->acc0, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->acc1, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->acc1, 8u, 0xffu);
+
+    return (4);
+}
+
+int feb_can_pcu_raw_acc_unpack(
+    struct feb_can_pcu_raw_acc_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 4u) {
+        return (-EINVAL);
+    }
+
+    dst_p->acc0 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->acc0 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->acc1 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->acc1 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_pcu_raw_acc_init(struct feb_can_pcu_raw_acc_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_pcu_raw_acc_t));
+
+    return 0;
+}
+
+uint16_t feb_can_pcu_raw_acc_acc0_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_pcu_raw_acc_acc0_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_pcu_raw_acc_acc0_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_pcu_raw_acc_acc1_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_pcu_raw_acc_acc1_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_pcu_raw_acc_acc1_is_in_range(uint16_t value)
 {
     (void)value;
 
@@ -10259,79 +10406,139 @@ bool feb_can_feb_ping_pong_counter4_counter_is_in_range(int32_t value)
     return (true);
 }
 
-int feb_can_pcu_raw_acc_pack(
+int feb_can_ebs_pressure_status_pack(
     uint8_t *dst_p,
-    const struct feb_can_pcu_raw_acc_t *src_p,
+    const struct feb_can_ebs_pressure_status_t *src_p,
     size_t size)
 {
-    if (size < 4u) {
+    uint16_t ebs_pressure_1;
+    uint16_t ebs_pressure_2;
+    uint16_t ebs_pressure_3;
+    uint16_t ebs_pressure_4;
+
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, 4);
+    memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->acc0, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->acc0, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->acc1, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->acc1, 8u, 0xffu);
+    ebs_pressure_1 = (uint16_t)src_p->ebs_pressure_1;
+    dst_p[0] |= pack_left_shift_u16(ebs_pressure_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(ebs_pressure_1, 8u, 0xffu);
+    ebs_pressure_2 = (uint16_t)src_p->ebs_pressure_2;
+    dst_p[2] |= pack_left_shift_u16(ebs_pressure_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(ebs_pressure_2, 8u, 0xffu);
+    ebs_pressure_3 = (uint16_t)src_p->ebs_pressure_3;
+    dst_p[4] |= pack_left_shift_u16(ebs_pressure_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(ebs_pressure_3, 8u, 0xffu);
+    ebs_pressure_4 = (uint16_t)src_p->ebs_pressure_4;
+    dst_p[6] |= pack_left_shift_u16(ebs_pressure_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(ebs_pressure_4, 8u, 0xffu);
 
-    return (4);
+    return (8);
 }
 
-int feb_can_pcu_raw_acc_unpack(
-    struct feb_can_pcu_raw_acc_t *dst_p,
+int feb_can_ebs_pressure_status_unpack(
+    struct feb_can_ebs_pressure_status_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
-    if (size < 4u) {
+    uint16_t ebs_pressure_1;
+    uint16_t ebs_pressure_2;
+    uint16_t ebs_pressure_3;
+    uint16_t ebs_pressure_4;
+
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    dst_p->acc0 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->acc0 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->acc1 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->acc1 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    ebs_pressure_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    ebs_pressure_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->ebs_pressure_1 = (int16_t)ebs_pressure_1;
+    ebs_pressure_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    ebs_pressure_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->ebs_pressure_2 = (int16_t)ebs_pressure_2;
+    ebs_pressure_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    ebs_pressure_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->ebs_pressure_3 = (int16_t)ebs_pressure_3;
+    ebs_pressure_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    ebs_pressure_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->ebs_pressure_4 = (int16_t)ebs_pressure_4;
 
     return (0);
 }
 
-int feb_can_pcu_raw_acc_init(struct feb_can_pcu_raw_acc_t *msg_p)
+int feb_can_ebs_pressure_status_init(struct feb_can_ebs_pressure_status_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_pcu_raw_acc_t));
+    memset(msg_p, 0, sizeof(struct feb_can_ebs_pressure_status_t));
 
     return 0;
 }
 
-uint16_t feb_can_pcu_raw_acc_acc0_encode(double value)
+int16_t feb_can_ebs_pressure_status_ebs_pressure_1_encode(double value)
 {
-    return (uint16_t)(value);
+    return (int16_t)(value);
 }
 
-double feb_can_pcu_raw_acc_acc0_decode(uint16_t value)
+double feb_can_ebs_pressure_status_ebs_pressure_1_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_pcu_raw_acc_acc0_is_in_range(uint16_t value)
+bool feb_can_ebs_pressure_status_ebs_pressure_1_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_pcu_raw_acc_acc1_encode(double value)
+int16_t feb_can_ebs_pressure_status_ebs_pressure_2_encode(double value)
 {
-    return (uint16_t)(value);
+    return (int16_t)(value);
 }
 
-double feb_can_pcu_raw_acc_acc1_decode(uint16_t value)
+double feb_can_ebs_pressure_status_ebs_pressure_2_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_pcu_raw_acc_acc1_is_in_range(uint16_t value)
+bool feb_can_ebs_pressure_status_ebs_pressure_2_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_ebs_pressure_status_ebs_pressure_3_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_ebs_pressure_status_ebs_pressure_3_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_ebs_pressure_status_ebs_pressure_3_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_ebs_pressure_status_ebs_pressure_4_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_ebs_pressure_status_ebs_pressure_4_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_ebs_pressure_status_ebs_pressure_4_is_in_range(int16_t value)
 {
     (void)value;
 
