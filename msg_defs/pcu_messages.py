@@ -32,10 +32,56 @@ def normalized_brake(frame_id: int):
         length=5,
         signals=[normalized_brake, brake1_psi, brake2_psi],
         comment="PCU brake message",
+        cycle_time=20,
         strict=True
     )
-    
-    return msg 
+
+    return msg
+
+def ebs_pressure_status(frame_id: int):
+    ebs_pressure_1 = cantools.db.Signal(
+        name="ebs_pressure_1",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    ebs_pressure_2 = cantools.db.Signal(
+        name="ebs_pressure_2",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    ebs_pressure_3 = cantools.db.Signal(
+        name="ebs_pressure_3",
+        start=32,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    ebs_pressure_4 = cantools.db.Signal(
+        name="ebs_pressure_4",
+        start=48,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="ebs_pressure_status",
+        length=8,
+        signals=[ebs_pressure_1, ebs_pressure_2, ebs_pressure_3, ebs_pressure_4],
+        comment="EBS Pressure Status - 4 pressure sensors (scale: 1/16, unit: bar)",
+        cycle_time=100,
+        strict=True
+    )
+
+    return msg
 
 def rms_param_msg(frame_id: int):
     addr = cantools.db.Signal(
@@ -188,28 +234,63 @@ def get_tps_voltage_current(frame_id: int):
 
     return msg
 
-def get_raw_acc(frame_id: int):    
+def get_raw_acc(frame_id: int):
     pcu_acc0_signal = cantools.db.Signal(
         name="acc0",
-        start=0,
+        start=7,
         length=16,
-        byte_order="little_endian",
+        byte_order="big_endian",
     )
-    
+
     pcu_acc1_signal = cantools.db.Signal(
         name="acc1",
-        start=16,
+        start=23,
         length=16,
+        byte_order="big_endian",
+    )
+
+    pcu_accel_signal = cantools.db.Signal(
+        name="accel",
+        start=39,
+        length=16,
+        byte_order="big_endian",
+    )
+
+    plausible_signal = cantools.db.Signal(
+        name="plausible",
+        start=48,
+        length=1,
+        byte_order="little_endian",
+    )
+
+    short_circuit_signal = cantools.db.Signal(
+        name="short_circuit",
+        start=49,
+        length=1,
+        byte_order="little_endian",
+    )
+
+    open_circuit_signal = cantools.db.Signal(
+        name="open_circuit",
+        start=50,
+        length=1,
         byte_order="little_endian",
     )
 
     msg = cantools.db.Message(
         frame_id=frame_id,
         name="pcu_raw_acc",
-        length=4,
-        signals=[pcu_acc0_signal, pcu_acc1_signal],
+        length=8,
+        signals=[
+            pcu_acc0_signal,
+            pcu_acc1_signal,
+            pcu_accel_signal,
+            plausible_signal,
+            short_circuit_signal,
+            open_circuit_signal,
+        ],
         comment="PCU RAW ACC ADC",
-        strict=True
+        strict=True,
     )
 
     return msg

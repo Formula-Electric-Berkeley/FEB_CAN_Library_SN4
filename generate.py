@@ -142,9 +142,11 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
 
     # 0x46, 0x4D-0x5F: Reserved for future sensor node messages.
 
-    # ----- RMS/Inverter Messages (0xC0-0xCF) -----
-    0xC0: (pcu_msg.rms_command_msg, "RMS inverter command"),
-    0xC1: (pcu_msg.rms_param_msg, "RMS inverter parameters"),
+    # ----- RMS/Inverter Messages (0xA0-0xCF) -----
+    # IMMUTABLE: All IDs in this block come verbatim from inverter.dbc (Cascadia PM100).
+    # Do not add duplicate entries here; inverter.dbc is the single source of truth.
+    # 0xC0 (M192_Command_Message) and 0xC1 (M193_Read_Write_Param_Command)
+    # come from inverter.dbc — do not duplicate here.
     # 0xC2-0xCF: Reserved for future RMS messages
 
     # ----- Heartbeat Messages (0xD0-0xDF) -----
