@@ -150,12 +150,27 @@ BO_ 38 imu_acceleration_data: 6 Vector__XXX
  SG_ acceleration_y : 16|16@1- (0.061,0) [0|0] "mg" Vector__XXX
  SG_ acceleration_x : 0|16@1- (0.061,0) [0|0] "mg" Vector__XXX
 
+BO_ 39 imu_acceleration_data_rear: 6 Vector__XXX
+ SG_ acceleration_z : 32|16@1- (0.061,0) [0|0] "mg" Vector__XXX
+ SG_ acceleration_y : 16|16@1- (0.061,0) [0|0] "mg" Vector__XXX
+ SG_ acceleration_x : 0|16@1- (0.061,0) [0|0] "mg" Vector__XXX
+
 BO_ 40 imu_gyro_data: 6 Vector__XXX
  SG_ gyro_z : 32|16@1- (70,0) [0|0] "mdps" Vector__XXX
  SG_ gyro_y : 16|16@1- (70,0) [0|0] "mdps" Vector__XXX
  SG_ gyro_x : 0|16@1- (70,0) [0|0] "mdps" Vector__XXX
 
+BO_ 41 imu_gyro_data_rear: 6 Vector__XXX
+ SG_ gyro_z : 32|16@1- (70,0) [0|0] "mdps" Vector__XXX
+ SG_ gyro_y : 16|16@1- (70,0) [0|0] "mdps" Vector__XXX
+ SG_ gyro_x : 0|16@1- (70,0) [0|0] "mdps" Vector__XXX
+
 BO_ 42 magnetometer_data: 6 Vector__XXX
+ SG_ magnetometer_z : 32|16@1- (0.5844,0) [0|0] "mG" Vector__XXX
+ SG_ magnetometer_y : 16|16@1- (0.5844,0) [0|0] "mG" Vector__XXX
+ SG_ magnetometer_x : 0|16@1- (0.5844,0) [0|0] "mG" Vector__XXX
+
+BO_ 43 magnetometer_data_rear: 6 Vector__XXX
  SG_ magnetometer_z : 32|16@1- (0.5844,0) [0|0] "mG" Vector__XXX
  SG_ magnetometer_y : 16|16@1- (0.5844,0) [0|0] "mG" Vector__XXX
  SG_ magnetometer_x : 0|16@1- (0.5844,0) [0|0] "mG" Vector__XXX
@@ -254,6 +269,68 @@ BO_ 75 fusion_status_data: 3 Vector__XXX
 BO_ 76 sensor_temps_data: 4 Vector__XXX
  SG_ mag_temp : 16|16@1- (0.01,0) [0|0] "degC" Vector__XXX
  SG_ imu_temp : 0|16@1- (0.01,0) [0|0] "degC" Vector__XXX
+
+BO_ 77 sensor_temps_data_rear: 4 Vector__XXX
+ SG_ mag_temp : 16|16@1- (0.01,0) [0|0] "degC" Vector__XXX
+ SG_ imu_temp : 0|16@1- (0.01,0) [0|0] "degC" Vector__XXX
+
+BO_ 80 gps_pos_data_rear: 8 Vector__XXX
+ SG_ longitude : 32|32@1- (1e-07,0) [0|0] "deg" Vector__XXX
+ SG_ latitude : 0|32@1- (1e-07,0) [0|0] "deg" Vector__XXX
+
+BO_ 81 gps_altitude_data_rear: 8 Vector__XXX
+ SG_ vdop : 48|16@1+ (0.01,0) [0|0] "" Vector__XXX
+ SG_ hdop : 32|16@1+ (0.01,0) [0|0] "" Vector__XXX
+ SG_ altitude : 0|32@1- (0.01,0) [0|0] "m" Vector__XXX
+
+BO_ 82 gps_motion_data_rear: 4 Vector__XXX
+ SG_ course : 16|16@1+ (0.01,0) [0|0] "deg" Vector__XXX
+ SG_ speed : 0|16@1+ (0.01,0) [0|0] "km/h" Vector__XXX
+
+BO_ 83 gps_time_data_rear: 3 Vector__XXX
+ SG_ seconds : 16|8@1- (1,0) [0|0] "" Vector__XXX
+ SG_ minutes : 8|8@1- (1,0) [0|0] "" Vector__XXX
+ SG_ hours : 0|8@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 84 gps_date_data_rear: 3 Vector__XXX
+ SG_ year : 16|8@1- (1,0) [0|0] "" Vector__XXX
+ SG_ month : 8|8@1- (1,0) [0|0] "" Vector__XXX
+ SG_ day : 0|8@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 85 gps_status_data_rear: 8 Vector__XXX
+ SG_ pdop : 48|16@1+ (0.01,0) [0|0] "" Vector__XXX
+ SG_ has_fix : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ valid : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ sats_in_view : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ sats_in_use : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ fix_mode : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ fix_type : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 87 fusion_quaternion_data_rear: 8 Vector__XXX
+ SG_ q_z : 48|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
+ SG_ q_y : 32|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
+ SG_ q_x : 16|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
+ SG_ q_w : 0|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
+
+BO_ 88 fusion_euler_data_rear: 6 Vector__XXX
+ SG_ yaw : 32|16@1- (0.01,0) [0|0] "deg" Vector__XXX
+ SG_ pitch : 16|16@1- (0.01,0) [0|0] "deg" Vector__XXX
+ SG_ roll : 0|16@1- (0.01,0) [0|0] "deg" Vector__XXX
+
+BO_ 89 fusion_linear_accel_data_rear: 6 Vector__XXX
+ SG_ lin_accel_z : 32|16@1- (1,0) [0|0] "mg" Vector__XXX
+ SG_ lin_accel_y : 16|16@1- (1,0) [0|0] "mg" Vector__XXX
+ SG_ lin_accel_x : 0|16@1- (1,0) [0|0] "mg" Vector__XXX
+
+BO_ 90 fusion_earth_accel_data_rear: 6 Vector__XXX
+ SG_ earth_accel_z : 32|16@1- (1,0) [0|0] "mg" Vector__XXX
+ SG_ earth_accel_y : 16|16@1- (1,0) [0|0] "mg" Vector__XXX
+ SG_ earth_accel_x : 0|16@1- (1,0) [0|0] "mg" Vector__XXX
+
+BO_ 91 fusion_status_data_rear: 3 Vector__XXX
+ SG_ mag_error : 16|8@1+ (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ accel_error : 8|8@1+ (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ flags : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 160 M160_Temperature_Set_1: 8 INV
  SG_ INV_Gate_Driver_Board : 48|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
@@ -872,8 +949,11 @@ CM_ BO_ 36 "Front wheel speeds (uint16, 0.1 RPM/LSB) + direction flags.";
 CM_ SG_ 36 wss_dir_flags "bit0: left wheel direction (0=fwd, 1=rev); bit1: right wheel direction";
 CM_ BO_ 37 "Wheel speed sensor data for left and right rear wheels.";
 CM_ BO_ 38 "IMU acceleration (LSM6DSOX, FS=2g, 0.061 mg/LSB).";
+CM_ BO_ 39 "REAR IMU acceleration (LSM6DSOX, FS=2g, 0.061 mg/LSB).";
 CM_ BO_ 40 "IMU gyro (LSM6DSOX, FS=2000dps, 70 mdps/LSB).";
+CM_ BO_ 41 "REAR IMU gyro (LSM6DSOX, FS=2000dps, 70 mdps/LSB).";
 CM_ BO_ 42 "Magnetometer (LIS3MDL, FS=16gauss, 0.5844 mG/LSB).";
+CM_ BO_ 43 "REAR Magnetometer (LIS3MDL, FS=16gauss, 0.5844 mG/LSB).";
 CM_ BO_ 45 "DART message for Tachometer measurements first 4 fan speeds.";
 CM_ BO_ 46 "DART message for Tachometer measurements 5th fan speed.";
 CM_ BO_ 52 "BBB TPS Chip";
@@ -896,6 +976,21 @@ CM_ BO_ 74 "Fusion linear acceleration (gravity removed, earth frame, mg).";
 CM_ BO_ 75 "Fusion AHRS internal flags + accel/mag rejection errors.";
 CM_ SG_ 75 flags "bit0 startup, bit1 angRateRecov, bit2 accelRecov, bit3 magRecov, bit4 accelIgnored, bit5 magIgnored";
 CM_ BO_ 76 "LSM6DSOX IMU and LIS3MDL magnetometer die temperatures (0.01 degC/LSB).";
+CM_ BO_ 77 "REAR LSM6DSOX IMU and LIS3MDL magnetometer die temperatures (0.01 degC/LSB).";
+CM_ BO_ 80 "REAR GPS lat/lon as int32 * 1e7 deg (~11mm/LSB globally).";
+CM_ BO_ 81 "REAR GPS altitude (cm) + horizontal/vertical DOP (x100).";
+CM_ BO_ 82 "REAR GPS speed (0.01 km/h) and course-over-ground (0.01 deg).";
+CM_ BO_ 83 "REAR GPS Time data message (UTC).";
+CM_ BO_ 84 "REAR GPS Date data message.";
+CM_ BO_ 85 "REAR GPS fix quality, satellite counts, validity flags, position DOP.";
+CM_ SG_ 85 fix_mode "1=NoFix, 2=2D, 3=3D";
+CM_ SG_ 85 fix_type "0=Invalid, 1=GPS, 2=DGPS, 3=PPS";
+CM_ BO_ 87 "REAR Fusion AHRS orientation quaternion (w, x, y, z).";
+CM_ BO_ 88 "REAR Fusion AHRS Euler angles (0.01 deg/LSB).";
+CM_ BO_ 89 "REAR Fusion linear acceleration (gravity removed, body frame, mg).";
+CM_ BO_ 90 "REAR Fusion linear acceleration (gravity removed, earth frame, mg).";
+CM_ BO_ 91 "REAR Fusion AHRS internal flags + accel/mag rejection errors.";
+CM_ SG_ 91 flags "bit0 startup, bit1 angRateRecov, bit2 accelRecov, bit3 magRecov, bit4 accelIgnored, bit5 magIgnored";
 CM_ SG_ 160 INV_Gate_Driver_Board "Gate Driver Board Temperature";
 CM_ SG_ 160 INV_Module_C "IGBT Module C Temperature";
 CM_ SG_ 160 INV_Module_B "IGBT Module B Temperature";

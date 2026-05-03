@@ -72,9 +72,11 @@ from msg_defs import res_messages as res_msg
 #   0x09-0x0F:  PCU safety-critical (brake, BSPD, RES) (3 used, 4 reserved)
 #   0x10-0x15:  DASH messages (1 used, 5 reserved)
 #   0x16-0x1D:  LVPDB messages (3 used, 5 reserved)
-#   0x1E-0x2C:  Sensor node messages (8 used, 7 reserved)
+#   0x1E-0x2C:  Sensor node messages — base (FRONT/REAR WSS, IMU, mag, tire/linpot) (12 used, 1 reserved)
 #   0x2D-0x33:  DART messages (2 used, 5 reserved)
 #   0x34-0x3F:  TPS chip / PCU ADC (5 used, 7 reserved)
+#   0x40-0x4F:  Sensor nodes FRONT (extended): GPS / Fusion / die temps + REAR temps
+#   0x50-0x5F:  Sensor nodes REAR (extended): GPS / Fusion
 #   0xC0-0xCF:  PCU RMS commands (2 used, 14 reserved)
 #   0xD0-0xDF:  Heartbeat messages (6 used, 10 reserved)
 #   0xE0-0xEF:  Debug/test messages (4 used, 12 reserved)
@@ -123,32 +125,18 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
 
     # IMU: accelerometer/gyro
     # FRONT
-    0x26: (sensor_msg.get_imu_acceleration_data_front, "[IMU] accelerometer data (raw)"),
-    0x28: (sensor_msg.get_imu_gyro_data_front, "[IMU] gyroscope data (raw)"),
+    0x26: (sensor_msg.get_imu_acceleration_data_front, "[IMU][FRONT] accelerometer data (raw)"),
+    0x28: (sensor_msg.get_imu_gyro_data_front, "[IMU][FRONT] gyroscope data (raw)"),
     # REAR
-    # 0x27: (sensor_msg.get_imu_acceleration_data_rear, "[IMU][REAR] accelerometer data (raw)"),
-    # 0x29: (sensor_msg.get_imu_gyro_data_rear, "[IMU][REAR] gyroscope data (raw)"),
+    0x27: (sensor_msg.get_imu_acceleration_data_rear, "[IMU][REAR] accelerometer data (raw)"),
+    0x29: (sensor_msg.get_imu_gyro_data_rear, "[IMU][REAR] gyroscope data (raw)"),
 
     # Magnetometer
     # FRONT
-    0x2A: (sensor_msg.get_magnetometer_data_front, "[Magnetometer] data (raw)"),
+    0x2A: (sensor_msg.get_magnetometer_data_front, "[Magnetometer][FRONT] data (raw)"),
     # REAR
-    # 0x2B: (sensor_msg.get_magnetometer_data_rear, "[Magnetometer][REAR] data (raw)"),
-
-    
-    
-    # 
-    # tire temp , 
-    # strain gauge, 
-    #steering wheel encoder, 
-    # accelerometer/gyro (imu)
-
-
-
-
-    # gps
-    # magnonmeter
-    # 0x26-0x2C: Reserved for future sensor messages
+    0x2B: (sensor_msg.get_magnetometer_data_rear, "[Magnetometer][REAR] data (raw)"),
+    # 0x2C: Reserved for future sensor messages
 
     # ----- DART Messages (0x2D-0x33) -----
     0x2D: (dart_msg.get_measured_fan_speeds_1234, "DART fan speeds 1-4"),
@@ -163,21 +151,37 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x38: (pcu_msg.get_raw_acc, "PCU raw accelerator ADC"),
     # 0x39-0x3F: Reserved for future TPS / PCU ADC messages
 
-    # ----- Sensor Nodes (extended): GPS / Fusion / die temps (0x40-0x4F) -----
-    0x40: (sensor_msg.get_gps_pos_data, "[GPS] latitude/longitude (int32 * 1e-7 deg)"),
-    0x41: (sensor_msg.get_gps_altitude_data, "[GPS] altitude (cm) + HDOP/VDOP"),
-    0x42: (sensor_msg.get_gps_motion_data, "[GPS] speed (km/h) and course (deg)"),
-    0x43: (sensor_msg.get_gps_time_data, "[GPS] time data (UTC)"),
-    0x44: (sensor_msg.get_gps_date_data, "[GPS] date data (UTC)"),
-    0x45: (sensor_msg.get_gps_status_data, "[GPS] fix quality, satellite counts, PDOP"),
+    # ----- Sensor Nodes FRONT (extended): GPS / Fusion / die temps (0x40-0x4F) -----
+    0x40: (sensor_msg.get_gps_pos_data, "[GPS][FRONT] latitude/longitude (int32 * 1e-7 deg)"),
+    0x41: (sensor_msg.get_gps_altitude_data, "[GPS][FRONT] altitude (cm) + HDOP/VDOP"),
+    0x42: (sensor_msg.get_gps_motion_data, "[GPS][FRONT] speed (km/h) and course (deg)"),
+    0x43: (sensor_msg.get_gps_time_data, "[GPS][FRONT] time data (UTC)"),
+    0x44: (sensor_msg.get_gps_date_data, "[GPS][FRONT] date data (UTC)"),
+    0x45: (sensor_msg.get_gps_status_data, "[GPS][FRONT] fix quality, satellite counts, PDOP"),
     # 0x46: Reserved
-    0x47: (sensor_msg.get_fusion_quaternion_data, "[Fusion] orientation quaternion"),
-    0x48: (sensor_msg.get_fusion_euler_data, "[Fusion] Euler angles"),
-    0x49: (sensor_msg.get_fusion_linear_accel_data, "[Fusion] linear acceleration (body frame)"),
-    0x4A: (sensor_msg.get_fusion_earth_accel_data, "[Fusion] linear acceleration (earth frame)"),
-    0x4B: (sensor_msg.get_fusion_status_data, "[Fusion] internal flags + rejection errors"),
-    0x4C: (sensor_msg.get_sensor_temps_data, "[Sensors] IMU + Magnetometer die temperature"),
-    # 0x4D-0x4F: Reserved for future extended sensor messages
+    0x47: (sensor_msg.get_fusion_quaternion_data, "[Fusion][FRONT] orientation quaternion"),
+    0x48: (sensor_msg.get_fusion_euler_data, "[Fusion][FRONT] Euler angles"),
+    0x49: (sensor_msg.get_fusion_linear_accel_data, "[Fusion][FRONT] linear acceleration (body frame)"),
+    0x4A: (sensor_msg.get_fusion_earth_accel_data, "[Fusion][FRONT] linear acceleration (earth frame)"),
+    0x4B: (sensor_msg.get_fusion_status_data, "[Fusion][FRONT] internal flags + rejection errors"),
+    0x4C: (sensor_msg.get_sensor_temps_data, "[Sensors][FRONT] IMU + Magnetometer die temperature"),
+    0x4D: (sensor_msg.get_sensor_temps_data_rear, "[Sensors][REAR] IMU + Magnetometer die temperature"),
+    # 0x4E-0x4F: Reserved for future extended sensor messages
+
+    # ----- Sensor Nodes REAR (extended): GPS / Fusion (0x50-0x5F) -----
+    0x50: (sensor_msg.get_gps_pos_data_rear, "[GPS][REAR] latitude/longitude (int32 * 1e-7 deg)"),
+    0x51: (sensor_msg.get_gps_altitude_data_rear, "[GPS][REAR] altitude (cm) + HDOP/VDOP"),
+    0x52: (sensor_msg.get_gps_motion_data_rear, "[GPS][REAR] speed (km/h) and course (deg)"),
+    0x53: (sensor_msg.get_gps_time_data_rear, "[GPS][REAR] time data (UTC)"),
+    0x54: (sensor_msg.get_gps_date_data_rear, "[GPS][REAR] date data (UTC)"),
+    0x55: (sensor_msg.get_gps_status_data_rear, "[GPS][REAR] fix quality, satellite counts, PDOP"),
+    # 0x56: Reserved (mirrors 0x46 front gap)
+    0x57: (sensor_msg.get_fusion_quaternion_data_rear, "[Fusion][REAR] orientation quaternion"),
+    0x58: (sensor_msg.get_fusion_euler_data_rear, "[Fusion][REAR] Euler angles"),
+    0x59: (sensor_msg.get_fusion_linear_accel_data_rear, "[Fusion][REAR] linear acceleration (body frame)"),
+    0x5A: (sensor_msg.get_fusion_earth_accel_data_rear, "[Fusion][REAR] linear acceleration (earth frame)"),
+    0x5B: (sensor_msg.get_fusion_status_data_rear, "[Fusion][REAR] internal flags + rejection errors"),
+    # 0x5C-0x5F: Reserved for future REAR extended sensor messages
 
     # ----- RMS/Inverter Messages (0xA0-0xCF) -----
     # IMMUTABLE: All IDs in this block come verbatim from inverter.dbc (Cascadia PM100).
@@ -218,7 +222,8 @@ ID_RANGES = [
     (0x1E, 0x2C, "Sensor Nodes"),
     (0x2D, 0x33, "DART"),
     (0x34, 0x3F, "TPS Chips / PCU ADC"),
-    (0x40, 0x4F, "Sensor Nodes (extended): GPS / Fusion / die temps"),
+    (0x40, 0x4F, "Sensor Nodes FRONT (extended): GPS / Fusion / die temps + REAR temps"),
+    (0x50, 0x5F, "Sensor Nodes REAR (extended): GPS / Fusion"),
     (0xA0, 0xC2, "Inverter (Cascadia PM100, via inverter.dbc)"),
     (0xC0, 0xCF, "RMS/Inverter"),
     (0xD0, 0xDF, "Heartbeats"),

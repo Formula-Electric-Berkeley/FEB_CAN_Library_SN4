@@ -246,6 +246,48 @@ def get_imu_acceleration_data_front(frame_id: int):
     return msg
 
 
+def get_imu_acceleration_data_rear(frame_id: int):
+    # LSM6DSOX @ FS=2g: 1 LSB = 0.061 mg (matches lsm6dsox_from_fs2_to_mg)
+    accelX = cantools.db.Signal(
+        name="acceleration_x",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=0.061),
+        unit="mg",
+    )
+    accelY = cantools.db.Signal(
+        name="acceleration_y",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=0.061),
+        unit="mg",
+    )
+    accelZ = cantools.db.Signal(
+        name="acceleration_z",
+        start=32,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=0.061),
+        unit="mg",
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="imu_acceleration_data_rear",
+        length=6,
+        signals=[accelX, accelY, accelZ],
+        comment="REAR IMU acceleration (LSM6DSOX, FS=2g, 0.061 mg/LSB).",
+        strict=True
+    )
+
+    return msg
+
+
 def get_imu_gyro_data_front(frame_id: int):
     # LSM6DSOX @ FS=2000dps: 1 LSB = 70 mdps (matches lsm6dsox_from_fs2000_to_mdps)
     gyroX = cantools.db.Signal(
@@ -282,6 +324,48 @@ def get_imu_gyro_data_front(frame_id: int):
         length=6,
         signals=[gyroX, gyroY, gyroZ],
         comment="IMU gyro (LSM6DSOX, FS=2000dps, 70 mdps/LSB).",
+        strict=True
+    )
+
+    return msg
+
+
+def get_imu_gyro_data_rear(frame_id: int):
+    # LSM6DSOX @ FS=2000dps: 1 LSB = 70 mdps (matches lsm6dsox_from_fs2000_to_mdps)
+    gyroX = cantools.db.Signal(
+        name="gyro_x",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=70),
+        unit="mdps",
+    )
+    gyroY = cantools.db.Signal(
+        name="gyro_y",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=70),
+        unit="mdps",
+    )
+    gyroZ = cantools.db.Signal(
+        name="gyro_z",
+        start=32,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=70),
+        unit="mdps",
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="imu_gyro_data_rear",
+        length=6,
+        signals=[gyroX, gyroY, gyroZ],
+        comment="REAR IMU gyro (LSM6DSOX, FS=2000dps, 70 mdps/LSB).",
         strict=True
     )
 
@@ -330,6 +414,48 @@ def get_magnetometer_data_front(frame_id: int):
     return msg
 
 
+def get_magnetometer_data_rear(frame_id: int):
+    # LIS3MDL @ FS=16gauss: 1 LSB = 1000/1711 = 0.5844 mG (matches lis3mdl_from_fs16_to_gauss * 1000)
+    magX = cantools.db.Signal(
+        name="magnetometer_x",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=0.5844),
+        unit="mG",
+    )
+    magY = cantools.db.Signal(
+        name="magnetometer_y",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=0.5844),
+        unit="mG",
+    )
+    magZ = cantools.db.Signal(
+        name="magnetometer_z",
+        start=32,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=0.5844),
+        unit="mG",
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="magnetometer_data_rear",
+        length=6,
+        signals=[magX, magY, magZ],
+        comment="REAR Magnetometer (LIS3MDL, FS=16gauss, 0.5844 mG/LSB).",
+        strict=True
+    )
+
+    return msg
+
+
 
 
 def get_gps_pos_data(frame_id: int):
@@ -365,6 +491,39 @@ def get_gps_pos_data(frame_id: int):
     return msg
 
 
+def get_gps_pos_data_rear(frame_id: int):
+    # int32 signed degrees * 1e7 (~11mm globally)
+    lat = cantools.db.Signal(
+        name="latitude",
+        start=0,
+        length=32,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=1e-7),
+        unit="deg",
+    )
+    lon = cantools.db.Signal(
+        name="longitude",
+        start=32,
+        length=32,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=1e-7),
+        unit="deg",
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="gps_pos_data_rear",
+        length=8,
+        signals=[lat, lon],
+        comment="REAR GPS lat/lon as int32 * 1e7 deg (~11mm/LSB globally).",
+        strict=True
+    )
+
+    return msg
+
+
 
 def get_gps_motion_data(frame_id: int):
     # uint16 0.01 km/h and 0.01 deg
@@ -393,6 +552,39 @@ def get_gps_motion_data(frame_id: int):
         length=4,
         signals=[speed, course],
         comment="GPS speed (0.01 km/h) and course-over-ground (0.01 deg).",
+        strict=True
+    )
+
+    return msg
+
+
+def get_gps_motion_data_rear(frame_id: int):
+    # uint16 0.01 km/h and 0.01 deg
+    speed = cantools.db.Signal(
+        name="speed",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+        is_signed=False,
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="km/h",
+    )
+    course = cantools.db.Signal(
+        name="course",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=False,
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="deg",
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="gps_motion_data_rear",
+        length=4,
+        signals=[speed, course],
+        comment="REAR GPS speed (0.01 km/h) and course-over-ground (0.01 deg).",
         strict=True
     )
 
@@ -433,6 +625,42 @@ def get_gps_time_data(frame_id: int):
 
     return msg
 
+
+def get_gps_time_data_rear(frame_id: int):
+    hours = cantools.db.Signal(
+        name="hours",
+        start=0,
+        length=8,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    minutes = cantools.db.Signal(
+        name="minutes",
+        start=8,
+        length=8,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    seconds = cantools.db.Signal(
+        name="seconds",
+        start=16,
+        length=8,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="gps_time_data_rear",
+        length=3,
+        signals=[hours, minutes, seconds],
+        comment="REAR GPS Time data message (UTC).",
+        strict=True
+    )
+
+    return msg
+
 def get_gps_date_data(frame_id: int):
     day = cantools.db.Signal(
         name="day",
@@ -463,6 +691,42 @@ def get_gps_date_data(frame_id: int):
         length=3,
         signals=[day, month, year],
         comment="GPS Date data message.",
+        strict=True
+    )
+
+    return msg
+
+
+def get_gps_date_data_rear(frame_id: int):
+    day = cantools.db.Signal(
+        name="day",
+        start=0,
+        length=8,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+    month = cantools.db.Signal(
+        name="month",
+        start=8,
+        length=8,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    year = cantools.db.Signal(
+        name="year",
+        start=16,
+        length=8,
+        byte_order="little_endian",
+        is_signed=True,
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="gps_date_data_rear",
+        length=3,
+        signals=[day, month, year],
+        comment="REAR GPS Date data message.",
         strict=True
     )
 
@@ -504,6 +768,43 @@ def get_gps_altitude_data(frame_id: int):
     )
     return msg
 
+
+def get_gps_altitude_data_rear(frame_id: int):
+    altitude = cantools.db.Signal(
+        name="altitude",
+        start=0,
+        length=32,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="m",
+    )
+    hdop = cantools.db.Signal(
+        name="hdop",
+        start=32,
+        length=16,
+        byte_order="little_endian",
+        is_signed=False,
+        conversion=BaseConversion.factory(scale=0.01),
+    )
+    vdop = cantools.db.Signal(
+        name="vdop",
+        start=48,
+        length=16,
+        byte_order="little_endian",
+        is_signed=False,
+        conversion=BaseConversion.factory(scale=0.01),
+    )
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="gps_altitude_data_rear",
+        length=8,
+        signals=[altitude, hdop, vdop],
+        comment="REAR GPS altitude (cm) + horizontal/vertical DOP (x100).",
+        strict=True
+    )
+    return msg
+
 def get_gps_status_data(frame_id: int):
     fix_type = cantools.db.Signal(
         name="fix_type",
@@ -541,6 +842,44 @@ def get_gps_status_data(frame_id: int):
     )
     return msg
 
+
+def get_gps_status_data_rear(frame_id: int):
+    fix_type = cantools.db.Signal(
+        name="fix_type",
+        start=0, length=8, byte_order="little_endian", is_signed=False,
+        comment="0=Invalid, 1=GPS, 2=DGPS, 3=PPS",
+    )
+    fix_mode = cantools.db.Signal(
+        name="fix_mode",
+        start=8, length=8, byte_order="little_endian", is_signed=False,
+        comment="1=NoFix, 2=2D, 3=3D",
+    )
+    sats_in_use = cantools.db.Signal(
+        name="sats_in_use", start=16, length=8, byte_order="little_endian", is_signed=False,
+    )
+    sats_in_view = cantools.db.Signal(
+        name="sats_in_view", start=24, length=8, byte_order="little_endian", is_signed=False,
+    )
+    valid = cantools.db.Signal(
+        name="valid", start=32, length=8, byte_order="little_endian", is_signed=False,
+    )
+    has_fix = cantools.db.Signal(
+        name="has_fix", start=40, length=8, byte_order="little_endian", is_signed=False,
+    )
+    pdop = cantools.db.Signal(
+        name="pdop", start=48, length=16, byte_order="little_endian", is_signed=False,
+        conversion=BaseConversion.factory(scale=0.01),
+    )
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="gps_status_data_rear",
+        length=8,
+        signals=[fix_type, fix_mode, sats_in_use, sats_in_view, valid, has_fix, pdop],
+        comment="REAR GPS fix quality, satellite counts, validity flags, position DOP.",
+        strict=True
+    )
+    return msg
+
 def get_fusion_quaternion_data(frame_id: int):
     # Quaternion components scaled to int16 by * 32767, range [-1, 1].
     qw = cantools.db.Signal(
@@ -569,6 +908,35 @@ def get_fusion_quaternion_data(frame_id: int):
     )
     return msg
 
+
+def get_fusion_quaternion_data_rear(frame_id: int):
+    # Quaternion components scaled to int16 by * 32767, range [-1, 1].
+    qw = cantools.db.Signal(
+        name="q_w", start=0, length=16, byte_order="little_endian", is_signed=True,
+        conversion=BaseConversion.factory(scale=1.0/32767.0),
+    )
+    qx = cantools.db.Signal(
+        name="q_x", start=16, length=16, byte_order="little_endian", is_signed=True,
+        conversion=BaseConversion.factory(scale=1.0/32767.0),
+    )
+    qy = cantools.db.Signal(
+        name="q_y", start=32, length=16, byte_order="little_endian", is_signed=True,
+        conversion=BaseConversion.factory(scale=1.0/32767.0),
+    )
+    qz = cantools.db.Signal(
+        name="q_z", start=48, length=16, byte_order="little_endian", is_signed=True,
+        conversion=BaseConversion.factory(scale=1.0/32767.0),
+    )
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="fusion_quaternion_data_rear",
+        length=8,
+        signals=[qw, qx, qy, qz],
+        comment="REAR Fusion AHRS orientation quaternion (w, x, y, z).",
+        strict=True
+    )
+    return msg
+
 def get_fusion_euler_data(frame_id: int):
     roll = cantools.db.Signal(
         name="roll", start=0, length=16, byte_order="little_endian", is_signed=True,
@@ -588,6 +956,30 @@ def get_fusion_euler_data(frame_id: int):
         length=6,
         signals=[roll, pitch, yaw],
         comment="Fusion AHRS Euler angles (0.01 deg/LSB).",
+        strict=True
+    )
+    return msg
+
+
+def get_fusion_euler_data_rear(frame_id: int):
+    roll = cantools.db.Signal(
+        name="roll", start=0, length=16, byte_order="little_endian", is_signed=True,
+        conversion=BaseConversion.factory(scale=0.01), unit="deg",
+    )
+    pitch = cantools.db.Signal(
+        name="pitch", start=16, length=16, byte_order="little_endian", is_signed=True,
+        conversion=BaseConversion.factory(scale=0.01), unit="deg",
+    )
+    yaw = cantools.db.Signal(
+        name="yaw", start=32, length=16, byte_order="little_endian", is_signed=True,
+        conversion=BaseConversion.factory(scale=0.01), unit="deg",
+    )
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="fusion_euler_data_rear",
+        length=6,
+        signals=[roll, pitch, yaw],
+        comment="REAR Fusion AHRS Euler angles (0.01 deg/LSB).",
         strict=True
     )
     return msg
@@ -616,6 +1008,31 @@ def get_fusion_linear_accel_data(frame_id: int):
     )
     return msg
 
+
+def get_fusion_linear_accel_data_rear(frame_id: int):
+    # Linear acceleration in body frame, gravity removed (mg).
+    ax = cantools.db.Signal(
+        name="lin_accel_x", start=0, length=16, byte_order="little_endian", is_signed=True,
+        unit="mg",
+    )
+    ay = cantools.db.Signal(
+        name="lin_accel_y", start=16, length=16, byte_order="little_endian", is_signed=True,
+        unit="mg",
+    )
+    az = cantools.db.Signal(
+        name="lin_accel_z", start=32, length=16, byte_order="little_endian", is_signed=True,
+        unit="mg",
+    )
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="fusion_linear_accel_data_rear",
+        length=6,
+        signals=[ax, ay, az],
+        comment="REAR Fusion linear acceleration (gravity removed, body frame, mg).",
+        strict=True
+    )
+    return msg
+
 def get_fusion_earth_accel_data(frame_id: int):
     # Linear acceleration in earth frame, gravity removed (mg).
     ax = cantools.db.Signal(
@@ -636,6 +1053,31 @@ def get_fusion_earth_accel_data(frame_id: int):
         length=6,
         signals=[ax, ay, az],
         comment="Fusion linear acceleration (gravity removed, earth frame, mg).",
+        strict=True
+    )
+    return msg
+
+
+def get_fusion_earth_accel_data_rear(frame_id: int):
+    # Linear acceleration in earth frame, gravity removed (mg).
+    ax = cantools.db.Signal(
+        name="earth_accel_x", start=0, length=16, byte_order="little_endian", is_signed=True,
+        unit="mg",
+    )
+    ay = cantools.db.Signal(
+        name="earth_accel_y", start=16, length=16, byte_order="little_endian", is_signed=True,
+        unit="mg",
+    )
+    az = cantools.db.Signal(
+        name="earth_accel_z", start=32, length=16, byte_order="little_endian", is_signed=True,
+        unit="mg",
+    )
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="fusion_earth_accel_data_rear",
+        length=6,
+        signals=[ax, ay, az],
+        comment="REAR Fusion linear acceleration (gravity removed, earth frame, mg).",
         strict=True
     )
     return msg
@@ -663,6 +1105,30 @@ def get_fusion_status_data(frame_id: int):
     )
     return msg
 
+
+def get_fusion_status_data_rear(frame_id: int):
+    flags = cantools.db.Signal(
+        name="flags", start=0, length=8, byte_order="little_endian", is_signed=False,
+        comment="bit0 startup, bit1 angRateRecov, bit2 accelRecov, bit3 magRecov, bit4 accelIgnored, bit5 magIgnored",
+    )
+    accel_error = cantools.db.Signal(
+        name="accel_error", start=8, length=8, byte_order="little_endian", is_signed=False,
+        conversion=BaseConversion.factory(scale=0.1), unit="deg",
+    )
+    mag_error = cantools.db.Signal(
+        name="mag_error", start=16, length=8, byte_order="little_endian", is_signed=False,
+        conversion=BaseConversion.factory(scale=0.1), unit="deg",
+    )
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="fusion_status_data_rear",
+        length=3,
+        signals=[flags, accel_error, mag_error],
+        comment="REAR Fusion AHRS internal flags + accel/mag rejection errors.",
+        strict=True
+    )
+    return msg
+
 def get_sensor_temps_data(frame_id: int):
     imu_temp = cantools.db.Signal(
         name="imu_temp", start=0, length=16, byte_order="little_endian", is_signed=True,
@@ -678,6 +1144,26 @@ def get_sensor_temps_data(frame_id: int):
         length=4,
         signals=[imu_temp, mag_temp],
         comment="LSM6DSOX IMU and LIS3MDL magnetometer die temperatures (0.01 degC/LSB).",
+        strict=True
+    )
+    return msg
+
+
+def get_sensor_temps_data_rear(frame_id: int):
+    imu_temp = cantools.db.Signal(
+        name="imu_temp", start=0, length=16, byte_order="little_endian", is_signed=True,
+        conversion=BaseConversion.factory(scale=0.01), unit="degC",
+    )
+    mag_temp = cantools.db.Signal(
+        name="mag_temp", start=16, length=16, byte_order="little_endian", is_signed=True,
+        conversion=BaseConversion.factory(scale=0.01), unit="degC",
+    )
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="sensor_temps_data_rear",
+        length=4,
+        signals=[imu_temp, mag_temp],
+        comment="REAR LSM6DSOX IMU and LIS3MDL magnetometer die temperatures (0.01 degC/LSB).",
         strict=True
     )
     return msg

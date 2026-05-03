@@ -35,8 +35,11 @@ extern "C" {
 #define FEB_CAN_WSS_FRONT_DATA_FRAME_ID (0x24u)
 #define FEB_CAN_WSS_REAR_DATA_FRAME_ID (0x25u)
 #define FEB_CAN_IMU_ACCELERATION_DATA_FRAME_ID (0x26u)
+#define FEB_CAN_IMU_ACCELERATION_DATA_REAR_FRAME_ID (0x27u)
 #define FEB_CAN_IMU_GYRO_DATA_FRAME_ID (0x28u)
+#define FEB_CAN_IMU_GYRO_DATA_REAR_FRAME_ID (0x29u)
 #define FEB_CAN_MAGNETOMETER_DATA_FRAME_ID (0x2au)
+#define FEB_CAN_MAGNETOMETER_DATA_REAR_FRAME_ID (0x2bu)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_FRAME_ID (0x2du)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_5_FRAME_ID (0x2eu)
 #define FEB_CAN_BBB_TPS_FRAME_ID (0x34u)
@@ -56,6 +59,18 @@ extern "C" {
 #define FEB_CAN_FUSION_EARTH_ACCEL_DATA_FRAME_ID (0x4au)
 #define FEB_CAN_FUSION_STATUS_DATA_FRAME_ID (0x4bu)
 #define FEB_CAN_SENSOR_TEMPS_DATA_FRAME_ID (0x4cu)
+#define FEB_CAN_SENSOR_TEMPS_DATA_REAR_FRAME_ID (0x4du)
+#define FEB_CAN_GPS_POS_DATA_REAR_FRAME_ID (0x50u)
+#define FEB_CAN_GPS_ALTITUDE_DATA_REAR_FRAME_ID (0x51u)
+#define FEB_CAN_GPS_MOTION_DATA_REAR_FRAME_ID (0x52u)
+#define FEB_CAN_GPS_TIME_DATA_REAR_FRAME_ID (0x53u)
+#define FEB_CAN_GPS_DATE_DATA_REAR_FRAME_ID (0x54u)
+#define FEB_CAN_GPS_STATUS_DATA_REAR_FRAME_ID (0x55u)
+#define FEB_CAN_FUSION_QUATERNION_DATA_REAR_FRAME_ID (0x57u)
+#define FEB_CAN_FUSION_EULER_DATA_REAR_FRAME_ID (0x58u)
+#define FEB_CAN_FUSION_LINEAR_ACCEL_DATA_REAR_FRAME_ID (0x59u)
+#define FEB_CAN_FUSION_EARTH_ACCEL_DATA_REAR_FRAME_ID (0x5au)
+#define FEB_CAN_FUSION_STATUS_DATA_REAR_FRAME_ID (0x5bu)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_FRAME_ID (0xa0u)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_FRAME_ID (0xa1u)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_FRAME_ID (0xa2u)
@@ -113,8 +128,11 @@ extern "C" {
 #define FEB_CAN_WSS_FRONT_DATA_LENGTH (8u)
 #define FEB_CAN_WSS_REAR_DATA_LENGTH (8u)
 #define FEB_CAN_IMU_ACCELERATION_DATA_LENGTH (6u)
+#define FEB_CAN_IMU_ACCELERATION_DATA_REAR_LENGTH (6u)
 #define FEB_CAN_IMU_GYRO_DATA_LENGTH (6u)
+#define FEB_CAN_IMU_GYRO_DATA_REAR_LENGTH (6u)
 #define FEB_CAN_MAGNETOMETER_DATA_LENGTH (6u)
+#define FEB_CAN_MAGNETOMETER_DATA_REAR_LENGTH (6u)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_LENGTH (8u)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_5_LENGTH (2u)
 #define FEB_CAN_BBB_TPS_LENGTH (4u)
@@ -134,6 +152,18 @@ extern "C" {
 #define FEB_CAN_FUSION_EARTH_ACCEL_DATA_LENGTH (6u)
 #define FEB_CAN_FUSION_STATUS_DATA_LENGTH (3u)
 #define FEB_CAN_SENSOR_TEMPS_DATA_LENGTH (4u)
+#define FEB_CAN_SENSOR_TEMPS_DATA_REAR_LENGTH (4u)
+#define FEB_CAN_GPS_POS_DATA_REAR_LENGTH (8u)
+#define FEB_CAN_GPS_ALTITUDE_DATA_REAR_LENGTH (8u)
+#define FEB_CAN_GPS_MOTION_DATA_REAR_LENGTH (4u)
+#define FEB_CAN_GPS_TIME_DATA_REAR_LENGTH (3u)
+#define FEB_CAN_GPS_DATE_DATA_REAR_LENGTH (3u)
+#define FEB_CAN_GPS_STATUS_DATA_REAR_LENGTH (8u)
+#define FEB_CAN_FUSION_QUATERNION_DATA_REAR_LENGTH (8u)
+#define FEB_CAN_FUSION_EULER_DATA_REAR_LENGTH (6u)
+#define FEB_CAN_FUSION_LINEAR_ACCEL_DATA_REAR_LENGTH (6u)
+#define FEB_CAN_FUSION_EARTH_ACCEL_DATA_REAR_LENGTH (6u)
+#define FEB_CAN_FUSION_STATUS_DATA_REAR_LENGTH (3u)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_LENGTH (8u)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_LENGTH (8u)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_LENGTH (8u)
@@ -191,8 +221,11 @@ extern "C" {
 #define FEB_CAN_WSS_FRONT_DATA_IS_EXTENDED (0)
 #define FEB_CAN_WSS_REAR_DATA_IS_EXTENDED (0)
 #define FEB_CAN_IMU_ACCELERATION_DATA_IS_EXTENDED (0)
+#define FEB_CAN_IMU_ACCELERATION_DATA_REAR_IS_EXTENDED (0)
 #define FEB_CAN_IMU_GYRO_DATA_IS_EXTENDED (0)
+#define FEB_CAN_IMU_GYRO_DATA_REAR_IS_EXTENDED (0)
 #define FEB_CAN_MAGNETOMETER_DATA_IS_EXTENDED (0)
+#define FEB_CAN_MAGNETOMETER_DATA_REAR_IS_EXTENDED (0)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_IS_EXTENDED (0)
 #define FEB_CAN_DART_TACH_MEASUREMENTS_5_IS_EXTENDED (0)
 #define FEB_CAN_BBB_TPS_IS_EXTENDED (0)
@@ -212,6 +245,18 @@ extern "C" {
 #define FEB_CAN_FUSION_EARTH_ACCEL_DATA_IS_EXTENDED (0)
 #define FEB_CAN_FUSION_STATUS_DATA_IS_EXTENDED (0)
 #define FEB_CAN_SENSOR_TEMPS_DATA_IS_EXTENDED (0)
+#define FEB_CAN_SENSOR_TEMPS_DATA_REAR_IS_EXTENDED (0)
+#define FEB_CAN_GPS_POS_DATA_REAR_IS_EXTENDED (0)
+#define FEB_CAN_GPS_ALTITUDE_DATA_REAR_IS_EXTENDED (0)
+#define FEB_CAN_GPS_MOTION_DATA_REAR_IS_EXTENDED (0)
+#define FEB_CAN_GPS_TIME_DATA_REAR_IS_EXTENDED (0)
+#define FEB_CAN_GPS_DATE_DATA_REAR_IS_EXTENDED (0)
+#define FEB_CAN_GPS_STATUS_DATA_REAR_IS_EXTENDED (0)
+#define FEB_CAN_FUSION_QUATERNION_DATA_REAR_IS_EXTENDED (0)
+#define FEB_CAN_FUSION_EULER_DATA_REAR_IS_EXTENDED (0)
+#define FEB_CAN_FUSION_LINEAR_ACCEL_DATA_REAR_IS_EXTENDED (0)
+#define FEB_CAN_FUSION_EARTH_ACCEL_DATA_REAR_IS_EXTENDED (0)
+#define FEB_CAN_FUSION_STATUS_DATA_REAR_IS_EXTENDED (0)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_IS_EXTENDED (0)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_IS_EXTENDED (0)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_IS_EXTENDED (0)
@@ -315,8 +360,11 @@ extern "C" {
 #define FEB_CAN_WSS_FRONT_DATA_NAME "wss_front_data"
 #define FEB_CAN_WSS_REAR_DATA_NAME "wss_rear_data"
 #define FEB_CAN_IMU_ACCELERATION_DATA_NAME "imu_acceleration_data"
+#define FEB_CAN_IMU_ACCELERATION_DATA_REAR_NAME "imu_acceleration_data_rear"
 #define FEB_CAN_IMU_GYRO_DATA_NAME "imu_gyro_data"
+#define FEB_CAN_IMU_GYRO_DATA_REAR_NAME "imu_gyro_data_rear"
 #define FEB_CAN_MAGNETOMETER_DATA_NAME "magnetometer_data"
+#define FEB_CAN_MAGNETOMETER_DATA_REAR_NAME "magnetometer_data_rear"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_NAME "DART_TACH_measurements_1234"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_5_NAME "DART_TACH_measurements_5"
 #define FEB_CAN_BBB_TPS_NAME "bbb_tps"
@@ -336,6 +384,18 @@ extern "C" {
 #define FEB_CAN_FUSION_EARTH_ACCEL_DATA_NAME "fusion_earth_accel_data"
 #define FEB_CAN_FUSION_STATUS_DATA_NAME "fusion_status_data"
 #define FEB_CAN_SENSOR_TEMPS_DATA_NAME "sensor_temps_data"
+#define FEB_CAN_SENSOR_TEMPS_DATA_REAR_NAME "sensor_temps_data_rear"
+#define FEB_CAN_GPS_POS_DATA_REAR_NAME "gps_pos_data_rear"
+#define FEB_CAN_GPS_ALTITUDE_DATA_REAR_NAME "gps_altitude_data_rear"
+#define FEB_CAN_GPS_MOTION_DATA_REAR_NAME "gps_motion_data_rear"
+#define FEB_CAN_GPS_TIME_DATA_REAR_NAME "gps_time_data_rear"
+#define FEB_CAN_GPS_DATE_DATA_REAR_NAME "gps_date_data_rear"
+#define FEB_CAN_GPS_STATUS_DATA_REAR_NAME "gps_status_data_rear"
+#define FEB_CAN_FUSION_QUATERNION_DATA_REAR_NAME "fusion_quaternion_data_rear"
+#define FEB_CAN_FUSION_EULER_DATA_REAR_NAME "fusion_euler_data_rear"
+#define FEB_CAN_FUSION_LINEAR_ACCEL_DATA_REAR_NAME "fusion_linear_accel_data_rear"
+#define FEB_CAN_FUSION_EARTH_ACCEL_DATA_REAR_NAME "fusion_earth_accel_data_rear"
+#define FEB_CAN_FUSION_STATUS_DATA_REAR_NAME "fusion_status_data_rear"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_NAME "M160_Temperature_Set_1"
 #define FEB_CAN_M161_TEMPERATURE_SET_2_NAME "M161_Temperature_Set_2"
 #define FEB_CAN_M162_TEMPERATURE_SET_3_NAME "M162_Temperature_Set_3"
@@ -444,12 +504,21 @@ extern "C" {
 #define FEB_CAN_IMU_ACCELERATION_DATA_ACCELERATION_X_NAME "acceleration_x"
 #define FEB_CAN_IMU_ACCELERATION_DATA_ACCELERATION_Y_NAME "acceleration_y"
 #define FEB_CAN_IMU_ACCELERATION_DATA_ACCELERATION_Z_NAME "acceleration_z"
+#define FEB_CAN_IMU_ACCELERATION_DATA_REAR_ACCELERATION_X_NAME "acceleration_x"
+#define FEB_CAN_IMU_ACCELERATION_DATA_REAR_ACCELERATION_Y_NAME "acceleration_y"
+#define FEB_CAN_IMU_ACCELERATION_DATA_REAR_ACCELERATION_Z_NAME "acceleration_z"
 #define FEB_CAN_IMU_GYRO_DATA_GYRO_X_NAME "gyro_x"
 #define FEB_CAN_IMU_GYRO_DATA_GYRO_Y_NAME "gyro_y"
 #define FEB_CAN_IMU_GYRO_DATA_GYRO_Z_NAME "gyro_z"
+#define FEB_CAN_IMU_GYRO_DATA_REAR_GYRO_X_NAME "gyro_x"
+#define FEB_CAN_IMU_GYRO_DATA_REAR_GYRO_Y_NAME "gyro_y"
+#define FEB_CAN_IMU_GYRO_DATA_REAR_GYRO_Z_NAME "gyro_z"
 #define FEB_CAN_MAGNETOMETER_DATA_MAGNETOMETER_X_NAME "magnetometer_x"
 #define FEB_CAN_MAGNETOMETER_DATA_MAGNETOMETER_Y_NAME "magnetometer_y"
 #define FEB_CAN_MAGNETOMETER_DATA_MAGNETOMETER_Z_NAME "magnetometer_z"
+#define FEB_CAN_MAGNETOMETER_DATA_REAR_MAGNETOMETER_X_NAME "magnetometer_x"
+#define FEB_CAN_MAGNETOMETER_DATA_REAR_MAGNETOMETER_Y_NAME "magnetometer_y"
+#define FEB_CAN_MAGNETOMETER_DATA_REAR_MAGNETOMETER_Z_NAME "magnetometer_z"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_FAN1_SPEED_NAME "fan1_speed"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_FAN2_SPEED_NAME "fan2_speed"
 #define FEB_CAN_DART_TACH_MEASUREMENTS_1234_FAN3_SPEED_NAME "fan3_speed"
@@ -507,6 +576,44 @@ extern "C" {
 #define FEB_CAN_FUSION_STATUS_DATA_MAG_ERROR_NAME "mag_error"
 #define FEB_CAN_SENSOR_TEMPS_DATA_IMU_TEMP_NAME "imu_temp"
 #define FEB_CAN_SENSOR_TEMPS_DATA_MAG_TEMP_NAME "mag_temp"
+#define FEB_CAN_SENSOR_TEMPS_DATA_REAR_IMU_TEMP_NAME "imu_temp"
+#define FEB_CAN_SENSOR_TEMPS_DATA_REAR_MAG_TEMP_NAME "mag_temp"
+#define FEB_CAN_GPS_POS_DATA_REAR_LATITUDE_NAME "latitude"
+#define FEB_CAN_GPS_POS_DATA_REAR_LONGITUDE_NAME "longitude"
+#define FEB_CAN_GPS_ALTITUDE_DATA_REAR_ALTITUDE_NAME "altitude"
+#define FEB_CAN_GPS_ALTITUDE_DATA_REAR_HDOP_NAME "hdop"
+#define FEB_CAN_GPS_ALTITUDE_DATA_REAR_VDOP_NAME "vdop"
+#define FEB_CAN_GPS_MOTION_DATA_REAR_SPEED_NAME "speed"
+#define FEB_CAN_GPS_MOTION_DATA_REAR_COURSE_NAME "course"
+#define FEB_CAN_GPS_TIME_DATA_REAR_HOURS_NAME "hours"
+#define FEB_CAN_GPS_TIME_DATA_REAR_MINUTES_NAME "minutes"
+#define FEB_CAN_GPS_TIME_DATA_REAR_SECONDS_NAME "seconds"
+#define FEB_CAN_GPS_DATE_DATA_REAR_DAY_NAME "day"
+#define FEB_CAN_GPS_DATE_DATA_REAR_MONTH_NAME "month"
+#define FEB_CAN_GPS_DATE_DATA_REAR_YEAR_NAME "year"
+#define FEB_CAN_GPS_STATUS_DATA_REAR_FIX_TYPE_NAME "fix_type"
+#define FEB_CAN_GPS_STATUS_DATA_REAR_FIX_MODE_NAME "fix_mode"
+#define FEB_CAN_GPS_STATUS_DATA_REAR_SATS_IN_USE_NAME "sats_in_use"
+#define FEB_CAN_GPS_STATUS_DATA_REAR_SATS_IN_VIEW_NAME "sats_in_view"
+#define FEB_CAN_GPS_STATUS_DATA_REAR_VALID_NAME "valid"
+#define FEB_CAN_GPS_STATUS_DATA_REAR_HAS_FIX_NAME "has_fix"
+#define FEB_CAN_GPS_STATUS_DATA_REAR_PDOP_NAME "pdop"
+#define FEB_CAN_FUSION_QUATERNION_DATA_REAR_Q_W_NAME "q_w"
+#define FEB_CAN_FUSION_QUATERNION_DATA_REAR_Q_X_NAME "q_x"
+#define FEB_CAN_FUSION_QUATERNION_DATA_REAR_Q_Y_NAME "q_y"
+#define FEB_CAN_FUSION_QUATERNION_DATA_REAR_Q_Z_NAME "q_z"
+#define FEB_CAN_FUSION_EULER_DATA_REAR_ROLL_NAME "roll"
+#define FEB_CAN_FUSION_EULER_DATA_REAR_PITCH_NAME "pitch"
+#define FEB_CAN_FUSION_EULER_DATA_REAR_YAW_NAME "yaw"
+#define FEB_CAN_FUSION_LINEAR_ACCEL_DATA_REAR_LIN_ACCEL_X_NAME "lin_accel_x"
+#define FEB_CAN_FUSION_LINEAR_ACCEL_DATA_REAR_LIN_ACCEL_Y_NAME "lin_accel_y"
+#define FEB_CAN_FUSION_LINEAR_ACCEL_DATA_REAR_LIN_ACCEL_Z_NAME "lin_accel_z"
+#define FEB_CAN_FUSION_EARTH_ACCEL_DATA_REAR_EARTH_ACCEL_X_NAME "earth_accel_x"
+#define FEB_CAN_FUSION_EARTH_ACCEL_DATA_REAR_EARTH_ACCEL_Y_NAME "earth_accel_y"
+#define FEB_CAN_FUSION_EARTH_ACCEL_DATA_REAR_EARTH_ACCEL_Z_NAME "earth_accel_z"
+#define FEB_CAN_FUSION_STATUS_DATA_REAR_FLAGS_NAME "flags"
+#define FEB_CAN_FUSION_STATUS_DATA_REAR_ACCEL_ERROR_NAME "accel_error"
+#define FEB_CAN_FUSION_STATUS_DATA_REAR_MAG_ERROR_NAME "mag_error"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_INV_MODULE_A_NAME "INV_Module_A"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_INV_MODULE_B_NAME "INV_Module_B"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_INV_MODULE_C_NAME "INV_Module_C"
@@ -1728,6 +1835,36 @@ struct feb_can_imu_acceleration_data_t {
 };
 
 /**
+ * Signals in message imu_acceleration_data_rear.
+ *
+ * REAR IMU acceleration (LSM6DSOX, FS=2g, 0.061 mg/LSB).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_imu_acceleration_data_rear_t {
+    /**
+     * Range: -
+     * Scale: 0.061
+     * Offset: 0
+     */
+    int16_t acceleration_x;
+
+    /**
+     * Range: -
+     * Scale: 0.061
+     * Offset: 0
+     */
+    int16_t acceleration_y;
+
+    /**
+     * Range: -
+     * Scale: 0.061
+     * Offset: 0
+     */
+    int16_t acceleration_z;
+};
+
+/**
  * Signals in message imu_gyro_data.
  *
  * IMU gyro (LSM6DSOX, FS=2000dps, 70 mdps/LSB).
@@ -1758,6 +1895,36 @@ struct feb_can_imu_gyro_data_t {
 };
 
 /**
+ * Signals in message imu_gyro_data_rear.
+ *
+ * REAR IMU gyro (LSM6DSOX, FS=2000dps, 70 mdps/LSB).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_imu_gyro_data_rear_t {
+    /**
+     * Range: -
+     * Scale: 70
+     * Offset: 0
+     */
+    int16_t gyro_x;
+
+    /**
+     * Range: -
+     * Scale: 70
+     * Offset: 0
+     */
+    int16_t gyro_y;
+
+    /**
+     * Range: -
+     * Scale: 70
+     * Offset: 0
+     */
+    int16_t gyro_z;
+};
+
+/**
  * Signals in message magnetometer_data.
  *
  * Magnetometer (LIS3MDL, FS=16gauss, 0.5844 mG/LSB).
@@ -1765,6 +1932,36 @@ struct feb_can_imu_gyro_data_t {
  * All signal values are as on the CAN bus.
  */
 struct feb_can_magnetometer_data_t {
+    /**
+     * Range: -
+     * Scale: 0.5844
+     * Offset: 0
+     */
+    int16_t magnetometer_x;
+
+    /**
+     * Range: -
+     * Scale: 0.5844
+     * Offset: 0
+     */
+    int16_t magnetometer_y;
+
+    /**
+     * Range: -
+     * Scale: 0.5844
+     * Offset: 0
+     */
+    int16_t magnetometer_z;
+};
+
+/**
+ * Signals in message magnetometer_data_rear.
+ *
+ * REAR Magnetometer (LIS3MDL, FS=16gauss, 0.5844 mG/LSB).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_magnetometer_data_rear_t {
     /**
      * Range: -
      * Scale: 0.5844
@@ -2361,6 +2558,386 @@ struct feb_can_sensor_temps_data_t {
      * Offset: 0
      */
     int16_t mag_temp;
+};
+
+/**
+ * Signals in message sensor_temps_data_rear.
+ *
+ * REAR LSM6DSOX IMU and LIS3MDL magnetometer die temperatures (0.01 degC/LSB).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_sensor_temps_data_rear_t {
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    int16_t imu_temp;
+
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    int16_t mag_temp;
+};
+
+/**
+ * Signals in message gps_pos_data_rear.
+ *
+ * REAR GPS lat/lon as int32 * 1e7 deg (~11mm/LSB globally).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_gps_pos_data_rear_t {
+    /**
+     * Range: -
+     * Scale: 1e-07
+     * Offset: 0
+     */
+    int32_t latitude;
+
+    /**
+     * Range: -
+     * Scale: 1e-07
+     * Offset: 0
+     */
+    int32_t longitude;
+};
+
+/**
+ * Signals in message gps_altitude_data_rear.
+ *
+ * REAR GPS altitude (cm) + horizontal/vertical DOP (x100).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_gps_altitude_data_rear_t {
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    int32_t altitude;
+
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    uint16_t hdop;
+
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    uint16_t vdop;
+};
+
+/**
+ * Signals in message gps_motion_data_rear.
+ *
+ * REAR GPS speed (0.01 km/h) and course-over-ground (0.01 deg).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_gps_motion_data_rear_t {
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    uint16_t speed;
+
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    uint16_t course;
+};
+
+/**
+ * Signals in message gps_time_data_rear.
+ *
+ * REAR GPS Time data message (UTC).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_gps_time_data_rear_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int8_t hours;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int8_t minutes;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int8_t seconds;
+};
+
+/**
+ * Signals in message gps_date_data_rear.
+ *
+ * REAR GPS Date data message.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_gps_date_data_rear_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int8_t day;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int8_t month;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int8_t year;
+};
+
+/**
+ * Signals in message gps_status_data_rear.
+ *
+ * REAR GPS fix quality, satellite counts, validity flags, position DOP.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_gps_status_data_rear_t {
+    /**
+     * 0=Invalid, 1=GPS, 2=DGPS, 3=PPS
+     *
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t fix_type;
+
+    /**
+     * 1=NoFix, 2=2D, 3=3D
+     *
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t fix_mode;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t sats_in_use;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t sats_in_view;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t valid;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t has_fix;
+
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    uint16_t pdop;
+};
+
+/**
+ * Signals in message fusion_quaternion_data_rear.
+ *
+ * REAR Fusion AHRS orientation quaternion (w, x, y, z).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_fusion_quaternion_data_rear_t {
+    /**
+     * Range: -
+     * Scale: 3.051850947599719e-05
+     * Offset: 0
+     */
+    int16_t q_w;
+
+    /**
+     * Range: -
+     * Scale: 3.051850947599719e-05
+     * Offset: 0
+     */
+    int16_t q_x;
+
+    /**
+     * Range: -
+     * Scale: 3.051850947599719e-05
+     * Offset: 0
+     */
+    int16_t q_y;
+
+    /**
+     * Range: -
+     * Scale: 3.051850947599719e-05
+     * Offset: 0
+     */
+    int16_t q_z;
+};
+
+/**
+ * Signals in message fusion_euler_data_rear.
+ *
+ * REAR Fusion AHRS Euler angles (0.01 deg/LSB).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_fusion_euler_data_rear_t {
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    int16_t roll;
+
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    int16_t pitch;
+
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    int16_t yaw;
+};
+
+/**
+ * Signals in message fusion_linear_accel_data_rear.
+ *
+ * REAR Fusion linear acceleration (gravity removed, body frame, mg).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_fusion_linear_accel_data_rear_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t lin_accel_x;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t lin_accel_y;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t lin_accel_z;
+};
+
+/**
+ * Signals in message fusion_earth_accel_data_rear.
+ *
+ * REAR Fusion linear acceleration (gravity removed, earth frame, mg).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_fusion_earth_accel_data_rear_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t earth_accel_x;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t earth_accel_y;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int16_t earth_accel_z;
+};
+
+/**
+ * Signals in message fusion_status_data_rear.
+ *
+ * REAR Fusion AHRS internal flags + accel/mag rejection errors.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_fusion_status_data_rear_t {
+    /**
+     * bit0 startup, bit1 angRateRecov, bit2 accelRecov, bit3 magRecov, bit4 accelIgnored, bit5 magIgnored
+     *
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t flags;
+
+    /**
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint8_t accel_error;
+
+    /**
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint8_t mag_error;
 };
 
 /**
@@ -9197,6 +9774,124 @@ double feb_can_imu_acceleration_data_acceleration_z_decode(int16_t value);
 bool feb_can_imu_acceleration_data_acceleration_z_is_in_range(int16_t value);
 
 /**
+ * Pack message imu_acceleration_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_imu_acceleration_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_imu_acceleration_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message imu_acceleration_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_imu_acceleration_data_rear_unpack(
+    struct feb_can_imu_acceleration_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from imu_acceleration_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_imu_acceleration_data_rear_init(struct feb_can_imu_acceleration_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_imu_acceleration_data_rear_acceleration_x_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_imu_acceleration_data_rear_acceleration_x_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_imu_acceleration_data_rear_acceleration_x_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_imu_acceleration_data_rear_acceleration_y_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_imu_acceleration_data_rear_acceleration_y_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_imu_acceleration_data_rear_acceleration_y_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_imu_acceleration_data_rear_acceleration_z_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_imu_acceleration_data_rear_acceleration_z_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_imu_acceleration_data_rear_acceleration_z_is_in_range(int16_t value);
+
+/**
  * Pack message imu_gyro_data.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -9315,6 +10010,124 @@ double feb_can_imu_gyro_data_gyro_z_decode(int16_t value);
 bool feb_can_imu_gyro_data_gyro_z_is_in_range(int16_t value);
 
 /**
+ * Pack message imu_gyro_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_imu_gyro_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_imu_gyro_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message imu_gyro_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_imu_gyro_data_rear_unpack(
+    struct feb_can_imu_gyro_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from imu_gyro_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_imu_gyro_data_rear_init(struct feb_can_imu_gyro_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_imu_gyro_data_rear_gyro_x_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_imu_gyro_data_rear_gyro_x_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_imu_gyro_data_rear_gyro_x_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_imu_gyro_data_rear_gyro_y_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_imu_gyro_data_rear_gyro_y_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_imu_gyro_data_rear_gyro_y_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_imu_gyro_data_rear_gyro_z_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_imu_gyro_data_rear_gyro_z_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_imu_gyro_data_rear_gyro_z_is_in_range(int16_t value);
+
+/**
  * Pack message magnetometer_data.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -9431,6 +10244,124 @@ double feb_can_magnetometer_data_magnetometer_z_decode(int16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_magnetometer_data_magnetometer_z_is_in_range(int16_t value);
+
+/**
+ * Pack message magnetometer_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_magnetometer_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_magnetometer_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message magnetometer_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_magnetometer_data_rear_unpack(
+    struct feb_can_magnetometer_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from magnetometer_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_magnetometer_data_rear_init(struct feb_can_magnetometer_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_magnetometer_data_rear_magnetometer_x_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_magnetometer_data_rear_magnetometer_x_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_magnetometer_data_rear_magnetometer_x_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_magnetometer_data_rear_magnetometer_y_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_magnetometer_data_rear_magnetometer_y_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_magnetometer_data_rear_magnetometer_y_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_magnetometer_data_rear_magnetometer_z_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_magnetometer_data_rear_magnetometer_z_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_magnetometer_data_rear_magnetometer_z_is_in_range(int16_t value);
 
 /**
  * Pack message DART_TACH_measurements_1234.
@@ -11673,6 +12604,1476 @@ double feb_can_sensor_temps_data_mag_temp_decode(int16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_sensor_temps_data_mag_temp_is_in_range(int16_t value);
+
+/**
+ * Pack message sensor_temps_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_sensor_temps_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_sensor_temps_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message sensor_temps_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_sensor_temps_data_rear_unpack(
+    struct feb_can_sensor_temps_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from sensor_temps_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_sensor_temps_data_rear_init(struct feb_can_sensor_temps_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_sensor_temps_data_rear_imu_temp_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_sensor_temps_data_rear_imu_temp_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_sensor_temps_data_rear_imu_temp_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_sensor_temps_data_rear_mag_temp_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_sensor_temps_data_rear_mag_temp_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_sensor_temps_data_rear_mag_temp_is_in_range(int16_t value);
+
+/**
+ * Pack message gps_pos_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_gps_pos_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_pos_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message gps_pos_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_gps_pos_data_rear_unpack(
+    struct feb_can_gps_pos_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from gps_pos_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_gps_pos_data_rear_init(struct feb_can_gps_pos_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int32_t feb_can_gps_pos_data_rear_latitude_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_pos_data_rear_latitude_decode(int32_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_pos_data_rear_latitude_is_in_range(int32_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int32_t feb_can_gps_pos_data_rear_longitude_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_pos_data_rear_longitude_decode(int32_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_pos_data_rear_longitude_is_in_range(int32_t value);
+
+/**
+ * Pack message gps_altitude_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_gps_altitude_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_altitude_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message gps_altitude_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_gps_altitude_data_rear_unpack(
+    struct feb_can_gps_altitude_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from gps_altitude_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_gps_altitude_data_rear_init(struct feb_can_gps_altitude_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int32_t feb_can_gps_altitude_data_rear_altitude_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_altitude_data_rear_altitude_decode(int32_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_altitude_data_rear_altitude_is_in_range(int32_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_gps_altitude_data_rear_hdop_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_altitude_data_rear_hdop_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_altitude_data_rear_hdop_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_gps_altitude_data_rear_vdop_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_altitude_data_rear_vdop_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_altitude_data_rear_vdop_is_in_range(uint16_t value);
+
+/**
+ * Pack message gps_motion_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_gps_motion_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_motion_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message gps_motion_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_gps_motion_data_rear_unpack(
+    struct feb_can_gps_motion_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from gps_motion_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_gps_motion_data_rear_init(struct feb_can_gps_motion_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_gps_motion_data_rear_speed_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_motion_data_rear_speed_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_motion_data_rear_speed_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_gps_motion_data_rear_course_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_motion_data_rear_course_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_motion_data_rear_course_is_in_range(uint16_t value);
+
+/**
+ * Pack message gps_time_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_gps_time_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_time_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message gps_time_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_gps_time_data_rear_unpack(
+    struct feb_can_gps_time_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from gps_time_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_gps_time_data_rear_init(struct feb_can_gps_time_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int8_t feb_can_gps_time_data_rear_hours_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_time_data_rear_hours_decode(int8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_time_data_rear_hours_is_in_range(int8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int8_t feb_can_gps_time_data_rear_minutes_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_time_data_rear_minutes_decode(int8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_time_data_rear_minutes_is_in_range(int8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int8_t feb_can_gps_time_data_rear_seconds_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_time_data_rear_seconds_decode(int8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_time_data_rear_seconds_is_in_range(int8_t value);
+
+/**
+ * Pack message gps_date_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_gps_date_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_date_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message gps_date_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_gps_date_data_rear_unpack(
+    struct feb_can_gps_date_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from gps_date_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_gps_date_data_rear_init(struct feb_can_gps_date_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int8_t feb_can_gps_date_data_rear_day_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_date_data_rear_day_decode(int8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_date_data_rear_day_is_in_range(int8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int8_t feb_can_gps_date_data_rear_month_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_date_data_rear_month_decode(int8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_date_data_rear_month_is_in_range(int8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int8_t feb_can_gps_date_data_rear_year_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_date_data_rear_year_decode(int8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_date_data_rear_year_is_in_range(int8_t value);
+
+/**
+ * Pack message gps_status_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_gps_status_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_status_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message gps_status_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_gps_status_data_rear_unpack(
+    struct feb_can_gps_status_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from gps_status_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_gps_status_data_rear_init(struct feb_can_gps_status_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_gps_status_data_rear_fix_type_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_status_data_rear_fix_type_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_status_data_rear_fix_type_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_gps_status_data_rear_fix_mode_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_status_data_rear_fix_mode_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_status_data_rear_fix_mode_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_gps_status_data_rear_sats_in_use_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_status_data_rear_sats_in_use_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_status_data_rear_sats_in_use_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_gps_status_data_rear_sats_in_view_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_status_data_rear_sats_in_view_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_status_data_rear_sats_in_view_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_gps_status_data_rear_valid_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_status_data_rear_valid_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_status_data_rear_valid_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_gps_status_data_rear_has_fix_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_status_data_rear_has_fix_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_status_data_rear_has_fix_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_gps_status_data_rear_pdop_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_gps_status_data_rear_pdop_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_gps_status_data_rear_pdop_is_in_range(uint16_t value);
+
+/**
+ * Pack message fusion_quaternion_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_fusion_quaternion_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_fusion_quaternion_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message fusion_quaternion_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_fusion_quaternion_data_rear_unpack(
+    struct feb_can_fusion_quaternion_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from fusion_quaternion_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_fusion_quaternion_data_rear_init(struct feb_can_fusion_quaternion_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_fusion_quaternion_data_rear_q_w_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_quaternion_data_rear_q_w_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_quaternion_data_rear_q_w_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_fusion_quaternion_data_rear_q_x_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_quaternion_data_rear_q_x_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_quaternion_data_rear_q_x_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_fusion_quaternion_data_rear_q_y_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_quaternion_data_rear_q_y_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_quaternion_data_rear_q_y_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_fusion_quaternion_data_rear_q_z_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_quaternion_data_rear_q_z_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_quaternion_data_rear_q_z_is_in_range(int16_t value);
+
+/**
+ * Pack message fusion_euler_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_fusion_euler_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_fusion_euler_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message fusion_euler_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_fusion_euler_data_rear_unpack(
+    struct feb_can_fusion_euler_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from fusion_euler_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_fusion_euler_data_rear_init(struct feb_can_fusion_euler_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_fusion_euler_data_rear_roll_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_euler_data_rear_roll_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_euler_data_rear_roll_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_fusion_euler_data_rear_pitch_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_euler_data_rear_pitch_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_euler_data_rear_pitch_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_fusion_euler_data_rear_yaw_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_euler_data_rear_yaw_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_euler_data_rear_yaw_is_in_range(int16_t value);
+
+/**
+ * Pack message fusion_linear_accel_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_fusion_linear_accel_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_fusion_linear_accel_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message fusion_linear_accel_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_fusion_linear_accel_data_rear_unpack(
+    struct feb_can_fusion_linear_accel_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from fusion_linear_accel_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_fusion_linear_accel_data_rear_init(struct feb_can_fusion_linear_accel_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_fusion_linear_accel_data_rear_lin_accel_x_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_linear_accel_data_rear_lin_accel_x_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_linear_accel_data_rear_lin_accel_x_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_fusion_linear_accel_data_rear_lin_accel_y_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_linear_accel_data_rear_lin_accel_y_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_linear_accel_data_rear_lin_accel_y_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_fusion_linear_accel_data_rear_lin_accel_z_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_linear_accel_data_rear_lin_accel_z_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_linear_accel_data_rear_lin_accel_z_is_in_range(int16_t value);
+
+/**
+ * Pack message fusion_earth_accel_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_fusion_earth_accel_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_fusion_earth_accel_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message fusion_earth_accel_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_fusion_earth_accel_data_rear_unpack(
+    struct feb_can_fusion_earth_accel_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from fusion_earth_accel_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_fusion_earth_accel_data_rear_init(struct feb_can_fusion_earth_accel_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_fusion_earth_accel_data_rear_earth_accel_x_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_earth_accel_data_rear_earth_accel_x_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_earth_accel_data_rear_earth_accel_x_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_fusion_earth_accel_data_rear_earth_accel_y_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_earth_accel_data_rear_earth_accel_y_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_earth_accel_data_rear_earth_accel_y_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_fusion_earth_accel_data_rear_earth_accel_z_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_earth_accel_data_rear_earth_accel_z_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_earth_accel_data_rear_earth_accel_z_is_in_range(int16_t value);
+
+/**
+ * Pack message fusion_status_data_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_fusion_status_data_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_fusion_status_data_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message fusion_status_data_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_fusion_status_data_rear_unpack(
+    struct feb_can_fusion_status_data_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from fusion_status_data_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_fusion_status_data_rear_init(struct feb_can_fusion_status_data_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_fusion_status_data_rear_flags_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_status_data_rear_flags_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_status_data_rear_flags_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_fusion_status_data_rear_accel_error_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_status_data_rear_accel_error_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_status_data_rear_accel_error_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_fusion_status_data_rear_mag_error_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_fusion_status_data_rear_mag_error_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_fusion_status_data_rear_mag_error_is_in_range(uint8_t value);
 
 /**
  * Pack message M160_Temperature_Set_1.
