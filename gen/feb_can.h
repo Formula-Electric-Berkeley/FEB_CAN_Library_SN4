@@ -60,6 +60,8 @@ extern "C" {
 #define FEB_CAN_FUSION_STATUS_DATA_FRAME_ID (0x4bu)
 #define FEB_CAN_SENSOR_TEMPS_DATA_FRAME_ID (0x4cu)
 #define FEB_CAN_SENSOR_TEMPS_DATA_REAR_FRAME_ID (0x4du)
+#define FEB_CAN_STEER_ANGLE_DATA_FRAME_ID (0x4eu)
+#define FEB_CAN_STEER_STATUS_DATA_FRAME_ID (0x4fu)
 #define FEB_CAN_GPS_POS_DATA_REAR_FRAME_ID (0x50u)
 #define FEB_CAN_GPS_ALTITUDE_DATA_REAR_FRAME_ID (0x51u)
 #define FEB_CAN_GPS_MOTION_DATA_REAR_FRAME_ID (0x52u)
@@ -153,6 +155,8 @@ extern "C" {
 #define FEB_CAN_FUSION_STATUS_DATA_LENGTH (3u)
 #define FEB_CAN_SENSOR_TEMPS_DATA_LENGTH (4u)
 #define FEB_CAN_SENSOR_TEMPS_DATA_REAR_LENGTH (4u)
+#define FEB_CAN_STEER_ANGLE_DATA_LENGTH (5u)
+#define FEB_CAN_STEER_STATUS_DATA_LENGTH (3u)
 #define FEB_CAN_GPS_POS_DATA_REAR_LENGTH (8u)
 #define FEB_CAN_GPS_ALTITUDE_DATA_REAR_LENGTH (8u)
 #define FEB_CAN_GPS_MOTION_DATA_REAR_LENGTH (4u)
@@ -246,6 +250,8 @@ extern "C" {
 #define FEB_CAN_FUSION_STATUS_DATA_IS_EXTENDED (0)
 #define FEB_CAN_SENSOR_TEMPS_DATA_IS_EXTENDED (0)
 #define FEB_CAN_SENSOR_TEMPS_DATA_REAR_IS_EXTENDED (0)
+#define FEB_CAN_STEER_ANGLE_DATA_IS_EXTENDED (0)
+#define FEB_CAN_STEER_STATUS_DATA_IS_EXTENDED (0)
 #define FEB_CAN_GPS_POS_DATA_REAR_IS_EXTENDED (0)
 #define FEB_CAN_GPS_ALTITUDE_DATA_REAR_IS_EXTENDED (0)
 #define FEB_CAN_GPS_MOTION_DATA_REAR_IS_EXTENDED (0)
@@ -385,6 +391,8 @@ extern "C" {
 #define FEB_CAN_FUSION_STATUS_DATA_NAME "fusion_status_data"
 #define FEB_CAN_SENSOR_TEMPS_DATA_NAME "sensor_temps_data"
 #define FEB_CAN_SENSOR_TEMPS_DATA_REAR_NAME "sensor_temps_data_rear"
+#define FEB_CAN_STEER_ANGLE_DATA_NAME "steer_angle_data"
+#define FEB_CAN_STEER_STATUS_DATA_NAME "steer_status_data"
 #define FEB_CAN_GPS_POS_DATA_REAR_NAME "gps_pos_data_rear"
 #define FEB_CAN_GPS_ALTITUDE_DATA_REAR_NAME "gps_altitude_data_rear"
 #define FEB_CAN_GPS_MOTION_DATA_REAR_NAME "gps_motion_data_rear"
@@ -578,6 +586,11 @@ extern "C" {
 #define FEB_CAN_SENSOR_TEMPS_DATA_MAG_TEMP_NAME "mag_temp"
 #define FEB_CAN_SENSOR_TEMPS_DATA_REAR_IMU_TEMP_NAME "imu_temp"
 #define FEB_CAN_SENSOR_TEMPS_DATA_REAR_MAG_TEMP_NAME "mag_temp"
+#define FEB_CAN_STEER_ANGLE_DATA_ANGLE_NAME "angle"
+#define FEB_CAN_STEER_ANGLE_DATA_RAW_ANGLE_NAME "raw_angle"
+#define FEB_CAN_STEER_ANGLE_DATA_AGC_NAME "agc"
+#define FEB_CAN_STEER_STATUS_DATA_STATUS_NAME "status"
+#define FEB_CAN_STEER_STATUS_DATA_MAGNITUDE_NAME "magnitude"
 #define FEB_CAN_GPS_POS_DATA_REAR_LATITUDE_NAME "latitude"
 #define FEB_CAN_GPS_POS_DATA_REAR_LONGITUDE_NAME "longitude"
 #define FEB_CAN_GPS_ALTITUDE_DATA_REAR_ALTITUDE_NAME "altitude"
@@ -2581,6 +2594,59 @@ struct feb_can_sensor_temps_data_rear_t {
      * Offset: 0
      */
     int16_t mag_temp;
+};
+
+/**
+ * Signals in message steer_angle_data.
+ *
+ * Steering encoder filtered angle, raw angle, and AGC gain.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_steer_angle_data_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t angle;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t raw_angle;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t agc;
+};
+
+/**
+ * Signals in message steer_status_data.
+ *
+ * Steering encoder magnet status flags and CORDIC magnitude.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_steer_status_data_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t status;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t magnitude;
 };
 
 /**
@@ -12695,6 +12761,215 @@ double feb_can_sensor_temps_data_rear_mag_temp_decode(int16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_sensor_temps_data_rear_mag_temp_is_in_range(int16_t value);
+
+/**
+ * Pack message steer_angle_data.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_steer_angle_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_steer_angle_data_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message steer_angle_data.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_steer_angle_data_unpack(
+    struct feb_can_steer_angle_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from steer_angle_data.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_steer_angle_data_init(struct feb_can_steer_angle_data_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_steer_angle_data_angle_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_steer_angle_data_angle_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_steer_angle_data_angle_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_steer_angle_data_raw_angle_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_steer_angle_data_raw_angle_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_steer_angle_data_raw_angle_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_steer_angle_data_agc_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_steer_angle_data_agc_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_steer_angle_data_agc_is_in_range(uint8_t value);
+
+/**
+ * Pack message steer_status_data.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_steer_status_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_steer_status_data_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message steer_status_data.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_steer_status_data_unpack(
+    struct feb_can_steer_status_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from steer_status_data.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_steer_status_data_init(struct feb_can_steer_status_data_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_steer_status_data_status_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_steer_status_data_status_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_steer_status_data_status_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_steer_status_data_magnitude_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_steer_status_data_magnitude_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_steer_status_data_magnitude_is_in_range(uint16_t value);
 
 /**
  * Pack message gps_pos_data_rear.

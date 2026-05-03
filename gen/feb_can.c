@@ -4972,6 +4972,181 @@ bool feb_can_sensor_temps_data_rear_mag_temp_is_in_range(int16_t value)
     return (true);
 }
 
+int feb_can_steer_angle_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_steer_angle_data_t *src_p,
+    size_t size)
+{
+    if (size < 5u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 5);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->angle, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->angle, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->raw_angle, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->raw_angle, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u8(src_p->agc, 0u, 0xffu);
+
+    return (5);
+}
+
+int feb_can_steer_angle_data_unpack(
+    struct feb_can_steer_angle_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 5u) {
+        return (-EINVAL);
+    }
+
+    dst_p->angle = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->angle |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->raw_angle = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->raw_angle |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->agc = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_steer_angle_data_init(struct feb_can_steer_angle_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_steer_angle_data_t));
+
+    return 0;
+}
+
+uint16_t feb_can_steer_angle_data_angle_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_steer_angle_data_angle_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_steer_angle_data_angle_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_steer_angle_data_raw_angle_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_steer_angle_data_raw_angle_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_steer_angle_data_raw_angle_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_steer_angle_data_agc_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_steer_angle_data_agc_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_steer_angle_data_agc_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_steer_status_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_steer_status_data_t *src_p,
+    size_t size)
+{
+    if (size < 3u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 3);
+
+    dst_p[0] |= pack_left_shift_u8(src_p->status, 0u, 0xffu);
+    dst_p[1] |= pack_left_shift_u16(src_p->magnitude, 0u, 0xffu);
+    dst_p[2] |= pack_right_shift_u16(src_p->magnitude, 8u, 0xffu);
+
+    return (3);
+}
+
+int feb_can_steer_status_data_unpack(
+    struct feb_can_steer_status_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 3u) {
+        return (-EINVAL);
+    }
+
+    dst_p->status = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+    dst_p->magnitude = unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+    dst_p->magnitude |= unpack_left_shift_u16(src_p[2], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_steer_status_data_init(struct feb_can_steer_status_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_steer_status_data_t));
+
+    return 0;
+}
+
+uint8_t feb_can_steer_status_data_status_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_steer_status_data_status_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_steer_status_data_status_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_steer_status_data_magnitude_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_steer_status_data_magnitude_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_steer_status_data_magnitude_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
 int feb_can_gps_pos_data_rear_pack(
     uint8_t *dst_p,
     const struct feb_can_gps_pos_data_rear_t *src_p,

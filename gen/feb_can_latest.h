@@ -65,6 +65,8 @@ typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_fusion_earth_accel_da
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_fusion_status_data_t data; } FEB_CAN_State_fusion_status_data_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_sensor_temps_data_t data; } FEB_CAN_State_sensor_temps_data_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_sensor_temps_data_rear_t data; } FEB_CAN_State_sensor_temps_data_rear_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_steer_angle_data_t data; } FEB_CAN_State_steer_angle_data_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_steer_status_data_t data; } FEB_CAN_State_steer_status_data_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_gps_pos_data_rear_t data; } FEB_CAN_State_gps_pos_data_rear_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_gps_altitude_data_rear_t data; } FEB_CAN_State_gps_altitude_data_rear_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_gps_motion_data_rear_t data; } FEB_CAN_State_gps_motion_data_rear_t;
@@ -158,6 +160,8 @@ typedef struct {
     FEB_CAN_State_fusion_status_data_t fusion_status_data;
     FEB_CAN_State_sensor_temps_data_t sensor_temps_data;
     FEB_CAN_State_sensor_temps_data_rear_t sensor_temps_data_rear;
+    FEB_CAN_State_steer_angle_data_t steer_angle_data;
+    FEB_CAN_State_steer_status_data_t steer_status_data;
     FEB_CAN_State_gps_pos_data_rear_t gps_pos_data_rear;
     FEB_CAN_State_gps_altitude_data_rear_t gps_altitude_data_rear;
     FEB_CAN_State_gps_motion_data_rear_t gps_motion_data_rear;

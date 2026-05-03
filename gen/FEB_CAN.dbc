@@ -274,6 +274,15 @@ BO_ 77 sensor_temps_data_rear: 4 Vector__XXX
  SG_ mag_temp : 16|16@1- (0.01,0) [0|0] "degC" Vector__XXX
  SG_ imu_temp : 0|16@1- (0.01,0) [0|0] "degC" Vector__XXX
 
+BO_ 78 steer_angle_data: 5 Vector__XXX
+ SG_ agc : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ raw_angle : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ angle : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 79 steer_status_data: 3 Vector__XXX
+ SG_ magnitude : 8|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ status : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
 BO_ 80 gps_pos_data_rear: 8 Vector__XXX
  SG_ longitude : 32|32@1- (1e-07,0) [0|0] "deg" Vector__XXX
  SG_ latitude : 0|32@1- (1e-07,0) [0|0] "deg" Vector__XXX
@@ -977,6 +986,8 @@ CM_ BO_ 75 "Fusion AHRS internal flags + accel/mag rejection errors.";
 CM_ SG_ 75 flags "bit0 startup, bit1 angRateRecov, bit2 accelRecov, bit3 magRecov, bit4 accelIgnored, bit5 magIgnored";
 CM_ BO_ 76 "LSM6DSOX IMU and LIS3MDL magnetometer die temperatures (0.01 degC/LSB).";
 CM_ BO_ 77 "REAR LSM6DSOX IMU and LIS3MDL magnetometer die temperatures (0.01 degC/LSB).";
+CM_ BO_ 78 "Steering encoder filtered angle, raw angle, and AGC gain.";
+CM_ BO_ 79 "Steering encoder magnet status flags and CORDIC magnitude.";
 CM_ BO_ 80 "REAR GPS lat/lon as int32 * 1e7 deg (~11mm/LSB globally).";
 CM_ BO_ 81 "REAR GPS altitude (cm) + horizontal/vertical DOP (x100).";
 CM_ BO_ 82 "REAR GPS speed (0.01 km/h) and course-over-ground (0.01 deg).";

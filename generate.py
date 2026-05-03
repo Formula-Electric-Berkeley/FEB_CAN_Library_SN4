@@ -168,6 +168,10 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x4D: (sensor_msg.get_sensor_temps_data_rear, "[Sensors][REAR] IMU + Magnetometer die temperature"),
     # 0x4E-0x4F: Reserved for future extended sensor messages
 
+    0x4E: (sensor_msg.get_steering_angle_data, "[Steering][FRONT] filtered + raw angle, AGC gain"),
+    0x4F: (sensor_msg.get_steering_status_data, "[Steering][FRONT] magnet status flags + magnitude"),
+
+
     # ----- Sensor Nodes REAR (extended): GPS / Fusion (0x50-0x5F) -----
     0x50: (sensor_msg.get_gps_pos_data_rear, "[GPS][REAR] latitude/longitude (int32 * 1e-7 deg)"),
     0x51: (sensor_msg.get_gps_altitude_data_rear, "[GPS][REAR] altitude (cm) + HDOP/VDOP"),
@@ -182,6 +186,8 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x5A: (sensor_msg.get_fusion_earth_accel_data_rear, "[Fusion][REAR] linear acceleration (earth frame)"),
     0x5B: (sensor_msg.get_fusion_status_data_rear, "[Fusion][REAR] internal flags + rejection errors"),
     # 0x5C-0x5F: Reserved for future REAR extended sensor messages
+
+
 
     # ----- RMS/Inverter Messages (0xA0-0xCF) -----
     # IMMUTABLE: All IDs in this block come verbatim from inverter.dbc (Cascadia PM100).

@@ -286,6 +286,18 @@ int FEB_CAN_State_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, ui
         feb_can_state.sensor_temps_data_rear.meta.last_rx_ms = now_ms;
         feb_can_state.sensor_temps_data_rear.meta.rx_count++;
         return 0;
+    case FEB_CAN_STEER_ANGLE_DATA_FRAME_ID:
+        if (feb_can_steer_angle_data_unpack(&feb_can_state.steer_angle_data.data, data, dlc) < 0) return -2;
+        feb_can_state.steer_angle_data.meta.present = true;
+        feb_can_state.steer_angle_data.meta.last_rx_ms = now_ms;
+        feb_can_state.steer_angle_data.meta.rx_count++;
+        return 0;
+    case FEB_CAN_STEER_STATUS_DATA_FRAME_ID:
+        if (feb_can_steer_status_data_unpack(&feb_can_state.steer_status_data.data, data, dlc) < 0) return -2;
+        feb_can_state.steer_status_data.meta.present = true;
+        feb_can_state.steer_status_data.meta.last_rx_ms = now_ms;
+        feb_can_state.steer_status_data.meta.rx_count++;
+        return 0;
     case FEB_CAN_GPS_POS_DATA_REAR_FRAME_ID:
         if (feb_can_gps_pos_data_rear_unpack(&feb_can_state.gps_pos_data_rear.data, data, dlc) < 0) return -2;
         feb_can_state.gps_pos_data_rear.meta.present = true;
@@ -611,6 +623,8 @@ void FEB_CAN_State_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_state.fusion_status_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4B, "fusion_status_data", (unsigned long)feb_can_state.fusion_status_data.meta.last_rx_ms, (unsigned long)feb_can_state.fusion_status_data.meta.rx_count);
     if (feb_can_state.sensor_temps_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4C, "sensor_temps_data", (unsigned long)feb_can_state.sensor_temps_data.meta.last_rx_ms, (unsigned long)feb_can_state.sensor_temps_data.meta.rx_count);
     if (feb_can_state.sensor_temps_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4D, "sensor_temps_data_rear", (unsigned long)feb_can_state.sensor_temps_data_rear.meta.last_rx_ms, (unsigned long)feb_can_state.sensor_temps_data_rear.meta.rx_count);
+    if (feb_can_state.steer_angle_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4E, "steer_angle_data", (unsigned long)feb_can_state.steer_angle_data.meta.last_rx_ms, (unsigned long)feb_can_state.steer_angle_data.meta.rx_count);
+    if (feb_can_state.steer_status_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4F, "steer_status_data", (unsigned long)feb_can_state.steer_status_data.meta.last_rx_ms, (unsigned long)feb_can_state.steer_status_data.meta.rx_count);
     if (feb_can_state.gps_pos_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x50, "gps_pos_data_rear", (unsigned long)feb_can_state.gps_pos_data_rear.meta.last_rx_ms, (unsigned long)feb_can_state.gps_pos_data_rear.meta.rx_count);
     if (feb_can_state.gps_altitude_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x51, "gps_altitude_data_rear", (unsigned long)feb_can_state.gps_altitude_data_rear.meta.last_rx_ms, (unsigned long)feb_can_state.gps_altitude_data_rear.meta.rx_count);
     if (feb_can_state.gps_motion_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x52, "gps_motion_data_rear", (unsigned long)feb_can_state.gps_motion_data_rear.meta.last_rx_ms, (unsigned long)feb_can_state.gps_motion_data_rear.meta.rx_count);
@@ -1034,6 +1048,21 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
         printf_fn("0x%02X  sensor_temps_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4D, (int)feb_can_state.sensor_temps_data_rear.meta.present, (unsigned long)feb_can_state.sensor_temps_data_rear.meta.last_rx_ms, (unsigned long)feb_can_state.sensor_temps_data_rear.meta.rx_count);
         printf_fn("  imu_temp                         = %ld\r\n", (long)feb_can_state.sensor_temps_data_rear.data.imu_temp);
         printf_fn("  mag_temp                         = %ld\r\n", (long)feb_can_state.sensor_temps_data_rear.data.mag_temp);
+        return 0;
+    }
+    if (strcmp(name, "steer_angle_data") == 0)
+    {
+        printf_fn("0x%02X  steer_angle_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4E, (int)feb_can_state.steer_angle_data.meta.present, (unsigned long)feb_can_state.steer_angle_data.meta.last_rx_ms, (unsigned long)feb_can_state.steer_angle_data.meta.rx_count);
+        printf_fn("  angle                            = %ld\r\n", (long)feb_can_state.steer_angle_data.data.angle);
+        printf_fn("  raw_angle                        = %ld\r\n", (long)feb_can_state.steer_angle_data.data.raw_angle);
+        printf_fn("  agc                              = %ld\r\n", (long)feb_can_state.steer_angle_data.data.agc);
+        return 0;
+    }
+    if (strcmp(name, "steer_status_data") == 0)
+    {
+        printf_fn("0x%02X  steer_status_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4F, (int)feb_can_state.steer_status_data.meta.present, (unsigned long)feb_can_state.steer_status_data.meta.last_rx_ms, (unsigned long)feb_can_state.steer_status_data.meta.rx_count);
+        printf_fn("  status                           = %ld\r\n", (long)feb_can_state.steer_status_data.data.status);
+        printf_fn("  magnitude                        = %ld\r\n", (long)feb_can_state.steer_status_data.data.magnitude);
         return 0;
     }
     if (strcmp(name, "gps_pos_data_rear") == 0)

@@ -2,8 +2,75 @@ import cantools
 from cantools.database.conversion import BaseConversion
 
 
+def get_steering_angle_data(frame_id: int):
+    """
+    Frame 0x4E — steer_angle_data (5 bytes):
+      [0..1]  angle      uint16  12-bit filtered angle  (0-4095, LSB = 0.0879 deg)
+      [2..3]  raw_angle  uint16  12-bit raw angle       (0-4095, LSB = 0.0879 deg)
+      [4]     agc        uint8   AGC gain value         (0-255)
+    """
+    angle = cantools.db.Signal(
+        name="angle",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+        is_signed=False,
+    )
+    raw_angle = cantools.db.Signal(
+        name="raw_angle",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=False,
+    )
+    agc = cantools.db.Signal(
+        name="agc",
+        start=32,
+        length=8,
+        byte_order="little_endian",
+        is_signed=False,
+    )
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="steer_angle_data",
+        length=5,
+        signals=[angle, raw_angle, agc],
+        comment="Steering encoder filtered angle, raw angle, and AGC gain.",
+        strict=True,
+    )
+    return msg
 
-def get_steering_data(frame_id: int):
+
+def get_steering_status_data(frame_id: int):
+    """
+    Frame 0x4F — steer_status_data (3 bytes):
+      [0]     status     uint8   magnet flags (bit0=MH, bit1=ML, bit2=MD)
+      [1..2]  magnitude  uint16  12-bit CORDIC magnitude (0-4095)
+    """
+    status = cantools.db.Signal(
+        name="status",
+        start=0,
+        length=8,
+        byte_order="little_endian",
+        is_signed=False,
+    )
+    magnitude = cantools.db.Signal(
+        name="magnitude",
+        start=8,
+        length=16,
+        byte_order="little_endian",
+        is_signed=False,
+    )
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="steer_status_data",
+        length=3,
+        signals=[status, magnitude],
+        comment="Steering encoder magnet status flags and CORDIC magnitude.",
+        strict=True,
+    )
+    return msg
+
     can_counter = cantools.db.Signal(
         name="can_counter",
         start=0,
