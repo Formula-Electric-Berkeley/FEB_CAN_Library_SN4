@@ -190,6 +190,78 @@ int FEB_CAN_State_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, ui
         feb_can_state.pcu_raw_acc.meta.last_rx_ms = now_ms;
         feb_can_state.pcu_raw_acc.meta.rx_count++;
         return 0;
+    case FEB_CAN_GPS_POS_DATA_FRAME_ID:
+        if (feb_can_gps_pos_data_unpack(&feb_can_state.gps_pos_data.data, data, dlc) < 0) return -2;
+        feb_can_state.gps_pos_data.meta.present = true;
+        feb_can_state.gps_pos_data.meta.last_rx_ms = now_ms;
+        feb_can_state.gps_pos_data.meta.rx_count++;
+        return 0;
+    case FEB_CAN_GPS_ALTITUDE_DATA_FRAME_ID:
+        if (feb_can_gps_altitude_data_unpack(&feb_can_state.gps_altitude_data.data, data, dlc) < 0) return -2;
+        feb_can_state.gps_altitude_data.meta.present = true;
+        feb_can_state.gps_altitude_data.meta.last_rx_ms = now_ms;
+        feb_can_state.gps_altitude_data.meta.rx_count++;
+        return 0;
+    case FEB_CAN_GPS_MOTION_DATA_FRAME_ID:
+        if (feb_can_gps_motion_data_unpack(&feb_can_state.gps_motion_data.data, data, dlc) < 0) return -2;
+        feb_can_state.gps_motion_data.meta.present = true;
+        feb_can_state.gps_motion_data.meta.last_rx_ms = now_ms;
+        feb_can_state.gps_motion_data.meta.rx_count++;
+        return 0;
+    case FEB_CAN_GPS_TIME_DATA_FRAME_ID:
+        if (feb_can_gps_time_data_unpack(&feb_can_state.gps_time_data.data, data, dlc) < 0) return -2;
+        feb_can_state.gps_time_data.meta.present = true;
+        feb_can_state.gps_time_data.meta.last_rx_ms = now_ms;
+        feb_can_state.gps_time_data.meta.rx_count++;
+        return 0;
+    case FEB_CAN_GPS_DATE_DATA_FRAME_ID:
+        if (feb_can_gps_date_data_unpack(&feb_can_state.gps_date_data.data, data, dlc) < 0) return -2;
+        feb_can_state.gps_date_data.meta.present = true;
+        feb_can_state.gps_date_data.meta.last_rx_ms = now_ms;
+        feb_can_state.gps_date_data.meta.rx_count++;
+        return 0;
+    case FEB_CAN_GPS_STATUS_DATA_FRAME_ID:
+        if (feb_can_gps_status_data_unpack(&feb_can_state.gps_status_data.data, data, dlc) < 0) return -2;
+        feb_can_state.gps_status_data.meta.present = true;
+        feb_can_state.gps_status_data.meta.last_rx_ms = now_ms;
+        feb_can_state.gps_status_data.meta.rx_count++;
+        return 0;
+    case FEB_CAN_FUSION_QUATERNION_DATA_FRAME_ID:
+        if (feb_can_fusion_quaternion_data_unpack(&feb_can_state.fusion_quaternion_data.data, data, dlc) < 0) return -2;
+        feb_can_state.fusion_quaternion_data.meta.present = true;
+        feb_can_state.fusion_quaternion_data.meta.last_rx_ms = now_ms;
+        feb_can_state.fusion_quaternion_data.meta.rx_count++;
+        return 0;
+    case FEB_CAN_FUSION_EULER_DATA_FRAME_ID:
+        if (feb_can_fusion_euler_data_unpack(&feb_can_state.fusion_euler_data.data, data, dlc) < 0) return -2;
+        feb_can_state.fusion_euler_data.meta.present = true;
+        feb_can_state.fusion_euler_data.meta.last_rx_ms = now_ms;
+        feb_can_state.fusion_euler_data.meta.rx_count++;
+        return 0;
+    case FEB_CAN_FUSION_LINEAR_ACCEL_DATA_FRAME_ID:
+        if (feb_can_fusion_linear_accel_data_unpack(&feb_can_state.fusion_linear_accel_data.data, data, dlc) < 0) return -2;
+        feb_can_state.fusion_linear_accel_data.meta.present = true;
+        feb_can_state.fusion_linear_accel_data.meta.last_rx_ms = now_ms;
+        feb_can_state.fusion_linear_accel_data.meta.rx_count++;
+        return 0;
+    case FEB_CAN_FUSION_EARTH_ACCEL_DATA_FRAME_ID:
+        if (feb_can_fusion_earth_accel_data_unpack(&feb_can_state.fusion_earth_accel_data.data, data, dlc) < 0) return -2;
+        feb_can_state.fusion_earth_accel_data.meta.present = true;
+        feb_can_state.fusion_earth_accel_data.meta.last_rx_ms = now_ms;
+        feb_can_state.fusion_earth_accel_data.meta.rx_count++;
+        return 0;
+    case FEB_CAN_FUSION_STATUS_DATA_FRAME_ID:
+        if (feb_can_fusion_status_data_unpack(&feb_can_state.fusion_status_data.data, data, dlc) < 0) return -2;
+        feb_can_state.fusion_status_data.meta.present = true;
+        feb_can_state.fusion_status_data.meta.last_rx_ms = now_ms;
+        feb_can_state.fusion_status_data.meta.rx_count++;
+        return 0;
+    case FEB_CAN_SENSOR_TEMPS_DATA_FRAME_ID:
+        if (feb_can_sensor_temps_data_unpack(&feb_can_state.sensor_temps_data.data, data, dlc) < 0) return -2;
+        feb_can_state.sensor_temps_data.meta.present = true;
+        feb_can_state.sensor_temps_data.meta.last_rx_ms = now_ms;
+        feb_can_state.sensor_temps_data.meta.rx_count++;
+        return 0;
     case FEB_CAN_PCU_HEARTBEAT_FRAME_ID:
         if (feb_can_pcu_heartbeat_unpack(&feb_can_state.pcu_heartbeat.data, data, dlc) < 0) return -2;
         feb_can_state.pcu_heartbeat.meta.present = true;
@@ -433,6 +505,18 @@ void FEB_CAN_State_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_state.dash_tps.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x36, "dash_tps", (unsigned long)feb_can_state.dash_tps.meta.last_rx_ms, (unsigned long)feb_can_state.dash_tps.meta.rx_count);
     if (feb_can_state.dcu_tps.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x37, "dcu_tps", (unsigned long)feb_can_state.dcu_tps.meta.last_rx_ms, (unsigned long)feb_can_state.dcu_tps.meta.rx_count);
     if (feb_can_state.pcu_raw_acc.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x38, "pcu_raw_acc", (unsigned long)feb_can_state.pcu_raw_acc.meta.last_rx_ms, (unsigned long)feb_can_state.pcu_raw_acc.meta.rx_count);
+    if (feb_can_state.gps_pos_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x40, "gps_pos_data", (unsigned long)feb_can_state.gps_pos_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_pos_data.meta.rx_count);
+    if (feb_can_state.gps_altitude_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x41, "gps_altitude_data", (unsigned long)feb_can_state.gps_altitude_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_altitude_data.meta.rx_count);
+    if (feb_can_state.gps_motion_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x42, "gps_motion_data", (unsigned long)feb_can_state.gps_motion_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_motion_data.meta.rx_count);
+    if (feb_can_state.gps_time_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x43, "gps_time_data", (unsigned long)feb_can_state.gps_time_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_time_data.meta.rx_count);
+    if (feb_can_state.gps_date_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x44, "gps_date_data", (unsigned long)feb_can_state.gps_date_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_date_data.meta.rx_count);
+    if (feb_can_state.gps_status_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x45, "gps_status_data", (unsigned long)feb_can_state.gps_status_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_status_data.meta.rx_count);
+    if (feb_can_state.fusion_quaternion_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x47, "fusion_quaternion_data", (unsigned long)feb_can_state.fusion_quaternion_data.meta.last_rx_ms, (unsigned long)feb_can_state.fusion_quaternion_data.meta.rx_count);
+    if (feb_can_state.fusion_euler_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x48, "fusion_euler_data", (unsigned long)feb_can_state.fusion_euler_data.meta.last_rx_ms, (unsigned long)feb_can_state.fusion_euler_data.meta.rx_count);
+    if (feb_can_state.fusion_linear_accel_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x49, "fusion_linear_accel_data", (unsigned long)feb_can_state.fusion_linear_accel_data.meta.last_rx_ms, (unsigned long)feb_can_state.fusion_linear_accel_data.meta.rx_count);
+    if (feb_can_state.fusion_earth_accel_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4A, "fusion_earth_accel_data", (unsigned long)feb_can_state.fusion_earth_accel_data.meta.last_rx_ms, (unsigned long)feb_can_state.fusion_earth_accel_data.meta.rx_count);
+    if (feb_can_state.fusion_status_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4B, "fusion_status_data", (unsigned long)feb_can_state.fusion_status_data.meta.last_rx_ms, (unsigned long)feb_can_state.fusion_status_data.meta.rx_count);
+    if (feb_can_state.sensor_temps_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4C, "sensor_temps_data", (unsigned long)feb_can_state.sensor_temps_data.meta.last_rx_ms, (unsigned long)feb_can_state.sensor_temps_data.meta.rx_count);
     if (feb_can_state.pcu_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD0, "pcu_heartbeat", (unsigned long)feb_can_state.pcu_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_state.pcu_heartbeat.meta.rx_count);
     if (feb_can_state.dash_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD1, "dash_heartbeat", (unsigned long)feb_can_state.dash_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_state.dash_heartbeat.meta.rx_count);
     if (feb_can_state.lvpdb_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD2, "lvpdb_heartbeat", (unsigned long)feb_can_state.lvpdb_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_state.lvpdb_heartbeat.meta.rx_count);
@@ -628,8 +712,9 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
     if (strcmp(name, "wss_front_data") == 0)
     {
         printf_fn("0x%02X  wss_front_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x24, (int)feb_can_state.wss_front_data.meta.present, (unsigned long)feb_can_state.wss_front_data.meta.last_rx_ms, (unsigned long)feb_can_state.wss_front_data.meta.rx_count);
-        printf_fn("  wss_right_front                  = %ld\r\n", (long)feb_can_state.wss_front_data.data.wss_right_front);
         printf_fn("  wss_left_front                   = %ld\r\n", (long)feb_can_state.wss_front_data.data.wss_left_front);
+        printf_fn("  wss_right_front                  = %ld\r\n", (long)feb_can_state.wss_front_data.data.wss_right_front);
+        printf_fn("  wss_dir_flags                    = %ld\r\n", (long)feb_can_state.wss_front_data.data.wss_dir_flags);
         return 0;
     }
     if (strcmp(name, "wss_rear_data") == 0)
@@ -715,6 +800,104 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
         printf_fn("  plausible                        = %ld\r\n", (long)feb_can_state.pcu_raw_acc.data.plausible);
         printf_fn("  short_circuit                    = %ld\r\n", (long)feb_can_state.pcu_raw_acc.data.short_circuit);
         printf_fn("  open_circuit                     = %ld\r\n", (long)feb_can_state.pcu_raw_acc.data.open_circuit);
+        return 0;
+    }
+    if (strcmp(name, "gps_pos_data") == 0)
+    {
+        printf_fn("0x%02X  gps_pos_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x40, (int)feb_can_state.gps_pos_data.meta.present, (unsigned long)feb_can_state.gps_pos_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_pos_data.meta.rx_count);
+        printf_fn("  latitude                         = %ld\r\n", (long)feb_can_state.gps_pos_data.data.latitude);
+        printf_fn("  longitude                        = %ld\r\n", (long)feb_can_state.gps_pos_data.data.longitude);
+        return 0;
+    }
+    if (strcmp(name, "gps_altitude_data") == 0)
+    {
+        printf_fn("0x%02X  gps_altitude_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x41, (int)feb_can_state.gps_altitude_data.meta.present, (unsigned long)feb_can_state.gps_altitude_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_altitude_data.meta.rx_count);
+        printf_fn("  altitude                         = %ld\r\n", (long)feb_can_state.gps_altitude_data.data.altitude);
+        printf_fn("  hdop                             = %ld\r\n", (long)feb_can_state.gps_altitude_data.data.hdop);
+        printf_fn("  vdop                             = %ld\r\n", (long)feb_can_state.gps_altitude_data.data.vdop);
+        return 0;
+    }
+    if (strcmp(name, "gps_motion_data") == 0)
+    {
+        printf_fn("0x%02X  gps_motion_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x42, (int)feb_can_state.gps_motion_data.meta.present, (unsigned long)feb_can_state.gps_motion_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_motion_data.meta.rx_count);
+        printf_fn("  speed                            = %ld\r\n", (long)feb_can_state.gps_motion_data.data.speed);
+        printf_fn("  course                           = %ld\r\n", (long)feb_can_state.gps_motion_data.data.course);
+        return 0;
+    }
+    if (strcmp(name, "gps_time_data") == 0)
+    {
+        printf_fn("0x%02X  gps_time_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x43, (int)feb_can_state.gps_time_data.meta.present, (unsigned long)feb_can_state.gps_time_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_time_data.meta.rx_count);
+        printf_fn("  hours                            = %ld\r\n", (long)feb_can_state.gps_time_data.data.hours);
+        printf_fn("  minutes                          = %ld\r\n", (long)feb_can_state.gps_time_data.data.minutes);
+        printf_fn("  seconds                          = %ld\r\n", (long)feb_can_state.gps_time_data.data.seconds);
+        return 0;
+    }
+    if (strcmp(name, "gps_date_data") == 0)
+    {
+        printf_fn("0x%02X  gps_date_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x44, (int)feb_can_state.gps_date_data.meta.present, (unsigned long)feb_can_state.gps_date_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_date_data.meta.rx_count);
+        printf_fn("  day                              = %ld\r\n", (long)feb_can_state.gps_date_data.data.day);
+        printf_fn("  month                            = %ld\r\n", (long)feb_can_state.gps_date_data.data.month);
+        printf_fn("  year                             = %ld\r\n", (long)feb_can_state.gps_date_data.data.year);
+        return 0;
+    }
+    if (strcmp(name, "gps_status_data") == 0)
+    {
+        printf_fn("0x%02X  gps_status_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x45, (int)feb_can_state.gps_status_data.meta.present, (unsigned long)feb_can_state.gps_status_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_status_data.meta.rx_count);
+        printf_fn("  fix_type                         = %ld\r\n", (long)feb_can_state.gps_status_data.data.fix_type);
+        printf_fn("  fix_mode                         = %ld\r\n", (long)feb_can_state.gps_status_data.data.fix_mode);
+        printf_fn("  sats_in_use                      = %ld\r\n", (long)feb_can_state.gps_status_data.data.sats_in_use);
+        printf_fn("  sats_in_view                     = %ld\r\n", (long)feb_can_state.gps_status_data.data.sats_in_view);
+        printf_fn("  valid                            = %ld\r\n", (long)feb_can_state.gps_status_data.data.valid);
+        printf_fn("  has_fix                          = %ld\r\n", (long)feb_can_state.gps_status_data.data.has_fix);
+        printf_fn("  pdop                             = %ld\r\n", (long)feb_can_state.gps_status_data.data.pdop);
+        return 0;
+    }
+    if (strcmp(name, "fusion_quaternion_data") == 0)
+    {
+        printf_fn("0x%02X  fusion_quaternion_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x47, (int)feb_can_state.fusion_quaternion_data.meta.present, (unsigned long)feb_can_state.fusion_quaternion_data.meta.last_rx_ms, (unsigned long)feb_can_state.fusion_quaternion_data.meta.rx_count);
+        printf_fn("  q_w                              = %ld\r\n", (long)feb_can_state.fusion_quaternion_data.data.q_w);
+        printf_fn("  q_x                              = %ld\r\n", (long)feb_can_state.fusion_quaternion_data.data.q_x);
+        printf_fn("  q_y                              = %ld\r\n", (long)feb_can_state.fusion_quaternion_data.data.q_y);
+        printf_fn("  q_z                              = %ld\r\n", (long)feb_can_state.fusion_quaternion_data.data.q_z);
+        return 0;
+    }
+    if (strcmp(name, "fusion_euler_data") == 0)
+    {
+        printf_fn("0x%02X  fusion_euler_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x48, (int)feb_can_state.fusion_euler_data.meta.present, (unsigned long)feb_can_state.fusion_euler_data.meta.last_rx_ms, (unsigned long)feb_can_state.fusion_euler_data.meta.rx_count);
+        printf_fn("  roll                             = %ld\r\n", (long)feb_can_state.fusion_euler_data.data.roll);
+        printf_fn("  pitch                            = %ld\r\n", (long)feb_can_state.fusion_euler_data.data.pitch);
+        printf_fn("  yaw                              = %ld\r\n", (long)feb_can_state.fusion_euler_data.data.yaw);
+        return 0;
+    }
+    if (strcmp(name, "fusion_linear_accel_data") == 0)
+    {
+        printf_fn("0x%02X  fusion_linear_accel_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x49, (int)feb_can_state.fusion_linear_accel_data.meta.present, (unsigned long)feb_can_state.fusion_linear_accel_data.meta.last_rx_ms, (unsigned long)feb_can_state.fusion_linear_accel_data.meta.rx_count);
+        printf_fn("  lin_accel_x                      = %ld\r\n", (long)feb_can_state.fusion_linear_accel_data.data.lin_accel_x);
+        printf_fn("  lin_accel_y                      = %ld\r\n", (long)feb_can_state.fusion_linear_accel_data.data.lin_accel_y);
+        printf_fn("  lin_accel_z                      = %ld\r\n", (long)feb_can_state.fusion_linear_accel_data.data.lin_accel_z);
+        return 0;
+    }
+    if (strcmp(name, "fusion_earth_accel_data") == 0)
+    {
+        printf_fn("0x%02X  fusion_earth_accel_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4A, (int)feb_can_state.fusion_earth_accel_data.meta.present, (unsigned long)feb_can_state.fusion_earth_accel_data.meta.last_rx_ms, (unsigned long)feb_can_state.fusion_earth_accel_data.meta.rx_count);
+        printf_fn("  earth_accel_x                    = %ld\r\n", (long)feb_can_state.fusion_earth_accel_data.data.earth_accel_x);
+        printf_fn("  earth_accel_y                    = %ld\r\n", (long)feb_can_state.fusion_earth_accel_data.data.earth_accel_y);
+        printf_fn("  earth_accel_z                    = %ld\r\n", (long)feb_can_state.fusion_earth_accel_data.data.earth_accel_z);
+        return 0;
+    }
+    if (strcmp(name, "fusion_status_data") == 0)
+    {
+        printf_fn("0x%02X  fusion_status_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4B, (int)feb_can_state.fusion_status_data.meta.present, (unsigned long)feb_can_state.fusion_status_data.meta.last_rx_ms, (unsigned long)feb_can_state.fusion_status_data.meta.rx_count);
+        printf_fn("  flags                            = %ld\r\n", (long)feb_can_state.fusion_status_data.data.flags);
+        printf_fn("  accel_error                      = %ld\r\n", (long)feb_can_state.fusion_status_data.data.accel_error);
+        printf_fn("  mag_error                        = %ld\r\n", (long)feb_can_state.fusion_status_data.data.mag_error);
+        return 0;
+    }
+    if (strcmp(name, "sensor_temps_data") == 0)
+    {
+        printf_fn("0x%02X  sensor_temps_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4C, (int)feb_can_state.sensor_temps_data.meta.present, (unsigned long)feb_can_state.sensor_temps_data.meta.last_rx_ms, (unsigned long)feb_can_state.sensor_temps_data.meta.rx_count);
+        printf_fn("  imu_temp                         = %ld\r\n", (long)feb_can_state.sensor_temps_data.data.imu_temp);
+        printf_fn("  mag_temp                         = %ld\r\n", (long)feb_can_state.sensor_temps_data.data.mag_temp);
         return 0;
     }
     if (strcmp(name, "pcu_heartbeat") == 0)

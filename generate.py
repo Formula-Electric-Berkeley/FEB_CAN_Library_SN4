@@ -163,6 +163,22 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x38: (pcu_msg.get_raw_acc, "PCU raw accelerator ADC"),
     # 0x39-0x3F: Reserved for future TPS / PCU ADC messages
 
+    # ----- Sensor Nodes (extended): GPS / Fusion / die temps (0x40-0x4F) -----
+    0x40: (sensor_msg.get_gps_pos_data, "[GPS] latitude/longitude (int32 * 1e-7 deg)"),
+    0x41: (sensor_msg.get_gps_altitude_data, "[GPS] altitude (cm) + HDOP/VDOP"),
+    0x42: (sensor_msg.get_gps_motion_data, "[GPS] speed (km/h) and course (deg)"),
+    0x43: (sensor_msg.get_gps_time_data, "[GPS] time data (UTC)"),
+    0x44: (sensor_msg.get_gps_date_data, "[GPS] date data (UTC)"),
+    0x45: (sensor_msg.get_gps_status_data, "[GPS] fix quality, satellite counts, PDOP"),
+    # 0x46: Reserved
+    0x47: (sensor_msg.get_fusion_quaternion_data, "[Fusion] orientation quaternion"),
+    0x48: (sensor_msg.get_fusion_euler_data, "[Fusion] Euler angles"),
+    0x49: (sensor_msg.get_fusion_linear_accel_data, "[Fusion] linear acceleration (body frame)"),
+    0x4A: (sensor_msg.get_fusion_earth_accel_data, "[Fusion] linear acceleration (earth frame)"),
+    0x4B: (sensor_msg.get_fusion_status_data, "[Fusion] internal flags + rejection errors"),
+    0x4C: (sensor_msg.get_sensor_temps_data, "[Sensors] IMU + Magnetometer die temperature"),
+    # 0x4D-0x4F: Reserved for future extended sensor messages
+
     # ----- RMS/Inverter Messages (0xA0-0xCF) -----
     # IMMUTABLE: All IDs in this block come verbatim from inverter.dbc (Cascadia PM100).
     # Do not add duplicate entries here; inverter.dbc is the single source of truth.
@@ -202,6 +218,7 @@ ID_RANGES = [
     (0x1E, 0x2C, "Sensor Nodes"),
     (0x2D, 0x33, "DART"),
     (0x34, 0x3F, "TPS Chips / PCU ADC"),
+    (0x40, 0x4F, "Sensor Nodes (extended): GPS / Fusion / die temps"),
     (0xA0, 0xC2, "Inverter (Cascadia PM100, via inverter.dbc)"),
     (0xC0, 0xCF, "RMS/Inverter"),
     (0xD0, 0xDF, "Heartbeats"),
