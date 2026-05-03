@@ -1985,8 +1985,11 @@ int feb_can_wss_front_data_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u8(src_p->wss_right_front, 0u, 0xffu);
-    dst_p[4] |= pack_left_shift_u8(src_p->wss_left_front, 0u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->wss_left_front, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->wss_left_front, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->wss_right_front, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->wss_right_front, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u8(src_p->wss_dir_flags, 0u, 0xffu);
 
     return (8);
 }
@@ -2000,8 +2003,11 @@ int feb_can_wss_front_data_unpack(
         return (-EINVAL);
     }
 
-    dst_p->wss_right_front = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
-    dst_p->wss_left_front = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
+    dst_p->wss_left_front = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->wss_left_front |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->wss_right_front = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->wss_right_front |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->wss_dir_flags = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
 
     return (0);
 }
@@ -2015,34 +2021,51 @@ int feb_can_wss_front_data_init(struct feb_can_wss_front_data_t *msg_p)
     return 0;
 }
 
-uint8_t feb_can_wss_front_data_wss_right_front_encode(double value)
+uint16_t feb_can_wss_front_data_wss_left_front_encode(double value)
 {
-    return (uint8_t)(value);
+    return (uint16_t)(value / 0.1);
 }
 
-double feb_can_wss_front_data_wss_right_front_decode(uint8_t value)
+double feb_can_wss_front_data_wss_left_front_decode(uint16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.1);
 }
 
-bool feb_can_wss_front_data_wss_right_front_is_in_range(uint8_t value)
+bool feb_can_wss_front_data_wss_left_front_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_wss_front_data_wss_left_front_encode(double value)
+uint16_t feb_can_wss_front_data_wss_right_front_encode(double value)
+{
+    return (uint16_t)(value / 0.1);
+}
+
+double feb_can_wss_front_data_wss_right_front_decode(uint16_t value)
+{
+    return ((double)value * 0.1);
+}
+
+bool feb_can_wss_front_data_wss_right_front_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_wss_front_data_wss_dir_flags_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_wss_front_data_wss_left_front_decode(uint8_t value)
+double feb_can_wss_front_data_wss_dir_flags_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_wss_front_data_wss_left_front_is_in_range(uint8_t value)
+bool feb_can_wss_front_data_wss_dir_flags_is_in_range(uint8_t value)
 {
     (void)value;
 
@@ -2201,12 +2224,12 @@ int feb_can_imu_acceleration_data_init(struct feb_can_imu_acceleration_data_t *m
 
 int16_t feb_can_imu_acceleration_data_acceleration_x_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.061);
 }
 
 double feb_can_imu_acceleration_data_acceleration_x_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.061);
 }
 
 bool feb_can_imu_acceleration_data_acceleration_x_is_in_range(int16_t value)
@@ -2218,12 +2241,12 @@ bool feb_can_imu_acceleration_data_acceleration_x_is_in_range(int16_t value)
 
 int16_t feb_can_imu_acceleration_data_acceleration_y_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.061);
 }
 
 double feb_can_imu_acceleration_data_acceleration_y_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.061);
 }
 
 bool feb_can_imu_acceleration_data_acceleration_y_is_in_range(int16_t value)
@@ -2235,12 +2258,12 @@ bool feb_can_imu_acceleration_data_acceleration_y_is_in_range(int16_t value)
 
 int16_t feb_can_imu_acceleration_data_acceleration_z_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.061);
 }
 
 double feb_can_imu_acceleration_data_acceleration_z_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.061);
 }
 
 bool feb_can_imu_acceleration_data_acceleration_z_is_in_range(int16_t value)
@@ -2315,12 +2338,12 @@ int feb_can_imu_gyro_data_init(struct feb_can_imu_gyro_data_t *msg_p)
 
 int16_t feb_can_imu_gyro_data_gyro_x_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 70.0);
 }
 
 double feb_can_imu_gyro_data_gyro_x_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 70.0);
 }
 
 bool feb_can_imu_gyro_data_gyro_x_is_in_range(int16_t value)
@@ -2332,12 +2355,12 @@ bool feb_can_imu_gyro_data_gyro_x_is_in_range(int16_t value)
 
 int16_t feb_can_imu_gyro_data_gyro_y_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 70.0);
 }
 
 double feb_can_imu_gyro_data_gyro_y_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 70.0);
 }
 
 bool feb_can_imu_gyro_data_gyro_y_is_in_range(int16_t value)
@@ -2349,12 +2372,12 @@ bool feb_can_imu_gyro_data_gyro_y_is_in_range(int16_t value)
 
 int16_t feb_can_imu_gyro_data_gyro_z_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 70.0);
 }
 
 double feb_can_imu_gyro_data_gyro_z_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 70.0);
 }
 
 bool feb_can_imu_gyro_data_gyro_z_is_in_range(int16_t value)
@@ -2429,12 +2452,12 @@ int feb_can_magnetometer_data_init(struct feb_can_magnetometer_data_t *msg_p)
 
 int16_t feb_can_magnetometer_data_magnetometer_x_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.5844);
 }
 
 double feb_can_magnetometer_data_magnetometer_x_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.5844);
 }
 
 bool feb_can_magnetometer_data_magnetometer_x_is_in_range(int16_t value)
@@ -2446,12 +2469,12 @@ bool feb_can_magnetometer_data_magnetometer_x_is_in_range(int16_t value)
 
 int16_t feb_can_magnetometer_data_magnetometer_y_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.5844);
 }
 
 double feb_can_magnetometer_data_magnetometer_y_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.5844);
 }
 
 bool feb_can_magnetometer_data_magnetometer_y_is_in_range(int16_t value)
@@ -2463,12 +2486,12 @@ bool feb_can_magnetometer_data_magnetometer_y_is_in_range(int16_t value)
 
 int16_t feb_can_magnetometer_data_magnetometer_z_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.5844);
 }
 
 double feb_can_magnetometer_data_magnetometer_z_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.5844);
 }
 
 bool feb_can_magnetometer_data_magnetometer_z_is_in_range(int16_t value)
@@ -2978,23 +3001,27 @@ int feb_can_gps_pos_data_pack(
     const struct feb_can_gps_pos_data_t *src_p,
     size_t size)
 {
-    uint16_t latitude;
-    uint16_t longitude;
+    uint32_t latitude;
+    uint32_t longitude;
 
-    if (size < 4u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, 4);
+    memset(&dst_p[0], 0, 8);
 
-    latitude = (uint16_t)src_p->latitude;
-    dst_p[0] |= pack_left_shift_u16(latitude, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(latitude, 8u, 0xffu);
-    longitude = (uint16_t)src_p->longitude;
-    dst_p[2] |= pack_left_shift_u16(longitude, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(longitude, 8u, 0xffu);
+    latitude = (uint32_t)src_p->latitude;
+    dst_p[0] |= pack_left_shift_u32(latitude, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u32(latitude, 8u, 0xffu);
+    dst_p[2] |= pack_right_shift_u32(latitude, 16u, 0xffu);
+    dst_p[3] |= pack_right_shift_u32(latitude, 24u, 0xffu);
+    longitude = (uint32_t)src_p->longitude;
+    dst_p[4] |= pack_left_shift_u32(longitude, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u32(longitude, 8u, 0xffu);
+    dst_p[6] |= pack_right_shift_u32(longitude, 16u, 0xffu);
+    dst_p[7] |= pack_right_shift_u32(longitude, 24u, 0xffu);
 
-    return (4);
+    return (8);
 }
 
 int feb_can_gps_pos_data_unpack(
@@ -3002,19 +3029,23 @@ int feb_can_gps_pos_data_unpack(
     const uint8_t *src_p,
     size_t size)
 {
-    uint16_t latitude;
-    uint16_t longitude;
+    uint32_t latitude;
+    uint32_t longitude;
 
-    if (size < 4u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    latitude = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    latitude |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->latitude = (int16_t)latitude;
-    longitude = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    longitude |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
-    dst_p->longitude = (int16_t)longitude;
+    latitude = unpack_right_shift_u32(src_p[0], 0u, 0xffu);
+    latitude |= unpack_left_shift_u32(src_p[1], 8u, 0xffu);
+    latitude |= unpack_left_shift_u32(src_p[2], 16u, 0xffu);
+    latitude |= unpack_left_shift_u32(src_p[3], 24u, 0xffu);
+    dst_p->latitude = (int32_t)latitude;
+    longitude = unpack_right_shift_u32(src_p[4], 0u, 0xffu);
+    longitude |= unpack_left_shift_u32(src_p[5], 8u, 0xffu);
+    longitude |= unpack_left_shift_u32(src_p[6], 16u, 0xffu);
+    longitude |= unpack_left_shift_u32(src_p[7], 24u, 0xffu);
+    dst_p->longitude = (int32_t)longitude;
 
     return (0);
 }
@@ -3028,34 +3059,144 @@ int feb_can_gps_pos_data_init(struct feb_can_gps_pos_data_t *msg_p)
     return 0;
 }
 
-int16_t feb_can_gps_pos_data_latitude_encode(double value)
+int32_t feb_can_gps_pos_data_latitude_encode(double value)
 {
-    return (int16_t)(value);
+    return (int32_t)(value / 1e-07);
 }
 
-double feb_can_gps_pos_data_latitude_decode(int16_t value)
+double feb_can_gps_pos_data_latitude_decode(int32_t value)
 {
-    return ((double)value);
+    return ((double)value * 1e-07);
 }
 
-bool feb_can_gps_pos_data_latitude_is_in_range(int16_t value)
+bool feb_can_gps_pos_data_latitude_is_in_range(int32_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_gps_pos_data_longitude_encode(double value)
+int32_t feb_can_gps_pos_data_longitude_encode(double value)
 {
-    return (int16_t)(value);
+    return (int32_t)(value / 1e-07);
 }
 
-double feb_can_gps_pos_data_longitude_decode(int16_t value)
+double feb_can_gps_pos_data_longitude_decode(int32_t value)
 {
-    return ((double)value);
+    return ((double)value * 1e-07);
 }
 
-bool feb_can_gps_pos_data_longitude_is_in_range(int16_t value)
+bool feb_can_gps_pos_data_longitude_is_in_range(int32_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_gps_altitude_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_altitude_data_t *src_p,
+    size_t size)
+{
+    uint32_t altitude;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    altitude = (uint32_t)src_p->altitude;
+    dst_p[0] |= pack_left_shift_u32(altitude, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u32(altitude, 8u, 0xffu);
+    dst_p[2] |= pack_right_shift_u32(altitude, 16u, 0xffu);
+    dst_p[3] |= pack_right_shift_u32(altitude, 24u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->hdop, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->hdop, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->vdop, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->vdop, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_gps_altitude_data_unpack(
+    struct feb_can_gps_altitude_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint32_t altitude;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    altitude = unpack_right_shift_u32(src_p[0], 0u, 0xffu);
+    altitude |= unpack_left_shift_u32(src_p[1], 8u, 0xffu);
+    altitude |= unpack_left_shift_u32(src_p[2], 16u, 0xffu);
+    altitude |= unpack_left_shift_u32(src_p[3], 24u, 0xffu);
+    dst_p->altitude = (int32_t)altitude;
+    dst_p->hdop = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->hdop |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->vdop = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->vdop |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_gps_altitude_data_init(struct feb_can_gps_altitude_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_gps_altitude_data_t));
+
+    return 0;
+}
+
+int32_t feb_can_gps_altitude_data_altitude_encode(double value)
+{
+    return (int32_t)(value / 0.01);
+}
+
+double feb_can_gps_altitude_data_altitude_decode(int32_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_gps_altitude_data_altitude_is_in_range(int32_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_gps_altitude_data_hdop_encode(double value)
+{
+    return (uint16_t)(value / 0.01);
+}
+
+double feb_can_gps_altitude_data_hdop_decode(uint16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_gps_altitude_data_hdop_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_gps_altitude_data_vdop_encode(double value)
+{
+    return (uint16_t)(value / 0.01);
+}
+
+double feb_can_gps_altitude_data_vdop_decode(uint16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_gps_altitude_data_vdop_is_in_range(uint16_t value)
 {
     (void)value;
 
@@ -3067,23 +3208,18 @@ int feb_can_gps_motion_data_pack(
     const struct feb_can_gps_motion_data_t *src_p,
     size_t size)
 {
-    uint16_t course;
-    uint16_t speed;
-
-    if (size < 8u) {
+    if (size < 4u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, 8);
+    memset(&dst_p[0], 0, 4);
 
-    speed = (uint16_t)src_p->speed;
-    dst_p[0] |= pack_left_shift_u16(speed, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(speed, 8u, 0xffu);
-    course = (uint16_t)src_p->course;
-    dst_p[2] |= pack_left_shift_u16(course, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(course, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->speed, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->speed, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->course, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->course, 8u, 0xffu);
 
-    return (8);
+    return (4);
 }
 
 int feb_can_gps_motion_data_unpack(
@@ -3091,19 +3227,14 @@ int feb_can_gps_motion_data_unpack(
     const uint8_t *src_p,
     size_t size)
 {
-    uint16_t course;
-    uint16_t speed;
-
-    if (size < 8u) {
+    if (size < 4u) {
         return (-EINVAL);
     }
 
-    speed = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    speed |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->speed = (int16_t)speed;
-    course = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    course |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
-    dst_p->course = (int16_t)course;
+    dst_p->speed = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->speed |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->course = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->course |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
 
     return (0);
 }
@@ -3117,34 +3248,34 @@ int feb_can_gps_motion_data_init(struct feb_can_gps_motion_data_t *msg_p)
     return 0;
 }
 
-int16_t feb_can_gps_motion_data_speed_encode(double value)
+uint16_t feb_can_gps_motion_data_speed_encode(double value)
 {
-    return (int16_t)(value);
+    return (uint16_t)(value / 0.01);
 }
 
-double feb_can_gps_motion_data_speed_decode(int16_t value)
+double feb_can_gps_motion_data_speed_decode(uint16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.01);
 }
 
-bool feb_can_gps_motion_data_speed_is_in_range(int16_t value)
+bool feb_can_gps_motion_data_speed_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_gps_motion_data_course_encode(double value)
+uint16_t feb_can_gps_motion_data_course_encode(double value)
 {
-    return (int16_t)(value);
+    return (uint16_t)(value / 0.01);
 }
 
-double feb_can_gps_motion_data_course_decode(int16_t value)
+double feb_can_gps_motion_data_course_decode(uint16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.01);
 }
 
-bool feb_can_gps_motion_data_course_is_in_range(int16_t value)
+bool feb_can_gps_motion_data_course_is_in_range(uint16_t value)
 {
     (void)value;
 
@@ -3361,6 +3492,842 @@ double feb_can_gps_date_data_year_decode(int8_t value)
 }
 
 bool feb_can_gps_date_data_year_is_in_range(int8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_gps_status_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_gps_status_data_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u8(src_p->fix_type, 0u, 0xffu);
+    dst_p[1] |= pack_left_shift_u8(src_p->fix_mode, 0u, 0xffu);
+    dst_p[2] |= pack_left_shift_u8(src_p->sats_in_use, 0u, 0xffu);
+    dst_p[3] |= pack_left_shift_u8(src_p->sats_in_view, 0u, 0xffu);
+    dst_p[4] |= pack_left_shift_u8(src_p->valid, 0u, 0xffu);
+    dst_p[5] |= pack_left_shift_u8(src_p->has_fix, 0u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->pdop, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->pdop, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_gps_status_data_unpack(
+    struct feb_can_gps_status_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->fix_type = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+    dst_p->fix_mode = unpack_right_shift_u8(src_p[1], 0u, 0xffu);
+    dst_p->sats_in_use = unpack_right_shift_u8(src_p[2], 0u, 0xffu);
+    dst_p->sats_in_view = unpack_right_shift_u8(src_p[3], 0u, 0xffu);
+    dst_p->valid = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
+    dst_p->has_fix = unpack_right_shift_u8(src_p[5], 0u, 0xffu);
+    dst_p->pdop = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->pdop |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_gps_status_data_init(struct feb_can_gps_status_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_gps_status_data_t));
+
+    return 0;
+}
+
+uint8_t feb_can_gps_status_data_fix_type_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_gps_status_data_fix_type_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_status_data_fix_type_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_gps_status_data_fix_mode_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_gps_status_data_fix_mode_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_status_data_fix_mode_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_gps_status_data_sats_in_use_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_gps_status_data_sats_in_use_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_status_data_sats_in_use_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_gps_status_data_sats_in_view_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_gps_status_data_sats_in_view_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_status_data_sats_in_view_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_gps_status_data_valid_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_gps_status_data_valid_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_status_data_valid_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_gps_status_data_has_fix_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_gps_status_data_has_fix_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_gps_status_data_has_fix_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_gps_status_data_pdop_encode(double value)
+{
+    return (uint16_t)(value / 0.01);
+}
+
+double feb_can_gps_status_data_pdop_decode(uint16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_gps_status_data_pdop_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_fusion_quaternion_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_fusion_quaternion_data_t *src_p,
+    size_t size)
+{
+    uint16_t q_w;
+    uint16_t q_x;
+    uint16_t q_y;
+    uint16_t q_z;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    q_w = (uint16_t)src_p->q_w;
+    dst_p[0] |= pack_left_shift_u16(q_w, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(q_w, 8u, 0xffu);
+    q_x = (uint16_t)src_p->q_x;
+    dst_p[2] |= pack_left_shift_u16(q_x, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(q_x, 8u, 0xffu);
+    q_y = (uint16_t)src_p->q_y;
+    dst_p[4] |= pack_left_shift_u16(q_y, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(q_y, 8u, 0xffu);
+    q_z = (uint16_t)src_p->q_z;
+    dst_p[6] |= pack_left_shift_u16(q_z, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(q_z, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_fusion_quaternion_data_unpack(
+    struct feb_can_fusion_quaternion_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t q_w;
+    uint16_t q_x;
+    uint16_t q_y;
+    uint16_t q_z;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    q_w = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    q_w |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->q_w = (int16_t)q_w;
+    q_x = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    q_x |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->q_x = (int16_t)q_x;
+    q_y = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    q_y |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->q_y = (int16_t)q_y;
+    q_z = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    q_z |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->q_z = (int16_t)q_z;
+
+    return (0);
+}
+
+int feb_can_fusion_quaternion_data_init(struct feb_can_fusion_quaternion_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_quaternion_data_t));
+
+    return 0;
+}
+
+int16_t feb_can_fusion_quaternion_data_q_w_encode(double value)
+{
+    return (int16_t)(value / 3.051850947599719e-05);
+}
+
+double feb_can_fusion_quaternion_data_q_w_decode(int16_t value)
+{
+    return ((double)value * 3.051850947599719e-05);
+}
+
+bool feb_can_fusion_quaternion_data_q_w_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_fusion_quaternion_data_q_x_encode(double value)
+{
+    return (int16_t)(value / 3.051850947599719e-05);
+}
+
+double feb_can_fusion_quaternion_data_q_x_decode(int16_t value)
+{
+    return ((double)value * 3.051850947599719e-05);
+}
+
+bool feb_can_fusion_quaternion_data_q_x_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_fusion_quaternion_data_q_y_encode(double value)
+{
+    return (int16_t)(value / 3.051850947599719e-05);
+}
+
+double feb_can_fusion_quaternion_data_q_y_decode(int16_t value)
+{
+    return ((double)value * 3.051850947599719e-05);
+}
+
+bool feb_can_fusion_quaternion_data_q_y_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_fusion_quaternion_data_q_z_encode(double value)
+{
+    return (int16_t)(value / 3.051850947599719e-05);
+}
+
+double feb_can_fusion_quaternion_data_q_z_decode(int16_t value)
+{
+    return ((double)value * 3.051850947599719e-05);
+}
+
+bool feb_can_fusion_quaternion_data_q_z_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_fusion_euler_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_fusion_euler_data_t *src_p,
+    size_t size)
+{
+    uint16_t pitch;
+    uint16_t roll;
+    uint16_t yaw;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 6);
+
+    roll = (uint16_t)src_p->roll;
+    dst_p[0] |= pack_left_shift_u16(roll, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(roll, 8u, 0xffu);
+    pitch = (uint16_t)src_p->pitch;
+    dst_p[2] |= pack_left_shift_u16(pitch, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(pitch, 8u, 0xffu);
+    yaw = (uint16_t)src_p->yaw;
+    dst_p[4] |= pack_left_shift_u16(yaw, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(yaw, 8u, 0xffu);
+
+    return (6);
+}
+
+int feb_can_fusion_euler_data_unpack(
+    struct feb_can_fusion_euler_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t pitch;
+    uint16_t roll;
+    uint16_t yaw;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    roll = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    roll |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->roll = (int16_t)roll;
+    pitch = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    pitch |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->pitch = (int16_t)pitch;
+    yaw = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    yaw |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->yaw = (int16_t)yaw;
+
+    return (0);
+}
+
+int feb_can_fusion_euler_data_init(struct feb_can_fusion_euler_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_euler_data_t));
+
+    return 0;
+}
+
+int16_t feb_can_fusion_euler_data_roll_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_fusion_euler_data_roll_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_fusion_euler_data_roll_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_fusion_euler_data_pitch_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_fusion_euler_data_pitch_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_fusion_euler_data_pitch_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_fusion_euler_data_yaw_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_fusion_euler_data_yaw_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_fusion_euler_data_yaw_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_fusion_linear_accel_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_fusion_linear_accel_data_t *src_p,
+    size_t size)
+{
+    uint16_t lin_accel_x;
+    uint16_t lin_accel_y;
+    uint16_t lin_accel_z;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 6);
+
+    lin_accel_x = (uint16_t)src_p->lin_accel_x;
+    dst_p[0] |= pack_left_shift_u16(lin_accel_x, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(lin_accel_x, 8u, 0xffu);
+    lin_accel_y = (uint16_t)src_p->lin_accel_y;
+    dst_p[2] |= pack_left_shift_u16(lin_accel_y, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(lin_accel_y, 8u, 0xffu);
+    lin_accel_z = (uint16_t)src_p->lin_accel_z;
+    dst_p[4] |= pack_left_shift_u16(lin_accel_z, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(lin_accel_z, 8u, 0xffu);
+
+    return (6);
+}
+
+int feb_can_fusion_linear_accel_data_unpack(
+    struct feb_can_fusion_linear_accel_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t lin_accel_x;
+    uint16_t lin_accel_y;
+    uint16_t lin_accel_z;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    lin_accel_x = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    lin_accel_x |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->lin_accel_x = (int16_t)lin_accel_x;
+    lin_accel_y = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    lin_accel_y |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->lin_accel_y = (int16_t)lin_accel_y;
+    lin_accel_z = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    lin_accel_z |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->lin_accel_z = (int16_t)lin_accel_z;
+
+    return (0);
+}
+
+int feb_can_fusion_linear_accel_data_init(struct feb_can_fusion_linear_accel_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_linear_accel_data_t));
+
+    return 0;
+}
+
+int16_t feb_can_fusion_linear_accel_data_lin_accel_x_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_fusion_linear_accel_data_lin_accel_x_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_fusion_linear_accel_data_lin_accel_x_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_fusion_linear_accel_data_lin_accel_y_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_fusion_linear_accel_data_lin_accel_y_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_fusion_linear_accel_data_lin_accel_y_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_fusion_linear_accel_data_lin_accel_z_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_fusion_linear_accel_data_lin_accel_z_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_fusion_linear_accel_data_lin_accel_z_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_fusion_earth_accel_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_fusion_earth_accel_data_t *src_p,
+    size_t size)
+{
+    uint16_t earth_accel_x;
+    uint16_t earth_accel_y;
+    uint16_t earth_accel_z;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 6);
+
+    earth_accel_x = (uint16_t)src_p->earth_accel_x;
+    dst_p[0] |= pack_left_shift_u16(earth_accel_x, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(earth_accel_x, 8u, 0xffu);
+    earth_accel_y = (uint16_t)src_p->earth_accel_y;
+    dst_p[2] |= pack_left_shift_u16(earth_accel_y, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(earth_accel_y, 8u, 0xffu);
+    earth_accel_z = (uint16_t)src_p->earth_accel_z;
+    dst_p[4] |= pack_left_shift_u16(earth_accel_z, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(earth_accel_z, 8u, 0xffu);
+
+    return (6);
+}
+
+int feb_can_fusion_earth_accel_data_unpack(
+    struct feb_can_fusion_earth_accel_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t earth_accel_x;
+    uint16_t earth_accel_y;
+    uint16_t earth_accel_z;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    earth_accel_x = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    earth_accel_x |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->earth_accel_x = (int16_t)earth_accel_x;
+    earth_accel_y = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    earth_accel_y |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->earth_accel_y = (int16_t)earth_accel_y;
+    earth_accel_z = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    earth_accel_z |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->earth_accel_z = (int16_t)earth_accel_z;
+
+    return (0);
+}
+
+int feb_can_fusion_earth_accel_data_init(struct feb_can_fusion_earth_accel_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_earth_accel_data_t));
+
+    return 0;
+}
+
+int16_t feb_can_fusion_earth_accel_data_earth_accel_x_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_fusion_earth_accel_data_earth_accel_x_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_fusion_earth_accel_data_earth_accel_x_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_fusion_earth_accel_data_earth_accel_y_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_fusion_earth_accel_data_earth_accel_y_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_fusion_earth_accel_data_earth_accel_y_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_fusion_earth_accel_data_earth_accel_z_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_fusion_earth_accel_data_earth_accel_z_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_fusion_earth_accel_data_earth_accel_z_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_fusion_status_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_fusion_status_data_t *src_p,
+    size_t size)
+{
+    if (size < 3u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 3);
+
+    dst_p[0] |= pack_left_shift_u8(src_p->flags, 0u, 0xffu);
+    dst_p[1] |= pack_left_shift_u8(src_p->accel_error, 0u, 0xffu);
+    dst_p[2] |= pack_left_shift_u8(src_p->mag_error, 0u, 0xffu);
+
+    return (3);
+}
+
+int feb_can_fusion_status_data_unpack(
+    struct feb_can_fusion_status_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 3u) {
+        return (-EINVAL);
+    }
+
+    dst_p->flags = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+    dst_p->accel_error = unpack_right_shift_u8(src_p[1], 0u, 0xffu);
+    dst_p->mag_error = unpack_right_shift_u8(src_p[2], 0u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_fusion_status_data_init(struct feb_can_fusion_status_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_status_data_t));
+
+    return 0;
+}
+
+uint8_t feb_can_fusion_status_data_flags_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_fusion_status_data_flags_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_fusion_status_data_flags_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_fusion_status_data_accel_error_encode(double value)
+{
+    return (uint8_t)(value / 0.1);
+}
+
+double feb_can_fusion_status_data_accel_error_decode(uint8_t value)
+{
+    return ((double)value * 0.1);
+}
+
+bool feb_can_fusion_status_data_accel_error_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_fusion_status_data_mag_error_encode(double value)
+{
+    return (uint8_t)(value / 0.1);
+}
+
+double feb_can_fusion_status_data_mag_error_decode(uint8_t value)
+{
+    return ((double)value * 0.1);
+}
+
+bool feb_can_fusion_status_data_mag_error_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_sensor_temps_data_pack(
+    uint8_t *dst_p,
+    const struct feb_can_sensor_temps_data_t *src_p,
+    size_t size)
+{
+    uint16_t imu_temp;
+    uint16_t mag_temp;
+
+    if (size < 4u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 4);
+
+    imu_temp = (uint16_t)src_p->imu_temp;
+    dst_p[0] |= pack_left_shift_u16(imu_temp, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(imu_temp, 8u, 0xffu);
+    mag_temp = (uint16_t)src_p->mag_temp;
+    dst_p[2] |= pack_left_shift_u16(mag_temp, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(mag_temp, 8u, 0xffu);
+
+    return (4);
+}
+
+int feb_can_sensor_temps_data_unpack(
+    struct feb_can_sensor_temps_data_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t imu_temp;
+    uint16_t mag_temp;
+
+    if (size < 4u) {
+        return (-EINVAL);
+    }
+
+    imu_temp = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    imu_temp |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->imu_temp = (int16_t)imu_temp;
+    mag_temp = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    mag_temp |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->mag_temp = (int16_t)mag_temp;
+
+    return (0);
+}
+
+int feb_can_sensor_temps_data_init(struct feb_can_sensor_temps_data_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_sensor_temps_data_t));
+
+    return 0;
+}
+
+int16_t feb_can_sensor_temps_data_imu_temp_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_sensor_temps_data_imu_temp_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_sensor_temps_data_imu_temp_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_sensor_temps_data_mag_temp_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_sensor_temps_data_mag_temp_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_sensor_temps_data_mag_temp_is_in_range(int16_t value)
 {
     (void)value;
 

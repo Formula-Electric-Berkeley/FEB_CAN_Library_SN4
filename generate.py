@@ -88,23 +88,16 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
 
     # IMU: accelerometer/gyro
     # FRONT
-    0x26: (sensor_msg.get_imu_acceleration_data_front, "[IMU] accelerometer data (raw)"),
-    0x28: (sensor_msg.get_imu_gyro_data_front, "[IMU] gyroscope data (raw)"),
-    # REAR
+    0x26: (sensor_msg.get_imu_acceleration_data_front, "[IMU] accelerometer data (mg via DBC scale)"),
+    0x28: (sensor_msg.get_imu_gyro_data_front, "[IMU] gyroscope data (mdps via DBC scale)"),
+    # 0x27/0x29/0x2B: no rear sensor node hardware on SN5; do not enable without wiring.
     # 0x27: (sensor_msg.get_imu_acceleration_data_rear, "[IMU][REAR] accelerometer data (raw)"),
     # 0x29: (sensor_msg.get_imu_gyro_data_rear, "[IMU][REAR] gyroscope data (raw)"),
 
     # Magnetometer
     # FRONT
-    0x2A: (sensor_msg.get_magnetometer_data_front, "[Magnetometer] data (raw)"),
-    # REAR
+    0x2A: (sensor_msg.get_magnetometer_data_front, "[Magnetometer] data (mG via DBC scale)"),
     # 0x2B: (sensor_msg.get_magnetometer_data_rear, "[Magnetometer][REAR] data (raw)"),
-
-    
-    ## GPS: Position, Altitude, Motion, Satellite info+Status
-
-
-
 
 
     # 
@@ -129,16 +122,25 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     # 0x38-0x3F: Reserved for future TPS messages
 
     # ----- Sensor Node Messages (part 2) (0x40-0x5F) -----
-    0x40: (sensor_msg.get_gps_pos_data, "[GPS] latitude and longitude data"),
-    # 0x41: (sensor_msg.get_gps_altitude_data, "[GPS] altitude data"),
-    0x42: (sensor_msg.get_gps_motion_data, "[GPS] motion data (speed/course)"),
+    # GPS
+    0x40: (sensor_msg.get_gps_pos_data, "[GPS] latitude/longitude (int32 * 1e-7 deg)"),
+    0x41: (sensor_msg.get_gps_altitude_data, "[GPS] altitude (cm) + HDOP/VDOP"),
+    0x42: (sensor_msg.get_gps_motion_data, "[GPS] speed (km/h) and course (deg)"),
     0x43: (sensor_msg.get_gps_time_data, "[GPS] time data (UTC)"),
-    0x44: (sensor_msg.get_gps_date_data, "[GPS] date data"),
-    
-    # 0x44-0x5F: Reserved for future sensor node messages (e.g. additional GPS data, new sensors, etc.)
+    0x44: (sensor_msg.get_gps_date_data, "[GPS] date data (UTC)"),
+    0x45: (sensor_msg.get_gps_status_data, "[GPS] fix quality, satellite counts, PDOP"),
 
+    # Fusion AHRS outputs
+    0x47: (sensor_msg.get_fusion_quaternion_data, "[Fusion] orientation quaternion"),
+    0x48: (sensor_msg.get_fusion_euler_data, "[Fusion] Euler angles"),
+    0x49: (sensor_msg.get_fusion_linear_accel_data, "[Fusion] linear acceleration (body frame)"),
+    0x4A: (sensor_msg.get_fusion_earth_accel_data, "[Fusion] linear acceleration (earth frame)"),
+    0x4B: (sensor_msg.get_fusion_status_data, "[Fusion] internal flags + rejection errors"),
 
+    # Sensor die temperatures
+    0x4C: (sensor_msg.get_sensor_temps_data, "[Sensors] IMU + Magnetometer die temperature"),
 
+    # 0x46, 0x4D-0x5F: Reserved for future sensor node messages.
 
     # ----- RMS/Inverter Messages (0xC0-0xCF) -----
     0xC0: (pcu_msg.rms_command_msg, "RMS inverter command"),
