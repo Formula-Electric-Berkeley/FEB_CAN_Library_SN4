@@ -46,6 +46,8 @@ def load_inverter_messages() -> List[cantools.db.Message]:
               file=sys.stderr)
         return []
     db = cantools.db.load_file(INVERTER_DBC)
+    if not isinstance(db, cantools.db.Database):
+        raise TypeError(f"{INVERTER_DBC} is not a CAN database")
     return [m for m in db.messages if m.frame_id != _VECTOR_INDEPENDENT_ID]
 
 # CAN message modules
@@ -252,7 +254,9 @@ def validate_registry() -> bool:
     # Check for duplicate functions (same function registered twice)
     seen_funcs = {}
     for frame_id, (func, desc) in MESSAGE_REGISTRY.items():
-        func_name = f"{func.__module__}.{func.__name__}"
+        mod = getattr(func, "__module__", "?")
+        name = getattr(func, "__name__", repr(func))
+        func_name = f"{mod}.{name}"
         if func_name in seen_funcs:
             errors.append(
                 f"Duplicate function: {func_name} at IDs "
