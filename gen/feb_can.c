@@ -10922,7 +10922,7 @@ int feb_can_dash_heartbeat_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u8(src_p->error0, 0u, 0x01u);
+    dst_p[0] |= pack_left_shift_u8(src_p->io_expander_error, 0u, 0x01u);
     dst_p[0] |= pack_left_shift_u8(src_p->error1, 1u, 0x02u);
     dst_p[0] |= pack_left_shift_u8(src_p->error2, 2u, 0x04u);
     dst_p[0] |= pack_left_shift_u8(src_p->error3, 3u, 0x08u);
@@ -10999,7 +10999,7 @@ int feb_can_dash_heartbeat_unpack(
         return (-EINVAL);
     }
 
-    dst_p->error0 = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
+    dst_p->io_expander_error = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
     dst_p->error1 = unpack_right_shift_u8(src_p[0], 1u, 0x02u);
     dst_p->error2 = unpack_right_shift_u8(src_p[0], 2u, 0x04u);
     dst_p->error3 = unpack_right_shift_u8(src_p[0], 3u, 0x08u);
@@ -11076,17 +11076,17 @@ int feb_can_dash_heartbeat_init(struct feb_can_dash_heartbeat_t *msg_p)
     return 0;
 }
 
-uint8_t feb_can_dash_heartbeat_error0_encode(double value)
+uint8_t feb_can_dash_heartbeat_io_expander_error_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_dash_heartbeat_error0_decode(uint8_t value)
+double feb_can_dash_heartbeat_io_expander_error_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_dash_heartbeat_error0_is_in_range(uint8_t value)
+bool feb_can_dash_heartbeat_io_expander_error_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
@@ -12047,22 +12047,22 @@ int feb_can_lvpdb_heartbeat_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u8(src_p->error0, 0u, 0x01u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error1, 1u, 0x02u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error2, 2u, 0x04u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error3, 3u, 0x08u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error4, 4u, 0x10u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error5, 5u, 0x20u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error6, 6u, 0x40u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error7, 7u, 0x80u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error8, 0u, 0x01u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error9, 1u, 0x02u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error10, 2u, 0x04u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error11, 3u, 0x08u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error12, 4u, 0x10u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error13, 5u, 0x20u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error14, 6u, 0x40u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error15, 7u, 0x80u);
+    dst_p[0] |= pack_left_shift_u8(src_p->tps_init_failed, 0u, 0x01u);
+    dst_p[0] |= pack_left_shift_u8(src_p->tps_lv_poll_failed, 1u, 0x02u);
+    dst_p[0] |= pack_left_shift_u8(src_p->tps_sh_poll_failed, 2u, 0x04u);
+    dst_p[0] |= pack_left_shift_u8(src_p->tps_lt_poll_failed, 3u, 0x08u);
+    dst_p[0] |= pack_left_shift_u8(src_p->tps_bm_l_poll_failed, 4u, 0x10u);
+    dst_p[0] |= pack_left_shift_u8(src_p->tps_sm_poll_failed, 5u, 0x20u);
+    dst_p[0] |= pack_left_shift_u8(src_p->tps_af1_af2_poll_failed, 6u, 0x40u);
+    dst_p[0] |= pack_left_shift_u8(src_p->tps_cp_rf_poll_failed, 7u, 0x80u);
+    dst_p[1] |= pack_left_shift_u8(src_p->tps_lv_power_not_good, 0u, 0x01u);
+    dst_p[1] |= pack_left_shift_u8(src_p->tps_sh_power_not_good, 1u, 0x02u);
+    dst_p[1] |= pack_left_shift_u8(src_p->tps_lt_power_not_good, 2u, 0x04u);
+    dst_p[1] |= pack_left_shift_u8(src_p->tps_bm_l_power_not_good, 3u, 0x08u);
+    dst_p[1] |= pack_left_shift_u8(src_p->tps_sm_power_not_good, 4u, 0x10u);
+    dst_p[1] |= pack_left_shift_u8(src_p->tps_af1_af2_power_not_good, 5u, 0x20u);
+    dst_p[1] |= pack_left_shift_u8(src_p->tps_cp_rf_power_not_good, 6u, 0x40u);
+    dst_p[1] |= pack_left_shift_u8(src_p->dash_state_stale, 7u, 0x80u);
     dst_p[2] |= pack_left_shift_u8(src_p->error16, 0u, 0x01u);
     dst_p[2] |= pack_left_shift_u8(src_p->error17, 1u, 0x02u);
     dst_p[2] |= pack_left_shift_u8(src_p->error18, 2u, 0x04u);
@@ -12124,22 +12124,22 @@ int feb_can_lvpdb_heartbeat_unpack(
         return (-EINVAL);
     }
 
-    dst_p->error0 = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
-    dst_p->error1 = unpack_right_shift_u8(src_p[0], 1u, 0x02u);
-    dst_p->error2 = unpack_right_shift_u8(src_p[0], 2u, 0x04u);
-    dst_p->error3 = unpack_right_shift_u8(src_p[0], 3u, 0x08u);
-    dst_p->error4 = unpack_right_shift_u8(src_p[0], 4u, 0x10u);
-    dst_p->error5 = unpack_right_shift_u8(src_p[0], 5u, 0x20u);
-    dst_p->error6 = unpack_right_shift_u8(src_p[0], 6u, 0x40u);
-    dst_p->error7 = unpack_right_shift_u8(src_p[0], 7u, 0x80u);
-    dst_p->error8 = unpack_right_shift_u8(src_p[1], 0u, 0x01u);
-    dst_p->error9 = unpack_right_shift_u8(src_p[1], 1u, 0x02u);
-    dst_p->error10 = unpack_right_shift_u8(src_p[1], 2u, 0x04u);
-    dst_p->error11 = unpack_right_shift_u8(src_p[1], 3u, 0x08u);
-    dst_p->error12 = unpack_right_shift_u8(src_p[1], 4u, 0x10u);
-    dst_p->error13 = unpack_right_shift_u8(src_p[1], 5u, 0x20u);
-    dst_p->error14 = unpack_right_shift_u8(src_p[1], 6u, 0x40u);
-    dst_p->error15 = unpack_right_shift_u8(src_p[1], 7u, 0x80u);
+    dst_p->tps_init_failed = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
+    dst_p->tps_lv_poll_failed = unpack_right_shift_u8(src_p[0], 1u, 0x02u);
+    dst_p->tps_sh_poll_failed = unpack_right_shift_u8(src_p[0], 2u, 0x04u);
+    dst_p->tps_lt_poll_failed = unpack_right_shift_u8(src_p[0], 3u, 0x08u);
+    dst_p->tps_bm_l_poll_failed = unpack_right_shift_u8(src_p[0], 4u, 0x10u);
+    dst_p->tps_sm_poll_failed = unpack_right_shift_u8(src_p[0], 5u, 0x20u);
+    dst_p->tps_af1_af2_poll_failed = unpack_right_shift_u8(src_p[0], 6u, 0x40u);
+    dst_p->tps_cp_rf_poll_failed = unpack_right_shift_u8(src_p[0], 7u, 0x80u);
+    dst_p->tps_lv_power_not_good = unpack_right_shift_u8(src_p[1], 0u, 0x01u);
+    dst_p->tps_sh_power_not_good = unpack_right_shift_u8(src_p[1], 1u, 0x02u);
+    dst_p->tps_lt_power_not_good = unpack_right_shift_u8(src_p[1], 2u, 0x04u);
+    dst_p->tps_bm_l_power_not_good = unpack_right_shift_u8(src_p[1], 3u, 0x08u);
+    dst_p->tps_sm_power_not_good = unpack_right_shift_u8(src_p[1], 4u, 0x10u);
+    dst_p->tps_af1_af2_power_not_good = unpack_right_shift_u8(src_p[1], 5u, 0x20u);
+    dst_p->tps_cp_rf_power_not_good = unpack_right_shift_u8(src_p[1], 6u, 0x40u);
+    dst_p->dash_state_stale = unpack_right_shift_u8(src_p[1], 7u, 0x80u);
     dst_p->error16 = unpack_right_shift_u8(src_p[2], 0u, 0x01u);
     dst_p->error17 = unpack_right_shift_u8(src_p[2], 1u, 0x02u);
     dst_p->error18 = unpack_right_shift_u8(src_p[2], 2u, 0x04u);
@@ -12201,242 +12201,242 @@ int feb_can_lvpdb_heartbeat_init(struct feb_can_lvpdb_heartbeat_t *msg_p)
     return 0;
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error0_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error0_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error0_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error1_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_lv_poll_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error1_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_lv_poll_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error1_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_lv_poll_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error2_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_sh_poll_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error2_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_sh_poll_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error2_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_sh_poll_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error3_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_lt_poll_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error3_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_lt_poll_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error3_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_lt_poll_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error4_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_bm_l_poll_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error4_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_bm_l_poll_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error4_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_bm_l_poll_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error5_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_sm_poll_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error5_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_sm_poll_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error5_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_sm_poll_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error6_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_af1_af2_poll_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error6_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_af1_af2_poll_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error6_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_af1_af2_poll_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error7_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_cp_rf_poll_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error7_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_cp_rf_poll_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error7_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_cp_rf_poll_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error8_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_lv_power_not_good_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error8_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_lv_power_not_good_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error8_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_lv_power_not_good_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error9_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_sh_power_not_good_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error9_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_sh_power_not_good_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error9_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_sh_power_not_good_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error10_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_lt_power_not_good_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error10_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_lt_power_not_good_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error10_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_lt_power_not_good_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error11_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_bm_l_power_not_good_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error11_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_bm_l_power_not_good_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error11_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_bm_l_power_not_good_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error12_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_sm_power_not_good_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error12_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_sm_power_not_good_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error12_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_sm_power_not_good_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error13_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_af1_af2_power_not_good_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error13_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_af1_af2_power_not_good_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error13_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_af1_af2_power_not_good_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error14_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_tps_cp_rf_power_not_good_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error14_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_tps_cp_rf_power_not_good_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error14_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_tps_cp_rf_power_not_good_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_lvpdb_heartbeat_error15_encode(double value)
+uint8_t feb_can_lvpdb_heartbeat_dash_state_stale_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_lvpdb_heartbeat_error15_decode(uint8_t value)
+double feb_can_lvpdb_heartbeat_dash_state_stale_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_lvpdb_heartbeat_error15_is_in_range(uint8_t value)
+bool feb_can_lvpdb_heartbeat_dash_state_stale_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }

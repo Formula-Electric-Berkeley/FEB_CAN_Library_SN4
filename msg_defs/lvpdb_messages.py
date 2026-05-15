@@ -109,22 +109,26 @@ def get_lvpdb_sm_af1_af2_cp_rf_currents(frame_id : int):
     return msg
 
 def get_lvpdb_heartbeat(frame_id: int):
-    error0 = cantools.db.Signal(name="error0", start=0, length=1, byte_order="little_endian", is_signed=False)
-    error1 = cantools.db.Signal(name="error1", start=1, length=1, byte_order="little_endian", is_signed=False)
-    error2 = cantools.db.Signal(name="error2", start=2, length=1, byte_order="little_endian", is_signed=False)
-    error3 = cantools.db.Signal(name="error3", start=3, length=1, byte_order="little_endian", is_signed=False)
-    error4 = cantools.db.Signal(name="error4", start=4, length=1, byte_order="little_endian", is_signed=False)
-    error5 = cantools.db.Signal(name="error5", start=5, length=1, byte_order="little_endian", is_signed=False)
-    error6 = cantools.db.Signal(name="error6", start=6, length=1, byte_order="little_endian", is_signed=False)
-    error7 = cantools.db.Signal(name="error7", start=7, length=1, byte_order="little_endian", is_signed=False)
-    error8 = cantools.db.Signal(name="error8", start=8, length=1, byte_order="little_endian", is_signed=False)
-    error9 = cantools.db.Signal(name="error9", start=9, length=1, byte_order="little_endian", is_signed=False)
-    error10 = cantools.db.Signal(name="error10", start=10, length=1, byte_order="little_endian", is_signed=False)
-    error11 = cantools.db.Signal(name="error11", start=11, length=1, byte_order="little_endian", is_signed=False)
-    error12 = cantools.db.Signal(name="error12", start=12, length=1, byte_order="little_endian", is_signed=False)
-    error13 = cantools.db.Signal(name="error13", start=13, length=1, byte_order="little_endian", is_signed=False)
-    error14 = cantools.db.Signal(name="error14", start=14, length=1, byte_order="little_endian", is_signed=False)
-    error15 = cantools.db.Signal(name="error15", start=15, length=1, byte_order="little_endian", is_signed=False)
+    error0 = cantools.db.Signal(name="tps_init_failed", start=0, length=1, byte_order="little_endian", is_signed=False)
+    
+    error1 = cantools.db.Signal(name="tps_lv_poll_failed", start=1, length=1, byte_order="little_endian", is_signed=False)
+    error2 = cantools.db.Signal(name="tps_sh_poll_failed", start=2, length=1, byte_order="little_endian", is_signed=False)
+    error3 = cantools.db.Signal(name="tps_lt_poll_failed", start=3, length=1, byte_order="little_endian", is_signed=False)
+    error4 = cantools.db.Signal(name="tps_bm_l_poll_failed", start=4, length=1, byte_order="little_endian", is_signed=False)
+    error5 = cantools.db.Signal(name="tps_sm_poll_failed", start=5, length=1, byte_order="little_endian", is_signed=False)
+    error6 = cantools.db.Signal(name="tps_af1_af2_poll_failed", start=6, length=1, byte_order="little_endian", is_signed=False)
+    error7 = cantools.db.Signal(name="tps_cp_rf_poll_failed", start=7, length=1, byte_order="little_endian", is_signed=False)
+
+    error8 = cantools.db.Signal(name="tps_lv_power_not_good", start=8, length=1, byte_order="little_endian", is_signed=False)
+    error9 = cantools.db.Signal(name="tps_sh_power_not_good", start=9, length=1, byte_order="little_endian", is_signed=False)
+    error10 = cantools.db.Signal(name="tps_lt_power_not_good", start=10, length=1, byte_order="little_endian", is_signed=False)
+    error11 = cantools.db.Signal(name="tps_bm_l_power_not_good", start=11, length=1, byte_order="little_endian", is_signed=False)
+    error12 = cantools.db.Signal(name="tps_sm_power_not_good", start=12, length=1, byte_order="little_endian", is_signed=False)
+    error13 = cantools.db.Signal(name="tps_af1_af2_power_not_good", start=13, length=1, byte_order="little_endian", is_signed=False)
+    error14 = cantools.db.Signal(name="tps_cp_rf_power_not_good", start=14, length=1, byte_order="little_endian", is_signed=False)
+
+    error15 = cantools.db.Signal(name="dash_state_stale", start=15, length=1, byte_order="little_endian", is_signed=False)
+
     error16 = cantools.db.Signal(name="error16", start=16, length=1, byte_order="little_endian", is_signed=False)
     error17 = cantools.db.Signal(name="error17", start=17, length=1, byte_order="little_endian", is_signed=False)
     error18 = cantools.db.Signal(name="error18", start=18, length=1, byte_order="little_endian", is_signed=False)

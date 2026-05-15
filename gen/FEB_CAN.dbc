@@ -631,7 +631,7 @@ BO_ 209 dash_heartbeat: 8 Vector__XXX
  SG_ error3 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error2 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error1 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error0 : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ io_expander_error : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 210 lvpdb_heartbeat: 8 Vector__XXX
  SG_ error63 : 63|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -682,22 +682,22 @@ BO_ 210 lvpdb_heartbeat: 8 Vector__XXX
  SG_ error18 : 18|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error17 : 17|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error16 : 16|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error15 : 15|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error14 : 14|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error13 : 13|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error12 : 12|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error11 : 11|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error10 : 10|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error9 : 9|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error8 : 8|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error7 : 7|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error6 : 6|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error5 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error4 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error3 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error2 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error1 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ error0 : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ dash_state_stale : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_cp_rf_power_not_good : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_af1_af2_power_not_good : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_sm_power_not_good : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_bm_l_power_not_good : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_lt_power_not_good : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_sh_power_not_good : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_lv_power_not_good : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_cp_rf_poll_failed : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_af1_af2_poll_failed : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_sm_poll_failed : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_bm_l_poll_failed : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_lt_poll_failed : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_sh_poll_failed : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_lv_poll_failed : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ tps_init_failed : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 211 dcu_heartbeat: 8 Vector__XXX
  SG_ error63 : 63|1@1+ (1,0) [0|0] "" Vector__XXX

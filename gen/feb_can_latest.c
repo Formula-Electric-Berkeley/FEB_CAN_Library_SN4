@@ -1228,7 +1228,7 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
     if (strcmp(name, "dash_heartbeat") == 0)
     {
         printf_fn("0x%02X  dash_heartbeat  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xD1, (int)feb_can_state.dash_heartbeat.meta.present, (unsigned long)feb_can_state.dash_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_state.dash_heartbeat.meta.rx_count);
-        printf_fn("  error0                           = %ld\r\n", (long)feb_can_state.dash_heartbeat.data.error0);
+        printf_fn("  io_expander_error                = %ld\r\n", (long)feb_can_state.dash_heartbeat.data.io_expander_error);
         printf_fn("  error1                           = %ld\r\n", (long)feb_can_state.dash_heartbeat.data.error1);
         printf_fn("  error2                           = %ld\r\n", (long)feb_can_state.dash_heartbeat.data.error2);
         printf_fn("  error3                           = %ld\r\n", (long)feb_can_state.dash_heartbeat.data.error3);
@@ -1297,22 +1297,22 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
     if (strcmp(name, "lvpdb_heartbeat") == 0)
     {
         printf_fn("0x%02X  lvpdb_heartbeat  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xD2, (int)feb_can_state.lvpdb_heartbeat.meta.present, (unsigned long)feb_can_state.lvpdb_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_state.lvpdb_heartbeat.meta.rx_count);
-        printf_fn("  error0                           = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error0);
-        printf_fn("  error1                           = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error1);
-        printf_fn("  error2                           = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error2);
-        printf_fn("  error3                           = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error3);
-        printf_fn("  error4                           = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error4);
-        printf_fn("  error5                           = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error5);
-        printf_fn("  error6                           = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error6);
-        printf_fn("  error7                           = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error7);
-        printf_fn("  error8                           = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error8);
-        printf_fn("  error9                           = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error9);
-        printf_fn("  error10                          = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error10);
-        printf_fn("  error11                          = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error11);
-        printf_fn("  error12                          = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error12);
-        printf_fn("  error13                          = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error13);
-        printf_fn("  error14                          = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error14);
-        printf_fn("  error15                          = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error15);
+        printf_fn("  tps_init_failed                  = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_init_failed);
+        printf_fn("  tps_lv_poll_failed               = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_lv_poll_failed);
+        printf_fn("  tps_sh_poll_failed               = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_sh_poll_failed);
+        printf_fn("  tps_lt_poll_failed               = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_lt_poll_failed);
+        printf_fn("  tps_bm_l_poll_failed             = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_bm_l_poll_failed);
+        printf_fn("  tps_sm_poll_failed               = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_sm_poll_failed);
+        printf_fn("  tps_af1_af2_poll_failed          = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_af1_af2_poll_failed);
+        printf_fn("  tps_cp_rf_poll_failed            = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_cp_rf_poll_failed);
+        printf_fn("  tps_lv_power_not_good            = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_lv_power_not_good);
+        printf_fn("  tps_sh_power_not_good            = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_sh_power_not_good);
+        printf_fn("  tps_lt_power_not_good            = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_lt_power_not_good);
+        printf_fn("  tps_bm_l_power_not_good          = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_bm_l_power_not_good);
+        printf_fn("  tps_sm_power_not_good            = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_sm_power_not_good);
+        printf_fn("  tps_af1_af2_power_not_good       = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_af1_af2_power_not_good);
+        printf_fn("  tps_cp_rf_power_not_good         = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.tps_cp_rf_power_not_good);
+        printf_fn("  dash_state_stale                 = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.dash_state_stale);
         printf_fn("  error16                          = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error16);
         printf_fn("  error17                          = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error17);
         printf_fn("  error18                          = %ld\r\n", (long)feb_can_state.lvpdb_heartbeat.data.error18);

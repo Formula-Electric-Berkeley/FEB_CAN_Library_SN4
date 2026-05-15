@@ -811,7 +811,7 @@ extern "C" {
 #define FEB_CAN_PCU_HEARTBEAT_ERROR61_NAME "error61"
 #define FEB_CAN_PCU_HEARTBEAT_ERROR62_NAME "error62"
 #define FEB_CAN_PCU_HEARTBEAT_ERROR63_NAME "error63"
-#define FEB_CAN_DASH_HEARTBEAT_ERROR0_NAME "error0"
+#define FEB_CAN_DASH_HEARTBEAT_IO_EXPANDER_ERROR_NAME "io_expander_error"
 #define FEB_CAN_DASH_HEARTBEAT_ERROR1_NAME "error1"
 #define FEB_CAN_DASH_HEARTBEAT_ERROR2_NAME "error2"
 #define FEB_CAN_DASH_HEARTBEAT_ERROR3_NAME "error3"
@@ -875,22 +875,22 @@ extern "C" {
 #define FEB_CAN_DASH_HEARTBEAT_ERROR61_NAME "error61"
 #define FEB_CAN_DASH_HEARTBEAT_ERROR62_NAME "error62"
 #define FEB_CAN_DASH_HEARTBEAT_ERROR63_NAME "error63"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR0_NAME "error0"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR1_NAME "error1"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR2_NAME "error2"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR3_NAME "error3"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR4_NAME "error4"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR5_NAME "error5"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR6_NAME "error6"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR7_NAME "error7"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR8_NAME "error8"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR9_NAME "error9"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR10_NAME "error10"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR11_NAME "error11"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR12_NAME "error12"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR13_NAME "error13"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR14_NAME "error14"
-#define FEB_CAN_LVPDB_HEARTBEAT_ERROR15_NAME "error15"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_INIT_FAILED_NAME "tps_init_failed"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_LV_POLL_FAILED_NAME "tps_lv_poll_failed"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_SH_POLL_FAILED_NAME "tps_sh_poll_failed"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_LT_POLL_FAILED_NAME "tps_lt_poll_failed"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_BM_L_POLL_FAILED_NAME "tps_bm_l_poll_failed"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_SM_POLL_FAILED_NAME "tps_sm_poll_failed"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_AF1_AF2_POLL_FAILED_NAME "tps_af1_af2_poll_failed"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_CP_RF_POLL_FAILED_NAME "tps_cp_rf_poll_failed"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_LV_POWER_NOT_GOOD_NAME "tps_lv_power_not_good"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_SH_POWER_NOT_GOOD_NAME "tps_sh_power_not_good"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_LT_POWER_NOT_GOOD_NAME "tps_lt_power_not_good"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_BM_L_POWER_NOT_GOOD_NAME "tps_bm_l_power_not_good"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_SM_POWER_NOT_GOOD_NAME "tps_sm_power_not_good"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_AF1_AF2_POWER_NOT_GOOD_NAME "tps_af1_af2_power_not_good"
+#define FEB_CAN_LVPDB_HEARTBEAT_TPS_CP_RF_POWER_NOT_GOOD_NAME "tps_cp_rf_power_not_good"
+#define FEB_CAN_LVPDB_HEARTBEAT_DASH_STATE_STALE_NAME "dash_state_stale"
 #define FEB_CAN_LVPDB_HEARTBEAT_ERROR16_NAME "error16"
 #define FEB_CAN_LVPDB_HEARTBEAT_ERROR17_NAME "error17"
 #define FEB_CAN_LVPDB_HEARTBEAT_ERROR18_NAME "error18"
@@ -4630,7 +4630,7 @@ struct feb_can_dash_heartbeat_t {
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error0;
+    uint8_t io_expander_error;
 
     /**
      * Range: -
@@ -5087,112 +5087,112 @@ struct feb_can_lvpdb_heartbeat_t {
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error0;
+    uint8_t tps_init_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error1;
+    uint8_t tps_lv_poll_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error2;
+    uint8_t tps_sh_poll_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error3;
+    uint8_t tps_lt_poll_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error4;
+    uint8_t tps_bm_l_poll_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error5;
+    uint8_t tps_sm_poll_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error6;
+    uint8_t tps_af1_af2_poll_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error7;
+    uint8_t tps_cp_rf_poll_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error8;
+    uint8_t tps_lv_power_not_good;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error9;
+    uint8_t tps_sh_power_not_good;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error10;
+    uint8_t tps_lt_power_not_good;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error11;
+    uint8_t tps_bm_l_power_not_good;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error12;
+    uint8_t tps_sm_power_not_good;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error13;
+    uint8_t tps_af1_af2_power_not_good;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error14;
+    uint8_t tps_cp_rf_power_not_good;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error15;
+    uint8_t dash_state_stale;
 
     /**
      * Range: -
@@ -20139,7 +20139,7 @@ int feb_can_dash_heartbeat_init(struct feb_can_dash_heartbeat_t *msg_p);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_dash_heartbeat_error0_encode(double value);
+uint8_t feb_can_dash_heartbeat_io_expander_error_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -20148,7 +20148,7 @@ uint8_t feb_can_dash_heartbeat_error0_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_dash_heartbeat_error0_decode(uint8_t value);
+double feb_can_dash_heartbeat_io_expander_error_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -20157,7 +20157,7 @@ double feb_can_dash_heartbeat_error0_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_dash_heartbeat_error0_is_in_range(uint8_t value);
+bool feb_can_dash_heartbeat_io_expander_error_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -21904,7 +21904,7 @@ int feb_can_lvpdb_heartbeat_init(struct feb_can_lvpdb_heartbeat_t *msg_p);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error0_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_init_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -21913,7 +21913,7 @@ uint8_t feb_can_lvpdb_heartbeat_error0_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error0_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_init_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -21922,7 +21922,7 @@ double feb_can_lvpdb_heartbeat_error0_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error0_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_init_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -21931,7 +21931,7 @@ bool feb_can_lvpdb_heartbeat_error0_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error1_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_lv_poll_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -21940,7 +21940,7 @@ uint8_t feb_can_lvpdb_heartbeat_error1_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error1_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_lv_poll_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -21949,7 +21949,7 @@ double feb_can_lvpdb_heartbeat_error1_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error1_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_lv_poll_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -21958,7 +21958,7 @@ bool feb_can_lvpdb_heartbeat_error1_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error2_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_sh_poll_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -21967,7 +21967,7 @@ uint8_t feb_can_lvpdb_heartbeat_error2_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error2_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_sh_poll_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -21976,7 +21976,7 @@ double feb_can_lvpdb_heartbeat_error2_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error2_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_sh_poll_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -21985,7 +21985,7 @@ bool feb_can_lvpdb_heartbeat_error2_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error3_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_lt_poll_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -21994,7 +21994,7 @@ uint8_t feb_can_lvpdb_heartbeat_error3_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error3_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_lt_poll_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -22003,7 +22003,7 @@ double feb_can_lvpdb_heartbeat_error3_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error3_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_lt_poll_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -22012,7 +22012,7 @@ bool feb_can_lvpdb_heartbeat_error3_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error4_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_bm_l_poll_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -22021,7 +22021,7 @@ uint8_t feb_can_lvpdb_heartbeat_error4_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error4_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_bm_l_poll_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -22030,7 +22030,7 @@ double feb_can_lvpdb_heartbeat_error4_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error4_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_bm_l_poll_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -22039,7 +22039,7 @@ bool feb_can_lvpdb_heartbeat_error4_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error5_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_sm_poll_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -22048,7 +22048,7 @@ uint8_t feb_can_lvpdb_heartbeat_error5_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error5_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_sm_poll_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -22057,7 +22057,7 @@ double feb_can_lvpdb_heartbeat_error5_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error5_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_sm_poll_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -22066,7 +22066,7 @@ bool feb_can_lvpdb_heartbeat_error5_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error6_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_af1_af2_poll_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -22075,7 +22075,7 @@ uint8_t feb_can_lvpdb_heartbeat_error6_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error6_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_af1_af2_poll_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -22084,7 +22084,7 @@ double feb_can_lvpdb_heartbeat_error6_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error6_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_af1_af2_poll_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -22093,7 +22093,7 @@ bool feb_can_lvpdb_heartbeat_error6_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error7_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_cp_rf_poll_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -22102,7 +22102,7 @@ uint8_t feb_can_lvpdb_heartbeat_error7_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error7_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_cp_rf_poll_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -22111,7 +22111,7 @@ double feb_can_lvpdb_heartbeat_error7_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error7_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_cp_rf_poll_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -22120,7 +22120,7 @@ bool feb_can_lvpdb_heartbeat_error7_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error8_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_lv_power_not_good_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -22129,7 +22129,7 @@ uint8_t feb_can_lvpdb_heartbeat_error8_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error8_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_lv_power_not_good_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -22138,7 +22138,7 @@ double feb_can_lvpdb_heartbeat_error8_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error8_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_lv_power_not_good_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -22147,7 +22147,7 @@ bool feb_can_lvpdb_heartbeat_error8_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error9_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_sh_power_not_good_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -22156,7 +22156,7 @@ uint8_t feb_can_lvpdb_heartbeat_error9_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error9_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_sh_power_not_good_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -22165,7 +22165,7 @@ double feb_can_lvpdb_heartbeat_error9_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error9_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_sh_power_not_good_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -22174,7 +22174,7 @@ bool feb_can_lvpdb_heartbeat_error9_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error10_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_lt_power_not_good_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -22183,7 +22183,7 @@ uint8_t feb_can_lvpdb_heartbeat_error10_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error10_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_lt_power_not_good_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -22192,7 +22192,7 @@ double feb_can_lvpdb_heartbeat_error10_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error10_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_lt_power_not_good_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -22201,7 +22201,7 @@ bool feb_can_lvpdb_heartbeat_error10_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error11_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_bm_l_power_not_good_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -22210,7 +22210,7 @@ uint8_t feb_can_lvpdb_heartbeat_error11_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error11_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_bm_l_power_not_good_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -22219,7 +22219,7 @@ double feb_can_lvpdb_heartbeat_error11_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error11_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_bm_l_power_not_good_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -22228,7 +22228,7 @@ bool feb_can_lvpdb_heartbeat_error11_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error12_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_sm_power_not_good_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -22237,7 +22237,7 @@ uint8_t feb_can_lvpdb_heartbeat_error12_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error12_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_sm_power_not_good_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -22246,7 +22246,7 @@ double feb_can_lvpdb_heartbeat_error12_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error12_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_sm_power_not_good_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -22255,7 +22255,7 @@ bool feb_can_lvpdb_heartbeat_error12_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error13_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_af1_af2_power_not_good_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -22264,7 +22264,7 @@ uint8_t feb_can_lvpdb_heartbeat_error13_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error13_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_af1_af2_power_not_good_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -22273,7 +22273,7 @@ double feb_can_lvpdb_heartbeat_error13_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error13_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_af1_af2_power_not_good_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -22282,7 +22282,7 @@ bool feb_can_lvpdb_heartbeat_error13_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error14_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_tps_cp_rf_power_not_good_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -22291,7 +22291,7 @@ uint8_t feb_can_lvpdb_heartbeat_error14_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error14_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_tps_cp_rf_power_not_good_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -22300,7 +22300,7 @@ double feb_can_lvpdb_heartbeat_error14_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error14_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_tps_cp_rf_power_not_good_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -22309,7 +22309,7 @@ bool feb_can_lvpdb_heartbeat_error14_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_lvpdb_heartbeat_error15_encode(double value);
+uint8_t feb_can_lvpdb_heartbeat_dash_state_stale_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -22318,7 +22318,7 @@ uint8_t feb_can_lvpdb_heartbeat_error15_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_lvpdb_heartbeat_error15_decode(uint8_t value);
+double feb_can_lvpdb_heartbeat_dash_state_stale_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -22327,7 +22327,7 @@ double feb_can_lvpdb_heartbeat_error15_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_lvpdb_heartbeat_error15_is_in_range(uint8_t value);
+bool feb_can_lvpdb_heartbeat_dash_state_stale_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.

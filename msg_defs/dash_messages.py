@@ -115,7 +115,7 @@ def get_tps_voltage_current(frame_id: int):
     return msg
 
 def get_dash_heartbeat(frame_id: int):
-    error0 = cantools.db.Signal(name="error0", start=0, length=1, byte_order="little_endian", is_signed=False)
+    error0 = cantools.db.Signal(name="io_expander_error", start=0, length=1, byte_order="little_endian", is_signed=False)
     error1 = cantools.db.Signal(name="error1", start=1, length=1, byte_order="little_endian", is_signed=False)
     error2 = cantools.db.Signal(name="error2", start=2, length=1, byte_order="little_endian", is_signed=False)
     error3 = cantools.db.Signal(name="error3", start=3, length=1, byte_order="little_endian", is_signed=False)
