@@ -722,9 +722,13 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
     if (strcmp(name, "brake") == 0)
     {
         printf_fn("0x%02X  brake  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x09, (int)feb_can_state.brake.meta.present, (unsigned long)feb_can_state.brake.meta.last_rx_ms, (unsigned long)feb_can_state.brake.meta.rx_count);
-        printf_fn("  brake_percent                    = %ld\r\n", (long)feb_can_state.brake.data.brake_percent);
-        printf_fn("  brake1_psi                       = %ld\r\n", (long)feb_can_state.brake.data.brake1_psi);
-        printf_fn("  brake2_psi                       = %ld\r\n", (long)feb_can_state.brake.data.brake2_psi);
+        printf_fn("  brake_position                   = %ld\r\n", (long)feb_can_state.brake.data.brake_position);
+        printf_fn("  brake1_pct                       = %ld\r\n", (long)feb_can_state.brake.data.brake1_pct);
+        printf_fn("  brake2_pct                       = %ld\r\n", (long)feb_can_state.brake.data.brake2_pct);
+        printf_fn("  plausible                        = %ld\r\n", (long)feb_can_state.brake.data.plausible);
+        printf_fn("  brake_pressed                    = %ld\r\n", (long)feb_can_state.brake.data.brake_pressed);
+        printf_fn("  bots_active                      = %ld\r\n", (long)feb_can_state.brake.data.bots_active);
+        printf_fn("  brake_switch                     = %ld\r\n", (long)feb_can_state.brake.data.brake_switch);
         return 0;
     }
     if (strcmp(name, "bspd_state") == 0)

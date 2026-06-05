@@ -66,10 +66,14 @@ BO_ 5 bms_state: 2 Vector__XXX
  SG_ ping_lv_nodes : 5|3@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bms_state : 0|5@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 9 brake: 5 Vector__XXX
- SG_ brake2_psi : 24|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ brake1_psi : 8|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ brake_percent : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 9 brake: 8 Vector__XXX
+ SG_ brake_switch : 57|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ bots_active : 50|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ brake_pressed : 49|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ plausible : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ brake2_pct : 39|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ brake1_pct : 23|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ brake_position : 7|16@0+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 10 bspd_state: 1 Vector__XXX
  SG_ bspd_state : 0|8@1+ (1,0) [0|0] "" Vector__XXX
@@ -941,7 +945,7 @@ CM_ BO_ 2 "BMS message for accumulator voltage.";
 CM_ BO_ 3 "BMS message for accumulator temperature.";
 CM_ BO_ 4 "Accumulator Faults";
 CM_ BO_ 5 "BMS message for BMS state.";
-CM_ BO_ 9 "PCU brake message";
+CM_ BO_ 9 "PCU brake: position + 2 pressure sensors (centi-percent) + status flags";
 CM_ BO_ 10 "BSPD message.";
 CM_ BO_ 11 "RES message for RES state.";
 CM_ BO_ 16 "Dash state + buttons and switches";

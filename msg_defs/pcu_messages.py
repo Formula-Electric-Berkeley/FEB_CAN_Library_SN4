@@ -2,26 +2,61 @@ import cantools
 from cantools.database.conversion import BaseConversion
 
 def normalized_brake(frame_id: int):
-    normalized_brake = cantools.db.Signal(
-        name="brake_percent",
-        start=0,
-        length=8,
+    # Mirrors get_raw_acc(): big-endian 16-bit values at start 7/23/39, 1-bit
+    # little-endian status flags at 48+. Matches what the PCU actually packs in
+    # FEB_CAN_Diagnostics_TransmitBrakeData(). Values are centi-percent (0-10000).
+    brake_position = cantools.db.Signal(
+        name="brake_position",
+        start=7,
+        length=16,
+        byte_order="big_endian",
+        is_signed=False
+    )
+
+    brake1_pct = cantools.db.Signal(
+        name="brake1_pct",
+        start=23,
+        length=16,
+        byte_order="big_endian",
+        is_signed=False
+    )
+
+    brake2_pct = cantools.db.Signal(
+        name="brake2_pct",
+        start=39,
+        length=16,
+        byte_order="big_endian",
+        is_signed=False
+    )
+
+    plausible = cantools.db.Signal(
+        name="plausible",
+        start=48,
+        length=1,
         byte_order="little_endian",
         is_signed=False
     )
 
-    brake1_psi = cantools.db.Signal(
-        name="brake1_psi",
-        start=8,
-        length=16,
+    brake_pressed = cantools.db.Signal(
+        name="brake_pressed",
+        start=49,
+        length=1,
         byte_order="little_endian",
         is_signed=False
     )
 
-    brake2_psi = cantools.db.Signal(
-        name="brake2_psi",
-        start=24,
-        length=16,
+    bots_active = cantools.db.Signal(
+        name="bots_active",
+        start=50,
+        length=1,
+        byte_order="little_endian",
+        is_signed=False
+    )
+
+    brake_switch = cantools.db.Signal(
+        name="brake_switch",
+        start=57,
+        length=1,
         byte_order="little_endian",
         is_signed=False
     )
@@ -29,9 +64,9 @@ def normalized_brake(frame_id: int):
     msg = cantools.db.Message(
         frame_id=frame_id,
         name="brake",
-        length=5,
-        signals=[normalized_brake, brake1_psi, brake2_psi],
-        comment="PCU brake message",
+        length=8,
+        signals=[brake_position, brake1_pct, brake2_pct, plausible, brake_pressed, bots_active, brake_switch],
+        comment="PCU brake: position + 2 pressure sensors (centi-percent) + status flags",
         cycle_time=20,
         strict=True
     )

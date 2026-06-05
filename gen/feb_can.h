@@ -114,7 +114,7 @@ extern "C" {
 #define FEB_CAN_BMS_ACCUMULATOR_TEMPERATURE_LENGTH (8u)
 #define FEB_CAN_ACCUMULATOR_FAULTS_LENGTH (1u)
 #define FEB_CAN_BMS_STATE_LENGTH (2u)
-#define FEB_CAN_BRAKE_LENGTH (5u)
+#define FEB_CAN_BRAKE_LENGTH (8u)
 #define FEB_CAN_BSPD_STATE_LENGTH (1u)
 #define FEB_CAN_RES_STATE_LENGTH (2u)
 #define FEB_CAN_DASH_STATE_LENGTH (2u)
@@ -460,9 +460,13 @@ extern "C" {
 #define FEB_CAN_BMS_STATE_PING_LV_NODES_NAME "ping_lv_nodes"
 #define FEB_CAN_BMS_STATE_RELAY_STATE_NAME "relay_state"
 #define FEB_CAN_BMS_STATE_GPIO_SENSE_NAME "gpio_sense"
-#define FEB_CAN_BRAKE_BRAKE_PERCENT_NAME "brake_percent"
-#define FEB_CAN_BRAKE_BRAKE1_PSI_NAME "brake1_psi"
-#define FEB_CAN_BRAKE_BRAKE2_PSI_NAME "brake2_psi"
+#define FEB_CAN_BRAKE_BRAKE_POSITION_NAME "brake_position"
+#define FEB_CAN_BRAKE_BRAKE1_PCT_NAME "brake1_pct"
+#define FEB_CAN_BRAKE_BRAKE2_PCT_NAME "brake2_pct"
+#define FEB_CAN_BRAKE_PLAUSIBLE_NAME "plausible"
+#define FEB_CAN_BRAKE_BRAKE_PRESSED_NAME "brake_pressed"
+#define FEB_CAN_BRAKE_BOTS_ACTIVE_NAME "bots_active"
+#define FEB_CAN_BRAKE_BRAKE_SWITCH_NAME "brake_switch"
 #define FEB_CAN_BSPD_STATE_BSPD_STATE_NAME "bspd_state"
 #define FEB_CAN_RES_STATE_RES_STATE_NAME "res_state"
 #define FEB_CAN_DASH_STATE_BUTTON1_NAME "button1"
@@ -1340,7 +1344,7 @@ struct feb_can_bms_state_t {
 /**
  * Signals in message brake.
  *
- * PCU brake message
+ * PCU brake: position + 2 pressure sensors (centi-percent) + status flags
  *
  * All signal values are as on the CAN bus.
  */
@@ -1350,21 +1354,49 @@ struct feb_can_brake_t {
      * Scale: 1
      * Offset: 0
      */
-    uint8_t brake_percent;
+    uint16_t brake_position;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint16_t brake1_psi;
+    uint16_t brake1_pct;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint16_t brake2_psi;
+    uint16_t brake2_pct;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t plausible;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t brake_pressed;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t bots_active;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t brake_switch;
 };
 
 /**
@@ -7887,7 +7919,7 @@ int feb_can_brake_init(struct feb_can_brake_t *msg_p);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_brake_brake_percent_encode(double value);
+uint16_t feb_can_brake_brake_position_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -7896,7 +7928,7 @@ uint8_t feb_can_brake_brake_percent_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_brake_brake_percent_decode(uint8_t value);
+double feb_can_brake_brake_position_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -7905,7 +7937,7 @@ double feb_can_brake_brake_percent_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_brake_brake_percent_is_in_range(uint8_t value);
+bool feb_can_brake_brake_position_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7914,7 +7946,7 @@ bool feb_can_brake_brake_percent_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_brake_brake1_psi_encode(double value);
+uint16_t feb_can_brake_brake1_pct_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -7923,7 +7955,7 @@ uint16_t feb_can_brake_brake1_psi_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_brake_brake1_psi_decode(uint16_t value);
+double feb_can_brake_brake1_pct_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -7932,7 +7964,7 @@ double feb_can_brake_brake1_psi_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_brake_brake1_psi_is_in_range(uint16_t value);
+bool feb_can_brake_brake1_pct_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7941,7 +7973,7 @@ bool feb_can_brake_brake1_psi_is_in_range(uint16_t value);
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_brake_brake2_psi_encode(double value);
+uint16_t feb_can_brake_brake2_pct_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -7950,7 +7982,7 @@ uint16_t feb_can_brake_brake2_psi_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_brake_brake2_psi_decode(uint16_t value);
+double feb_can_brake_brake2_pct_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -7959,7 +7991,115 @@ double feb_can_brake_brake2_psi_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_brake_brake2_psi_is_in_range(uint16_t value);
+bool feb_can_brake_brake2_pct_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_brake_plausible_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_brake_plausible_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_brake_plausible_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_brake_brake_pressed_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_brake_brake_pressed_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_brake_brake_pressed_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_brake_bots_active_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_brake_bots_active_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_brake_bots_active_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_brake_brake_switch_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_brake_brake_switch_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_brake_brake_switch_is_in_range(uint8_t value);
 
 /**
  * Pack message bspd_state.

@@ -676,19 +676,24 @@ int feb_can_brake_pack(
     const struct feb_can_brake_t *src_p,
     size_t size)
 {
-    if (size < 5u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, 5);
+    memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u8(src_p->brake_percent, 0u, 0xffu);
-    dst_p[1] |= pack_left_shift_u16(src_p->brake1_psi, 0u, 0xffu);
-    dst_p[2] |= pack_right_shift_u16(src_p->brake1_psi, 8u, 0xffu);
-    dst_p[3] |= pack_left_shift_u16(src_p->brake2_psi, 0u, 0xffu);
-    dst_p[4] |= pack_right_shift_u16(src_p->brake2_psi, 8u, 0xffu);
+    dst_p[0] |= pack_right_shift_u16(src_p->brake_position, 8u, 0xffu);
+    dst_p[1] |= pack_left_shift_u16(src_p->brake_position, 0u, 0xffu);
+    dst_p[2] |= pack_right_shift_u16(src_p->brake1_pct, 8u, 0xffu);
+    dst_p[3] |= pack_left_shift_u16(src_p->brake1_pct, 0u, 0xffu);
+    dst_p[4] |= pack_right_shift_u16(src_p->brake2_pct, 8u, 0xffu);
+    dst_p[5] |= pack_left_shift_u16(src_p->brake2_pct, 0u, 0xffu);
+    dst_p[6] |= pack_left_shift_u8(src_p->plausible, 0u, 0x01u);
+    dst_p[6] |= pack_left_shift_u8(src_p->brake_pressed, 1u, 0x02u);
+    dst_p[6] |= pack_left_shift_u8(src_p->bots_active, 2u, 0x04u);
+    dst_p[7] |= pack_left_shift_u8(src_p->brake_switch, 1u, 0x02u);
 
-    return (5);
+    return (8);
 }
 
 int feb_can_brake_unpack(
@@ -696,15 +701,20 @@ int feb_can_brake_unpack(
     const uint8_t *src_p,
     size_t size)
 {
-    if (size < 5u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    dst_p->brake_percent = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
-    dst_p->brake1_psi = unpack_right_shift_u16(src_p[1], 0u, 0xffu);
-    dst_p->brake1_psi |= unpack_left_shift_u16(src_p[2], 8u, 0xffu);
-    dst_p->brake2_psi = unpack_right_shift_u16(src_p[3], 0u, 0xffu);
-    dst_p->brake2_psi |= unpack_left_shift_u16(src_p[4], 8u, 0xffu);
+    dst_p->brake_position = unpack_left_shift_u16(src_p[0], 8u, 0xffu);
+    dst_p->brake_position |= unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+    dst_p->brake1_pct = unpack_left_shift_u16(src_p[2], 8u, 0xffu);
+    dst_p->brake1_pct |= unpack_right_shift_u16(src_p[3], 0u, 0xffu);
+    dst_p->brake2_pct = unpack_left_shift_u16(src_p[4], 8u, 0xffu);
+    dst_p->brake2_pct |= unpack_right_shift_u16(src_p[5], 0u, 0xffu);
+    dst_p->plausible = unpack_right_shift_u8(src_p[6], 0u, 0x01u);
+    dst_p->brake_pressed = unpack_right_shift_u8(src_p[6], 1u, 0x02u);
+    dst_p->bots_active = unpack_right_shift_u8(src_p[6], 2u, 0x04u);
+    dst_p->brake_switch = unpack_right_shift_u8(src_p[7], 1u, 0x02u);
 
     return (0);
 }
@@ -718,55 +728,115 @@ int feb_can_brake_init(struct feb_can_brake_t *msg_p)
     return 0;
 }
 
-uint8_t feb_can_brake_brake_percent_encode(double value)
+uint16_t feb_can_brake_brake_position_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_brake_brake_position_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_brake_brake_position_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_brake_brake1_pct_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_brake_brake1_pct_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_brake_brake1_pct_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_brake_brake2_pct_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_brake_brake2_pct_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_brake_brake2_pct_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_brake_plausible_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_brake_brake_percent_decode(uint8_t value)
+double feb_can_brake_plausible_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_brake_brake_percent_is_in_range(uint8_t value)
+bool feb_can_brake_plausible_is_in_range(uint8_t value)
 {
-    (void)value;
-
-    return (true);
+    return (value <= 1u);
 }
 
-uint16_t feb_can_brake_brake1_psi_encode(double value)
+uint8_t feb_can_brake_brake_pressed_encode(double value)
 {
-    return (uint16_t)(value);
+    return (uint8_t)(value);
 }
 
-double feb_can_brake_brake1_psi_decode(uint16_t value)
+double feb_can_brake_brake_pressed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_brake_brake1_psi_is_in_range(uint16_t value)
+bool feb_can_brake_brake_pressed_is_in_range(uint8_t value)
 {
-    (void)value;
-
-    return (true);
+    return (value <= 1u);
 }
 
-uint16_t feb_can_brake_brake2_psi_encode(double value)
+uint8_t feb_can_brake_bots_active_encode(double value)
 {
-    return (uint16_t)(value);
+    return (uint8_t)(value);
 }
 
-double feb_can_brake_brake2_psi_decode(uint16_t value)
+double feb_can_brake_bots_active_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_brake_brake2_psi_is_in_range(uint16_t value)
+bool feb_can_brake_bots_active_is_in_range(uint8_t value)
 {
-    (void)value;
+    return (value <= 1u);
+}
 
-    return (true);
+uint8_t feb_can_brake_brake_switch_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_brake_brake_switch_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_brake_brake_switch_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
 }
 
 int feb_can_bspd_state_pack(
