@@ -430,6 +430,36 @@ int FEB_CAN_State_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, ui
         feb_can_state.ebs_pressure_status.meta.last_rx_ms = now_ms;
         feb_can_state.ebs_pressure_status.meta.rx_count++;
         return 0;
+    case FEB_CAN_IVT_CURRENT_FRAME_ID:
+        if (feb_can_ivt_current_unpack(&feb_can_state.ivt_current.data, data, dlc) < 0) return -2;
+        feb_can_state.ivt_current.meta.present = true;
+        feb_can_state.ivt_current.meta.last_rx_ms = now_ms;
+        feb_can_state.ivt_current.meta.rx_count++;
+        return 0;
+    case FEB_CAN_IVT_VOLTAGE1_FRAME_ID:
+        if (feb_can_ivt_voltage1_unpack(&feb_can_state.ivt_voltage1.data, data, dlc) < 0) return -2;
+        feb_can_state.ivt_voltage1.meta.present = true;
+        feb_can_state.ivt_voltage1.meta.last_rx_ms = now_ms;
+        feb_can_state.ivt_voltage1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_IVT_VOLTAGE2_FRAME_ID:
+        if (feb_can_ivt_voltage2_unpack(&feb_can_state.ivt_voltage2.data, data, dlc) < 0) return -2;
+        feb_can_state.ivt_voltage2.meta.present = true;
+        feb_can_state.ivt_voltage2.meta.last_rx_ms = now_ms;
+        feb_can_state.ivt_voltage2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_IVT_VOLTAGE3_FRAME_ID:
+        if (feb_can_ivt_voltage3_unpack(&feb_can_state.ivt_voltage3.data, data, dlc) < 0) return -2;
+        feb_can_state.ivt_voltage3.meta.present = true;
+        feb_can_state.ivt_voltage3.meta.last_rx_ms = now_ms;
+        feb_can_state.ivt_voltage3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_IVT_TEMPERATURE_FRAME_ID:
+        if (feb_can_ivt_temperature_unpack(&feb_can_state.ivt_temperature.data, data, dlc) < 0) return -2;
+        feb_can_state.ivt_temperature.meta.present = true;
+        feb_can_state.ivt_temperature.meta.last_rx_ms = now_ms;
+        feb_can_state.ivt_temperature.meta.rx_count++;
+        return 0;
     case FEB_CAN_M160_TEMPERATURE_SET_1_FRAME_ID:
         if (feb_can_m160_temperature_set_1_unpack(&feb_can_state.m160_temperature_set_1.data, data, dlc) < 0) return -2;
         feb_can_state.m160_temperature_set_1.meta.present = true;
@@ -647,6 +677,11 @@ void FEB_CAN_State_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_state.feb_ping_pong_counter3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE2, "feb_ping_pong_counter3", (unsigned long)feb_can_state.feb_ping_pong_counter3.meta.last_rx_ms, (unsigned long)feb_can_state.feb_ping_pong_counter3.meta.rx_count);
     if (feb_can_state.feb_ping_pong_counter4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE3, "feb_ping_pong_counter4", (unsigned long)feb_can_state.feb_ping_pong_counter4.meta.last_rx_ms, (unsigned long)feb_can_state.feb_ping_pong_counter4.meta.rx_count);
     if (feb_can_state.ebs_pressure_status.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x500, "ebs_pressure_status", (unsigned long)feb_can_state.ebs_pressure_status.meta.last_rx_ms, (unsigned long)feb_can_state.ebs_pressure_status.meta.rx_count);
+    if (feb_can_state.ivt_current.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x521, "ivt_current", (unsigned long)feb_can_state.ivt_current.meta.last_rx_ms, (unsigned long)feb_can_state.ivt_current.meta.rx_count);
+    if (feb_can_state.ivt_voltage1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x522, "ivt_voltage1", (unsigned long)feb_can_state.ivt_voltage1.meta.last_rx_ms, (unsigned long)feb_can_state.ivt_voltage1.meta.rx_count);
+    if (feb_can_state.ivt_voltage2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x523, "ivt_voltage2", (unsigned long)feb_can_state.ivt_voltage2.meta.last_rx_ms, (unsigned long)feb_can_state.ivt_voltage2.meta.rx_count);
+    if (feb_can_state.ivt_voltage3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x524, "ivt_voltage3", (unsigned long)feb_can_state.ivt_voltage3.meta.last_rx_ms, (unsigned long)feb_can_state.ivt_voltage3.meta.rx_count);
+    if (feb_can_state.ivt_temperature.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x525, "ivt_temperature", (unsigned long)feb_can_state.ivt_temperature.meta.last_rx_ms, (unsigned long)feb_can_state.ivt_temperature.meta.rx_count);
     if (feb_can_state.m160_temperature_set_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xA0, "m160_temperature_set_1", (unsigned long)feb_can_state.m160_temperature_set_1.meta.last_rx_ms, (unsigned long)feb_can_state.m160_temperature_set_1.meta.rx_count);
     if (feb_can_state.m161_temperature_set_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xA1, "m161_temperature_set_2", (unsigned long)feb_can_state.m161_temperature_set_2.meta.last_rx_ms, (unsigned long)feb_can_state.m161_temperature_set_2.meta.rx_count);
     if (feb_can_state.m162_temperature_set_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xA2, "m162_temperature_set_3", (unsigned long)feb_can_state.m162_temperature_set_3.meta.last_rx_ms, (unsigned long)feb_can_state.m162_temperature_set_3.meta.rx_count);
@@ -1605,6 +1640,41 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
         printf_fn("  ebs_pressure_2                   = %ld\r\n", (long)feb_can_state.ebs_pressure_status.data.ebs_pressure_2);
         printf_fn("  ebs_pressure_3                   = %ld\r\n", (long)feb_can_state.ebs_pressure_status.data.ebs_pressure_3);
         printf_fn("  ebs_pressure_4                   = %ld\r\n", (long)feb_can_state.ebs_pressure_status.data.ebs_pressure_4);
+        return 0;
+    }
+    if (strcmp(name, "ivt_current") == 0)
+    {
+        printf_fn("0x%02X  ivt_current  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x521, (int)feb_can_state.ivt_current.meta.present, (unsigned long)feb_can_state.ivt_current.meta.last_rx_ms, (unsigned long)feb_can_state.ivt_current.meta.rx_count);
+        printf_fn("  counter                          = %ld\r\n", (long)feb_can_state.ivt_current.data.counter);
+        printf_fn("  current                          = %ld\r\n", (long)feb_can_state.ivt_current.data.current);
+        return 0;
+    }
+    if (strcmp(name, "ivt_voltage1") == 0)
+    {
+        printf_fn("0x%02X  ivt_voltage1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x522, (int)feb_can_state.ivt_voltage1.meta.present, (unsigned long)feb_can_state.ivt_voltage1.meta.last_rx_ms, (unsigned long)feb_can_state.ivt_voltage1.meta.rx_count);
+        printf_fn("  counter                          = %ld\r\n", (long)feb_can_state.ivt_voltage1.data.counter);
+        printf_fn("  voltage1                         = %ld\r\n", (long)feb_can_state.ivt_voltage1.data.voltage1);
+        return 0;
+    }
+    if (strcmp(name, "ivt_voltage2") == 0)
+    {
+        printf_fn("0x%02X  ivt_voltage2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x523, (int)feb_can_state.ivt_voltage2.meta.present, (unsigned long)feb_can_state.ivt_voltage2.meta.last_rx_ms, (unsigned long)feb_can_state.ivt_voltage2.meta.rx_count);
+        printf_fn("  counter                          = %ld\r\n", (long)feb_can_state.ivt_voltage2.data.counter);
+        printf_fn("  voltage2                         = %ld\r\n", (long)feb_can_state.ivt_voltage2.data.voltage2);
+        return 0;
+    }
+    if (strcmp(name, "ivt_voltage3") == 0)
+    {
+        printf_fn("0x%02X  ivt_voltage3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x524, (int)feb_can_state.ivt_voltage3.meta.present, (unsigned long)feb_can_state.ivt_voltage3.meta.last_rx_ms, (unsigned long)feb_can_state.ivt_voltage3.meta.rx_count);
+        printf_fn("  counter                          = %ld\r\n", (long)feb_can_state.ivt_voltage3.data.counter);
+        printf_fn("  voltage3                         = %ld\r\n", (long)feb_can_state.ivt_voltage3.data.voltage3);
+        return 0;
+    }
+    if (strcmp(name, "ivt_temperature") == 0)
+    {
+        printf_fn("0x%02X  ivt_temperature  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x525, (int)feb_can_state.ivt_temperature.meta.present, (unsigned long)feb_can_state.ivt_temperature.meta.last_rx_ms, (unsigned long)feb_can_state.ivt_temperature.meta.rx_count);
+        printf_fn("  counter                          = %ld\r\n", (long)feb_can_state.ivt_temperature.data.counter);
+        printf_fn("  temperature                      = %ld\r\n", (long)feb_can_state.ivt_temperature.data.temperature);
         return 0;
     }
     if (strcmp(name, "m160_temperature_set_1") == 0)

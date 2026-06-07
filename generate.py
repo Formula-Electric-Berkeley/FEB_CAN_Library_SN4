@@ -58,7 +58,7 @@ from msg_defs import lvpdb_messages as lvpdb_msg
 from msg_defs import dcu_message as dcu_msg
 from msg_defs import sensor_nodes_messages as sensor_msg
 from msg_defs import dart_messages as dart_msg
-from msg_defs import iv_meter_messages as iv_meter_msg
+from msg_defs import ivt_messages as ivt_msg
 from msg_defs import ping_pong_messages as ping_pong_msg
 from msg_defs import res_messages as res_msg
 
@@ -83,6 +83,7 @@ from msg_defs import res_messages as res_msg
 #   0xD0-0xDF:  Heartbeat messages (6 used, 10 reserved)
 #   0xE0-0xEF:  Debug/test messages (4 used, 12 reserved)
 #   0x500-0x50F: EBS / Driverless safety (1 used, 15 reserved)
+#   0x520-0x52F: IVT-S current/voltage sensor (5 used, 11 reserved; 0x526-0x528 reserved)
 # =============================================================================
 
 MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = {
@@ -219,6 +220,16 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     # Cycle time is fixed at 100 ms per CANopen specification — do not reduce it.
     0x500: (pcu_msg.ebs_pressure_status, "EBS pressure status (4 sensors)"),
     # 0x501-0x50F: Reserved for future EBS / driverless safety messages
+
+    # ----- IVT-S Current/Voltage Sensor (0x520-0x52F) -----
+    # Isabellenhutte IVT-S broadcasts these; the BMS receives and decodes them.
+    # Fixed frame IDs configured on the sensor — do not remap.
+    0x521: (ivt_msg.get_ivt_current, "IVT-S pack current (raw int32, mA)"),
+    0x522: (ivt_msg.get_ivt_voltage_1, "IVT-S voltage 1 / pack voltage (raw int32, mV)"),
+    0x523: (ivt_msg.get_ivt_voltage_2, "IVT-S voltage 2 (raw int32, mV)"),
+    0x524: (ivt_msg.get_ivt_voltage_3, "IVT-S voltage 3 (raw int32, mV)"),
+    0x525: (ivt_msg.get_ivt_temperature, "IVT-S temperature (raw int32, 0.1 degC)"),
+    # 0x526-0x528: Reserved (IVT-S power / coulomb counter / energy counter, not yet decoded)
 }
 
 # Frame ID allocation ranges for documentation and validation
@@ -237,6 +248,7 @@ ID_RANGES = [
     (0xD0, 0xDF, "Heartbeats"),
     (0xE0, 0xEF, "Debug/Test"),
     (0x500, 0x50F, "EBS / Driverless Safety"),
+    (0x520, 0x52F, "IVT-S current/voltage sensor"),
 ]
 
 

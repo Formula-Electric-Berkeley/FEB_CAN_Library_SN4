@@ -107,6 +107,11 @@ extern "C" {
 #define FEB_CAN_M187_U2_C_COMMAND_TXD_FRAME_ID (0x1d7u)
 #define FEB_CAN_BMS_CURRENT_LIMIT_FRAME_ID (0x202u)
 #define FEB_CAN_EBS_PRESSURE_STATUS_FRAME_ID (0x500u)
+#define FEB_CAN_IVT_CURRENT_FRAME_ID (0x521u)
+#define FEB_CAN_IVT_VOLTAGE1_FRAME_ID (0x522u)
+#define FEB_CAN_IVT_VOLTAGE2_FRAME_ID (0x523u)
+#define FEB_CAN_IVT_VOLTAGE3_FRAME_ID (0x524u)
+#define FEB_CAN_IVT_TEMPERATURE_FRAME_ID (0x525u)
 
 /* Frame lengths in bytes. */
 #define FEB_CAN_BMS_CELL_DATA_LENGTH (8u)
@@ -202,6 +207,11 @@ extern "C" {
 #define FEB_CAN_M187_U2_C_COMMAND_TXD_LENGTH (8u)
 #define FEB_CAN_BMS_CURRENT_LIMIT_LENGTH (8u)
 #define FEB_CAN_EBS_PRESSURE_STATUS_LENGTH (8u)
+#define FEB_CAN_IVT_CURRENT_LENGTH (6u)
+#define FEB_CAN_IVT_VOLTAGE1_LENGTH (6u)
+#define FEB_CAN_IVT_VOLTAGE2_LENGTH (6u)
+#define FEB_CAN_IVT_VOLTAGE3_LENGTH (6u)
+#define FEB_CAN_IVT_TEMPERATURE_LENGTH (6u)
 
 /* Extended or standard frame types. */
 #define FEB_CAN_BMS_CELL_DATA_IS_EXTENDED (0)
@@ -297,6 +307,11 @@ extern "C" {
 #define FEB_CAN_M187_U2_C_COMMAND_TXD_IS_EXTENDED (0)
 #define FEB_CAN_BMS_CURRENT_LIMIT_IS_EXTENDED (0)
 #define FEB_CAN_EBS_PRESSURE_STATUS_IS_EXTENDED (0)
+#define FEB_CAN_IVT_CURRENT_IS_EXTENDED (0)
+#define FEB_CAN_IVT_VOLTAGE1_IS_EXTENDED (0)
+#define FEB_CAN_IVT_VOLTAGE2_IS_EXTENDED (0)
+#define FEB_CAN_IVT_VOLTAGE3_IS_EXTENDED (0)
+#define FEB_CAN_IVT_TEMPERATURE_IS_EXTENDED (0)
 
 /* Frame cycle times in milliseconds. */
 #define FEB_CAN_BRAKE_CYCLE_TIME_MS (20u)
@@ -438,6 +453,11 @@ extern "C" {
 #define FEB_CAN_M187_U2_C_COMMAND_TXD_NAME "M187_U2C_Command_Txd"
 #define FEB_CAN_BMS_CURRENT_LIMIT_NAME "BMS_Current_Limit"
 #define FEB_CAN_EBS_PRESSURE_STATUS_NAME "ebs_pressure_status"
+#define FEB_CAN_IVT_CURRENT_NAME "IVTCurrent"
+#define FEB_CAN_IVT_VOLTAGE1_NAME "IVTVoltage1"
+#define FEB_CAN_IVT_VOLTAGE2_NAME "IVTVoltage2"
+#define FEB_CAN_IVT_VOLTAGE3_NAME "IVTVoltage3"
+#define FEB_CAN_IVT_TEMPERATURE_NAME "IVTTemperature"
 
 /* Signal Names. */
 #define FEB_CAN_BMS_CELL_DATA_BMS_FLAGS_NAME "bms_flags"
@@ -1155,6 +1175,16 @@ extern "C" {
 #define FEB_CAN_EBS_PRESSURE_STATUS_EBS_PRESSURE_2_NAME "ebs_pressure_2"
 #define FEB_CAN_EBS_PRESSURE_STATUS_EBS_PRESSURE_3_NAME "ebs_pressure_3"
 #define FEB_CAN_EBS_PRESSURE_STATUS_EBS_PRESSURE_4_NAME "ebs_pressure_4"
+#define FEB_CAN_IVT_CURRENT_COUNTER_NAME "counter"
+#define FEB_CAN_IVT_CURRENT_CURRENT_NAME "current"
+#define FEB_CAN_IVT_VOLTAGE1_COUNTER_NAME "counter"
+#define FEB_CAN_IVT_VOLTAGE1_VOLTAGE1_NAME "voltage1"
+#define FEB_CAN_IVT_VOLTAGE2_COUNTER_NAME "counter"
+#define FEB_CAN_IVT_VOLTAGE2_VOLTAGE2_NAME "voltage2"
+#define FEB_CAN_IVT_VOLTAGE3_COUNTER_NAME "counter"
+#define FEB_CAN_IVT_VOLTAGE3_VOLTAGE3_NAME "voltage3"
+#define FEB_CAN_IVT_TEMPERATURE_COUNTER_NAME "counter"
+#define FEB_CAN_IVT_TEMPERATURE_TEMPERATURE_NAME "temperature"
 
 /**
  * Signals in message bms_cell_data.
@@ -7148,6 +7178,121 @@ struct feb_can_ebs_pressure_status_t {
      * Offset: 0
      */
     int16_t ebs_pressure_4;
+};
+
+/**
+ * Signals in message IVTCurrent.
+ *
+ * Isabellenhutte IVT-S pack current (raw int32, mA).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_ivt_current_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t counter;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int32_t current;
+};
+
+/**
+ * Signals in message IVTVoltage1.
+ *
+ * Isabellenhutte IVT-S voltage 1 / pack voltage (raw int32, mV).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_ivt_voltage1_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t counter;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int32_t voltage1;
+};
+
+/**
+ * Signals in message IVTVoltage2.
+ *
+ * Isabellenhutte IVT-S voltage 2 (raw int32, mV).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_ivt_voltage2_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t counter;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int32_t voltage2;
+};
+
+/**
+ * Signals in message IVTVoltage3.
+ *
+ * Isabellenhutte IVT-S voltage 3 (raw int32, mV).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_ivt_voltage3_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t counter;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int32_t voltage3;
+};
+
+/**
+ * Signals in message IVTTemperature.
+ *
+ * Isabellenhutte IVT-S temperature (raw int32, 0.1 degC).
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_ivt_temperature_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t counter;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int32_t temperature;
 };
 
 /**
@@ -29895,6 +30040,461 @@ double feb_can_ebs_pressure_status_ebs_pressure_4_decode(int16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_ebs_pressure_status_ebs_pressure_4_is_in_range(int16_t value);
+
+/**
+ * Pack message IVTCurrent.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_ivt_current_pack(
+    uint8_t *dst_p,
+    const struct feb_can_ivt_current_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message IVTCurrent.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_ivt_current_unpack(
+    struct feb_can_ivt_current_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from IVTCurrent.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_ivt_current_init(struct feb_can_ivt_current_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_ivt_current_counter_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_ivt_current_counter_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_ivt_current_counter_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int32_t feb_can_ivt_current_current_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_ivt_current_current_decode(int32_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_ivt_current_current_is_in_range(int32_t value);
+
+/**
+ * Pack message IVTVoltage1.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_ivt_voltage1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_ivt_voltage1_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message IVTVoltage1.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_ivt_voltage1_unpack(
+    struct feb_can_ivt_voltage1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from IVTVoltage1.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_ivt_voltage1_init(struct feb_can_ivt_voltage1_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_ivt_voltage1_counter_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_ivt_voltage1_counter_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_ivt_voltage1_counter_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int32_t feb_can_ivt_voltage1_voltage1_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_ivt_voltage1_voltage1_decode(int32_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_ivt_voltage1_voltage1_is_in_range(int32_t value);
+
+/**
+ * Pack message IVTVoltage2.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_ivt_voltage2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_ivt_voltage2_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message IVTVoltage2.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_ivt_voltage2_unpack(
+    struct feb_can_ivt_voltage2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from IVTVoltage2.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_ivt_voltage2_init(struct feb_can_ivt_voltage2_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_ivt_voltage2_counter_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_ivt_voltage2_counter_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_ivt_voltage2_counter_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int32_t feb_can_ivt_voltage2_voltage2_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_ivt_voltage2_voltage2_decode(int32_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_ivt_voltage2_voltage2_is_in_range(int32_t value);
+
+/**
+ * Pack message IVTVoltage3.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_ivt_voltage3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_ivt_voltage3_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message IVTVoltage3.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_ivt_voltage3_unpack(
+    struct feb_can_ivt_voltage3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from IVTVoltage3.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_ivt_voltage3_init(struct feb_can_ivt_voltage3_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_ivt_voltage3_counter_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_ivt_voltage3_counter_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_ivt_voltage3_counter_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int32_t feb_can_ivt_voltage3_voltage3_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_ivt_voltage3_voltage3_decode(int32_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_ivt_voltage3_voltage3_is_in_range(int32_t value);
+
+/**
+ * Pack message IVTTemperature.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_ivt_temperature_pack(
+    uint8_t *dst_p,
+    const struct feb_can_ivt_temperature_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message IVTTemperature.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_ivt_temperature_unpack(
+    struct feb_can_ivt_temperature_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from IVTTemperature.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_ivt_temperature_init(struct feb_can_ivt_temperature_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_ivt_temperature_counter_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_ivt_temperature_counter_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_ivt_temperature_counter_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int32_t feb_can_ivt_temperature_temperature_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_ivt_temperature_temperature_decode(int32_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_ivt_temperature_temperature_is_in_range(int32_t value);
 
 
 #ifdef __cplusplus

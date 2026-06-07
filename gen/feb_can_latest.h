@@ -89,6 +89,11 @@ typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_feb_ping_pong_counter
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_feb_ping_pong_counter3_t data; } FEB_CAN_State_feb_ping_pong_counter3_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_feb_ping_pong_counter4_t data; } FEB_CAN_State_feb_ping_pong_counter4_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_ebs_pressure_status_t data; } FEB_CAN_State_ebs_pressure_status_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_ivt_current_t data; } FEB_CAN_State_ivt_current_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_ivt_voltage1_t data; } FEB_CAN_State_ivt_voltage1_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_ivt_voltage2_t data; } FEB_CAN_State_ivt_voltage2_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_ivt_voltage3_t data; } FEB_CAN_State_ivt_voltage3_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_ivt_temperature_t data; } FEB_CAN_State_ivt_temperature_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m160_temperature_set_1_t data; } FEB_CAN_State_m160_temperature_set_1_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m161_temperature_set_2_t data; } FEB_CAN_State_m161_temperature_set_2_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m162_temperature_set_3_t data; } FEB_CAN_State_m162_temperature_set_3_t;
@@ -184,6 +189,11 @@ typedef struct {
     FEB_CAN_State_feb_ping_pong_counter3_t feb_ping_pong_counter3;
     FEB_CAN_State_feb_ping_pong_counter4_t feb_ping_pong_counter4;
     FEB_CAN_State_ebs_pressure_status_t ebs_pressure_status;
+    FEB_CAN_State_ivt_current_t ivt_current;
+    FEB_CAN_State_ivt_voltage1_t ivt_voltage1;
+    FEB_CAN_State_ivt_voltage2_t ivt_voltage2;
+    FEB_CAN_State_ivt_voltage3_t ivt_voltage3;
+    FEB_CAN_State_ivt_temperature_t ivt_temperature;
     FEB_CAN_State_m160_temperature_set_1_t m160_temperature_set_1;
     FEB_CAN_State_m161_temperature_set_2_t m161_temperature_set_2;
     FEB_CAN_State_m162_temperature_set_3_t m162_temperature_set_3;

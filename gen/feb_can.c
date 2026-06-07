@@ -17343,3 +17343,448 @@ bool feb_can_ebs_pressure_status_ebs_pressure_4_is_in_range(int16_t value)
 
     return (true);
 }
+
+int feb_can_ivt_current_pack(
+    uint8_t *dst_p,
+    const struct feb_can_ivt_current_t *src_p,
+    size_t size)
+{
+    uint32_t current;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 6);
+
+    dst_p[0] |= pack_right_shift_u16(src_p->counter, 8u, 0xffu);
+    dst_p[1] |= pack_left_shift_u16(src_p->counter, 0u, 0xffu);
+    current = (uint32_t)src_p->current;
+    dst_p[2] |= pack_right_shift_u32(current, 24u, 0xffu);
+    dst_p[3] |= pack_right_shift_u32(current, 16u, 0xffu);
+    dst_p[4] |= pack_right_shift_u32(current, 8u, 0xffu);
+    dst_p[5] |= pack_left_shift_u32(current, 0u, 0xffu);
+
+    return (6);
+}
+
+int feb_can_ivt_current_unpack(
+    struct feb_can_ivt_current_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint32_t current;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    dst_p->counter = unpack_left_shift_u16(src_p[0], 8u, 0xffu);
+    dst_p->counter |= unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+    current = unpack_left_shift_u32(src_p[2], 24u, 0xffu);
+    current |= unpack_left_shift_u32(src_p[3], 16u, 0xffu);
+    current |= unpack_left_shift_u32(src_p[4], 8u, 0xffu);
+    current |= unpack_right_shift_u32(src_p[5], 0u, 0xffu);
+    dst_p->current = (int32_t)current;
+
+    return (0);
+}
+
+int feb_can_ivt_current_init(struct feb_can_ivt_current_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_ivt_current_t));
+
+    return 0;
+}
+
+uint16_t feb_can_ivt_current_counter_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_ivt_current_counter_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_ivt_current_counter_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int32_t feb_can_ivt_current_current_encode(double value)
+{
+    return (int32_t)(value);
+}
+
+double feb_can_ivt_current_current_decode(int32_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_ivt_current_current_is_in_range(int32_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_ivt_voltage1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_ivt_voltage1_t *src_p,
+    size_t size)
+{
+    uint32_t voltage1;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 6);
+
+    dst_p[0] |= pack_right_shift_u16(src_p->counter, 8u, 0xffu);
+    dst_p[1] |= pack_left_shift_u16(src_p->counter, 0u, 0xffu);
+    voltage1 = (uint32_t)src_p->voltage1;
+    dst_p[2] |= pack_right_shift_u32(voltage1, 24u, 0xffu);
+    dst_p[3] |= pack_right_shift_u32(voltage1, 16u, 0xffu);
+    dst_p[4] |= pack_right_shift_u32(voltage1, 8u, 0xffu);
+    dst_p[5] |= pack_left_shift_u32(voltage1, 0u, 0xffu);
+
+    return (6);
+}
+
+int feb_can_ivt_voltage1_unpack(
+    struct feb_can_ivt_voltage1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint32_t voltage1;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    dst_p->counter = unpack_left_shift_u16(src_p[0], 8u, 0xffu);
+    dst_p->counter |= unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+    voltage1 = unpack_left_shift_u32(src_p[2], 24u, 0xffu);
+    voltage1 |= unpack_left_shift_u32(src_p[3], 16u, 0xffu);
+    voltage1 |= unpack_left_shift_u32(src_p[4], 8u, 0xffu);
+    voltage1 |= unpack_right_shift_u32(src_p[5], 0u, 0xffu);
+    dst_p->voltage1 = (int32_t)voltage1;
+
+    return (0);
+}
+
+int feb_can_ivt_voltage1_init(struct feb_can_ivt_voltage1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_ivt_voltage1_t));
+
+    return 0;
+}
+
+uint16_t feb_can_ivt_voltage1_counter_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_ivt_voltage1_counter_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_ivt_voltage1_counter_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int32_t feb_can_ivt_voltage1_voltage1_encode(double value)
+{
+    return (int32_t)(value);
+}
+
+double feb_can_ivt_voltage1_voltage1_decode(int32_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_ivt_voltage1_voltage1_is_in_range(int32_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_ivt_voltage2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_ivt_voltage2_t *src_p,
+    size_t size)
+{
+    uint32_t voltage2;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 6);
+
+    dst_p[0] |= pack_right_shift_u16(src_p->counter, 8u, 0xffu);
+    dst_p[1] |= pack_left_shift_u16(src_p->counter, 0u, 0xffu);
+    voltage2 = (uint32_t)src_p->voltage2;
+    dst_p[2] |= pack_right_shift_u32(voltage2, 24u, 0xffu);
+    dst_p[3] |= pack_right_shift_u32(voltage2, 16u, 0xffu);
+    dst_p[4] |= pack_right_shift_u32(voltage2, 8u, 0xffu);
+    dst_p[5] |= pack_left_shift_u32(voltage2, 0u, 0xffu);
+
+    return (6);
+}
+
+int feb_can_ivt_voltage2_unpack(
+    struct feb_can_ivt_voltage2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint32_t voltage2;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    dst_p->counter = unpack_left_shift_u16(src_p[0], 8u, 0xffu);
+    dst_p->counter |= unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+    voltage2 = unpack_left_shift_u32(src_p[2], 24u, 0xffu);
+    voltage2 |= unpack_left_shift_u32(src_p[3], 16u, 0xffu);
+    voltage2 |= unpack_left_shift_u32(src_p[4], 8u, 0xffu);
+    voltage2 |= unpack_right_shift_u32(src_p[5], 0u, 0xffu);
+    dst_p->voltage2 = (int32_t)voltage2;
+
+    return (0);
+}
+
+int feb_can_ivt_voltage2_init(struct feb_can_ivt_voltage2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_ivt_voltage2_t));
+
+    return 0;
+}
+
+uint16_t feb_can_ivt_voltage2_counter_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_ivt_voltage2_counter_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_ivt_voltage2_counter_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int32_t feb_can_ivt_voltage2_voltage2_encode(double value)
+{
+    return (int32_t)(value);
+}
+
+double feb_can_ivt_voltage2_voltage2_decode(int32_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_ivt_voltage2_voltage2_is_in_range(int32_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_ivt_voltage3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_ivt_voltage3_t *src_p,
+    size_t size)
+{
+    uint32_t voltage3;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 6);
+
+    dst_p[0] |= pack_right_shift_u16(src_p->counter, 8u, 0xffu);
+    dst_p[1] |= pack_left_shift_u16(src_p->counter, 0u, 0xffu);
+    voltage3 = (uint32_t)src_p->voltage3;
+    dst_p[2] |= pack_right_shift_u32(voltage3, 24u, 0xffu);
+    dst_p[3] |= pack_right_shift_u32(voltage3, 16u, 0xffu);
+    dst_p[4] |= pack_right_shift_u32(voltage3, 8u, 0xffu);
+    dst_p[5] |= pack_left_shift_u32(voltage3, 0u, 0xffu);
+
+    return (6);
+}
+
+int feb_can_ivt_voltage3_unpack(
+    struct feb_can_ivt_voltage3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint32_t voltage3;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    dst_p->counter = unpack_left_shift_u16(src_p[0], 8u, 0xffu);
+    dst_p->counter |= unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+    voltage3 = unpack_left_shift_u32(src_p[2], 24u, 0xffu);
+    voltage3 |= unpack_left_shift_u32(src_p[3], 16u, 0xffu);
+    voltage3 |= unpack_left_shift_u32(src_p[4], 8u, 0xffu);
+    voltage3 |= unpack_right_shift_u32(src_p[5], 0u, 0xffu);
+    dst_p->voltage3 = (int32_t)voltage3;
+
+    return (0);
+}
+
+int feb_can_ivt_voltage3_init(struct feb_can_ivt_voltage3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_ivt_voltage3_t));
+
+    return 0;
+}
+
+uint16_t feb_can_ivt_voltage3_counter_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_ivt_voltage3_counter_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_ivt_voltage3_counter_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int32_t feb_can_ivt_voltage3_voltage3_encode(double value)
+{
+    return (int32_t)(value);
+}
+
+double feb_can_ivt_voltage3_voltage3_decode(int32_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_ivt_voltage3_voltage3_is_in_range(int32_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_ivt_temperature_pack(
+    uint8_t *dst_p,
+    const struct feb_can_ivt_temperature_t *src_p,
+    size_t size)
+{
+    uint32_t temperature;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 6);
+
+    dst_p[0] |= pack_right_shift_u16(src_p->counter, 8u, 0xffu);
+    dst_p[1] |= pack_left_shift_u16(src_p->counter, 0u, 0xffu);
+    temperature = (uint32_t)src_p->temperature;
+    dst_p[2] |= pack_right_shift_u32(temperature, 24u, 0xffu);
+    dst_p[3] |= pack_right_shift_u32(temperature, 16u, 0xffu);
+    dst_p[4] |= pack_right_shift_u32(temperature, 8u, 0xffu);
+    dst_p[5] |= pack_left_shift_u32(temperature, 0u, 0xffu);
+
+    return (6);
+}
+
+int feb_can_ivt_temperature_unpack(
+    struct feb_can_ivt_temperature_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint32_t temperature;
+
+    if (size < 6u) {
+        return (-EINVAL);
+    }
+
+    dst_p->counter = unpack_left_shift_u16(src_p[0], 8u, 0xffu);
+    dst_p->counter |= unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+    temperature = unpack_left_shift_u32(src_p[2], 24u, 0xffu);
+    temperature |= unpack_left_shift_u32(src_p[3], 16u, 0xffu);
+    temperature |= unpack_left_shift_u32(src_p[4], 8u, 0xffu);
+    temperature |= unpack_right_shift_u32(src_p[5], 0u, 0xffu);
+    dst_p->temperature = (int32_t)temperature;
+
+    return (0);
+}
+
+int feb_can_ivt_temperature_init(struct feb_can_ivt_temperature_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_ivt_temperature_t));
+
+    return 0;
+}
+
+uint16_t feb_can_ivt_temperature_counter_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_ivt_temperature_counter_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_ivt_temperature_counter_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int32_t feb_can_ivt_temperature_temperature_encode(double value)
+{
+    return (int32_t)(value);
+}
+
+double feb_can_ivt_temperature_temperature_decode(int32_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_ivt_temperature_temperature_is_in_range(int32_t value)
+{
+    (void)value;
+
+    return (true);
+}
