@@ -2149,12 +2149,12 @@ int feb_can_wss_front_data_init(struct feb_can_wss_front_data_t *msg_p)
 
 uint16_t feb_can_wss_front_data_wss_left_front_encode(double value)
 {
-    return (uint16_t)(value / 0.1);
+    return (uint16_t)(value / 0.01);
 }
 
 double feb_can_wss_front_data_wss_left_front_decode(uint16_t value)
 {
-    return ((double)value * 0.1);
+    return ((double)value * 0.01);
 }
 
 bool feb_can_wss_front_data_wss_left_front_is_in_range(uint16_t value)
@@ -2166,12 +2166,12 @@ bool feb_can_wss_front_data_wss_left_front_is_in_range(uint16_t value)
 
 uint16_t feb_can_wss_front_data_wss_right_front_encode(double value)
 {
-    return (uint16_t)(value / 0.1);
+    return (uint16_t)(value / 0.01);
 }
 
 double feb_can_wss_front_data_wss_right_front_decode(uint16_t value)
 {
-    return ((double)value * 0.1);
+    return ((double)value * 0.01);
 }
 
 bool feb_can_wss_front_data_wss_right_front_is_in_range(uint16_t value)
@@ -2209,14 +2209,11 @@ int feb_can_wss_rear_data_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u32(src_p->wss_right_rear, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u32(src_p->wss_right_rear, 8u, 0xffu);
-    dst_p[2] |= pack_right_shift_u32(src_p->wss_right_rear, 16u, 0xffu);
-    dst_p[3] |= pack_right_shift_u32(src_p->wss_right_rear, 24u, 0xffu);
-    dst_p[4] |= pack_left_shift_u32(src_p->wss_left_rear, 0u, 0xffu);
-    dst_p[5] |= pack_right_shift_u32(src_p->wss_left_rear, 8u, 0xffu);
-    dst_p[6] |= pack_right_shift_u32(src_p->wss_left_rear, 16u, 0xffu);
-    dst_p[7] |= pack_right_shift_u32(src_p->wss_left_rear, 24u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->wss_left_rear, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->wss_left_rear, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->wss_right_rear, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->wss_right_rear, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u8(src_p->wss_dir_flags, 0u, 0xffu);
 
     return (8);
 }
@@ -2230,14 +2227,11 @@ int feb_can_wss_rear_data_unpack(
         return (-EINVAL);
     }
 
-    dst_p->wss_right_rear = unpack_right_shift_u32(src_p[0], 0u, 0xffu);
-    dst_p->wss_right_rear |= unpack_left_shift_u32(src_p[1], 8u, 0xffu);
-    dst_p->wss_right_rear |= unpack_left_shift_u32(src_p[2], 16u, 0xffu);
-    dst_p->wss_right_rear |= unpack_left_shift_u32(src_p[3], 24u, 0xffu);
-    dst_p->wss_left_rear = unpack_right_shift_u32(src_p[4], 0u, 0xffu);
-    dst_p->wss_left_rear |= unpack_left_shift_u32(src_p[5], 8u, 0xffu);
-    dst_p->wss_left_rear |= unpack_left_shift_u32(src_p[6], 16u, 0xffu);
-    dst_p->wss_left_rear |= unpack_left_shift_u32(src_p[7], 24u, 0xffu);
+    dst_p->wss_left_rear = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->wss_left_rear |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->wss_right_rear = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->wss_right_rear |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->wss_dir_flags = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
 
     return (0);
 }
@@ -2251,34 +2245,51 @@ int feb_can_wss_rear_data_init(struct feb_can_wss_rear_data_t *msg_p)
     return 0;
 }
 
-uint32_t feb_can_wss_rear_data_wss_right_rear_encode(double value)
+uint16_t feb_can_wss_rear_data_wss_left_rear_encode(double value)
 {
-    return (uint32_t)(value);
+    return (uint16_t)(value / 0.01);
 }
 
-double feb_can_wss_rear_data_wss_right_rear_decode(uint32_t value)
+double feb_can_wss_rear_data_wss_left_rear_decode(uint16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.01);
 }
 
-bool feb_can_wss_rear_data_wss_right_rear_is_in_range(uint32_t value)
+bool feb_can_wss_rear_data_wss_left_rear_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint32_t feb_can_wss_rear_data_wss_left_rear_encode(double value)
+uint16_t feb_can_wss_rear_data_wss_right_rear_encode(double value)
 {
-    return (uint32_t)(value);
+    return (uint16_t)(value / 0.01);
 }
 
-double feb_can_wss_rear_data_wss_left_rear_decode(uint32_t value)
+double feb_can_wss_rear_data_wss_right_rear_decode(uint16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_wss_rear_data_wss_right_rear_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_wss_rear_data_wss_dir_flags_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_wss_rear_data_wss_dir_flags_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_wss_rear_data_wss_left_rear_is_in_range(uint32_t value)
+bool feb_can_wss_rear_data_wss_dir_flags_is_in_range(uint8_t value)
 {
     (void)value;
 

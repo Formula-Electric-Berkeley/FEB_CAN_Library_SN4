@@ -878,8 +878,9 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
     if (strcmp(name, "wss_rear_data") == 0)
     {
         printf_fn("0x%02X  wss_rear_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x25, (int)feb_can_state.wss_rear_data.meta.present, (unsigned long)feb_can_state.wss_rear_data.meta.last_rx_ms, (unsigned long)feb_can_state.wss_rear_data.meta.rx_count);
-        printf_fn("  wss_right_rear                   = %ld\r\n", (long)feb_can_state.wss_rear_data.data.wss_right_rear);
         printf_fn("  wss_left_rear                    = %ld\r\n", (long)feb_can_state.wss_rear_data.data.wss_left_rear);
+        printf_fn("  wss_right_rear                   = %ld\r\n", (long)feb_can_state.wss_rear_data.data.wss_right_rear);
+        printf_fn("  wss_dir_flags                    = %ld\r\n", (long)feb_can_state.wss_rear_data.data.wss_dir_flags);
         return 0;
     }
     if (strcmp(name, "imu_acceleration_data") == 0)

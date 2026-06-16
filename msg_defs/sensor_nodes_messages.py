@@ -1236,15 +1236,15 @@ def get_sensor_temps_data_rear(frame_id: int):
     return msg
 
 def get_wss_data_front(frame_id: int):
-    # uint16 in 0.1 RPM units (range 0..6553.5 RPM); direction flags in byte 4.
+    # uint16 in 0.01 mph units (range 0..655.35 mph); direction flags in byte 4.
     wss_left_front = cantools.db.Signal(
         name="wss_left_front",
         start=0,
         length=16,
         byte_order="little_endian",
         is_signed=False,
-        conversion=BaseConversion.factory(scale=0.1),
-        unit="RPM",
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="mph",
     )
     wss_right_front = cantools.db.Signal(
         name="wss_right_front",
@@ -1252,8 +1252,8 @@ def get_wss_data_front(frame_id: int):
         length=16,
         byte_order="little_endian",
         is_signed=False,
-        conversion=BaseConversion.factory(scale=0.1),
-        unit="RPM",
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="mph",
     )
     wss_dir_flags = cantools.db.Signal(
         name="wss_dir_flags",
@@ -1268,36 +1268,49 @@ def get_wss_data_front(frame_id: int):
         name="wss_front_data",
         length=8,
         signals=[wss_left_front, wss_right_front, wss_dir_flags],
-        comment="Front wheel speeds (uint16, 0.1 RPM/LSB) + direction flags.",
+        comment="Front wheel speeds (uint16, 0.01 mph/LSB) + direction flags.",
         strict=True
     )
 
     return msg
-    
+
 def get_wss_data_rear(frame_id: int):
-    wss_right_rear = cantools.db.Signal(
-        name = "wss_right_rear",
-        start = 0,
-        length = 32,
-        byte_order="little_endian",
-        is_signed = False,
-    )
+    # Mirrors wss_front_data: uint16 in 0.01 mph units (range 0..655.35 mph); direction flags in byte 4.
     wss_left_rear = cantools.db.Signal(
-        name = "wss_left_rear",
-        start = 32,
-        length = 32,
+        name="wss_left_rear",
+        start=0,
+        length=16,
         byte_order="little_endian",
-        is_signed = False,
+        is_signed=False,
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="mph",
+    )
+    wss_right_rear = cantools.db.Signal(
+        name="wss_right_rear",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=False,
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="mph",
+    )
+    wss_dir_flags = cantools.db.Signal(
+        name="wss_dir_flags",
+        start=32,
+        length=8,
+        byte_order="little_endian",
+        is_signed=False,
+        comment="bit0: left wheel direction (0=fwd, 1=rev); bit1: right wheel direction",
     )
     msg = cantools.db.Message(
-        frame_id = frame_id,
-        name = "wss_rear_data",
-        length = 8,
-        signals = [wss_right_rear, wss_left_rear],
-        comment = "Wheel speed sensor data for left and right rear wheels.",
-        strict = True
+        frame_id=frame_id,
+        name="wss_rear_data",
+        length=8,
+        signals=[wss_left_rear, wss_right_rear, wss_dir_flags],
+        comment="Rear wheel speeds (uint16, 0.01 mph/LSB) + direction flags.",
+        strict=True
     )
-    
+
     return msg
 
 def get_LinPot_Front(frame_id: int):

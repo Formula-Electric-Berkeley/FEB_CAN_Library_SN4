@@ -531,8 +531,9 @@ extern "C" {
 #define FEB_CAN_WSS_FRONT_DATA_WSS_LEFT_FRONT_NAME "wss_left_front"
 #define FEB_CAN_WSS_FRONT_DATA_WSS_RIGHT_FRONT_NAME "wss_right_front"
 #define FEB_CAN_WSS_FRONT_DATA_WSS_DIR_FLAGS_NAME "wss_dir_flags"
-#define FEB_CAN_WSS_REAR_DATA_WSS_RIGHT_REAR_NAME "wss_right_rear"
 #define FEB_CAN_WSS_REAR_DATA_WSS_LEFT_REAR_NAME "wss_left_rear"
+#define FEB_CAN_WSS_REAR_DATA_WSS_RIGHT_REAR_NAME "wss_right_rear"
+#define FEB_CAN_WSS_REAR_DATA_WSS_DIR_FLAGS_NAME "wss_dir_flags"
 #define FEB_CAN_IMU_ACCELERATION_DATA_ACCELERATION_X_NAME "acceleration_x"
 #define FEB_CAN_IMU_ACCELERATION_DATA_ACCELERATION_Y_NAME "acceleration_y"
 #define FEB_CAN_IMU_ACCELERATION_DATA_ACCELERATION_Z_NAME "acceleration_z"
@@ -1827,21 +1828,21 @@ struct feb_can_rear_right_tire_temp_t {
 /**
  * Signals in message wss_front_data.
  *
- * Front wheel speeds (uint16, 0.1 RPM/LSB) + direction flags.
+ * Front wheel speeds (uint16, 0.01 mph/LSB) + direction flags.
  *
  * All signal values are as on the CAN bus.
  */
 struct feb_can_wss_front_data_t {
     /**
      * Range: -
-     * Scale: 0.1
+     * Scale: 0.01
      * Offset: 0
      */
     uint16_t wss_left_front;
 
     /**
      * Range: -
-     * Scale: 0.1
+     * Scale: 0.01
      * Offset: 0
      */
     uint16_t wss_right_front;
@@ -1859,24 +1860,33 @@ struct feb_can_wss_front_data_t {
 /**
  * Signals in message wss_rear_data.
  *
- * Wheel speed sensor data for left and right rear wheels.
+ * Rear wheel speeds (uint16, 0.01 mph/LSB) + direction flags.
  *
  * All signal values are as on the CAN bus.
  */
 struct feb_can_wss_rear_data_t {
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.01
      * Offset: 0
      */
-    uint32_t wss_right_rear;
+    uint16_t wss_left_rear;
 
     /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    uint16_t wss_right_rear;
+
+    /**
+     * bit0: left wheel direction (0=fwd, 1=rev); bit1: right wheel direction
+     *
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint32_t wss_left_rear;
+    uint8_t wss_dir_flags;
 };
 
 /**
@@ -9959,7 +9969,7 @@ int feb_can_wss_rear_data_init(struct feb_can_wss_rear_data_t *msg_p);
  *
  * @return Encoded signal.
  */
-uint32_t feb_can_wss_rear_data_wss_right_rear_encode(double value);
+uint16_t feb_can_wss_rear_data_wss_left_rear_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -9968,7 +9978,7 @@ uint32_t feb_can_wss_rear_data_wss_right_rear_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_wss_rear_data_wss_right_rear_decode(uint32_t value);
+double feb_can_wss_rear_data_wss_left_rear_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -9977,7 +9987,7 @@ double feb_can_wss_rear_data_wss_right_rear_decode(uint32_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_wss_rear_data_wss_right_rear_is_in_range(uint32_t value);
+bool feb_can_wss_rear_data_wss_left_rear_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -9986,7 +9996,7 @@ bool feb_can_wss_rear_data_wss_right_rear_is_in_range(uint32_t value);
  *
  * @return Encoded signal.
  */
-uint32_t feb_can_wss_rear_data_wss_left_rear_encode(double value);
+uint16_t feb_can_wss_rear_data_wss_right_rear_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -9995,7 +10005,7 @@ uint32_t feb_can_wss_rear_data_wss_left_rear_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_wss_rear_data_wss_left_rear_decode(uint32_t value);
+double feb_can_wss_rear_data_wss_right_rear_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -10004,7 +10014,34 @@ double feb_can_wss_rear_data_wss_left_rear_decode(uint32_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_wss_rear_data_wss_left_rear_is_in_range(uint32_t value);
+bool feb_can_wss_rear_data_wss_right_rear_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_wss_rear_data_wss_dir_flags_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_wss_rear_data_wss_dir_flags_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_wss_rear_data_wss_dir_flags_is_in_range(uint8_t value);
 
 /**
  * Pack message imu_acceleration_data.

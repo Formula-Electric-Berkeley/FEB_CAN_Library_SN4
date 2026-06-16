@@ -142,12 +142,13 @@ BO_ 35 rear_right_tire_temp: 8 Vector__XXX
 
 BO_ 36 wss_front_data: 8 Vector__XXX
  SG_ wss_dir_flags : 32|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ wss_right_front : 16|16@1+ (0.1,0) [0|0] "RPM" Vector__XXX
- SG_ wss_left_front : 0|16@1+ (0.1,0) [0|0] "RPM" Vector__XXX
+ SG_ wss_right_front : 16|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
+ SG_ wss_left_front : 0|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
 
 BO_ 37 wss_rear_data: 8 Vector__XXX
- SG_ wss_left_rear : 32|32@1+ (1,0) [0|0] "" Vector__XXX
- SG_ wss_right_rear : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ wss_dir_flags : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ wss_right_rear : 16|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
+ SG_ wss_left_rear : 0|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
 
 BO_ 38 imu_acceleration_data: 6 Vector__XXX
  SG_ acceleration_z : 32|16@1- (0.061,0) [0|0] "mg" Vector__XXX
@@ -978,9 +979,10 @@ CM_ BO_ 32 "Message for front left tire temp data.";
 CM_ BO_ 33 "Message for front right tire temp data.";
 CM_ BO_ 34 "Message for rear left tire temp data.";
 CM_ BO_ 35 "Message for rear right tire temp data.";
-CM_ BO_ 36 "Front wheel speeds (uint16, 0.1 RPM/LSB) + direction flags.";
+CM_ BO_ 36 "Front wheel speeds (uint16, 0.01 mph/LSB) + direction flags.";
 CM_ SG_ 36 wss_dir_flags "bit0: left wheel direction (0=fwd, 1=rev); bit1: right wheel direction";
-CM_ BO_ 37 "Wheel speed sensor data for left and right rear wheels.";
+CM_ BO_ 37 "Rear wheel speeds (uint16, 0.01 mph/LSB) + direction flags.";
+CM_ SG_ 37 wss_dir_flags "bit0: left wheel direction (0=fwd, 1=rev); bit1: right wheel direction";
 CM_ BO_ 38 "IMU acceleration (LSM6DSOX, FS=2g, 0.061 mg/LSB).";
 CM_ BO_ 39 "REAR IMU acceleration (LSM6DSOX, FS=2g, 0.061 mg/LSB).";
 CM_ BO_ 40 "IMU gyro (LSM6DSOX, FS=2000dps, 70 mdps/LSB).";
