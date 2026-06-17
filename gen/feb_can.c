@@ -17205,6 +17205,19386 @@ bool feb_can_bms_current_limit_inv_max_charge_current_is_in_range(uint16_t value
     return (value <= 1000u);
 }
 
+int feb_can_bms_module_1_voltage_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_voltage_0_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_1_cell_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_1_cell_1, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_1_cell_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_1_cell_2, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_1_cell_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_1_cell_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_1_cell_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_1_cell_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_voltage_0_unpack(
+    struct feb_can_bms_module_1_voltage_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_1_cell_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_1_cell_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_cell_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_1_cell_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_cell_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_1_cell_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_cell_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_1_cell_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_1_voltage_0_init(struct feb_can_bms_module_1_voltage_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_voltage_0_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_1_voltage_0_module_1_cell_1_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_0_module_1_cell_1_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_0_module_1_cell_1_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_1_voltage_0_module_1_cell_2_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_0_module_1_cell_2_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_0_module_1_cell_2_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_1_voltage_0_module_1_cell_3_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_0_module_1_cell_3_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_0_module_1_cell_3_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_1_voltage_0_module_1_cell_4_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_0_module_1_cell_4_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_0_module_1_cell_4_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_voltage_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_voltage_1_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_1_cell_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_1_cell_5, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_1_cell_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_1_cell_6, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_1_cell_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_1_cell_7, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_1_cell_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_1_cell_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_voltage_1_unpack(
+    struct feb_can_bms_module_1_voltage_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_1_cell_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_1_cell_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_cell_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_1_cell_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_cell_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_1_cell_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_cell_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_1_cell_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_1_voltage_1_init(struct feb_can_bms_module_1_voltage_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_voltage_1_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_1_voltage_1_module_1_cell_5_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_1_module_1_cell_5_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_1_module_1_cell_5_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_1_voltage_1_module_1_cell_6_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_1_module_1_cell_6_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_1_module_1_cell_6_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_1_voltage_1_module_1_cell_7_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_1_module_1_cell_7_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_1_module_1_cell_7_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_1_voltage_1_module_1_cell_8_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_1_module_1_cell_8_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_1_module_1_cell_8_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_voltage_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_voltage_2_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_1_cell_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_1_cell_9, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_1_cell_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_1_cell_10, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_1_cell_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_1_cell_11, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_1_cell_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_1_cell_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_voltage_2_unpack(
+    struct feb_can_bms_module_1_voltage_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_1_cell_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_1_cell_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_cell_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_1_cell_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_cell_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_1_cell_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_cell_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_1_cell_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_1_voltage_2_init(struct feb_can_bms_module_1_voltage_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_voltage_2_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_1_voltage_2_module_1_cell_9_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_2_module_1_cell_9_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_2_module_1_cell_9_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_1_voltage_2_module_1_cell_10_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_2_module_1_cell_10_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_2_module_1_cell_10_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_1_voltage_2_module_1_cell_11_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_2_module_1_cell_11_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_2_module_1_cell_11_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_1_voltage_2_module_1_cell_12_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_2_module_1_cell_12_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_2_module_1_cell_12_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_voltage_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_voltage_3_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_1_cell_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_1_cell_13, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_1_cell_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_1_cell_14, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_1_cell_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_1_cell_15, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_1_cell_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_1_cell_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_voltage_3_unpack(
+    struct feb_can_bms_module_1_voltage_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_1_cell_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_1_cell_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_cell_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_1_cell_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_cell_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_1_cell_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_cell_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_1_cell_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_1_voltage_3_init(struct feb_can_bms_module_1_voltage_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_voltage_3_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_1_voltage_3_module_1_cell_13_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_3_module_1_cell_13_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_3_module_1_cell_13_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_1_voltage_3_module_1_cell_14_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_3_module_1_cell_14_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_3_module_1_cell_14_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_1_voltage_3_module_1_cell_15_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_3_module_1_cell_15_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_3_module_1_cell_15_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_1_voltage_3_module_1_cell_16_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_1_voltage_3_module_1_cell_16_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_voltage_3_module_1_cell_16_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_voltage_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_voltage_0_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_2_cell_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_2_cell_1, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_2_cell_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_2_cell_2, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_2_cell_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_2_cell_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_2_cell_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_2_cell_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_voltage_0_unpack(
+    struct feb_can_bms_module_2_voltage_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_2_cell_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_2_cell_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_cell_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_2_cell_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_cell_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_2_cell_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_cell_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_2_cell_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_2_voltage_0_init(struct feb_can_bms_module_2_voltage_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_voltage_0_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_2_voltage_0_module_2_cell_1_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_0_module_2_cell_1_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_0_module_2_cell_1_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_2_voltage_0_module_2_cell_2_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_0_module_2_cell_2_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_0_module_2_cell_2_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_2_voltage_0_module_2_cell_3_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_0_module_2_cell_3_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_0_module_2_cell_3_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_2_voltage_0_module_2_cell_4_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_0_module_2_cell_4_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_0_module_2_cell_4_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_voltage_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_voltage_1_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_2_cell_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_2_cell_5, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_2_cell_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_2_cell_6, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_2_cell_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_2_cell_7, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_2_cell_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_2_cell_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_voltage_1_unpack(
+    struct feb_can_bms_module_2_voltage_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_2_cell_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_2_cell_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_cell_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_2_cell_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_cell_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_2_cell_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_cell_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_2_cell_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_2_voltage_1_init(struct feb_can_bms_module_2_voltage_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_voltage_1_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_2_voltage_1_module_2_cell_5_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_1_module_2_cell_5_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_1_module_2_cell_5_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_2_voltage_1_module_2_cell_6_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_1_module_2_cell_6_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_1_module_2_cell_6_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_2_voltage_1_module_2_cell_7_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_1_module_2_cell_7_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_1_module_2_cell_7_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_2_voltage_1_module_2_cell_8_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_1_module_2_cell_8_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_1_module_2_cell_8_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_voltage_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_voltage_2_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_2_cell_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_2_cell_9, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_2_cell_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_2_cell_10, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_2_cell_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_2_cell_11, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_2_cell_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_2_cell_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_voltage_2_unpack(
+    struct feb_can_bms_module_2_voltage_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_2_cell_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_2_cell_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_cell_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_2_cell_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_cell_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_2_cell_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_cell_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_2_cell_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_2_voltage_2_init(struct feb_can_bms_module_2_voltage_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_voltage_2_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_2_voltage_2_module_2_cell_9_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_2_module_2_cell_9_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_2_module_2_cell_9_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_2_voltage_2_module_2_cell_10_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_2_module_2_cell_10_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_2_module_2_cell_10_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_2_voltage_2_module_2_cell_11_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_2_module_2_cell_11_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_2_module_2_cell_11_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_2_voltage_2_module_2_cell_12_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_2_module_2_cell_12_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_2_module_2_cell_12_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_voltage_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_voltage_3_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_2_cell_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_2_cell_13, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_2_cell_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_2_cell_14, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_2_cell_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_2_cell_15, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_2_cell_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_2_cell_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_voltage_3_unpack(
+    struct feb_can_bms_module_2_voltage_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_2_cell_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_2_cell_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_cell_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_2_cell_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_cell_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_2_cell_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_cell_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_2_cell_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_2_voltage_3_init(struct feb_can_bms_module_2_voltage_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_voltage_3_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_2_voltage_3_module_2_cell_13_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_3_module_2_cell_13_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_3_module_2_cell_13_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_2_voltage_3_module_2_cell_14_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_3_module_2_cell_14_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_3_module_2_cell_14_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_2_voltage_3_module_2_cell_15_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_3_module_2_cell_15_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_3_module_2_cell_15_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_2_voltage_3_module_2_cell_16_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_2_voltage_3_module_2_cell_16_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_voltage_3_module_2_cell_16_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_voltage_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_voltage_0_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_3_cell_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_3_cell_1, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_3_cell_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_3_cell_2, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_3_cell_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_3_cell_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_3_cell_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_3_cell_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_voltage_0_unpack(
+    struct feb_can_bms_module_3_voltage_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_3_cell_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_3_cell_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_cell_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_3_cell_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_cell_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_3_cell_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_cell_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_3_cell_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_3_voltage_0_init(struct feb_can_bms_module_3_voltage_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_voltage_0_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_3_voltage_0_module_3_cell_1_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_0_module_3_cell_1_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_0_module_3_cell_1_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_3_voltage_0_module_3_cell_2_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_0_module_3_cell_2_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_0_module_3_cell_2_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_3_voltage_0_module_3_cell_3_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_0_module_3_cell_3_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_0_module_3_cell_3_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_3_voltage_0_module_3_cell_4_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_0_module_3_cell_4_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_0_module_3_cell_4_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_voltage_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_voltage_1_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_3_cell_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_3_cell_5, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_3_cell_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_3_cell_6, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_3_cell_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_3_cell_7, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_3_cell_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_3_cell_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_voltage_1_unpack(
+    struct feb_can_bms_module_3_voltage_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_3_cell_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_3_cell_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_cell_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_3_cell_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_cell_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_3_cell_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_cell_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_3_cell_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_3_voltage_1_init(struct feb_can_bms_module_3_voltage_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_voltage_1_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_3_voltage_1_module_3_cell_5_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_1_module_3_cell_5_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_1_module_3_cell_5_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_3_voltage_1_module_3_cell_6_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_1_module_3_cell_6_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_1_module_3_cell_6_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_3_voltage_1_module_3_cell_7_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_1_module_3_cell_7_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_1_module_3_cell_7_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_3_voltage_1_module_3_cell_8_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_1_module_3_cell_8_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_1_module_3_cell_8_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_voltage_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_voltage_2_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_3_cell_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_3_cell_9, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_3_cell_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_3_cell_10, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_3_cell_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_3_cell_11, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_3_cell_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_3_cell_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_voltage_2_unpack(
+    struct feb_can_bms_module_3_voltage_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_3_cell_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_3_cell_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_cell_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_3_cell_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_cell_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_3_cell_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_cell_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_3_cell_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_3_voltage_2_init(struct feb_can_bms_module_3_voltage_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_voltage_2_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_3_voltage_2_module_3_cell_9_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_2_module_3_cell_9_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_2_module_3_cell_9_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_3_voltage_2_module_3_cell_10_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_2_module_3_cell_10_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_2_module_3_cell_10_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_3_voltage_2_module_3_cell_11_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_2_module_3_cell_11_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_2_module_3_cell_11_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_3_voltage_2_module_3_cell_12_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_2_module_3_cell_12_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_2_module_3_cell_12_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_voltage_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_voltage_3_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_3_cell_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_3_cell_13, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_3_cell_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_3_cell_14, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_3_cell_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_3_cell_15, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_3_cell_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_3_cell_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_voltage_3_unpack(
+    struct feb_can_bms_module_3_voltage_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_3_cell_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_3_cell_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_cell_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_3_cell_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_cell_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_3_cell_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_cell_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_3_cell_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_3_voltage_3_init(struct feb_can_bms_module_3_voltage_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_voltage_3_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_3_voltage_3_module_3_cell_13_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_3_module_3_cell_13_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_3_module_3_cell_13_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_3_voltage_3_module_3_cell_14_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_3_module_3_cell_14_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_3_module_3_cell_14_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_3_voltage_3_module_3_cell_15_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_3_module_3_cell_15_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_3_module_3_cell_15_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_3_voltage_3_module_3_cell_16_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_3_voltage_3_module_3_cell_16_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_voltage_3_module_3_cell_16_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_voltage_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_voltage_0_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_4_cell_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_4_cell_1, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_4_cell_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_4_cell_2, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_4_cell_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_4_cell_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_4_cell_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_4_cell_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_voltage_0_unpack(
+    struct feb_can_bms_module_4_voltage_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_4_cell_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_4_cell_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_cell_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_4_cell_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_cell_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_4_cell_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_cell_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_4_cell_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_4_voltage_0_init(struct feb_can_bms_module_4_voltage_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_voltage_0_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_4_voltage_0_module_4_cell_1_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_0_module_4_cell_1_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_0_module_4_cell_1_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_4_voltage_0_module_4_cell_2_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_0_module_4_cell_2_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_0_module_4_cell_2_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_4_voltage_0_module_4_cell_3_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_0_module_4_cell_3_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_0_module_4_cell_3_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_4_voltage_0_module_4_cell_4_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_0_module_4_cell_4_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_0_module_4_cell_4_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_voltage_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_voltage_1_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_4_cell_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_4_cell_5, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_4_cell_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_4_cell_6, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_4_cell_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_4_cell_7, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_4_cell_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_4_cell_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_voltage_1_unpack(
+    struct feb_can_bms_module_4_voltage_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_4_cell_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_4_cell_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_cell_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_4_cell_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_cell_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_4_cell_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_cell_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_4_cell_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_4_voltage_1_init(struct feb_can_bms_module_4_voltage_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_voltage_1_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_4_voltage_1_module_4_cell_5_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_1_module_4_cell_5_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_1_module_4_cell_5_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_4_voltage_1_module_4_cell_6_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_1_module_4_cell_6_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_1_module_4_cell_6_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_4_voltage_1_module_4_cell_7_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_1_module_4_cell_7_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_1_module_4_cell_7_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_4_voltage_1_module_4_cell_8_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_1_module_4_cell_8_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_1_module_4_cell_8_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_voltage_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_voltage_2_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_4_cell_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_4_cell_9, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_4_cell_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_4_cell_10, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_4_cell_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_4_cell_11, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_4_cell_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_4_cell_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_voltage_2_unpack(
+    struct feb_can_bms_module_4_voltage_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_4_cell_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_4_cell_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_cell_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_4_cell_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_cell_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_4_cell_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_cell_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_4_cell_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_4_voltage_2_init(struct feb_can_bms_module_4_voltage_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_voltage_2_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_4_voltage_2_module_4_cell_9_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_2_module_4_cell_9_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_2_module_4_cell_9_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_4_voltage_2_module_4_cell_10_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_2_module_4_cell_10_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_2_module_4_cell_10_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_4_voltage_2_module_4_cell_11_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_2_module_4_cell_11_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_2_module_4_cell_11_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_4_voltage_2_module_4_cell_12_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_2_module_4_cell_12_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_2_module_4_cell_12_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_voltage_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_voltage_3_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_4_cell_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_4_cell_13, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_4_cell_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_4_cell_14, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_4_cell_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_4_cell_15, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_4_cell_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_4_cell_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_voltage_3_unpack(
+    struct feb_can_bms_module_4_voltage_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_4_cell_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_4_cell_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_cell_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_4_cell_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_cell_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_4_cell_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_cell_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_4_cell_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_4_voltage_3_init(struct feb_can_bms_module_4_voltage_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_voltage_3_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_4_voltage_3_module_4_cell_13_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_3_module_4_cell_13_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_3_module_4_cell_13_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_4_voltage_3_module_4_cell_14_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_3_module_4_cell_14_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_3_module_4_cell_14_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_4_voltage_3_module_4_cell_15_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_3_module_4_cell_15_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_3_module_4_cell_15_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_4_voltage_3_module_4_cell_16_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_4_voltage_3_module_4_cell_16_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_voltage_3_module_4_cell_16_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_voltage_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_voltage_0_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_5_cell_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_5_cell_1, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_5_cell_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_5_cell_2, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_5_cell_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_5_cell_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_5_cell_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_5_cell_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_voltage_0_unpack(
+    struct feb_can_bms_module_5_voltage_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_5_cell_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_5_cell_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_cell_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_5_cell_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_cell_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_5_cell_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_cell_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_5_cell_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_5_voltage_0_init(struct feb_can_bms_module_5_voltage_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_voltage_0_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_5_voltage_0_module_5_cell_1_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_0_module_5_cell_1_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_0_module_5_cell_1_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_5_voltage_0_module_5_cell_2_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_0_module_5_cell_2_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_0_module_5_cell_2_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_5_voltage_0_module_5_cell_3_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_0_module_5_cell_3_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_0_module_5_cell_3_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_5_voltage_0_module_5_cell_4_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_0_module_5_cell_4_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_0_module_5_cell_4_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_voltage_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_voltage_1_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_5_cell_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_5_cell_5, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_5_cell_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_5_cell_6, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_5_cell_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_5_cell_7, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_5_cell_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_5_cell_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_voltage_1_unpack(
+    struct feb_can_bms_module_5_voltage_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_5_cell_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_5_cell_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_cell_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_5_cell_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_cell_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_5_cell_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_cell_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_5_cell_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_5_voltage_1_init(struct feb_can_bms_module_5_voltage_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_voltage_1_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_5_voltage_1_module_5_cell_5_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_1_module_5_cell_5_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_1_module_5_cell_5_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_5_voltage_1_module_5_cell_6_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_1_module_5_cell_6_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_1_module_5_cell_6_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_5_voltage_1_module_5_cell_7_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_1_module_5_cell_7_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_1_module_5_cell_7_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_5_voltage_1_module_5_cell_8_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_1_module_5_cell_8_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_1_module_5_cell_8_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_voltage_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_voltage_2_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_5_cell_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_5_cell_9, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_5_cell_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_5_cell_10, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_5_cell_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_5_cell_11, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_5_cell_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_5_cell_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_voltage_2_unpack(
+    struct feb_can_bms_module_5_voltage_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_5_cell_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_5_cell_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_cell_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_5_cell_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_cell_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_5_cell_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_cell_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_5_cell_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_5_voltage_2_init(struct feb_can_bms_module_5_voltage_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_voltage_2_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_5_voltage_2_module_5_cell_9_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_2_module_5_cell_9_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_2_module_5_cell_9_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_5_voltage_2_module_5_cell_10_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_2_module_5_cell_10_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_2_module_5_cell_10_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_5_voltage_2_module_5_cell_11_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_2_module_5_cell_11_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_2_module_5_cell_11_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_5_voltage_2_module_5_cell_12_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_2_module_5_cell_12_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_2_module_5_cell_12_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_voltage_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_voltage_3_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_5_cell_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_5_cell_13, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_5_cell_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_5_cell_14, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_5_cell_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_5_cell_15, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_5_cell_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_5_cell_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_voltage_3_unpack(
+    struct feb_can_bms_module_5_voltage_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_5_cell_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_5_cell_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_cell_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_5_cell_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_cell_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_5_cell_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_cell_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_5_cell_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_5_voltage_3_init(struct feb_can_bms_module_5_voltage_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_voltage_3_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_5_voltage_3_module_5_cell_13_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_3_module_5_cell_13_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_3_module_5_cell_13_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_5_voltage_3_module_5_cell_14_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_3_module_5_cell_14_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_3_module_5_cell_14_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_5_voltage_3_module_5_cell_15_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_3_module_5_cell_15_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_3_module_5_cell_15_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_5_voltage_3_module_5_cell_16_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_5_voltage_3_module_5_cell_16_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_voltage_3_module_5_cell_16_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_voltage_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_voltage_0_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_6_cell_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_6_cell_1, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_6_cell_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_6_cell_2, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_6_cell_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_6_cell_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_6_cell_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_6_cell_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_voltage_0_unpack(
+    struct feb_can_bms_module_6_voltage_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_6_cell_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_6_cell_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_cell_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_6_cell_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_cell_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_6_cell_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_cell_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_6_cell_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_6_voltage_0_init(struct feb_can_bms_module_6_voltage_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_voltage_0_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_6_voltage_0_module_6_cell_1_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_0_module_6_cell_1_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_0_module_6_cell_1_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_6_voltage_0_module_6_cell_2_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_0_module_6_cell_2_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_0_module_6_cell_2_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_6_voltage_0_module_6_cell_3_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_0_module_6_cell_3_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_0_module_6_cell_3_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_6_voltage_0_module_6_cell_4_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_0_module_6_cell_4_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_0_module_6_cell_4_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_voltage_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_voltage_1_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_6_cell_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_6_cell_5, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_6_cell_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_6_cell_6, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_6_cell_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_6_cell_7, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_6_cell_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_6_cell_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_voltage_1_unpack(
+    struct feb_can_bms_module_6_voltage_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_6_cell_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_6_cell_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_cell_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_6_cell_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_cell_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_6_cell_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_cell_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_6_cell_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_6_voltage_1_init(struct feb_can_bms_module_6_voltage_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_voltage_1_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_6_voltage_1_module_6_cell_5_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_1_module_6_cell_5_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_1_module_6_cell_5_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_6_voltage_1_module_6_cell_6_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_1_module_6_cell_6_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_1_module_6_cell_6_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_6_voltage_1_module_6_cell_7_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_1_module_6_cell_7_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_1_module_6_cell_7_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_6_voltage_1_module_6_cell_8_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_1_module_6_cell_8_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_1_module_6_cell_8_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_voltage_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_voltage_2_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_6_cell_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_6_cell_9, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_6_cell_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_6_cell_10, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_6_cell_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_6_cell_11, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_6_cell_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_6_cell_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_voltage_2_unpack(
+    struct feb_can_bms_module_6_voltage_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_6_cell_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_6_cell_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_cell_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_6_cell_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_cell_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_6_cell_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_cell_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_6_cell_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_6_voltage_2_init(struct feb_can_bms_module_6_voltage_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_voltage_2_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_6_voltage_2_module_6_cell_9_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_2_module_6_cell_9_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_2_module_6_cell_9_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_6_voltage_2_module_6_cell_10_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_2_module_6_cell_10_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_2_module_6_cell_10_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_6_voltage_2_module_6_cell_11_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_2_module_6_cell_11_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_2_module_6_cell_11_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_6_voltage_2_module_6_cell_12_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_2_module_6_cell_12_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_2_module_6_cell_12_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_voltage_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_voltage_3_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_6_cell_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_6_cell_13, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_6_cell_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_6_cell_14, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_6_cell_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_6_cell_15, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_6_cell_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_6_cell_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_voltage_3_unpack(
+    struct feb_can_bms_module_6_voltage_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_6_cell_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_6_cell_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_cell_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_6_cell_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_cell_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_6_cell_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_cell_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_6_cell_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_6_voltage_3_init(struct feb_can_bms_module_6_voltage_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_voltage_3_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_6_voltage_3_module_6_cell_13_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_3_module_6_cell_13_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_3_module_6_cell_13_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_6_voltage_3_module_6_cell_14_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_3_module_6_cell_14_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_3_module_6_cell_14_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_6_voltage_3_module_6_cell_15_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_3_module_6_cell_15_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_3_module_6_cell_15_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_6_voltage_3_module_6_cell_16_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_6_voltage_3_module_6_cell_16_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_voltage_3_module_6_cell_16_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_voltage_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_voltage_0_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_7_cell_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_7_cell_1, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_7_cell_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_7_cell_2, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_7_cell_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_7_cell_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_7_cell_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_7_cell_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_voltage_0_unpack(
+    struct feb_can_bms_module_7_voltage_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_7_cell_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_7_cell_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_cell_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_7_cell_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_cell_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_7_cell_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_cell_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_7_cell_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_7_voltage_0_init(struct feb_can_bms_module_7_voltage_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_voltage_0_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_7_voltage_0_module_7_cell_1_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_0_module_7_cell_1_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_0_module_7_cell_1_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_7_voltage_0_module_7_cell_2_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_0_module_7_cell_2_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_0_module_7_cell_2_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_7_voltage_0_module_7_cell_3_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_0_module_7_cell_3_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_0_module_7_cell_3_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_7_voltage_0_module_7_cell_4_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_0_module_7_cell_4_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_0_module_7_cell_4_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_voltage_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_voltage_1_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_7_cell_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_7_cell_5, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_7_cell_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_7_cell_6, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_7_cell_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_7_cell_7, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_7_cell_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_7_cell_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_voltage_1_unpack(
+    struct feb_can_bms_module_7_voltage_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_7_cell_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_7_cell_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_cell_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_7_cell_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_cell_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_7_cell_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_cell_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_7_cell_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_7_voltage_1_init(struct feb_can_bms_module_7_voltage_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_voltage_1_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_7_voltage_1_module_7_cell_5_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_1_module_7_cell_5_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_1_module_7_cell_5_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_7_voltage_1_module_7_cell_6_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_1_module_7_cell_6_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_1_module_7_cell_6_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_7_voltage_1_module_7_cell_7_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_1_module_7_cell_7_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_1_module_7_cell_7_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_7_voltage_1_module_7_cell_8_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_1_module_7_cell_8_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_1_module_7_cell_8_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_voltage_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_voltage_2_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_7_cell_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_7_cell_9, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_7_cell_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_7_cell_10, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_7_cell_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_7_cell_11, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_7_cell_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_7_cell_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_voltage_2_unpack(
+    struct feb_can_bms_module_7_voltage_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_7_cell_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_7_cell_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_cell_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_7_cell_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_cell_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_7_cell_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_cell_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_7_cell_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_7_voltage_2_init(struct feb_can_bms_module_7_voltage_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_voltage_2_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_7_voltage_2_module_7_cell_9_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_2_module_7_cell_9_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_2_module_7_cell_9_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_7_voltage_2_module_7_cell_10_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_2_module_7_cell_10_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_2_module_7_cell_10_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_7_voltage_2_module_7_cell_11_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_2_module_7_cell_11_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_2_module_7_cell_11_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_7_voltage_2_module_7_cell_12_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_2_module_7_cell_12_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_2_module_7_cell_12_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_voltage_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_voltage_3_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_7_cell_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_7_cell_13, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_7_cell_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_7_cell_14, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_7_cell_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_7_cell_15, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_7_cell_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_7_cell_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_voltage_3_unpack(
+    struct feb_can_bms_module_7_voltage_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_7_cell_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_7_cell_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_cell_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_7_cell_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_cell_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_7_cell_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_cell_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_7_cell_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_7_voltage_3_init(struct feb_can_bms_module_7_voltage_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_voltage_3_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_7_voltage_3_module_7_cell_13_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_3_module_7_cell_13_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_3_module_7_cell_13_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_7_voltage_3_module_7_cell_14_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_3_module_7_cell_14_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_3_module_7_cell_14_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_7_voltage_3_module_7_cell_15_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_3_module_7_cell_15_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_3_module_7_cell_15_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_7_voltage_3_module_7_cell_16_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_7_voltage_3_module_7_cell_16_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_voltage_3_module_7_cell_16_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_voltage_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_voltage_0_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_8_cell_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_8_cell_1, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_8_cell_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_8_cell_2, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_8_cell_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_8_cell_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_8_cell_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_8_cell_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_voltage_0_unpack(
+    struct feb_can_bms_module_8_voltage_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_8_cell_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_8_cell_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_cell_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_8_cell_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_cell_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_8_cell_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_cell_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_8_cell_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_8_voltage_0_init(struct feb_can_bms_module_8_voltage_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_voltage_0_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_8_voltage_0_module_8_cell_1_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_0_module_8_cell_1_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_0_module_8_cell_1_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_8_voltage_0_module_8_cell_2_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_0_module_8_cell_2_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_0_module_8_cell_2_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_8_voltage_0_module_8_cell_3_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_0_module_8_cell_3_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_0_module_8_cell_3_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_8_voltage_0_module_8_cell_4_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_0_module_8_cell_4_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_0_module_8_cell_4_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_voltage_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_voltage_1_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_8_cell_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_8_cell_5, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_8_cell_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_8_cell_6, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_8_cell_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_8_cell_7, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_8_cell_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_8_cell_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_voltage_1_unpack(
+    struct feb_can_bms_module_8_voltage_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_8_cell_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_8_cell_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_cell_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_8_cell_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_cell_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_8_cell_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_cell_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_8_cell_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_8_voltage_1_init(struct feb_can_bms_module_8_voltage_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_voltage_1_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_8_voltage_1_module_8_cell_5_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_1_module_8_cell_5_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_1_module_8_cell_5_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_8_voltage_1_module_8_cell_6_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_1_module_8_cell_6_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_1_module_8_cell_6_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_8_voltage_1_module_8_cell_7_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_1_module_8_cell_7_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_1_module_8_cell_7_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_8_voltage_1_module_8_cell_8_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_1_module_8_cell_8_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_1_module_8_cell_8_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_voltage_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_voltage_2_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_8_cell_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_8_cell_9, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_8_cell_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_8_cell_10, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_8_cell_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_8_cell_11, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_8_cell_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_8_cell_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_voltage_2_unpack(
+    struct feb_can_bms_module_8_voltage_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_8_cell_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_8_cell_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_cell_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_8_cell_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_cell_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_8_cell_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_cell_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_8_cell_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_8_voltage_2_init(struct feb_can_bms_module_8_voltage_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_voltage_2_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_8_voltage_2_module_8_cell_9_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_2_module_8_cell_9_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_2_module_8_cell_9_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_8_voltage_2_module_8_cell_10_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_2_module_8_cell_10_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_2_module_8_cell_10_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_8_voltage_2_module_8_cell_11_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_2_module_8_cell_11_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_2_module_8_cell_11_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_8_voltage_2_module_8_cell_12_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_2_module_8_cell_12_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_2_module_8_cell_12_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_voltage_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_voltage_3_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_8_cell_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_8_cell_13, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_8_cell_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_8_cell_14, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_8_cell_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_8_cell_15, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_8_cell_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_8_cell_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_voltage_3_unpack(
+    struct feb_can_bms_module_8_voltage_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_8_cell_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_8_cell_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_cell_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_8_cell_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_cell_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_8_cell_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_cell_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_8_cell_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_8_voltage_3_init(struct feb_can_bms_module_8_voltage_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_voltage_3_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_8_voltage_3_module_8_cell_13_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_3_module_8_cell_13_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_3_module_8_cell_13_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_8_voltage_3_module_8_cell_14_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_3_module_8_cell_14_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_3_module_8_cell_14_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_8_voltage_3_module_8_cell_15_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_3_module_8_cell_15_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_3_module_8_cell_15_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_8_voltage_3_module_8_cell_16_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_8_voltage_3_module_8_cell_16_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_voltage_3_module_8_cell_16_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_voltage_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_voltage_0_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_9_cell_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_9_cell_1, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_9_cell_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_9_cell_2, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_9_cell_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_9_cell_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_9_cell_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_9_cell_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_voltage_0_unpack(
+    struct feb_can_bms_module_9_voltage_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_9_cell_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_9_cell_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_cell_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_9_cell_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_cell_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_9_cell_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_cell_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_9_cell_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_9_voltage_0_init(struct feb_can_bms_module_9_voltage_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_voltage_0_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_9_voltage_0_module_9_cell_1_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_0_module_9_cell_1_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_0_module_9_cell_1_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_9_voltage_0_module_9_cell_2_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_0_module_9_cell_2_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_0_module_9_cell_2_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_9_voltage_0_module_9_cell_3_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_0_module_9_cell_3_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_0_module_9_cell_3_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_9_voltage_0_module_9_cell_4_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_0_module_9_cell_4_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_0_module_9_cell_4_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_voltage_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_voltage_1_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_9_cell_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_9_cell_5, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_9_cell_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_9_cell_6, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_9_cell_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_9_cell_7, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_9_cell_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_9_cell_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_voltage_1_unpack(
+    struct feb_can_bms_module_9_voltage_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_9_cell_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_9_cell_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_cell_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_9_cell_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_cell_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_9_cell_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_cell_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_9_cell_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_9_voltage_1_init(struct feb_can_bms_module_9_voltage_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_voltage_1_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_9_voltage_1_module_9_cell_5_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_1_module_9_cell_5_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_1_module_9_cell_5_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_9_voltage_1_module_9_cell_6_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_1_module_9_cell_6_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_1_module_9_cell_6_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_9_voltage_1_module_9_cell_7_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_1_module_9_cell_7_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_1_module_9_cell_7_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_9_voltage_1_module_9_cell_8_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_1_module_9_cell_8_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_1_module_9_cell_8_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_voltage_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_voltage_2_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_9_cell_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_9_cell_9, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_9_cell_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_9_cell_10, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_9_cell_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_9_cell_11, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_9_cell_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_9_cell_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_voltage_2_unpack(
+    struct feb_can_bms_module_9_voltage_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_9_cell_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_9_cell_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_cell_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_9_cell_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_cell_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_9_cell_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_cell_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_9_cell_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_9_voltage_2_init(struct feb_can_bms_module_9_voltage_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_voltage_2_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_9_voltage_2_module_9_cell_9_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_2_module_9_cell_9_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_2_module_9_cell_9_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_9_voltage_2_module_9_cell_10_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_2_module_9_cell_10_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_2_module_9_cell_10_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_9_voltage_2_module_9_cell_11_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_2_module_9_cell_11_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_2_module_9_cell_11_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_9_voltage_2_module_9_cell_12_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_2_module_9_cell_12_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_2_module_9_cell_12_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_voltage_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_voltage_3_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_9_cell_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_9_cell_13, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_9_cell_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_9_cell_14, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_9_cell_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_9_cell_15, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_9_cell_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_9_cell_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_voltage_3_unpack(
+    struct feb_can_bms_module_9_voltage_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_9_cell_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_9_cell_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_cell_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_9_cell_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_cell_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_9_cell_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_cell_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_9_cell_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_9_voltage_3_init(struct feb_can_bms_module_9_voltage_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_voltage_3_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_9_voltage_3_module_9_cell_13_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_3_module_9_cell_13_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_3_module_9_cell_13_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_9_voltage_3_module_9_cell_14_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_3_module_9_cell_14_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_3_module_9_cell_14_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_9_voltage_3_module_9_cell_15_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_3_module_9_cell_15_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_3_module_9_cell_15_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_9_voltage_3_module_9_cell_16_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_9_voltage_3_module_9_cell_16_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_voltage_3_module_9_cell_16_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_voltage_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_voltage_0_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_10_cell_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_10_cell_1, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_10_cell_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_10_cell_2, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_10_cell_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_10_cell_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_10_cell_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_10_cell_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_voltage_0_unpack(
+    struct feb_can_bms_module_10_voltage_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_10_cell_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_10_cell_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_cell_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_10_cell_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_cell_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_10_cell_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_cell_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_10_cell_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_10_voltage_0_init(struct feb_can_bms_module_10_voltage_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_voltage_0_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_10_voltage_0_module_10_cell_1_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_0_module_10_cell_1_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_0_module_10_cell_1_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_10_voltage_0_module_10_cell_2_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_0_module_10_cell_2_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_0_module_10_cell_2_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_10_voltage_0_module_10_cell_3_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_0_module_10_cell_3_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_0_module_10_cell_3_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_10_voltage_0_module_10_cell_4_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_0_module_10_cell_4_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_0_module_10_cell_4_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_voltage_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_voltage_1_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_10_cell_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_10_cell_5, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_10_cell_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_10_cell_6, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_10_cell_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_10_cell_7, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_10_cell_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_10_cell_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_voltage_1_unpack(
+    struct feb_can_bms_module_10_voltage_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_10_cell_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_10_cell_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_cell_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_10_cell_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_cell_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_10_cell_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_cell_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_10_cell_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_10_voltage_1_init(struct feb_can_bms_module_10_voltage_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_voltage_1_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_10_voltage_1_module_10_cell_5_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_1_module_10_cell_5_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_1_module_10_cell_5_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_10_voltage_1_module_10_cell_6_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_1_module_10_cell_6_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_1_module_10_cell_6_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_10_voltage_1_module_10_cell_7_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_1_module_10_cell_7_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_1_module_10_cell_7_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_10_voltage_1_module_10_cell_8_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_1_module_10_cell_8_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_1_module_10_cell_8_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_voltage_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_voltage_2_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_10_cell_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_10_cell_9, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_10_cell_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_10_cell_10, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_10_cell_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_10_cell_11, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_10_cell_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_10_cell_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_voltage_2_unpack(
+    struct feb_can_bms_module_10_voltage_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_10_cell_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_10_cell_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_cell_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_10_cell_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_cell_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_10_cell_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_cell_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_10_cell_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_10_voltage_2_init(struct feb_can_bms_module_10_voltage_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_voltage_2_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_10_voltage_2_module_10_cell_9_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_2_module_10_cell_9_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_2_module_10_cell_9_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_10_voltage_2_module_10_cell_10_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_2_module_10_cell_10_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_2_module_10_cell_10_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_10_voltage_2_module_10_cell_11_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_2_module_10_cell_11_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_2_module_10_cell_11_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_10_voltage_2_module_10_cell_12_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_2_module_10_cell_12_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_2_module_10_cell_12_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_voltage_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_voltage_3_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->module_10_cell_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->module_10_cell_13, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->module_10_cell_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->module_10_cell_14, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->module_10_cell_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->module_10_cell_15, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->module_10_cell_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->module_10_cell_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_voltage_3_unpack(
+    struct feb_can_bms_module_10_voltage_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->module_10_cell_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->module_10_cell_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_cell_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->module_10_cell_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_cell_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->module_10_cell_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_cell_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->module_10_cell_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_module_10_voltage_3_init(struct feb_can_bms_module_10_voltage_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_voltage_3_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_module_10_voltage_3_module_10_cell_13_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_3_module_10_cell_13_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_3_module_10_cell_13_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_10_voltage_3_module_10_cell_14_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_3_module_10_cell_14_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_3_module_10_cell_14_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_10_voltage_3_module_10_cell_15_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_3_module_10_cell_15_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_3_module_10_cell_15_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_module_10_voltage_3_module_10_cell_16_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_module_10_voltage_3_module_10_cell_16_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_voltage_3_module_10_cell_16_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_temperature_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_temperature_0_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_1;
+    uint16_t module_1_temp_2;
+    uint16_t module_1_temp_3;
+    uint16_t module_1_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_1_temp_1 = (uint16_t)src_p->module_1_temp_1;
+    dst_p[0] |= pack_left_shift_u16(module_1_temp_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_1_temp_1, 8u, 0xffu);
+    module_1_temp_2 = (uint16_t)src_p->module_1_temp_2;
+    dst_p[2] |= pack_left_shift_u16(module_1_temp_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_1_temp_2, 8u, 0xffu);
+    module_1_temp_3 = (uint16_t)src_p->module_1_temp_3;
+    dst_p[4] |= pack_left_shift_u16(module_1_temp_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_1_temp_3, 8u, 0xffu);
+    module_1_temp_4 = (uint16_t)src_p->module_1_temp_4;
+    dst_p[6] |= pack_left_shift_u16(module_1_temp_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_1_temp_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_temperature_0_unpack(
+    struct feb_can_bms_module_1_temperature_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_1;
+    uint16_t module_1_temp_2;
+    uint16_t module_1_temp_3;
+    uint16_t module_1_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_1_temp_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_1_temp_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_temp_1 = (int16_t)module_1_temp_1;
+    module_1_temp_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_1_temp_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_temp_2 = (int16_t)module_1_temp_2;
+    module_1_temp_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_1_temp_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_temp_3 = (int16_t)module_1_temp_3;
+    module_1_temp_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_1_temp_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_1_temp_4 = (int16_t)module_1_temp_4;
+
+    return (0);
+}
+
+int feb_can_bms_module_1_temperature_0_init(struct feb_can_bms_module_1_temperature_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_temperature_0_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_1_temperature_0_module_1_temp_1_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_0_module_1_temp_1_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_0_module_1_temp_1_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_0_module_1_temp_2_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_0_module_1_temp_2_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_0_module_1_temp_2_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_0_module_1_temp_3_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_0_module_1_temp_3_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_0_module_1_temp_3_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_0_module_1_temp_4_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_0_module_1_temp_4_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_0_module_1_temp_4_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_temperature_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_temperature_1_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_5;
+    uint16_t module_1_temp_6;
+    uint16_t module_1_temp_7;
+    uint16_t module_1_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_1_temp_5 = (uint16_t)src_p->module_1_temp_5;
+    dst_p[0] |= pack_left_shift_u16(module_1_temp_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_1_temp_5, 8u, 0xffu);
+    module_1_temp_6 = (uint16_t)src_p->module_1_temp_6;
+    dst_p[2] |= pack_left_shift_u16(module_1_temp_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_1_temp_6, 8u, 0xffu);
+    module_1_temp_7 = (uint16_t)src_p->module_1_temp_7;
+    dst_p[4] |= pack_left_shift_u16(module_1_temp_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_1_temp_7, 8u, 0xffu);
+    module_1_temp_8 = (uint16_t)src_p->module_1_temp_8;
+    dst_p[6] |= pack_left_shift_u16(module_1_temp_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_1_temp_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_temperature_1_unpack(
+    struct feb_can_bms_module_1_temperature_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_5;
+    uint16_t module_1_temp_6;
+    uint16_t module_1_temp_7;
+    uint16_t module_1_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_1_temp_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_1_temp_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_temp_5 = (int16_t)module_1_temp_5;
+    module_1_temp_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_1_temp_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_temp_6 = (int16_t)module_1_temp_6;
+    module_1_temp_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_1_temp_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_temp_7 = (int16_t)module_1_temp_7;
+    module_1_temp_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_1_temp_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_1_temp_8 = (int16_t)module_1_temp_8;
+
+    return (0);
+}
+
+int feb_can_bms_module_1_temperature_1_init(struct feb_can_bms_module_1_temperature_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_temperature_1_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_1_temperature_1_module_1_temp_5_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_1_module_1_temp_5_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_1_module_1_temp_5_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_1_module_1_temp_6_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_1_module_1_temp_6_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_1_module_1_temp_6_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_1_module_1_temp_7_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_1_module_1_temp_7_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_1_module_1_temp_7_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_1_module_1_temp_8_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_1_module_1_temp_8_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_1_module_1_temp_8_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_temperature_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_temperature_2_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_10;
+    uint16_t module_1_temp_11;
+    uint16_t module_1_temp_12;
+    uint16_t module_1_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_1_temp_9 = (uint16_t)src_p->module_1_temp_9;
+    dst_p[0] |= pack_left_shift_u16(module_1_temp_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_1_temp_9, 8u, 0xffu);
+    module_1_temp_10 = (uint16_t)src_p->module_1_temp_10;
+    dst_p[2] |= pack_left_shift_u16(module_1_temp_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_1_temp_10, 8u, 0xffu);
+    module_1_temp_11 = (uint16_t)src_p->module_1_temp_11;
+    dst_p[4] |= pack_left_shift_u16(module_1_temp_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_1_temp_11, 8u, 0xffu);
+    module_1_temp_12 = (uint16_t)src_p->module_1_temp_12;
+    dst_p[6] |= pack_left_shift_u16(module_1_temp_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_1_temp_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_temperature_2_unpack(
+    struct feb_can_bms_module_1_temperature_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_10;
+    uint16_t module_1_temp_11;
+    uint16_t module_1_temp_12;
+    uint16_t module_1_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_1_temp_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_1_temp_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_temp_9 = (int16_t)module_1_temp_9;
+    module_1_temp_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_1_temp_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_temp_10 = (int16_t)module_1_temp_10;
+    module_1_temp_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_1_temp_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_temp_11 = (int16_t)module_1_temp_11;
+    module_1_temp_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_1_temp_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_1_temp_12 = (int16_t)module_1_temp_12;
+
+    return (0);
+}
+
+int feb_can_bms_module_1_temperature_2_init(struct feb_can_bms_module_1_temperature_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_temperature_2_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_1_temperature_2_module_1_temp_9_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_2_module_1_temp_9_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_2_module_1_temp_9_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_2_module_1_temp_10_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_2_module_1_temp_10_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_2_module_1_temp_10_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_2_module_1_temp_11_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_2_module_1_temp_11_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_2_module_1_temp_11_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_2_module_1_temp_12_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_2_module_1_temp_12_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_2_module_1_temp_12_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_temperature_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_temperature_3_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_13;
+    uint16_t module_1_temp_14;
+    uint16_t module_1_temp_15;
+    uint16_t module_1_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_1_temp_13 = (uint16_t)src_p->module_1_temp_13;
+    dst_p[0] |= pack_left_shift_u16(module_1_temp_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_1_temp_13, 8u, 0xffu);
+    module_1_temp_14 = (uint16_t)src_p->module_1_temp_14;
+    dst_p[2] |= pack_left_shift_u16(module_1_temp_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_1_temp_14, 8u, 0xffu);
+    module_1_temp_15 = (uint16_t)src_p->module_1_temp_15;
+    dst_p[4] |= pack_left_shift_u16(module_1_temp_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_1_temp_15, 8u, 0xffu);
+    module_1_temp_16 = (uint16_t)src_p->module_1_temp_16;
+    dst_p[6] |= pack_left_shift_u16(module_1_temp_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_1_temp_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_temperature_3_unpack(
+    struct feb_can_bms_module_1_temperature_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_13;
+    uint16_t module_1_temp_14;
+    uint16_t module_1_temp_15;
+    uint16_t module_1_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_1_temp_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_1_temp_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_temp_13 = (int16_t)module_1_temp_13;
+    module_1_temp_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_1_temp_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_temp_14 = (int16_t)module_1_temp_14;
+    module_1_temp_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_1_temp_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_temp_15 = (int16_t)module_1_temp_15;
+    module_1_temp_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_1_temp_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_1_temp_16 = (int16_t)module_1_temp_16;
+
+    return (0);
+}
+
+int feb_can_bms_module_1_temperature_3_init(struct feb_can_bms_module_1_temperature_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_temperature_3_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_1_temperature_3_module_1_temp_13_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_3_module_1_temp_13_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_3_module_1_temp_13_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_3_module_1_temp_14_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_3_module_1_temp_14_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_3_module_1_temp_14_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_3_module_1_temp_15_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_3_module_1_temp_15_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_3_module_1_temp_15_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_3_module_1_temp_16_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_3_module_1_temp_16_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_3_module_1_temp_16_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_temperature_4_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_temperature_4_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_17;
+    uint16_t module_1_temp_18;
+    uint16_t module_1_temp_19;
+    uint16_t module_1_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_1_temp_17 = (uint16_t)src_p->module_1_temp_17;
+    dst_p[0] |= pack_left_shift_u16(module_1_temp_17, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_1_temp_17, 8u, 0xffu);
+    module_1_temp_18 = (uint16_t)src_p->module_1_temp_18;
+    dst_p[2] |= pack_left_shift_u16(module_1_temp_18, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_1_temp_18, 8u, 0xffu);
+    module_1_temp_19 = (uint16_t)src_p->module_1_temp_19;
+    dst_p[4] |= pack_left_shift_u16(module_1_temp_19, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_1_temp_19, 8u, 0xffu);
+    module_1_temp_20 = (uint16_t)src_p->module_1_temp_20;
+    dst_p[6] |= pack_left_shift_u16(module_1_temp_20, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_1_temp_20, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_temperature_4_unpack(
+    struct feb_can_bms_module_1_temperature_4_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_17;
+    uint16_t module_1_temp_18;
+    uint16_t module_1_temp_19;
+    uint16_t module_1_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_1_temp_17 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_1_temp_17 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_temp_17 = (int16_t)module_1_temp_17;
+    module_1_temp_18 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_1_temp_18 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_temp_18 = (int16_t)module_1_temp_18;
+    module_1_temp_19 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_1_temp_19 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_temp_19 = (int16_t)module_1_temp_19;
+    module_1_temp_20 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_1_temp_20 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_1_temp_20 = (int16_t)module_1_temp_20;
+
+    return (0);
+}
+
+int feb_can_bms_module_1_temperature_4_init(struct feb_can_bms_module_1_temperature_4_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_temperature_4_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_1_temperature_4_module_1_temp_17_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_4_module_1_temp_17_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_4_module_1_temp_17_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_4_module_1_temp_18_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_4_module_1_temp_18_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_4_module_1_temp_18_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_4_module_1_temp_19_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_4_module_1_temp_19_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_4_module_1_temp_19_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_4_module_1_temp_20_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_4_module_1_temp_20_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_4_module_1_temp_20_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_temperature_5_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_temperature_5_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_21;
+    uint16_t module_1_temp_22;
+    uint16_t module_1_temp_23;
+    uint16_t module_1_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_1_temp_21 = (uint16_t)src_p->module_1_temp_21;
+    dst_p[0] |= pack_left_shift_u16(module_1_temp_21, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_1_temp_21, 8u, 0xffu);
+    module_1_temp_22 = (uint16_t)src_p->module_1_temp_22;
+    dst_p[2] |= pack_left_shift_u16(module_1_temp_22, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_1_temp_22, 8u, 0xffu);
+    module_1_temp_23 = (uint16_t)src_p->module_1_temp_23;
+    dst_p[4] |= pack_left_shift_u16(module_1_temp_23, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_1_temp_23, 8u, 0xffu);
+    module_1_temp_24 = (uint16_t)src_p->module_1_temp_24;
+    dst_p[6] |= pack_left_shift_u16(module_1_temp_24, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_1_temp_24, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_temperature_5_unpack(
+    struct feb_can_bms_module_1_temperature_5_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_21;
+    uint16_t module_1_temp_22;
+    uint16_t module_1_temp_23;
+    uint16_t module_1_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_1_temp_21 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_1_temp_21 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_temp_21 = (int16_t)module_1_temp_21;
+    module_1_temp_22 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_1_temp_22 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_temp_22 = (int16_t)module_1_temp_22;
+    module_1_temp_23 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_1_temp_23 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_temp_23 = (int16_t)module_1_temp_23;
+    module_1_temp_24 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_1_temp_24 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_1_temp_24 = (int16_t)module_1_temp_24;
+
+    return (0);
+}
+
+int feb_can_bms_module_1_temperature_5_init(struct feb_can_bms_module_1_temperature_5_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_temperature_5_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_1_temperature_5_module_1_temp_21_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_5_module_1_temp_21_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_5_module_1_temp_21_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_5_module_1_temp_22_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_5_module_1_temp_22_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_5_module_1_temp_22_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_5_module_1_temp_23_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_5_module_1_temp_23_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_5_module_1_temp_23_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_5_module_1_temp_24_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_5_module_1_temp_24_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_5_module_1_temp_24_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_temperature_6_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_temperature_6_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_25;
+    uint16_t module_1_temp_26;
+    uint16_t module_1_temp_27;
+    uint16_t module_1_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_1_temp_25 = (uint16_t)src_p->module_1_temp_25;
+    dst_p[0] |= pack_left_shift_u16(module_1_temp_25, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_1_temp_25, 8u, 0xffu);
+    module_1_temp_26 = (uint16_t)src_p->module_1_temp_26;
+    dst_p[2] |= pack_left_shift_u16(module_1_temp_26, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_1_temp_26, 8u, 0xffu);
+    module_1_temp_27 = (uint16_t)src_p->module_1_temp_27;
+    dst_p[4] |= pack_left_shift_u16(module_1_temp_27, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_1_temp_27, 8u, 0xffu);
+    module_1_temp_28 = (uint16_t)src_p->module_1_temp_28;
+    dst_p[6] |= pack_left_shift_u16(module_1_temp_28, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_1_temp_28, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_temperature_6_unpack(
+    struct feb_can_bms_module_1_temperature_6_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_25;
+    uint16_t module_1_temp_26;
+    uint16_t module_1_temp_27;
+    uint16_t module_1_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_1_temp_25 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_1_temp_25 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_temp_25 = (int16_t)module_1_temp_25;
+    module_1_temp_26 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_1_temp_26 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_temp_26 = (int16_t)module_1_temp_26;
+    module_1_temp_27 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_1_temp_27 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_temp_27 = (int16_t)module_1_temp_27;
+    module_1_temp_28 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_1_temp_28 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_1_temp_28 = (int16_t)module_1_temp_28;
+
+    return (0);
+}
+
+int feb_can_bms_module_1_temperature_6_init(struct feb_can_bms_module_1_temperature_6_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_temperature_6_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_1_temperature_6_module_1_temp_25_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_6_module_1_temp_25_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_6_module_1_temp_25_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_6_module_1_temp_26_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_6_module_1_temp_26_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_6_module_1_temp_26_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_6_module_1_temp_27_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_6_module_1_temp_27_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_6_module_1_temp_27_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_6_module_1_temp_28_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_6_module_1_temp_28_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_6_module_1_temp_28_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_temperature_7_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_temperature_7_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_29;
+    uint16_t module_1_temp_30;
+    uint16_t module_1_temp_31;
+    uint16_t module_1_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_1_temp_29 = (uint16_t)src_p->module_1_temp_29;
+    dst_p[0] |= pack_left_shift_u16(module_1_temp_29, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_1_temp_29, 8u, 0xffu);
+    module_1_temp_30 = (uint16_t)src_p->module_1_temp_30;
+    dst_p[2] |= pack_left_shift_u16(module_1_temp_30, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_1_temp_30, 8u, 0xffu);
+    module_1_temp_31 = (uint16_t)src_p->module_1_temp_31;
+    dst_p[4] |= pack_left_shift_u16(module_1_temp_31, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_1_temp_31, 8u, 0xffu);
+    module_1_temp_32 = (uint16_t)src_p->module_1_temp_32;
+    dst_p[6] |= pack_left_shift_u16(module_1_temp_32, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_1_temp_32, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_temperature_7_unpack(
+    struct feb_can_bms_module_1_temperature_7_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_29;
+    uint16_t module_1_temp_30;
+    uint16_t module_1_temp_31;
+    uint16_t module_1_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_1_temp_29 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_1_temp_29 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_temp_29 = (int16_t)module_1_temp_29;
+    module_1_temp_30 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_1_temp_30 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_temp_30 = (int16_t)module_1_temp_30;
+    module_1_temp_31 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_1_temp_31 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_temp_31 = (int16_t)module_1_temp_31;
+    module_1_temp_32 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_1_temp_32 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_1_temp_32 = (int16_t)module_1_temp_32;
+
+    return (0);
+}
+
+int feb_can_bms_module_1_temperature_7_init(struct feb_can_bms_module_1_temperature_7_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_temperature_7_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_1_temperature_7_module_1_temp_29_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_7_module_1_temp_29_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_7_module_1_temp_29_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_7_module_1_temp_30_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_7_module_1_temp_30_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_7_module_1_temp_30_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_7_module_1_temp_31_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_7_module_1_temp_31_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_7_module_1_temp_31_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_7_module_1_temp_32_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_7_module_1_temp_32_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_7_module_1_temp_32_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_temperature_8_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_temperature_8_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_33;
+    uint16_t module_1_temp_34;
+    uint16_t module_1_temp_35;
+    uint16_t module_1_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_1_temp_33 = (uint16_t)src_p->module_1_temp_33;
+    dst_p[0] |= pack_left_shift_u16(module_1_temp_33, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_1_temp_33, 8u, 0xffu);
+    module_1_temp_34 = (uint16_t)src_p->module_1_temp_34;
+    dst_p[2] |= pack_left_shift_u16(module_1_temp_34, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_1_temp_34, 8u, 0xffu);
+    module_1_temp_35 = (uint16_t)src_p->module_1_temp_35;
+    dst_p[4] |= pack_left_shift_u16(module_1_temp_35, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_1_temp_35, 8u, 0xffu);
+    module_1_temp_36 = (uint16_t)src_p->module_1_temp_36;
+    dst_p[6] |= pack_left_shift_u16(module_1_temp_36, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_1_temp_36, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_temperature_8_unpack(
+    struct feb_can_bms_module_1_temperature_8_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_33;
+    uint16_t module_1_temp_34;
+    uint16_t module_1_temp_35;
+    uint16_t module_1_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_1_temp_33 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_1_temp_33 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_temp_33 = (int16_t)module_1_temp_33;
+    module_1_temp_34 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_1_temp_34 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_temp_34 = (int16_t)module_1_temp_34;
+    module_1_temp_35 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_1_temp_35 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_temp_35 = (int16_t)module_1_temp_35;
+    module_1_temp_36 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_1_temp_36 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_1_temp_36 = (int16_t)module_1_temp_36;
+
+    return (0);
+}
+
+int feb_can_bms_module_1_temperature_8_init(struct feb_can_bms_module_1_temperature_8_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_temperature_8_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_1_temperature_8_module_1_temp_33_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_8_module_1_temp_33_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_8_module_1_temp_33_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_8_module_1_temp_34_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_8_module_1_temp_34_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_8_module_1_temp_34_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_8_module_1_temp_35_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_8_module_1_temp_35_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_8_module_1_temp_35_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_8_module_1_temp_36_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_8_module_1_temp_36_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_8_module_1_temp_36_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_temperature_9_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_temperature_9_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_37;
+    uint16_t module_1_temp_38;
+    uint16_t module_1_temp_39;
+    uint16_t module_1_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_1_temp_37 = (uint16_t)src_p->module_1_temp_37;
+    dst_p[0] |= pack_left_shift_u16(module_1_temp_37, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_1_temp_37, 8u, 0xffu);
+    module_1_temp_38 = (uint16_t)src_p->module_1_temp_38;
+    dst_p[2] |= pack_left_shift_u16(module_1_temp_38, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_1_temp_38, 8u, 0xffu);
+    module_1_temp_39 = (uint16_t)src_p->module_1_temp_39;
+    dst_p[4] |= pack_left_shift_u16(module_1_temp_39, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_1_temp_39, 8u, 0xffu);
+    module_1_temp_40 = (uint16_t)src_p->module_1_temp_40;
+    dst_p[6] |= pack_left_shift_u16(module_1_temp_40, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_1_temp_40, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_1_temperature_9_unpack(
+    struct feb_can_bms_module_1_temperature_9_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_37;
+    uint16_t module_1_temp_38;
+    uint16_t module_1_temp_39;
+    uint16_t module_1_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_1_temp_37 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_1_temp_37 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_temp_37 = (int16_t)module_1_temp_37;
+    module_1_temp_38 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_1_temp_38 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_1_temp_38 = (int16_t)module_1_temp_38;
+    module_1_temp_39 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_1_temp_39 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_1_temp_39 = (int16_t)module_1_temp_39;
+    module_1_temp_40 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_1_temp_40 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_1_temp_40 = (int16_t)module_1_temp_40;
+
+    return (0);
+}
+
+int feb_can_bms_module_1_temperature_9_init(struct feb_can_bms_module_1_temperature_9_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_temperature_9_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_1_temperature_9_module_1_temp_37_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_9_module_1_temp_37_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_9_module_1_temp_37_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_9_module_1_temp_38_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_9_module_1_temp_38_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_9_module_1_temp_38_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_9_module_1_temp_39_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_9_module_1_temp_39_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_9_module_1_temp_39_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_1_temperature_9_module_1_temp_40_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_9_module_1_temp_40_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_9_module_1_temp_40_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_1_temperature_10_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_1_temperature_10_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 2);
+
+    module_1_temp_41 = (uint16_t)src_p->module_1_temp_41;
+    dst_p[0] |= pack_left_shift_u16(module_1_temp_41, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_1_temp_41, 8u, 0xffu);
+
+    return (2);
+}
+
+int feb_can_bms_module_1_temperature_10_unpack(
+    struct feb_can_bms_module_1_temperature_10_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_1_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    module_1_temp_41 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_1_temp_41 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_1_temp_41 = (int16_t)module_1_temp_41;
+
+    return (0);
+}
+
+int feb_can_bms_module_1_temperature_10_init(struct feb_can_bms_module_1_temperature_10_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_1_temperature_10_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_1_temperature_10_module_1_temp_41_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_1_temperature_10_module_1_temp_41_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_1_temperature_10_module_1_temp_41_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_temperature_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_temperature_0_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_1;
+    uint16_t module_2_temp_2;
+    uint16_t module_2_temp_3;
+    uint16_t module_2_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_2_temp_1 = (uint16_t)src_p->module_2_temp_1;
+    dst_p[0] |= pack_left_shift_u16(module_2_temp_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_2_temp_1, 8u, 0xffu);
+    module_2_temp_2 = (uint16_t)src_p->module_2_temp_2;
+    dst_p[2] |= pack_left_shift_u16(module_2_temp_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_2_temp_2, 8u, 0xffu);
+    module_2_temp_3 = (uint16_t)src_p->module_2_temp_3;
+    dst_p[4] |= pack_left_shift_u16(module_2_temp_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_2_temp_3, 8u, 0xffu);
+    module_2_temp_4 = (uint16_t)src_p->module_2_temp_4;
+    dst_p[6] |= pack_left_shift_u16(module_2_temp_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_2_temp_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_temperature_0_unpack(
+    struct feb_can_bms_module_2_temperature_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_1;
+    uint16_t module_2_temp_2;
+    uint16_t module_2_temp_3;
+    uint16_t module_2_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_2_temp_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_2_temp_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_temp_1 = (int16_t)module_2_temp_1;
+    module_2_temp_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_2_temp_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_temp_2 = (int16_t)module_2_temp_2;
+    module_2_temp_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_2_temp_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_temp_3 = (int16_t)module_2_temp_3;
+    module_2_temp_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_2_temp_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_2_temp_4 = (int16_t)module_2_temp_4;
+
+    return (0);
+}
+
+int feb_can_bms_module_2_temperature_0_init(struct feb_can_bms_module_2_temperature_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_temperature_0_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_2_temperature_0_module_2_temp_1_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_0_module_2_temp_1_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_0_module_2_temp_1_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_0_module_2_temp_2_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_0_module_2_temp_2_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_0_module_2_temp_2_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_0_module_2_temp_3_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_0_module_2_temp_3_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_0_module_2_temp_3_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_0_module_2_temp_4_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_0_module_2_temp_4_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_0_module_2_temp_4_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_temperature_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_temperature_1_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_5;
+    uint16_t module_2_temp_6;
+    uint16_t module_2_temp_7;
+    uint16_t module_2_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_2_temp_5 = (uint16_t)src_p->module_2_temp_5;
+    dst_p[0] |= pack_left_shift_u16(module_2_temp_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_2_temp_5, 8u, 0xffu);
+    module_2_temp_6 = (uint16_t)src_p->module_2_temp_6;
+    dst_p[2] |= pack_left_shift_u16(module_2_temp_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_2_temp_6, 8u, 0xffu);
+    module_2_temp_7 = (uint16_t)src_p->module_2_temp_7;
+    dst_p[4] |= pack_left_shift_u16(module_2_temp_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_2_temp_7, 8u, 0xffu);
+    module_2_temp_8 = (uint16_t)src_p->module_2_temp_8;
+    dst_p[6] |= pack_left_shift_u16(module_2_temp_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_2_temp_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_temperature_1_unpack(
+    struct feb_can_bms_module_2_temperature_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_5;
+    uint16_t module_2_temp_6;
+    uint16_t module_2_temp_7;
+    uint16_t module_2_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_2_temp_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_2_temp_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_temp_5 = (int16_t)module_2_temp_5;
+    module_2_temp_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_2_temp_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_temp_6 = (int16_t)module_2_temp_6;
+    module_2_temp_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_2_temp_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_temp_7 = (int16_t)module_2_temp_7;
+    module_2_temp_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_2_temp_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_2_temp_8 = (int16_t)module_2_temp_8;
+
+    return (0);
+}
+
+int feb_can_bms_module_2_temperature_1_init(struct feb_can_bms_module_2_temperature_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_temperature_1_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_2_temperature_1_module_2_temp_5_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_1_module_2_temp_5_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_1_module_2_temp_5_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_1_module_2_temp_6_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_1_module_2_temp_6_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_1_module_2_temp_6_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_1_module_2_temp_7_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_1_module_2_temp_7_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_1_module_2_temp_7_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_1_module_2_temp_8_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_1_module_2_temp_8_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_1_module_2_temp_8_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_temperature_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_temperature_2_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_10;
+    uint16_t module_2_temp_11;
+    uint16_t module_2_temp_12;
+    uint16_t module_2_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_2_temp_9 = (uint16_t)src_p->module_2_temp_9;
+    dst_p[0] |= pack_left_shift_u16(module_2_temp_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_2_temp_9, 8u, 0xffu);
+    module_2_temp_10 = (uint16_t)src_p->module_2_temp_10;
+    dst_p[2] |= pack_left_shift_u16(module_2_temp_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_2_temp_10, 8u, 0xffu);
+    module_2_temp_11 = (uint16_t)src_p->module_2_temp_11;
+    dst_p[4] |= pack_left_shift_u16(module_2_temp_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_2_temp_11, 8u, 0xffu);
+    module_2_temp_12 = (uint16_t)src_p->module_2_temp_12;
+    dst_p[6] |= pack_left_shift_u16(module_2_temp_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_2_temp_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_temperature_2_unpack(
+    struct feb_can_bms_module_2_temperature_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_10;
+    uint16_t module_2_temp_11;
+    uint16_t module_2_temp_12;
+    uint16_t module_2_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_2_temp_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_2_temp_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_temp_9 = (int16_t)module_2_temp_9;
+    module_2_temp_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_2_temp_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_temp_10 = (int16_t)module_2_temp_10;
+    module_2_temp_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_2_temp_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_temp_11 = (int16_t)module_2_temp_11;
+    module_2_temp_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_2_temp_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_2_temp_12 = (int16_t)module_2_temp_12;
+
+    return (0);
+}
+
+int feb_can_bms_module_2_temperature_2_init(struct feb_can_bms_module_2_temperature_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_temperature_2_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_2_temperature_2_module_2_temp_9_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_2_module_2_temp_9_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_2_module_2_temp_9_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_2_module_2_temp_10_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_2_module_2_temp_10_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_2_module_2_temp_10_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_2_module_2_temp_11_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_2_module_2_temp_11_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_2_module_2_temp_11_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_2_module_2_temp_12_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_2_module_2_temp_12_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_2_module_2_temp_12_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_temperature_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_temperature_3_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_13;
+    uint16_t module_2_temp_14;
+    uint16_t module_2_temp_15;
+    uint16_t module_2_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_2_temp_13 = (uint16_t)src_p->module_2_temp_13;
+    dst_p[0] |= pack_left_shift_u16(module_2_temp_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_2_temp_13, 8u, 0xffu);
+    module_2_temp_14 = (uint16_t)src_p->module_2_temp_14;
+    dst_p[2] |= pack_left_shift_u16(module_2_temp_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_2_temp_14, 8u, 0xffu);
+    module_2_temp_15 = (uint16_t)src_p->module_2_temp_15;
+    dst_p[4] |= pack_left_shift_u16(module_2_temp_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_2_temp_15, 8u, 0xffu);
+    module_2_temp_16 = (uint16_t)src_p->module_2_temp_16;
+    dst_p[6] |= pack_left_shift_u16(module_2_temp_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_2_temp_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_temperature_3_unpack(
+    struct feb_can_bms_module_2_temperature_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_13;
+    uint16_t module_2_temp_14;
+    uint16_t module_2_temp_15;
+    uint16_t module_2_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_2_temp_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_2_temp_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_temp_13 = (int16_t)module_2_temp_13;
+    module_2_temp_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_2_temp_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_temp_14 = (int16_t)module_2_temp_14;
+    module_2_temp_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_2_temp_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_temp_15 = (int16_t)module_2_temp_15;
+    module_2_temp_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_2_temp_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_2_temp_16 = (int16_t)module_2_temp_16;
+
+    return (0);
+}
+
+int feb_can_bms_module_2_temperature_3_init(struct feb_can_bms_module_2_temperature_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_temperature_3_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_2_temperature_3_module_2_temp_13_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_3_module_2_temp_13_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_3_module_2_temp_13_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_3_module_2_temp_14_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_3_module_2_temp_14_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_3_module_2_temp_14_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_3_module_2_temp_15_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_3_module_2_temp_15_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_3_module_2_temp_15_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_3_module_2_temp_16_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_3_module_2_temp_16_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_3_module_2_temp_16_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_temperature_4_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_temperature_4_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_17;
+    uint16_t module_2_temp_18;
+    uint16_t module_2_temp_19;
+    uint16_t module_2_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_2_temp_17 = (uint16_t)src_p->module_2_temp_17;
+    dst_p[0] |= pack_left_shift_u16(module_2_temp_17, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_2_temp_17, 8u, 0xffu);
+    module_2_temp_18 = (uint16_t)src_p->module_2_temp_18;
+    dst_p[2] |= pack_left_shift_u16(module_2_temp_18, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_2_temp_18, 8u, 0xffu);
+    module_2_temp_19 = (uint16_t)src_p->module_2_temp_19;
+    dst_p[4] |= pack_left_shift_u16(module_2_temp_19, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_2_temp_19, 8u, 0xffu);
+    module_2_temp_20 = (uint16_t)src_p->module_2_temp_20;
+    dst_p[6] |= pack_left_shift_u16(module_2_temp_20, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_2_temp_20, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_temperature_4_unpack(
+    struct feb_can_bms_module_2_temperature_4_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_17;
+    uint16_t module_2_temp_18;
+    uint16_t module_2_temp_19;
+    uint16_t module_2_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_2_temp_17 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_2_temp_17 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_temp_17 = (int16_t)module_2_temp_17;
+    module_2_temp_18 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_2_temp_18 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_temp_18 = (int16_t)module_2_temp_18;
+    module_2_temp_19 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_2_temp_19 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_temp_19 = (int16_t)module_2_temp_19;
+    module_2_temp_20 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_2_temp_20 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_2_temp_20 = (int16_t)module_2_temp_20;
+
+    return (0);
+}
+
+int feb_can_bms_module_2_temperature_4_init(struct feb_can_bms_module_2_temperature_4_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_temperature_4_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_2_temperature_4_module_2_temp_17_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_4_module_2_temp_17_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_4_module_2_temp_17_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_4_module_2_temp_18_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_4_module_2_temp_18_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_4_module_2_temp_18_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_4_module_2_temp_19_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_4_module_2_temp_19_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_4_module_2_temp_19_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_4_module_2_temp_20_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_4_module_2_temp_20_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_4_module_2_temp_20_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_temperature_5_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_temperature_5_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_21;
+    uint16_t module_2_temp_22;
+    uint16_t module_2_temp_23;
+    uint16_t module_2_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_2_temp_21 = (uint16_t)src_p->module_2_temp_21;
+    dst_p[0] |= pack_left_shift_u16(module_2_temp_21, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_2_temp_21, 8u, 0xffu);
+    module_2_temp_22 = (uint16_t)src_p->module_2_temp_22;
+    dst_p[2] |= pack_left_shift_u16(module_2_temp_22, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_2_temp_22, 8u, 0xffu);
+    module_2_temp_23 = (uint16_t)src_p->module_2_temp_23;
+    dst_p[4] |= pack_left_shift_u16(module_2_temp_23, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_2_temp_23, 8u, 0xffu);
+    module_2_temp_24 = (uint16_t)src_p->module_2_temp_24;
+    dst_p[6] |= pack_left_shift_u16(module_2_temp_24, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_2_temp_24, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_temperature_5_unpack(
+    struct feb_can_bms_module_2_temperature_5_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_21;
+    uint16_t module_2_temp_22;
+    uint16_t module_2_temp_23;
+    uint16_t module_2_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_2_temp_21 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_2_temp_21 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_temp_21 = (int16_t)module_2_temp_21;
+    module_2_temp_22 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_2_temp_22 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_temp_22 = (int16_t)module_2_temp_22;
+    module_2_temp_23 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_2_temp_23 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_temp_23 = (int16_t)module_2_temp_23;
+    module_2_temp_24 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_2_temp_24 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_2_temp_24 = (int16_t)module_2_temp_24;
+
+    return (0);
+}
+
+int feb_can_bms_module_2_temperature_5_init(struct feb_can_bms_module_2_temperature_5_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_temperature_5_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_2_temperature_5_module_2_temp_21_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_5_module_2_temp_21_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_5_module_2_temp_21_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_5_module_2_temp_22_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_5_module_2_temp_22_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_5_module_2_temp_22_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_5_module_2_temp_23_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_5_module_2_temp_23_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_5_module_2_temp_23_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_5_module_2_temp_24_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_5_module_2_temp_24_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_5_module_2_temp_24_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_temperature_6_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_temperature_6_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_25;
+    uint16_t module_2_temp_26;
+    uint16_t module_2_temp_27;
+    uint16_t module_2_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_2_temp_25 = (uint16_t)src_p->module_2_temp_25;
+    dst_p[0] |= pack_left_shift_u16(module_2_temp_25, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_2_temp_25, 8u, 0xffu);
+    module_2_temp_26 = (uint16_t)src_p->module_2_temp_26;
+    dst_p[2] |= pack_left_shift_u16(module_2_temp_26, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_2_temp_26, 8u, 0xffu);
+    module_2_temp_27 = (uint16_t)src_p->module_2_temp_27;
+    dst_p[4] |= pack_left_shift_u16(module_2_temp_27, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_2_temp_27, 8u, 0xffu);
+    module_2_temp_28 = (uint16_t)src_p->module_2_temp_28;
+    dst_p[6] |= pack_left_shift_u16(module_2_temp_28, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_2_temp_28, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_temperature_6_unpack(
+    struct feb_can_bms_module_2_temperature_6_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_25;
+    uint16_t module_2_temp_26;
+    uint16_t module_2_temp_27;
+    uint16_t module_2_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_2_temp_25 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_2_temp_25 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_temp_25 = (int16_t)module_2_temp_25;
+    module_2_temp_26 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_2_temp_26 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_temp_26 = (int16_t)module_2_temp_26;
+    module_2_temp_27 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_2_temp_27 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_temp_27 = (int16_t)module_2_temp_27;
+    module_2_temp_28 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_2_temp_28 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_2_temp_28 = (int16_t)module_2_temp_28;
+
+    return (0);
+}
+
+int feb_can_bms_module_2_temperature_6_init(struct feb_can_bms_module_2_temperature_6_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_temperature_6_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_2_temperature_6_module_2_temp_25_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_6_module_2_temp_25_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_6_module_2_temp_25_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_6_module_2_temp_26_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_6_module_2_temp_26_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_6_module_2_temp_26_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_6_module_2_temp_27_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_6_module_2_temp_27_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_6_module_2_temp_27_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_6_module_2_temp_28_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_6_module_2_temp_28_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_6_module_2_temp_28_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_temperature_7_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_temperature_7_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_29;
+    uint16_t module_2_temp_30;
+    uint16_t module_2_temp_31;
+    uint16_t module_2_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_2_temp_29 = (uint16_t)src_p->module_2_temp_29;
+    dst_p[0] |= pack_left_shift_u16(module_2_temp_29, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_2_temp_29, 8u, 0xffu);
+    module_2_temp_30 = (uint16_t)src_p->module_2_temp_30;
+    dst_p[2] |= pack_left_shift_u16(module_2_temp_30, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_2_temp_30, 8u, 0xffu);
+    module_2_temp_31 = (uint16_t)src_p->module_2_temp_31;
+    dst_p[4] |= pack_left_shift_u16(module_2_temp_31, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_2_temp_31, 8u, 0xffu);
+    module_2_temp_32 = (uint16_t)src_p->module_2_temp_32;
+    dst_p[6] |= pack_left_shift_u16(module_2_temp_32, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_2_temp_32, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_temperature_7_unpack(
+    struct feb_can_bms_module_2_temperature_7_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_29;
+    uint16_t module_2_temp_30;
+    uint16_t module_2_temp_31;
+    uint16_t module_2_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_2_temp_29 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_2_temp_29 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_temp_29 = (int16_t)module_2_temp_29;
+    module_2_temp_30 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_2_temp_30 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_temp_30 = (int16_t)module_2_temp_30;
+    module_2_temp_31 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_2_temp_31 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_temp_31 = (int16_t)module_2_temp_31;
+    module_2_temp_32 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_2_temp_32 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_2_temp_32 = (int16_t)module_2_temp_32;
+
+    return (0);
+}
+
+int feb_can_bms_module_2_temperature_7_init(struct feb_can_bms_module_2_temperature_7_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_temperature_7_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_2_temperature_7_module_2_temp_29_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_7_module_2_temp_29_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_7_module_2_temp_29_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_7_module_2_temp_30_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_7_module_2_temp_30_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_7_module_2_temp_30_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_7_module_2_temp_31_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_7_module_2_temp_31_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_7_module_2_temp_31_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_7_module_2_temp_32_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_7_module_2_temp_32_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_7_module_2_temp_32_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_temperature_8_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_temperature_8_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_33;
+    uint16_t module_2_temp_34;
+    uint16_t module_2_temp_35;
+    uint16_t module_2_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_2_temp_33 = (uint16_t)src_p->module_2_temp_33;
+    dst_p[0] |= pack_left_shift_u16(module_2_temp_33, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_2_temp_33, 8u, 0xffu);
+    module_2_temp_34 = (uint16_t)src_p->module_2_temp_34;
+    dst_p[2] |= pack_left_shift_u16(module_2_temp_34, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_2_temp_34, 8u, 0xffu);
+    module_2_temp_35 = (uint16_t)src_p->module_2_temp_35;
+    dst_p[4] |= pack_left_shift_u16(module_2_temp_35, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_2_temp_35, 8u, 0xffu);
+    module_2_temp_36 = (uint16_t)src_p->module_2_temp_36;
+    dst_p[6] |= pack_left_shift_u16(module_2_temp_36, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_2_temp_36, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_temperature_8_unpack(
+    struct feb_can_bms_module_2_temperature_8_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_33;
+    uint16_t module_2_temp_34;
+    uint16_t module_2_temp_35;
+    uint16_t module_2_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_2_temp_33 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_2_temp_33 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_temp_33 = (int16_t)module_2_temp_33;
+    module_2_temp_34 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_2_temp_34 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_temp_34 = (int16_t)module_2_temp_34;
+    module_2_temp_35 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_2_temp_35 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_temp_35 = (int16_t)module_2_temp_35;
+    module_2_temp_36 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_2_temp_36 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_2_temp_36 = (int16_t)module_2_temp_36;
+
+    return (0);
+}
+
+int feb_can_bms_module_2_temperature_8_init(struct feb_can_bms_module_2_temperature_8_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_temperature_8_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_2_temperature_8_module_2_temp_33_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_8_module_2_temp_33_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_8_module_2_temp_33_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_8_module_2_temp_34_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_8_module_2_temp_34_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_8_module_2_temp_34_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_8_module_2_temp_35_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_8_module_2_temp_35_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_8_module_2_temp_35_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_8_module_2_temp_36_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_8_module_2_temp_36_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_8_module_2_temp_36_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_temperature_9_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_temperature_9_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_37;
+    uint16_t module_2_temp_38;
+    uint16_t module_2_temp_39;
+    uint16_t module_2_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_2_temp_37 = (uint16_t)src_p->module_2_temp_37;
+    dst_p[0] |= pack_left_shift_u16(module_2_temp_37, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_2_temp_37, 8u, 0xffu);
+    module_2_temp_38 = (uint16_t)src_p->module_2_temp_38;
+    dst_p[2] |= pack_left_shift_u16(module_2_temp_38, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_2_temp_38, 8u, 0xffu);
+    module_2_temp_39 = (uint16_t)src_p->module_2_temp_39;
+    dst_p[4] |= pack_left_shift_u16(module_2_temp_39, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_2_temp_39, 8u, 0xffu);
+    module_2_temp_40 = (uint16_t)src_p->module_2_temp_40;
+    dst_p[6] |= pack_left_shift_u16(module_2_temp_40, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_2_temp_40, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_2_temperature_9_unpack(
+    struct feb_can_bms_module_2_temperature_9_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_37;
+    uint16_t module_2_temp_38;
+    uint16_t module_2_temp_39;
+    uint16_t module_2_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_2_temp_37 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_2_temp_37 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_temp_37 = (int16_t)module_2_temp_37;
+    module_2_temp_38 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_2_temp_38 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_2_temp_38 = (int16_t)module_2_temp_38;
+    module_2_temp_39 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_2_temp_39 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_2_temp_39 = (int16_t)module_2_temp_39;
+    module_2_temp_40 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_2_temp_40 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_2_temp_40 = (int16_t)module_2_temp_40;
+
+    return (0);
+}
+
+int feb_can_bms_module_2_temperature_9_init(struct feb_can_bms_module_2_temperature_9_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_temperature_9_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_2_temperature_9_module_2_temp_37_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_9_module_2_temp_37_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_9_module_2_temp_37_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_9_module_2_temp_38_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_9_module_2_temp_38_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_9_module_2_temp_38_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_9_module_2_temp_39_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_9_module_2_temp_39_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_9_module_2_temp_39_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_2_temperature_9_module_2_temp_40_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_9_module_2_temp_40_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_9_module_2_temp_40_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_2_temperature_10_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_2_temperature_10_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 2);
+
+    module_2_temp_41 = (uint16_t)src_p->module_2_temp_41;
+    dst_p[0] |= pack_left_shift_u16(module_2_temp_41, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_2_temp_41, 8u, 0xffu);
+
+    return (2);
+}
+
+int feb_can_bms_module_2_temperature_10_unpack(
+    struct feb_can_bms_module_2_temperature_10_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_2_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    module_2_temp_41 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_2_temp_41 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_2_temp_41 = (int16_t)module_2_temp_41;
+
+    return (0);
+}
+
+int feb_can_bms_module_2_temperature_10_init(struct feb_can_bms_module_2_temperature_10_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_2_temperature_10_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_2_temperature_10_module_2_temp_41_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_2_temperature_10_module_2_temp_41_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_2_temperature_10_module_2_temp_41_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_temperature_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_temperature_0_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_1;
+    uint16_t module_3_temp_2;
+    uint16_t module_3_temp_3;
+    uint16_t module_3_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_3_temp_1 = (uint16_t)src_p->module_3_temp_1;
+    dst_p[0] |= pack_left_shift_u16(module_3_temp_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_3_temp_1, 8u, 0xffu);
+    module_3_temp_2 = (uint16_t)src_p->module_3_temp_2;
+    dst_p[2] |= pack_left_shift_u16(module_3_temp_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_3_temp_2, 8u, 0xffu);
+    module_3_temp_3 = (uint16_t)src_p->module_3_temp_3;
+    dst_p[4] |= pack_left_shift_u16(module_3_temp_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_3_temp_3, 8u, 0xffu);
+    module_3_temp_4 = (uint16_t)src_p->module_3_temp_4;
+    dst_p[6] |= pack_left_shift_u16(module_3_temp_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_3_temp_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_temperature_0_unpack(
+    struct feb_can_bms_module_3_temperature_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_1;
+    uint16_t module_3_temp_2;
+    uint16_t module_3_temp_3;
+    uint16_t module_3_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_3_temp_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_3_temp_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_temp_1 = (int16_t)module_3_temp_1;
+    module_3_temp_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_3_temp_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_temp_2 = (int16_t)module_3_temp_2;
+    module_3_temp_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_3_temp_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_temp_3 = (int16_t)module_3_temp_3;
+    module_3_temp_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_3_temp_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_3_temp_4 = (int16_t)module_3_temp_4;
+
+    return (0);
+}
+
+int feb_can_bms_module_3_temperature_0_init(struct feb_can_bms_module_3_temperature_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_temperature_0_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_3_temperature_0_module_3_temp_1_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_0_module_3_temp_1_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_0_module_3_temp_1_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_0_module_3_temp_2_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_0_module_3_temp_2_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_0_module_3_temp_2_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_0_module_3_temp_3_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_0_module_3_temp_3_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_0_module_3_temp_3_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_0_module_3_temp_4_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_0_module_3_temp_4_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_0_module_3_temp_4_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_temperature_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_temperature_1_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_5;
+    uint16_t module_3_temp_6;
+    uint16_t module_3_temp_7;
+    uint16_t module_3_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_3_temp_5 = (uint16_t)src_p->module_3_temp_5;
+    dst_p[0] |= pack_left_shift_u16(module_3_temp_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_3_temp_5, 8u, 0xffu);
+    module_3_temp_6 = (uint16_t)src_p->module_3_temp_6;
+    dst_p[2] |= pack_left_shift_u16(module_3_temp_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_3_temp_6, 8u, 0xffu);
+    module_3_temp_7 = (uint16_t)src_p->module_3_temp_7;
+    dst_p[4] |= pack_left_shift_u16(module_3_temp_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_3_temp_7, 8u, 0xffu);
+    module_3_temp_8 = (uint16_t)src_p->module_3_temp_8;
+    dst_p[6] |= pack_left_shift_u16(module_3_temp_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_3_temp_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_temperature_1_unpack(
+    struct feb_can_bms_module_3_temperature_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_5;
+    uint16_t module_3_temp_6;
+    uint16_t module_3_temp_7;
+    uint16_t module_3_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_3_temp_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_3_temp_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_temp_5 = (int16_t)module_3_temp_5;
+    module_3_temp_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_3_temp_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_temp_6 = (int16_t)module_3_temp_6;
+    module_3_temp_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_3_temp_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_temp_7 = (int16_t)module_3_temp_7;
+    module_3_temp_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_3_temp_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_3_temp_8 = (int16_t)module_3_temp_8;
+
+    return (0);
+}
+
+int feb_can_bms_module_3_temperature_1_init(struct feb_can_bms_module_3_temperature_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_temperature_1_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_3_temperature_1_module_3_temp_5_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_1_module_3_temp_5_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_1_module_3_temp_5_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_1_module_3_temp_6_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_1_module_3_temp_6_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_1_module_3_temp_6_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_1_module_3_temp_7_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_1_module_3_temp_7_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_1_module_3_temp_7_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_1_module_3_temp_8_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_1_module_3_temp_8_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_1_module_3_temp_8_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_temperature_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_temperature_2_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_10;
+    uint16_t module_3_temp_11;
+    uint16_t module_3_temp_12;
+    uint16_t module_3_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_3_temp_9 = (uint16_t)src_p->module_3_temp_9;
+    dst_p[0] |= pack_left_shift_u16(module_3_temp_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_3_temp_9, 8u, 0xffu);
+    module_3_temp_10 = (uint16_t)src_p->module_3_temp_10;
+    dst_p[2] |= pack_left_shift_u16(module_3_temp_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_3_temp_10, 8u, 0xffu);
+    module_3_temp_11 = (uint16_t)src_p->module_3_temp_11;
+    dst_p[4] |= pack_left_shift_u16(module_3_temp_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_3_temp_11, 8u, 0xffu);
+    module_3_temp_12 = (uint16_t)src_p->module_3_temp_12;
+    dst_p[6] |= pack_left_shift_u16(module_3_temp_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_3_temp_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_temperature_2_unpack(
+    struct feb_can_bms_module_3_temperature_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_10;
+    uint16_t module_3_temp_11;
+    uint16_t module_3_temp_12;
+    uint16_t module_3_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_3_temp_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_3_temp_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_temp_9 = (int16_t)module_3_temp_9;
+    module_3_temp_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_3_temp_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_temp_10 = (int16_t)module_3_temp_10;
+    module_3_temp_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_3_temp_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_temp_11 = (int16_t)module_3_temp_11;
+    module_3_temp_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_3_temp_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_3_temp_12 = (int16_t)module_3_temp_12;
+
+    return (0);
+}
+
+int feb_can_bms_module_3_temperature_2_init(struct feb_can_bms_module_3_temperature_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_temperature_2_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_3_temperature_2_module_3_temp_9_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_2_module_3_temp_9_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_2_module_3_temp_9_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_2_module_3_temp_10_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_2_module_3_temp_10_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_2_module_3_temp_10_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_2_module_3_temp_11_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_2_module_3_temp_11_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_2_module_3_temp_11_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_2_module_3_temp_12_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_2_module_3_temp_12_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_2_module_3_temp_12_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_temperature_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_temperature_3_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_13;
+    uint16_t module_3_temp_14;
+    uint16_t module_3_temp_15;
+    uint16_t module_3_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_3_temp_13 = (uint16_t)src_p->module_3_temp_13;
+    dst_p[0] |= pack_left_shift_u16(module_3_temp_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_3_temp_13, 8u, 0xffu);
+    module_3_temp_14 = (uint16_t)src_p->module_3_temp_14;
+    dst_p[2] |= pack_left_shift_u16(module_3_temp_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_3_temp_14, 8u, 0xffu);
+    module_3_temp_15 = (uint16_t)src_p->module_3_temp_15;
+    dst_p[4] |= pack_left_shift_u16(module_3_temp_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_3_temp_15, 8u, 0xffu);
+    module_3_temp_16 = (uint16_t)src_p->module_3_temp_16;
+    dst_p[6] |= pack_left_shift_u16(module_3_temp_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_3_temp_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_temperature_3_unpack(
+    struct feb_can_bms_module_3_temperature_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_13;
+    uint16_t module_3_temp_14;
+    uint16_t module_3_temp_15;
+    uint16_t module_3_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_3_temp_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_3_temp_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_temp_13 = (int16_t)module_3_temp_13;
+    module_3_temp_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_3_temp_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_temp_14 = (int16_t)module_3_temp_14;
+    module_3_temp_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_3_temp_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_temp_15 = (int16_t)module_3_temp_15;
+    module_3_temp_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_3_temp_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_3_temp_16 = (int16_t)module_3_temp_16;
+
+    return (0);
+}
+
+int feb_can_bms_module_3_temperature_3_init(struct feb_can_bms_module_3_temperature_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_temperature_3_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_3_temperature_3_module_3_temp_13_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_3_module_3_temp_13_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_3_module_3_temp_13_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_3_module_3_temp_14_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_3_module_3_temp_14_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_3_module_3_temp_14_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_3_module_3_temp_15_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_3_module_3_temp_15_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_3_module_3_temp_15_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_3_module_3_temp_16_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_3_module_3_temp_16_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_3_module_3_temp_16_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_temperature_4_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_temperature_4_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_17;
+    uint16_t module_3_temp_18;
+    uint16_t module_3_temp_19;
+    uint16_t module_3_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_3_temp_17 = (uint16_t)src_p->module_3_temp_17;
+    dst_p[0] |= pack_left_shift_u16(module_3_temp_17, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_3_temp_17, 8u, 0xffu);
+    module_3_temp_18 = (uint16_t)src_p->module_3_temp_18;
+    dst_p[2] |= pack_left_shift_u16(module_3_temp_18, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_3_temp_18, 8u, 0xffu);
+    module_3_temp_19 = (uint16_t)src_p->module_3_temp_19;
+    dst_p[4] |= pack_left_shift_u16(module_3_temp_19, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_3_temp_19, 8u, 0xffu);
+    module_3_temp_20 = (uint16_t)src_p->module_3_temp_20;
+    dst_p[6] |= pack_left_shift_u16(module_3_temp_20, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_3_temp_20, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_temperature_4_unpack(
+    struct feb_can_bms_module_3_temperature_4_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_17;
+    uint16_t module_3_temp_18;
+    uint16_t module_3_temp_19;
+    uint16_t module_3_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_3_temp_17 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_3_temp_17 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_temp_17 = (int16_t)module_3_temp_17;
+    module_3_temp_18 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_3_temp_18 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_temp_18 = (int16_t)module_3_temp_18;
+    module_3_temp_19 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_3_temp_19 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_temp_19 = (int16_t)module_3_temp_19;
+    module_3_temp_20 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_3_temp_20 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_3_temp_20 = (int16_t)module_3_temp_20;
+
+    return (0);
+}
+
+int feb_can_bms_module_3_temperature_4_init(struct feb_can_bms_module_3_temperature_4_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_temperature_4_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_3_temperature_4_module_3_temp_17_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_4_module_3_temp_17_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_4_module_3_temp_17_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_4_module_3_temp_18_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_4_module_3_temp_18_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_4_module_3_temp_18_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_4_module_3_temp_19_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_4_module_3_temp_19_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_4_module_3_temp_19_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_4_module_3_temp_20_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_4_module_3_temp_20_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_4_module_3_temp_20_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_temperature_5_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_temperature_5_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_21;
+    uint16_t module_3_temp_22;
+    uint16_t module_3_temp_23;
+    uint16_t module_3_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_3_temp_21 = (uint16_t)src_p->module_3_temp_21;
+    dst_p[0] |= pack_left_shift_u16(module_3_temp_21, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_3_temp_21, 8u, 0xffu);
+    module_3_temp_22 = (uint16_t)src_p->module_3_temp_22;
+    dst_p[2] |= pack_left_shift_u16(module_3_temp_22, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_3_temp_22, 8u, 0xffu);
+    module_3_temp_23 = (uint16_t)src_p->module_3_temp_23;
+    dst_p[4] |= pack_left_shift_u16(module_3_temp_23, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_3_temp_23, 8u, 0xffu);
+    module_3_temp_24 = (uint16_t)src_p->module_3_temp_24;
+    dst_p[6] |= pack_left_shift_u16(module_3_temp_24, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_3_temp_24, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_temperature_5_unpack(
+    struct feb_can_bms_module_3_temperature_5_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_21;
+    uint16_t module_3_temp_22;
+    uint16_t module_3_temp_23;
+    uint16_t module_3_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_3_temp_21 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_3_temp_21 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_temp_21 = (int16_t)module_3_temp_21;
+    module_3_temp_22 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_3_temp_22 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_temp_22 = (int16_t)module_3_temp_22;
+    module_3_temp_23 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_3_temp_23 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_temp_23 = (int16_t)module_3_temp_23;
+    module_3_temp_24 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_3_temp_24 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_3_temp_24 = (int16_t)module_3_temp_24;
+
+    return (0);
+}
+
+int feb_can_bms_module_3_temperature_5_init(struct feb_can_bms_module_3_temperature_5_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_temperature_5_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_3_temperature_5_module_3_temp_21_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_5_module_3_temp_21_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_5_module_3_temp_21_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_5_module_3_temp_22_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_5_module_3_temp_22_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_5_module_3_temp_22_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_5_module_3_temp_23_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_5_module_3_temp_23_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_5_module_3_temp_23_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_5_module_3_temp_24_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_5_module_3_temp_24_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_5_module_3_temp_24_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_temperature_6_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_temperature_6_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_25;
+    uint16_t module_3_temp_26;
+    uint16_t module_3_temp_27;
+    uint16_t module_3_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_3_temp_25 = (uint16_t)src_p->module_3_temp_25;
+    dst_p[0] |= pack_left_shift_u16(module_3_temp_25, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_3_temp_25, 8u, 0xffu);
+    module_3_temp_26 = (uint16_t)src_p->module_3_temp_26;
+    dst_p[2] |= pack_left_shift_u16(module_3_temp_26, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_3_temp_26, 8u, 0xffu);
+    module_3_temp_27 = (uint16_t)src_p->module_3_temp_27;
+    dst_p[4] |= pack_left_shift_u16(module_3_temp_27, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_3_temp_27, 8u, 0xffu);
+    module_3_temp_28 = (uint16_t)src_p->module_3_temp_28;
+    dst_p[6] |= pack_left_shift_u16(module_3_temp_28, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_3_temp_28, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_temperature_6_unpack(
+    struct feb_can_bms_module_3_temperature_6_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_25;
+    uint16_t module_3_temp_26;
+    uint16_t module_3_temp_27;
+    uint16_t module_3_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_3_temp_25 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_3_temp_25 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_temp_25 = (int16_t)module_3_temp_25;
+    module_3_temp_26 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_3_temp_26 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_temp_26 = (int16_t)module_3_temp_26;
+    module_3_temp_27 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_3_temp_27 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_temp_27 = (int16_t)module_3_temp_27;
+    module_3_temp_28 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_3_temp_28 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_3_temp_28 = (int16_t)module_3_temp_28;
+
+    return (0);
+}
+
+int feb_can_bms_module_3_temperature_6_init(struct feb_can_bms_module_3_temperature_6_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_temperature_6_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_3_temperature_6_module_3_temp_25_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_6_module_3_temp_25_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_6_module_3_temp_25_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_6_module_3_temp_26_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_6_module_3_temp_26_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_6_module_3_temp_26_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_6_module_3_temp_27_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_6_module_3_temp_27_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_6_module_3_temp_27_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_6_module_3_temp_28_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_6_module_3_temp_28_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_6_module_3_temp_28_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_temperature_7_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_temperature_7_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_29;
+    uint16_t module_3_temp_30;
+    uint16_t module_3_temp_31;
+    uint16_t module_3_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_3_temp_29 = (uint16_t)src_p->module_3_temp_29;
+    dst_p[0] |= pack_left_shift_u16(module_3_temp_29, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_3_temp_29, 8u, 0xffu);
+    module_3_temp_30 = (uint16_t)src_p->module_3_temp_30;
+    dst_p[2] |= pack_left_shift_u16(module_3_temp_30, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_3_temp_30, 8u, 0xffu);
+    module_3_temp_31 = (uint16_t)src_p->module_3_temp_31;
+    dst_p[4] |= pack_left_shift_u16(module_3_temp_31, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_3_temp_31, 8u, 0xffu);
+    module_3_temp_32 = (uint16_t)src_p->module_3_temp_32;
+    dst_p[6] |= pack_left_shift_u16(module_3_temp_32, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_3_temp_32, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_temperature_7_unpack(
+    struct feb_can_bms_module_3_temperature_7_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_29;
+    uint16_t module_3_temp_30;
+    uint16_t module_3_temp_31;
+    uint16_t module_3_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_3_temp_29 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_3_temp_29 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_temp_29 = (int16_t)module_3_temp_29;
+    module_3_temp_30 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_3_temp_30 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_temp_30 = (int16_t)module_3_temp_30;
+    module_3_temp_31 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_3_temp_31 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_temp_31 = (int16_t)module_3_temp_31;
+    module_3_temp_32 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_3_temp_32 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_3_temp_32 = (int16_t)module_3_temp_32;
+
+    return (0);
+}
+
+int feb_can_bms_module_3_temperature_7_init(struct feb_can_bms_module_3_temperature_7_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_temperature_7_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_3_temperature_7_module_3_temp_29_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_7_module_3_temp_29_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_7_module_3_temp_29_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_7_module_3_temp_30_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_7_module_3_temp_30_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_7_module_3_temp_30_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_7_module_3_temp_31_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_7_module_3_temp_31_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_7_module_3_temp_31_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_7_module_3_temp_32_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_7_module_3_temp_32_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_7_module_3_temp_32_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_temperature_8_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_temperature_8_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_33;
+    uint16_t module_3_temp_34;
+    uint16_t module_3_temp_35;
+    uint16_t module_3_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_3_temp_33 = (uint16_t)src_p->module_3_temp_33;
+    dst_p[0] |= pack_left_shift_u16(module_3_temp_33, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_3_temp_33, 8u, 0xffu);
+    module_3_temp_34 = (uint16_t)src_p->module_3_temp_34;
+    dst_p[2] |= pack_left_shift_u16(module_3_temp_34, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_3_temp_34, 8u, 0xffu);
+    module_3_temp_35 = (uint16_t)src_p->module_3_temp_35;
+    dst_p[4] |= pack_left_shift_u16(module_3_temp_35, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_3_temp_35, 8u, 0xffu);
+    module_3_temp_36 = (uint16_t)src_p->module_3_temp_36;
+    dst_p[6] |= pack_left_shift_u16(module_3_temp_36, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_3_temp_36, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_temperature_8_unpack(
+    struct feb_can_bms_module_3_temperature_8_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_33;
+    uint16_t module_3_temp_34;
+    uint16_t module_3_temp_35;
+    uint16_t module_3_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_3_temp_33 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_3_temp_33 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_temp_33 = (int16_t)module_3_temp_33;
+    module_3_temp_34 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_3_temp_34 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_temp_34 = (int16_t)module_3_temp_34;
+    module_3_temp_35 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_3_temp_35 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_temp_35 = (int16_t)module_3_temp_35;
+    module_3_temp_36 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_3_temp_36 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_3_temp_36 = (int16_t)module_3_temp_36;
+
+    return (0);
+}
+
+int feb_can_bms_module_3_temperature_8_init(struct feb_can_bms_module_3_temperature_8_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_temperature_8_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_3_temperature_8_module_3_temp_33_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_8_module_3_temp_33_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_8_module_3_temp_33_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_8_module_3_temp_34_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_8_module_3_temp_34_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_8_module_3_temp_34_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_8_module_3_temp_35_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_8_module_3_temp_35_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_8_module_3_temp_35_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_8_module_3_temp_36_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_8_module_3_temp_36_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_8_module_3_temp_36_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_temperature_9_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_temperature_9_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_37;
+    uint16_t module_3_temp_38;
+    uint16_t module_3_temp_39;
+    uint16_t module_3_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_3_temp_37 = (uint16_t)src_p->module_3_temp_37;
+    dst_p[0] |= pack_left_shift_u16(module_3_temp_37, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_3_temp_37, 8u, 0xffu);
+    module_3_temp_38 = (uint16_t)src_p->module_3_temp_38;
+    dst_p[2] |= pack_left_shift_u16(module_3_temp_38, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_3_temp_38, 8u, 0xffu);
+    module_3_temp_39 = (uint16_t)src_p->module_3_temp_39;
+    dst_p[4] |= pack_left_shift_u16(module_3_temp_39, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_3_temp_39, 8u, 0xffu);
+    module_3_temp_40 = (uint16_t)src_p->module_3_temp_40;
+    dst_p[6] |= pack_left_shift_u16(module_3_temp_40, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_3_temp_40, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_3_temperature_9_unpack(
+    struct feb_can_bms_module_3_temperature_9_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_37;
+    uint16_t module_3_temp_38;
+    uint16_t module_3_temp_39;
+    uint16_t module_3_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_3_temp_37 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_3_temp_37 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_temp_37 = (int16_t)module_3_temp_37;
+    module_3_temp_38 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_3_temp_38 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_3_temp_38 = (int16_t)module_3_temp_38;
+    module_3_temp_39 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_3_temp_39 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_3_temp_39 = (int16_t)module_3_temp_39;
+    module_3_temp_40 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_3_temp_40 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_3_temp_40 = (int16_t)module_3_temp_40;
+
+    return (0);
+}
+
+int feb_can_bms_module_3_temperature_9_init(struct feb_can_bms_module_3_temperature_9_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_temperature_9_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_3_temperature_9_module_3_temp_37_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_9_module_3_temp_37_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_9_module_3_temp_37_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_9_module_3_temp_38_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_9_module_3_temp_38_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_9_module_3_temp_38_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_9_module_3_temp_39_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_9_module_3_temp_39_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_9_module_3_temp_39_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_3_temperature_9_module_3_temp_40_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_9_module_3_temp_40_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_9_module_3_temp_40_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_3_temperature_10_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_3_temperature_10_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 2);
+
+    module_3_temp_41 = (uint16_t)src_p->module_3_temp_41;
+    dst_p[0] |= pack_left_shift_u16(module_3_temp_41, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_3_temp_41, 8u, 0xffu);
+
+    return (2);
+}
+
+int feb_can_bms_module_3_temperature_10_unpack(
+    struct feb_can_bms_module_3_temperature_10_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_3_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    module_3_temp_41 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_3_temp_41 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_3_temp_41 = (int16_t)module_3_temp_41;
+
+    return (0);
+}
+
+int feb_can_bms_module_3_temperature_10_init(struct feb_can_bms_module_3_temperature_10_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_3_temperature_10_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_3_temperature_10_module_3_temp_41_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_3_temperature_10_module_3_temp_41_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_3_temperature_10_module_3_temp_41_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_temperature_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_temperature_0_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_1;
+    uint16_t module_4_temp_2;
+    uint16_t module_4_temp_3;
+    uint16_t module_4_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_4_temp_1 = (uint16_t)src_p->module_4_temp_1;
+    dst_p[0] |= pack_left_shift_u16(module_4_temp_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_4_temp_1, 8u, 0xffu);
+    module_4_temp_2 = (uint16_t)src_p->module_4_temp_2;
+    dst_p[2] |= pack_left_shift_u16(module_4_temp_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_4_temp_2, 8u, 0xffu);
+    module_4_temp_3 = (uint16_t)src_p->module_4_temp_3;
+    dst_p[4] |= pack_left_shift_u16(module_4_temp_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_4_temp_3, 8u, 0xffu);
+    module_4_temp_4 = (uint16_t)src_p->module_4_temp_4;
+    dst_p[6] |= pack_left_shift_u16(module_4_temp_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_4_temp_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_temperature_0_unpack(
+    struct feb_can_bms_module_4_temperature_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_1;
+    uint16_t module_4_temp_2;
+    uint16_t module_4_temp_3;
+    uint16_t module_4_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_4_temp_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_4_temp_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_temp_1 = (int16_t)module_4_temp_1;
+    module_4_temp_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_4_temp_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_temp_2 = (int16_t)module_4_temp_2;
+    module_4_temp_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_4_temp_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_temp_3 = (int16_t)module_4_temp_3;
+    module_4_temp_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_4_temp_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_4_temp_4 = (int16_t)module_4_temp_4;
+
+    return (0);
+}
+
+int feb_can_bms_module_4_temperature_0_init(struct feb_can_bms_module_4_temperature_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_temperature_0_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_4_temperature_0_module_4_temp_1_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_0_module_4_temp_1_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_0_module_4_temp_1_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_0_module_4_temp_2_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_0_module_4_temp_2_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_0_module_4_temp_2_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_0_module_4_temp_3_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_0_module_4_temp_3_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_0_module_4_temp_3_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_0_module_4_temp_4_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_0_module_4_temp_4_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_0_module_4_temp_4_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_temperature_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_temperature_1_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_5;
+    uint16_t module_4_temp_6;
+    uint16_t module_4_temp_7;
+    uint16_t module_4_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_4_temp_5 = (uint16_t)src_p->module_4_temp_5;
+    dst_p[0] |= pack_left_shift_u16(module_4_temp_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_4_temp_5, 8u, 0xffu);
+    module_4_temp_6 = (uint16_t)src_p->module_4_temp_6;
+    dst_p[2] |= pack_left_shift_u16(module_4_temp_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_4_temp_6, 8u, 0xffu);
+    module_4_temp_7 = (uint16_t)src_p->module_4_temp_7;
+    dst_p[4] |= pack_left_shift_u16(module_4_temp_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_4_temp_7, 8u, 0xffu);
+    module_4_temp_8 = (uint16_t)src_p->module_4_temp_8;
+    dst_p[6] |= pack_left_shift_u16(module_4_temp_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_4_temp_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_temperature_1_unpack(
+    struct feb_can_bms_module_4_temperature_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_5;
+    uint16_t module_4_temp_6;
+    uint16_t module_4_temp_7;
+    uint16_t module_4_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_4_temp_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_4_temp_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_temp_5 = (int16_t)module_4_temp_5;
+    module_4_temp_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_4_temp_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_temp_6 = (int16_t)module_4_temp_6;
+    module_4_temp_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_4_temp_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_temp_7 = (int16_t)module_4_temp_7;
+    module_4_temp_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_4_temp_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_4_temp_8 = (int16_t)module_4_temp_8;
+
+    return (0);
+}
+
+int feb_can_bms_module_4_temperature_1_init(struct feb_can_bms_module_4_temperature_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_temperature_1_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_4_temperature_1_module_4_temp_5_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_1_module_4_temp_5_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_1_module_4_temp_5_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_1_module_4_temp_6_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_1_module_4_temp_6_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_1_module_4_temp_6_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_1_module_4_temp_7_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_1_module_4_temp_7_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_1_module_4_temp_7_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_1_module_4_temp_8_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_1_module_4_temp_8_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_1_module_4_temp_8_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_temperature_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_temperature_2_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_10;
+    uint16_t module_4_temp_11;
+    uint16_t module_4_temp_12;
+    uint16_t module_4_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_4_temp_9 = (uint16_t)src_p->module_4_temp_9;
+    dst_p[0] |= pack_left_shift_u16(module_4_temp_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_4_temp_9, 8u, 0xffu);
+    module_4_temp_10 = (uint16_t)src_p->module_4_temp_10;
+    dst_p[2] |= pack_left_shift_u16(module_4_temp_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_4_temp_10, 8u, 0xffu);
+    module_4_temp_11 = (uint16_t)src_p->module_4_temp_11;
+    dst_p[4] |= pack_left_shift_u16(module_4_temp_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_4_temp_11, 8u, 0xffu);
+    module_4_temp_12 = (uint16_t)src_p->module_4_temp_12;
+    dst_p[6] |= pack_left_shift_u16(module_4_temp_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_4_temp_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_temperature_2_unpack(
+    struct feb_can_bms_module_4_temperature_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_10;
+    uint16_t module_4_temp_11;
+    uint16_t module_4_temp_12;
+    uint16_t module_4_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_4_temp_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_4_temp_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_temp_9 = (int16_t)module_4_temp_9;
+    module_4_temp_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_4_temp_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_temp_10 = (int16_t)module_4_temp_10;
+    module_4_temp_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_4_temp_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_temp_11 = (int16_t)module_4_temp_11;
+    module_4_temp_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_4_temp_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_4_temp_12 = (int16_t)module_4_temp_12;
+
+    return (0);
+}
+
+int feb_can_bms_module_4_temperature_2_init(struct feb_can_bms_module_4_temperature_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_temperature_2_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_4_temperature_2_module_4_temp_9_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_2_module_4_temp_9_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_2_module_4_temp_9_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_2_module_4_temp_10_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_2_module_4_temp_10_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_2_module_4_temp_10_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_2_module_4_temp_11_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_2_module_4_temp_11_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_2_module_4_temp_11_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_2_module_4_temp_12_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_2_module_4_temp_12_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_2_module_4_temp_12_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_temperature_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_temperature_3_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_13;
+    uint16_t module_4_temp_14;
+    uint16_t module_4_temp_15;
+    uint16_t module_4_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_4_temp_13 = (uint16_t)src_p->module_4_temp_13;
+    dst_p[0] |= pack_left_shift_u16(module_4_temp_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_4_temp_13, 8u, 0xffu);
+    module_4_temp_14 = (uint16_t)src_p->module_4_temp_14;
+    dst_p[2] |= pack_left_shift_u16(module_4_temp_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_4_temp_14, 8u, 0xffu);
+    module_4_temp_15 = (uint16_t)src_p->module_4_temp_15;
+    dst_p[4] |= pack_left_shift_u16(module_4_temp_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_4_temp_15, 8u, 0xffu);
+    module_4_temp_16 = (uint16_t)src_p->module_4_temp_16;
+    dst_p[6] |= pack_left_shift_u16(module_4_temp_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_4_temp_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_temperature_3_unpack(
+    struct feb_can_bms_module_4_temperature_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_13;
+    uint16_t module_4_temp_14;
+    uint16_t module_4_temp_15;
+    uint16_t module_4_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_4_temp_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_4_temp_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_temp_13 = (int16_t)module_4_temp_13;
+    module_4_temp_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_4_temp_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_temp_14 = (int16_t)module_4_temp_14;
+    module_4_temp_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_4_temp_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_temp_15 = (int16_t)module_4_temp_15;
+    module_4_temp_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_4_temp_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_4_temp_16 = (int16_t)module_4_temp_16;
+
+    return (0);
+}
+
+int feb_can_bms_module_4_temperature_3_init(struct feb_can_bms_module_4_temperature_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_temperature_3_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_4_temperature_3_module_4_temp_13_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_3_module_4_temp_13_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_3_module_4_temp_13_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_3_module_4_temp_14_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_3_module_4_temp_14_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_3_module_4_temp_14_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_3_module_4_temp_15_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_3_module_4_temp_15_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_3_module_4_temp_15_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_3_module_4_temp_16_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_3_module_4_temp_16_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_3_module_4_temp_16_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_temperature_4_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_temperature_4_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_17;
+    uint16_t module_4_temp_18;
+    uint16_t module_4_temp_19;
+    uint16_t module_4_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_4_temp_17 = (uint16_t)src_p->module_4_temp_17;
+    dst_p[0] |= pack_left_shift_u16(module_4_temp_17, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_4_temp_17, 8u, 0xffu);
+    module_4_temp_18 = (uint16_t)src_p->module_4_temp_18;
+    dst_p[2] |= pack_left_shift_u16(module_4_temp_18, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_4_temp_18, 8u, 0xffu);
+    module_4_temp_19 = (uint16_t)src_p->module_4_temp_19;
+    dst_p[4] |= pack_left_shift_u16(module_4_temp_19, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_4_temp_19, 8u, 0xffu);
+    module_4_temp_20 = (uint16_t)src_p->module_4_temp_20;
+    dst_p[6] |= pack_left_shift_u16(module_4_temp_20, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_4_temp_20, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_temperature_4_unpack(
+    struct feb_can_bms_module_4_temperature_4_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_17;
+    uint16_t module_4_temp_18;
+    uint16_t module_4_temp_19;
+    uint16_t module_4_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_4_temp_17 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_4_temp_17 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_temp_17 = (int16_t)module_4_temp_17;
+    module_4_temp_18 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_4_temp_18 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_temp_18 = (int16_t)module_4_temp_18;
+    module_4_temp_19 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_4_temp_19 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_temp_19 = (int16_t)module_4_temp_19;
+    module_4_temp_20 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_4_temp_20 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_4_temp_20 = (int16_t)module_4_temp_20;
+
+    return (0);
+}
+
+int feb_can_bms_module_4_temperature_4_init(struct feb_can_bms_module_4_temperature_4_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_temperature_4_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_4_temperature_4_module_4_temp_17_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_4_module_4_temp_17_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_4_module_4_temp_17_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_4_module_4_temp_18_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_4_module_4_temp_18_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_4_module_4_temp_18_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_4_module_4_temp_19_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_4_module_4_temp_19_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_4_module_4_temp_19_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_4_module_4_temp_20_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_4_module_4_temp_20_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_4_module_4_temp_20_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_temperature_5_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_temperature_5_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_21;
+    uint16_t module_4_temp_22;
+    uint16_t module_4_temp_23;
+    uint16_t module_4_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_4_temp_21 = (uint16_t)src_p->module_4_temp_21;
+    dst_p[0] |= pack_left_shift_u16(module_4_temp_21, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_4_temp_21, 8u, 0xffu);
+    module_4_temp_22 = (uint16_t)src_p->module_4_temp_22;
+    dst_p[2] |= pack_left_shift_u16(module_4_temp_22, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_4_temp_22, 8u, 0xffu);
+    module_4_temp_23 = (uint16_t)src_p->module_4_temp_23;
+    dst_p[4] |= pack_left_shift_u16(module_4_temp_23, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_4_temp_23, 8u, 0xffu);
+    module_4_temp_24 = (uint16_t)src_p->module_4_temp_24;
+    dst_p[6] |= pack_left_shift_u16(module_4_temp_24, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_4_temp_24, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_temperature_5_unpack(
+    struct feb_can_bms_module_4_temperature_5_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_21;
+    uint16_t module_4_temp_22;
+    uint16_t module_4_temp_23;
+    uint16_t module_4_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_4_temp_21 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_4_temp_21 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_temp_21 = (int16_t)module_4_temp_21;
+    module_4_temp_22 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_4_temp_22 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_temp_22 = (int16_t)module_4_temp_22;
+    module_4_temp_23 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_4_temp_23 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_temp_23 = (int16_t)module_4_temp_23;
+    module_4_temp_24 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_4_temp_24 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_4_temp_24 = (int16_t)module_4_temp_24;
+
+    return (0);
+}
+
+int feb_can_bms_module_4_temperature_5_init(struct feb_can_bms_module_4_temperature_5_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_temperature_5_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_4_temperature_5_module_4_temp_21_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_5_module_4_temp_21_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_5_module_4_temp_21_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_5_module_4_temp_22_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_5_module_4_temp_22_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_5_module_4_temp_22_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_5_module_4_temp_23_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_5_module_4_temp_23_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_5_module_4_temp_23_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_5_module_4_temp_24_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_5_module_4_temp_24_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_5_module_4_temp_24_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_temperature_6_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_temperature_6_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_25;
+    uint16_t module_4_temp_26;
+    uint16_t module_4_temp_27;
+    uint16_t module_4_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_4_temp_25 = (uint16_t)src_p->module_4_temp_25;
+    dst_p[0] |= pack_left_shift_u16(module_4_temp_25, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_4_temp_25, 8u, 0xffu);
+    module_4_temp_26 = (uint16_t)src_p->module_4_temp_26;
+    dst_p[2] |= pack_left_shift_u16(module_4_temp_26, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_4_temp_26, 8u, 0xffu);
+    module_4_temp_27 = (uint16_t)src_p->module_4_temp_27;
+    dst_p[4] |= pack_left_shift_u16(module_4_temp_27, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_4_temp_27, 8u, 0xffu);
+    module_4_temp_28 = (uint16_t)src_p->module_4_temp_28;
+    dst_p[6] |= pack_left_shift_u16(module_4_temp_28, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_4_temp_28, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_temperature_6_unpack(
+    struct feb_can_bms_module_4_temperature_6_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_25;
+    uint16_t module_4_temp_26;
+    uint16_t module_4_temp_27;
+    uint16_t module_4_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_4_temp_25 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_4_temp_25 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_temp_25 = (int16_t)module_4_temp_25;
+    module_4_temp_26 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_4_temp_26 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_temp_26 = (int16_t)module_4_temp_26;
+    module_4_temp_27 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_4_temp_27 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_temp_27 = (int16_t)module_4_temp_27;
+    module_4_temp_28 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_4_temp_28 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_4_temp_28 = (int16_t)module_4_temp_28;
+
+    return (0);
+}
+
+int feb_can_bms_module_4_temperature_6_init(struct feb_can_bms_module_4_temperature_6_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_temperature_6_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_4_temperature_6_module_4_temp_25_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_6_module_4_temp_25_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_6_module_4_temp_25_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_6_module_4_temp_26_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_6_module_4_temp_26_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_6_module_4_temp_26_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_6_module_4_temp_27_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_6_module_4_temp_27_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_6_module_4_temp_27_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_6_module_4_temp_28_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_6_module_4_temp_28_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_6_module_4_temp_28_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_temperature_7_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_temperature_7_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_29;
+    uint16_t module_4_temp_30;
+    uint16_t module_4_temp_31;
+    uint16_t module_4_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_4_temp_29 = (uint16_t)src_p->module_4_temp_29;
+    dst_p[0] |= pack_left_shift_u16(module_4_temp_29, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_4_temp_29, 8u, 0xffu);
+    module_4_temp_30 = (uint16_t)src_p->module_4_temp_30;
+    dst_p[2] |= pack_left_shift_u16(module_4_temp_30, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_4_temp_30, 8u, 0xffu);
+    module_4_temp_31 = (uint16_t)src_p->module_4_temp_31;
+    dst_p[4] |= pack_left_shift_u16(module_4_temp_31, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_4_temp_31, 8u, 0xffu);
+    module_4_temp_32 = (uint16_t)src_p->module_4_temp_32;
+    dst_p[6] |= pack_left_shift_u16(module_4_temp_32, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_4_temp_32, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_temperature_7_unpack(
+    struct feb_can_bms_module_4_temperature_7_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_29;
+    uint16_t module_4_temp_30;
+    uint16_t module_4_temp_31;
+    uint16_t module_4_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_4_temp_29 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_4_temp_29 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_temp_29 = (int16_t)module_4_temp_29;
+    module_4_temp_30 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_4_temp_30 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_temp_30 = (int16_t)module_4_temp_30;
+    module_4_temp_31 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_4_temp_31 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_temp_31 = (int16_t)module_4_temp_31;
+    module_4_temp_32 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_4_temp_32 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_4_temp_32 = (int16_t)module_4_temp_32;
+
+    return (0);
+}
+
+int feb_can_bms_module_4_temperature_7_init(struct feb_can_bms_module_4_temperature_7_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_temperature_7_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_4_temperature_7_module_4_temp_29_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_7_module_4_temp_29_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_7_module_4_temp_29_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_7_module_4_temp_30_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_7_module_4_temp_30_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_7_module_4_temp_30_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_7_module_4_temp_31_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_7_module_4_temp_31_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_7_module_4_temp_31_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_7_module_4_temp_32_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_7_module_4_temp_32_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_7_module_4_temp_32_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_temperature_8_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_temperature_8_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_33;
+    uint16_t module_4_temp_34;
+    uint16_t module_4_temp_35;
+    uint16_t module_4_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_4_temp_33 = (uint16_t)src_p->module_4_temp_33;
+    dst_p[0] |= pack_left_shift_u16(module_4_temp_33, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_4_temp_33, 8u, 0xffu);
+    module_4_temp_34 = (uint16_t)src_p->module_4_temp_34;
+    dst_p[2] |= pack_left_shift_u16(module_4_temp_34, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_4_temp_34, 8u, 0xffu);
+    module_4_temp_35 = (uint16_t)src_p->module_4_temp_35;
+    dst_p[4] |= pack_left_shift_u16(module_4_temp_35, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_4_temp_35, 8u, 0xffu);
+    module_4_temp_36 = (uint16_t)src_p->module_4_temp_36;
+    dst_p[6] |= pack_left_shift_u16(module_4_temp_36, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_4_temp_36, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_temperature_8_unpack(
+    struct feb_can_bms_module_4_temperature_8_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_33;
+    uint16_t module_4_temp_34;
+    uint16_t module_4_temp_35;
+    uint16_t module_4_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_4_temp_33 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_4_temp_33 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_temp_33 = (int16_t)module_4_temp_33;
+    module_4_temp_34 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_4_temp_34 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_temp_34 = (int16_t)module_4_temp_34;
+    module_4_temp_35 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_4_temp_35 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_temp_35 = (int16_t)module_4_temp_35;
+    module_4_temp_36 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_4_temp_36 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_4_temp_36 = (int16_t)module_4_temp_36;
+
+    return (0);
+}
+
+int feb_can_bms_module_4_temperature_8_init(struct feb_can_bms_module_4_temperature_8_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_temperature_8_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_4_temperature_8_module_4_temp_33_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_8_module_4_temp_33_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_8_module_4_temp_33_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_8_module_4_temp_34_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_8_module_4_temp_34_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_8_module_4_temp_34_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_8_module_4_temp_35_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_8_module_4_temp_35_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_8_module_4_temp_35_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_8_module_4_temp_36_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_8_module_4_temp_36_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_8_module_4_temp_36_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_temperature_9_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_temperature_9_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_37;
+    uint16_t module_4_temp_38;
+    uint16_t module_4_temp_39;
+    uint16_t module_4_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_4_temp_37 = (uint16_t)src_p->module_4_temp_37;
+    dst_p[0] |= pack_left_shift_u16(module_4_temp_37, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_4_temp_37, 8u, 0xffu);
+    module_4_temp_38 = (uint16_t)src_p->module_4_temp_38;
+    dst_p[2] |= pack_left_shift_u16(module_4_temp_38, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_4_temp_38, 8u, 0xffu);
+    module_4_temp_39 = (uint16_t)src_p->module_4_temp_39;
+    dst_p[4] |= pack_left_shift_u16(module_4_temp_39, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_4_temp_39, 8u, 0xffu);
+    module_4_temp_40 = (uint16_t)src_p->module_4_temp_40;
+    dst_p[6] |= pack_left_shift_u16(module_4_temp_40, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_4_temp_40, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_4_temperature_9_unpack(
+    struct feb_can_bms_module_4_temperature_9_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_37;
+    uint16_t module_4_temp_38;
+    uint16_t module_4_temp_39;
+    uint16_t module_4_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_4_temp_37 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_4_temp_37 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_temp_37 = (int16_t)module_4_temp_37;
+    module_4_temp_38 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_4_temp_38 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_4_temp_38 = (int16_t)module_4_temp_38;
+    module_4_temp_39 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_4_temp_39 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_4_temp_39 = (int16_t)module_4_temp_39;
+    module_4_temp_40 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_4_temp_40 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_4_temp_40 = (int16_t)module_4_temp_40;
+
+    return (0);
+}
+
+int feb_can_bms_module_4_temperature_9_init(struct feb_can_bms_module_4_temperature_9_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_temperature_9_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_4_temperature_9_module_4_temp_37_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_9_module_4_temp_37_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_9_module_4_temp_37_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_9_module_4_temp_38_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_9_module_4_temp_38_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_9_module_4_temp_38_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_9_module_4_temp_39_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_9_module_4_temp_39_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_9_module_4_temp_39_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_4_temperature_9_module_4_temp_40_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_9_module_4_temp_40_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_9_module_4_temp_40_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_4_temperature_10_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_4_temperature_10_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 2);
+
+    module_4_temp_41 = (uint16_t)src_p->module_4_temp_41;
+    dst_p[0] |= pack_left_shift_u16(module_4_temp_41, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_4_temp_41, 8u, 0xffu);
+
+    return (2);
+}
+
+int feb_can_bms_module_4_temperature_10_unpack(
+    struct feb_can_bms_module_4_temperature_10_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_4_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    module_4_temp_41 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_4_temp_41 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_4_temp_41 = (int16_t)module_4_temp_41;
+
+    return (0);
+}
+
+int feb_can_bms_module_4_temperature_10_init(struct feb_can_bms_module_4_temperature_10_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_4_temperature_10_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_4_temperature_10_module_4_temp_41_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_4_temperature_10_module_4_temp_41_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_4_temperature_10_module_4_temp_41_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_temperature_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_temperature_0_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_1;
+    uint16_t module_5_temp_2;
+    uint16_t module_5_temp_3;
+    uint16_t module_5_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_5_temp_1 = (uint16_t)src_p->module_5_temp_1;
+    dst_p[0] |= pack_left_shift_u16(module_5_temp_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_5_temp_1, 8u, 0xffu);
+    module_5_temp_2 = (uint16_t)src_p->module_5_temp_2;
+    dst_p[2] |= pack_left_shift_u16(module_5_temp_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_5_temp_2, 8u, 0xffu);
+    module_5_temp_3 = (uint16_t)src_p->module_5_temp_3;
+    dst_p[4] |= pack_left_shift_u16(module_5_temp_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_5_temp_3, 8u, 0xffu);
+    module_5_temp_4 = (uint16_t)src_p->module_5_temp_4;
+    dst_p[6] |= pack_left_shift_u16(module_5_temp_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_5_temp_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_temperature_0_unpack(
+    struct feb_can_bms_module_5_temperature_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_1;
+    uint16_t module_5_temp_2;
+    uint16_t module_5_temp_3;
+    uint16_t module_5_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_5_temp_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_5_temp_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_temp_1 = (int16_t)module_5_temp_1;
+    module_5_temp_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_5_temp_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_temp_2 = (int16_t)module_5_temp_2;
+    module_5_temp_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_5_temp_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_temp_3 = (int16_t)module_5_temp_3;
+    module_5_temp_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_5_temp_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_5_temp_4 = (int16_t)module_5_temp_4;
+
+    return (0);
+}
+
+int feb_can_bms_module_5_temperature_0_init(struct feb_can_bms_module_5_temperature_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_temperature_0_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_5_temperature_0_module_5_temp_1_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_0_module_5_temp_1_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_0_module_5_temp_1_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_0_module_5_temp_2_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_0_module_5_temp_2_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_0_module_5_temp_2_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_0_module_5_temp_3_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_0_module_5_temp_3_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_0_module_5_temp_3_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_0_module_5_temp_4_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_0_module_5_temp_4_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_0_module_5_temp_4_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_temperature_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_temperature_1_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_5;
+    uint16_t module_5_temp_6;
+    uint16_t module_5_temp_7;
+    uint16_t module_5_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_5_temp_5 = (uint16_t)src_p->module_5_temp_5;
+    dst_p[0] |= pack_left_shift_u16(module_5_temp_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_5_temp_5, 8u, 0xffu);
+    module_5_temp_6 = (uint16_t)src_p->module_5_temp_6;
+    dst_p[2] |= pack_left_shift_u16(module_5_temp_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_5_temp_6, 8u, 0xffu);
+    module_5_temp_7 = (uint16_t)src_p->module_5_temp_7;
+    dst_p[4] |= pack_left_shift_u16(module_5_temp_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_5_temp_7, 8u, 0xffu);
+    module_5_temp_8 = (uint16_t)src_p->module_5_temp_8;
+    dst_p[6] |= pack_left_shift_u16(module_5_temp_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_5_temp_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_temperature_1_unpack(
+    struct feb_can_bms_module_5_temperature_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_5;
+    uint16_t module_5_temp_6;
+    uint16_t module_5_temp_7;
+    uint16_t module_5_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_5_temp_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_5_temp_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_temp_5 = (int16_t)module_5_temp_5;
+    module_5_temp_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_5_temp_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_temp_6 = (int16_t)module_5_temp_6;
+    module_5_temp_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_5_temp_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_temp_7 = (int16_t)module_5_temp_7;
+    module_5_temp_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_5_temp_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_5_temp_8 = (int16_t)module_5_temp_8;
+
+    return (0);
+}
+
+int feb_can_bms_module_5_temperature_1_init(struct feb_can_bms_module_5_temperature_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_temperature_1_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_5_temperature_1_module_5_temp_5_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_1_module_5_temp_5_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_1_module_5_temp_5_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_1_module_5_temp_6_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_1_module_5_temp_6_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_1_module_5_temp_6_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_1_module_5_temp_7_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_1_module_5_temp_7_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_1_module_5_temp_7_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_1_module_5_temp_8_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_1_module_5_temp_8_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_1_module_5_temp_8_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_temperature_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_temperature_2_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_10;
+    uint16_t module_5_temp_11;
+    uint16_t module_5_temp_12;
+    uint16_t module_5_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_5_temp_9 = (uint16_t)src_p->module_5_temp_9;
+    dst_p[0] |= pack_left_shift_u16(module_5_temp_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_5_temp_9, 8u, 0xffu);
+    module_5_temp_10 = (uint16_t)src_p->module_5_temp_10;
+    dst_p[2] |= pack_left_shift_u16(module_5_temp_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_5_temp_10, 8u, 0xffu);
+    module_5_temp_11 = (uint16_t)src_p->module_5_temp_11;
+    dst_p[4] |= pack_left_shift_u16(module_5_temp_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_5_temp_11, 8u, 0xffu);
+    module_5_temp_12 = (uint16_t)src_p->module_5_temp_12;
+    dst_p[6] |= pack_left_shift_u16(module_5_temp_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_5_temp_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_temperature_2_unpack(
+    struct feb_can_bms_module_5_temperature_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_10;
+    uint16_t module_5_temp_11;
+    uint16_t module_5_temp_12;
+    uint16_t module_5_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_5_temp_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_5_temp_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_temp_9 = (int16_t)module_5_temp_9;
+    module_5_temp_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_5_temp_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_temp_10 = (int16_t)module_5_temp_10;
+    module_5_temp_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_5_temp_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_temp_11 = (int16_t)module_5_temp_11;
+    module_5_temp_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_5_temp_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_5_temp_12 = (int16_t)module_5_temp_12;
+
+    return (0);
+}
+
+int feb_can_bms_module_5_temperature_2_init(struct feb_can_bms_module_5_temperature_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_temperature_2_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_5_temperature_2_module_5_temp_9_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_2_module_5_temp_9_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_2_module_5_temp_9_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_2_module_5_temp_10_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_2_module_5_temp_10_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_2_module_5_temp_10_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_2_module_5_temp_11_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_2_module_5_temp_11_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_2_module_5_temp_11_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_2_module_5_temp_12_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_2_module_5_temp_12_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_2_module_5_temp_12_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_temperature_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_temperature_3_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_13;
+    uint16_t module_5_temp_14;
+    uint16_t module_5_temp_15;
+    uint16_t module_5_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_5_temp_13 = (uint16_t)src_p->module_5_temp_13;
+    dst_p[0] |= pack_left_shift_u16(module_5_temp_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_5_temp_13, 8u, 0xffu);
+    module_5_temp_14 = (uint16_t)src_p->module_5_temp_14;
+    dst_p[2] |= pack_left_shift_u16(module_5_temp_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_5_temp_14, 8u, 0xffu);
+    module_5_temp_15 = (uint16_t)src_p->module_5_temp_15;
+    dst_p[4] |= pack_left_shift_u16(module_5_temp_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_5_temp_15, 8u, 0xffu);
+    module_5_temp_16 = (uint16_t)src_p->module_5_temp_16;
+    dst_p[6] |= pack_left_shift_u16(module_5_temp_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_5_temp_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_temperature_3_unpack(
+    struct feb_can_bms_module_5_temperature_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_13;
+    uint16_t module_5_temp_14;
+    uint16_t module_5_temp_15;
+    uint16_t module_5_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_5_temp_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_5_temp_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_temp_13 = (int16_t)module_5_temp_13;
+    module_5_temp_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_5_temp_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_temp_14 = (int16_t)module_5_temp_14;
+    module_5_temp_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_5_temp_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_temp_15 = (int16_t)module_5_temp_15;
+    module_5_temp_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_5_temp_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_5_temp_16 = (int16_t)module_5_temp_16;
+
+    return (0);
+}
+
+int feb_can_bms_module_5_temperature_3_init(struct feb_can_bms_module_5_temperature_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_temperature_3_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_5_temperature_3_module_5_temp_13_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_3_module_5_temp_13_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_3_module_5_temp_13_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_3_module_5_temp_14_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_3_module_5_temp_14_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_3_module_5_temp_14_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_3_module_5_temp_15_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_3_module_5_temp_15_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_3_module_5_temp_15_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_3_module_5_temp_16_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_3_module_5_temp_16_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_3_module_5_temp_16_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_temperature_4_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_temperature_4_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_17;
+    uint16_t module_5_temp_18;
+    uint16_t module_5_temp_19;
+    uint16_t module_5_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_5_temp_17 = (uint16_t)src_p->module_5_temp_17;
+    dst_p[0] |= pack_left_shift_u16(module_5_temp_17, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_5_temp_17, 8u, 0xffu);
+    module_5_temp_18 = (uint16_t)src_p->module_5_temp_18;
+    dst_p[2] |= pack_left_shift_u16(module_5_temp_18, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_5_temp_18, 8u, 0xffu);
+    module_5_temp_19 = (uint16_t)src_p->module_5_temp_19;
+    dst_p[4] |= pack_left_shift_u16(module_5_temp_19, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_5_temp_19, 8u, 0xffu);
+    module_5_temp_20 = (uint16_t)src_p->module_5_temp_20;
+    dst_p[6] |= pack_left_shift_u16(module_5_temp_20, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_5_temp_20, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_temperature_4_unpack(
+    struct feb_can_bms_module_5_temperature_4_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_17;
+    uint16_t module_5_temp_18;
+    uint16_t module_5_temp_19;
+    uint16_t module_5_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_5_temp_17 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_5_temp_17 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_temp_17 = (int16_t)module_5_temp_17;
+    module_5_temp_18 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_5_temp_18 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_temp_18 = (int16_t)module_5_temp_18;
+    module_5_temp_19 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_5_temp_19 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_temp_19 = (int16_t)module_5_temp_19;
+    module_5_temp_20 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_5_temp_20 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_5_temp_20 = (int16_t)module_5_temp_20;
+
+    return (0);
+}
+
+int feb_can_bms_module_5_temperature_4_init(struct feb_can_bms_module_5_temperature_4_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_temperature_4_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_5_temperature_4_module_5_temp_17_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_4_module_5_temp_17_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_4_module_5_temp_17_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_4_module_5_temp_18_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_4_module_5_temp_18_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_4_module_5_temp_18_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_4_module_5_temp_19_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_4_module_5_temp_19_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_4_module_5_temp_19_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_4_module_5_temp_20_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_4_module_5_temp_20_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_4_module_5_temp_20_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_temperature_5_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_temperature_5_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_21;
+    uint16_t module_5_temp_22;
+    uint16_t module_5_temp_23;
+    uint16_t module_5_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_5_temp_21 = (uint16_t)src_p->module_5_temp_21;
+    dst_p[0] |= pack_left_shift_u16(module_5_temp_21, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_5_temp_21, 8u, 0xffu);
+    module_5_temp_22 = (uint16_t)src_p->module_5_temp_22;
+    dst_p[2] |= pack_left_shift_u16(module_5_temp_22, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_5_temp_22, 8u, 0xffu);
+    module_5_temp_23 = (uint16_t)src_p->module_5_temp_23;
+    dst_p[4] |= pack_left_shift_u16(module_5_temp_23, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_5_temp_23, 8u, 0xffu);
+    module_5_temp_24 = (uint16_t)src_p->module_5_temp_24;
+    dst_p[6] |= pack_left_shift_u16(module_5_temp_24, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_5_temp_24, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_temperature_5_unpack(
+    struct feb_can_bms_module_5_temperature_5_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_21;
+    uint16_t module_5_temp_22;
+    uint16_t module_5_temp_23;
+    uint16_t module_5_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_5_temp_21 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_5_temp_21 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_temp_21 = (int16_t)module_5_temp_21;
+    module_5_temp_22 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_5_temp_22 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_temp_22 = (int16_t)module_5_temp_22;
+    module_5_temp_23 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_5_temp_23 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_temp_23 = (int16_t)module_5_temp_23;
+    module_5_temp_24 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_5_temp_24 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_5_temp_24 = (int16_t)module_5_temp_24;
+
+    return (0);
+}
+
+int feb_can_bms_module_5_temperature_5_init(struct feb_can_bms_module_5_temperature_5_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_temperature_5_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_5_temperature_5_module_5_temp_21_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_5_module_5_temp_21_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_5_module_5_temp_21_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_5_module_5_temp_22_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_5_module_5_temp_22_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_5_module_5_temp_22_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_5_module_5_temp_23_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_5_module_5_temp_23_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_5_module_5_temp_23_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_5_module_5_temp_24_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_5_module_5_temp_24_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_5_module_5_temp_24_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_temperature_6_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_temperature_6_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_25;
+    uint16_t module_5_temp_26;
+    uint16_t module_5_temp_27;
+    uint16_t module_5_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_5_temp_25 = (uint16_t)src_p->module_5_temp_25;
+    dst_p[0] |= pack_left_shift_u16(module_5_temp_25, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_5_temp_25, 8u, 0xffu);
+    module_5_temp_26 = (uint16_t)src_p->module_5_temp_26;
+    dst_p[2] |= pack_left_shift_u16(module_5_temp_26, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_5_temp_26, 8u, 0xffu);
+    module_5_temp_27 = (uint16_t)src_p->module_5_temp_27;
+    dst_p[4] |= pack_left_shift_u16(module_5_temp_27, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_5_temp_27, 8u, 0xffu);
+    module_5_temp_28 = (uint16_t)src_p->module_5_temp_28;
+    dst_p[6] |= pack_left_shift_u16(module_5_temp_28, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_5_temp_28, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_temperature_6_unpack(
+    struct feb_can_bms_module_5_temperature_6_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_25;
+    uint16_t module_5_temp_26;
+    uint16_t module_5_temp_27;
+    uint16_t module_5_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_5_temp_25 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_5_temp_25 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_temp_25 = (int16_t)module_5_temp_25;
+    module_5_temp_26 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_5_temp_26 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_temp_26 = (int16_t)module_5_temp_26;
+    module_5_temp_27 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_5_temp_27 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_temp_27 = (int16_t)module_5_temp_27;
+    module_5_temp_28 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_5_temp_28 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_5_temp_28 = (int16_t)module_5_temp_28;
+
+    return (0);
+}
+
+int feb_can_bms_module_5_temperature_6_init(struct feb_can_bms_module_5_temperature_6_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_temperature_6_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_5_temperature_6_module_5_temp_25_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_6_module_5_temp_25_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_6_module_5_temp_25_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_6_module_5_temp_26_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_6_module_5_temp_26_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_6_module_5_temp_26_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_6_module_5_temp_27_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_6_module_5_temp_27_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_6_module_5_temp_27_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_6_module_5_temp_28_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_6_module_5_temp_28_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_6_module_5_temp_28_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_temperature_7_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_temperature_7_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_29;
+    uint16_t module_5_temp_30;
+    uint16_t module_5_temp_31;
+    uint16_t module_5_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_5_temp_29 = (uint16_t)src_p->module_5_temp_29;
+    dst_p[0] |= pack_left_shift_u16(module_5_temp_29, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_5_temp_29, 8u, 0xffu);
+    module_5_temp_30 = (uint16_t)src_p->module_5_temp_30;
+    dst_p[2] |= pack_left_shift_u16(module_5_temp_30, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_5_temp_30, 8u, 0xffu);
+    module_5_temp_31 = (uint16_t)src_p->module_5_temp_31;
+    dst_p[4] |= pack_left_shift_u16(module_5_temp_31, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_5_temp_31, 8u, 0xffu);
+    module_5_temp_32 = (uint16_t)src_p->module_5_temp_32;
+    dst_p[6] |= pack_left_shift_u16(module_5_temp_32, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_5_temp_32, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_temperature_7_unpack(
+    struct feb_can_bms_module_5_temperature_7_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_29;
+    uint16_t module_5_temp_30;
+    uint16_t module_5_temp_31;
+    uint16_t module_5_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_5_temp_29 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_5_temp_29 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_temp_29 = (int16_t)module_5_temp_29;
+    module_5_temp_30 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_5_temp_30 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_temp_30 = (int16_t)module_5_temp_30;
+    module_5_temp_31 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_5_temp_31 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_temp_31 = (int16_t)module_5_temp_31;
+    module_5_temp_32 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_5_temp_32 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_5_temp_32 = (int16_t)module_5_temp_32;
+
+    return (0);
+}
+
+int feb_can_bms_module_5_temperature_7_init(struct feb_can_bms_module_5_temperature_7_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_temperature_7_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_5_temperature_7_module_5_temp_29_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_7_module_5_temp_29_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_7_module_5_temp_29_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_7_module_5_temp_30_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_7_module_5_temp_30_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_7_module_5_temp_30_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_7_module_5_temp_31_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_7_module_5_temp_31_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_7_module_5_temp_31_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_7_module_5_temp_32_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_7_module_5_temp_32_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_7_module_5_temp_32_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_temperature_8_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_temperature_8_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_33;
+    uint16_t module_5_temp_34;
+    uint16_t module_5_temp_35;
+    uint16_t module_5_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_5_temp_33 = (uint16_t)src_p->module_5_temp_33;
+    dst_p[0] |= pack_left_shift_u16(module_5_temp_33, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_5_temp_33, 8u, 0xffu);
+    module_5_temp_34 = (uint16_t)src_p->module_5_temp_34;
+    dst_p[2] |= pack_left_shift_u16(module_5_temp_34, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_5_temp_34, 8u, 0xffu);
+    module_5_temp_35 = (uint16_t)src_p->module_5_temp_35;
+    dst_p[4] |= pack_left_shift_u16(module_5_temp_35, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_5_temp_35, 8u, 0xffu);
+    module_5_temp_36 = (uint16_t)src_p->module_5_temp_36;
+    dst_p[6] |= pack_left_shift_u16(module_5_temp_36, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_5_temp_36, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_temperature_8_unpack(
+    struct feb_can_bms_module_5_temperature_8_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_33;
+    uint16_t module_5_temp_34;
+    uint16_t module_5_temp_35;
+    uint16_t module_5_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_5_temp_33 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_5_temp_33 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_temp_33 = (int16_t)module_5_temp_33;
+    module_5_temp_34 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_5_temp_34 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_temp_34 = (int16_t)module_5_temp_34;
+    module_5_temp_35 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_5_temp_35 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_temp_35 = (int16_t)module_5_temp_35;
+    module_5_temp_36 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_5_temp_36 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_5_temp_36 = (int16_t)module_5_temp_36;
+
+    return (0);
+}
+
+int feb_can_bms_module_5_temperature_8_init(struct feb_can_bms_module_5_temperature_8_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_temperature_8_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_5_temperature_8_module_5_temp_33_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_8_module_5_temp_33_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_8_module_5_temp_33_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_8_module_5_temp_34_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_8_module_5_temp_34_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_8_module_5_temp_34_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_8_module_5_temp_35_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_8_module_5_temp_35_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_8_module_5_temp_35_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_8_module_5_temp_36_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_8_module_5_temp_36_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_8_module_5_temp_36_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_temperature_9_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_temperature_9_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_37;
+    uint16_t module_5_temp_38;
+    uint16_t module_5_temp_39;
+    uint16_t module_5_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_5_temp_37 = (uint16_t)src_p->module_5_temp_37;
+    dst_p[0] |= pack_left_shift_u16(module_5_temp_37, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_5_temp_37, 8u, 0xffu);
+    module_5_temp_38 = (uint16_t)src_p->module_5_temp_38;
+    dst_p[2] |= pack_left_shift_u16(module_5_temp_38, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_5_temp_38, 8u, 0xffu);
+    module_5_temp_39 = (uint16_t)src_p->module_5_temp_39;
+    dst_p[4] |= pack_left_shift_u16(module_5_temp_39, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_5_temp_39, 8u, 0xffu);
+    module_5_temp_40 = (uint16_t)src_p->module_5_temp_40;
+    dst_p[6] |= pack_left_shift_u16(module_5_temp_40, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_5_temp_40, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_5_temperature_9_unpack(
+    struct feb_can_bms_module_5_temperature_9_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_37;
+    uint16_t module_5_temp_38;
+    uint16_t module_5_temp_39;
+    uint16_t module_5_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_5_temp_37 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_5_temp_37 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_temp_37 = (int16_t)module_5_temp_37;
+    module_5_temp_38 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_5_temp_38 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_5_temp_38 = (int16_t)module_5_temp_38;
+    module_5_temp_39 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_5_temp_39 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_5_temp_39 = (int16_t)module_5_temp_39;
+    module_5_temp_40 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_5_temp_40 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_5_temp_40 = (int16_t)module_5_temp_40;
+
+    return (0);
+}
+
+int feb_can_bms_module_5_temperature_9_init(struct feb_can_bms_module_5_temperature_9_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_temperature_9_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_5_temperature_9_module_5_temp_37_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_9_module_5_temp_37_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_9_module_5_temp_37_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_9_module_5_temp_38_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_9_module_5_temp_38_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_9_module_5_temp_38_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_9_module_5_temp_39_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_9_module_5_temp_39_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_9_module_5_temp_39_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_5_temperature_9_module_5_temp_40_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_9_module_5_temp_40_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_9_module_5_temp_40_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_5_temperature_10_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_5_temperature_10_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 2);
+
+    module_5_temp_41 = (uint16_t)src_p->module_5_temp_41;
+    dst_p[0] |= pack_left_shift_u16(module_5_temp_41, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_5_temp_41, 8u, 0xffu);
+
+    return (2);
+}
+
+int feb_can_bms_module_5_temperature_10_unpack(
+    struct feb_can_bms_module_5_temperature_10_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_5_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    module_5_temp_41 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_5_temp_41 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_5_temp_41 = (int16_t)module_5_temp_41;
+
+    return (0);
+}
+
+int feb_can_bms_module_5_temperature_10_init(struct feb_can_bms_module_5_temperature_10_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_5_temperature_10_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_5_temperature_10_module_5_temp_41_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_5_temperature_10_module_5_temp_41_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_5_temperature_10_module_5_temp_41_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_temperature_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_temperature_0_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_1;
+    uint16_t module_6_temp_2;
+    uint16_t module_6_temp_3;
+    uint16_t module_6_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_6_temp_1 = (uint16_t)src_p->module_6_temp_1;
+    dst_p[0] |= pack_left_shift_u16(module_6_temp_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_6_temp_1, 8u, 0xffu);
+    module_6_temp_2 = (uint16_t)src_p->module_6_temp_2;
+    dst_p[2] |= pack_left_shift_u16(module_6_temp_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_6_temp_2, 8u, 0xffu);
+    module_6_temp_3 = (uint16_t)src_p->module_6_temp_3;
+    dst_p[4] |= pack_left_shift_u16(module_6_temp_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_6_temp_3, 8u, 0xffu);
+    module_6_temp_4 = (uint16_t)src_p->module_6_temp_4;
+    dst_p[6] |= pack_left_shift_u16(module_6_temp_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_6_temp_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_temperature_0_unpack(
+    struct feb_can_bms_module_6_temperature_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_1;
+    uint16_t module_6_temp_2;
+    uint16_t module_6_temp_3;
+    uint16_t module_6_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_6_temp_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_6_temp_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_temp_1 = (int16_t)module_6_temp_1;
+    module_6_temp_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_6_temp_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_temp_2 = (int16_t)module_6_temp_2;
+    module_6_temp_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_6_temp_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_temp_3 = (int16_t)module_6_temp_3;
+    module_6_temp_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_6_temp_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_6_temp_4 = (int16_t)module_6_temp_4;
+
+    return (0);
+}
+
+int feb_can_bms_module_6_temperature_0_init(struct feb_can_bms_module_6_temperature_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_temperature_0_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_6_temperature_0_module_6_temp_1_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_0_module_6_temp_1_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_0_module_6_temp_1_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_0_module_6_temp_2_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_0_module_6_temp_2_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_0_module_6_temp_2_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_0_module_6_temp_3_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_0_module_6_temp_3_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_0_module_6_temp_3_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_0_module_6_temp_4_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_0_module_6_temp_4_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_0_module_6_temp_4_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_temperature_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_temperature_1_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_5;
+    uint16_t module_6_temp_6;
+    uint16_t module_6_temp_7;
+    uint16_t module_6_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_6_temp_5 = (uint16_t)src_p->module_6_temp_5;
+    dst_p[0] |= pack_left_shift_u16(module_6_temp_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_6_temp_5, 8u, 0xffu);
+    module_6_temp_6 = (uint16_t)src_p->module_6_temp_6;
+    dst_p[2] |= pack_left_shift_u16(module_6_temp_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_6_temp_6, 8u, 0xffu);
+    module_6_temp_7 = (uint16_t)src_p->module_6_temp_7;
+    dst_p[4] |= pack_left_shift_u16(module_6_temp_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_6_temp_7, 8u, 0xffu);
+    module_6_temp_8 = (uint16_t)src_p->module_6_temp_8;
+    dst_p[6] |= pack_left_shift_u16(module_6_temp_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_6_temp_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_temperature_1_unpack(
+    struct feb_can_bms_module_6_temperature_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_5;
+    uint16_t module_6_temp_6;
+    uint16_t module_6_temp_7;
+    uint16_t module_6_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_6_temp_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_6_temp_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_temp_5 = (int16_t)module_6_temp_5;
+    module_6_temp_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_6_temp_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_temp_6 = (int16_t)module_6_temp_6;
+    module_6_temp_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_6_temp_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_temp_7 = (int16_t)module_6_temp_7;
+    module_6_temp_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_6_temp_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_6_temp_8 = (int16_t)module_6_temp_8;
+
+    return (0);
+}
+
+int feb_can_bms_module_6_temperature_1_init(struct feb_can_bms_module_6_temperature_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_temperature_1_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_6_temperature_1_module_6_temp_5_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_1_module_6_temp_5_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_1_module_6_temp_5_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_1_module_6_temp_6_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_1_module_6_temp_6_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_1_module_6_temp_6_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_1_module_6_temp_7_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_1_module_6_temp_7_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_1_module_6_temp_7_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_1_module_6_temp_8_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_1_module_6_temp_8_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_1_module_6_temp_8_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_temperature_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_temperature_2_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_10;
+    uint16_t module_6_temp_11;
+    uint16_t module_6_temp_12;
+    uint16_t module_6_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_6_temp_9 = (uint16_t)src_p->module_6_temp_9;
+    dst_p[0] |= pack_left_shift_u16(module_6_temp_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_6_temp_9, 8u, 0xffu);
+    module_6_temp_10 = (uint16_t)src_p->module_6_temp_10;
+    dst_p[2] |= pack_left_shift_u16(module_6_temp_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_6_temp_10, 8u, 0xffu);
+    module_6_temp_11 = (uint16_t)src_p->module_6_temp_11;
+    dst_p[4] |= pack_left_shift_u16(module_6_temp_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_6_temp_11, 8u, 0xffu);
+    module_6_temp_12 = (uint16_t)src_p->module_6_temp_12;
+    dst_p[6] |= pack_left_shift_u16(module_6_temp_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_6_temp_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_temperature_2_unpack(
+    struct feb_can_bms_module_6_temperature_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_10;
+    uint16_t module_6_temp_11;
+    uint16_t module_6_temp_12;
+    uint16_t module_6_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_6_temp_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_6_temp_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_temp_9 = (int16_t)module_6_temp_9;
+    module_6_temp_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_6_temp_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_temp_10 = (int16_t)module_6_temp_10;
+    module_6_temp_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_6_temp_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_temp_11 = (int16_t)module_6_temp_11;
+    module_6_temp_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_6_temp_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_6_temp_12 = (int16_t)module_6_temp_12;
+
+    return (0);
+}
+
+int feb_can_bms_module_6_temperature_2_init(struct feb_can_bms_module_6_temperature_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_temperature_2_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_6_temperature_2_module_6_temp_9_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_2_module_6_temp_9_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_2_module_6_temp_9_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_2_module_6_temp_10_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_2_module_6_temp_10_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_2_module_6_temp_10_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_2_module_6_temp_11_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_2_module_6_temp_11_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_2_module_6_temp_11_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_2_module_6_temp_12_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_2_module_6_temp_12_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_2_module_6_temp_12_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_temperature_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_temperature_3_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_13;
+    uint16_t module_6_temp_14;
+    uint16_t module_6_temp_15;
+    uint16_t module_6_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_6_temp_13 = (uint16_t)src_p->module_6_temp_13;
+    dst_p[0] |= pack_left_shift_u16(module_6_temp_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_6_temp_13, 8u, 0xffu);
+    module_6_temp_14 = (uint16_t)src_p->module_6_temp_14;
+    dst_p[2] |= pack_left_shift_u16(module_6_temp_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_6_temp_14, 8u, 0xffu);
+    module_6_temp_15 = (uint16_t)src_p->module_6_temp_15;
+    dst_p[4] |= pack_left_shift_u16(module_6_temp_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_6_temp_15, 8u, 0xffu);
+    module_6_temp_16 = (uint16_t)src_p->module_6_temp_16;
+    dst_p[6] |= pack_left_shift_u16(module_6_temp_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_6_temp_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_temperature_3_unpack(
+    struct feb_can_bms_module_6_temperature_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_13;
+    uint16_t module_6_temp_14;
+    uint16_t module_6_temp_15;
+    uint16_t module_6_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_6_temp_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_6_temp_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_temp_13 = (int16_t)module_6_temp_13;
+    module_6_temp_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_6_temp_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_temp_14 = (int16_t)module_6_temp_14;
+    module_6_temp_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_6_temp_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_temp_15 = (int16_t)module_6_temp_15;
+    module_6_temp_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_6_temp_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_6_temp_16 = (int16_t)module_6_temp_16;
+
+    return (0);
+}
+
+int feb_can_bms_module_6_temperature_3_init(struct feb_can_bms_module_6_temperature_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_temperature_3_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_6_temperature_3_module_6_temp_13_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_3_module_6_temp_13_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_3_module_6_temp_13_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_3_module_6_temp_14_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_3_module_6_temp_14_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_3_module_6_temp_14_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_3_module_6_temp_15_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_3_module_6_temp_15_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_3_module_6_temp_15_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_3_module_6_temp_16_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_3_module_6_temp_16_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_3_module_6_temp_16_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_temperature_4_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_temperature_4_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_17;
+    uint16_t module_6_temp_18;
+    uint16_t module_6_temp_19;
+    uint16_t module_6_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_6_temp_17 = (uint16_t)src_p->module_6_temp_17;
+    dst_p[0] |= pack_left_shift_u16(module_6_temp_17, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_6_temp_17, 8u, 0xffu);
+    module_6_temp_18 = (uint16_t)src_p->module_6_temp_18;
+    dst_p[2] |= pack_left_shift_u16(module_6_temp_18, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_6_temp_18, 8u, 0xffu);
+    module_6_temp_19 = (uint16_t)src_p->module_6_temp_19;
+    dst_p[4] |= pack_left_shift_u16(module_6_temp_19, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_6_temp_19, 8u, 0xffu);
+    module_6_temp_20 = (uint16_t)src_p->module_6_temp_20;
+    dst_p[6] |= pack_left_shift_u16(module_6_temp_20, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_6_temp_20, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_temperature_4_unpack(
+    struct feb_can_bms_module_6_temperature_4_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_17;
+    uint16_t module_6_temp_18;
+    uint16_t module_6_temp_19;
+    uint16_t module_6_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_6_temp_17 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_6_temp_17 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_temp_17 = (int16_t)module_6_temp_17;
+    module_6_temp_18 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_6_temp_18 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_temp_18 = (int16_t)module_6_temp_18;
+    module_6_temp_19 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_6_temp_19 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_temp_19 = (int16_t)module_6_temp_19;
+    module_6_temp_20 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_6_temp_20 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_6_temp_20 = (int16_t)module_6_temp_20;
+
+    return (0);
+}
+
+int feb_can_bms_module_6_temperature_4_init(struct feb_can_bms_module_6_temperature_4_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_temperature_4_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_6_temperature_4_module_6_temp_17_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_4_module_6_temp_17_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_4_module_6_temp_17_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_4_module_6_temp_18_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_4_module_6_temp_18_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_4_module_6_temp_18_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_4_module_6_temp_19_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_4_module_6_temp_19_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_4_module_6_temp_19_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_4_module_6_temp_20_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_4_module_6_temp_20_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_4_module_6_temp_20_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_temperature_5_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_temperature_5_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_21;
+    uint16_t module_6_temp_22;
+    uint16_t module_6_temp_23;
+    uint16_t module_6_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_6_temp_21 = (uint16_t)src_p->module_6_temp_21;
+    dst_p[0] |= pack_left_shift_u16(module_6_temp_21, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_6_temp_21, 8u, 0xffu);
+    module_6_temp_22 = (uint16_t)src_p->module_6_temp_22;
+    dst_p[2] |= pack_left_shift_u16(module_6_temp_22, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_6_temp_22, 8u, 0xffu);
+    module_6_temp_23 = (uint16_t)src_p->module_6_temp_23;
+    dst_p[4] |= pack_left_shift_u16(module_6_temp_23, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_6_temp_23, 8u, 0xffu);
+    module_6_temp_24 = (uint16_t)src_p->module_6_temp_24;
+    dst_p[6] |= pack_left_shift_u16(module_6_temp_24, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_6_temp_24, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_temperature_5_unpack(
+    struct feb_can_bms_module_6_temperature_5_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_21;
+    uint16_t module_6_temp_22;
+    uint16_t module_6_temp_23;
+    uint16_t module_6_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_6_temp_21 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_6_temp_21 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_temp_21 = (int16_t)module_6_temp_21;
+    module_6_temp_22 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_6_temp_22 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_temp_22 = (int16_t)module_6_temp_22;
+    module_6_temp_23 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_6_temp_23 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_temp_23 = (int16_t)module_6_temp_23;
+    module_6_temp_24 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_6_temp_24 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_6_temp_24 = (int16_t)module_6_temp_24;
+
+    return (0);
+}
+
+int feb_can_bms_module_6_temperature_5_init(struct feb_can_bms_module_6_temperature_5_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_temperature_5_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_6_temperature_5_module_6_temp_21_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_5_module_6_temp_21_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_5_module_6_temp_21_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_5_module_6_temp_22_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_5_module_6_temp_22_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_5_module_6_temp_22_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_5_module_6_temp_23_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_5_module_6_temp_23_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_5_module_6_temp_23_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_5_module_6_temp_24_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_5_module_6_temp_24_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_5_module_6_temp_24_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_temperature_6_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_temperature_6_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_25;
+    uint16_t module_6_temp_26;
+    uint16_t module_6_temp_27;
+    uint16_t module_6_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_6_temp_25 = (uint16_t)src_p->module_6_temp_25;
+    dst_p[0] |= pack_left_shift_u16(module_6_temp_25, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_6_temp_25, 8u, 0xffu);
+    module_6_temp_26 = (uint16_t)src_p->module_6_temp_26;
+    dst_p[2] |= pack_left_shift_u16(module_6_temp_26, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_6_temp_26, 8u, 0xffu);
+    module_6_temp_27 = (uint16_t)src_p->module_6_temp_27;
+    dst_p[4] |= pack_left_shift_u16(module_6_temp_27, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_6_temp_27, 8u, 0xffu);
+    module_6_temp_28 = (uint16_t)src_p->module_6_temp_28;
+    dst_p[6] |= pack_left_shift_u16(module_6_temp_28, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_6_temp_28, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_temperature_6_unpack(
+    struct feb_can_bms_module_6_temperature_6_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_25;
+    uint16_t module_6_temp_26;
+    uint16_t module_6_temp_27;
+    uint16_t module_6_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_6_temp_25 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_6_temp_25 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_temp_25 = (int16_t)module_6_temp_25;
+    module_6_temp_26 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_6_temp_26 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_temp_26 = (int16_t)module_6_temp_26;
+    module_6_temp_27 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_6_temp_27 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_temp_27 = (int16_t)module_6_temp_27;
+    module_6_temp_28 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_6_temp_28 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_6_temp_28 = (int16_t)module_6_temp_28;
+
+    return (0);
+}
+
+int feb_can_bms_module_6_temperature_6_init(struct feb_can_bms_module_6_temperature_6_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_temperature_6_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_6_temperature_6_module_6_temp_25_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_6_module_6_temp_25_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_6_module_6_temp_25_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_6_module_6_temp_26_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_6_module_6_temp_26_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_6_module_6_temp_26_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_6_module_6_temp_27_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_6_module_6_temp_27_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_6_module_6_temp_27_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_6_module_6_temp_28_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_6_module_6_temp_28_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_6_module_6_temp_28_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_temperature_7_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_temperature_7_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_29;
+    uint16_t module_6_temp_30;
+    uint16_t module_6_temp_31;
+    uint16_t module_6_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_6_temp_29 = (uint16_t)src_p->module_6_temp_29;
+    dst_p[0] |= pack_left_shift_u16(module_6_temp_29, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_6_temp_29, 8u, 0xffu);
+    module_6_temp_30 = (uint16_t)src_p->module_6_temp_30;
+    dst_p[2] |= pack_left_shift_u16(module_6_temp_30, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_6_temp_30, 8u, 0xffu);
+    module_6_temp_31 = (uint16_t)src_p->module_6_temp_31;
+    dst_p[4] |= pack_left_shift_u16(module_6_temp_31, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_6_temp_31, 8u, 0xffu);
+    module_6_temp_32 = (uint16_t)src_p->module_6_temp_32;
+    dst_p[6] |= pack_left_shift_u16(module_6_temp_32, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_6_temp_32, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_temperature_7_unpack(
+    struct feb_can_bms_module_6_temperature_7_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_29;
+    uint16_t module_6_temp_30;
+    uint16_t module_6_temp_31;
+    uint16_t module_6_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_6_temp_29 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_6_temp_29 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_temp_29 = (int16_t)module_6_temp_29;
+    module_6_temp_30 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_6_temp_30 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_temp_30 = (int16_t)module_6_temp_30;
+    module_6_temp_31 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_6_temp_31 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_temp_31 = (int16_t)module_6_temp_31;
+    module_6_temp_32 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_6_temp_32 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_6_temp_32 = (int16_t)module_6_temp_32;
+
+    return (0);
+}
+
+int feb_can_bms_module_6_temperature_7_init(struct feb_can_bms_module_6_temperature_7_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_temperature_7_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_6_temperature_7_module_6_temp_29_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_7_module_6_temp_29_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_7_module_6_temp_29_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_7_module_6_temp_30_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_7_module_6_temp_30_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_7_module_6_temp_30_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_7_module_6_temp_31_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_7_module_6_temp_31_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_7_module_6_temp_31_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_7_module_6_temp_32_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_7_module_6_temp_32_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_7_module_6_temp_32_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_temperature_8_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_temperature_8_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_33;
+    uint16_t module_6_temp_34;
+    uint16_t module_6_temp_35;
+    uint16_t module_6_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_6_temp_33 = (uint16_t)src_p->module_6_temp_33;
+    dst_p[0] |= pack_left_shift_u16(module_6_temp_33, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_6_temp_33, 8u, 0xffu);
+    module_6_temp_34 = (uint16_t)src_p->module_6_temp_34;
+    dst_p[2] |= pack_left_shift_u16(module_6_temp_34, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_6_temp_34, 8u, 0xffu);
+    module_6_temp_35 = (uint16_t)src_p->module_6_temp_35;
+    dst_p[4] |= pack_left_shift_u16(module_6_temp_35, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_6_temp_35, 8u, 0xffu);
+    module_6_temp_36 = (uint16_t)src_p->module_6_temp_36;
+    dst_p[6] |= pack_left_shift_u16(module_6_temp_36, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_6_temp_36, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_temperature_8_unpack(
+    struct feb_can_bms_module_6_temperature_8_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_33;
+    uint16_t module_6_temp_34;
+    uint16_t module_6_temp_35;
+    uint16_t module_6_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_6_temp_33 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_6_temp_33 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_temp_33 = (int16_t)module_6_temp_33;
+    module_6_temp_34 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_6_temp_34 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_temp_34 = (int16_t)module_6_temp_34;
+    module_6_temp_35 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_6_temp_35 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_temp_35 = (int16_t)module_6_temp_35;
+    module_6_temp_36 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_6_temp_36 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_6_temp_36 = (int16_t)module_6_temp_36;
+
+    return (0);
+}
+
+int feb_can_bms_module_6_temperature_8_init(struct feb_can_bms_module_6_temperature_8_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_temperature_8_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_6_temperature_8_module_6_temp_33_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_8_module_6_temp_33_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_8_module_6_temp_33_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_8_module_6_temp_34_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_8_module_6_temp_34_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_8_module_6_temp_34_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_8_module_6_temp_35_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_8_module_6_temp_35_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_8_module_6_temp_35_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_8_module_6_temp_36_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_8_module_6_temp_36_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_8_module_6_temp_36_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_temperature_9_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_temperature_9_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_37;
+    uint16_t module_6_temp_38;
+    uint16_t module_6_temp_39;
+    uint16_t module_6_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_6_temp_37 = (uint16_t)src_p->module_6_temp_37;
+    dst_p[0] |= pack_left_shift_u16(module_6_temp_37, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_6_temp_37, 8u, 0xffu);
+    module_6_temp_38 = (uint16_t)src_p->module_6_temp_38;
+    dst_p[2] |= pack_left_shift_u16(module_6_temp_38, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_6_temp_38, 8u, 0xffu);
+    module_6_temp_39 = (uint16_t)src_p->module_6_temp_39;
+    dst_p[4] |= pack_left_shift_u16(module_6_temp_39, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_6_temp_39, 8u, 0xffu);
+    module_6_temp_40 = (uint16_t)src_p->module_6_temp_40;
+    dst_p[6] |= pack_left_shift_u16(module_6_temp_40, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_6_temp_40, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_6_temperature_9_unpack(
+    struct feb_can_bms_module_6_temperature_9_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_37;
+    uint16_t module_6_temp_38;
+    uint16_t module_6_temp_39;
+    uint16_t module_6_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_6_temp_37 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_6_temp_37 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_temp_37 = (int16_t)module_6_temp_37;
+    module_6_temp_38 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_6_temp_38 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_6_temp_38 = (int16_t)module_6_temp_38;
+    module_6_temp_39 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_6_temp_39 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_6_temp_39 = (int16_t)module_6_temp_39;
+    module_6_temp_40 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_6_temp_40 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_6_temp_40 = (int16_t)module_6_temp_40;
+
+    return (0);
+}
+
+int feb_can_bms_module_6_temperature_9_init(struct feb_can_bms_module_6_temperature_9_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_temperature_9_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_6_temperature_9_module_6_temp_37_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_9_module_6_temp_37_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_9_module_6_temp_37_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_9_module_6_temp_38_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_9_module_6_temp_38_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_9_module_6_temp_38_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_9_module_6_temp_39_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_9_module_6_temp_39_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_9_module_6_temp_39_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_6_temperature_9_module_6_temp_40_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_9_module_6_temp_40_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_9_module_6_temp_40_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_6_temperature_10_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_6_temperature_10_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 2);
+
+    module_6_temp_41 = (uint16_t)src_p->module_6_temp_41;
+    dst_p[0] |= pack_left_shift_u16(module_6_temp_41, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_6_temp_41, 8u, 0xffu);
+
+    return (2);
+}
+
+int feb_can_bms_module_6_temperature_10_unpack(
+    struct feb_can_bms_module_6_temperature_10_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_6_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    module_6_temp_41 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_6_temp_41 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_6_temp_41 = (int16_t)module_6_temp_41;
+
+    return (0);
+}
+
+int feb_can_bms_module_6_temperature_10_init(struct feb_can_bms_module_6_temperature_10_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_6_temperature_10_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_6_temperature_10_module_6_temp_41_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_6_temperature_10_module_6_temp_41_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_6_temperature_10_module_6_temp_41_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_temperature_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_temperature_0_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_1;
+    uint16_t module_7_temp_2;
+    uint16_t module_7_temp_3;
+    uint16_t module_7_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_7_temp_1 = (uint16_t)src_p->module_7_temp_1;
+    dst_p[0] |= pack_left_shift_u16(module_7_temp_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_7_temp_1, 8u, 0xffu);
+    module_7_temp_2 = (uint16_t)src_p->module_7_temp_2;
+    dst_p[2] |= pack_left_shift_u16(module_7_temp_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_7_temp_2, 8u, 0xffu);
+    module_7_temp_3 = (uint16_t)src_p->module_7_temp_3;
+    dst_p[4] |= pack_left_shift_u16(module_7_temp_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_7_temp_3, 8u, 0xffu);
+    module_7_temp_4 = (uint16_t)src_p->module_7_temp_4;
+    dst_p[6] |= pack_left_shift_u16(module_7_temp_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_7_temp_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_temperature_0_unpack(
+    struct feb_can_bms_module_7_temperature_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_1;
+    uint16_t module_7_temp_2;
+    uint16_t module_7_temp_3;
+    uint16_t module_7_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_7_temp_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_7_temp_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_temp_1 = (int16_t)module_7_temp_1;
+    module_7_temp_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_7_temp_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_temp_2 = (int16_t)module_7_temp_2;
+    module_7_temp_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_7_temp_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_temp_3 = (int16_t)module_7_temp_3;
+    module_7_temp_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_7_temp_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_7_temp_4 = (int16_t)module_7_temp_4;
+
+    return (0);
+}
+
+int feb_can_bms_module_7_temperature_0_init(struct feb_can_bms_module_7_temperature_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_temperature_0_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_7_temperature_0_module_7_temp_1_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_0_module_7_temp_1_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_0_module_7_temp_1_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_0_module_7_temp_2_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_0_module_7_temp_2_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_0_module_7_temp_2_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_0_module_7_temp_3_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_0_module_7_temp_3_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_0_module_7_temp_3_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_0_module_7_temp_4_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_0_module_7_temp_4_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_0_module_7_temp_4_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_temperature_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_temperature_1_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_5;
+    uint16_t module_7_temp_6;
+    uint16_t module_7_temp_7;
+    uint16_t module_7_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_7_temp_5 = (uint16_t)src_p->module_7_temp_5;
+    dst_p[0] |= pack_left_shift_u16(module_7_temp_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_7_temp_5, 8u, 0xffu);
+    module_7_temp_6 = (uint16_t)src_p->module_7_temp_6;
+    dst_p[2] |= pack_left_shift_u16(module_7_temp_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_7_temp_6, 8u, 0xffu);
+    module_7_temp_7 = (uint16_t)src_p->module_7_temp_7;
+    dst_p[4] |= pack_left_shift_u16(module_7_temp_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_7_temp_7, 8u, 0xffu);
+    module_7_temp_8 = (uint16_t)src_p->module_7_temp_8;
+    dst_p[6] |= pack_left_shift_u16(module_7_temp_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_7_temp_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_temperature_1_unpack(
+    struct feb_can_bms_module_7_temperature_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_5;
+    uint16_t module_7_temp_6;
+    uint16_t module_7_temp_7;
+    uint16_t module_7_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_7_temp_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_7_temp_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_temp_5 = (int16_t)module_7_temp_5;
+    module_7_temp_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_7_temp_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_temp_6 = (int16_t)module_7_temp_6;
+    module_7_temp_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_7_temp_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_temp_7 = (int16_t)module_7_temp_7;
+    module_7_temp_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_7_temp_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_7_temp_8 = (int16_t)module_7_temp_8;
+
+    return (0);
+}
+
+int feb_can_bms_module_7_temperature_1_init(struct feb_can_bms_module_7_temperature_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_temperature_1_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_7_temperature_1_module_7_temp_5_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_1_module_7_temp_5_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_1_module_7_temp_5_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_1_module_7_temp_6_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_1_module_7_temp_6_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_1_module_7_temp_6_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_1_module_7_temp_7_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_1_module_7_temp_7_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_1_module_7_temp_7_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_1_module_7_temp_8_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_1_module_7_temp_8_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_1_module_7_temp_8_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_temperature_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_temperature_2_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_10;
+    uint16_t module_7_temp_11;
+    uint16_t module_7_temp_12;
+    uint16_t module_7_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_7_temp_9 = (uint16_t)src_p->module_7_temp_9;
+    dst_p[0] |= pack_left_shift_u16(module_7_temp_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_7_temp_9, 8u, 0xffu);
+    module_7_temp_10 = (uint16_t)src_p->module_7_temp_10;
+    dst_p[2] |= pack_left_shift_u16(module_7_temp_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_7_temp_10, 8u, 0xffu);
+    module_7_temp_11 = (uint16_t)src_p->module_7_temp_11;
+    dst_p[4] |= pack_left_shift_u16(module_7_temp_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_7_temp_11, 8u, 0xffu);
+    module_7_temp_12 = (uint16_t)src_p->module_7_temp_12;
+    dst_p[6] |= pack_left_shift_u16(module_7_temp_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_7_temp_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_temperature_2_unpack(
+    struct feb_can_bms_module_7_temperature_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_10;
+    uint16_t module_7_temp_11;
+    uint16_t module_7_temp_12;
+    uint16_t module_7_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_7_temp_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_7_temp_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_temp_9 = (int16_t)module_7_temp_9;
+    module_7_temp_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_7_temp_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_temp_10 = (int16_t)module_7_temp_10;
+    module_7_temp_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_7_temp_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_temp_11 = (int16_t)module_7_temp_11;
+    module_7_temp_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_7_temp_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_7_temp_12 = (int16_t)module_7_temp_12;
+
+    return (0);
+}
+
+int feb_can_bms_module_7_temperature_2_init(struct feb_can_bms_module_7_temperature_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_temperature_2_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_7_temperature_2_module_7_temp_9_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_2_module_7_temp_9_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_2_module_7_temp_9_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_2_module_7_temp_10_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_2_module_7_temp_10_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_2_module_7_temp_10_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_2_module_7_temp_11_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_2_module_7_temp_11_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_2_module_7_temp_11_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_2_module_7_temp_12_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_2_module_7_temp_12_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_2_module_7_temp_12_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_temperature_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_temperature_3_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_13;
+    uint16_t module_7_temp_14;
+    uint16_t module_7_temp_15;
+    uint16_t module_7_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_7_temp_13 = (uint16_t)src_p->module_7_temp_13;
+    dst_p[0] |= pack_left_shift_u16(module_7_temp_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_7_temp_13, 8u, 0xffu);
+    module_7_temp_14 = (uint16_t)src_p->module_7_temp_14;
+    dst_p[2] |= pack_left_shift_u16(module_7_temp_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_7_temp_14, 8u, 0xffu);
+    module_7_temp_15 = (uint16_t)src_p->module_7_temp_15;
+    dst_p[4] |= pack_left_shift_u16(module_7_temp_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_7_temp_15, 8u, 0xffu);
+    module_7_temp_16 = (uint16_t)src_p->module_7_temp_16;
+    dst_p[6] |= pack_left_shift_u16(module_7_temp_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_7_temp_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_temperature_3_unpack(
+    struct feb_can_bms_module_7_temperature_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_13;
+    uint16_t module_7_temp_14;
+    uint16_t module_7_temp_15;
+    uint16_t module_7_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_7_temp_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_7_temp_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_temp_13 = (int16_t)module_7_temp_13;
+    module_7_temp_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_7_temp_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_temp_14 = (int16_t)module_7_temp_14;
+    module_7_temp_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_7_temp_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_temp_15 = (int16_t)module_7_temp_15;
+    module_7_temp_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_7_temp_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_7_temp_16 = (int16_t)module_7_temp_16;
+
+    return (0);
+}
+
+int feb_can_bms_module_7_temperature_3_init(struct feb_can_bms_module_7_temperature_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_temperature_3_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_7_temperature_3_module_7_temp_13_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_3_module_7_temp_13_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_3_module_7_temp_13_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_3_module_7_temp_14_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_3_module_7_temp_14_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_3_module_7_temp_14_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_3_module_7_temp_15_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_3_module_7_temp_15_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_3_module_7_temp_15_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_3_module_7_temp_16_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_3_module_7_temp_16_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_3_module_7_temp_16_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_temperature_4_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_temperature_4_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_17;
+    uint16_t module_7_temp_18;
+    uint16_t module_7_temp_19;
+    uint16_t module_7_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_7_temp_17 = (uint16_t)src_p->module_7_temp_17;
+    dst_p[0] |= pack_left_shift_u16(module_7_temp_17, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_7_temp_17, 8u, 0xffu);
+    module_7_temp_18 = (uint16_t)src_p->module_7_temp_18;
+    dst_p[2] |= pack_left_shift_u16(module_7_temp_18, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_7_temp_18, 8u, 0xffu);
+    module_7_temp_19 = (uint16_t)src_p->module_7_temp_19;
+    dst_p[4] |= pack_left_shift_u16(module_7_temp_19, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_7_temp_19, 8u, 0xffu);
+    module_7_temp_20 = (uint16_t)src_p->module_7_temp_20;
+    dst_p[6] |= pack_left_shift_u16(module_7_temp_20, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_7_temp_20, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_temperature_4_unpack(
+    struct feb_can_bms_module_7_temperature_4_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_17;
+    uint16_t module_7_temp_18;
+    uint16_t module_7_temp_19;
+    uint16_t module_7_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_7_temp_17 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_7_temp_17 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_temp_17 = (int16_t)module_7_temp_17;
+    module_7_temp_18 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_7_temp_18 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_temp_18 = (int16_t)module_7_temp_18;
+    module_7_temp_19 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_7_temp_19 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_temp_19 = (int16_t)module_7_temp_19;
+    module_7_temp_20 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_7_temp_20 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_7_temp_20 = (int16_t)module_7_temp_20;
+
+    return (0);
+}
+
+int feb_can_bms_module_7_temperature_4_init(struct feb_can_bms_module_7_temperature_4_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_temperature_4_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_7_temperature_4_module_7_temp_17_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_4_module_7_temp_17_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_4_module_7_temp_17_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_4_module_7_temp_18_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_4_module_7_temp_18_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_4_module_7_temp_18_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_4_module_7_temp_19_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_4_module_7_temp_19_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_4_module_7_temp_19_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_4_module_7_temp_20_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_4_module_7_temp_20_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_4_module_7_temp_20_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_temperature_5_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_temperature_5_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_21;
+    uint16_t module_7_temp_22;
+    uint16_t module_7_temp_23;
+    uint16_t module_7_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_7_temp_21 = (uint16_t)src_p->module_7_temp_21;
+    dst_p[0] |= pack_left_shift_u16(module_7_temp_21, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_7_temp_21, 8u, 0xffu);
+    module_7_temp_22 = (uint16_t)src_p->module_7_temp_22;
+    dst_p[2] |= pack_left_shift_u16(module_7_temp_22, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_7_temp_22, 8u, 0xffu);
+    module_7_temp_23 = (uint16_t)src_p->module_7_temp_23;
+    dst_p[4] |= pack_left_shift_u16(module_7_temp_23, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_7_temp_23, 8u, 0xffu);
+    module_7_temp_24 = (uint16_t)src_p->module_7_temp_24;
+    dst_p[6] |= pack_left_shift_u16(module_7_temp_24, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_7_temp_24, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_temperature_5_unpack(
+    struct feb_can_bms_module_7_temperature_5_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_21;
+    uint16_t module_7_temp_22;
+    uint16_t module_7_temp_23;
+    uint16_t module_7_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_7_temp_21 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_7_temp_21 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_temp_21 = (int16_t)module_7_temp_21;
+    module_7_temp_22 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_7_temp_22 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_temp_22 = (int16_t)module_7_temp_22;
+    module_7_temp_23 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_7_temp_23 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_temp_23 = (int16_t)module_7_temp_23;
+    module_7_temp_24 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_7_temp_24 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_7_temp_24 = (int16_t)module_7_temp_24;
+
+    return (0);
+}
+
+int feb_can_bms_module_7_temperature_5_init(struct feb_can_bms_module_7_temperature_5_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_temperature_5_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_7_temperature_5_module_7_temp_21_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_5_module_7_temp_21_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_5_module_7_temp_21_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_5_module_7_temp_22_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_5_module_7_temp_22_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_5_module_7_temp_22_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_5_module_7_temp_23_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_5_module_7_temp_23_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_5_module_7_temp_23_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_5_module_7_temp_24_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_5_module_7_temp_24_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_5_module_7_temp_24_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_temperature_6_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_temperature_6_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_25;
+    uint16_t module_7_temp_26;
+    uint16_t module_7_temp_27;
+    uint16_t module_7_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_7_temp_25 = (uint16_t)src_p->module_7_temp_25;
+    dst_p[0] |= pack_left_shift_u16(module_7_temp_25, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_7_temp_25, 8u, 0xffu);
+    module_7_temp_26 = (uint16_t)src_p->module_7_temp_26;
+    dst_p[2] |= pack_left_shift_u16(module_7_temp_26, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_7_temp_26, 8u, 0xffu);
+    module_7_temp_27 = (uint16_t)src_p->module_7_temp_27;
+    dst_p[4] |= pack_left_shift_u16(module_7_temp_27, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_7_temp_27, 8u, 0xffu);
+    module_7_temp_28 = (uint16_t)src_p->module_7_temp_28;
+    dst_p[6] |= pack_left_shift_u16(module_7_temp_28, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_7_temp_28, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_temperature_6_unpack(
+    struct feb_can_bms_module_7_temperature_6_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_25;
+    uint16_t module_7_temp_26;
+    uint16_t module_7_temp_27;
+    uint16_t module_7_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_7_temp_25 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_7_temp_25 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_temp_25 = (int16_t)module_7_temp_25;
+    module_7_temp_26 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_7_temp_26 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_temp_26 = (int16_t)module_7_temp_26;
+    module_7_temp_27 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_7_temp_27 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_temp_27 = (int16_t)module_7_temp_27;
+    module_7_temp_28 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_7_temp_28 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_7_temp_28 = (int16_t)module_7_temp_28;
+
+    return (0);
+}
+
+int feb_can_bms_module_7_temperature_6_init(struct feb_can_bms_module_7_temperature_6_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_temperature_6_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_7_temperature_6_module_7_temp_25_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_6_module_7_temp_25_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_6_module_7_temp_25_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_6_module_7_temp_26_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_6_module_7_temp_26_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_6_module_7_temp_26_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_6_module_7_temp_27_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_6_module_7_temp_27_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_6_module_7_temp_27_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_6_module_7_temp_28_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_6_module_7_temp_28_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_6_module_7_temp_28_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_temperature_7_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_temperature_7_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_29;
+    uint16_t module_7_temp_30;
+    uint16_t module_7_temp_31;
+    uint16_t module_7_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_7_temp_29 = (uint16_t)src_p->module_7_temp_29;
+    dst_p[0] |= pack_left_shift_u16(module_7_temp_29, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_7_temp_29, 8u, 0xffu);
+    module_7_temp_30 = (uint16_t)src_p->module_7_temp_30;
+    dst_p[2] |= pack_left_shift_u16(module_7_temp_30, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_7_temp_30, 8u, 0xffu);
+    module_7_temp_31 = (uint16_t)src_p->module_7_temp_31;
+    dst_p[4] |= pack_left_shift_u16(module_7_temp_31, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_7_temp_31, 8u, 0xffu);
+    module_7_temp_32 = (uint16_t)src_p->module_7_temp_32;
+    dst_p[6] |= pack_left_shift_u16(module_7_temp_32, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_7_temp_32, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_temperature_7_unpack(
+    struct feb_can_bms_module_7_temperature_7_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_29;
+    uint16_t module_7_temp_30;
+    uint16_t module_7_temp_31;
+    uint16_t module_7_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_7_temp_29 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_7_temp_29 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_temp_29 = (int16_t)module_7_temp_29;
+    module_7_temp_30 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_7_temp_30 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_temp_30 = (int16_t)module_7_temp_30;
+    module_7_temp_31 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_7_temp_31 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_temp_31 = (int16_t)module_7_temp_31;
+    module_7_temp_32 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_7_temp_32 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_7_temp_32 = (int16_t)module_7_temp_32;
+
+    return (0);
+}
+
+int feb_can_bms_module_7_temperature_7_init(struct feb_can_bms_module_7_temperature_7_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_temperature_7_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_7_temperature_7_module_7_temp_29_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_7_module_7_temp_29_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_7_module_7_temp_29_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_7_module_7_temp_30_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_7_module_7_temp_30_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_7_module_7_temp_30_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_7_module_7_temp_31_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_7_module_7_temp_31_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_7_module_7_temp_31_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_7_module_7_temp_32_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_7_module_7_temp_32_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_7_module_7_temp_32_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_temperature_8_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_temperature_8_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_33;
+    uint16_t module_7_temp_34;
+    uint16_t module_7_temp_35;
+    uint16_t module_7_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_7_temp_33 = (uint16_t)src_p->module_7_temp_33;
+    dst_p[0] |= pack_left_shift_u16(module_7_temp_33, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_7_temp_33, 8u, 0xffu);
+    module_7_temp_34 = (uint16_t)src_p->module_7_temp_34;
+    dst_p[2] |= pack_left_shift_u16(module_7_temp_34, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_7_temp_34, 8u, 0xffu);
+    module_7_temp_35 = (uint16_t)src_p->module_7_temp_35;
+    dst_p[4] |= pack_left_shift_u16(module_7_temp_35, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_7_temp_35, 8u, 0xffu);
+    module_7_temp_36 = (uint16_t)src_p->module_7_temp_36;
+    dst_p[6] |= pack_left_shift_u16(module_7_temp_36, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_7_temp_36, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_temperature_8_unpack(
+    struct feb_can_bms_module_7_temperature_8_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_33;
+    uint16_t module_7_temp_34;
+    uint16_t module_7_temp_35;
+    uint16_t module_7_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_7_temp_33 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_7_temp_33 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_temp_33 = (int16_t)module_7_temp_33;
+    module_7_temp_34 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_7_temp_34 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_temp_34 = (int16_t)module_7_temp_34;
+    module_7_temp_35 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_7_temp_35 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_temp_35 = (int16_t)module_7_temp_35;
+    module_7_temp_36 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_7_temp_36 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_7_temp_36 = (int16_t)module_7_temp_36;
+
+    return (0);
+}
+
+int feb_can_bms_module_7_temperature_8_init(struct feb_can_bms_module_7_temperature_8_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_temperature_8_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_7_temperature_8_module_7_temp_33_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_8_module_7_temp_33_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_8_module_7_temp_33_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_8_module_7_temp_34_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_8_module_7_temp_34_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_8_module_7_temp_34_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_8_module_7_temp_35_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_8_module_7_temp_35_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_8_module_7_temp_35_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_8_module_7_temp_36_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_8_module_7_temp_36_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_8_module_7_temp_36_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_temperature_9_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_temperature_9_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_37;
+    uint16_t module_7_temp_38;
+    uint16_t module_7_temp_39;
+    uint16_t module_7_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_7_temp_37 = (uint16_t)src_p->module_7_temp_37;
+    dst_p[0] |= pack_left_shift_u16(module_7_temp_37, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_7_temp_37, 8u, 0xffu);
+    module_7_temp_38 = (uint16_t)src_p->module_7_temp_38;
+    dst_p[2] |= pack_left_shift_u16(module_7_temp_38, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_7_temp_38, 8u, 0xffu);
+    module_7_temp_39 = (uint16_t)src_p->module_7_temp_39;
+    dst_p[4] |= pack_left_shift_u16(module_7_temp_39, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_7_temp_39, 8u, 0xffu);
+    module_7_temp_40 = (uint16_t)src_p->module_7_temp_40;
+    dst_p[6] |= pack_left_shift_u16(module_7_temp_40, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_7_temp_40, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_7_temperature_9_unpack(
+    struct feb_can_bms_module_7_temperature_9_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_37;
+    uint16_t module_7_temp_38;
+    uint16_t module_7_temp_39;
+    uint16_t module_7_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_7_temp_37 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_7_temp_37 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_temp_37 = (int16_t)module_7_temp_37;
+    module_7_temp_38 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_7_temp_38 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_7_temp_38 = (int16_t)module_7_temp_38;
+    module_7_temp_39 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_7_temp_39 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_7_temp_39 = (int16_t)module_7_temp_39;
+    module_7_temp_40 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_7_temp_40 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_7_temp_40 = (int16_t)module_7_temp_40;
+
+    return (0);
+}
+
+int feb_can_bms_module_7_temperature_9_init(struct feb_can_bms_module_7_temperature_9_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_temperature_9_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_7_temperature_9_module_7_temp_37_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_9_module_7_temp_37_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_9_module_7_temp_37_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_9_module_7_temp_38_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_9_module_7_temp_38_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_9_module_7_temp_38_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_9_module_7_temp_39_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_9_module_7_temp_39_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_9_module_7_temp_39_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_7_temperature_9_module_7_temp_40_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_9_module_7_temp_40_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_9_module_7_temp_40_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_7_temperature_10_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_7_temperature_10_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 2);
+
+    module_7_temp_41 = (uint16_t)src_p->module_7_temp_41;
+    dst_p[0] |= pack_left_shift_u16(module_7_temp_41, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_7_temp_41, 8u, 0xffu);
+
+    return (2);
+}
+
+int feb_can_bms_module_7_temperature_10_unpack(
+    struct feb_can_bms_module_7_temperature_10_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_7_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    module_7_temp_41 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_7_temp_41 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_7_temp_41 = (int16_t)module_7_temp_41;
+
+    return (0);
+}
+
+int feb_can_bms_module_7_temperature_10_init(struct feb_can_bms_module_7_temperature_10_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_7_temperature_10_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_7_temperature_10_module_7_temp_41_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_7_temperature_10_module_7_temp_41_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_7_temperature_10_module_7_temp_41_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_temperature_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_temperature_0_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_1;
+    uint16_t module_8_temp_2;
+    uint16_t module_8_temp_3;
+    uint16_t module_8_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_8_temp_1 = (uint16_t)src_p->module_8_temp_1;
+    dst_p[0] |= pack_left_shift_u16(module_8_temp_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_8_temp_1, 8u, 0xffu);
+    module_8_temp_2 = (uint16_t)src_p->module_8_temp_2;
+    dst_p[2] |= pack_left_shift_u16(module_8_temp_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_8_temp_2, 8u, 0xffu);
+    module_8_temp_3 = (uint16_t)src_p->module_8_temp_3;
+    dst_p[4] |= pack_left_shift_u16(module_8_temp_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_8_temp_3, 8u, 0xffu);
+    module_8_temp_4 = (uint16_t)src_p->module_8_temp_4;
+    dst_p[6] |= pack_left_shift_u16(module_8_temp_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_8_temp_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_temperature_0_unpack(
+    struct feb_can_bms_module_8_temperature_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_1;
+    uint16_t module_8_temp_2;
+    uint16_t module_8_temp_3;
+    uint16_t module_8_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_8_temp_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_8_temp_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_temp_1 = (int16_t)module_8_temp_1;
+    module_8_temp_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_8_temp_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_temp_2 = (int16_t)module_8_temp_2;
+    module_8_temp_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_8_temp_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_temp_3 = (int16_t)module_8_temp_3;
+    module_8_temp_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_8_temp_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_8_temp_4 = (int16_t)module_8_temp_4;
+
+    return (0);
+}
+
+int feb_can_bms_module_8_temperature_0_init(struct feb_can_bms_module_8_temperature_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_temperature_0_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_8_temperature_0_module_8_temp_1_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_0_module_8_temp_1_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_0_module_8_temp_1_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_0_module_8_temp_2_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_0_module_8_temp_2_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_0_module_8_temp_2_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_0_module_8_temp_3_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_0_module_8_temp_3_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_0_module_8_temp_3_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_0_module_8_temp_4_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_0_module_8_temp_4_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_0_module_8_temp_4_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_temperature_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_temperature_1_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_5;
+    uint16_t module_8_temp_6;
+    uint16_t module_8_temp_7;
+    uint16_t module_8_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_8_temp_5 = (uint16_t)src_p->module_8_temp_5;
+    dst_p[0] |= pack_left_shift_u16(module_8_temp_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_8_temp_5, 8u, 0xffu);
+    module_8_temp_6 = (uint16_t)src_p->module_8_temp_6;
+    dst_p[2] |= pack_left_shift_u16(module_8_temp_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_8_temp_6, 8u, 0xffu);
+    module_8_temp_7 = (uint16_t)src_p->module_8_temp_7;
+    dst_p[4] |= pack_left_shift_u16(module_8_temp_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_8_temp_7, 8u, 0xffu);
+    module_8_temp_8 = (uint16_t)src_p->module_8_temp_8;
+    dst_p[6] |= pack_left_shift_u16(module_8_temp_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_8_temp_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_temperature_1_unpack(
+    struct feb_can_bms_module_8_temperature_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_5;
+    uint16_t module_8_temp_6;
+    uint16_t module_8_temp_7;
+    uint16_t module_8_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_8_temp_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_8_temp_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_temp_5 = (int16_t)module_8_temp_5;
+    module_8_temp_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_8_temp_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_temp_6 = (int16_t)module_8_temp_6;
+    module_8_temp_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_8_temp_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_temp_7 = (int16_t)module_8_temp_7;
+    module_8_temp_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_8_temp_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_8_temp_8 = (int16_t)module_8_temp_8;
+
+    return (0);
+}
+
+int feb_can_bms_module_8_temperature_1_init(struct feb_can_bms_module_8_temperature_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_temperature_1_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_8_temperature_1_module_8_temp_5_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_1_module_8_temp_5_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_1_module_8_temp_5_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_1_module_8_temp_6_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_1_module_8_temp_6_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_1_module_8_temp_6_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_1_module_8_temp_7_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_1_module_8_temp_7_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_1_module_8_temp_7_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_1_module_8_temp_8_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_1_module_8_temp_8_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_1_module_8_temp_8_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_temperature_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_temperature_2_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_10;
+    uint16_t module_8_temp_11;
+    uint16_t module_8_temp_12;
+    uint16_t module_8_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_8_temp_9 = (uint16_t)src_p->module_8_temp_9;
+    dst_p[0] |= pack_left_shift_u16(module_8_temp_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_8_temp_9, 8u, 0xffu);
+    module_8_temp_10 = (uint16_t)src_p->module_8_temp_10;
+    dst_p[2] |= pack_left_shift_u16(module_8_temp_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_8_temp_10, 8u, 0xffu);
+    module_8_temp_11 = (uint16_t)src_p->module_8_temp_11;
+    dst_p[4] |= pack_left_shift_u16(module_8_temp_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_8_temp_11, 8u, 0xffu);
+    module_8_temp_12 = (uint16_t)src_p->module_8_temp_12;
+    dst_p[6] |= pack_left_shift_u16(module_8_temp_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_8_temp_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_temperature_2_unpack(
+    struct feb_can_bms_module_8_temperature_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_10;
+    uint16_t module_8_temp_11;
+    uint16_t module_8_temp_12;
+    uint16_t module_8_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_8_temp_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_8_temp_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_temp_9 = (int16_t)module_8_temp_9;
+    module_8_temp_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_8_temp_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_temp_10 = (int16_t)module_8_temp_10;
+    module_8_temp_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_8_temp_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_temp_11 = (int16_t)module_8_temp_11;
+    module_8_temp_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_8_temp_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_8_temp_12 = (int16_t)module_8_temp_12;
+
+    return (0);
+}
+
+int feb_can_bms_module_8_temperature_2_init(struct feb_can_bms_module_8_temperature_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_temperature_2_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_8_temperature_2_module_8_temp_9_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_2_module_8_temp_9_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_2_module_8_temp_9_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_2_module_8_temp_10_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_2_module_8_temp_10_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_2_module_8_temp_10_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_2_module_8_temp_11_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_2_module_8_temp_11_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_2_module_8_temp_11_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_2_module_8_temp_12_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_2_module_8_temp_12_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_2_module_8_temp_12_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_temperature_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_temperature_3_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_13;
+    uint16_t module_8_temp_14;
+    uint16_t module_8_temp_15;
+    uint16_t module_8_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_8_temp_13 = (uint16_t)src_p->module_8_temp_13;
+    dst_p[0] |= pack_left_shift_u16(module_8_temp_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_8_temp_13, 8u, 0xffu);
+    module_8_temp_14 = (uint16_t)src_p->module_8_temp_14;
+    dst_p[2] |= pack_left_shift_u16(module_8_temp_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_8_temp_14, 8u, 0xffu);
+    module_8_temp_15 = (uint16_t)src_p->module_8_temp_15;
+    dst_p[4] |= pack_left_shift_u16(module_8_temp_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_8_temp_15, 8u, 0xffu);
+    module_8_temp_16 = (uint16_t)src_p->module_8_temp_16;
+    dst_p[6] |= pack_left_shift_u16(module_8_temp_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_8_temp_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_temperature_3_unpack(
+    struct feb_can_bms_module_8_temperature_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_13;
+    uint16_t module_8_temp_14;
+    uint16_t module_8_temp_15;
+    uint16_t module_8_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_8_temp_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_8_temp_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_temp_13 = (int16_t)module_8_temp_13;
+    module_8_temp_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_8_temp_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_temp_14 = (int16_t)module_8_temp_14;
+    module_8_temp_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_8_temp_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_temp_15 = (int16_t)module_8_temp_15;
+    module_8_temp_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_8_temp_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_8_temp_16 = (int16_t)module_8_temp_16;
+
+    return (0);
+}
+
+int feb_can_bms_module_8_temperature_3_init(struct feb_can_bms_module_8_temperature_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_temperature_3_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_8_temperature_3_module_8_temp_13_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_3_module_8_temp_13_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_3_module_8_temp_13_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_3_module_8_temp_14_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_3_module_8_temp_14_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_3_module_8_temp_14_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_3_module_8_temp_15_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_3_module_8_temp_15_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_3_module_8_temp_15_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_3_module_8_temp_16_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_3_module_8_temp_16_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_3_module_8_temp_16_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_temperature_4_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_temperature_4_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_17;
+    uint16_t module_8_temp_18;
+    uint16_t module_8_temp_19;
+    uint16_t module_8_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_8_temp_17 = (uint16_t)src_p->module_8_temp_17;
+    dst_p[0] |= pack_left_shift_u16(module_8_temp_17, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_8_temp_17, 8u, 0xffu);
+    module_8_temp_18 = (uint16_t)src_p->module_8_temp_18;
+    dst_p[2] |= pack_left_shift_u16(module_8_temp_18, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_8_temp_18, 8u, 0xffu);
+    module_8_temp_19 = (uint16_t)src_p->module_8_temp_19;
+    dst_p[4] |= pack_left_shift_u16(module_8_temp_19, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_8_temp_19, 8u, 0xffu);
+    module_8_temp_20 = (uint16_t)src_p->module_8_temp_20;
+    dst_p[6] |= pack_left_shift_u16(module_8_temp_20, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_8_temp_20, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_temperature_4_unpack(
+    struct feb_can_bms_module_8_temperature_4_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_17;
+    uint16_t module_8_temp_18;
+    uint16_t module_8_temp_19;
+    uint16_t module_8_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_8_temp_17 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_8_temp_17 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_temp_17 = (int16_t)module_8_temp_17;
+    module_8_temp_18 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_8_temp_18 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_temp_18 = (int16_t)module_8_temp_18;
+    module_8_temp_19 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_8_temp_19 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_temp_19 = (int16_t)module_8_temp_19;
+    module_8_temp_20 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_8_temp_20 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_8_temp_20 = (int16_t)module_8_temp_20;
+
+    return (0);
+}
+
+int feb_can_bms_module_8_temperature_4_init(struct feb_can_bms_module_8_temperature_4_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_temperature_4_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_8_temperature_4_module_8_temp_17_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_4_module_8_temp_17_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_4_module_8_temp_17_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_4_module_8_temp_18_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_4_module_8_temp_18_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_4_module_8_temp_18_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_4_module_8_temp_19_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_4_module_8_temp_19_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_4_module_8_temp_19_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_4_module_8_temp_20_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_4_module_8_temp_20_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_4_module_8_temp_20_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_temperature_5_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_temperature_5_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_21;
+    uint16_t module_8_temp_22;
+    uint16_t module_8_temp_23;
+    uint16_t module_8_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_8_temp_21 = (uint16_t)src_p->module_8_temp_21;
+    dst_p[0] |= pack_left_shift_u16(module_8_temp_21, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_8_temp_21, 8u, 0xffu);
+    module_8_temp_22 = (uint16_t)src_p->module_8_temp_22;
+    dst_p[2] |= pack_left_shift_u16(module_8_temp_22, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_8_temp_22, 8u, 0xffu);
+    module_8_temp_23 = (uint16_t)src_p->module_8_temp_23;
+    dst_p[4] |= pack_left_shift_u16(module_8_temp_23, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_8_temp_23, 8u, 0xffu);
+    module_8_temp_24 = (uint16_t)src_p->module_8_temp_24;
+    dst_p[6] |= pack_left_shift_u16(module_8_temp_24, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_8_temp_24, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_temperature_5_unpack(
+    struct feb_can_bms_module_8_temperature_5_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_21;
+    uint16_t module_8_temp_22;
+    uint16_t module_8_temp_23;
+    uint16_t module_8_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_8_temp_21 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_8_temp_21 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_temp_21 = (int16_t)module_8_temp_21;
+    module_8_temp_22 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_8_temp_22 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_temp_22 = (int16_t)module_8_temp_22;
+    module_8_temp_23 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_8_temp_23 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_temp_23 = (int16_t)module_8_temp_23;
+    module_8_temp_24 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_8_temp_24 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_8_temp_24 = (int16_t)module_8_temp_24;
+
+    return (0);
+}
+
+int feb_can_bms_module_8_temperature_5_init(struct feb_can_bms_module_8_temperature_5_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_temperature_5_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_8_temperature_5_module_8_temp_21_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_5_module_8_temp_21_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_5_module_8_temp_21_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_5_module_8_temp_22_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_5_module_8_temp_22_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_5_module_8_temp_22_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_5_module_8_temp_23_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_5_module_8_temp_23_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_5_module_8_temp_23_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_5_module_8_temp_24_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_5_module_8_temp_24_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_5_module_8_temp_24_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_temperature_6_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_temperature_6_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_25;
+    uint16_t module_8_temp_26;
+    uint16_t module_8_temp_27;
+    uint16_t module_8_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_8_temp_25 = (uint16_t)src_p->module_8_temp_25;
+    dst_p[0] |= pack_left_shift_u16(module_8_temp_25, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_8_temp_25, 8u, 0xffu);
+    module_8_temp_26 = (uint16_t)src_p->module_8_temp_26;
+    dst_p[2] |= pack_left_shift_u16(module_8_temp_26, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_8_temp_26, 8u, 0xffu);
+    module_8_temp_27 = (uint16_t)src_p->module_8_temp_27;
+    dst_p[4] |= pack_left_shift_u16(module_8_temp_27, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_8_temp_27, 8u, 0xffu);
+    module_8_temp_28 = (uint16_t)src_p->module_8_temp_28;
+    dst_p[6] |= pack_left_shift_u16(module_8_temp_28, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_8_temp_28, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_temperature_6_unpack(
+    struct feb_can_bms_module_8_temperature_6_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_25;
+    uint16_t module_8_temp_26;
+    uint16_t module_8_temp_27;
+    uint16_t module_8_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_8_temp_25 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_8_temp_25 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_temp_25 = (int16_t)module_8_temp_25;
+    module_8_temp_26 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_8_temp_26 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_temp_26 = (int16_t)module_8_temp_26;
+    module_8_temp_27 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_8_temp_27 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_temp_27 = (int16_t)module_8_temp_27;
+    module_8_temp_28 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_8_temp_28 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_8_temp_28 = (int16_t)module_8_temp_28;
+
+    return (0);
+}
+
+int feb_can_bms_module_8_temperature_6_init(struct feb_can_bms_module_8_temperature_6_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_temperature_6_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_8_temperature_6_module_8_temp_25_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_6_module_8_temp_25_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_6_module_8_temp_25_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_6_module_8_temp_26_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_6_module_8_temp_26_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_6_module_8_temp_26_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_6_module_8_temp_27_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_6_module_8_temp_27_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_6_module_8_temp_27_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_6_module_8_temp_28_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_6_module_8_temp_28_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_6_module_8_temp_28_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_temperature_7_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_temperature_7_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_29;
+    uint16_t module_8_temp_30;
+    uint16_t module_8_temp_31;
+    uint16_t module_8_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_8_temp_29 = (uint16_t)src_p->module_8_temp_29;
+    dst_p[0] |= pack_left_shift_u16(module_8_temp_29, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_8_temp_29, 8u, 0xffu);
+    module_8_temp_30 = (uint16_t)src_p->module_8_temp_30;
+    dst_p[2] |= pack_left_shift_u16(module_8_temp_30, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_8_temp_30, 8u, 0xffu);
+    module_8_temp_31 = (uint16_t)src_p->module_8_temp_31;
+    dst_p[4] |= pack_left_shift_u16(module_8_temp_31, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_8_temp_31, 8u, 0xffu);
+    module_8_temp_32 = (uint16_t)src_p->module_8_temp_32;
+    dst_p[6] |= pack_left_shift_u16(module_8_temp_32, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_8_temp_32, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_temperature_7_unpack(
+    struct feb_can_bms_module_8_temperature_7_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_29;
+    uint16_t module_8_temp_30;
+    uint16_t module_8_temp_31;
+    uint16_t module_8_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_8_temp_29 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_8_temp_29 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_temp_29 = (int16_t)module_8_temp_29;
+    module_8_temp_30 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_8_temp_30 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_temp_30 = (int16_t)module_8_temp_30;
+    module_8_temp_31 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_8_temp_31 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_temp_31 = (int16_t)module_8_temp_31;
+    module_8_temp_32 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_8_temp_32 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_8_temp_32 = (int16_t)module_8_temp_32;
+
+    return (0);
+}
+
+int feb_can_bms_module_8_temperature_7_init(struct feb_can_bms_module_8_temperature_7_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_temperature_7_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_8_temperature_7_module_8_temp_29_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_7_module_8_temp_29_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_7_module_8_temp_29_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_7_module_8_temp_30_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_7_module_8_temp_30_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_7_module_8_temp_30_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_7_module_8_temp_31_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_7_module_8_temp_31_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_7_module_8_temp_31_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_7_module_8_temp_32_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_7_module_8_temp_32_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_7_module_8_temp_32_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_temperature_8_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_temperature_8_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_33;
+    uint16_t module_8_temp_34;
+    uint16_t module_8_temp_35;
+    uint16_t module_8_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_8_temp_33 = (uint16_t)src_p->module_8_temp_33;
+    dst_p[0] |= pack_left_shift_u16(module_8_temp_33, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_8_temp_33, 8u, 0xffu);
+    module_8_temp_34 = (uint16_t)src_p->module_8_temp_34;
+    dst_p[2] |= pack_left_shift_u16(module_8_temp_34, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_8_temp_34, 8u, 0xffu);
+    module_8_temp_35 = (uint16_t)src_p->module_8_temp_35;
+    dst_p[4] |= pack_left_shift_u16(module_8_temp_35, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_8_temp_35, 8u, 0xffu);
+    module_8_temp_36 = (uint16_t)src_p->module_8_temp_36;
+    dst_p[6] |= pack_left_shift_u16(module_8_temp_36, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_8_temp_36, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_temperature_8_unpack(
+    struct feb_can_bms_module_8_temperature_8_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_33;
+    uint16_t module_8_temp_34;
+    uint16_t module_8_temp_35;
+    uint16_t module_8_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_8_temp_33 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_8_temp_33 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_temp_33 = (int16_t)module_8_temp_33;
+    module_8_temp_34 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_8_temp_34 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_temp_34 = (int16_t)module_8_temp_34;
+    module_8_temp_35 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_8_temp_35 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_temp_35 = (int16_t)module_8_temp_35;
+    module_8_temp_36 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_8_temp_36 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_8_temp_36 = (int16_t)module_8_temp_36;
+
+    return (0);
+}
+
+int feb_can_bms_module_8_temperature_8_init(struct feb_can_bms_module_8_temperature_8_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_temperature_8_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_8_temperature_8_module_8_temp_33_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_8_module_8_temp_33_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_8_module_8_temp_33_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_8_module_8_temp_34_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_8_module_8_temp_34_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_8_module_8_temp_34_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_8_module_8_temp_35_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_8_module_8_temp_35_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_8_module_8_temp_35_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_8_module_8_temp_36_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_8_module_8_temp_36_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_8_module_8_temp_36_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_temperature_9_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_temperature_9_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_37;
+    uint16_t module_8_temp_38;
+    uint16_t module_8_temp_39;
+    uint16_t module_8_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_8_temp_37 = (uint16_t)src_p->module_8_temp_37;
+    dst_p[0] |= pack_left_shift_u16(module_8_temp_37, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_8_temp_37, 8u, 0xffu);
+    module_8_temp_38 = (uint16_t)src_p->module_8_temp_38;
+    dst_p[2] |= pack_left_shift_u16(module_8_temp_38, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_8_temp_38, 8u, 0xffu);
+    module_8_temp_39 = (uint16_t)src_p->module_8_temp_39;
+    dst_p[4] |= pack_left_shift_u16(module_8_temp_39, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_8_temp_39, 8u, 0xffu);
+    module_8_temp_40 = (uint16_t)src_p->module_8_temp_40;
+    dst_p[6] |= pack_left_shift_u16(module_8_temp_40, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_8_temp_40, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_8_temperature_9_unpack(
+    struct feb_can_bms_module_8_temperature_9_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_37;
+    uint16_t module_8_temp_38;
+    uint16_t module_8_temp_39;
+    uint16_t module_8_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_8_temp_37 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_8_temp_37 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_temp_37 = (int16_t)module_8_temp_37;
+    module_8_temp_38 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_8_temp_38 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_8_temp_38 = (int16_t)module_8_temp_38;
+    module_8_temp_39 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_8_temp_39 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_8_temp_39 = (int16_t)module_8_temp_39;
+    module_8_temp_40 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_8_temp_40 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_8_temp_40 = (int16_t)module_8_temp_40;
+
+    return (0);
+}
+
+int feb_can_bms_module_8_temperature_9_init(struct feb_can_bms_module_8_temperature_9_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_temperature_9_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_8_temperature_9_module_8_temp_37_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_9_module_8_temp_37_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_9_module_8_temp_37_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_9_module_8_temp_38_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_9_module_8_temp_38_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_9_module_8_temp_38_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_9_module_8_temp_39_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_9_module_8_temp_39_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_9_module_8_temp_39_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_8_temperature_9_module_8_temp_40_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_9_module_8_temp_40_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_9_module_8_temp_40_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_8_temperature_10_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_8_temperature_10_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 2);
+
+    module_8_temp_41 = (uint16_t)src_p->module_8_temp_41;
+    dst_p[0] |= pack_left_shift_u16(module_8_temp_41, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_8_temp_41, 8u, 0xffu);
+
+    return (2);
+}
+
+int feb_can_bms_module_8_temperature_10_unpack(
+    struct feb_can_bms_module_8_temperature_10_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_8_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    module_8_temp_41 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_8_temp_41 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_8_temp_41 = (int16_t)module_8_temp_41;
+
+    return (0);
+}
+
+int feb_can_bms_module_8_temperature_10_init(struct feb_can_bms_module_8_temperature_10_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_8_temperature_10_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_8_temperature_10_module_8_temp_41_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_8_temperature_10_module_8_temp_41_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_8_temperature_10_module_8_temp_41_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_temperature_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_temperature_0_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_1;
+    uint16_t module_9_temp_2;
+    uint16_t module_9_temp_3;
+    uint16_t module_9_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_9_temp_1 = (uint16_t)src_p->module_9_temp_1;
+    dst_p[0] |= pack_left_shift_u16(module_9_temp_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_9_temp_1, 8u, 0xffu);
+    module_9_temp_2 = (uint16_t)src_p->module_9_temp_2;
+    dst_p[2] |= pack_left_shift_u16(module_9_temp_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_9_temp_2, 8u, 0xffu);
+    module_9_temp_3 = (uint16_t)src_p->module_9_temp_3;
+    dst_p[4] |= pack_left_shift_u16(module_9_temp_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_9_temp_3, 8u, 0xffu);
+    module_9_temp_4 = (uint16_t)src_p->module_9_temp_4;
+    dst_p[6] |= pack_left_shift_u16(module_9_temp_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_9_temp_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_temperature_0_unpack(
+    struct feb_can_bms_module_9_temperature_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_1;
+    uint16_t module_9_temp_2;
+    uint16_t module_9_temp_3;
+    uint16_t module_9_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_9_temp_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_9_temp_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_temp_1 = (int16_t)module_9_temp_1;
+    module_9_temp_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_9_temp_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_temp_2 = (int16_t)module_9_temp_2;
+    module_9_temp_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_9_temp_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_temp_3 = (int16_t)module_9_temp_3;
+    module_9_temp_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_9_temp_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_9_temp_4 = (int16_t)module_9_temp_4;
+
+    return (0);
+}
+
+int feb_can_bms_module_9_temperature_0_init(struct feb_can_bms_module_9_temperature_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_temperature_0_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_9_temperature_0_module_9_temp_1_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_0_module_9_temp_1_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_0_module_9_temp_1_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_0_module_9_temp_2_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_0_module_9_temp_2_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_0_module_9_temp_2_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_0_module_9_temp_3_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_0_module_9_temp_3_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_0_module_9_temp_3_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_0_module_9_temp_4_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_0_module_9_temp_4_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_0_module_9_temp_4_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_temperature_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_temperature_1_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_5;
+    uint16_t module_9_temp_6;
+    uint16_t module_9_temp_7;
+    uint16_t module_9_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_9_temp_5 = (uint16_t)src_p->module_9_temp_5;
+    dst_p[0] |= pack_left_shift_u16(module_9_temp_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_9_temp_5, 8u, 0xffu);
+    module_9_temp_6 = (uint16_t)src_p->module_9_temp_6;
+    dst_p[2] |= pack_left_shift_u16(module_9_temp_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_9_temp_6, 8u, 0xffu);
+    module_9_temp_7 = (uint16_t)src_p->module_9_temp_7;
+    dst_p[4] |= pack_left_shift_u16(module_9_temp_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_9_temp_7, 8u, 0xffu);
+    module_9_temp_8 = (uint16_t)src_p->module_9_temp_8;
+    dst_p[6] |= pack_left_shift_u16(module_9_temp_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_9_temp_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_temperature_1_unpack(
+    struct feb_can_bms_module_9_temperature_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_5;
+    uint16_t module_9_temp_6;
+    uint16_t module_9_temp_7;
+    uint16_t module_9_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_9_temp_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_9_temp_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_temp_5 = (int16_t)module_9_temp_5;
+    module_9_temp_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_9_temp_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_temp_6 = (int16_t)module_9_temp_6;
+    module_9_temp_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_9_temp_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_temp_7 = (int16_t)module_9_temp_7;
+    module_9_temp_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_9_temp_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_9_temp_8 = (int16_t)module_9_temp_8;
+
+    return (0);
+}
+
+int feb_can_bms_module_9_temperature_1_init(struct feb_can_bms_module_9_temperature_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_temperature_1_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_9_temperature_1_module_9_temp_5_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_1_module_9_temp_5_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_1_module_9_temp_5_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_1_module_9_temp_6_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_1_module_9_temp_6_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_1_module_9_temp_6_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_1_module_9_temp_7_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_1_module_9_temp_7_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_1_module_9_temp_7_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_1_module_9_temp_8_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_1_module_9_temp_8_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_1_module_9_temp_8_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_temperature_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_temperature_2_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_10;
+    uint16_t module_9_temp_11;
+    uint16_t module_9_temp_12;
+    uint16_t module_9_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_9_temp_9 = (uint16_t)src_p->module_9_temp_9;
+    dst_p[0] |= pack_left_shift_u16(module_9_temp_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_9_temp_9, 8u, 0xffu);
+    module_9_temp_10 = (uint16_t)src_p->module_9_temp_10;
+    dst_p[2] |= pack_left_shift_u16(module_9_temp_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_9_temp_10, 8u, 0xffu);
+    module_9_temp_11 = (uint16_t)src_p->module_9_temp_11;
+    dst_p[4] |= pack_left_shift_u16(module_9_temp_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_9_temp_11, 8u, 0xffu);
+    module_9_temp_12 = (uint16_t)src_p->module_9_temp_12;
+    dst_p[6] |= pack_left_shift_u16(module_9_temp_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_9_temp_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_temperature_2_unpack(
+    struct feb_can_bms_module_9_temperature_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_10;
+    uint16_t module_9_temp_11;
+    uint16_t module_9_temp_12;
+    uint16_t module_9_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_9_temp_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_9_temp_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_temp_9 = (int16_t)module_9_temp_9;
+    module_9_temp_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_9_temp_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_temp_10 = (int16_t)module_9_temp_10;
+    module_9_temp_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_9_temp_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_temp_11 = (int16_t)module_9_temp_11;
+    module_9_temp_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_9_temp_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_9_temp_12 = (int16_t)module_9_temp_12;
+
+    return (0);
+}
+
+int feb_can_bms_module_9_temperature_2_init(struct feb_can_bms_module_9_temperature_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_temperature_2_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_9_temperature_2_module_9_temp_9_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_2_module_9_temp_9_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_2_module_9_temp_9_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_2_module_9_temp_10_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_2_module_9_temp_10_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_2_module_9_temp_10_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_2_module_9_temp_11_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_2_module_9_temp_11_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_2_module_9_temp_11_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_2_module_9_temp_12_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_2_module_9_temp_12_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_2_module_9_temp_12_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_temperature_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_temperature_3_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_13;
+    uint16_t module_9_temp_14;
+    uint16_t module_9_temp_15;
+    uint16_t module_9_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_9_temp_13 = (uint16_t)src_p->module_9_temp_13;
+    dst_p[0] |= pack_left_shift_u16(module_9_temp_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_9_temp_13, 8u, 0xffu);
+    module_9_temp_14 = (uint16_t)src_p->module_9_temp_14;
+    dst_p[2] |= pack_left_shift_u16(module_9_temp_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_9_temp_14, 8u, 0xffu);
+    module_9_temp_15 = (uint16_t)src_p->module_9_temp_15;
+    dst_p[4] |= pack_left_shift_u16(module_9_temp_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_9_temp_15, 8u, 0xffu);
+    module_9_temp_16 = (uint16_t)src_p->module_9_temp_16;
+    dst_p[6] |= pack_left_shift_u16(module_9_temp_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_9_temp_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_temperature_3_unpack(
+    struct feb_can_bms_module_9_temperature_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_13;
+    uint16_t module_9_temp_14;
+    uint16_t module_9_temp_15;
+    uint16_t module_9_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_9_temp_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_9_temp_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_temp_13 = (int16_t)module_9_temp_13;
+    module_9_temp_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_9_temp_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_temp_14 = (int16_t)module_9_temp_14;
+    module_9_temp_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_9_temp_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_temp_15 = (int16_t)module_9_temp_15;
+    module_9_temp_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_9_temp_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_9_temp_16 = (int16_t)module_9_temp_16;
+
+    return (0);
+}
+
+int feb_can_bms_module_9_temperature_3_init(struct feb_can_bms_module_9_temperature_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_temperature_3_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_9_temperature_3_module_9_temp_13_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_3_module_9_temp_13_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_3_module_9_temp_13_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_3_module_9_temp_14_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_3_module_9_temp_14_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_3_module_9_temp_14_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_3_module_9_temp_15_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_3_module_9_temp_15_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_3_module_9_temp_15_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_3_module_9_temp_16_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_3_module_9_temp_16_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_3_module_9_temp_16_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_temperature_4_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_temperature_4_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_17;
+    uint16_t module_9_temp_18;
+    uint16_t module_9_temp_19;
+    uint16_t module_9_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_9_temp_17 = (uint16_t)src_p->module_9_temp_17;
+    dst_p[0] |= pack_left_shift_u16(module_9_temp_17, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_9_temp_17, 8u, 0xffu);
+    module_9_temp_18 = (uint16_t)src_p->module_9_temp_18;
+    dst_p[2] |= pack_left_shift_u16(module_9_temp_18, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_9_temp_18, 8u, 0xffu);
+    module_9_temp_19 = (uint16_t)src_p->module_9_temp_19;
+    dst_p[4] |= pack_left_shift_u16(module_9_temp_19, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_9_temp_19, 8u, 0xffu);
+    module_9_temp_20 = (uint16_t)src_p->module_9_temp_20;
+    dst_p[6] |= pack_left_shift_u16(module_9_temp_20, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_9_temp_20, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_temperature_4_unpack(
+    struct feb_can_bms_module_9_temperature_4_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_17;
+    uint16_t module_9_temp_18;
+    uint16_t module_9_temp_19;
+    uint16_t module_9_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_9_temp_17 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_9_temp_17 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_temp_17 = (int16_t)module_9_temp_17;
+    module_9_temp_18 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_9_temp_18 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_temp_18 = (int16_t)module_9_temp_18;
+    module_9_temp_19 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_9_temp_19 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_temp_19 = (int16_t)module_9_temp_19;
+    module_9_temp_20 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_9_temp_20 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_9_temp_20 = (int16_t)module_9_temp_20;
+
+    return (0);
+}
+
+int feb_can_bms_module_9_temperature_4_init(struct feb_can_bms_module_9_temperature_4_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_temperature_4_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_9_temperature_4_module_9_temp_17_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_4_module_9_temp_17_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_4_module_9_temp_17_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_4_module_9_temp_18_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_4_module_9_temp_18_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_4_module_9_temp_18_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_4_module_9_temp_19_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_4_module_9_temp_19_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_4_module_9_temp_19_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_4_module_9_temp_20_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_4_module_9_temp_20_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_4_module_9_temp_20_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_temperature_5_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_temperature_5_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_21;
+    uint16_t module_9_temp_22;
+    uint16_t module_9_temp_23;
+    uint16_t module_9_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_9_temp_21 = (uint16_t)src_p->module_9_temp_21;
+    dst_p[0] |= pack_left_shift_u16(module_9_temp_21, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_9_temp_21, 8u, 0xffu);
+    module_9_temp_22 = (uint16_t)src_p->module_9_temp_22;
+    dst_p[2] |= pack_left_shift_u16(module_9_temp_22, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_9_temp_22, 8u, 0xffu);
+    module_9_temp_23 = (uint16_t)src_p->module_9_temp_23;
+    dst_p[4] |= pack_left_shift_u16(module_9_temp_23, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_9_temp_23, 8u, 0xffu);
+    module_9_temp_24 = (uint16_t)src_p->module_9_temp_24;
+    dst_p[6] |= pack_left_shift_u16(module_9_temp_24, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_9_temp_24, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_temperature_5_unpack(
+    struct feb_can_bms_module_9_temperature_5_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_21;
+    uint16_t module_9_temp_22;
+    uint16_t module_9_temp_23;
+    uint16_t module_9_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_9_temp_21 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_9_temp_21 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_temp_21 = (int16_t)module_9_temp_21;
+    module_9_temp_22 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_9_temp_22 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_temp_22 = (int16_t)module_9_temp_22;
+    module_9_temp_23 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_9_temp_23 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_temp_23 = (int16_t)module_9_temp_23;
+    module_9_temp_24 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_9_temp_24 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_9_temp_24 = (int16_t)module_9_temp_24;
+
+    return (0);
+}
+
+int feb_can_bms_module_9_temperature_5_init(struct feb_can_bms_module_9_temperature_5_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_temperature_5_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_9_temperature_5_module_9_temp_21_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_5_module_9_temp_21_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_5_module_9_temp_21_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_5_module_9_temp_22_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_5_module_9_temp_22_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_5_module_9_temp_22_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_5_module_9_temp_23_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_5_module_9_temp_23_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_5_module_9_temp_23_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_5_module_9_temp_24_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_5_module_9_temp_24_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_5_module_9_temp_24_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_temperature_6_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_temperature_6_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_25;
+    uint16_t module_9_temp_26;
+    uint16_t module_9_temp_27;
+    uint16_t module_9_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_9_temp_25 = (uint16_t)src_p->module_9_temp_25;
+    dst_p[0] |= pack_left_shift_u16(module_9_temp_25, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_9_temp_25, 8u, 0xffu);
+    module_9_temp_26 = (uint16_t)src_p->module_9_temp_26;
+    dst_p[2] |= pack_left_shift_u16(module_9_temp_26, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_9_temp_26, 8u, 0xffu);
+    module_9_temp_27 = (uint16_t)src_p->module_9_temp_27;
+    dst_p[4] |= pack_left_shift_u16(module_9_temp_27, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_9_temp_27, 8u, 0xffu);
+    module_9_temp_28 = (uint16_t)src_p->module_9_temp_28;
+    dst_p[6] |= pack_left_shift_u16(module_9_temp_28, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_9_temp_28, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_temperature_6_unpack(
+    struct feb_can_bms_module_9_temperature_6_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_25;
+    uint16_t module_9_temp_26;
+    uint16_t module_9_temp_27;
+    uint16_t module_9_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_9_temp_25 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_9_temp_25 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_temp_25 = (int16_t)module_9_temp_25;
+    module_9_temp_26 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_9_temp_26 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_temp_26 = (int16_t)module_9_temp_26;
+    module_9_temp_27 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_9_temp_27 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_temp_27 = (int16_t)module_9_temp_27;
+    module_9_temp_28 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_9_temp_28 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_9_temp_28 = (int16_t)module_9_temp_28;
+
+    return (0);
+}
+
+int feb_can_bms_module_9_temperature_6_init(struct feb_can_bms_module_9_temperature_6_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_temperature_6_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_9_temperature_6_module_9_temp_25_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_6_module_9_temp_25_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_6_module_9_temp_25_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_6_module_9_temp_26_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_6_module_9_temp_26_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_6_module_9_temp_26_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_6_module_9_temp_27_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_6_module_9_temp_27_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_6_module_9_temp_27_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_6_module_9_temp_28_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_6_module_9_temp_28_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_6_module_9_temp_28_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_temperature_7_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_temperature_7_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_29;
+    uint16_t module_9_temp_30;
+    uint16_t module_9_temp_31;
+    uint16_t module_9_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_9_temp_29 = (uint16_t)src_p->module_9_temp_29;
+    dst_p[0] |= pack_left_shift_u16(module_9_temp_29, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_9_temp_29, 8u, 0xffu);
+    module_9_temp_30 = (uint16_t)src_p->module_9_temp_30;
+    dst_p[2] |= pack_left_shift_u16(module_9_temp_30, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_9_temp_30, 8u, 0xffu);
+    module_9_temp_31 = (uint16_t)src_p->module_9_temp_31;
+    dst_p[4] |= pack_left_shift_u16(module_9_temp_31, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_9_temp_31, 8u, 0xffu);
+    module_9_temp_32 = (uint16_t)src_p->module_9_temp_32;
+    dst_p[6] |= pack_left_shift_u16(module_9_temp_32, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_9_temp_32, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_temperature_7_unpack(
+    struct feb_can_bms_module_9_temperature_7_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_29;
+    uint16_t module_9_temp_30;
+    uint16_t module_9_temp_31;
+    uint16_t module_9_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_9_temp_29 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_9_temp_29 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_temp_29 = (int16_t)module_9_temp_29;
+    module_9_temp_30 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_9_temp_30 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_temp_30 = (int16_t)module_9_temp_30;
+    module_9_temp_31 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_9_temp_31 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_temp_31 = (int16_t)module_9_temp_31;
+    module_9_temp_32 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_9_temp_32 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_9_temp_32 = (int16_t)module_9_temp_32;
+
+    return (0);
+}
+
+int feb_can_bms_module_9_temperature_7_init(struct feb_can_bms_module_9_temperature_7_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_temperature_7_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_9_temperature_7_module_9_temp_29_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_7_module_9_temp_29_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_7_module_9_temp_29_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_7_module_9_temp_30_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_7_module_9_temp_30_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_7_module_9_temp_30_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_7_module_9_temp_31_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_7_module_9_temp_31_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_7_module_9_temp_31_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_7_module_9_temp_32_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_7_module_9_temp_32_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_7_module_9_temp_32_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_temperature_8_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_temperature_8_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_33;
+    uint16_t module_9_temp_34;
+    uint16_t module_9_temp_35;
+    uint16_t module_9_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_9_temp_33 = (uint16_t)src_p->module_9_temp_33;
+    dst_p[0] |= pack_left_shift_u16(module_9_temp_33, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_9_temp_33, 8u, 0xffu);
+    module_9_temp_34 = (uint16_t)src_p->module_9_temp_34;
+    dst_p[2] |= pack_left_shift_u16(module_9_temp_34, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_9_temp_34, 8u, 0xffu);
+    module_9_temp_35 = (uint16_t)src_p->module_9_temp_35;
+    dst_p[4] |= pack_left_shift_u16(module_9_temp_35, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_9_temp_35, 8u, 0xffu);
+    module_9_temp_36 = (uint16_t)src_p->module_9_temp_36;
+    dst_p[6] |= pack_left_shift_u16(module_9_temp_36, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_9_temp_36, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_temperature_8_unpack(
+    struct feb_can_bms_module_9_temperature_8_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_33;
+    uint16_t module_9_temp_34;
+    uint16_t module_9_temp_35;
+    uint16_t module_9_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_9_temp_33 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_9_temp_33 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_temp_33 = (int16_t)module_9_temp_33;
+    module_9_temp_34 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_9_temp_34 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_temp_34 = (int16_t)module_9_temp_34;
+    module_9_temp_35 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_9_temp_35 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_temp_35 = (int16_t)module_9_temp_35;
+    module_9_temp_36 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_9_temp_36 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_9_temp_36 = (int16_t)module_9_temp_36;
+
+    return (0);
+}
+
+int feb_can_bms_module_9_temperature_8_init(struct feb_can_bms_module_9_temperature_8_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_temperature_8_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_9_temperature_8_module_9_temp_33_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_8_module_9_temp_33_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_8_module_9_temp_33_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_8_module_9_temp_34_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_8_module_9_temp_34_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_8_module_9_temp_34_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_8_module_9_temp_35_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_8_module_9_temp_35_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_8_module_9_temp_35_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_8_module_9_temp_36_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_8_module_9_temp_36_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_8_module_9_temp_36_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_temperature_9_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_temperature_9_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_37;
+    uint16_t module_9_temp_38;
+    uint16_t module_9_temp_39;
+    uint16_t module_9_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_9_temp_37 = (uint16_t)src_p->module_9_temp_37;
+    dst_p[0] |= pack_left_shift_u16(module_9_temp_37, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_9_temp_37, 8u, 0xffu);
+    module_9_temp_38 = (uint16_t)src_p->module_9_temp_38;
+    dst_p[2] |= pack_left_shift_u16(module_9_temp_38, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_9_temp_38, 8u, 0xffu);
+    module_9_temp_39 = (uint16_t)src_p->module_9_temp_39;
+    dst_p[4] |= pack_left_shift_u16(module_9_temp_39, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_9_temp_39, 8u, 0xffu);
+    module_9_temp_40 = (uint16_t)src_p->module_9_temp_40;
+    dst_p[6] |= pack_left_shift_u16(module_9_temp_40, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_9_temp_40, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_9_temperature_9_unpack(
+    struct feb_can_bms_module_9_temperature_9_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_37;
+    uint16_t module_9_temp_38;
+    uint16_t module_9_temp_39;
+    uint16_t module_9_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_9_temp_37 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_9_temp_37 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_temp_37 = (int16_t)module_9_temp_37;
+    module_9_temp_38 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_9_temp_38 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_9_temp_38 = (int16_t)module_9_temp_38;
+    module_9_temp_39 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_9_temp_39 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_9_temp_39 = (int16_t)module_9_temp_39;
+    module_9_temp_40 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_9_temp_40 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_9_temp_40 = (int16_t)module_9_temp_40;
+
+    return (0);
+}
+
+int feb_can_bms_module_9_temperature_9_init(struct feb_can_bms_module_9_temperature_9_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_temperature_9_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_9_temperature_9_module_9_temp_37_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_9_module_9_temp_37_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_9_module_9_temp_37_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_9_module_9_temp_38_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_9_module_9_temp_38_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_9_module_9_temp_38_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_9_module_9_temp_39_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_9_module_9_temp_39_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_9_module_9_temp_39_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_9_temperature_9_module_9_temp_40_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_9_module_9_temp_40_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_9_module_9_temp_40_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_9_temperature_10_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_9_temperature_10_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 2);
+
+    module_9_temp_41 = (uint16_t)src_p->module_9_temp_41;
+    dst_p[0] |= pack_left_shift_u16(module_9_temp_41, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_9_temp_41, 8u, 0xffu);
+
+    return (2);
+}
+
+int feb_can_bms_module_9_temperature_10_unpack(
+    struct feb_can_bms_module_9_temperature_10_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_9_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    module_9_temp_41 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_9_temp_41 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_9_temp_41 = (int16_t)module_9_temp_41;
+
+    return (0);
+}
+
+int feb_can_bms_module_9_temperature_10_init(struct feb_can_bms_module_9_temperature_10_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_9_temperature_10_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_9_temperature_10_module_9_temp_41_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_9_temperature_10_module_9_temp_41_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_9_temperature_10_module_9_temp_41_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_temperature_0_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_temperature_0_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_1;
+    uint16_t module_10_temp_2;
+    uint16_t module_10_temp_3;
+    uint16_t module_10_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_10_temp_1 = (uint16_t)src_p->module_10_temp_1;
+    dst_p[0] |= pack_left_shift_u16(module_10_temp_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_10_temp_1, 8u, 0xffu);
+    module_10_temp_2 = (uint16_t)src_p->module_10_temp_2;
+    dst_p[2] |= pack_left_shift_u16(module_10_temp_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_10_temp_2, 8u, 0xffu);
+    module_10_temp_3 = (uint16_t)src_p->module_10_temp_3;
+    dst_p[4] |= pack_left_shift_u16(module_10_temp_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_10_temp_3, 8u, 0xffu);
+    module_10_temp_4 = (uint16_t)src_p->module_10_temp_4;
+    dst_p[6] |= pack_left_shift_u16(module_10_temp_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_10_temp_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_temperature_0_unpack(
+    struct feb_can_bms_module_10_temperature_0_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_1;
+    uint16_t module_10_temp_2;
+    uint16_t module_10_temp_3;
+    uint16_t module_10_temp_4;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_10_temp_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_10_temp_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_temp_1 = (int16_t)module_10_temp_1;
+    module_10_temp_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_10_temp_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_temp_2 = (int16_t)module_10_temp_2;
+    module_10_temp_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_10_temp_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_temp_3 = (int16_t)module_10_temp_3;
+    module_10_temp_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_10_temp_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_10_temp_4 = (int16_t)module_10_temp_4;
+
+    return (0);
+}
+
+int feb_can_bms_module_10_temperature_0_init(struct feb_can_bms_module_10_temperature_0_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_temperature_0_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_10_temperature_0_module_10_temp_1_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_0_module_10_temp_1_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_0_module_10_temp_1_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_0_module_10_temp_2_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_0_module_10_temp_2_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_0_module_10_temp_2_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_0_module_10_temp_3_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_0_module_10_temp_3_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_0_module_10_temp_3_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_0_module_10_temp_4_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_0_module_10_temp_4_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_0_module_10_temp_4_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_temperature_1_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_temperature_1_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_5;
+    uint16_t module_10_temp_6;
+    uint16_t module_10_temp_7;
+    uint16_t module_10_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_10_temp_5 = (uint16_t)src_p->module_10_temp_5;
+    dst_p[0] |= pack_left_shift_u16(module_10_temp_5, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_10_temp_5, 8u, 0xffu);
+    module_10_temp_6 = (uint16_t)src_p->module_10_temp_6;
+    dst_p[2] |= pack_left_shift_u16(module_10_temp_6, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_10_temp_6, 8u, 0xffu);
+    module_10_temp_7 = (uint16_t)src_p->module_10_temp_7;
+    dst_p[4] |= pack_left_shift_u16(module_10_temp_7, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_10_temp_7, 8u, 0xffu);
+    module_10_temp_8 = (uint16_t)src_p->module_10_temp_8;
+    dst_p[6] |= pack_left_shift_u16(module_10_temp_8, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_10_temp_8, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_temperature_1_unpack(
+    struct feb_can_bms_module_10_temperature_1_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_5;
+    uint16_t module_10_temp_6;
+    uint16_t module_10_temp_7;
+    uint16_t module_10_temp_8;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_10_temp_5 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_10_temp_5 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_temp_5 = (int16_t)module_10_temp_5;
+    module_10_temp_6 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_10_temp_6 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_temp_6 = (int16_t)module_10_temp_6;
+    module_10_temp_7 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_10_temp_7 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_temp_7 = (int16_t)module_10_temp_7;
+    module_10_temp_8 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_10_temp_8 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_10_temp_8 = (int16_t)module_10_temp_8;
+
+    return (0);
+}
+
+int feb_can_bms_module_10_temperature_1_init(struct feb_can_bms_module_10_temperature_1_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_temperature_1_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_10_temperature_1_module_10_temp_5_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_1_module_10_temp_5_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_1_module_10_temp_5_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_1_module_10_temp_6_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_1_module_10_temp_6_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_1_module_10_temp_6_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_1_module_10_temp_7_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_1_module_10_temp_7_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_1_module_10_temp_7_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_1_module_10_temp_8_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_1_module_10_temp_8_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_1_module_10_temp_8_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_temperature_2_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_temperature_2_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_10;
+    uint16_t module_10_temp_11;
+    uint16_t module_10_temp_12;
+    uint16_t module_10_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_10_temp_9 = (uint16_t)src_p->module_10_temp_9;
+    dst_p[0] |= pack_left_shift_u16(module_10_temp_9, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_10_temp_9, 8u, 0xffu);
+    module_10_temp_10 = (uint16_t)src_p->module_10_temp_10;
+    dst_p[2] |= pack_left_shift_u16(module_10_temp_10, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_10_temp_10, 8u, 0xffu);
+    module_10_temp_11 = (uint16_t)src_p->module_10_temp_11;
+    dst_p[4] |= pack_left_shift_u16(module_10_temp_11, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_10_temp_11, 8u, 0xffu);
+    module_10_temp_12 = (uint16_t)src_p->module_10_temp_12;
+    dst_p[6] |= pack_left_shift_u16(module_10_temp_12, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_10_temp_12, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_temperature_2_unpack(
+    struct feb_can_bms_module_10_temperature_2_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_10;
+    uint16_t module_10_temp_11;
+    uint16_t module_10_temp_12;
+    uint16_t module_10_temp_9;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_10_temp_9 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_10_temp_9 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_temp_9 = (int16_t)module_10_temp_9;
+    module_10_temp_10 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_10_temp_10 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_temp_10 = (int16_t)module_10_temp_10;
+    module_10_temp_11 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_10_temp_11 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_temp_11 = (int16_t)module_10_temp_11;
+    module_10_temp_12 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_10_temp_12 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_10_temp_12 = (int16_t)module_10_temp_12;
+
+    return (0);
+}
+
+int feb_can_bms_module_10_temperature_2_init(struct feb_can_bms_module_10_temperature_2_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_temperature_2_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_10_temperature_2_module_10_temp_9_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_2_module_10_temp_9_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_2_module_10_temp_9_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_2_module_10_temp_10_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_2_module_10_temp_10_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_2_module_10_temp_10_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_2_module_10_temp_11_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_2_module_10_temp_11_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_2_module_10_temp_11_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_2_module_10_temp_12_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_2_module_10_temp_12_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_2_module_10_temp_12_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_temperature_3_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_temperature_3_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_13;
+    uint16_t module_10_temp_14;
+    uint16_t module_10_temp_15;
+    uint16_t module_10_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_10_temp_13 = (uint16_t)src_p->module_10_temp_13;
+    dst_p[0] |= pack_left_shift_u16(module_10_temp_13, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_10_temp_13, 8u, 0xffu);
+    module_10_temp_14 = (uint16_t)src_p->module_10_temp_14;
+    dst_p[2] |= pack_left_shift_u16(module_10_temp_14, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_10_temp_14, 8u, 0xffu);
+    module_10_temp_15 = (uint16_t)src_p->module_10_temp_15;
+    dst_p[4] |= pack_left_shift_u16(module_10_temp_15, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_10_temp_15, 8u, 0xffu);
+    module_10_temp_16 = (uint16_t)src_p->module_10_temp_16;
+    dst_p[6] |= pack_left_shift_u16(module_10_temp_16, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_10_temp_16, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_temperature_3_unpack(
+    struct feb_can_bms_module_10_temperature_3_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_13;
+    uint16_t module_10_temp_14;
+    uint16_t module_10_temp_15;
+    uint16_t module_10_temp_16;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_10_temp_13 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_10_temp_13 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_temp_13 = (int16_t)module_10_temp_13;
+    module_10_temp_14 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_10_temp_14 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_temp_14 = (int16_t)module_10_temp_14;
+    module_10_temp_15 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_10_temp_15 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_temp_15 = (int16_t)module_10_temp_15;
+    module_10_temp_16 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_10_temp_16 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_10_temp_16 = (int16_t)module_10_temp_16;
+
+    return (0);
+}
+
+int feb_can_bms_module_10_temperature_3_init(struct feb_can_bms_module_10_temperature_3_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_temperature_3_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_10_temperature_3_module_10_temp_13_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_3_module_10_temp_13_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_3_module_10_temp_13_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_3_module_10_temp_14_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_3_module_10_temp_14_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_3_module_10_temp_14_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_3_module_10_temp_15_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_3_module_10_temp_15_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_3_module_10_temp_15_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_3_module_10_temp_16_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_3_module_10_temp_16_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_3_module_10_temp_16_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_temperature_4_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_temperature_4_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_17;
+    uint16_t module_10_temp_18;
+    uint16_t module_10_temp_19;
+    uint16_t module_10_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_10_temp_17 = (uint16_t)src_p->module_10_temp_17;
+    dst_p[0] |= pack_left_shift_u16(module_10_temp_17, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_10_temp_17, 8u, 0xffu);
+    module_10_temp_18 = (uint16_t)src_p->module_10_temp_18;
+    dst_p[2] |= pack_left_shift_u16(module_10_temp_18, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_10_temp_18, 8u, 0xffu);
+    module_10_temp_19 = (uint16_t)src_p->module_10_temp_19;
+    dst_p[4] |= pack_left_shift_u16(module_10_temp_19, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_10_temp_19, 8u, 0xffu);
+    module_10_temp_20 = (uint16_t)src_p->module_10_temp_20;
+    dst_p[6] |= pack_left_shift_u16(module_10_temp_20, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_10_temp_20, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_temperature_4_unpack(
+    struct feb_can_bms_module_10_temperature_4_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_17;
+    uint16_t module_10_temp_18;
+    uint16_t module_10_temp_19;
+    uint16_t module_10_temp_20;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_10_temp_17 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_10_temp_17 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_temp_17 = (int16_t)module_10_temp_17;
+    module_10_temp_18 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_10_temp_18 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_temp_18 = (int16_t)module_10_temp_18;
+    module_10_temp_19 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_10_temp_19 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_temp_19 = (int16_t)module_10_temp_19;
+    module_10_temp_20 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_10_temp_20 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_10_temp_20 = (int16_t)module_10_temp_20;
+
+    return (0);
+}
+
+int feb_can_bms_module_10_temperature_4_init(struct feb_can_bms_module_10_temperature_4_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_temperature_4_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_10_temperature_4_module_10_temp_17_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_4_module_10_temp_17_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_4_module_10_temp_17_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_4_module_10_temp_18_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_4_module_10_temp_18_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_4_module_10_temp_18_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_4_module_10_temp_19_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_4_module_10_temp_19_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_4_module_10_temp_19_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_4_module_10_temp_20_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_4_module_10_temp_20_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_4_module_10_temp_20_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_temperature_5_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_temperature_5_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_21;
+    uint16_t module_10_temp_22;
+    uint16_t module_10_temp_23;
+    uint16_t module_10_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_10_temp_21 = (uint16_t)src_p->module_10_temp_21;
+    dst_p[0] |= pack_left_shift_u16(module_10_temp_21, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_10_temp_21, 8u, 0xffu);
+    module_10_temp_22 = (uint16_t)src_p->module_10_temp_22;
+    dst_p[2] |= pack_left_shift_u16(module_10_temp_22, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_10_temp_22, 8u, 0xffu);
+    module_10_temp_23 = (uint16_t)src_p->module_10_temp_23;
+    dst_p[4] |= pack_left_shift_u16(module_10_temp_23, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_10_temp_23, 8u, 0xffu);
+    module_10_temp_24 = (uint16_t)src_p->module_10_temp_24;
+    dst_p[6] |= pack_left_shift_u16(module_10_temp_24, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_10_temp_24, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_temperature_5_unpack(
+    struct feb_can_bms_module_10_temperature_5_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_21;
+    uint16_t module_10_temp_22;
+    uint16_t module_10_temp_23;
+    uint16_t module_10_temp_24;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_10_temp_21 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_10_temp_21 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_temp_21 = (int16_t)module_10_temp_21;
+    module_10_temp_22 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_10_temp_22 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_temp_22 = (int16_t)module_10_temp_22;
+    module_10_temp_23 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_10_temp_23 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_temp_23 = (int16_t)module_10_temp_23;
+    module_10_temp_24 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_10_temp_24 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_10_temp_24 = (int16_t)module_10_temp_24;
+
+    return (0);
+}
+
+int feb_can_bms_module_10_temperature_5_init(struct feb_can_bms_module_10_temperature_5_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_temperature_5_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_10_temperature_5_module_10_temp_21_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_5_module_10_temp_21_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_5_module_10_temp_21_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_5_module_10_temp_22_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_5_module_10_temp_22_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_5_module_10_temp_22_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_5_module_10_temp_23_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_5_module_10_temp_23_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_5_module_10_temp_23_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_5_module_10_temp_24_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_5_module_10_temp_24_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_5_module_10_temp_24_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_temperature_6_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_temperature_6_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_25;
+    uint16_t module_10_temp_26;
+    uint16_t module_10_temp_27;
+    uint16_t module_10_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_10_temp_25 = (uint16_t)src_p->module_10_temp_25;
+    dst_p[0] |= pack_left_shift_u16(module_10_temp_25, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_10_temp_25, 8u, 0xffu);
+    module_10_temp_26 = (uint16_t)src_p->module_10_temp_26;
+    dst_p[2] |= pack_left_shift_u16(module_10_temp_26, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_10_temp_26, 8u, 0xffu);
+    module_10_temp_27 = (uint16_t)src_p->module_10_temp_27;
+    dst_p[4] |= pack_left_shift_u16(module_10_temp_27, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_10_temp_27, 8u, 0xffu);
+    module_10_temp_28 = (uint16_t)src_p->module_10_temp_28;
+    dst_p[6] |= pack_left_shift_u16(module_10_temp_28, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_10_temp_28, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_temperature_6_unpack(
+    struct feb_can_bms_module_10_temperature_6_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_25;
+    uint16_t module_10_temp_26;
+    uint16_t module_10_temp_27;
+    uint16_t module_10_temp_28;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_10_temp_25 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_10_temp_25 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_temp_25 = (int16_t)module_10_temp_25;
+    module_10_temp_26 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_10_temp_26 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_temp_26 = (int16_t)module_10_temp_26;
+    module_10_temp_27 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_10_temp_27 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_temp_27 = (int16_t)module_10_temp_27;
+    module_10_temp_28 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_10_temp_28 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_10_temp_28 = (int16_t)module_10_temp_28;
+
+    return (0);
+}
+
+int feb_can_bms_module_10_temperature_6_init(struct feb_can_bms_module_10_temperature_6_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_temperature_6_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_10_temperature_6_module_10_temp_25_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_6_module_10_temp_25_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_6_module_10_temp_25_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_6_module_10_temp_26_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_6_module_10_temp_26_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_6_module_10_temp_26_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_6_module_10_temp_27_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_6_module_10_temp_27_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_6_module_10_temp_27_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_6_module_10_temp_28_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_6_module_10_temp_28_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_6_module_10_temp_28_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_temperature_7_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_temperature_7_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_29;
+    uint16_t module_10_temp_30;
+    uint16_t module_10_temp_31;
+    uint16_t module_10_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_10_temp_29 = (uint16_t)src_p->module_10_temp_29;
+    dst_p[0] |= pack_left_shift_u16(module_10_temp_29, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_10_temp_29, 8u, 0xffu);
+    module_10_temp_30 = (uint16_t)src_p->module_10_temp_30;
+    dst_p[2] |= pack_left_shift_u16(module_10_temp_30, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_10_temp_30, 8u, 0xffu);
+    module_10_temp_31 = (uint16_t)src_p->module_10_temp_31;
+    dst_p[4] |= pack_left_shift_u16(module_10_temp_31, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_10_temp_31, 8u, 0xffu);
+    module_10_temp_32 = (uint16_t)src_p->module_10_temp_32;
+    dst_p[6] |= pack_left_shift_u16(module_10_temp_32, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_10_temp_32, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_temperature_7_unpack(
+    struct feb_can_bms_module_10_temperature_7_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_29;
+    uint16_t module_10_temp_30;
+    uint16_t module_10_temp_31;
+    uint16_t module_10_temp_32;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_10_temp_29 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_10_temp_29 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_temp_29 = (int16_t)module_10_temp_29;
+    module_10_temp_30 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_10_temp_30 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_temp_30 = (int16_t)module_10_temp_30;
+    module_10_temp_31 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_10_temp_31 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_temp_31 = (int16_t)module_10_temp_31;
+    module_10_temp_32 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_10_temp_32 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_10_temp_32 = (int16_t)module_10_temp_32;
+
+    return (0);
+}
+
+int feb_can_bms_module_10_temperature_7_init(struct feb_can_bms_module_10_temperature_7_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_temperature_7_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_10_temperature_7_module_10_temp_29_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_7_module_10_temp_29_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_7_module_10_temp_29_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_7_module_10_temp_30_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_7_module_10_temp_30_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_7_module_10_temp_30_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_7_module_10_temp_31_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_7_module_10_temp_31_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_7_module_10_temp_31_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_7_module_10_temp_32_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_7_module_10_temp_32_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_7_module_10_temp_32_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_temperature_8_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_temperature_8_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_33;
+    uint16_t module_10_temp_34;
+    uint16_t module_10_temp_35;
+    uint16_t module_10_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_10_temp_33 = (uint16_t)src_p->module_10_temp_33;
+    dst_p[0] |= pack_left_shift_u16(module_10_temp_33, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_10_temp_33, 8u, 0xffu);
+    module_10_temp_34 = (uint16_t)src_p->module_10_temp_34;
+    dst_p[2] |= pack_left_shift_u16(module_10_temp_34, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_10_temp_34, 8u, 0xffu);
+    module_10_temp_35 = (uint16_t)src_p->module_10_temp_35;
+    dst_p[4] |= pack_left_shift_u16(module_10_temp_35, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_10_temp_35, 8u, 0xffu);
+    module_10_temp_36 = (uint16_t)src_p->module_10_temp_36;
+    dst_p[6] |= pack_left_shift_u16(module_10_temp_36, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_10_temp_36, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_temperature_8_unpack(
+    struct feb_can_bms_module_10_temperature_8_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_33;
+    uint16_t module_10_temp_34;
+    uint16_t module_10_temp_35;
+    uint16_t module_10_temp_36;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_10_temp_33 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_10_temp_33 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_temp_33 = (int16_t)module_10_temp_33;
+    module_10_temp_34 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_10_temp_34 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_temp_34 = (int16_t)module_10_temp_34;
+    module_10_temp_35 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_10_temp_35 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_temp_35 = (int16_t)module_10_temp_35;
+    module_10_temp_36 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_10_temp_36 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_10_temp_36 = (int16_t)module_10_temp_36;
+
+    return (0);
+}
+
+int feb_can_bms_module_10_temperature_8_init(struct feb_can_bms_module_10_temperature_8_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_temperature_8_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_10_temperature_8_module_10_temp_33_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_8_module_10_temp_33_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_8_module_10_temp_33_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_8_module_10_temp_34_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_8_module_10_temp_34_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_8_module_10_temp_34_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_8_module_10_temp_35_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_8_module_10_temp_35_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_8_module_10_temp_35_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_8_module_10_temp_36_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_8_module_10_temp_36_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_8_module_10_temp_36_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_temperature_9_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_temperature_9_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_37;
+    uint16_t module_10_temp_38;
+    uint16_t module_10_temp_39;
+    uint16_t module_10_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    module_10_temp_37 = (uint16_t)src_p->module_10_temp_37;
+    dst_p[0] |= pack_left_shift_u16(module_10_temp_37, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_10_temp_37, 8u, 0xffu);
+    module_10_temp_38 = (uint16_t)src_p->module_10_temp_38;
+    dst_p[2] |= pack_left_shift_u16(module_10_temp_38, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(module_10_temp_38, 8u, 0xffu);
+    module_10_temp_39 = (uint16_t)src_p->module_10_temp_39;
+    dst_p[4] |= pack_left_shift_u16(module_10_temp_39, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(module_10_temp_39, 8u, 0xffu);
+    module_10_temp_40 = (uint16_t)src_p->module_10_temp_40;
+    dst_p[6] |= pack_left_shift_u16(module_10_temp_40, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(module_10_temp_40, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_module_10_temperature_9_unpack(
+    struct feb_can_bms_module_10_temperature_9_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_37;
+    uint16_t module_10_temp_38;
+    uint16_t module_10_temp_39;
+    uint16_t module_10_temp_40;
+
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    module_10_temp_37 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_10_temp_37 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_temp_37 = (int16_t)module_10_temp_37;
+    module_10_temp_38 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    module_10_temp_38 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->module_10_temp_38 = (int16_t)module_10_temp_38;
+    module_10_temp_39 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    module_10_temp_39 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->module_10_temp_39 = (int16_t)module_10_temp_39;
+    module_10_temp_40 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    module_10_temp_40 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->module_10_temp_40 = (int16_t)module_10_temp_40;
+
+    return (0);
+}
+
+int feb_can_bms_module_10_temperature_9_init(struct feb_can_bms_module_10_temperature_9_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_temperature_9_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_10_temperature_9_module_10_temp_37_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_9_module_10_temp_37_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_9_module_10_temp_37_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_9_module_10_temp_38_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_9_module_10_temp_38_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_9_module_10_temp_38_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_9_module_10_temp_39_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_9_module_10_temp_39_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_9_module_10_temp_39_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_bms_module_10_temperature_9_module_10_temp_40_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_9_module_10_temp_40_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_9_module_10_temp_40_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_bms_module_10_temperature_10_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_module_10_temperature_10_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 2);
+
+    module_10_temp_41 = (uint16_t)src_p->module_10_temp_41;
+    dst_p[0] |= pack_left_shift_u16(module_10_temp_41, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(module_10_temp_41, 8u, 0xffu);
+
+    return (2);
+}
+
+int feb_can_bms_module_10_temperature_10_unpack(
+    struct feb_can_bms_module_10_temperature_10_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t module_10_temp_41;
+
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    module_10_temp_41 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    module_10_temp_41 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->module_10_temp_41 = (int16_t)module_10_temp_41;
+
+    return (0);
+}
+
+int feb_can_bms_module_10_temperature_10_init(struct feb_can_bms_module_10_temperature_10_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_module_10_temperature_10_t));
+
+    return 0;
+}
+
+int16_t feb_can_bms_module_10_temperature_10_module_10_temp_41_encode(double value)
+{
+    return (int16_t)(value);
+}
+
+double feb_can_bms_module_10_temperature_10_module_10_temp_41_decode(int16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_module_10_temperature_10_module_10_temp_41_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
 int feb_can_ebs_pressure_status_pack(
     uint8_t *dst_p,
     const struct feb_can_ebs_pressure_status_t *src_p,
@@ -17418,12 +36798,12 @@ bool feb_can_ivt_current_counter_is_in_range(uint16_t value)
 
 int32_t feb_can_ivt_current_current_encode(double value)
 {
-    return (int32_t)(value);
+    return (int32_t)(value / -0.001);
 }
 
 double feb_can_ivt_current_current_decode(int32_t value)
 {
-    return ((double)value);
+    return ((double)value * -0.001);
 }
 
 bool feb_can_ivt_current_current_is_in_range(int32_t value)
@@ -17507,12 +36887,12 @@ bool feb_can_ivt_voltage1_counter_is_in_range(uint16_t value)
 
 int32_t feb_can_ivt_voltage1_voltage1_encode(double value)
 {
-    return (int32_t)(value);
+    return (int32_t)(value / 0.001);
 }
 
 double feb_can_ivt_voltage1_voltage1_decode(int32_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.001);
 }
 
 bool feb_can_ivt_voltage1_voltage1_is_in_range(int32_t value)
@@ -17596,12 +36976,12 @@ bool feb_can_ivt_voltage2_counter_is_in_range(uint16_t value)
 
 int32_t feb_can_ivt_voltage2_voltage2_encode(double value)
 {
-    return (int32_t)(value);
+    return (int32_t)(value / 0.001);
 }
 
 double feb_can_ivt_voltage2_voltage2_decode(int32_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.001);
 }
 
 bool feb_can_ivt_voltage2_voltage2_is_in_range(int32_t value)
@@ -17685,12 +37065,12 @@ bool feb_can_ivt_voltage3_counter_is_in_range(uint16_t value)
 
 int32_t feb_can_ivt_voltage3_voltage3_encode(double value)
 {
-    return (int32_t)(value);
+    return (int32_t)(value / 0.001);
 }
 
 double feb_can_ivt_voltage3_voltage3_decode(int32_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.001);
 }
 
 bool feb_can_ivt_voltage3_voltage3_is_in_range(int32_t value)
@@ -17774,12 +37154,12 @@ bool feb_can_ivt_temperature_counter_is_in_range(uint16_t value)
 
 int32_t feb_can_ivt_temperature_temperature_encode(double value)
 {
-    return (int32_t)(value);
+    return (int32_t)(value / 0.1);
 }
 
 double feb_can_ivt_temperature_temperature_decode(int32_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.1);
 }
 
 bool feb_can_ivt_temperature_temperature_is_in_range(int32_t value)

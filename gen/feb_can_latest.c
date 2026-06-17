@@ -424,6 +424,906 @@ int FEB_CAN_State_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, ui
         feb_can_state.feb_ping_pong_counter4.meta.last_rx_ms = now_ms;
         feb_can_state.feb_ping_pong_counter4.meta.rx_count++;
         return 0;
+    case FEB_CAN_BMS_MODULE_1_VOLTAGE_0_FRAME_ID:
+        if (feb_can_bms_module_1_voltage_0_unpack(&feb_can_state.bms_module_1_voltage_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_voltage_0.meta.present = true;
+        feb_can_state.bms_module_1_voltage_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_voltage_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_VOLTAGE_1_FRAME_ID:
+        if (feb_can_bms_module_1_voltage_1_unpack(&feb_can_state.bms_module_1_voltage_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_voltage_1.meta.present = true;
+        feb_can_state.bms_module_1_voltage_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_voltage_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_VOLTAGE_2_FRAME_ID:
+        if (feb_can_bms_module_1_voltage_2_unpack(&feb_can_state.bms_module_1_voltage_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_voltage_2.meta.present = true;
+        feb_can_state.bms_module_1_voltage_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_voltage_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_VOLTAGE_3_FRAME_ID:
+        if (feb_can_bms_module_1_voltage_3_unpack(&feb_can_state.bms_module_1_voltage_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_voltage_3.meta.present = true;
+        feb_can_state.bms_module_1_voltage_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_voltage_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_VOLTAGE_0_FRAME_ID:
+        if (feb_can_bms_module_2_voltage_0_unpack(&feb_can_state.bms_module_2_voltage_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_voltage_0.meta.present = true;
+        feb_can_state.bms_module_2_voltage_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_voltage_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_VOLTAGE_1_FRAME_ID:
+        if (feb_can_bms_module_2_voltage_1_unpack(&feb_can_state.bms_module_2_voltage_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_voltage_1.meta.present = true;
+        feb_can_state.bms_module_2_voltage_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_voltage_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_VOLTAGE_2_FRAME_ID:
+        if (feb_can_bms_module_2_voltage_2_unpack(&feb_can_state.bms_module_2_voltage_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_voltage_2.meta.present = true;
+        feb_can_state.bms_module_2_voltage_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_voltage_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_VOLTAGE_3_FRAME_ID:
+        if (feb_can_bms_module_2_voltage_3_unpack(&feb_can_state.bms_module_2_voltage_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_voltage_3.meta.present = true;
+        feb_can_state.bms_module_2_voltage_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_voltage_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_VOLTAGE_0_FRAME_ID:
+        if (feb_can_bms_module_3_voltage_0_unpack(&feb_can_state.bms_module_3_voltage_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_voltage_0.meta.present = true;
+        feb_can_state.bms_module_3_voltage_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_voltage_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_VOLTAGE_1_FRAME_ID:
+        if (feb_can_bms_module_3_voltage_1_unpack(&feb_can_state.bms_module_3_voltage_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_voltage_1.meta.present = true;
+        feb_can_state.bms_module_3_voltage_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_voltage_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_VOLTAGE_2_FRAME_ID:
+        if (feb_can_bms_module_3_voltage_2_unpack(&feb_can_state.bms_module_3_voltage_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_voltage_2.meta.present = true;
+        feb_can_state.bms_module_3_voltage_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_voltage_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_VOLTAGE_3_FRAME_ID:
+        if (feb_can_bms_module_3_voltage_3_unpack(&feb_can_state.bms_module_3_voltage_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_voltage_3.meta.present = true;
+        feb_can_state.bms_module_3_voltage_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_voltage_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_VOLTAGE_0_FRAME_ID:
+        if (feb_can_bms_module_4_voltage_0_unpack(&feb_can_state.bms_module_4_voltage_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_voltage_0.meta.present = true;
+        feb_can_state.bms_module_4_voltage_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_voltage_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_VOLTAGE_1_FRAME_ID:
+        if (feb_can_bms_module_4_voltage_1_unpack(&feb_can_state.bms_module_4_voltage_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_voltage_1.meta.present = true;
+        feb_can_state.bms_module_4_voltage_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_voltage_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_VOLTAGE_2_FRAME_ID:
+        if (feb_can_bms_module_4_voltage_2_unpack(&feb_can_state.bms_module_4_voltage_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_voltage_2.meta.present = true;
+        feb_can_state.bms_module_4_voltage_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_voltage_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_VOLTAGE_3_FRAME_ID:
+        if (feb_can_bms_module_4_voltage_3_unpack(&feb_can_state.bms_module_4_voltage_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_voltage_3.meta.present = true;
+        feb_can_state.bms_module_4_voltage_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_voltage_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_VOLTAGE_0_FRAME_ID:
+        if (feb_can_bms_module_5_voltage_0_unpack(&feb_can_state.bms_module_5_voltage_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_voltage_0.meta.present = true;
+        feb_can_state.bms_module_5_voltage_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_voltage_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_VOLTAGE_1_FRAME_ID:
+        if (feb_can_bms_module_5_voltage_1_unpack(&feb_can_state.bms_module_5_voltage_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_voltage_1.meta.present = true;
+        feb_can_state.bms_module_5_voltage_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_voltage_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_VOLTAGE_2_FRAME_ID:
+        if (feb_can_bms_module_5_voltage_2_unpack(&feb_can_state.bms_module_5_voltage_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_voltage_2.meta.present = true;
+        feb_can_state.bms_module_5_voltage_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_voltage_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_VOLTAGE_3_FRAME_ID:
+        if (feb_can_bms_module_5_voltage_3_unpack(&feb_can_state.bms_module_5_voltage_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_voltage_3.meta.present = true;
+        feb_can_state.bms_module_5_voltage_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_voltage_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_VOLTAGE_0_FRAME_ID:
+        if (feb_can_bms_module_6_voltage_0_unpack(&feb_can_state.bms_module_6_voltage_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_voltage_0.meta.present = true;
+        feb_can_state.bms_module_6_voltage_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_voltage_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_VOLTAGE_1_FRAME_ID:
+        if (feb_can_bms_module_6_voltage_1_unpack(&feb_can_state.bms_module_6_voltage_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_voltage_1.meta.present = true;
+        feb_can_state.bms_module_6_voltage_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_voltage_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_VOLTAGE_2_FRAME_ID:
+        if (feb_can_bms_module_6_voltage_2_unpack(&feb_can_state.bms_module_6_voltage_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_voltage_2.meta.present = true;
+        feb_can_state.bms_module_6_voltage_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_voltage_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_VOLTAGE_3_FRAME_ID:
+        if (feb_can_bms_module_6_voltage_3_unpack(&feb_can_state.bms_module_6_voltage_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_voltage_3.meta.present = true;
+        feb_can_state.bms_module_6_voltage_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_voltage_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_VOLTAGE_0_FRAME_ID:
+        if (feb_can_bms_module_7_voltage_0_unpack(&feb_can_state.bms_module_7_voltage_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_voltage_0.meta.present = true;
+        feb_can_state.bms_module_7_voltage_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_voltage_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_VOLTAGE_1_FRAME_ID:
+        if (feb_can_bms_module_7_voltage_1_unpack(&feb_can_state.bms_module_7_voltage_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_voltage_1.meta.present = true;
+        feb_can_state.bms_module_7_voltage_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_voltage_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_VOLTAGE_2_FRAME_ID:
+        if (feb_can_bms_module_7_voltage_2_unpack(&feb_can_state.bms_module_7_voltage_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_voltage_2.meta.present = true;
+        feb_can_state.bms_module_7_voltage_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_voltage_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_VOLTAGE_3_FRAME_ID:
+        if (feb_can_bms_module_7_voltage_3_unpack(&feb_can_state.bms_module_7_voltage_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_voltage_3.meta.present = true;
+        feb_can_state.bms_module_7_voltage_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_voltage_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_VOLTAGE_0_FRAME_ID:
+        if (feb_can_bms_module_8_voltage_0_unpack(&feb_can_state.bms_module_8_voltage_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_voltage_0.meta.present = true;
+        feb_can_state.bms_module_8_voltage_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_voltage_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_VOLTAGE_1_FRAME_ID:
+        if (feb_can_bms_module_8_voltage_1_unpack(&feb_can_state.bms_module_8_voltage_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_voltage_1.meta.present = true;
+        feb_can_state.bms_module_8_voltage_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_voltage_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_VOLTAGE_2_FRAME_ID:
+        if (feb_can_bms_module_8_voltage_2_unpack(&feb_can_state.bms_module_8_voltage_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_voltage_2.meta.present = true;
+        feb_can_state.bms_module_8_voltage_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_voltage_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_VOLTAGE_3_FRAME_ID:
+        if (feb_can_bms_module_8_voltage_3_unpack(&feb_can_state.bms_module_8_voltage_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_voltage_3.meta.present = true;
+        feb_can_state.bms_module_8_voltage_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_voltage_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_VOLTAGE_0_FRAME_ID:
+        if (feb_can_bms_module_9_voltage_0_unpack(&feb_can_state.bms_module_9_voltage_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_voltage_0.meta.present = true;
+        feb_can_state.bms_module_9_voltage_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_voltage_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_VOLTAGE_1_FRAME_ID:
+        if (feb_can_bms_module_9_voltage_1_unpack(&feb_can_state.bms_module_9_voltage_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_voltage_1.meta.present = true;
+        feb_can_state.bms_module_9_voltage_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_voltage_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_VOLTAGE_2_FRAME_ID:
+        if (feb_can_bms_module_9_voltage_2_unpack(&feb_can_state.bms_module_9_voltage_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_voltage_2.meta.present = true;
+        feb_can_state.bms_module_9_voltage_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_voltage_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_VOLTAGE_3_FRAME_ID:
+        if (feb_can_bms_module_9_voltage_3_unpack(&feb_can_state.bms_module_9_voltage_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_voltage_3.meta.present = true;
+        feb_can_state.bms_module_9_voltage_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_voltage_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_VOLTAGE_0_FRAME_ID:
+        if (feb_can_bms_module_10_voltage_0_unpack(&feb_can_state.bms_module_10_voltage_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_voltage_0.meta.present = true;
+        feb_can_state.bms_module_10_voltage_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_voltage_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_VOLTAGE_1_FRAME_ID:
+        if (feb_can_bms_module_10_voltage_1_unpack(&feb_can_state.bms_module_10_voltage_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_voltage_1.meta.present = true;
+        feb_can_state.bms_module_10_voltage_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_voltage_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_VOLTAGE_2_FRAME_ID:
+        if (feb_can_bms_module_10_voltage_2_unpack(&feb_can_state.bms_module_10_voltage_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_voltage_2.meta.present = true;
+        feb_can_state.bms_module_10_voltage_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_voltage_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_VOLTAGE_3_FRAME_ID:
+        if (feb_can_bms_module_10_voltage_3_unpack(&feb_can_state.bms_module_10_voltage_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_voltage_3.meta.present = true;
+        feb_can_state.bms_module_10_voltage_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_voltage_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_TEMPERATURE_0_FRAME_ID:
+        if (feb_can_bms_module_1_temperature_0_unpack(&feb_can_state.bms_module_1_temperature_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_temperature_0.meta.present = true;
+        feb_can_state.bms_module_1_temperature_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_temperature_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_TEMPERATURE_1_FRAME_ID:
+        if (feb_can_bms_module_1_temperature_1_unpack(&feb_can_state.bms_module_1_temperature_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_temperature_1.meta.present = true;
+        feb_can_state.bms_module_1_temperature_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_temperature_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_TEMPERATURE_2_FRAME_ID:
+        if (feb_can_bms_module_1_temperature_2_unpack(&feb_can_state.bms_module_1_temperature_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_temperature_2.meta.present = true;
+        feb_can_state.bms_module_1_temperature_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_temperature_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_TEMPERATURE_3_FRAME_ID:
+        if (feb_can_bms_module_1_temperature_3_unpack(&feb_can_state.bms_module_1_temperature_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_temperature_3.meta.present = true;
+        feb_can_state.bms_module_1_temperature_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_temperature_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_TEMPERATURE_4_FRAME_ID:
+        if (feb_can_bms_module_1_temperature_4_unpack(&feb_can_state.bms_module_1_temperature_4.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_temperature_4.meta.present = true;
+        feb_can_state.bms_module_1_temperature_4.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_temperature_4.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_TEMPERATURE_5_FRAME_ID:
+        if (feb_can_bms_module_1_temperature_5_unpack(&feb_can_state.bms_module_1_temperature_5.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_temperature_5.meta.present = true;
+        feb_can_state.bms_module_1_temperature_5.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_temperature_5.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_TEMPERATURE_6_FRAME_ID:
+        if (feb_can_bms_module_1_temperature_6_unpack(&feb_can_state.bms_module_1_temperature_6.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_temperature_6.meta.present = true;
+        feb_can_state.bms_module_1_temperature_6.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_temperature_6.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_TEMPERATURE_7_FRAME_ID:
+        if (feb_can_bms_module_1_temperature_7_unpack(&feb_can_state.bms_module_1_temperature_7.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_temperature_7.meta.present = true;
+        feb_can_state.bms_module_1_temperature_7.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_temperature_7.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_TEMPERATURE_8_FRAME_ID:
+        if (feb_can_bms_module_1_temperature_8_unpack(&feb_can_state.bms_module_1_temperature_8.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_temperature_8.meta.present = true;
+        feb_can_state.bms_module_1_temperature_8.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_temperature_8.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_TEMPERATURE_9_FRAME_ID:
+        if (feb_can_bms_module_1_temperature_9_unpack(&feb_can_state.bms_module_1_temperature_9.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_temperature_9.meta.present = true;
+        feb_can_state.bms_module_1_temperature_9.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_temperature_9.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_1_TEMPERATURE_10_FRAME_ID:
+        if (feb_can_bms_module_1_temperature_10_unpack(&feb_can_state.bms_module_1_temperature_10.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_1_temperature_10.meta.present = true;
+        feb_can_state.bms_module_1_temperature_10.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_1_temperature_10.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_TEMPERATURE_0_FRAME_ID:
+        if (feb_can_bms_module_2_temperature_0_unpack(&feb_can_state.bms_module_2_temperature_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_temperature_0.meta.present = true;
+        feb_can_state.bms_module_2_temperature_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_temperature_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_TEMPERATURE_1_FRAME_ID:
+        if (feb_can_bms_module_2_temperature_1_unpack(&feb_can_state.bms_module_2_temperature_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_temperature_1.meta.present = true;
+        feb_can_state.bms_module_2_temperature_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_temperature_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_TEMPERATURE_2_FRAME_ID:
+        if (feb_can_bms_module_2_temperature_2_unpack(&feb_can_state.bms_module_2_temperature_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_temperature_2.meta.present = true;
+        feb_can_state.bms_module_2_temperature_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_temperature_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_TEMPERATURE_3_FRAME_ID:
+        if (feb_can_bms_module_2_temperature_3_unpack(&feb_can_state.bms_module_2_temperature_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_temperature_3.meta.present = true;
+        feb_can_state.bms_module_2_temperature_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_temperature_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_TEMPERATURE_4_FRAME_ID:
+        if (feb_can_bms_module_2_temperature_4_unpack(&feb_can_state.bms_module_2_temperature_4.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_temperature_4.meta.present = true;
+        feb_can_state.bms_module_2_temperature_4.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_temperature_4.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_TEMPERATURE_5_FRAME_ID:
+        if (feb_can_bms_module_2_temperature_5_unpack(&feb_can_state.bms_module_2_temperature_5.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_temperature_5.meta.present = true;
+        feb_can_state.bms_module_2_temperature_5.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_temperature_5.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_TEMPERATURE_6_FRAME_ID:
+        if (feb_can_bms_module_2_temperature_6_unpack(&feb_can_state.bms_module_2_temperature_6.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_temperature_6.meta.present = true;
+        feb_can_state.bms_module_2_temperature_6.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_temperature_6.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_TEMPERATURE_7_FRAME_ID:
+        if (feb_can_bms_module_2_temperature_7_unpack(&feb_can_state.bms_module_2_temperature_7.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_temperature_7.meta.present = true;
+        feb_can_state.bms_module_2_temperature_7.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_temperature_7.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_TEMPERATURE_8_FRAME_ID:
+        if (feb_can_bms_module_2_temperature_8_unpack(&feb_can_state.bms_module_2_temperature_8.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_temperature_8.meta.present = true;
+        feb_can_state.bms_module_2_temperature_8.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_temperature_8.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_TEMPERATURE_9_FRAME_ID:
+        if (feb_can_bms_module_2_temperature_9_unpack(&feb_can_state.bms_module_2_temperature_9.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_temperature_9.meta.present = true;
+        feb_can_state.bms_module_2_temperature_9.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_temperature_9.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_2_TEMPERATURE_10_FRAME_ID:
+        if (feb_can_bms_module_2_temperature_10_unpack(&feb_can_state.bms_module_2_temperature_10.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_2_temperature_10.meta.present = true;
+        feb_can_state.bms_module_2_temperature_10.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_2_temperature_10.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_TEMPERATURE_0_FRAME_ID:
+        if (feb_can_bms_module_3_temperature_0_unpack(&feb_can_state.bms_module_3_temperature_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_temperature_0.meta.present = true;
+        feb_can_state.bms_module_3_temperature_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_temperature_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_TEMPERATURE_1_FRAME_ID:
+        if (feb_can_bms_module_3_temperature_1_unpack(&feb_can_state.bms_module_3_temperature_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_temperature_1.meta.present = true;
+        feb_can_state.bms_module_3_temperature_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_temperature_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_TEMPERATURE_2_FRAME_ID:
+        if (feb_can_bms_module_3_temperature_2_unpack(&feb_can_state.bms_module_3_temperature_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_temperature_2.meta.present = true;
+        feb_can_state.bms_module_3_temperature_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_temperature_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_TEMPERATURE_3_FRAME_ID:
+        if (feb_can_bms_module_3_temperature_3_unpack(&feb_can_state.bms_module_3_temperature_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_temperature_3.meta.present = true;
+        feb_can_state.bms_module_3_temperature_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_temperature_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_TEMPERATURE_4_FRAME_ID:
+        if (feb_can_bms_module_3_temperature_4_unpack(&feb_can_state.bms_module_3_temperature_4.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_temperature_4.meta.present = true;
+        feb_can_state.bms_module_3_temperature_4.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_temperature_4.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_TEMPERATURE_5_FRAME_ID:
+        if (feb_can_bms_module_3_temperature_5_unpack(&feb_can_state.bms_module_3_temperature_5.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_temperature_5.meta.present = true;
+        feb_can_state.bms_module_3_temperature_5.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_temperature_5.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_TEMPERATURE_6_FRAME_ID:
+        if (feb_can_bms_module_3_temperature_6_unpack(&feb_can_state.bms_module_3_temperature_6.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_temperature_6.meta.present = true;
+        feb_can_state.bms_module_3_temperature_6.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_temperature_6.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_TEMPERATURE_7_FRAME_ID:
+        if (feb_can_bms_module_3_temperature_7_unpack(&feb_can_state.bms_module_3_temperature_7.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_temperature_7.meta.present = true;
+        feb_can_state.bms_module_3_temperature_7.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_temperature_7.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_TEMPERATURE_8_FRAME_ID:
+        if (feb_can_bms_module_3_temperature_8_unpack(&feb_can_state.bms_module_3_temperature_8.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_temperature_8.meta.present = true;
+        feb_can_state.bms_module_3_temperature_8.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_temperature_8.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_TEMPERATURE_9_FRAME_ID:
+        if (feb_can_bms_module_3_temperature_9_unpack(&feb_can_state.bms_module_3_temperature_9.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_temperature_9.meta.present = true;
+        feb_can_state.bms_module_3_temperature_9.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_temperature_9.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_3_TEMPERATURE_10_FRAME_ID:
+        if (feb_can_bms_module_3_temperature_10_unpack(&feb_can_state.bms_module_3_temperature_10.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_3_temperature_10.meta.present = true;
+        feb_can_state.bms_module_3_temperature_10.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_3_temperature_10.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_TEMPERATURE_0_FRAME_ID:
+        if (feb_can_bms_module_4_temperature_0_unpack(&feb_can_state.bms_module_4_temperature_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_temperature_0.meta.present = true;
+        feb_can_state.bms_module_4_temperature_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_temperature_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_TEMPERATURE_1_FRAME_ID:
+        if (feb_can_bms_module_4_temperature_1_unpack(&feb_can_state.bms_module_4_temperature_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_temperature_1.meta.present = true;
+        feb_can_state.bms_module_4_temperature_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_temperature_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_TEMPERATURE_2_FRAME_ID:
+        if (feb_can_bms_module_4_temperature_2_unpack(&feb_can_state.bms_module_4_temperature_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_temperature_2.meta.present = true;
+        feb_can_state.bms_module_4_temperature_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_temperature_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_TEMPERATURE_3_FRAME_ID:
+        if (feb_can_bms_module_4_temperature_3_unpack(&feb_can_state.bms_module_4_temperature_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_temperature_3.meta.present = true;
+        feb_can_state.bms_module_4_temperature_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_temperature_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_TEMPERATURE_4_FRAME_ID:
+        if (feb_can_bms_module_4_temperature_4_unpack(&feb_can_state.bms_module_4_temperature_4.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_temperature_4.meta.present = true;
+        feb_can_state.bms_module_4_temperature_4.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_temperature_4.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_TEMPERATURE_5_FRAME_ID:
+        if (feb_can_bms_module_4_temperature_5_unpack(&feb_can_state.bms_module_4_temperature_5.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_temperature_5.meta.present = true;
+        feb_can_state.bms_module_4_temperature_5.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_temperature_5.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_TEMPERATURE_6_FRAME_ID:
+        if (feb_can_bms_module_4_temperature_6_unpack(&feb_can_state.bms_module_4_temperature_6.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_temperature_6.meta.present = true;
+        feb_can_state.bms_module_4_temperature_6.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_temperature_6.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_TEMPERATURE_7_FRAME_ID:
+        if (feb_can_bms_module_4_temperature_7_unpack(&feb_can_state.bms_module_4_temperature_7.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_temperature_7.meta.present = true;
+        feb_can_state.bms_module_4_temperature_7.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_temperature_7.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_TEMPERATURE_8_FRAME_ID:
+        if (feb_can_bms_module_4_temperature_8_unpack(&feb_can_state.bms_module_4_temperature_8.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_temperature_8.meta.present = true;
+        feb_can_state.bms_module_4_temperature_8.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_temperature_8.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_TEMPERATURE_9_FRAME_ID:
+        if (feb_can_bms_module_4_temperature_9_unpack(&feb_can_state.bms_module_4_temperature_9.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_temperature_9.meta.present = true;
+        feb_can_state.bms_module_4_temperature_9.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_temperature_9.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_4_TEMPERATURE_10_FRAME_ID:
+        if (feb_can_bms_module_4_temperature_10_unpack(&feb_can_state.bms_module_4_temperature_10.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_4_temperature_10.meta.present = true;
+        feb_can_state.bms_module_4_temperature_10.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_4_temperature_10.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_TEMPERATURE_0_FRAME_ID:
+        if (feb_can_bms_module_5_temperature_0_unpack(&feb_can_state.bms_module_5_temperature_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_temperature_0.meta.present = true;
+        feb_can_state.bms_module_5_temperature_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_temperature_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_TEMPERATURE_1_FRAME_ID:
+        if (feb_can_bms_module_5_temperature_1_unpack(&feb_can_state.bms_module_5_temperature_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_temperature_1.meta.present = true;
+        feb_can_state.bms_module_5_temperature_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_temperature_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_TEMPERATURE_2_FRAME_ID:
+        if (feb_can_bms_module_5_temperature_2_unpack(&feb_can_state.bms_module_5_temperature_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_temperature_2.meta.present = true;
+        feb_can_state.bms_module_5_temperature_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_temperature_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_TEMPERATURE_3_FRAME_ID:
+        if (feb_can_bms_module_5_temperature_3_unpack(&feb_can_state.bms_module_5_temperature_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_temperature_3.meta.present = true;
+        feb_can_state.bms_module_5_temperature_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_temperature_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_TEMPERATURE_4_FRAME_ID:
+        if (feb_can_bms_module_5_temperature_4_unpack(&feb_can_state.bms_module_5_temperature_4.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_temperature_4.meta.present = true;
+        feb_can_state.bms_module_5_temperature_4.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_temperature_4.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_TEMPERATURE_5_FRAME_ID:
+        if (feb_can_bms_module_5_temperature_5_unpack(&feb_can_state.bms_module_5_temperature_5.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_temperature_5.meta.present = true;
+        feb_can_state.bms_module_5_temperature_5.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_temperature_5.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_TEMPERATURE_6_FRAME_ID:
+        if (feb_can_bms_module_5_temperature_6_unpack(&feb_can_state.bms_module_5_temperature_6.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_temperature_6.meta.present = true;
+        feb_can_state.bms_module_5_temperature_6.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_temperature_6.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_TEMPERATURE_7_FRAME_ID:
+        if (feb_can_bms_module_5_temperature_7_unpack(&feb_can_state.bms_module_5_temperature_7.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_temperature_7.meta.present = true;
+        feb_can_state.bms_module_5_temperature_7.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_temperature_7.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_TEMPERATURE_8_FRAME_ID:
+        if (feb_can_bms_module_5_temperature_8_unpack(&feb_can_state.bms_module_5_temperature_8.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_temperature_8.meta.present = true;
+        feb_can_state.bms_module_5_temperature_8.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_temperature_8.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_TEMPERATURE_9_FRAME_ID:
+        if (feb_can_bms_module_5_temperature_9_unpack(&feb_can_state.bms_module_5_temperature_9.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_temperature_9.meta.present = true;
+        feb_can_state.bms_module_5_temperature_9.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_temperature_9.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_5_TEMPERATURE_10_FRAME_ID:
+        if (feb_can_bms_module_5_temperature_10_unpack(&feb_can_state.bms_module_5_temperature_10.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_5_temperature_10.meta.present = true;
+        feb_can_state.bms_module_5_temperature_10.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_5_temperature_10.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_TEMPERATURE_0_FRAME_ID:
+        if (feb_can_bms_module_6_temperature_0_unpack(&feb_can_state.bms_module_6_temperature_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_temperature_0.meta.present = true;
+        feb_can_state.bms_module_6_temperature_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_temperature_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_TEMPERATURE_1_FRAME_ID:
+        if (feb_can_bms_module_6_temperature_1_unpack(&feb_can_state.bms_module_6_temperature_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_temperature_1.meta.present = true;
+        feb_can_state.bms_module_6_temperature_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_temperature_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_TEMPERATURE_2_FRAME_ID:
+        if (feb_can_bms_module_6_temperature_2_unpack(&feb_can_state.bms_module_6_temperature_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_temperature_2.meta.present = true;
+        feb_can_state.bms_module_6_temperature_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_temperature_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_TEMPERATURE_3_FRAME_ID:
+        if (feb_can_bms_module_6_temperature_3_unpack(&feb_can_state.bms_module_6_temperature_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_temperature_3.meta.present = true;
+        feb_can_state.bms_module_6_temperature_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_temperature_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_TEMPERATURE_4_FRAME_ID:
+        if (feb_can_bms_module_6_temperature_4_unpack(&feb_can_state.bms_module_6_temperature_4.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_temperature_4.meta.present = true;
+        feb_can_state.bms_module_6_temperature_4.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_temperature_4.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_TEMPERATURE_5_FRAME_ID:
+        if (feb_can_bms_module_6_temperature_5_unpack(&feb_can_state.bms_module_6_temperature_5.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_temperature_5.meta.present = true;
+        feb_can_state.bms_module_6_temperature_5.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_temperature_5.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_TEMPERATURE_6_FRAME_ID:
+        if (feb_can_bms_module_6_temperature_6_unpack(&feb_can_state.bms_module_6_temperature_6.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_temperature_6.meta.present = true;
+        feb_can_state.bms_module_6_temperature_6.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_temperature_6.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_TEMPERATURE_7_FRAME_ID:
+        if (feb_can_bms_module_6_temperature_7_unpack(&feb_can_state.bms_module_6_temperature_7.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_temperature_7.meta.present = true;
+        feb_can_state.bms_module_6_temperature_7.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_temperature_7.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_TEMPERATURE_8_FRAME_ID:
+        if (feb_can_bms_module_6_temperature_8_unpack(&feb_can_state.bms_module_6_temperature_8.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_temperature_8.meta.present = true;
+        feb_can_state.bms_module_6_temperature_8.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_temperature_8.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_TEMPERATURE_9_FRAME_ID:
+        if (feb_can_bms_module_6_temperature_9_unpack(&feb_can_state.bms_module_6_temperature_9.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_temperature_9.meta.present = true;
+        feb_can_state.bms_module_6_temperature_9.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_temperature_9.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_6_TEMPERATURE_10_FRAME_ID:
+        if (feb_can_bms_module_6_temperature_10_unpack(&feb_can_state.bms_module_6_temperature_10.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_6_temperature_10.meta.present = true;
+        feb_can_state.bms_module_6_temperature_10.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_6_temperature_10.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_TEMPERATURE_0_FRAME_ID:
+        if (feb_can_bms_module_7_temperature_0_unpack(&feb_can_state.bms_module_7_temperature_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_temperature_0.meta.present = true;
+        feb_can_state.bms_module_7_temperature_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_temperature_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_TEMPERATURE_1_FRAME_ID:
+        if (feb_can_bms_module_7_temperature_1_unpack(&feb_can_state.bms_module_7_temperature_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_temperature_1.meta.present = true;
+        feb_can_state.bms_module_7_temperature_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_temperature_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_TEMPERATURE_2_FRAME_ID:
+        if (feb_can_bms_module_7_temperature_2_unpack(&feb_can_state.bms_module_7_temperature_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_temperature_2.meta.present = true;
+        feb_can_state.bms_module_7_temperature_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_temperature_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_TEMPERATURE_3_FRAME_ID:
+        if (feb_can_bms_module_7_temperature_3_unpack(&feb_can_state.bms_module_7_temperature_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_temperature_3.meta.present = true;
+        feb_can_state.bms_module_7_temperature_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_temperature_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_TEMPERATURE_4_FRAME_ID:
+        if (feb_can_bms_module_7_temperature_4_unpack(&feb_can_state.bms_module_7_temperature_4.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_temperature_4.meta.present = true;
+        feb_can_state.bms_module_7_temperature_4.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_temperature_4.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_TEMPERATURE_5_FRAME_ID:
+        if (feb_can_bms_module_7_temperature_5_unpack(&feb_can_state.bms_module_7_temperature_5.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_temperature_5.meta.present = true;
+        feb_can_state.bms_module_7_temperature_5.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_temperature_5.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_TEMPERATURE_6_FRAME_ID:
+        if (feb_can_bms_module_7_temperature_6_unpack(&feb_can_state.bms_module_7_temperature_6.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_temperature_6.meta.present = true;
+        feb_can_state.bms_module_7_temperature_6.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_temperature_6.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_TEMPERATURE_7_FRAME_ID:
+        if (feb_can_bms_module_7_temperature_7_unpack(&feb_can_state.bms_module_7_temperature_7.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_temperature_7.meta.present = true;
+        feb_can_state.bms_module_7_temperature_7.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_temperature_7.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_TEMPERATURE_8_FRAME_ID:
+        if (feb_can_bms_module_7_temperature_8_unpack(&feb_can_state.bms_module_7_temperature_8.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_temperature_8.meta.present = true;
+        feb_can_state.bms_module_7_temperature_8.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_temperature_8.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_TEMPERATURE_9_FRAME_ID:
+        if (feb_can_bms_module_7_temperature_9_unpack(&feb_can_state.bms_module_7_temperature_9.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_temperature_9.meta.present = true;
+        feb_can_state.bms_module_7_temperature_9.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_temperature_9.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_7_TEMPERATURE_10_FRAME_ID:
+        if (feb_can_bms_module_7_temperature_10_unpack(&feb_can_state.bms_module_7_temperature_10.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_7_temperature_10.meta.present = true;
+        feb_can_state.bms_module_7_temperature_10.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_7_temperature_10.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_TEMPERATURE_0_FRAME_ID:
+        if (feb_can_bms_module_8_temperature_0_unpack(&feb_can_state.bms_module_8_temperature_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_temperature_0.meta.present = true;
+        feb_can_state.bms_module_8_temperature_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_temperature_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_TEMPERATURE_1_FRAME_ID:
+        if (feb_can_bms_module_8_temperature_1_unpack(&feb_can_state.bms_module_8_temperature_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_temperature_1.meta.present = true;
+        feb_can_state.bms_module_8_temperature_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_temperature_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_TEMPERATURE_2_FRAME_ID:
+        if (feb_can_bms_module_8_temperature_2_unpack(&feb_can_state.bms_module_8_temperature_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_temperature_2.meta.present = true;
+        feb_can_state.bms_module_8_temperature_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_temperature_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_TEMPERATURE_3_FRAME_ID:
+        if (feb_can_bms_module_8_temperature_3_unpack(&feb_can_state.bms_module_8_temperature_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_temperature_3.meta.present = true;
+        feb_can_state.bms_module_8_temperature_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_temperature_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_TEMPERATURE_4_FRAME_ID:
+        if (feb_can_bms_module_8_temperature_4_unpack(&feb_can_state.bms_module_8_temperature_4.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_temperature_4.meta.present = true;
+        feb_can_state.bms_module_8_temperature_4.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_temperature_4.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_TEMPERATURE_5_FRAME_ID:
+        if (feb_can_bms_module_8_temperature_5_unpack(&feb_can_state.bms_module_8_temperature_5.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_temperature_5.meta.present = true;
+        feb_can_state.bms_module_8_temperature_5.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_temperature_5.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_TEMPERATURE_6_FRAME_ID:
+        if (feb_can_bms_module_8_temperature_6_unpack(&feb_can_state.bms_module_8_temperature_6.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_temperature_6.meta.present = true;
+        feb_can_state.bms_module_8_temperature_6.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_temperature_6.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_TEMPERATURE_7_FRAME_ID:
+        if (feb_can_bms_module_8_temperature_7_unpack(&feb_can_state.bms_module_8_temperature_7.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_temperature_7.meta.present = true;
+        feb_can_state.bms_module_8_temperature_7.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_temperature_7.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_TEMPERATURE_8_FRAME_ID:
+        if (feb_can_bms_module_8_temperature_8_unpack(&feb_can_state.bms_module_8_temperature_8.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_temperature_8.meta.present = true;
+        feb_can_state.bms_module_8_temperature_8.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_temperature_8.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_TEMPERATURE_9_FRAME_ID:
+        if (feb_can_bms_module_8_temperature_9_unpack(&feb_can_state.bms_module_8_temperature_9.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_temperature_9.meta.present = true;
+        feb_can_state.bms_module_8_temperature_9.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_temperature_9.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_8_TEMPERATURE_10_FRAME_ID:
+        if (feb_can_bms_module_8_temperature_10_unpack(&feb_can_state.bms_module_8_temperature_10.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_8_temperature_10.meta.present = true;
+        feb_can_state.bms_module_8_temperature_10.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_8_temperature_10.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_TEMPERATURE_0_FRAME_ID:
+        if (feb_can_bms_module_9_temperature_0_unpack(&feb_can_state.bms_module_9_temperature_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_temperature_0.meta.present = true;
+        feb_can_state.bms_module_9_temperature_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_temperature_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_TEMPERATURE_1_FRAME_ID:
+        if (feb_can_bms_module_9_temperature_1_unpack(&feb_can_state.bms_module_9_temperature_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_temperature_1.meta.present = true;
+        feb_can_state.bms_module_9_temperature_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_temperature_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_TEMPERATURE_2_FRAME_ID:
+        if (feb_can_bms_module_9_temperature_2_unpack(&feb_can_state.bms_module_9_temperature_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_temperature_2.meta.present = true;
+        feb_can_state.bms_module_9_temperature_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_temperature_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_TEMPERATURE_3_FRAME_ID:
+        if (feb_can_bms_module_9_temperature_3_unpack(&feb_can_state.bms_module_9_temperature_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_temperature_3.meta.present = true;
+        feb_can_state.bms_module_9_temperature_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_temperature_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_TEMPERATURE_4_FRAME_ID:
+        if (feb_can_bms_module_9_temperature_4_unpack(&feb_can_state.bms_module_9_temperature_4.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_temperature_4.meta.present = true;
+        feb_can_state.bms_module_9_temperature_4.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_temperature_4.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_TEMPERATURE_5_FRAME_ID:
+        if (feb_can_bms_module_9_temperature_5_unpack(&feb_can_state.bms_module_9_temperature_5.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_temperature_5.meta.present = true;
+        feb_can_state.bms_module_9_temperature_5.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_temperature_5.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_TEMPERATURE_6_FRAME_ID:
+        if (feb_can_bms_module_9_temperature_6_unpack(&feb_can_state.bms_module_9_temperature_6.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_temperature_6.meta.present = true;
+        feb_can_state.bms_module_9_temperature_6.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_temperature_6.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_TEMPERATURE_7_FRAME_ID:
+        if (feb_can_bms_module_9_temperature_7_unpack(&feb_can_state.bms_module_9_temperature_7.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_temperature_7.meta.present = true;
+        feb_can_state.bms_module_9_temperature_7.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_temperature_7.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_TEMPERATURE_8_FRAME_ID:
+        if (feb_can_bms_module_9_temperature_8_unpack(&feb_can_state.bms_module_9_temperature_8.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_temperature_8.meta.present = true;
+        feb_can_state.bms_module_9_temperature_8.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_temperature_8.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_TEMPERATURE_9_FRAME_ID:
+        if (feb_can_bms_module_9_temperature_9_unpack(&feb_can_state.bms_module_9_temperature_9.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_temperature_9.meta.present = true;
+        feb_can_state.bms_module_9_temperature_9.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_temperature_9.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_9_TEMPERATURE_10_FRAME_ID:
+        if (feb_can_bms_module_9_temperature_10_unpack(&feb_can_state.bms_module_9_temperature_10.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_9_temperature_10.meta.present = true;
+        feb_can_state.bms_module_9_temperature_10.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_9_temperature_10.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_TEMPERATURE_0_FRAME_ID:
+        if (feb_can_bms_module_10_temperature_0_unpack(&feb_can_state.bms_module_10_temperature_0.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_temperature_0.meta.present = true;
+        feb_can_state.bms_module_10_temperature_0.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_temperature_0.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_TEMPERATURE_1_FRAME_ID:
+        if (feb_can_bms_module_10_temperature_1_unpack(&feb_can_state.bms_module_10_temperature_1.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_temperature_1.meta.present = true;
+        feb_can_state.bms_module_10_temperature_1.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_temperature_1.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_TEMPERATURE_2_FRAME_ID:
+        if (feb_can_bms_module_10_temperature_2_unpack(&feb_can_state.bms_module_10_temperature_2.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_temperature_2.meta.present = true;
+        feb_can_state.bms_module_10_temperature_2.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_temperature_2.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_TEMPERATURE_3_FRAME_ID:
+        if (feb_can_bms_module_10_temperature_3_unpack(&feb_can_state.bms_module_10_temperature_3.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_temperature_3.meta.present = true;
+        feb_can_state.bms_module_10_temperature_3.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_temperature_3.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_TEMPERATURE_4_FRAME_ID:
+        if (feb_can_bms_module_10_temperature_4_unpack(&feb_can_state.bms_module_10_temperature_4.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_temperature_4.meta.present = true;
+        feb_can_state.bms_module_10_temperature_4.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_temperature_4.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_TEMPERATURE_5_FRAME_ID:
+        if (feb_can_bms_module_10_temperature_5_unpack(&feb_can_state.bms_module_10_temperature_5.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_temperature_5.meta.present = true;
+        feb_can_state.bms_module_10_temperature_5.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_temperature_5.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_TEMPERATURE_6_FRAME_ID:
+        if (feb_can_bms_module_10_temperature_6_unpack(&feb_can_state.bms_module_10_temperature_6.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_temperature_6.meta.present = true;
+        feb_can_state.bms_module_10_temperature_6.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_temperature_6.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_TEMPERATURE_7_FRAME_ID:
+        if (feb_can_bms_module_10_temperature_7_unpack(&feb_can_state.bms_module_10_temperature_7.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_temperature_7.meta.present = true;
+        feb_can_state.bms_module_10_temperature_7.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_temperature_7.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_TEMPERATURE_8_FRAME_ID:
+        if (feb_can_bms_module_10_temperature_8_unpack(&feb_can_state.bms_module_10_temperature_8.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_temperature_8.meta.present = true;
+        feb_can_state.bms_module_10_temperature_8.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_temperature_8.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_TEMPERATURE_9_FRAME_ID:
+        if (feb_can_bms_module_10_temperature_9_unpack(&feb_can_state.bms_module_10_temperature_9.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_temperature_9.meta.present = true;
+        feb_can_state.bms_module_10_temperature_9.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_temperature_9.meta.rx_count++;
+        return 0;
+    case FEB_CAN_BMS_MODULE_10_TEMPERATURE_10_FRAME_ID:
+        if (feb_can_bms_module_10_temperature_10_unpack(&feb_can_state.bms_module_10_temperature_10.data, data, dlc) < 0) return -2;
+        feb_can_state.bms_module_10_temperature_10.meta.present = true;
+        feb_can_state.bms_module_10_temperature_10.meta.last_rx_ms = now_ms;
+        feb_can_state.bms_module_10_temperature_10.meta.rx_count++;
+        return 0;
     case FEB_CAN_EBS_PRESSURE_STATUS_FRAME_ID:
         if (feb_can_ebs_pressure_status_unpack(&feb_can_state.ebs_pressure_status.data, data, dlc) < 0) return -2;
         feb_can_state.ebs_pressure_status.meta.present = true;
@@ -676,6 +1576,156 @@ void FEB_CAN_State_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_state.feb_ping_pong_counter2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE1, "feb_ping_pong_counter2", (unsigned long)feb_can_state.feb_ping_pong_counter2.meta.last_rx_ms, (unsigned long)feb_can_state.feb_ping_pong_counter2.meta.rx_count);
     if (feb_can_state.feb_ping_pong_counter3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE2, "feb_ping_pong_counter3", (unsigned long)feb_can_state.feb_ping_pong_counter3.meta.last_rx_ms, (unsigned long)feb_can_state.feb_ping_pong_counter3.meta.rx_count);
     if (feb_can_state.feb_ping_pong_counter4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE3, "feb_ping_pong_counter4", (unsigned long)feb_can_state.feb_ping_pong_counter4.meta.last_rx_ms, (unsigned long)feb_can_state.feb_ping_pong_counter4.meta.rx_count);
+    if (feb_can_state.bms_module_1_voltage_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x204, "bms_module_1_voltage_0", (unsigned long)feb_can_state.bms_module_1_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_voltage_0.meta.rx_count);
+    if (feb_can_state.bms_module_1_voltage_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x205, "bms_module_1_voltage_1", (unsigned long)feb_can_state.bms_module_1_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_voltage_1.meta.rx_count);
+    if (feb_can_state.bms_module_1_voltage_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x206, "bms_module_1_voltage_2", (unsigned long)feb_can_state.bms_module_1_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_voltage_2.meta.rx_count);
+    if (feb_can_state.bms_module_1_voltage_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x207, "bms_module_1_voltage_3", (unsigned long)feb_can_state.bms_module_1_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_voltage_3.meta.rx_count);
+    if (feb_can_state.bms_module_2_voltage_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x208, "bms_module_2_voltage_0", (unsigned long)feb_can_state.bms_module_2_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_voltage_0.meta.rx_count);
+    if (feb_can_state.bms_module_2_voltage_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x209, "bms_module_2_voltage_1", (unsigned long)feb_can_state.bms_module_2_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_voltage_1.meta.rx_count);
+    if (feb_can_state.bms_module_2_voltage_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x20A, "bms_module_2_voltage_2", (unsigned long)feb_can_state.bms_module_2_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_voltage_2.meta.rx_count);
+    if (feb_can_state.bms_module_2_voltage_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x20B, "bms_module_2_voltage_3", (unsigned long)feb_can_state.bms_module_2_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_voltage_3.meta.rx_count);
+    if (feb_can_state.bms_module_3_voltage_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x20C, "bms_module_3_voltage_0", (unsigned long)feb_can_state.bms_module_3_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_voltage_0.meta.rx_count);
+    if (feb_can_state.bms_module_3_voltage_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x20D, "bms_module_3_voltage_1", (unsigned long)feb_can_state.bms_module_3_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_voltage_1.meta.rx_count);
+    if (feb_can_state.bms_module_3_voltage_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x20E, "bms_module_3_voltage_2", (unsigned long)feb_can_state.bms_module_3_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_voltage_2.meta.rx_count);
+    if (feb_can_state.bms_module_3_voltage_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x20F, "bms_module_3_voltage_3", (unsigned long)feb_can_state.bms_module_3_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_voltage_3.meta.rx_count);
+    if (feb_can_state.bms_module_4_voltage_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x210, "bms_module_4_voltage_0", (unsigned long)feb_can_state.bms_module_4_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_voltage_0.meta.rx_count);
+    if (feb_can_state.bms_module_4_voltage_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x211, "bms_module_4_voltage_1", (unsigned long)feb_can_state.bms_module_4_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_voltage_1.meta.rx_count);
+    if (feb_can_state.bms_module_4_voltage_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x212, "bms_module_4_voltage_2", (unsigned long)feb_can_state.bms_module_4_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_voltage_2.meta.rx_count);
+    if (feb_can_state.bms_module_4_voltage_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x213, "bms_module_4_voltage_3", (unsigned long)feb_can_state.bms_module_4_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_voltage_3.meta.rx_count);
+    if (feb_can_state.bms_module_5_voltage_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x214, "bms_module_5_voltage_0", (unsigned long)feb_can_state.bms_module_5_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_voltage_0.meta.rx_count);
+    if (feb_can_state.bms_module_5_voltage_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x215, "bms_module_5_voltage_1", (unsigned long)feb_can_state.bms_module_5_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_voltage_1.meta.rx_count);
+    if (feb_can_state.bms_module_5_voltage_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x216, "bms_module_5_voltage_2", (unsigned long)feb_can_state.bms_module_5_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_voltage_2.meta.rx_count);
+    if (feb_can_state.bms_module_5_voltage_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x217, "bms_module_5_voltage_3", (unsigned long)feb_can_state.bms_module_5_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_voltage_3.meta.rx_count);
+    if (feb_can_state.bms_module_6_voltage_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x218, "bms_module_6_voltage_0", (unsigned long)feb_can_state.bms_module_6_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_voltage_0.meta.rx_count);
+    if (feb_can_state.bms_module_6_voltage_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x219, "bms_module_6_voltage_1", (unsigned long)feb_can_state.bms_module_6_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_voltage_1.meta.rx_count);
+    if (feb_can_state.bms_module_6_voltage_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x21A, "bms_module_6_voltage_2", (unsigned long)feb_can_state.bms_module_6_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_voltage_2.meta.rx_count);
+    if (feb_can_state.bms_module_6_voltage_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x21B, "bms_module_6_voltage_3", (unsigned long)feb_can_state.bms_module_6_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_voltage_3.meta.rx_count);
+    if (feb_can_state.bms_module_7_voltage_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x21C, "bms_module_7_voltage_0", (unsigned long)feb_can_state.bms_module_7_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_voltage_0.meta.rx_count);
+    if (feb_can_state.bms_module_7_voltage_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x21D, "bms_module_7_voltage_1", (unsigned long)feb_can_state.bms_module_7_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_voltage_1.meta.rx_count);
+    if (feb_can_state.bms_module_7_voltage_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x21E, "bms_module_7_voltage_2", (unsigned long)feb_can_state.bms_module_7_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_voltage_2.meta.rx_count);
+    if (feb_can_state.bms_module_7_voltage_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x21F, "bms_module_7_voltage_3", (unsigned long)feb_can_state.bms_module_7_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_voltage_3.meta.rx_count);
+    if (feb_can_state.bms_module_8_voltage_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x220, "bms_module_8_voltage_0", (unsigned long)feb_can_state.bms_module_8_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_voltage_0.meta.rx_count);
+    if (feb_can_state.bms_module_8_voltage_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x221, "bms_module_8_voltage_1", (unsigned long)feb_can_state.bms_module_8_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_voltage_1.meta.rx_count);
+    if (feb_can_state.bms_module_8_voltage_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x222, "bms_module_8_voltage_2", (unsigned long)feb_can_state.bms_module_8_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_voltage_2.meta.rx_count);
+    if (feb_can_state.bms_module_8_voltage_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x223, "bms_module_8_voltage_3", (unsigned long)feb_can_state.bms_module_8_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_voltage_3.meta.rx_count);
+    if (feb_can_state.bms_module_9_voltage_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x224, "bms_module_9_voltage_0", (unsigned long)feb_can_state.bms_module_9_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_voltage_0.meta.rx_count);
+    if (feb_can_state.bms_module_9_voltage_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x225, "bms_module_9_voltage_1", (unsigned long)feb_can_state.bms_module_9_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_voltage_1.meta.rx_count);
+    if (feb_can_state.bms_module_9_voltage_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x226, "bms_module_9_voltage_2", (unsigned long)feb_can_state.bms_module_9_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_voltage_2.meta.rx_count);
+    if (feb_can_state.bms_module_9_voltage_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x227, "bms_module_9_voltage_3", (unsigned long)feb_can_state.bms_module_9_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_voltage_3.meta.rx_count);
+    if (feb_can_state.bms_module_10_voltage_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x228, "bms_module_10_voltage_0", (unsigned long)feb_can_state.bms_module_10_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_voltage_0.meta.rx_count);
+    if (feb_can_state.bms_module_10_voltage_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x229, "bms_module_10_voltage_1", (unsigned long)feb_can_state.bms_module_10_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_voltage_1.meta.rx_count);
+    if (feb_can_state.bms_module_10_voltage_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x22A, "bms_module_10_voltage_2", (unsigned long)feb_can_state.bms_module_10_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_voltage_2.meta.rx_count);
+    if (feb_can_state.bms_module_10_voltage_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x22B, "bms_module_10_voltage_3", (unsigned long)feb_can_state.bms_module_10_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_voltage_3.meta.rx_count);
+    if (feb_can_state.bms_module_1_temperature_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x22C, "bms_module_1_temperature_0", (unsigned long)feb_can_state.bms_module_1_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_0.meta.rx_count);
+    if (feb_can_state.bms_module_1_temperature_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x22D, "bms_module_1_temperature_1", (unsigned long)feb_can_state.bms_module_1_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_1.meta.rx_count);
+    if (feb_can_state.bms_module_1_temperature_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x22E, "bms_module_1_temperature_2", (unsigned long)feb_can_state.bms_module_1_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_2.meta.rx_count);
+    if (feb_can_state.bms_module_1_temperature_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x22F, "bms_module_1_temperature_3", (unsigned long)feb_can_state.bms_module_1_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_3.meta.rx_count);
+    if (feb_can_state.bms_module_1_temperature_4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x230, "bms_module_1_temperature_4", (unsigned long)feb_can_state.bms_module_1_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_4.meta.rx_count);
+    if (feb_can_state.bms_module_1_temperature_5.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x231, "bms_module_1_temperature_5", (unsigned long)feb_can_state.bms_module_1_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_5.meta.rx_count);
+    if (feb_can_state.bms_module_1_temperature_6.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x232, "bms_module_1_temperature_6", (unsigned long)feb_can_state.bms_module_1_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_6.meta.rx_count);
+    if (feb_can_state.bms_module_1_temperature_7.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x233, "bms_module_1_temperature_7", (unsigned long)feb_can_state.bms_module_1_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_7.meta.rx_count);
+    if (feb_can_state.bms_module_1_temperature_8.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x234, "bms_module_1_temperature_8", (unsigned long)feb_can_state.bms_module_1_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_8.meta.rx_count);
+    if (feb_can_state.bms_module_1_temperature_9.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x235, "bms_module_1_temperature_9", (unsigned long)feb_can_state.bms_module_1_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_9.meta.rx_count);
+    if (feb_can_state.bms_module_1_temperature_10.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x236, "bms_module_1_temperature_10", (unsigned long)feb_can_state.bms_module_1_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_10.meta.rx_count);
+    if (feb_can_state.bms_module_2_temperature_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x237, "bms_module_2_temperature_0", (unsigned long)feb_can_state.bms_module_2_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_0.meta.rx_count);
+    if (feb_can_state.bms_module_2_temperature_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x238, "bms_module_2_temperature_1", (unsigned long)feb_can_state.bms_module_2_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_1.meta.rx_count);
+    if (feb_can_state.bms_module_2_temperature_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x239, "bms_module_2_temperature_2", (unsigned long)feb_can_state.bms_module_2_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_2.meta.rx_count);
+    if (feb_can_state.bms_module_2_temperature_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x23A, "bms_module_2_temperature_3", (unsigned long)feb_can_state.bms_module_2_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_3.meta.rx_count);
+    if (feb_can_state.bms_module_2_temperature_4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x23B, "bms_module_2_temperature_4", (unsigned long)feb_can_state.bms_module_2_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_4.meta.rx_count);
+    if (feb_can_state.bms_module_2_temperature_5.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x23C, "bms_module_2_temperature_5", (unsigned long)feb_can_state.bms_module_2_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_5.meta.rx_count);
+    if (feb_can_state.bms_module_2_temperature_6.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x23D, "bms_module_2_temperature_6", (unsigned long)feb_can_state.bms_module_2_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_6.meta.rx_count);
+    if (feb_can_state.bms_module_2_temperature_7.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x23E, "bms_module_2_temperature_7", (unsigned long)feb_can_state.bms_module_2_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_7.meta.rx_count);
+    if (feb_can_state.bms_module_2_temperature_8.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x23F, "bms_module_2_temperature_8", (unsigned long)feb_can_state.bms_module_2_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_8.meta.rx_count);
+    if (feb_can_state.bms_module_2_temperature_9.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x240, "bms_module_2_temperature_9", (unsigned long)feb_can_state.bms_module_2_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_9.meta.rx_count);
+    if (feb_can_state.bms_module_2_temperature_10.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x241, "bms_module_2_temperature_10", (unsigned long)feb_can_state.bms_module_2_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_10.meta.rx_count);
+    if (feb_can_state.bms_module_3_temperature_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x242, "bms_module_3_temperature_0", (unsigned long)feb_can_state.bms_module_3_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_0.meta.rx_count);
+    if (feb_can_state.bms_module_3_temperature_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x243, "bms_module_3_temperature_1", (unsigned long)feb_can_state.bms_module_3_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_1.meta.rx_count);
+    if (feb_can_state.bms_module_3_temperature_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x244, "bms_module_3_temperature_2", (unsigned long)feb_can_state.bms_module_3_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_2.meta.rx_count);
+    if (feb_can_state.bms_module_3_temperature_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x245, "bms_module_3_temperature_3", (unsigned long)feb_can_state.bms_module_3_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_3.meta.rx_count);
+    if (feb_can_state.bms_module_3_temperature_4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x246, "bms_module_3_temperature_4", (unsigned long)feb_can_state.bms_module_3_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_4.meta.rx_count);
+    if (feb_can_state.bms_module_3_temperature_5.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x247, "bms_module_3_temperature_5", (unsigned long)feb_can_state.bms_module_3_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_5.meta.rx_count);
+    if (feb_can_state.bms_module_3_temperature_6.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x248, "bms_module_3_temperature_6", (unsigned long)feb_can_state.bms_module_3_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_6.meta.rx_count);
+    if (feb_can_state.bms_module_3_temperature_7.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x249, "bms_module_3_temperature_7", (unsigned long)feb_can_state.bms_module_3_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_7.meta.rx_count);
+    if (feb_can_state.bms_module_3_temperature_8.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x24A, "bms_module_3_temperature_8", (unsigned long)feb_can_state.bms_module_3_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_8.meta.rx_count);
+    if (feb_can_state.bms_module_3_temperature_9.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x24B, "bms_module_3_temperature_9", (unsigned long)feb_can_state.bms_module_3_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_9.meta.rx_count);
+    if (feb_can_state.bms_module_3_temperature_10.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x24C, "bms_module_3_temperature_10", (unsigned long)feb_can_state.bms_module_3_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_10.meta.rx_count);
+    if (feb_can_state.bms_module_4_temperature_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x24D, "bms_module_4_temperature_0", (unsigned long)feb_can_state.bms_module_4_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_0.meta.rx_count);
+    if (feb_can_state.bms_module_4_temperature_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x24E, "bms_module_4_temperature_1", (unsigned long)feb_can_state.bms_module_4_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_1.meta.rx_count);
+    if (feb_can_state.bms_module_4_temperature_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x24F, "bms_module_4_temperature_2", (unsigned long)feb_can_state.bms_module_4_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_2.meta.rx_count);
+    if (feb_can_state.bms_module_4_temperature_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x250, "bms_module_4_temperature_3", (unsigned long)feb_can_state.bms_module_4_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_3.meta.rx_count);
+    if (feb_can_state.bms_module_4_temperature_4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x251, "bms_module_4_temperature_4", (unsigned long)feb_can_state.bms_module_4_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_4.meta.rx_count);
+    if (feb_can_state.bms_module_4_temperature_5.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x252, "bms_module_4_temperature_5", (unsigned long)feb_can_state.bms_module_4_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_5.meta.rx_count);
+    if (feb_can_state.bms_module_4_temperature_6.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x253, "bms_module_4_temperature_6", (unsigned long)feb_can_state.bms_module_4_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_6.meta.rx_count);
+    if (feb_can_state.bms_module_4_temperature_7.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x254, "bms_module_4_temperature_7", (unsigned long)feb_can_state.bms_module_4_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_7.meta.rx_count);
+    if (feb_can_state.bms_module_4_temperature_8.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x255, "bms_module_4_temperature_8", (unsigned long)feb_can_state.bms_module_4_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_8.meta.rx_count);
+    if (feb_can_state.bms_module_4_temperature_9.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x256, "bms_module_4_temperature_9", (unsigned long)feb_can_state.bms_module_4_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_9.meta.rx_count);
+    if (feb_can_state.bms_module_4_temperature_10.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x257, "bms_module_4_temperature_10", (unsigned long)feb_can_state.bms_module_4_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_10.meta.rx_count);
+    if (feb_can_state.bms_module_5_temperature_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x258, "bms_module_5_temperature_0", (unsigned long)feb_can_state.bms_module_5_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_0.meta.rx_count);
+    if (feb_can_state.bms_module_5_temperature_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x259, "bms_module_5_temperature_1", (unsigned long)feb_can_state.bms_module_5_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_1.meta.rx_count);
+    if (feb_can_state.bms_module_5_temperature_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x25A, "bms_module_5_temperature_2", (unsigned long)feb_can_state.bms_module_5_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_2.meta.rx_count);
+    if (feb_can_state.bms_module_5_temperature_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x25B, "bms_module_5_temperature_3", (unsigned long)feb_can_state.bms_module_5_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_3.meta.rx_count);
+    if (feb_can_state.bms_module_5_temperature_4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x25C, "bms_module_5_temperature_4", (unsigned long)feb_can_state.bms_module_5_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_4.meta.rx_count);
+    if (feb_can_state.bms_module_5_temperature_5.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x25D, "bms_module_5_temperature_5", (unsigned long)feb_can_state.bms_module_5_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_5.meta.rx_count);
+    if (feb_can_state.bms_module_5_temperature_6.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x25E, "bms_module_5_temperature_6", (unsigned long)feb_can_state.bms_module_5_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_6.meta.rx_count);
+    if (feb_can_state.bms_module_5_temperature_7.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x25F, "bms_module_5_temperature_7", (unsigned long)feb_can_state.bms_module_5_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_7.meta.rx_count);
+    if (feb_can_state.bms_module_5_temperature_8.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x260, "bms_module_5_temperature_8", (unsigned long)feb_can_state.bms_module_5_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_8.meta.rx_count);
+    if (feb_can_state.bms_module_5_temperature_9.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x261, "bms_module_5_temperature_9", (unsigned long)feb_can_state.bms_module_5_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_9.meta.rx_count);
+    if (feb_can_state.bms_module_5_temperature_10.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x262, "bms_module_5_temperature_10", (unsigned long)feb_can_state.bms_module_5_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_10.meta.rx_count);
+    if (feb_can_state.bms_module_6_temperature_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x263, "bms_module_6_temperature_0", (unsigned long)feb_can_state.bms_module_6_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_0.meta.rx_count);
+    if (feb_can_state.bms_module_6_temperature_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x264, "bms_module_6_temperature_1", (unsigned long)feb_can_state.bms_module_6_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_1.meta.rx_count);
+    if (feb_can_state.bms_module_6_temperature_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x265, "bms_module_6_temperature_2", (unsigned long)feb_can_state.bms_module_6_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_2.meta.rx_count);
+    if (feb_can_state.bms_module_6_temperature_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x266, "bms_module_6_temperature_3", (unsigned long)feb_can_state.bms_module_6_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_3.meta.rx_count);
+    if (feb_can_state.bms_module_6_temperature_4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x267, "bms_module_6_temperature_4", (unsigned long)feb_can_state.bms_module_6_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_4.meta.rx_count);
+    if (feb_can_state.bms_module_6_temperature_5.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x268, "bms_module_6_temperature_5", (unsigned long)feb_can_state.bms_module_6_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_5.meta.rx_count);
+    if (feb_can_state.bms_module_6_temperature_6.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x269, "bms_module_6_temperature_6", (unsigned long)feb_can_state.bms_module_6_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_6.meta.rx_count);
+    if (feb_can_state.bms_module_6_temperature_7.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x26A, "bms_module_6_temperature_7", (unsigned long)feb_can_state.bms_module_6_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_7.meta.rx_count);
+    if (feb_can_state.bms_module_6_temperature_8.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x26B, "bms_module_6_temperature_8", (unsigned long)feb_can_state.bms_module_6_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_8.meta.rx_count);
+    if (feb_can_state.bms_module_6_temperature_9.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x26C, "bms_module_6_temperature_9", (unsigned long)feb_can_state.bms_module_6_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_9.meta.rx_count);
+    if (feb_can_state.bms_module_6_temperature_10.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x26D, "bms_module_6_temperature_10", (unsigned long)feb_can_state.bms_module_6_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_10.meta.rx_count);
+    if (feb_can_state.bms_module_7_temperature_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x26E, "bms_module_7_temperature_0", (unsigned long)feb_can_state.bms_module_7_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_0.meta.rx_count);
+    if (feb_can_state.bms_module_7_temperature_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x26F, "bms_module_7_temperature_1", (unsigned long)feb_can_state.bms_module_7_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_1.meta.rx_count);
+    if (feb_can_state.bms_module_7_temperature_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x270, "bms_module_7_temperature_2", (unsigned long)feb_can_state.bms_module_7_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_2.meta.rx_count);
+    if (feb_can_state.bms_module_7_temperature_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x271, "bms_module_7_temperature_3", (unsigned long)feb_can_state.bms_module_7_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_3.meta.rx_count);
+    if (feb_can_state.bms_module_7_temperature_4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x272, "bms_module_7_temperature_4", (unsigned long)feb_can_state.bms_module_7_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_4.meta.rx_count);
+    if (feb_can_state.bms_module_7_temperature_5.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x273, "bms_module_7_temperature_5", (unsigned long)feb_can_state.bms_module_7_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_5.meta.rx_count);
+    if (feb_can_state.bms_module_7_temperature_6.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x274, "bms_module_7_temperature_6", (unsigned long)feb_can_state.bms_module_7_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_6.meta.rx_count);
+    if (feb_can_state.bms_module_7_temperature_7.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x275, "bms_module_7_temperature_7", (unsigned long)feb_can_state.bms_module_7_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_7.meta.rx_count);
+    if (feb_can_state.bms_module_7_temperature_8.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x276, "bms_module_7_temperature_8", (unsigned long)feb_can_state.bms_module_7_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_8.meta.rx_count);
+    if (feb_can_state.bms_module_7_temperature_9.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x277, "bms_module_7_temperature_9", (unsigned long)feb_can_state.bms_module_7_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_9.meta.rx_count);
+    if (feb_can_state.bms_module_7_temperature_10.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x278, "bms_module_7_temperature_10", (unsigned long)feb_can_state.bms_module_7_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_10.meta.rx_count);
+    if (feb_can_state.bms_module_8_temperature_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x279, "bms_module_8_temperature_0", (unsigned long)feb_can_state.bms_module_8_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_0.meta.rx_count);
+    if (feb_can_state.bms_module_8_temperature_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x27A, "bms_module_8_temperature_1", (unsigned long)feb_can_state.bms_module_8_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_1.meta.rx_count);
+    if (feb_can_state.bms_module_8_temperature_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x27B, "bms_module_8_temperature_2", (unsigned long)feb_can_state.bms_module_8_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_2.meta.rx_count);
+    if (feb_can_state.bms_module_8_temperature_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x27C, "bms_module_8_temperature_3", (unsigned long)feb_can_state.bms_module_8_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_3.meta.rx_count);
+    if (feb_can_state.bms_module_8_temperature_4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x27D, "bms_module_8_temperature_4", (unsigned long)feb_can_state.bms_module_8_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_4.meta.rx_count);
+    if (feb_can_state.bms_module_8_temperature_5.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x27E, "bms_module_8_temperature_5", (unsigned long)feb_can_state.bms_module_8_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_5.meta.rx_count);
+    if (feb_can_state.bms_module_8_temperature_6.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x27F, "bms_module_8_temperature_6", (unsigned long)feb_can_state.bms_module_8_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_6.meta.rx_count);
+    if (feb_can_state.bms_module_8_temperature_7.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x280, "bms_module_8_temperature_7", (unsigned long)feb_can_state.bms_module_8_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_7.meta.rx_count);
+    if (feb_can_state.bms_module_8_temperature_8.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x281, "bms_module_8_temperature_8", (unsigned long)feb_can_state.bms_module_8_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_8.meta.rx_count);
+    if (feb_can_state.bms_module_8_temperature_9.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x282, "bms_module_8_temperature_9", (unsigned long)feb_can_state.bms_module_8_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_9.meta.rx_count);
+    if (feb_can_state.bms_module_8_temperature_10.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x283, "bms_module_8_temperature_10", (unsigned long)feb_can_state.bms_module_8_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_10.meta.rx_count);
+    if (feb_can_state.bms_module_9_temperature_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x284, "bms_module_9_temperature_0", (unsigned long)feb_can_state.bms_module_9_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_0.meta.rx_count);
+    if (feb_can_state.bms_module_9_temperature_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x285, "bms_module_9_temperature_1", (unsigned long)feb_can_state.bms_module_9_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_1.meta.rx_count);
+    if (feb_can_state.bms_module_9_temperature_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x286, "bms_module_9_temperature_2", (unsigned long)feb_can_state.bms_module_9_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_2.meta.rx_count);
+    if (feb_can_state.bms_module_9_temperature_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x287, "bms_module_9_temperature_3", (unsigned long)feb_can_state.bms_module_9_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_3.meta.rx_count);
+    if (feb_can_state.bms_module_9_temperature_4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x288, "bms_module_9_temperature_4", (unsigned long)feb_can_state.bms_module_9_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_4.meta.rx_count);
+    if (feb_can_state.bms_module_9_temperature_5.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x289, "bms_module_9_temperature_5", (unsigned long)feb_can_state.bms_module_9_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_5.meta.rx_count);
+    if (feb_can_state.bms_module_9_temperature_6.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x28A, "bms_module_9_temperature_6", (unsigned long)feb_can_state.bms_module_9_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_6.meta.rx_count);
+    if (feb_can_state.bms_module_9_temperature_7.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x28B, "bms_module_9_temperature_7", (unsigned long)feb_can_state.bms_module_9_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_7.meta.rx_count);
+    if (feb_can_state.bms_module_9_temperature_8.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x28C, "bms_module_9_temperature_8", (unsigned long)feb_can_state.bms_module_9_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_8.meta.rx_count);
+    if (feb_can_state.bms_module_9_temperature_9.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x28D, "bms_module_9_temperature_9", (unsigned long)feb_can_state.bms_module_9_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_9.meta.rx_count);
+    if (feb_can_state.bms_module_9_temperature_10.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x28E, "bms_module_9_temperature_10", (unsigned long)feb_can_state.bms_module_9_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_10.meta.rx_count);
+    if (feb_can_state.bms_module_10_temperature_0.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x28F, "bms_module_10_temperature_0", (unsigned long)feb_can_state.bms_module_10_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_0.meta.rx_count);
+    if (feb_can_state.bms_module_10_temperature_1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x290, "bms_module_10_temperature_1", (unsigned long)feb_can_state.bms_module_10_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_1.meta.rx_count);
+    if (feb_can_state.bms_module_10_temperature_2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x291, "bms_module_10_temperature_2", (unsigned long)feb_can_state.bms_module_10_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_2.meta.rx_count);
+    if (feb_can_state.bms_module_10_temperature_3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x292, "bms_module_10_temperature_3", (unsigned long)feb_can_state.bms_module_10_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_3.meta.rx_count);
+    if (feb_can_state.bms_module_10_temperature_4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x293, "bms_module_10_temperature_4", (unsigned long)feb_can_state.bms_module_10_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_4.meta.rx_count);
+    if (feb_can_state.bms_module_10_temperature_5.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x294, "bms_module_10_temperature_5", (unsigned long)feb_can_state.bms_module_10_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_5.meta.rx_count);
+    if (feb_can_state.bms_module_10_temperature_6.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x295, "bms_module_10_temperature_6", (unsigned long)feb_can_state.bms_module_10_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_6.meta.rx_count);
+    if (feb_can_state.bms_module_10_temperature_7.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x296, "bms_module_10_temperature_7", (unsigned long)feb_can_state.bms_module_10_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_7.meta.rx_count);
+    if (feb_can_state.bms_module_10_temperature_8.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x297, "bms_module_10_temperature_8", (unsigned long)feb_can_state.bms_module_10_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_8.meta.rx_count);
+    if (feb_can_state.bms_module_10_temperature_9.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x298, "bms_module_10_temperature_9", (unsigned long)feb_can_state.bms_module_10_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_9.meta.rx_count);
+    if (feb_can_state.bms_module_10_temperature_10.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x299, "bms_module_10_temperature_10", (unsigned long)feb_can_state.bms_module_10_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_10.meta.rx_count);
     if (feb_can_state.ebs_pressure_status.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x500, "ebs_pressure_status", (unsigned long)feb_can_state.ebs_pressure_status.meta.last_rx_ms, (unsigned long)feb_can_state.ebs_pressure_status.meta.rx_count);
     if (feb_can_state.ivt_current.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x521, "ivt_current", (unsigned long)feb_can_state.ivt_current.meta.last_rx_ms, (unsigned long)feb_can_state.ivt_current.meta.rx_count);
     if (feb_can_state.ivt_voltage1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x522, "ivt_voltage1", (unsigned long)feb_can_state.ivt_voltage1.meta.last_rx_ms, (unsigned long)feb_can_state.ivt_voltage1.meta.rx_count);
@@ -1631,6 +2681,1326 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
     {
         printf_fn("0x%02X  feb_ping_pong_counter4  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xE3, (int)feb_can_state.feb_ping_pong_counter4.meta.present, (unsigned long)feb_can_state.feb_ping_pong_counter4.meta.last_rx_ms, (unsigned long)feb_can_state.feb_ping_pong_counter4.meta.rx_count);
         printf_fn("  counter                          = %ld\r\n", (long)feb_can_state.feb_ping_pong_counter4.data.counter);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_voltage_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_voltage_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x204, (int)feb_can_state.bms_module_1_voltage_0.meta.present, (unsigned long)feb_can_state.bms_module_1_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_voltage_0.meta.rx_count);
+        printf_fn("  module_1_cell_1                  = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_0.data.module_1_cell_1);
+        printf_fn("  module_1_cell_2                  = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_0.data.module_1_cell_2);
+        printf_fn("  module_1_cell_3                  = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_0.data.module_1_cell_3);
+        printf_fn("  module_1_cell_4                  = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_0.data.module_1_cell_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_voltage_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_voltage_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x205, (int)feb_can_state.bms_module_1_voltage_1.meta.present, (unsigned long)feb_can_state.bms_module_1_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_voltage_1.meta.rx_count);
+        printf_fn("  module_1_cell_5                  = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_1.data.module_1_cell_5);
+        printf_fn("  module_1_cell_6                  = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_1.data.module_1_cell_6);
+        printf_fn("  module_1_cell_7                  = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_1.data.module_1_cell_7);
+        printf_fn("  module_1_cell_8                  = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_1.data.module_1_cell_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_voltage_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_voltage_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x206, (int)feb_can_state.bms_module_1_voltage_2.meta.present, (unsigned long)feb_can_state.bms_module_1_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_voltage_2.meta.rx_count);
+        printf_fn("  module_1_cell_9                  = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_2.data.module_1_cell_9);
+        printf_fn("  module_1_cell_10                 = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_2.data.module_1_cell_10);
+        printf_fn("  module_1_cell_11                 = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_2.data.module_1_cell_11);
+        printf_fn("  module_1_cell_12                 = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_2.data.module_1_cell_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_voltage_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_voltage_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x207, (int)feb_can_state.bms_module_1_voltage_3.meta.present, (unsigned long)feb_can_state.bms_module_1_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_voltage_3.meta.rx_count);
+        printf_fn("  module_1_cell_13                 = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_3.data.module_1_cell_13);
+        printf_fn("  module_1_cell_14                 = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_3.data.module_1_cell_14);
+        printf_fn("  module_1_cell_15                 = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_3.data.module_1_cell_15);
+        printf_fn("  module_1_cell_16                 = %ld\r\n", (long)feb_can_state.bms_module_1_voltage_3.data.module_1_cell_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_voltage_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_voltage_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x208, (int)feb_can_state.bms_module_2_voltage_0.meta.present, (unsigned long)feb_can_state.bms_module_2_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_voltage_0.meta.rx_count);
+        printf_fn("  module_2_cell_1                  = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_0.data.module_2_cell_1);
+        printf_fn("  module_2_cell_2                  = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_0.data.module_2_cell_2);
+        printf_fn("  module_2_cell_3                  = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_0.data.module_2_cell_3);
+        printf_fn("  module_2_cell_4                  = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_0.data.module_2_cell_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_voltage_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_voltage_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x209, (int)feb_can_state.bms_module_2_voltage_1.meta.present, (unsigned long)feb_can_state.bms_module_2_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_voltage_1.meta.rx_count);
+        printf_fn("  module_2_cell_5                  = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_1.data.module_2_cell_5);
+        printf_fn("  module_2_cell_6                  = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_1.data.module_2_cell_6);
+        printf_fn("  module_2_cell_7                  = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_1.data.module_2_cell_7);
+        printf_fn("  module_2_cell_8                  = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_1.data.module_2_cell_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_voltage_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_voltage_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x20A, (int)feb_can_state.bms_module_2_voltage_2.meta.present, (unsigned long)feb_can_state.bms_module_2_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_voltage_2.meta.rx_count);
+        printf_fn("  module_2_cell_9                  = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_2.data.module_2_cell_9);
+        printf_fn("  module_2_cell_10                 = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_2.data.module_2_cell_10);
+        printf_fn("  module_2_cell_11                 = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_2.data.module_2_cell_11);
+        printf_fn("  module_2_cell_12                 = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_2.data.module_2_cell_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_voltage_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_voltage_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x20B, (int)feb_can_state.bms_module_2_voltage_3.meta.present, (unsigned long)feb_can_state.bms_module_2_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_voltage_3.meta.rx_count);
+        printf_fn("  module_2_cell_13                 = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_3.data.module_2_cell_13);
+        printf_fn("  module_2_cell_14                 = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_3.data.module_2_cell_14);
+        printf_fn("  module_2_cell_15                 = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_3.data.module_2_cell_15);
+        printf_fn("  module_2_cell_16                 = %ld\r\n", (long)feb_can_state.bms_module_2_voltage_3.data.module_2_cell_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_voltage_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_voltage_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x20C, (int)feb_can_state.bms_module_3_voltage_0.meta.present, (unsigned long)feb_can_state.bms_module_3_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_voltage_0.meta.rx_count);
+        printf_fn("  module_3_cell_1                  = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_0.data.module_3_cell_1);
+        printf_fn("  module_3_cell_2                  = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_0.data.module_3_cell_2);
+        printf_fn("  module_3_cell_3                  = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_0.data.module_3_cell_3);
+        printf_fn("  module_3_cell_4                  = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_0.data.module_3_cell_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_voltage_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_voltage_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x20D, (int)feb_can_state.bms_module_3_voltage_1.meta.present, (unsigned long)feb_can_state.bms_module_3_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_voltage_1.meta.rx_count);
+        printf_fn("  module_3_cell_5                  = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_1.data.module_3_cell_5);
+        printf_fn("  module_3_cell_6                  = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_1.data.module_3_cell_6);
+        printf_fn("  module_3_cell_7                  = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_1.data.module_3_cell_7);
+        printf_fn("  module_3_cell_8                  = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_1.data.module_3_cell_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_voltage_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_voltage_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x20E, (int)feb_can_state.bms_module_3_voltage_2.meta.present, (unsigned long)feb_can_state.bms_module_3_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_voltage_2.meta.rx_count);
+        printf_fn("  module_3_cell_9                  = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_2.data.module_3_cell_9);
+        printf_fn("  module_3_cell_10                 = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_2.data.module_3_cell_10);
+        printf_fn("  module_3_cell_11                 = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_2.data.module_3_cell_11);
+        printf_fn("  module_3_cell_12                 = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_2.data.module_3_cell_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_voltage_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_voltage_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x20F, (int)feb_can_state.bms_module_3_voltage_3.meta.present, (unsigned long)feb_can_state.bms_module_3_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_voltage_3.meta.rx_count);
+        printf_fn("  module_3_cell_13                 = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_3.data.module_3_cell_13);
+        printf_fn("  module_3_cell_14                 = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_3.data.module_3_cell_14);
+        printf_fn("  module_3_cell_15                 = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_3.data.module_3_cell_15);
+        printf_fn("  module_3_cell_16                 = %ld\r\n", (long)feb_can_state.bms_module_3_voltage_3.data.module_3_cell_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_voltage_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_voltage_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x210, (int)feb_can_state.bms_module_4_voltage_0.meta.present, (unsigned long)feb_can_state.bms_module_4_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_voltage_0.meta.rx_count);
+        printf_fn("  module_4_cell_1                  = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_0.data.module_4_cell_1);
+        printf_fn("  module_4_cell_2                  = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_0.data.module_4_cell_2);
+        printf_fn("  module_4_cell_3                  = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_0.data.module_4_cell_3);
+        printf_fn("  module_4_cell_4                  = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_0.data.module_4_cell_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_voltage_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_voltage_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x211, (int)feb_can_state.bms_module_4_voltage_1.meta.present, (unsigned long)feb_can_state.bms_module_4_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_voltage_1.meta.rx_count);
+        printf_fn("  module_4_cell_5                  = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_1.data.module_4_cell_5);
+        printf_fn("  module_4_cell_6                  = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_1.data.module_4_cell_6);
+        printf_fn("  module_4_cell_7                  = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_1.data.module_4_cell_7);
+        printf_fn("  module_4_cell_8                  = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_1.data.module_4_cell_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_voltage_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_voltage_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x212, (int)feb_can_state.bms_module_4_voltage_2.meta.present, (unsigned long)feb_can_state.bms_module_4_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_voltage_2.meta.rx_count);
+        printf_fn("  module_4_cell_9                  = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_2.data.module_4_cell_9);
+        printf_fn("  module_4_cell_10                 = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_2.data.module_4_cell_10);
+        printf_fn("  module_4_cell_11                 = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_2.data.module_4_cell_11);
+        printf_fn("  module_4_cell_12                 = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_2.data.module_4_cell_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_voltage_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_voltage_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x213, (int)feb_can_state.bms_module_4_voltage_3.meta.present, (unsigned long)feb_can_state.bms_module_4_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_voltage_3.meta.rx_count);
+        printf_fn("  module_4_cell_13                 = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_3.data.module_4_cell_13);
+        printf_fn("  module_4_cell_14                 = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_3.data.module_4_cell_14);
+        printf_fn("  module_4_cell_15                 = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_3.data.module_4_cell_15);
+        printf_fn("  module_4_cell_16                 = %ld\r\n", (long)feb_can_state.bms_module_4_voltage_3.data.module_4_cell_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_voltage_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_voltage_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x214, (int)feb_can_state.bms_module_5_voltage_0.meta.present, (unsigned long)feb_can_state.bms_module_5_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_voltage_0.meta.rx_count);
+        printf_fn("  module_5_cell_1                  = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_0.data.module_5_cell_1);
+        printf_fn("  module_5_cell_2                  = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_0.data.module_5_cell_2);
+        printf_fn("  module_5_cell_3                  = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_0.data.module_5_cell_3);
+        printf_fn("  module_5_cell_4                  = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_0.data.module_5_cell_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_voltage_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_voltage_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x215, (int)feb_can_state.bms_module_5_voltage_1.meta.present, (unsigned long)feb_can_state.bms_module_5_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_voltage_1.meta.rx_count);
+        printf_fn("  module_5_cell_5                  = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_1.data.module_5_cell_5);
+        printf_fn("  module_5_cell_6                  = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_1.data.module_5_cell_6);
+        printf_fn("  module_5_cell_7                  = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_1.data.module_5_cell_7);
+        printf_fn("  module_5_cell_8                  = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_1.data.module_5_cell_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_voltage_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_voltage_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x216, (int)feb_can_state.bms_module_5_voltage_2.meta.present, (unsigned long)feb_can_state.bms_module_5_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_voltage_2.meta.rx_count);
+        printf_fn("  module_5_cell_9                  = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_2.data.module_5_cell_9);
+        printf_fn("  module_5_cell_10                 = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_2.data.module_5_cell_10);
+        printf_fn("  module_5_cell_11                 = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_2.data.module_5_cell_11);
+        printf_fn("  module_5_cell_12                 = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_2.data.module_5_cell_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_voltage_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_voltage_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x217, (int)feb_can_state.bms_module_5_voltage_3.meta.present, (unsigned long)feb_can_state.bms_module_5_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_voltage_3.meta.rx_count);
+        printf_fn("  module_5_cell_13                 = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_3.data.module_5_cell_13);
+        printf_fn("  module_5_cell_14                 = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_3.data.module_5_cell_14);
+        printf_fn("  module_5_cell_15                 = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_3.data.module_5_cell_15);
+        printf_fn("  module_5_cell_16                 = %ld\r\n", (long)feb_can_state.bms_module_5_voltage_3.data.module_5_cell_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_voltage_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_voltage_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x218, (int)feb_can_state.bms_module_6_voltage_0.meta.present, (unsigned long)feb_can_state.bms_module_6_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_voltage_0.meta.rx_count);
+        printf_fn("  module_6_cell_1                  = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_0.data.module_6_cell_1);
+        printf_fn("  module_6_cell_2                  = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_0.data.module_6_cell_2);
+        printf_fn("  module_6_cell_3                  = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_0.data.module_6_cell_3);
+        printf_fn("  module_6_cell_4                  = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_0.data.module_6_cell_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_voltage_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_voltage_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x219, (int)feb_can_state.bms_module_6_voltage_1.meta.present, (unsigned long)feb_can_state.bms_module_6_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_voltage_1.meta.rx_count);
+        printf_fn("  module_6_cell_5                  = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_1.data.module_6_cell_5);
+        printf_fn("  module_6_cell_6                  = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_1.data.module_6_cell_6);
+        printf_fn("  module_6_cell_7                  = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_1.data.module_6_cell_7);
+        printf_fn("  module_6_cell_8                  = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_1.data.module_6_cell_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_voltage_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_voltage_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x21A, (int)feb_can_state.bms_module_6_voltage_2.meta.present, (unsigned long)feb_can_state.bms_module_6_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_voltage_2.meta.rx_count);
+        printf_fn("  module_6_cell_9                  = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_2.data.module_6_cell_9);
+        printf_fn("  module_6_cell_10                 = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_2.data.module_6_cell_10);
+        printf_fn("  module_6_cell_11                 = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_2.data.module_6_cell_11);
+        printf_fn("  module_6_cell_12                 = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_2.data.module_6_cell_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_voltage_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_voltage_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x21B, (int)feb_can_state.bms_module_6_voltage_3.meta.present, (unsigned long)feb_can_state.bms_module_6_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_voltage_3.meta.rx_count);
+        printf_fn("  module_6_cell_13                 = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_3.data.module_6_cell_13);
+        printf_fn("  module_6_cell_14                 = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_3.data.module_6_cell_14);
+        printf_fn("  module_6_cell_15                 = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_3.data.module_6_cell_15);
+        printf_fn("  module_6_cell_16                 = %ld\r\n", (long)feb_can_state.bms_module_6_voltage_3.data.module_6_cell_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_voltage_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_voltage_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x21C, (int)feb_can_state.bms_module_7_voltage_0.meta.present, (unsigned long)feb_can_state.bms_module_7_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_voltage_0.meta.rx_count);
+        printf_fn("  module_7_cell_1                  = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_0.data.module_7_cell_1);
+        printf_fn("  module_7_cell_2                  = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_0.data.module_7_cell_2);
+        printf_fn("  module_7_cell_3                  = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_0.data.module_7_cell_3);
+        printf_fn("  module_7_cell_4                  = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_0.data.module_7_cell_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_voltage_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_voltage_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x21D, (int)feb_can_state.bms_module_7_voltage_1.meta.present, (unsigned long)feb_can_state.bms_module_7_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_voltage_1.meta.rx_count);
+        printf_fn("  module_7_cell_5                  = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_1.data.module_7_cell_5);
+        printf_fn("  module_7_cell_6                  = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_1.data.module_7_cell_6);
+        printf_fn("  module_7_cell_7                  = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_1.data.module_7_cell_7);
+        printf_fn("  module_7_cell_8                  = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_1.data.module_7_cell_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_voltage_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_voltage_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x21E, (int)feb_can_state.bms_module_7_voltage_2.meta.present, (unsigned long)feb_can_state.bms_module_7_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_voltage_2.meta.rx_count);
+        printf_fn("  module_7_cell_9                  = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_2.data.module_7_cell_9);
+        printf_fn("  module_7_cell_10                 = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_2.data.module_7_cell_10);
+        printf_fn("  module_7_cell_11                 = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_2.data.module_7_cell_11);
+        printf_fn("  module_7_cell_12                 = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_2.data.module_7_cell_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_voltage_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_voltage_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x21F, (int)feb_can_state.bms_module_7_voltage_3.meta.present, (unsigned long)feb_can_state.bms_module_7_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_voltage_3.meta.rx_count);
+        printf_fn("  module_7_cell_13                 = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_3.data.module_7_cell_13);
+        printf_fn("  module_7_cell_14                 = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_3.data.module_7_cell_14);
+        printf_fn("  module_7_cell_15                 = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_3.data.module_7_cell_15);
+        printf_fn("  module_7_cell_16                 = %ld\r\n", (long)feb_can_state.bms_module_7_voltage_3.data.module_7_cell_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_voltage_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_voltage_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x220, (int)feb_can_state.bms_module_8_voltage_0.meta.present, (unsigned long)feb_can_state.bms_module_8_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_voltage_0.meta.rx_count);
+        printf_fn("  module_8_cell_1                  = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_0.data.module_8_cell_1);
+        printf_fn("  module_8_cell_2                  = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_0.data.module_8_cell_2);
+        printf_fn("  module_8_cell_3                  = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_0.data.module_8_cell_3);
+        printf_fn("  module_8_cell_4                  = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_0.data.module_8_cell_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_voltage_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_voltage_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x221, (int)feb_can_state.bms_module_8_voltage_1.meta.present, (unsigned long)feb_can_state.bms_module_8_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_voltage_1.meta.rx_count);
+        printf_fn("  module_8_cell_5                  = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_1.data.module_8_cell_5);
+        printf_fn("  module_8_cell_6                  = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_1.data.module_8_cell_6);
+        printf_fn("  module_8_cell_7                  = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_1.data.module_8_cell_7);
+        printf_fn("  module_8_cell_8                  = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_1.data.module_8_cell_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_voltage_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_voltage_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x222, (int)feb_can_state.bms_module_8_voltage_2.meta.present, (unsigned long)feb_can_state.bms_module_8_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_voltage_2.meta.rx_count);
+        printf_fn("  module_8_cell_9                  = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_2.data.module_8_cell_9);
+        printf_fn("  module_8_cell_10                 = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_2.data.module_8_cell_10);
+        printf_fn("  module_8_cell_11                 = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_2.data.module_8_cell_11);
+        printf_fn("  module_8_cell_12                 = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_2.data.module_8_cell_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_voltage_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_voltage_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x223, (int)feb_can_state.bms_module_8_voltage_3.meta.present, (unsigned long)feb_can_state.bms_module_8_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_voltage_3.meta.rx_count);
+        printf_fn("  module_8_cell_13                 = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_3.data.module_8_cell_13);
+        printf_fn("  module_8_cell_14                 = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_3.data.module_8_cell_14);
+        printf_fn("  module_8_cell_15                 = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_3.data.module_8_cell_15);
+        printf_fn("  module_8_cell_16                 = %ld\r\n", (long)feb_can_state.bms_module_8_voltage_3.data.module_8_cell_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_voltage_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_voltage_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x224, (int)feb_can_state.bms_module_9_voltage_0.meta.present, (unsigned long)feb_can_state.bms_module_9_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_voltage_0.meta.rx_count);
+        printf_fn("  module_9_cell_1                  = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_0.data.module_9_cell_1);
+        printf_fn("  module_9_cell_2                  = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_0.data.module_9_cell_2);
+        printf_fn("  module_9_cell_3                  = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_0.data.module_9_cell_3);
+        printf_fn("  module_9_cell_4                  = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_0.data.module_9_cell_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_voltage_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_voltage_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x225, (int)feb_can_state.bms_module_9_voltage_1.meta.present, (unsigned long)feb_can_state.bms_module_9_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_voltage_1.meta.rx_count);
+        printf_fn("  module_9_cell_5                  = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_1.data.module_9_cell_5);
+        printf_fn("  module_9_cell_6                  = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_1.data.module_9_cell_6);
+        printf_fn("  module_9_cell_7                  = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_1.data.module_9_cell_7);
+        printf_fn("  module_9_cell_8                  = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_1.data.module_9_cell_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_voltage_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_voltage_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x226, (int)feb_can_state.bms_module_9_voltage_2.meta.present, (unsigned long)feb_can_state.bms_module_9_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_voltage_2.meta.rx_count);
+        printf_fn("  module_9_cell_9                  = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_2.data.module_9_cell_9);
+        printf_fn("  module_9_cell_10                 = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_2.data.module_9_cell_10);
+        printf_fn("  module_9_cell_11                 = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_2.data.module_9_cell_11);
+        printf_fn("  module_9_cell_12                 = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_2.data.module_9_cell_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_voltage_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_voltage_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x227, (int)feb_can_state.bms_module_9_voltage_3.meta.present, (unsigned long)feb_can_state.bms_module_9_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_voltage_3.meta.rx_count);
+        printf_fn("  module_9_cell_13                 = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_3.data.module_9_cell_13);
+        printf_fn("  module_9_cell_14                 = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_3.data.module_9_cell_14);
+        printf_fn("  module_9_cell_15                 = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_3.data.module_9_cell_15);
+        printf_fn("  module_9_cell_16                 = %ld\r\n", (long)feb_can_state.bms_module_9_voltage_3.data.module_9_cell_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_voltage_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_voltage_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x228, (int)feb_can_state.bms_module_10_voltage_0.meta.present, (unsigned long)feb_can_state.bms_module_10_voltage_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_voltage_0.meta.rx_count);
+        printf_fn("  module_10_cell_1                 = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_0.data.module_10_cell_1);
+        printf_fn("  module_10_cell_2                 = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_0.data.module_10_cell_2);
+        printf_fn("  module_10_cell_3                 = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_0.data.module_10_cell_3);
+        printf_fn("  module_10_cell_4                 = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_0.data.module_10_cell_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_voltage_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_voltage_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x229, (int)feb_can_state.bms_module_10_voltage_1.meta.present, (unsigned long)feb_can_state.bms_module_10_voltage_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_voltage_1.meta.rx_count);
+        printf_fn("  module_10_cell_5                 = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_1.data.module_10_cell_5);
+        printf_fn("  module_10_cell_6                 = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_1.data.module_10_cell_6);
+        printf_fn("  module_10_cell_7                 = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_1.data.module_10_cell_7);
+        printf_fn("  module_10_cell_8                 = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_1.data.module_10_cell_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_voltage_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_voltage_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x22A, (int)feb_can_state.bms_module_10_voltage_2.meta.present, (unsigned long)feb_can_state.bms_module_10_voltage_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_voltage_2.meta.rx_count);
+        printf_fn("  module_10_cell_9                 = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_2.data.module_10_cell_9);
+        printf_fn("  module_10_cell_10                = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_2.data.module_10_cell_10);
+        printf_fn("  module_10_cell_11                = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_2.data.module_10_cell_11);
+        printf_fn("  module_10_cell_12                = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_2.data.module_10_cell_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_voltage_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_voltage_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x22B, (int)feb_can_state.bms_module_10_voltage_3.meta.present, (unsigned long)feb_can_state.bms_module_10_voltage_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_voltage_3.meta.rx_count);
+        printf_fn("  module_10_cell_13                = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_3.data.module_10_cell_13);
+        printf_fn("  module_10_cell_14                = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_3.data.module_10_cell_14);
+        printf_fn("  module_10_cell_15                = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_3.data.module_10_cell_15);
+        printf_fn("  module_10_cell_16                = %ld\r\n", (long)feb_can_state.bms_module_10_voltage_3.data.module_10_cell_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_temperature_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_temperature_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x22C, (int)feb_can_state.bms_module_1_temperature_0.meta.present, (unsigned long)feb_can_state.bms_module_1_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_0.meta.rx_count);
+        printf_fn("  module_1_temp_1                  = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_0.data.module_1_temp_1);
+        printf_fn("  module_1_temp_2                  = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_0.data.module_1_temp_2);
+        printf_fn("  module_1_temp_3                  = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_0.data.module_1_temp_3);
+        printf_fn("  module_1_temp_4                  = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_0.data.module_1_temp_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_temperature_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_temperature_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x22D, (int)feb_can_state.bms_module_1_temperature_1.meta.present, (unsigned long)feb_can_state.bms_module_1_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_1.meta.rx_count);
+        printf_fn("  module_1_temp_5                  = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_1.data.module_1_temp_5);
+        printf_fn("  module_1_temp_6                  = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_1.data.module_1_temp_6);
+        printf_fn("  module_1_temp_7                  = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_1.data.module_1_temp_7);
+        printf_fn("  module_1_temp_8                  = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_1.data.module_1_temp_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_temperature_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_temperature_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x22E, (int)feb_can_state.bms_module_1_temperature_2.meta.present, (unsigned long)feb_can_state.bms_module_1_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_2.meta.rx_count);
+        printf_fn("  module_1_temp_9                  = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_2.data.module_1_temp_9);
+        printf_fn("  module_1_temp_10                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_2.data.module_1_temp_10);
+        printf_fn("  module_1_temp_11                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_2.data.module_1_temp_11);
+        printf_fn("  module_1_temp_12                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_2.data.module_1_temp_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_temperature_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_temperature_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x22F, (int)feb_can_state.bms_module_1_temperature_3.meta.present, (unsigned long)feb_can_state.bms_module_1_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_3.meta.rx_count);
+        printf_fn("  module_1_temp_13                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_3.data.module_1_temp_13);
+        printf_fn("  module_1_temp_14                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_3.data.module_1_temp_14);
+        printf_fn("  module_1_temp_15                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_3.data.module_1_temp_15);
+        printf_fn("  module_1_temp_16                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_3.data.module_1_temp_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_temperature_4") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_temperature_4  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x230, (int)feb_can_state.bms_module_1_temperature_4.meta.present, (unsigned long)feb_can_state.bms_module_1_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_4.meta.rx_count);
+        printf_fn("  module_1_temp_17                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_4.data.module_1_temp_17);
+        printf_fn("  module_1_temp_18                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_4.data.module_1_temp_18);
+        printf_fn("  module_1_temp_19                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_4.data.module_1_temp_19);
+        printf_fn("  module_1_temp_20                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_4.data.module_1_temp_20);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_temperature_5") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_temperature_5  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x231, (int)feb_can_state.bms_module_1_temperature_5.meta.present, (unsigned long)feb_can_state.bms_module_1_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_5.meta.rx_count);
+        printf_fn("  module_1_temp_21                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_5.data.module_1_temp_21);
+        printf_fn("  module_1_temp_22                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_5.data.module_1_temp_22);
+        printf_fn("  module_1_temp_23                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_5.data.module_1_temp_23);
+        printf_fn("  module_1_temp_24                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_5.data.module_1_temp_24);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_temperature_6") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_temperature_6  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x232, (int)feb_can_state.bms_module_1_temperature_6.meta.present, (unsigned long)feb_can_state.bms_module_1_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_6.meta.rx_count);
+        printf_fn("  module_1_temp_25                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_6.data.module_1_temp_25);
+        printf_fn("  module_1_temp_26                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_6.data.module_1_temp_26);
+        printf_fn("  module_1_temp_27                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_6.data.module_1_temp_27);
+        printf_fn("  module_1_temp_28                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_6.data.module_1_temp_28);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_temperature_7") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_temperature_7  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x233, (int)feb_can_state.bms_module_1_temperature_7.meta.present, (unsigned long)feb_can_state.bms_module_1_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_7.meta.rx_count);
+        printf_fn("  module_1_temp_29                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_7.data.module_1_temp_29);
+        printf_fn("  module_1_temp_30                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_7.data.module_1_temp_30);
+        printf_fn("  module_1_temp_31                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_7.data.module_1_temp_31);
+        printf_fn("  module_1_temp_32                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_7.data.module_1_temp_32);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_temperature_8") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_temperature_8  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x234, (int)feb_can_state.bms_module_1_temperature_8.meta.present, (unsigned long)feb_can_state.bms_module_1_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_8.meta.rx_count);
+        printf_fn("  module_1_temp_33                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_8.data.module_1_temp_33);
+        printf_fn("  module_1_temp_34                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_8.data.module_1_temp_34);
+        printf_fn("  module_1_temp_35                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_8.data.module_1_temp_35);
+        printf_fn("  module_1_temp_36                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_8.data.module_1_temp_36);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_temperature_9") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_temperature_9  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x235, (int)feb_can_state.bms_module_1_temperature_9.meta.present, (unsigned long)feb_can_state.bms_module_1_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_9.meta.rx_count);
+        printf_fn("  module_1_temp_37                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_9.data.module_1_temp_37);
+        printf_fn("  module_1_temp_38                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_9.data.module_1_temp_38);
+        printf_fn("  module_1_temp_39                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_9.data.module_1_temp_39);
+        printf_fn("  module_1_temp_40                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_9.data.module_1_temp_40);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_1_temperature_10") == 0)
+    {
+        printf_fn("0x%02X  bms_module_1_temperature_10  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x236, (int)feb_can_state.bms_module_1_temperature_10.meta.present, (unsigned long)feb_can_state.bms_module_1_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_1_temperature_10.meta.rx_count);
+        printf_fn("  module_1_temp_41                 = %ld\r\n", (long)feb_can_state.bms_module_1_temperature_10.data.module_1_temp_41);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_temperature_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_temperature_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x237, (int)feb_can_state.bms_module_2_temperature_0.meta.present, (unsigned long)feb_can_state.bms_module_2_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_0.meta.rx_count);
+        printf_fn("  module_2_temp_1                  = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_0.data.module_2_temp_1);
+        printf_fn("  module_2_temp_2                  = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_0.data.module_2_temp_2);
+        printf_fn("  module_2_temp_3                  = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_0.data.module_2_temp_3);
+        printf_fn("  module_2_temp_4                  = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_0.data.module_2_temp_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_temperature_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_temperature_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x238, (int)feb_can_state.bms_module_2_temperature_1.meta.present, (unsigned long)feb_can_state.bms_module_2_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_1.meta.rx_count);
+        printf_fn("  module_2_temp_5                  = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_1.data.module_2_temp_5);
+        printf_fn("  module_2_temp_6                  = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_1.data.module_2_temp_6);
+        printf_fn("  module_2_temp_7                  = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_1.data.module_2_temp_7);
+        printf_fn("  module_2_temp_8                  = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_1.data.module_2_temp_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_temperature_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_temperature_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x239, (int)feb_can_state.bms_module_2_temperature_2.meta.present, (unsigned long)feb_can_state.bms_module_2_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_2.meta.rx_count);
+        printf_fn("  module_2_temp_9                  = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_2.data.module_2_temp_9);
+        printf_fn("  module_2_temp_10                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_2.data.module_2_temp_10);
+        printf_fn("  module_2_temp_11                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_2.data.module_2_temp_11);
+        printf_fn("  module_2_temp_12                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_2.data.module_2_temp_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_temperature_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_temperature_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x23A, (int)feb_can_state.bms_module_2_temperature_3.meta.present, (unsigned long)feb_can_state.bms_module_2_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_3.meta.rx_count);
+        printf_fn("  module_2_temp_13                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_3.data.module_2_temp_13);
+        printf_fn("  module_2_temp_14                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_3.data.module_2_temp_14);
+        printf_fn("  module_2_temp_15                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_3.data.module_2_temp_15);
+        printf_fn("  module_2_temp_16                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_3.data.module_2_temp_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_temperature_4") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_temperature_4  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x23B, (int)feb_can_state.bms_module_2_temperature_4.meta.present, (unsigned long)feb_can_state.bms_module_2_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_4.meta.rx_count);
+        printf_fn("  module_2_temp_17                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_4.data.module_2_temp_17);
+        printf_fn("  module_2_temp_18                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_4.data.module_2_temp_18);
+        printf_fn("  module_2_temp_19                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_4.data.module_2_temp_19);
+        printf_fn("  module_2_temp_20                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_4.data.module_2_temp_20);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_temperature_5") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_temperature_5  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x23C, (int)feb_can_state.bms_module_2_temperature_5.meta.present, (unsigned long)feb_can_state.bms_module_2_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_5.meta.rx_count);
+        printf_fn("  module_2_temp_21                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_5.data.module_2_temp_21);
+        printf_fn("  module_2_temp_22                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_5.data.module_2_temp_22);
+        printf_fn("  module_2_temp_23                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_5.data.module_2_temp_23);
+        printf_fn("  module_2_temp_24                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_5.data.module_2_temp_24);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_temperature_6") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_temperature_6  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x23D, (int)feb_can_state.bms_module_2_temperature_6.meta.present, (unsigned long)feb_can_state.bms_module_2_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_6.meta.rx_count);
+        printf_fn("  module_2_temp_25                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_6.data.module_2_temp_25);
+        printf_fn("  module_2_temp_26                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_6.data.module_2_temp_26);
+        printf_fn("  module_2_temp_27                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_6.data.module_2_temp_27);
+        printf_fn("  module_2_temp_28                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_6.data.module_2_temp_28);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_temperature_7") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_temperature_7  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x23E, (int)feb_can_state.bms_module_2_temperature_7.meta.present, (unsigned long)feb_can_state.bms_module_2_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_7.meta.rx_count);
+        printf_fn("  module_2_temp_29                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_7.data.module_2_temp_29);
+        printf_fn("  module_2_temp_30                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_7.data.module_2_temp_30);
+        printf_fn("  module_2_temp_31                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_7.data.module_2_temp_31);
+        printf_fn("  module_2_temp_32                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_7.data.module_2_temp_32);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_temperature_8") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_temperature_8  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x23F, (int)feb_can_state.bms_module_2_temperature_8.meta.present, (unsigned long)feb_can_state.bms_module_2_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_8.meta.rx_count);
+        printf_fn("  module_2_temp_33                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_8.data.module_2_temp_33);
+        printf_fn("  module_2_temp_34                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_8.data.module_2_temp_34);
+        printf_fn("  module_2_temp_35                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_8.data.module_2_temp_35);
+        printf_fn("  module_2_temp_36                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_8.data.module_2_temp_36);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_temperature_9") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_temperature_9  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x240, (int)feb_can_state.bms_module_2_temperature_9.meta.present, (unsigned long)feb_can_state.bms_module_2_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_9.meta.rx_count);
+        printf_fn("  module_2_temp_37                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_9.data.module_2_temp_37);
+        printf_fn("  module_2_temp_38                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_9.data.module_2_temp_38);
+        printf_fn("  module_2_temp_39                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_9.data.module_2_temp_39);
+        printf_fn("  module_2_temp_40                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_9.data.module_2_temp_40);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_2_temperature_10") == 0)
+    {
+        printf_fn("0x%02X  bms_module_2_temperature_10  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x241, (int)feb_can_state.bms_module_2_temperature_10.meta.present, (unsigned long)feb_can_state.bms_module_2_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_2_temperature_10.meta.rx_count);
+        printf_fn("  module_2_temp_41                 = %ld\r\n", (long)feb_can_state.bms_module_2_temperature_10.data.module_2_temp_41);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_temperature_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_temperature_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x242, (int)feb_can_state.bms_module_3_temperature_0.meta.present, (unsigned long)feb_can_state.bms_module_3_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_0.meta.rx_count);
+        printf_fn("  module_3_temp_1                  = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_0.data.module_3_temp_1);
+        printf_fn("  module_3_temp_2                  = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_0.data.module_3_temp_2);
+        printf_fn("  module_3_temp_3                  = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_0.data.module_3_temp_3);
+        printf_fn("  module_3_temp_4                  = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_0.data.module_3_temp_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_temperature_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_temperature_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x243, (int)feb_can_state.bms_module_3_temperature_1.meta.present, (unsigned long)feb_can_state.bms_module_3_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_1.meta.rx_count);
+        printf_fn("  module_3_temp_5                  = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_1.data.module_3_temp_5);
+        printf_fn("  module_3_temp_6                  = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_1.data.module_3_temp_6);
+        printf_fn("  module_3_temp_7                  = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_1.data.module_3_temp_7);
+        printf_fn("  module_3_temp_8                  = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_1.data.module_3_temp_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_temperature_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_temperature_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x244, (int)feb_can_state.bms_module_3_temperature_2.meta.present, (unsigned long)feb_can_state.bms_module_3_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_2.meta.rx_count);
+        printf_fn("  module_3_temp_9                  = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_2.data.module_3_temp_9);
+        printf_fn("  module_3_temp_10                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_2.data.module_3_temp_10);
+        printf_fn("  module_3_temp_11                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_2.data.module_3_temp_11);
+        printf_fn("  module_3_temp_12                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_2.data.module_3_temp_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_temperature_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_temperature_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x245, (int)feb_can_state.bms_module_3_temperature_3.meta.present, (unsigned long)feb_can_state.bms_module_3_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_3.meta.rx_count);
+        printf_fn("  module_3_temp_13                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_3.data.module_3_temp_13);
+        printf_fn("  module_3_temp_14                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_3.data.module_3_temp_14);
+        printf_fn("  module_3_temp_15                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_3.data.module_3_temp_15);
+        printf_fn("  module_3_temp_16                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_3.data.module_3_temp_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_temperature_4") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_temperature_4  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x246, (int)feb_can_state.bms_module_3_temperature_4.meta.present, (unsigned long)feb_can_state.bms_module_3_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_4.meta.rx_count);
+        printf_fn("  module_3_temp_17                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_4.data.module_3_temp_17);
+        printf_fn("  module_3_temp_18                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_4.data.module_3_temp_18);
+        printf_fn("  module_3_temp_19                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_4.data.module_3_temp_19);
+        printf_fn("  module_3_temp_20                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_4.data.module_3_temp_20);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_temperature_5") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_temperature_5  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x247, (int)feb_can_state.bms_module_3_temperature_5.meta.present, (unsigned long)feb_can_state.bms_module_3_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_5.meta.rx_count);
+        printf_fn("  module_3_temp_21                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_5.data.module_3_temp_21);
+        printf_fn("  module_3_temp_22                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_5.data.module_3_temp_22);
+        printf_fn("  module_3_temp_23                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_5.data.module_3_temp_23);
+        printf_fn("  module_3_temp_24                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_5.data.module_3_temp_24);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_temperature_6") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_temperature_6  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x248, (int)feb_can_state.bms_module_3_temperature_6.meta.present, (unsigned long)feb_can_state.bms_module_3_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_6.meta.rx_count);
+        printf_fn("  module_3_temp_25                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_6.data.module_3_temp_25);
+        printf_fn("  module_3_temp_26                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_6.data.module_3_temp_26);
+        printf_fn("  module_3_temp_27                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_6.data.module_3_temp_27);
+        printf_fn("  module_3_temp_28                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_6.data.module_3_temp_28);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_temperature_7") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_temperature_7  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x249, (int)feb_can_state.bms_module_3_temperature_7.meta.present, (unsigned long)feb_can_state.bms_module_3_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_7.meta.rx_count);
+        printf_fn("  module_3_temp_29                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_7.data.module_3_temp_29);
+        printf_fn("  module_3_temp_30                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_7.data.module_3_temp_30);
+        printf_fn("  module_3_temp_31                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_7.data.module_3_temp_31);
+        printf_fn("  module_3_temp_32                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_7.data.module_3_temp_32);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_temperature_8") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_temperature_8  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x24A, (int)feb_can_state.bms_module_3_temperature_8.meta.present, (unsigned long)feb_can_state.bms_module_3_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_8.meta.rx_count);
+        printf_fn("  module_3_temp_33                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_8.data.module_3_temp_33);
+        printf_fn("  module_3_temp_34                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_8.data.module_3_temp_34);
+        printf_fn("  module_3_temp_35                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_8.data.module_3_temp_35);
+        printf_fn("  module_3_temp_36                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_8.data.module_3_temp_36);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_temperature_9") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_temperature_9  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x24B, (int)feb_can_state.bms_module_3_temperature_9.meta.present, (unsigned long)feb_can_state.bms_module_3_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_9.meta.rx_count);
+        printf_fn("  module_3_temp_37                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_9.data.module_3_temp_37);
+        printf_fn("  module_3_temp_38                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_9.data.module_3_temp_38);
+        printf_fn("  module_3_temp_39                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_9.data.module_3_temp_39);
+        printf_fn("  module_3_temp_40                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_9.data.module_3_temp_40);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_3_temperature_10") == 0)
+    {
+        printf_fn("0x%02X  bms_module_3_temperature_10  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x24C, (int)feb_can_state.bms_module_3_temperature_10.meta.present, (unsigned long)feb_can_state.bms_module_3_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_3_temperature_10.meta.rx_count);
+        printf_fn("  module_3_temp_41                 = %ld\r\n", (long)feb_can_state.bms_module_3_temperature_10.data.module_3_temp_41);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_temperature_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_temperature_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x24D, (int)feb_can_state.bms_module_4_temperature_0.meta.present, (unsigned long)feb_can_state.bms_module_4_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_0.meta.rx_count);
+        printf_fn("  module_4_temp_1                  = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_0.data.module_4_temp_1);
+        printf_fn("  module_4_temp_2                  = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_0.data.module_4_temp_2);
+        printf_fn("  module_4_temp_3                  = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_0.data.module_4_temp_3);
+        printf_fn("  module_4_temp_4                  = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_0.data.module_4_temp_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_temperature_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_temperature_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x24E, (int)feb_can_state.bms_module_4_temperature_1.meta.present, (unsigned long)feb_can_state.bms_module_4_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_1.meta.rx_count);
+        printf_fn("  module_4_temp_5                  = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_1.data.module_4_temp_5);
+        printf_fn("  module_4_temp_6                  = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_1.data.module_4_temp_6);
+        printf_fn("  module_4_temp_7                  = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_1.data.module_4_temp_7);
+        printf_fn("  module_4_temp_8                  = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_1.data.module_4_temp_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_temperature_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_temperature_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x24F, (int)feb_can_state.bms_module_4_temperature_2.meta.present, (unsigned long)feb_can_state.bms_module_4_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_2.meta.rx_count);
+        printf_fn("  module_4_temp_9                  = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_2.data.module_4_temp_9);
+        printf_fn("  module_4_temp_10                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_2.data.module_4_temp_10);
+        printf_fn("  module_4_temp_11                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_2.data.module_4_temp_11);
+        printf_fn("  module_4_temp_12                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_2.data.module_4_temp_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_temperature_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_temperature_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x250, (int)feb_can_state.bms_module_4_temperature_3.meta.present, (unsigned long)feb_can_state.bms_module_4_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_3.meta.rx_count);
+        printf_fn("  module_4_temp_13                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_3.data.module_4_temp_13);
+        printf_fn("  module_4_temp_14                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_3.data.module_4_temp_14);
+        printf_fn("  module_4_temp_15                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_3.data.module_4_temp_15);
+        printf_fn("  module_4_temp_16                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_3.data.module_4_temp_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_temperature_4") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_temperature_4  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x251, (int)feb_can_state.bms_module_4_temperature_4.meta.present, (unsigned long)feb_can_state.bms_module_4_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_4.meta.rx_count);
+        printf_fn("  module_4_temp_17                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_4.data.module_4_temp_17);
+        printf_fn("  module_4_temp_18                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_4.data.module_4_temp_18);
+        printf_fn("  module_4_temp_19                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_4.data.module_4_temp_19);
+        printf_fn("  module_4_temp_20                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_4.data.module_4_temp_20);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_temperature_5") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_temperature_5  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x252, (int)feb_can_state.bms_module_4_temperature_5.meta.present, (unsigned long)feb_can_state.bms_module_4_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_5.meta.rx_count);
+        printf_fn("  module_4_temp_21                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_5.data.module_4_temp_21);
+        printf_fn("  module_4_temp_22                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_5.data.module_4_temp_22);
+        printf_fn("  module_4_temp_23                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_5.data.module_4_temp_23);
+        printf_fn("  module_4_temp_24                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_5.data.module_4_temp_24);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_temperature_6") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_temperature_6  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x253, (int)feb_can_state.bms_module_4_temperature_6.meta.present, (unsigned long)feb_can_state.bms_module_4_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_6.meta.rx_count);
+        printf_fn("  module_4_temp_25                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_6.data.module_4_temp_25);
+        printf_fn("  module_4_temp_26                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_6.data.module_4_temp_26);
+        printf_fn("  module_4_temp_27                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_6.data.module_4_temp_27);
+        printf_fn("  module_4_temp_28                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_6.data.module_4_temp_28);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_temperature_7") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_temperature_7  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x254, (int)feb_can_state.bms_module_4_temperature_7.meta.present, (unsigned long)feb_can_state.bms_module_4_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_7.meta.rx_count);
+        printf_fn("  module_4_temp_29                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_7.data.module_4_temp_29);
+        printf_fn("  module_4_temp_30                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_7.data.module_4_temp_30);
+        printf_fn("  module_4_temp_31                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_7.data.module_4_temp_31);
+        printf_fn("  module_4_temp_32                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_7.data.module_4_temp_32);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_temperature_8") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_temperature_8  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x255, (int)feb_can_state.bms_module_4_temperature_8.meta.present, (unsigned long)feb_can_state.bms_module_4_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_8.meta.rx_count);
+        printf_fn("  module_4_temp_33                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_8.data.module_4_temp_33);
+        printf_fn("  module_4_temp_34                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_8.data.module_4_temp_34);
+        printf_fn("  module_4_temp_35                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_8.data.module_4_temp_35);
+        printf_fn("  module_4_temp_36                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_8.data.module_4_temp_36);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_temperature_9") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_temperature_9  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x256, (int)feb_can_state.bms_module_4_temperature_9.meta.present, (unsigned long)feb_can_state.bms_module_4_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_9.meta.rx_count);
+        printf_fn("  module_4_temp_37                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_9.data.module_4_temp_37);
+        printf_fn("  module_4_temp_38                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_9.data.module_4_temp_38);
+        printf_fn("  module_4_temp_39                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_9.data.module_4_temp_39);
+        printf_fn("  module_4_temp_40                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_9.data.module_4_temp_40);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_4_temperature_10") == 0)
+    {
+        printf_fn("0x%02X  bms_module_4_temperature_10  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x257, (int)feb_can_state.bms_module_4_temperature_10.meta.present, (unsigned long)feb_can_state.bms_module_4_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_4_temperature_10.meta.rx_count);
+        printf_fn("  module_4_temp_41                 = %ld\r\n", (long)feb_can_state.bms_module_4_temperature_10.data.module_4_temp_41);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_temperature_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_temperature_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x258, (int)feb_can_state.bms_module_5_temperature_0.meta.present, (unsigned long)feb_can_state.bms_module_5_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_0.meta.rx_count);
+        printf_fn("  module_5_temp_1                  = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_0.data.module_5_temp_1);
+        printf_fn("  module_5_temp_2                  = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_0.data.module_5_temp_2);
+        printf_fn("  module_5_temp_3                  = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_0.data.module_5_temp_3);
+        printf_fn("  module_5_temp_4                  = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_0.data.module_5_temp_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_temperature_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_temperature_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x259, (int)feb_can_state.bms_module_5_temperature_1.meta.present, (unsigned long)feb_can_state.bms_module_5_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_1.meta.rx_count);
+        printf_fn("  module_5_temp_5                  = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_1.data.module_5_temp_5);
+        printf_fn("  module_5_temp_6                  = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_1.data.module_5_temp_6);
+        printf_fn("  module_5_temp_7                  = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_1.data.module_5_temp_7);
+        printf_fn("  module_5_temp_8                  = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_1.data.module_5_temp_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_temperature_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_temperature_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x25A, (int)feb_can_state.bms_module_5_temperature_2.meta.present, (unsigned long)feb_can_state.bms_module_5_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_2.meta.rx_count);
+        printf_fn("  module_5_temp_9                  = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_2.data.module_5_temp_9);
+        printf_fn("  module_5_temp_10                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_2.data.module_5_temp_10);
+        printf_fn("  module_5_temp_11                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_2.data.module_5_temp_11);
+        printf_fn("  module_5_temp_12                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_2.data.module_5_temp_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_temperature_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_temperature_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x25B, (int)feb_can_state.bms_module_5_temperature_3.meta.present, (unsigned long)feb_can_state.bms_module_5_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_3.meta.rx_count);
+        printf_fn("  module_5_temp_13                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_3.data.module_5_temp_13);
+        printf_fn("  module_5_temp_14                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_3.data.module_5_temp_14);
+        printf_fn("  module_5_temp_15                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_3.data.module_5_temp_15);
+        printf_fn("  module_5_temp_16                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_3.data.module_5_temp_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_temperature_4") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_temperature_4  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x25C, (int)feb_can_state.bms_module_5_temperature_4.meta.present, (unsigned long)feb_can_state.bms_module_5_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_4.meta.rx_count);
+        printf_fn("  module_5_temp_17                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_4.data.module_5_temp_17);
+        printf_fn("  module_5_temp_18                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_4.data.module_5_temp_18);
+        printf_fn("  module_5_temp_19                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_4.data.module_5_temp_19);
+        printf_fn("  module_5_temp_20                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_4.data.module_5_temp_20);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_temperature_5") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_temperature_5  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x25D, (int)feb_can_state.bms_module_5_temperature_5.meta.present, (unsigned long)feb_can_state.bms_module_5_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_5.meta.rx_count);
+        printf_fn("  module_5_temp_21                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_5.data.module_5_temp_21);
+        printf_fn("  module_5_temp_22                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_5.data.module_5_temp_22);
+        printf_fn("  module_5_temp_23                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_5.data.module_5_temp_23);
+        printf_fn("  module_5_temp_24                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_5.data.module_5_temp_24);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_temperature_6") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_temperature_6  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x25E, (int)feb_can_state.bms_module_5_temperature_6.meta.present, (unsigned long)feb_can_state.bms_module_5_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_6.meta.rx_count);
+        printf_fn("  module_5_temp_25                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_6.data.module_5_temp_25);
+        printf_fn("  module_5_temp_26                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_6.data.module_5_temp_26);
+        printf_fn("  module_5_temp_27                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_6.data.module_5_temp_27);
+        printf_fn("  module_5_temp_28                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_6.data.module_5_temp_28);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_temperature_7") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_temperature_7  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x25F, (int)feb_can_state.bms_module_5_temperature_7.meta.present, (unsigned long)feb_can_state.bms_module_5_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_7.meta.rx_count);
+        printf_fn("  module_5_temp_29                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_7.data.module_5_temp_29);
+        printf_fn("  module_5_temp_30                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_7.data.module_5_temp_30);
+        printf_fn("  module_5_temp_31                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_7.data.module_5_temp_31);
+        printf_fn("  module_5_temp_32                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_7.data.module_5_temp_32);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_temperature_8") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_temperature_8  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x260, (int)feb_can_state.bms_module_5_temperature_8.meta.present, (unsigned long)feb_can_state.bms_module_5_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_8.meta.rx_count);
+        printf_fn("  module_5_temp_33                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_8.data.module_5_temp_33);
+        printf_fn("  module_5_temp_34                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_8.data.module_5_temp_34);
+        printf_fn("  module_5_temp_35                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_8.data.module_5_temp_35);
+        printf_fn("  module_5_temp_36                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_8.data.module_5_temp_36);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_temperature_9") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_temperature_9  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x261, (int)feb_can_state.bms_module_5_temperature_9.meta.present, (unsigned long)feb_can_state.bms_module_5_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_9.meta.rx_count);
+        printf_fn("  module_5_temp_37                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_9.data.module_5_temp_37);
+        printf_fn("  module_5_temp_38                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_9.data.module_5_temp_38);
+        printf_fn("  module_5_temp_39                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_9.data.module_5_temp_39);
+        printf_fn("  module_5_temp_40                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_9.data.module_5_temp_40);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_5_temperature_10") == 0)
+    {
+        printf_fn("0x%02X  bms_module_5_temperature_10  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x262, (int)feb_can_state.bms_module_5_temperature_10.meta.present, (unsigned long)feb_can_state.bms_module_5_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_5_temperature_10.meta.rx_count);
+        printf_fn("  module_5_temp_41                 = %ld\r\n", (long)feb_can_state.bms_module_5_temperature_10.data.module_5_temp_41);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_temperature_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_temperature_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x263, (int)feb_can_state.bms_module_6_temperature_0.meta.present, (unsigned long)feb_can_state.bms_module_6_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_0.meta.rx_count);
+        printf_fn("  module_6_temp_1                  = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_0.data.module_6_temp_1);
+        printf_fn("  module_6_temp_2                  = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_0.data.module_6_temp_2);
+        printf_fn("  module_6_temp_3                  = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_0.data.module_6_temp_3);
+        printf_fn("  module_6_temp_4                  = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_0.data.module_6_temp_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_temperature_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_temperature_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x264, (int)feb_can_state.bms_module_6_temperature_1.meta.present, (unsigned long)feb_can_state.bms_module_6_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_1.meta.rx_count);
+        printf_fn("  module_6_temp_5                  = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_1.data.module_6_temp_5);
+        printf_fn("  module_6_temp_6                  = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_1.data.module_6_temp_6);
+        printf_fn("  module_6_temp_7                  = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_1.data.module_6_temp_7);
+        printf_fn("  module_6_temp_8                  = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_1.data.module_6_temp_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_temperature_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_temperature_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x265, (int)feb_can_state.bms_module_6_temperature_2.meta.present, (unsigned long)feb_can_state.bms_module_6_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_2.meta.rx_count);
+        printf_fn("  module_6_temp_9                  = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_2.data.module_6_temp_9);
+        printf_fn("  module_6_temp_10                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_2.data.module_6_temp_10);
+        printf_fn("  module_6_temp_11                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_2.data.module_6_temp_11);
+        printf_fn("  module_6_temp_12                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_2.data.module_6_temp_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_temperature_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_temperature_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x266, (int)feb_can_state.bms_module_6_temperature_3.meta.present, (unsigned long)feb_can_state.bms_module_6_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_3.meta.rx_count);
+        printf_fn("  module_6_temp_13                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_3.data.module_6_temp_13);
+        printf_fn("  module_6_temp_14                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_3.data.module_6_temp_14);
+        printf_fn("  module_6_temp_15                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_3.data.module_6_temp_15);
+        printf_fn("  module_6_temp_16                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_3.data.module_6_temp_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_temperature_4") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_temperature_4  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x267, (int)feb_can_state.bms_module_6_temperature_4.meta.present, (unsigned long)feb_can_state.bms_module_6_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_4.meta.rx_count);
+        printf_fn("  module_6_temp_17                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_4.data.module_6_temp_17);
+        printf_fn("  module_6_temp_18                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_4.data.module_6_temp_18);
+        printf_fn("  module_6_temp_19                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_4.data.module_6_temp_19);
+        printf_fn("  module_6_temp_20                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_4.data.module_6_temp_20);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_temperature_5") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_temperature_5  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x268, (int)feb_can_state.bms_module_6_temperature_5.meta.present, (unsigned long)feb_can_state.bms_module_6_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_5.meta.rx_count);
+        printf_fn("  module_6_temp_21                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_5.data.module_6_temp_21);
+        printf_fn("  module_6_temp_22                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_5.data.module_6_temp_22);
+        printf_fn("  module_6_temp_23                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_5.data.module_6_temp_23);
+        printf_fn("  module_6_temp_24                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_5.data.module_6_temp_24);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_temperature_6") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_temperature_6  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x269, (int)feb_can_state.bms_module_6_temperature_6.meta.present, (unsigned long)feb_can_state.bms_module_6_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_6.meta.rx_count);
+        printf_fn("  module_6_temp_25                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_6.data.module_6_temp_25);
+        printf_fn("  module_6_temp_26                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_6.data.module_6_temp_26);
+        printf_fn("  module_6_temp_27                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_6.data.module_6_temp_27);
+        printf_fn("  module_6_temp_28                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_6.data.module_6_temp_28);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_temperature_7") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_temperature_7  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x26A, (int)feb_can_state.bms_module_6_temperature_7.meta.present, (unsigned long)feb_can_state.bms_module_6_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_7.meta.rx_count);
+        printf_fn("  module_6_temp_29                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_7.data.module_6_temp_29);
+        printf_fn("  module_6_temp_30                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_7.data.module_6_temp_30);
+        printf_fn("  module_6_temp_31                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_7.data.module_6_temp_31);
+        printf_fn("  module_6_temp_32                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_7.data.module_6_temp_32);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_temperature_8") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_temperature_8  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x26B, (int)feb_can_state.bms_module_6_temperature_8.meta.present, (unsigned long)feb_can_state.bms_module_6_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_8.meta.rx_count);
+        printf_fn("  module_6_temp_33                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_8.data.module_6_temp_33);
+        printf_fn("  module_6_temp_34                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_8.data.module_6_temp_34);
+        printf_fn("  module_6_temp_35                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_8.data.module_6_temp_35);
+        printf_fn("  module_6_temp_36                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_8.data.module_6_temp_36);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_temperature_9") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_temperature_9  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x26C, (int)feb_can_state.bms_module_6_temperature_9.meta.present, (unsigned long)feb_can_state.bms_module_6_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_9.meta.rx_count);
+        printf_fn("  module_6_temp_37                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_9.data.module_6_temp_37);
+        printf_fn("  module_6_temp_38                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_9.data.module_6_temp_38);
+        printf_fn("  module_6_temp_39                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_9.data.module_6_temp_39);
+        printf_fn("  module_6_temp_40                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_9.data.module_6_temp_40);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_6_temperature_10") == 0)
+    {
+        printf_fn("0x%02X  bms_module_6_temperature_10  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x26D, (int)feb_can_state.bms_module_6_temperature_10.meta.present, (unsigned long)feb_can_state.bms_module_6_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_6_temperature_10.meta.rx_count);
+        printf_fn("  module_6_temp_41                 = %ld\r\n", (long)feb_can_state.bms_module_6_temperature_10.data.module_6_temp_41);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_temperature_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_temperature_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x26E, (int)feb_can_state.bms_module_7_temperature_0.meta.present, (unsigned long)feb_can_state.bms_module_7_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_0.meta.rx_count);
+        printf_fn("  module_7_temp_1                  = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_0.data.module_7_temp_1);
+        printf_fn("  module_7_temp_2                  = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_0.data.module_7_temp_2);
+        printf_fn("  module_7_temp_3                  = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_0.data.module_7_temp_3);
+        printf_fn("  module_7_temp_4                  = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_0.data.module_7_temp_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_temperature_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_temperature_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x26F, (int)feb_can_state.bms_module_7_temperature_1.meta.present, (unsigned long)feb_can_state.bms_module_7_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_1.meta.rx_count);
+        printf_fn("  module_7_temp_5                  = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_1.data.module_7_temp_5);
+        printf_fn("  module_7_temp_6                  = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_1.data.module_7_temp_6);
+        printf_fn("  module_7_temp_7                  = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_1.data.module_7_temp_7);
+        printf_fn("  module_7_temp_8                  = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_1.data.module_7_temp_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_temperature_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_temperature_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x270, (int)feb_can_state.bms_module_7_temperature_2.meta.present, (unsigned long)feb_can_state.bms_module_7_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_2.meta.rx_count);
+        printf_fn("  module_7_temp_9                  = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_2.data.module_7_temp_9);
+        printf_fn("  module_7_temp_10                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_2.data.module_7_temp_10);
+        printf_fn("  module_7_temp_11                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_2.data.module_7_temp_11);
+        printf_fn("  module_7_temp_12                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_2.data.module_7_temp_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_temperature_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_temperature_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x271, (int)feb_can_state.bms_module_7_temperature_3.meta.present, (unsigned long)feb_can_state.bms_module_7_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_3.meta.rx_count);
+        printf_fn("  module_7_temp_13                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_3.data.module_7_temp_13);
+        printf_fn("  module_7_temp_14                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_3.data.module_7_temp_14);
+        printf_fn("  module_7_temp_15                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_3.data.module_7_temp_15);
+        printf_fn("  module_7_temp_16                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_3.data.module_7_temp_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_temperature_4") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_temperature_4  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x272, (int)feb_can_state.bms_module_7_temperature_4.meta.present, (unsigned long)feb_can_state.bms_module_7_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_4.meta.rx_count);
+        printf_fn("  module_7_temp_17                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_4.data.module_7_temp_17);
+        printf_fn("  module_7_temp_18                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_4.data.module_7_temp_18);
+        printf_fn("  module_7_temp_19                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_4.data.module_7_temp_19);
+        printf_fn("  module_7_temp_20                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_4.data.module_7_temp_20);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_temperature_5") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_temperature_5  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x273, (int)feb_can_state.bms_module_7_temperature_5.meta.present, (unsigned long)feb_can_state.bms_module_7_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_5.meta.rx_count);
+        printf_fn("  module_7_temp_21                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_5.data.module_7_temp_21);
+        printf_fn("  module_7_temp_22                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_5.data.module_7_temp_22);
+        printf_fn("  module_7_temp_23                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_5.data.module_7_temp_23);
+        printf_fn("  module_7_temp_24                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_5.data.module_7_temp_24);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_temperature_6") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_temperature_6  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x274, (int)feb_can_state.bms_module_7_temperature_6.meta.present, (unsigned long)feb_can_state.bms_module_7_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_6.meta.rx_count);
+        printf_fn("  module_7_temp_25                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_6.data.module_7_temp_25);
+        printf_fn("  module_7_temp_26                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_6.data.module_7_temp_26);
+        printf_fn("  module_7_temp_27                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_6.data.module_7_temp_27);
+        printf_fn("  module_7_temp_28                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_6.data.module_7_temp_28);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_temperature_7") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_temperature_7  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x275, (int)feb_can_state.bms_module_7_temperature_7.meta.present, (unsigned long)feb_can_state.bms_module_7_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_7.meta.rx_count);
+        printf_fn("  module_7_temp_29                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_7.data.module_7_temp_29);
+        printf_fn("  module_7_temp_30                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_7.data.module_7_temp_30);
+        printf_fn("  module_7_temp_31                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_7.data.module_7_temp_31);
+        printf_fn("  module_7_temp_32                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_7.data.module_7_temp_32);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_temperature_8") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_temperature_8  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x276, (int)feb_can_state.bms_module_7_temperature_8.meta.present, (unsigned long)feb_can_state.bms_module_7_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_8.meta.rx_count);
+        printf_fn("  module_7_temp_33                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_8.data.module_7_temp_33);
+        printf_fn("  module_7_temp_34                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_8.data.module_7_temp_34);
+        printf_fn("  module_7_temp_35                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_8.data.module_7_temp_35);
+        printf_fn("  module_7_temp_36                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_8.data.module_7_temp_36);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_temperature_9") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_temperature_9  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x277, (int)feb_can_state.bms_module_7_temperature_9.meta.present, (unsigned long)feb_can_state.bms_module_7_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_9.meta.rx_count);
+        printf_fn("  module_7_temp_37                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_9.data.module_7_temp_37);
+        printf_fn("  module_7_temp_38                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_9.data.module_7_temp_38);
+        printf_fn("  module_7_temp_39                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_9.data.module_7_temp_39);
+        printf_fn("  module_7_temp_40                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_9.data.module_7_temp_40);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_7_temperature_10") == 0)
+    {
+        printf_fn("0x%02X  bms_module_7_temperature_10  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x278, (int)feb_can_state.bms_module_7_temperature_10.meta.present, (unsigned long)feb_can_state.bms_module_7_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_7_temperature_10.meta.rx_count);
+        printf_fn("  module_7_temp_41                 = %ld\r\n", (long)feb_can_state.bms_module_7_temperature_10.data.module_7_temp_41);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_temperature_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_temperature_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x279, (int)feb_can_state.bms_module_8_temperature_0.meta.present, (unsigned long)feb_can_state.bms_module_8_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_0.meta.rx_count);
+        printf_fn("  module_8_temp_1                  = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_0.data.module_8_temp_1);
+        printf_fn("  module_8_temp_2                  = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_0.data.module_8_temp_2);
+        printf_fn("  module_8_temp_3                  = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_0.data.module_8_temp_3);
+        printf_fn("  module_8_temp_4                  = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_0.data.module_8_temp_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_temperature_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_temperature_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x27A, (int)feb_can_state.bms_module_8_temperature_1.meta.present, (unsigned long)feb_can_state.bms_module_8_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_1.meta.rx_count);
+        printf_fn("  module_8_temp_5                  = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_1.data.module_8_temp_5);
+        printf_fn("  module_8_temp_6                  = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_1.data.module_8_temp_6);
+        printf_fn("  module_8_temp_7                  = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_1.data.module_8_temp_7);
+        printf_fn("  module_8_temp_8                  = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_1.data.module_8_temp_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_temperature_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_temperature_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x27B, (int)feb_can_state.bms_module_8_temperature_2.meta.present, (unsigned long)feb_can_state.bms_module_8_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_2.meta.rx_count);
+        printf_fn("  module_8_temp_9                  = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_2.data.module_8_temp_9);
+        printf_fn("  module_8_temp_10                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_2.data.module_8_temp_10);
+        printf_fn("  module_8_temp_11                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_2.data.module_8_temp_11);
+        printf_fn("  module_8_temp_12                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_2.data.module_8_temp_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_temperature_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_temperature_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x27C, (int)feb_can_state.bms_module_8_temperature_3.meta.present, (unsigned long)feb_can_state.bms_module_8_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_3.meta.rx_count);
+        printf_fn("  module_8_temp_13                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_3.data.module_8_temp_13);
+        printf_fn("  module_8_temp_14                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_3.data.module_8_temp_14);
+        printf_fn("  module_8_temp_15                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_3.data.module_8_temp_15);
+        printf_fn("  module_8_temp_16                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_3.data.module_8_temp_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_temperature_4") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_temperature_4  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x27D, (int)feb_can_state.bms_module_8_temperature_4.meta.present, (unsigned long)feb_can_state.bms_module_8_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_4.meta.rx_count);
+        printf_fn("  module_8_temp_17                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_4.data.module_8_temp_17);
+        printf_fn("  module_8_temp_18                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_4.data.module_8_temp_18);
+        printf_fn("  module_8_temp_19                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_4.data.module_8_temp_19);
+        printf_fn("  module_8_temp_20                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_4.data.module_8_temp_20);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_temperature_5") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_temperature_5  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x27E, (int)feb_can_state.bms_module_8_temperature_5.meta.present, (unsigned long)feb_can_state.bms_module_8_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_5.meta.rx_count);
+        printf_fn("  module_8_temp_21                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_5.data.module_8_temp_21);
+        printf_fn("  module_8_temp_22                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_5.data.module_8_temp_22);
+        printf_fn("  module_8_temp_23                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_5.data.module_8_temp_23);
+        printf_fn("  module_8_temp_24                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_5.data.module_8_temp_24);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_temperature_6") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_temperature_6  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x27F, (int)feb_can_state.bms_module_8_temperature_6.meta.present, (unsigned long)feb_can_state.bms_module_8_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_6.meta.rx_count);
+        printf_fn("  module_8_temp_25                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_6.data.module_8_temp_25);
+        printf_fn("  module_8_temp_26                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_6.data.module_8_temp_26);
+        printf_fn("  module_8_temp_27                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_6.data.module_8_temp_27);
+        printf_fn("  module_8_temp_28                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_6.data.module_8_temp_28);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_temperature_7") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_temperature_7  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x280, (int)feb_can_state.bms_module_8_temperature_7.meta.present, (unsigned long)feb_can_state.bms_module_8_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_7.meta.rx_count);
+        printf_fn("  module_8_temp_29                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_7.data.module_8_temp_29);
+        printf_fn("  module_8_temp_30                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_7.data.module_8_temp_30);
+        printf_fn("  module_8_temp_31                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_7.data.module_8_temp_31);
+        printf_fn("  module_8_temp_32                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_7.data.module_8_temp_32);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_temperature_8") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_temperature_8  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x281, (int)feb_can_state.bms_module_8_temperature_8.meta.present, (unsigned long)feb_can_state.bms_module_8_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_8.meta.rx_count);
+        printf_fn("  module_8_temp_33                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_8.data.module_8_temp_33);
+        printf_fn("  module_8_temp_34                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_8.data.module_8_temp_34);
+        printf_fn("  module_8_temp_35                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_8.data.module_8_temp_35);
+        printf_fn("  module_8_temp_36                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_8.data.module_8_temp_36);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_temperature_9") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_temperature_9  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x282, (int)feb_can_state.bms_module_8_temperature_9.meta.present, (unsigned long)feb_can_state.bms_module_8_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_9.meta.rx_count);
+        printf_fn("  module_8_temp_37                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_9.data.module_8_temp_37);
+        printf_fn("  module_8_temp_38                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_9.data.module_8_temp_38);
+        printf_fn("  module_8_temp_39                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_9.data.module_8_temp_39);
+        printf_fn("  module_8_temp_40                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_9.data.module_8_temp_40);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_8_temperature_10") == 0)
+    {
+        printf_fn("0x%02X  bms_module_8_temperature_10  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x283, (int)feb_can_state.bms_module_8_temperature_10.meta.present, (unsigned long)feb_can_state.bms_module_8_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_8_temperature_10.meta.rx_count);
+        printf_fn("  module_8_temp_41                 = %ld\r\n", (long)feb_can_state.bms_module_8_temperature_10.data.module_8_temp_41);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_temperature_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_temperature_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x284, (int)feb_can_state.bms_module_9_temperature_0.meta.present, (unsigned long)feb_can_state.bms_module_9_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_0.meta.rx_count);
+        printf_fn("  module_9_temp_1                  = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_0.data.module_9_temp_1);
+        printf_fn("  module_9_temp_2                  = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_0.data.module_9_temp_2);
+        printf_fn("  module_9_temp_3                  = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_0.data.module_9_temp_3);
+        printf_fn("  module_9_temp_4                  = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_0.data.module_9_temp_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_temperature_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_temperature_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x285, (int)feb_can_state.bms_module_9_temperature_1.meta.present, (unsigned long)feb_can_state.bms_module_9_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_1.meta.rx_count);
+        printf_fn("  module_9_temp_5                  = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_1.data.module_9_temp_5);
+        printf_fn("  module_9_temp_6                  = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_1.data.module_9_temp_6);
+        printf_fn("  module_9_temp_7                  = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_1.data.module_9_temp_7);
+        printf_fn("  module_9_temp_8                  = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_1.data.module_9_temp_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_temperature_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_temperature_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x286, (int)feb_can_state.bms_module_9_temperature_2.meta.present, (unsigned long)feb_can_state.bms_module_9_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_2.meta.rx_count);
+        printf_fn("  module_9_temp_9                  = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_2.data.module_9_temp_9);
+        printf_fn("  module_9_temp_10                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_2.data.module_9_temp_10);
+        printf_fn("  module_9_temp_11                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_2.data.module_9_temp_11);
+        printf_fn("  module_9_temp_12                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_2.data.module_9_temp_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_temperature_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_temperature_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x287, (int)feb_can_state.bms_module_9_temperature_3.meta.present, (unsigned long)feb_can_state.bms_module_9_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_3.meta.rx_count);
+        printf_fn("  module_9_temp_13                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_3.data.module_9_temp_13);
+        printf_fn("  module_9_temp_14                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_3.data.module_9_temp_14);
+        printf_fn("  module_9_temp_15                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_3.data.module_9_temp_15);
+        printf_fn("  module_9_temp_16                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_3.data.module_9_temp_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_temperature_4") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_temperature_4  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x288, (int)feb_can_state.bms_module_9_temperature_4.meta.present, (unsigned long)feb_can_state.bms_module_9_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_4.meta.rx_count);
+        printf_fn("  module_9_temp_17                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_4.data.module_9_temp_17);
+        printf_fn("  module_9_temp_18                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_4.data.module_9_temp_18);
+        printf_fn("  module_9_temp_19                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_4.data.module_9_temp_19);
+        printf_fn("  module_9_temp_20                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_4.data.module_9_temp_20);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_temperature_5") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_temperature_5  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x289, (int)feb_can_state.bms_module_9_temperature_5.meta.present, (unsigned long)feb_can_state.bms_module_9_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_5.meta.rx_count);
+        printf_fn("  module_9_temp_21                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_5.data.module_9_temp_21);
+        printf_fn("  module_9_temp_22                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_5.data.module_9_temp_22);
+        printf_fn("  module_9_temp_23                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_5.data.module_9_temp_23);
+        printf_fn("  module_9_temp_24                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_5.data.module_9_temp_24);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_temperature_6") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_temperature_6  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x28A, (int)feb_can_state.bms_module_9_temperature_6.meta.present, (unsigned long)feb_can_state.bms_module_9_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_6.meta.rx_count);
+        printf_fn("  module_9_temp_25                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_6.data.module_9_temp_25);
+        printf_fn("  module_9_temp_26                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_6.data.module_9_temp_26);
+        printf_fn("  module_9_temp_27                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_6.data.module_9_temp_27);
+        printf_fn("  module_9_temp_28                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_6.data.module_9_temp_28);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_temperature_7") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_temperature_7  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x28B, (int)feb_can_state.bms_module_9_temperature_7.meta.present, (unsigned long)feb_can_state.bms_module_9_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_7.meta.rx_count);
+        printf_fn("  module_9_temp_29                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_7.data.module_9_temp_29);
+        printf_fn("  module_9_temp_30                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_7.data.module_9_temp_30);
+        printf_fn("  module_9_temp_31                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_7.data.module_9_temp_31);
+        printf_fn("  module_9_temp_32                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_7.data.module_9_temp_32);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_temperature_8") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_temperature_8  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x28C, (int)feb_can_state.bms_module_9_temperature_8.meta.present, (unsigned long)feb_can_state.bms_module_9_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_8.meta.rx_count);
+        printf_fn("  module_9_temp_33                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_8.data.module_9_temp_33);
+        printf_fn("  module_9_temp_34                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_8.data.module_9_temp_34);
+        printf_fn("  module_9_temp_35                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_8.data.module_9_temp_35);
+        printf_fn("  module_9_temp_36                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_8.data.module_9_temp_36);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_temperature_9") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_temperature_9  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x28D, (int)feb_can_state.bms_module_9_temperature_9.meta.present, (unsigned long)feb_can_state.bms_module_9_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_9.meta.rx_count);
+        printf_fn("  module_9_temp_37                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_9.data.module_9_temp_37);
+        printf_fn("  module_9_temp_38                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_9.data.module_9_temp_38);
+        printf_fn("  module_9_temp_39                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_9.data.module_9_temp_39);
+        printf_fn("  module_9_temp_40                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_9.data.module_9_temp_40);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_9_temperature_10") == 0)
+    {
+        printf_fn("0x%02X  bms_module_9_temperature_10  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x28E, (int)feb_can_state.bms_module_9_temperature_10.meta.present, (unsigned long)feb_can_state.bms_module_9_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_9_temperature_10.meta.rx_count);
+        printf_fn("  module_9_temp_41                 = %ld\r\n", (long)feb_can_state.bms_module_9_temperature_10.data.module_9_temp_41);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_temperature_0") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_temperature_0  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x28F, (int)feb_can_state.bms_module_10_temperature_0.meta.present, (unsigned long)feb_can_state.bms_module_10_temperature_0.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_0.meta.rx_count);
+        printf_fn("  module_10_temp_1                 = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_0.data.module_10_temp_1);
+        printf_fn("  module_10_temp_2                 = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_0.data.module_10_temp_2);
+        printf_fn("  module_10_temp_3                 = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_0.data.module_10_temp_3);
+        printf_fn("  module_10_temp_4                 = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_0.data.module_10_temp_4);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_temperature_1") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_temperature_1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x290, (int)feb_can_state.bms_module_10_temperature_1.meta.present, (unsigned long)feb_can_state.bms_module_10_temperature_1.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_1.meta.rx_count);
+        printf_fn("  module_10_temp_5                 = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_1.data.module_10_temp_5);
+        printf_fn("  module_10_temp_6                 = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_1.data.module_10_temp_6);
+        printf_fn("  module_10_temp_7                 = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_1.data.module_10_temp_7);
+        printf_fn("  module_10_temp_8                 = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_1.data.module_10_temp_8);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_temperature_2") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_temperature_2  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x291, (int)feb_can_state.bms_module_10_temperature_2.meta.present, (unsigned long)feb_can_state.bms_module_10_temperature_2.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_2.meta.rx_count);
+        printf_fn("  module_10_temp_9                 = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_2.data.module_10_temp_9);
+        printf_fn("  module_10_temp_10                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_2.data.module_10_temp_10);
+        printf_fn("  module_10_temp_11                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_2.data.module_10_temp_11);
+        printf_fn("  module_10_temp_12                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_2.data.module_10_temp_12);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_temperature_3") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_temperature_3  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x292, (int)feb_can_state.bms_module_10_temperature_3.meta.present, (unsigned long)feb_can_state.bms_module_10_temperature_3.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_3.meta.rx_count);
+        printf_fn("  module_10_temp_13                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_3.data.module_10_temp_13);
+        printf_fn("  module_10_temp_14                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_3.data.module_10_temp_14);
+        printf_fn("  module_10_temp_15                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_3.data.module_10_temp_15);
+        printf_fn("  module_10_temp_16                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_3.data.module_10_temp_16);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_temperature_4") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_temperature_4  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x293, (int)feb_can_state.bms_module_10_temperature_4.meta.present, (unsigned long)feb_can_state.bms_module_10_temperature_4.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_4.meta.rx_count);
+        printf_fn("  module_10_temp_17                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_4.data.module_10_temp_17);
+        printf_fn("  module_10_temp_18                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_4.data.module_10_temp_18);
+        printf_fn("  module_10_temp_19                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_4.data.module_10_temp_19);
+        printf_fn("  module_10_temp_20                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_4.data.module_10_temp_20);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_temperature_5") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_temperature_5  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x294, (int)feb_can_state.bms_module_10_temperature_5.meta.present, (unsigned long)feb_can_state.bms_module_10_temperature_5.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_5.meta.rx_count);
+        printf_fn("  module_10_temp_21                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_5.data.module_10_temp_21);
+        printf_fn("  module_10_temp_22                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_5.data.module_10_temp_22);
+        printf_fn("  module_10_temp_23                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_5.data.module_10_temp_23);
+        printf_fn("  module_10_temp_24                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_5.data.module_10_temp_24);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_temperature_6") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_temperature_6  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x295, (int)feb_can_state.bms_module_10_temperature_6.meta.present, (unsigned long)feb_can_state.bms_module_10_temperature_6.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_6.meta.rx_count);
+        printf_fn("  module_10_temp_25                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_6.data.module_10_temp_25);
+        printf_fn("  module_10_temp_26                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_6.data.module_10_temp_26);
+        printf_fn("  module_10_temp_27                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_6.data.module_10_temp_27);
+        printf_fn("  module_10_temp_28                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_6.data.module_10_temp_28);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_temperature_7") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_temperature_7  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x296, (int)feb_can_state.bms_module_10_temperature_7.meta.present, (unsigned long)feb_can_state.bms_module_10_temperature_7.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_7.meta.rx_count);
+        printf_fn("  module_10_temp_29                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_7.data.module_10_temp_29);
+        printf_fn("  module_10_temp_30                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_7.data.module_10_temp_30);
+        printf_fn("  module_10_temp_31                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_7.data.module_10_temp_31);
+        printf_fn("  module_10_temp_32                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_7.data.module_10_temp_32);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_temperature_8") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_temperature_8  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x297, (int)feb_can_state.bms_module_10_temperature_8.meta.present, (unsigned long)feb_can_state.bms_module_10_temperature_8.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_8.meta.rx_count);
+        printf_fn("  module_10_temp_33                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_8.data.module_10_temp_33);
+        printf_fn("  module_10_temp_34                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_8.data.module_10_temp_34);
+        printf_fn("  module_10_temp_35                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_8.data.module_10_temp_35);
+        printf_fn("  module_10_temp_36                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_8.data.module_10_temp_36);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_temperature_9") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_temperature_9  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x298, (int)feb_can_state.bms_module_10_temperature_9.meta.present, (unsigned long)feb_can_state.bms_module_10_temperature_9.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_9.meta.rx_count);
+        printf_fn("  module_10_temp_37                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_9.data.module_10_temp_37);
+        printf_fn("  module_10_temp_38                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_9.data.module_10_temp_38);
+        printf_fn("  module_10_temp_39                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_9.data.module_10_temp_39);
+        printf_fn("  module_10_temp_40                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_9.data.module_10_temp_40);
+        return 0;
+    }
+    if (strcmp(name, "bms_module_10_temperature_10") == 0)
+    {
+        printf_fn("0x%02X  bms_module_10_temperature_10  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x299, (int)feb_can_state.bms_module_10_temperature_10.meta.present, (unsigned long)feb_can_state.bms_module_10_temperature_10.meta.last_rx_ms, (unsigned long)feb_can_state.bms_module_10_temperature_10.meta.rx_count);
+        printf_fn("  module_10_temp_41                = %ld\r\n", (long)feb_can_state.bms_module_10_temperature_10.data.module_10_temp_41);
         return 0;
     }
     if (strcmp(name, "ebs_pressure_status") == 0)

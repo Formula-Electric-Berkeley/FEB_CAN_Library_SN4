@@ -247,10 +247,23 @@ ID_RANGES = [
     (0xC0, 0xCF, "RMS/Inverter"),
     (0xD0, 0xDF, "Heartbeats"),
     (0xE0, 0xEF, "Debug/Test"),
+    (0x200, 0x2ff, "BMS Accumulator Cell Data (voltages + temperatures)"),
     (0x500, 0x50F, "EBS / Driverless Safety"),
     (0x520, 0x52F, "IVT-S current/voltage sensor"),
 ]
 
+# first real frame at 0x204, skipping CANopen-reserved 0x201 and inverter 0x202.
+for module in range(1, 11):
+    for page in range(0, 4):
+        MESSAGE_REGISTRY[0x200 + (module * 4 + page)] = (bms_msg.generate_get_cell_voltage(module, page), f"BMS Accumulator Module {module} Voltage {page}")
+
+# voltage block (0x204-0x22B).
+BMS_TEMP_BASE_ID = 0x22C
+BMS_TEMP_PAGES = 11
+for module in range(1, 11):
+    for page in range(0, BMS_TEMP_PAGES):
+        frame_id = BMS_TEMP_BASE_ID + (module - 1) * BMS_TEMP_PAGES + page
+        MESSAGE_REGISTRY[frame_id] = (bms_msg.generate_get_cell_temperature(module, page), f"BMS Accumulator Module {module} Temperature {page}")
 
 def validate_registry() -> bool:
     """Validate the message registry for common errors."""

@@ -931,6 +931,876 @@ BO_ 514 BMS_Current_Limit: 8 BMS
  SG_ INV_Max_Charge_Current : 16|16@1+ (1,0) [0|1000] "current:A" Vector__XXX
  SG_ INV_Max_Discharge_Current : 0|16@1+ (1,0) [0|1000] "current:A" Vector__XXX
 
+BO_ 516 bms_module_1_voltage_0: 8 Vector__XXX
+ SG_ module_1_cell_4 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_cell_3 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_cell_2 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_cell_1 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 517 bms_module_1_voltage_1: 8 Vector__XXX
+ SG_ module_1_cell_8 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_cell_7 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_cell_6 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_cell_5 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 518 bms_module_1_voltage_2: 8 Vector__XXX
+ SG_ module_1_cell_12 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_cell_11 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_cell_10 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_cell_9 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 519 bms_module_1_voltage_3: 8 Vector__XXX
+ SG_ module_1_cell_16 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_cell_15 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_cell_14 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_cell_13 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 520 bms_module_2_voltage_0: 8 Vector__XXX
+ SG_ module_2_cell_4 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_cell_3 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_cell_2 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_cell_1 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 521 bms_module_2_voltage_1: 8 Vector__XXX
+ SG_ module_2_cell_8 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_cell_7 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_cell_6 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_cell_5 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 522 bms_module_2_voltage_2: 8 Vector__XXX
+ SG_ module_2_cell_12 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_cell_11 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_cell_10 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_cell_9 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 523 bms_module_2_voltage_3: 8 Vector__XXX
+ SG_ module_2_cell_16 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_cell_15 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_cell_14 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_cell_13 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 524 bms_module_3_voltage_0: 8 Vector__XXX
+ SG_ module_3_cell_4 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_cell_3 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_cell_2 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_cell_1 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 525 bms_module_3_voltage_1: 8 Vector__XXX
+ SG_ module_3_cell_8 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_cell_7 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_cell_6 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_cell_5 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 526 bms_module_3_voltage_2: 8 Vector__XXX
+ SG_ module_3_cell_12 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_cell_11 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_cell_10 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_cell_9 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 527 bms_module_3_voltage_3: 8 Vector__XXX
+ SG_ module_3_cell_16 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_cell_15 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_cell_14 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_cell_13 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 528 bms_module_4_voltage_0: 8 Vector__XXX
+ SG_ module_4_cell_4 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_cell_3 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_cell_2 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_cell_1 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 529 bms_module_4_voltage_1: 8 Vector__XXX
+ SG_ module_4_cell_8 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_cell_7 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_cell_6 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_cell_5 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 530 bms_module_4_voltage_2: 8 Vector__XXX
+ SG_ module_4_cell_12 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_cell_11 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_cell_10 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_cell_9 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 531 bms_module_4_voltage_3: 8 Vector__XXX
+ SG_ module_4_cell_16 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_cell_15 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_cell_14 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_cell_13 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 532 bms_module_5_voltage_0: 8 Vector__XXX
+ SG_ module_5_cell_4 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_cell_3 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_cell_2 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_cell_1 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 533 bms_module_5_voltage_1: 8 Vector__XXX
+ SG_ module_5_cell_8 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_cell_7 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_cell_6 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_cell_5 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 534 bms_module_5_voltage_2: 8 Vector__XXX
+ SG_ module_5_cell_12 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_cell_11 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_cell_10 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_cell_9 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 535 bms_module_5_voltage_3: 8 Vector__XXX
+ SG_ module_5_cell_16 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_cell_15 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_cell_14 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_cell_13 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 536 bms_module_6_voltage_0: 8 Vector__XXX
+ SG_ module_6_cell_4 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_cell_3 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_cell_2 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_cell_1 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 537 bms_module_6_voltage_1: 8 Vector__XXX
+ SG_ module_6_cell_8 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_cell_7 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_cell_6 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_cell_5 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 538 bms_module_6_voltage_2: 8 Vector__XXX
+ SG_ module_6_cell_12 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_cell_11 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_cell_10 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_cell_9 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 539 bms_module_6_voltage_3: 8 Vector__XXX
+ SG_ module_6_cell_16 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_cell_15 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_cell_14 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_cell_13 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 540 bms_module_7_voltage_0: 8 Vector__XXX
+ SG_ module_7_cell_4 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_cell_3 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_cell_2 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_cell_1 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 541 bms_module_7_voltage_1: 8 Vector__XXX
+ SG_ module_7_cell_8 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_cell_7 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_cell_6 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_cell_5 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 542 bms_module_7_voltage_2: 8 Vector__XXX
+ SG_ module_7_cell_12 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_cell_11 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_cell_10 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_cell_9 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 543 bms_module_7_voltage_3: 8 Vector__XXX
+ SG_ module_7_cell_16 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_cell_15 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_cell_14 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_cell_13 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 544 bms_module_8_voltage_0: 8 Vector__XXX
+ SG_ module_8_cell_4 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_cell_3 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_cell_2 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_cell_1 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 545 bms_module_8_voltage_1: 8 Vector__XXX
+ SG_ module_8_cell_8 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_cell_7 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_cell_6 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_cell_5 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 546 bms_module_8_voltage_2: 8 Vector__XXX
+ SG_ module_8_cell_12 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_cell_11 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_cell_10 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_cell_9 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 547 bms_module_8_voltage_3: 8 Vector__XXX
+ SG_ module_8_cell_16 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_cell_15 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_cell_14 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_cell_13 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 548 bms_module_9_voltage_0: 8 Vector__XXX
+ SG_ module_9_cell_4 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_cell_3 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_cell_2 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_cell_1 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 549 bms_module_9_voltage_1: 8 Vector__XXX
+ SG_ module_9_cell_8 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_cell_7 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_cell_6 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_cell_5 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 550 bms_module_9_voltage_2: 8 Vector__XXX
+ SG_ module_9_cell_12 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_cell_11 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_cell_10 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_cell_9 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 551 bms_module_9_voltage_3: 8 Vector__XXX
+ SG_ module_9_cell_16 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_cell_15 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_cell_14 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_cell_13 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 552 bms_module_10_voltage_0: 8 Vector__XXX
+ SG_ module_10_cell_4 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_cell_3 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_cell_2 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_cell_1 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 553 bms_module_10_voltage_1: 8 Vector__XXX
+ SG_ module_10_cell_8 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_cell_7 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_cell_6 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_cell_5 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 554 bms_module_10_voltage_2: 8 Vector__XXX
+ SG_ module_10_cell_12 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_cell_11 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_cell_10 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_cell_9 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 555 bms_module_10_voltage_3: 8 Vector__XXX
+ SG_ module_10_cell_16 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_cell_15 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_cell_14 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_cell_13 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 556 bms_module_1_temperature_0: 8 Vector__XXX
+ SG_ module_1_temp_4 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_3 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_2 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_1 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 557 bms_module_1_temperature_1: 8 Vector__XXX
+ SG_ module_1_temp_8 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_7 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_6 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_5 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 558 bms_module_1_temperature_2: 8 Vector__XXX
+ SG_ module_1_temp_12 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_11 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_10 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_9 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 559 bms_module_1_temperature_3: 8 Vector__XXX
+ SG_ module_1_temp_16 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_15 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_14 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_13 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 560 bms_module_1_temperature_4: 8 Vector__XXX
+ SG_ module_1_temp_20 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_19 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_18 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_17 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 561 bms_module_1_temperature_5: 8 Vector__XXX
+ SG_ module_1_temp_24 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_23 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_22 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_21 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 562 bms_module_1_temperature_6: 8 Vector__XXX
+ SG_ module_1_temp_28 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_27 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_26 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_25 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 563 bms_module_1_temperature_7: 8 Vector__XXX
+ SG_ module_1_temp_32 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_31 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_30 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_29 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 564 bms_module_1_temperature_8: 8 Vector__XXX
+ SG_ module_1_temp_36 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_35 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_34 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_33 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 565 bms_module_1_temperature_9: 8 Vector__XXX
+ SG_ module_1_temp_40 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_39 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_38 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_1_temp_37 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 566 bms_module_1_temperature_10: 2 Vector__XXX
+ SG_ module_1_temp_41 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 567 bms_module_2_temperature_0: 8 Vector__XXX
+ SG_ module_2_temp_4 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_3 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_2 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_1 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 568 bms_module_2_temperature_1: 8 Vector__XXX
+ SG_ module_2_temp_8 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_7 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_6 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_5 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 569 bms_module_2_temperature_2: 8 Vector__XXX
+ SG_ module_2_temp_12 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_11 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_10 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_9 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 570 bms_module_2_temperature_3: 8 Vector__XXX
+ SG_ module_2_temp_16 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_15 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_14 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_13 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 571 bms_module_2_temperature_4: 8 Vector__XXX
+ SG_ module_2_temp_20 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_19 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_18 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_17 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 572 bms_module_2_temperature_5: 8 Vector__XXX
+ SG_ module_2_temp_24 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_23 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_22 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_21 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 573 bms_module_2_temperature_6: 8 Vector__XXX
+ SG_ module_2_temp_28 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_27 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_26 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_25 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 574 bms_module_2_temperature_7: 8 Vector__XXX
+ SG_ module_2_temp_32 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_31 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_30 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_29 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 575 bms_module_2_temperature_8: 8 Vector__XXX
+ SG_ module_2_temp_36 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_35 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_34 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_33 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 576 bms_module_2_temperature_9: 8 Vector__XXX
+ SG_ module_2_temp_40 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_39 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_38 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_2_temp_37 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 577 bms_module_2_temperature_10: 2 Vector__XXX
+ SG_ module_2_temp_41 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 578 bms_module_3_temperature_0: 8 Vector__XXX
+ SG_ module_3_temp_4 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_3 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_2 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_1 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 579 bms_module_3_temperature_1: 8 Vector__XXX
+ SG_ module_3_temp_8 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_7 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_6 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_5 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 580 bms_module_3_temperature_2: 8 Vector__XXX
+ SG_ module_3_temp_12 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_11 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_10 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_9 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 581 bms_module_3_temperature_3: 8 Vector__XXX
+ SG_ module_3_temp_16 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_15 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_14 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_13 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 582 bms_module_3_temperature_4: 8 Vector__XXX
+ SG_ module_3_temp_20 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_19 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_18 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_17 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 583 bms_module_3_temperature_5: 8 Vector__XXX
+ SG_ module_3_temp_24 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_23 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_22 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_21 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 584 bms_module_3_temperature_6: 8 Vector__XXX
+ SG_ module_3_temp_28 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_27 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_26 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_25 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 585 bms_module_3_temperature_7: 8 Vector__XXX
+ SG_ module_3_temp_32 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_31 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_30 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_29 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 586 bms_module_3_temperature_8: 8 Vector__XXX
+ SG_ module_3_temp_36 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_35 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_34 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_33 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 587 bms_module_3_temperature_9: 8 Vector__XXX
+ SG_ module_3_temp_40 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_39 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_38 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_3_temp_37 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 588 bms_module_3_temperature_10: 2 Vector__XXX
+ SG_ module_3_temp_41 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 589 bms_module_4_temperature_0: 8 Vector__XXX
+ SG_ module_4_temp_4 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_3 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_2 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_1 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 590 bms_module_4_temperature_1: 8 Vector__XXX
+ SG_ module_4_temp_8 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_7 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_6 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_5 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 591 bms_module_4_temperature_2: 8 Vector__XXX
+ SG_ module_4_temp_12 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_11 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_10 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_9 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 592 bms_module_4_temperature_3: 8 Vector__XXX
+ SG_ module_4_temp_16 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_15 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_14 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_13 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 593 bms_module_4_temperature_4: 8 Vector__XXX
+ SG_ module_4_temp_20 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_19 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_18 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_17 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 594 bms_module_4_temperature_5: 8 Vector__XXX
+ SG_ module_4_temp_24 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_23 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_22 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_21 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 595 bms_module_4_temperature_6: 8 Vector__XXX
+ SG_ module_4_temp_28 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_27 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_26 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_25 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 596 bms_module_4_temperature_7: 8 Vector__XXX
+ SG_ module_4_temp_32 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_31 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_30 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_29 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 597 bms_module_4_temperature_8: 8 Vector__XXX
+ SG_ module_4_temp_36 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_35 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_34 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_33 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 598 bms_module_4_temperature_9: 8 Vector__XXX
+ SG_ module_4_temp_40 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_39 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_38 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_4_temp_37 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 599 bms_module_4_temperature_10: 2 Vector__XXX
+ SG_ module_4_temp_41 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 600 bms_module_5_temperature_0: 8 Vector__XXX
+ SG_ module_5_temp_4 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_3 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_2 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_1 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 601 bms_module_5_temperature_1: 8 Vector__XXX
+ SG_ module_5_temp_8 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_7 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_6 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_5 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 602 bms_module_5_temperature_2: 8 Vector__XXX
+ SG_ module_5_temp_12 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_11 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_10 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_9 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 603 bms_module_5_temperature_3: 8 Vector__XXX
+ SG_ module_5_temp_16 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_15 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_14 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_13 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 604 bms_module_5_temperature_4: 8 Vector__XXX
+ SG_ module_5_temp_20 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_19 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_18 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_17 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 605 bms_module_5_temperature_5: 8 Vector__XXX
+ SG_ module_5_temp_24 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_23 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_22 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_21 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 606 bms_module_5_temperature_6: 8 Vector__XXX
+ SG_ module_5_temp_28 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_27 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_26 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_25 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 607 bms_module_5_temperature_7: 8 Vector__XXX
+ SG_ module_5_temp_32 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_31 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_30 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_29 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 608 bms_module_5_temperature_8: 8 Vector__XXX
+ SG_ module_5_temp_36 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_35 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_34 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_33 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 609 bms_module_5_temperature_9: 8 Vector__XXX
+ SG_ module_5_temp_40 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_39 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_38 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_5_temp_37 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 610 bms_module_5_temperature_10: 2 Vector__XXX
+ SG_ module_5_temp_41 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 611 bms_module_6_temperature_0: 8 Vector__XXX
+ SG_ module_6_temp_4 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_3 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_2 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_1 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 612 bms_module_6_temperature_1: 8 Vector__XXX
+ SG_ module_6_temp_8 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_7 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_6 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_5 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 613 bms_module_6_temperature_2: 8 Vector__XXX
+ SG_ module_6_temp_12 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_11 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_10 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_9 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 614 bms_module_6_temperature_3: 8 Vector__XXX
+ SG_ module_6_temp_16 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_15 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_14 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_13 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 615 bms_module_6_temperature_4: 8 Vector__XXX
+ SG_ module_6_temp_20 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_19 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_18 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_17 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 616 bms_module_6_temperature_5: 8 Vector__XXX
+ SG_ module_6_temp_24 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_23 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_22 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_21 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 617 bms_module_6_temperature_6: 8 Vector__XXX
+ SG_ module_6_temp_28 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_27 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_26 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_25 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 618 bms_module_6_temperature_7: 8 Vector__XXX
+ SG_ module_6_temp_32 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_31 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_30 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_29 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 619 bms_module_6_temperature_8: 8 Vector__XXX
+ SG_ module_6_temp_36 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_35 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_34 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_33 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 620 bms_module_6_temperature_9: 8 Vector__XXX
+ SG_ module_6_temp_40 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_39 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_38 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_6_temp_37 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 621 bms_module_6_temperature_10: 2 Vector__XXX
+ SG_ module_6_temp_41 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 622 bms_module_7_temperature_0: 8 Vector__XXX
+ SG_ module_7_temp_4 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_3 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_2 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_1 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 623 bms_module_7_temperature_1: 8 Vector__XXX
+ SG_ module_7_temp_8 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_7 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_6 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_5 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 624 bms_module_7_temperature_2: 8 Vector__XXX
+ SG_ module_7_temp_12 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_11 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_10 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_9 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 625 bms_module_7_temperature_3: 8 Vector__XXX
+ SG_ module_7_temp_16 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_15 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_14 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_13 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 626 bms_module_7_temperature_4: 8 Vector__XXX
+ SG_ module_7_temp_20 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_19 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_18 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_17 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 627 bms_module_7_temperature_5: 8 Vector__XXX
+ SG_ module_7_temp_24 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_23 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_22 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_21 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 628 bms_module_7_temperature_6: 8 Vector__XXX
+ SG_ module_7_temp_28 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_27 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_26 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_25 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 629 bms_module_7_temperature_7: 8 Vector__XXX
+ SG_ module_7_temp_32 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_31 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_30 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_29 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 630 bms_module_7_temperature_8: 8 Vector__XXX
+ SG_ module_7_temp_36 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_35 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_34 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_33 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 631 bms_module_7_temperature_9: 8 Vector__XXX
+ SG_ module_7_temp_40 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_39 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_38 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_7_temp_37 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 632 bms_module_7_temperature_10: 2 Vector__XXX
+ SG_ module_7_temp_41 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 633 bms_module_8_temperature_0: 8 Vector__XXX
+ SG_ module_8_temp_4 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_3 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_2 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_1 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 634 bms_module_8_temperature_1: 8 Vector__XXX
+ SG_ module_8_temp_8 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_7 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_6 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_5 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 635 bms_module_8_temperature_2: 8 Vector__XXX
+ SG_ module_8_temp_12 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_11 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_10 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_9 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 636 bms_module_8_temperature_3: 8 Vector__XXX
+ SG_ module_8_temp_16 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_15 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_14 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_13 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 637 bms_module_8_temperature_4: 8 Vector__XXX
+ SG_ module_8_temp_20 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_19 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_18 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_17 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 638 bms_module_8_temperature_5: 8 Vector__XXX
+ SG_ module_8_temp_24 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_23 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_22 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_21 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 639 bms_module_8_temperature_6: 8 Vector__XXX
+ SG_ module_8_temp_28 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_27 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_26 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_25 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 640 bms_module_8_temperature_7: 8 Vector__XXX
+ SG_ module_8_temp_32 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_31 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_30 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_29 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 641 bms_module_8_temperature_8: 8 Vector__XXX
+ SG_ module_8_temp_36 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_35 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_34 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_33 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 642 bms_module_8_temperature_9: 8 Vector__XXX
+ SG_ module_8_temp_40 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_39 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_38 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_8_temp_37 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 643 bms_module_8_temperature_10: 2 Vector__XXX
+ SG_ module_8_temp_41 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 644 bms_module_9_temperature_0: 8 Vector__XXX
+ SG_ module_9_temp_4 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_3 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_2 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_1 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 645 bms_module_9_temperature_1: 8 Vector__XXX
+ SG_ module_9_temp_8 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_7 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_6 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_5 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 646 bms_module_9_temperature_2: 8 Vector__XXX
+ SG_ module_9_temp_12 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_11 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_10 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_9 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 647 bms_module_9_temperature_3: 8 Vector__XXX
+ SG_ module_9_temp_16 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_15 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_14 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_13 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 648 bms_module_9_temperature_4: 8 Vector__XXX
+ SG_ module_9_temp_20 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_19 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_18 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_17 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 649 bms_module_9_temperature_5: 8 Vector__XXX
+ SG_ module_9_temp_24 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_23 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_22 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_21 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 650 bms_module_9_temperature_6: 8 Vector__XXX
+ SG_ module_9_temp_28 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_27 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_26 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_25 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 651 bms_module_9_temperature_7: 8 Vector__XXX
+ SG_ module_9_temp_32 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_31 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_30 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_29 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 652 bms_module_9_temperature_8: 8 Vector__XXX
+ SG_ module_9_temp_36 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_35 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_34 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_33 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 653 bms_module_9_temperature_9: 8 Vector__XXX
+ SG_ module_9_temp_40 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_39 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_38 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_9_temp_37 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 654 bms_module_9_temperature_10: 2 Vector__XXX
+ SG_ module_9_temp_41 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 655 bms_module_10_temperature_0: 8 Vector__XXX
+ SG_ module_10_temp_4 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_3 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_2 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_1 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 656 bms_module_10_temperature_1: 8 Vector__XXX
+ SG_ module_10_temp_8 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_7 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_6 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_5 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 657 bms_module_10_temperature_2: 8 Vector__XXX
+ SG_ module_10_temp_12 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_11 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_10 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_9 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 658 bms_module_10_temperature_3: 8 Vector__XXX
+ SG_ module_10_temp_16 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_15 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_14 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_13 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 659 bms_module_10_temperature_4: 8 Vector__XXX
+ SG_ module_10_temp_20 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_19 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_18 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_17 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 660 bms_module_10_temperature_5: 8 Vector__XXX
+ SG_ module_10_temp_24 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_23 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_22 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_21 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 661 bms_module_10_temperature_6: 8 Vector__XXX
+ SG_ module_10_temp_28 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_27 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_26 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_25 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 662 bms_module_10_temperature_7: 8 Vector__XXX
+ SG_ module_10_temp_32 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_31 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_30 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_29 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 663 bms_module_10_temperature_8: 8 Vector__XXX
+ SG_ module_10_temp_36 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_35 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_34 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_33 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 664 bms_module_10_temperature_9: 8 Vector__XXX
+ SG_ module_10_temp_40 : 48|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_39 : 32|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_38 : 16|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ module_10_temp_37 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 665 bms_module_10_temperature_10: 2 Vector__XXX
+ SG_ module_10_temp_41 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+
 BO_ 1280 ebs_pressure_status: 8 Vector__XXX
  SG_ ebs_pressure_4 : 48|16@1- (1,0) [0|0] "" Vector__XXX
  SG_ ebs_pressure_3 : 32|16@1- (1,0) [0|0] "" Vector__XXX
@@ -938,23 +1808,23 @@ BO_ 1280 ebs_pressure_status: 8 Vector__XXX
  SG_ ebs_pressure_1 : 0|16@1- (1,0) [0|0] "" Vector__XXX
 
 BO_ 1313 IVTCurrent: 6 Vector__XXX
- SG_ current : 23|32@0- (1,0) [0|0] "" Vector__XXX
+ SG_ current : 23|32@0- (-0.001,0) [0|0] "A" Vector__XXX
  SG_ counter : 7|16@0+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 1314 IVTVoltage1: 6 Vector__XXX
- SG_ voltage1 : 23|32@0- (1,0) [0|0] "" Vector__XXX
+ SG_ voltage1 : 23|32@0- (0.001,0) [0|0] "V" Vector__XXX
  SG_ counter : 7|16@0+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 1315 IVTVoltage2: 6 Vector__XXX
- SG_ voltage2 : 23|32@0- (1,0) [0|0] "" Vector__XXX
+ SG_ voltage2 : 23|32@0- (0.001,0) [0|0] "V" Vector__XXX
  SG_ counter : 7|16@0+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 1316 IVTVoltage3: 6 Vector__XXX
- SG_ voltage3 : 23|32@0- (1,0) [0|0] "" Vector__XXX
+ SG_ voltage3 : 23|32@0- (0.001,0) [0|0] "V" Vector__XXX
  SG_ counter : 7|16@0+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 1317 IVTTemperature: 6 Vector__XXX
- SG_ temperature : 23|32@0- (1,0) [0|0] "" Vector__XXX
+ SG_ temperature : 23|32@0- (0.1,0) [0|0] "degC" Vector__XXX
  SG_ counter : 7|16@0+ (1,0) [0|0] "" Vector__XXX
 
 
@@ -1129,12 +1999,162 @@ CM_ BO_ 471 "Enable message sent to Delphi DC/DC converter.";
 CM_ BO_ 514 "Message sent by BMS for inverter DC current limiting.";
 CM_ SG_ 514 INV_Max_Charge_Current "Maximum charge current from BMS";
 CM_ SG_ 514 INV_Max_Discharge_Current "Maximum discharge current from BMS";
+CM_ BO_ 516 "BMS message for accumulator voltage.";
+CM_ BO_ 517 "BMS message for accumulator voltage.";
+CM_ BO_ 518 "BMS message for accumulator voltage.";
+CM_ BO_ 519 "BMS message for accumulator voltage.";
+CM_ BO_ 520 "BMS message for accumulator voltage.";
+CM_ BO_ 521 "BMS message for accumulator voltage.";
+CM_ BO_ 522 "BMS message for accumulator voltage.";
+CM_ BO_ 523 "BMS message for accumulator voltage.";
+CM_ BO_ 524 "BMS message for accumulator voltage.";
+CM_ BO_ 525 "BMS message for accumulator voltage.";
+CM_ BO_ 526 "BMS message for accumulator voltage.";
+CM_ BO_ 527 "BMS message for accumulator voltage.";
+CM_ BO_ 528 "BMS message for accumulator voltage.";
+CM_ BO_ 529 "BMS message for accumulator voltage.";
+CM_ BO_ 530 "BMS message for accumulator voltage.";
+CM_ BO_ 531 "BMS message for accumulator voltage.";
+CM_ BO_ 532 "BMS message for accumulator voltage.";
+CM_ BO_ 533 "BMS message for accumulator voltage.";
+CM_ BO_ 534 "BMS message for accumulator voltage.";
+CM_ BO_ 535 "BMS message for accumulator voltage.";
+CM_ BO_ 536 "BMS message for accumulator voltage.";
+CM_ BO_ 537 "BMS message for accumulator voltage.";
+CM_ BO_ 538 "BMS message for accumulator voltage.";
+CM_ BO_ 539 "BMS message for accumulator voltage.";
+CM_ BO_ 540 "BMS message for accumulator voltage.";
+CM_ BO_ 541 "BMS message for accumulator voltage.";
+CM_ BO_ 542 "BMS message for accumulator voltage.";
+CM_ BO_ 543 "BMS message for accumulator voltage.";
+CM_ BO_ 544 "BMS message for accumulator voltage.";
+CM_ BO_ 545 "BMS message for accumulator voltage.";
+CM_ BO_ 546 "BMS message for accumulator voltage.";
+CM_ BO_ 547 "BMS message for accumulator voltage.";
+CM_ BO_ 548 "BMS message for accumulator voltage.";
+CM_ BO_ 549 "BMS message for accumulator voltage.";
+CM_ BO_ 550 "BMS message for accumulator voltage.";
+CM_ BO_ 551 "BMS message for accumulator voltage.";
+CM_ BO_ 552 "BMS message for accumulator voltage.";
+CM_ BO_ 553 "BMS message for accumulator voltage.";
+CM_ BO_ 554 "BMS message for accumulator voltage.";
+CM_ BO_ 555 "BMS message for accumulator voltage.";
+CM_ BO_ 556 "BMS message for accumulator temperature.";
+CM_ BO_ 557 "BMS message for accumulator temperature.";
+CM_ BO_ 558 "BMS message for accumulator temperature.";
+CM_ BO_ 559 "BMS message for accumulator temperature.";
+CM_ BO_ 560 "BMS message for accumulator temperature.";
+CM_ BO_ 561 "BMS message for accumulator temperature.";
+CM_ BO_ 562 "BMS message for accumulator temperature.";
+CM_ BO_ 563 "BMS message for accumulator temperature.";
+CM_ BO_ 564 "BMS message for accumulator temperature.";
+CM_ BO_ 565 "BMS message for accumulator temperature.";
+CM_ BO_ 566 "BMS message for accumulator temperature.";
+CM_ BO_ 567 "BMS message for accumulator temperature.";
+CM_ BO_ 568 "BMS message for accumulator temperature.";
+CM_ BO_ 569 "BMS message for accumulator temperature.";
+CM_ BO_ 570 "BMS message for accumulator temperature.";
+CM_ BO_ 571 "BMS message for accumulator temperature.";
+CM_ BO_ 572 "BMS message for accumulator temperature.";
+CM_ BO_ 573 "BMS message for accumulator temperature.";
+CM_ BO_ 574 "BMS message for accumulator temperature.";
+CM_ BO_ 575 "BMS message for accumulator temperature.";
+CM_ BO_ 576 "BMS message for accumulator temperature.";
+CM_ BO_ 577 "BMS message for accumulator temperature.";
+CM_ BO_ 578 "BMS message for accumulator temperature.";
+CM_ BO_ 579 "BMS message for accumulator temperature.";
+CM_ BO_ 580 "BMS message for accumulator temperature.";
+CM_ BO_ 581 "BMS message for accumulator temperature.";
+CM_ BO_ 582 "BMS message for accumulator temperature.";
+CM_ BO_ 583 "BMS message for accumulator temperature.";
+CM_ BO_ 584 "BMS message for accumulator temperature.";
+CM_ BO_ 585 "BMS message for accumulator temperature.";
+CM_ BO_ 586 "BMS message for accumulator temperature.";
+CM_ BO_ 587 "BMS message for accumulator temperature.";
+CM_ BO_ 588 "BMS message for accumulator temperature.";
+CM_ BO_ 589 "BMS message for accumulator temperature.";
+CM_ BO_ 590 "BMS message for accumulator temperature.";
+CM_ BO_ 591 "BMS message for accumulator temperature.";
+CM_ BO_ 592 "BMS message for accumulator temperature.";
+CM_ BO_ 593 "BMS message for accumulator temperature.";
+CM_ BO_ 594 "BMS message for accumulator temperature.";
+CM_ BO_ 595 "BMS message for accumulator temperature.";
+CM_ BO_ 596 "BMS message for accumulator temperature.";
+CM_ BO_ 597 "BMS message for accumulator temperature.";
+CM_ BO_ 598 "BMS message for accumulator temperature.";
+CM_ BO_ 599 "BMS message for accumulator temperature.";
+CM_ BO_ 600 "BMS message for accumulator temperature.";
+CM_ BO_ 601 "BMS message for accumulator temperature.";
+CM_ BO_ 602 "BMS message for accumulator temperature.";
+CM_ BO_ 603 "BMS message for accumulator temperature.";
+CM_ BO_ 604 "BMS message for accumulator temperature.";
+CM_ BO_ 605 "BMS message for accumulator temperature.";
+CM_ BO_ 606 "BMS message for accumulator temperature.";
+CM_ BO_ 607 "BMS message for accumulator temperature.";
+CM_ BO_ 608 "BMS message for accumulator temperature.";
+CM_ BO_ 609 "BMS message for accumulator temperature.";
+CM_ BO_ 610 "BMS message for accumulator temperature.";
+CM_ BO_ 611 "BMS message for accumulator temperature.";
+CM_ BO_ 612 "BMS message for accumulator temperature.";
+CM_ BO_ 613 "BMS message for accumulator temperature.";
+CM_ BO_ 614 "BMS message for accumulator temperature.";
+CM_ BO_ 615 "BMS message for accumulator temperature.";
+CM_ BO_ 616 "BMS message for accumulator temperature.";
+CM_ BO_ 617 "BMS message for accumulator temperature.";
+CM_ BO_ 618 "BMS message for accumulator temperature.";
+CM_ BO_ 619 "BMS message for accumulator temperature.";
+CM_ BO_ 620 "BMS message for accumulator temperature.";
+CM_ BO_ 621 "BMS message for accumulator temperature.";
+CM_ BO_ 622 "BMS message for accumulator temperature.";
+CM_ BO_ 623 "BMS message for accumulator temperature.";
+CM_ BO_ 624 "BMS message for accumulator temperature.";
+CM_ BO_ 625 "BMS message for accumulator temperature.";
+CM_ BO_ 626 "BMS message for accumulator temperature.";
+CM_ BO_ 627 "BMS message for accumulator temperature.";
+CM_ BO_ 628 "BMS message for accumulator temperature.";
+CM_ BO_ 629 "BMS message for accumulator temperature.";
+CM_ BO_ 630 "BMS message for accumulator temperature.";
+CM_ BO_ 631 "BMS message for accumulator temperature.";
+CM_ BO_ 632 "BMS message for accumulator temperature.";
+CM_ BO_ 633 "BMS message for accumulator temperature.";
+CM_ BO_ 634 "BMS message for accumulator temperature.";
+CM_ BO_ 635 "BMS message for accumulator temperature.";
+CM_ BO_ 636 "BMS message for accumulator temperature.";
+CM_ BO_ 637 "BMS message for accumulator temperature.";
+CM_ BO_ 638 "BMS message for accumulator temperature.";
+CM_ BO_ 639 "BMS message for accumulator temperature.";
+CM_ BO_ 640 "BMS message for accumulator temperature.";
+CM_ BO_ 641 "BMS message for accumulator temperature.";
+CM_ BO_ 642 "BMS message for accumulator temperature.";
+CM_ BO_ 643 "BMS message for accumulator temperature.";
+CM_ BO_ 644 "BMS message for accumulator temperature.";
+CM_ BO_ 645 "BMS message for accumulator temperature.";
+CM_ BO_ 646 "BMS message for accumulator temperature.";
+CM_ BO_ 647 "BMS message for accumulator temperature.";
+CM_ BO_ 648 "BMS message for accumulator temperature.";
+CM_ BO_ 649 "BMS message for accumulator temperature.";
+CM_ BO_ 650 "BMS message for accumulator temperature.";
+CM_ BO_ 651 "BMS message for accumulator temperature.";
+CM_ BO_ 652 "BMS message for accumulator temperature.";
+CM_ BO_ 653 "BMS message for accumulator temperature.";
+CM_ BO_ 654 "BMS message for accumulator temperature.";
+CM_ BO_ 655 "BMS message for accumulator temperature.";
+CM_ BO_ 656 "BMS message for accumulator temperature.";
+CM_ BO_ 657 "BMS message for accumulator temperature.";
+CM_ BO_ 658 "BMS message for accumulator temperature.";
+CM_ BO_ 659 "BMS message for accumulator temperature.";
+CM_ BO_ 660 "BMS message for accumulator temperature.";
+CM_ BO_ 661 "BMS message for accumulator temperature.";
+CM_ BO_ 662 "BMS message for accumulator temperature.";
+CM_ BO_ 663 "BMS message for accumulator temperature.";
+CM_ BO_ 664 "BMS message for accumulator temperature.";
+CM_ BO_ 665 "BMS message for accumulator temperature.";
 CM_ BO_ 1280 "EBS Pressure Status - 4 pressure sensors (scale: 1/16, unit: bar)";
-CM_ BO_ 1313 "Isabellenhutte IVT-S pack current (raw int32, mA).";
-CM_ BO_ 1314 "Isabellenhutte IVT-S voltage 1 / pack voltage (raw int32, mV).";
-CM_ BO_ 1315 "Isabellenhutte IVT-S voltage 2 (raw int32, mV).";
-CM_ BO_ 1316 "Isabellenhutte IVT-S voltage 3 (raw int32, mV).";
-CM_ BO_ 1317 "Isabellenhutte IVT-S temperature (raw int32, 0.1 degC).";
+CM_ BO_ 1313 "Isabellenhutte IVT-S pack current (A, FEB sign convention).";
+CM_ BO_ 1314 "Isabellenhutte IVT-S voltage 1 / pack voltage (V).";
+CM_ BO_ 1315 "Isabellenhutte IVT-S voltage 2 (V).";
+CM_ BO_ 1316 "Isabellenhutte IVT-S voltage 3 (V).";
+CM_ BO_ 1317 "Isabellenhutte IVT-S temperature (degC).";
 BA_DEF_ BO_  "SystemMessageLongSymbol" STRING ;
 BA_DEF_ SG_  "SystemSignalLongSymbol" STRING ;
 BA_DEF_ BO_  "GenMsgCycleTime" INT 0 65535;
@@ -1162,6 +2182,7 @@ BA_ "GenMsgCycleTime" BO_ 192 5;
 BA_ "SystemSignalLongSymbol" SG_ 193 VCU_INV_Parameter_Address_Comman "VCU_INV_Parameter_Address_Command";
 BA_ "SystemSignalLongSymbol" SG_ 469 INV_HV_Input_Current_Sensor_Vali "INV_HV_Input_Current_Sensor_Validity";
 BA_ "GenMsgCycleTime" BO_ 1280 100;
+VAL_ 5 bms_state 0 "BMS_STATE_BOOT" 1 "BMS_STATE_LV_POWER" 2 "BMS_STATE_BUS_HEALTH_CHECK" 3 "BMS_STATE_PRECHARGE" 4 "BMS_STATE_ENERGIZED" 5 "BMS_STATE_DRIVE" 6 "BMS_STATE_BATTERY_FREE" 7 "BMS_STATE_CHARGER_PRECHARGE" 8 "BMS_STATE_CHARGING" 9 "BMS_STATE_BALANCE" 10 "BMS_STATE_FAULT_BMS" 11 "BMS_STATE_FAULT_BSPD" 12 "BMS_STATE_FAULT_IMD" 13 "BMS_STATE_FAULT_CHARGING" 14 "BMS_STATE_COUNT" ;
 VAL_ 170 INV_Inverter_State 0 "Power up" 1 "Stop" 2 "Open Loop" 3 "Closed Loop" 4 "Internal State" 5 "Internal State" 6 "Internal State" 7 "Internal State" 8 "Idle Run" 9 "Idle Stop" 10 "Internal State" 11 "Intern State" 12 "Internal State" ;
 VAL_ 170 INV_VSM_State 0 "VSM Start State" 1 "Pre-Charge Init state" 2 "pre-charge active state" 3 "pre-charge complete state" 4 "VSM wait state" 5 "VSM ready state" 6 "Motor Running State" 7 "blink fault code state" 14 "Shutdown state for Key Switch Mode 1" 15 "Reset the inverter" ;
 
