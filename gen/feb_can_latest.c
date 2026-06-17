@@ -208,6 +208,12 @@ int FEB_CAN_State_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, ui
         feb_can_state.pcu_raw_acc.meta.last_rx_ms = now_ms;
         feb_can_state.pcu_raw_acc.meta.rx_count++;
         return 0;
+    case FEB_CAN_PCU_PEDAL_VOLTAGES_FRAME_ID:
+        if (feb_can_pcu_pedal_voltages_unpack(&feb_can_state.pcu_pedal_voltages.data, data, dlc) < 0) return -2;
+        feb_can_state.pcu_pedal_voltages.meta.present = true;
+        feb_can_state.pcu_pedal_voltages.meta.last_rx_ms = now_ms;
+        feb_can_state.pcu_pedal_voltages.meta.rx_count++;
+        return 0;
     case FEB_CAN_GPS_POS_DATA_FRAME_ID:
         if (feb_can_gps_pos_data_unpack(&feb_can_state.gps_pos_data.data, data, dlc) < 0) return -2;
         feb_can_state.gps_pos_data.meta.present = true;
@@ -640,6 +646,7 @@ void FEB_CAN_State_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_state.dash_tps.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x36, "dash_tps", (unsigned long)feb_can_state.dash_tps.meta.last_rx_ms, (unsigned long)feb_can_state.dash_tps.meta.rx_count);
     if (feb_can_state.dcu_tps.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x37, "dcu_tps", (unsigned long)feb_can_state.dcu_tps.meta.last_rx_ms, (unsigned long)feb_can_state.dcu_tps.meta.rx_count);
     if (feb_can_state.pcu_raw_acc.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x38, "pcu_raw_acc", (unsigned long)feb_can_state.pcu_raw_acc.meta.last_rx_ms, (unsigned long)feb_can_state.pcu_raw_acc.meta.rx_count);
+    if (feb_can_state.pcu_pedal_voltages.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x39, "pcu_pedal_voltages", (unsigned long)feb_can_state.pcu_pedal_voltages.meta.last_rx_ms, (unsigned long)feb_can_state.pcu_pedal_voltages.meta.rx_count);
     if (feb_can_state.gps_pos_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x40, "gps_pos_data", (unsigned long)feb_can_state.gps_pos_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_pos_data.meta.rx_count);
     if (feb_can_state.gps_altitude_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x41, "gps_altitude_data", (unsigned long)feb_can_state.gps_altitude_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_altitude_data.meta.rx_count);
     if (feb_can_state.gps_motion_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x42, "gps_motion_data", (unsigned long)feb_can_state.gps_motion_data.meta.last_rx_ms, (unsigned long)feb_can_state.gps_motion_data.meta.rx_count);
@@ -983,6 +990,15 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
         printf_fn("  plausible                        = %ld\r\n", (long)feb_can_state.pcu_raw_acc.data.plausible);
         printf_fn("  short_circuit                    = %ld\r\n", (long)feb_can_state.pcu_raw_acc.data.short_circuit);
         printf_fn("  open_circuit                     = %ld\r\n", (long)feb_can_state.pcu_raw_acc.data.open_circuit);
+        return 0;
+    }
+    if (strcmp(name, "pcu_pedal_voltages") == 0)
+    {
+        printf_fn("0x%02X  pcu_pedal_voltages  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x39, (int)feb_can_state.pcu_pedal_voltages.meta.present, (unsigned long)feb_can_state.pcu_pedal_voltages.meta.last_rx_ms, (unsigned long)feb_can_state.pcu_pedal_voltages.meta.rx_count);
+        printf_fn("  acc1_mv                          = %ld\r\n", (long)feb_can_state.pcu_pedal_voltages.data.acc1_mv);
+        printf_fn("  acc2_mv                          = %ld\r\n", (long)feb_can_state.pcu_pedal_voltages.data.acc2_mv);
+        printf_fn("  brake1_mv                        = %ld\r\n", (long)feb_can_state.pcu_pedal_voltages.data.brake1_mv);
+        printf_fn("  brake2_mv                        = %ld\r\n", (long)feb_can_state.pcu_pedal_voltages.data.brake2_mv);
         return 0;
     }
     if (strcmp(name, "gps_pos_data") == 0)

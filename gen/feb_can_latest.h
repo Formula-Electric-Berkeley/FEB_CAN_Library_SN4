@@ -52,6 +52,7 @@ typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_pcu_tps_t data; } FEB
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_dash_tps_t data; } FEB_CAN_State_dash_tps_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_dcu_tps_t data; } FEB_CAN_State_dcu_tps_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_pcu_raw_acc_t data; } FEB_CAN_State_pcu_raw_acc_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_pcu_pedal_voltages_t data; } FEB_CAN_State_pcu_pedal_voltages_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_gps_pos_data_t data; } FEB_CAN_State_gps_pos_data_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_gps_altitude_data_t data; } FEB_CAN_State_gps_altitude_data_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_gps_motion_data_t data; } FEB_CAN_State_gps_motion_data_t;
@@ -152,6 +153,7 @@ typedef struct {
     FEB_CAN_State_dash_tps_t dash_tps;
     FEB_CAN_State_dcu_tps_t dcu_tps;
     FEB_CAN_State_pcu_raw_acc_t pcu_raw_acc;
+    FEB_CAN_State_pcu_pedal_voltages_t pcu_pedal_voltages;
     FEB_CAN_State_gps_pos_data_t gps_pos_data;
     FEB_CAN_State_gps_altitude_data_t gps_altitude_data;
     FEB_CAN_State_gps_motion_data_t gps_motion_data;

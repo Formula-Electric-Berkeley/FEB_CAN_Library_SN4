@@ -5,12 +5,18 @@ def normalized_brake(frame_id: int):
     # Mirrors get_raw_acc(): big-endian 16-bit values at start 7/23/39, 1-bit
     # little-endian status flags at 48+. Matches what the PCU actually packs in
     # FEB_CAN_Diagnostics_TransmitBrakeData(). Values are centi-percent (0-10000).
+    # scale=0.01 + unit="%" describes the physical value (0-100 %). The PCU packs
+    # the raw centi-percent (0-10000) into the struct field; cantools pack/unpack
+    # operates on that raw field, so the scale only affects DBC-level decode and
+    # the firmware needs no change.
     brake_position = cantools.db.Signal(
         name="brake_position",
         start=7,
         length=16,
         byte_order="big_endian",
-        is_signed=False
+        is_signed=False,
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="%"
     )
 
     brake1_pct = cantools.db.Signal(
@@ -18,7 +24,9 @@ def normalized_brake(frame_id: int):
         start=23,
         length=16,
         byte_order="big_endian",
-        is_signed=False
+        is_signed=False,
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="%"
     )
 
     brake2_pct = cantools.db.Signal(
@@ -26,7 +34,9 @@ def normalized_brake(frame_id: int):
         start=39,
         length=16,
         byte_order="big_endian",
-        is_signed=False
+        is_signed=False,
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="%"
     )
 
     plausible = cantools.db.Signal(
@@ -74,12 +84,15 @@ def normalized_brake(frame_id: int):
     return msg
 
 def ebs_pressure_status(frame_id: int):
+    # scale=1/16 + unit="bar" per the message comment (raw int16 is 16 * bar).
     ebs_pressure_1 = cantools.db.Signal(
         name="ebs_pressure_1",
         start=0,
         length=16,
         byte_order="little_endian",
         is_signed=True,
+        conversion=BaseConversion.factory(scale=1/16),
+        unit="bar",
     )
 
     ebs_pressure_2 = cantools.db.Signal(
@@ -88,6 +101,8 @@ def ebs_pressure_status(frame_id: int):
         length=16,
         byte_order="little_endian",
         is_signed=True,
+        conversion=BaseConversion.factory(scale=1/16),
+        unit="bar",
     )
 
     ebs_pressure_3 = cantools.db.Signal(
@@ -96,6 +111,8 @@ def ebs_pressure_status(frame_id: int):
         length=16,
         byte_order="little_endian",
         is_signed=True,
+        conversion=BaseConversion.factory(scale=1/16),
+        unit="bar",
     )
 
     ebs_pressure_4 = cantools.db.Signal(
@@ -104,6 +121,8 @@ def ebs_pressure_status(frame_id: int):
         length=16,
         byte_order="little_endian",
         is_signed=True,
+        conversion=BaseConversion.factory(scale=1/16),
+        unit="bar",
     )
 
     msg = cantools.db.Message(
@@ -244,18 +263,23 @@ def bspd(frame_id: int):
     return msg 
 
 def get_tps_voltage_current(frame_id: int):    
+    # Firmware packs raw millivolts / milliamps straight from the INA219.
+    # NOTE: current is logically signed (can be negative) but is declared unsigned
+    # here to match the existing on-wire contract; flagged for a follow-up.
     pcu_voltage_signal = cantools.db.Signal(
         name="voltage",
         start=0,
         length=16,
         byte_order="little_endian",
+        unit="mV",
     )
-    
+
     pcu_current_signal = cantools.db.Signal(
         name="current",
         start=16,
         length=16,
         byte_order="little_endian",
+        unit="mA",
     )
 
     msg = cantools.db.Message(
@@ -270,11 +294,17 @@ def get_tps_voltage_current(frame_id: int):
     return msg
 
 def get_raw_acc(frame_id: int):
+    # These carry APPS positions (not raw volts despite the message name): the PCU
+    # packs centi-percent (0-10000). scale=0.01 + unit="%" makes the DBC decode to
+    # 0-100 %; the raw struct field is unchanged so the firmware needs no edit.
+    # (Raw sensor voltages in mV are reported separately on pcu_pedal_voltages 0x39.)
     pcu_acc0_signal = cantools.db.Signal(
         name="acc0",
         start=7,
         length=16,
         byte_order="big_endian",
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="%",
     )
 
     pcu_acc1_signal = cantools.db.Signal(
@@ -282,6 +312,8 @@ def get_raw_acc(frame_id: int):
         start=23,
         length=16,
         byte_order="big_endian",
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="%",
     )
 
     pcu_accel_signal = cantools.db.Signal(
@@ -289,6 +321,8 @@ def get_raw_acc(frame_id: int):
         start=39,
         length=16,
         byte_order="big_endian",
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="%",
     )
 
     plausible_signal = cantools.db.Signal(
@@ -325,6 +359,59 @@ def get_raw_acc(frame_id: int):
             open_circuit_signal,
         ],
         comment="PCU RAW ACC ADC",
+        strict=True,
+    )
+
+    return msg
+
+def get_pedal_voltages(frame_id: int):
+    # Raw sensor-side pedal voltages in millivolts (post on-board divider), i.e.
+    # the same domain as the APPS/brake calibration thresholds in FEB_PINOUT.h.
+    # Four uint16 mV values fill the full 8-byte frame. Complements pcu_raw_acc
+    # (0x38) / brake (0x09), which carry positions in centi-percent.
+    acc1_mv = cantools.db.Signal(
+        name="acc1_mv",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+        is_signed=False,
+        unit="mV",
+    )
+
+    acc2_mv = cantools.db.Signal(
+        name="acc2_mv",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=False,
+        unit="mV",
+    )
+
+    brake1_mv = cantools.db.Signal(
+        name="brake1_mv",
+        start=32,
+        length=16,
+        byte_order="little_endian",
+        is_signed=False,
+        unit="mV",
+    )
+
+    brake2_mv = cantools.db.Signal(
+        name="brake2_mv",
+        start=48,
+        length=16,
+        byte_order="little_endian",
+        is_signed=False,
+        unit="mV",
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name="pcu_pedal_voltages",
+        length=8,
+        signals=[acc1_mv, acc2_mv, brake1_mv, brake2_mv],
+        comment="PCU raw pedal sensor voltages (sensor-side mV): APPS1/2, brake 1/2",
+        cycle_time=100,
         strict=True,
     )
 

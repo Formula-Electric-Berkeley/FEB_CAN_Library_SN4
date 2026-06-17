@@ -71,9 +71,9 @@ BO_ 9 brake: 8 Vector__XXX
  SG_ bots_active : 50|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ brake_pressed : 49|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ plausible : 48|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ brake2_pct : 39|16@0+ (1,0) [0|0] "" Vector__XXX
- SG_ brake1_pct : 23|16@0+ (1,0) [0|0] "" Vector__XXX
- SG_ brake_position : 7|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ brake2_pct : 39|16@0+ (0.01,0) [0|0] "%" Vector__XXX
+ SG_ brake1_pct : 23|16@0+ (0.01,0) [0|0] "%" Vector__XXX
+ SG_ brake_position : 7|16@0+ (0.01,0) [0|0] "%" Vector__XXX
 
 BO_ 10 bspd_state: 1 Vector__XXX
  SG_ bspd_state : 0|8@1+ (1,0) [0|0] "" Vector__XXX
@@ -194,8 +194,8 @@ BO_ 52 bbb_tps: 4 Vector__XXX
  SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 53 pcu_tps: 4 Vector__XXX
- SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ current : 16|16@1+ (1,0) [0|0] "mA" Vector__XXX
+ SG_ voltage : 0|16@1+ (1,0) [0|0] "mV" Vector__XXX
 
 BO_ 54 dash_tps: 4 Vector__XXX
  SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
@@ -209,9 +209,15 @@ BO_ 56 pcu_raw_acc: 8 Vector__XXX
  SG_ open_circuit : 50|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ short_circuit : 49|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ plausible : 48|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ accel : 39|16@0+ (1,0) [0|0] "" Vector__XXX
- SG_ acc1 : 23|16@0+ (1,0) [0|0] "" Vector__XXX
- SG_ acc0 : 7|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ accel : 39|16@0+ (0.01,0) [0|0] "%" Vector__XXX
+ SG_ acc1 : 23|16@0+ (0.01,0) [0|0] "%" Vector__XXX
+ SG_ acc0 : 7|16@0+ (0.01,0) [0|0] "%" Vector__XXX
+
+BO_ 57 pcu_pedal_voltages: 8 Vector__XXX
+ SG_ brake2_mv : 48|16@1+ (1,0) [0|0] "mV" Vector__XXX
+ SG_ brake1_mv : 32|16@1+ (1,0) [0|0] "mV" Vector__XXX
+ SG_ acc2_mv : 16|16@1+ (1,0) [0|0] "mV" Vector__XXX
+ SG_ acc1_mv : 0|16@1+ (1,0) [0|0] "mV" Vector__XXX
 
 BO_ 64 gps_pos_data: 8 Vector__XXX
  SG_ longitude : 32|32@1- (1e-07,0) [0|0] "deg" Vector__XXX
@@ -933,10 +939,10 @@ BO_ 514 BMS_Current_Limit: 8 BMS
  SG_ INV_Max_Discharge_Current : 0|16@1+ (1,0) [0|1000] "current:A" Vector__XXX
 
 BO_ 1280 ebs_pressure_status: 8 Vector__XXX
- SG_ ebs_pressure_4 : 48|16@1- (1,0) [0|0] "" Vector__XXX
- SG_ ebs_pressure_3 : 32|16@1- (1,0) [0|0] "" Vector__XXX
- SG_ ebs_pressure_2 : 16|16@1- (1,0) [0|0] "" Vector__XXX
- SG_ ebs_pressure_1 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ ebs_pressure_4 : 48|16@1- (0.0625,0) [0|0] "bar" Vector__XXX
+ SG_ ebs_pressure_3 : 32|16@1- (0.0625,0) [0|0] "bar" Vector__XXX
+ SG_ ebs_pressure_2 : 16|16@1- (0.0625,0) [0|0] "bar" Vector__XXX
+ SG_ ebs_pressure_1 : 0|16@1- (0.0625,0) [0|0] "bar" Vector__XXX
 
 BO_ 1313 IVTCurrent: 6 Vector__XXX
  SG_ current : 23|32@0- (1,0) [0|0] "" Vector__XXX
@@ -996,6 +1002,7 @@ CM_ BO_ 53 "PCU TPS Chip";
 CM_ BO_ 54 "Dash TPS Chip";
 CM_ BO_ 55 "DCU TPS Chip";
 CM_ BO_ 56 "PCU RAW ACC ADC";
+CM_ BO_ 57 "PCU raw pedal sensor voltages (sensor-side mV): APPS1/2, brake 1/2";
 CM_ BO_ 64 "GPS lat/lon as int32 * 1e7 deg (~11mm/LSB globally).";
 CM_ BO_ 65 "GPS altitude (cm) + horizontal/vertical DOP (x100).";
 CM_ BO_ 66 "GPS speed (0.01 km/h) and course-over-ground (0.01 deg).";
@@ -1145,6 +1152,7 @@ BA_DEF_DEF_  "SystemSignalLongSymbol" "";
 BA_DEF_DEF_  "GenMsgCycleTime" 0;
 BA_ "GenMsgCycleTime" BO_ 9 20;
 BA_ "SystemMessageLongSymbol" BO_ 22 "lvpdb_lv_24v_bus_and_12v_bus_voltages";
+BA_ "GenMsgCycleTime" BO_ 57 100;
 BA_ "GenMsgCycleTime" BO_ 160 100;
 BA_ "GenMsgCycleTime" BO_ 161 100;
 BA_ "GenMsgCycleTime" BO_ 162 100;

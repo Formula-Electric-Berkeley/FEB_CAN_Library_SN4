@@ -730,12 +730,12 @@ int feb_can_brake_init(struct feb_can_brake_t *msg_p)
 
 uint16_t feb_can_brake_brake_position_encode(double value)
 {
-    return (uint16_t)(value);
+    return (uint16_t)(value / 0.01);
 }
 
 double feb_can_brake_brake_position_decode(uint16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.01);
 }
 
 bool feb_can_brake_brake_position_is_in_range(uint16_t value)
@@ -747,12 +747,12 @@ bool feb_can_brake_brake_position_is_in_range(uint16_t value)
 
 uint16_t feb_can_brake_brake1_pct_encode(double value)
 {
-    return (uint16_t)(value);
+    return (uint16_t)(value / 0.01);
 }
 
 double feb_can_brake_brake1_pct_decode(uint16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.01);
 }
 
 bool feb_can_brake_brake1_pct_is_in_range(uint16_t value)
@@ -764,12 +764,12 @@ bool feb_can_brake_brake1_pct_is_in_range(uint16_t value)
 
 uint16_t feb_can_brake_brake2_pct_encode(double value)
 {
-    return (uint16_t)(value);
+    return (uint16_t)(value / 0.01);
 }
 
 double feb_can_brake_brake2_pct_decode(uint16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.01);
 }
 
 bool feb_can_brake_brake2_pct_is_in_range(uint16_t value)
@@ -3532,12 +3532,12 @@ int feb_can_pcu_raw_acc_init(struct feb_can_pcu_raw_acc_t *msg_p)
 
 uint16_t feb_can_pcu_raw_acc_acc0_encode(double value)
 {
-    return (uint16_t)(value);
+    return (uint16_t)(value / 0.01);
 }
 
 double feb_can_pcu_raw_acc_acc0_decode(uint16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.01);
 }
 
 bool feb_can_pcu_raw_acc_acc0_is_in_range(uint16_t value)
@@ -3549,12 +3549,12 @@ bool feb_can_pcu_raw_acc_acc0_is_in_range(uint16_t value)
 
 uint16_t feb_can_pcu_raw_acc_acc1_encode(double value)
 {
-    return (uint16_t)(value);
+    return (uint16_t)(value / 0.01);
 }
 
 double feb_can_pcu_raw_acc_acc1_decode(uint16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.01);
 }
 
 bool feb_can_pcu_raw_acc_acc1_is_in_range(uint16_t value)
@@ -3566,12 +3566,12 @@ bool feb_can_pcu_raw_acc_acc1_is_in_range(uint16_t value)
 
 uint16_t feb_can_pcu_raw_acc_accel_encode(double value)
 {
-    return (uint16_t)(value);
+    return (uint16_t)(value / 0.01);
 }
 
 double feb_can_pcu_raw_acc_accel_decode(uint16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.01);
 }
 
 bool feb_can_pcu_raw_acc_accel_is_in_range(uint16_t value)
@@ -3624,6 +3624,127 @@ double feb_can_pcu_raw_acc_open_circuit_decode(uint8_t value)
 bool feb_can_pcu_raw_acc_open_circuit_is_in_range(uint8_t value)
 {
     return (value <= 1u);
+}
+
+int feb_can_pcu_pedal_voltages_pack(
+    uint8_t *dst_p,
+    const struct feb_can_pcu_pedal_voltages_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->acc1_mv, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->acc1_mv, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->acc2_mv, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->acc2_mv, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->brake1_mv, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->brake1_mv, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->brake2_mv, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->brake2_mv, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_pcu_pedal_voltages_unpack(
+    struct feb_can_pcu_pedal_voltages_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->acc1_mv = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->acc1_mv |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->acc2_mv = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->acc2_mv |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->brake1_mv = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->brake1_mv |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->brake2_mv = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->brake2_mv |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_pcu_pedal_voltages_init(struct feb_can_pcu_pedal_voltages_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_pcu_pedal_voltages_t));
+
+    return 0;
+}
+
+uint16_t feb_can_pcu_pedal_voltages_acc1_mv_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_pcu_pedal_voltages_acc1_mv_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_pcu_pedal_voltages_acc1_mv_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_pcu_pedal_voltages_acc2_mv_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_pcu_pedal_voltages_acc2_mv_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_pcu_pedal_voltages_acc2_mv_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_pcu_pedal_voltages_brake1_mv_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_pcu_pedal_voltages_brake1_mv_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_pcu_pedal_voltages_brake1_mv_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_pcu_pedal_voltages_brake2_mv_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_pcu_pedal_voltages_brake2_mv_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_pcu_pedal_voltages_brake2_mv_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
 }
 
 int feb_can_gps_pos_data_pack(
@@ -17289,12 +17410,12 @@ int feb_can_ebs_pressure_status_init(struct feb_can_ebs_pressure_status_t *msg_p
 
 int16_t feb_can_ebs_pressure_status_ebs_pressure_1_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.0625);
 }
 
 double feb_can_ebs_pressure_status_ebs_pressure_1_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.0625);
 }
 
 bool feb_can_ebs_pressure_status_ebs_pressure_1_is_in_range(int16_t value)
@@ -17306,12 +17427,12 @@ bool feb_can_ebs_pressure_status_ebs_pressure_1_is_in_range(int16_t value)
 
 int16_t feb_can_ebs_pressure_status_ebs_pressure_2_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.0625);
 }
 
 double feb_can_ebs_pressure_status_ebs_pressure_2_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.0625);
 }
 
 bool feb_can_ebs_pressure_status_ebs_pressure_2_is_in_range(int16_t value)
@@ -17323,12 +17444,12 @@ bool feb_can_ebs_pressure_status_ebs_pressure_2_is_in_range(int16_t value)
 
 int16_t feb_can_ebs_pressure_status_ebs_pressure_3_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.0625);
 }
 
 double feb_can_ebs_pressure_status_ebs_pressure_3_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.0625);
 }
 
 bool feb_can_ebs_pressure_status_ebs_pressure_3_is_in_range(int16_t value)
@@ -17340,12 +17461,12 @@ bool feb_can_ebs_pressure_status_ebs_pressure_3_is_in_range(int16_t value)
 
 int16_t feb_can_ebs_pressure_status_ebs_pressure_4_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.0625);
 }
 
 double feb_can_ebs_pressure_status_ebs_pressure_4_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.0625);
 }
 
 bool feb_can_ebs_pressure_status_ebs_pressure_4_is_in_range(int16_t value)
