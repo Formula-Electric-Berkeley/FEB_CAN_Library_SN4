@@ -47,6 +47,7 @@ extern "C" {
 #define FEB_CAN_DASH_TPS_FRAME_ID (0x36u)
 #define FEB_CAN_DCU_TPS_FRAME_ID (0x37u)
 #define FEB_CAN_PCU_RAW_ACC_FRAME_ID (0x38u)
+#define FEB_CAN_PCU_PEDAL_VOLTAGES_FRAME_ID (0x39u)
 #define FEB_CAN_GPS_POS_DATA_FRAME_ID (0x40u)
 #define FEB_CAN_GPS_ALTITUDE_DATA_FRAME_ID (0x41u)
 #define FEB_CAN_GPS_MOTION_DATA_FRAME_ID (0x42u)
@@ -297,6 +298,7 @@ extern "C" {
 #define FEB_CAN_DASH_TPS_LENGTH (4u)
 #define FEB_CAN_DCU_TPS_LENGTH (4u)
 #define FEB_CAN_PCU_RAW_ACC_LENGTH (8u)
+#define FEB_CAN_PCU_PEDAL_VOLTAGES_LENGTH (8u)
 #define FEB_CAN_GPS_POS_DATA_LENGTH (8u)
 #define FEB_CAN_GPS_ALTITUDE_DATA_LENGTH (8u)
 #define FEB_CAN_GPS_MOTION_DATA_LENGTH (4u)
@@ -547,6 +549,7 @@ extern "C" {
 #define FEB_CAN_DASH_TPS_IS_EXTENDED (0)
 #define FEB_CAN_DCU_TPS_IS_EXTENDED (0)
 #define FEB_CAN_PCU_RAW_ACC_IS_EXTENDED (0)
+#define FEB_CAN_PCU_PEDAL_VOLTAGES_IS_EXTENDED (0)
 #define FEB_CAN_GPS_POS_DATA_IS_EXTENDED (0)
 #define FEB_CAN_GPS_ALTITUDE_DATA_IS_EXTENDED (0)
 #define FEB_CAN_GPS_MOTION_DATA_IS_EXTENDED (0)
@@ -765,6 +768,7 @@ extern "C" {
 
 /* Frame cycle times in milliseconds. */
 #define FEB_CAN_BRAKE_CYCLE_TIME_MS (20u)
+#define FEB_CAN_PCU_PEDAL_VOLTAGES_CYCLE_TIME_MS (100u)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_CYCLE_TIME_MS (100u)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_CYCLE_TIME_MS (100u)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_CYCLE_TIME_MS (100u)
@@ -859,6 +863,7 @@ extern "C" {
 #define FEB_CAN_DASH_TPS_NAME "dash_tps"
 #define FEB_CAN_DCU_TPS_NAME "dcu_tps"
 #define FEB_CAN_PCU_RAW_ACC_NAME "pcu_raw_acc"
+#define FEB_CAN_PCU_PEDAL_VOLTAGES_NAME "pcu_pedal_voltages"
 #define FEB_CAN_GPS_POS_DATA_NAME "gps_pos_data"
 #define FEB_CAN_GPS_ALTITUDE_DATA_NAME "gps_altitude_data"
 #define FEB_CAN_GPS_MOTION_DATA_NAME "gps_motion_data"
@@ -1147,8 +1152,9 @@ extern "C" {
 #define FEB_CAN_WSS_FRONT_DATA_WSS_LEFT_FRONT_NAME "wss_left_front"
 #define FEB_CAN_WSS_FRONT_DATA_WSS_RIGHT_FRONT_NAME "wss_right_front"
 #define FEB_CAN_WSS_FRONT_DATA_WSS_DIR_FLAGS_NAME "wss_dir_flags"
-#define FEB_CAN_WSS_REAR_DATA_WSS_RIGHT_REAR_NAME "wss_right_rear"
 #define FEB_CAN_WSS_REAR_DATA_WSS_LEFT_REAR_NAME "wss_left_rear"
+#define FEB_CAN_WSS_REAR_DATA_WSS_RIGHT_REAR_NAME "wss_right_rear"
+#define FEB_CAN_WSS_REAR_DATA_WSS_DIR_FLAGS_NAME "wss_dir_flags"
 #define FEB_CAN_IMU_ACCELERATION_DATA_ACCELERATION_X_NAME "acceleration_x"
 #define FEB_CAN_IMU_ACCELERATION_DATA_ACCELERATION_Y_NAME "acceleration_y"
 #define FEB_CAN_IMU_ACCELERATION_DATA_ACCELERATION_Z_NAME "acceleration_z"
@@ -1186,6 +1192,10 @@ extern "C" {
 #define FEB_CAN_PCU_RAW_ACC_PLAUSIBLE_NAME "plausible"
 #define FEB_CAN_PCU_RAW_ACC_SHORT_CIRCUIT_NAME "short_circuit"
 #define FEB_CAN_PCU_RAW_ACC_OPEN_CIRCUIT_NAME "open_circuit"
+#define FEB_CAN_PCU_PEDAL_VOLTAGES_ACC1_MV_NAME "acc1_mv"
+#define FEB_CAN_PCU_PEDAL_VOLTAGES_ACC2_MV_NAME "acc2_mv"
+#define FEB_CAN_PCU_PEDAL_VOLTAGES_BRAKE1_MV_NAME "brake1_mv"
+#define FEB_CAN_PCU_PEDAL_VOLTAGES_BRAKE2_MV_NAME "brake2_mv"
 #define FEB_CAN_GPS_POS_DATA_LATITUDE_NAME "latitude"
 #define FEB_CAN_GPS_POS_DATA_LONGITUDE_NAME "longitude"
 #define FEB_CAN_GPS_ALTITUDE_DATA_ALTITUDE_NAME "altitude"
@@ -2567,21 +2577,21 @@ struct feb_can_bms_state_t {
 struct feb_can_brake_t {
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.01
      * Offset: 0
      */
     uint16_t brake_position;
 
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.01
      * Offset: 0
      */
     uint16_t brake1_pct;
 
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.01
      * Offset: 0
      */
     uint16_t brake2_pct;
@@ -3013,21 +3023,21 @@ struct feb_can_rear_right_tire_temp_t {
 /**
  * Signals in message wss_front_data.
  *
- * Front wheel speeds (uint16, 0.1 RPM/LSB) + direction flags.
+ * Front wheel speeds (uint16, 0.01 mph/LSB) + direction flags.
  *
  * All signal values are as on the CAN bus.
  */
 struct feb_can_wss_front_data_t {
     /**
      * Range: -
-     * Scale: 0.1
+     * Scale: 0.01
      * Offset: 0
      */
     uint16_t wss_left_front;
 
     /**
      * Range: -
-     * Scale: 0.1
+     * Scale: 0.01
      * Offset: 0
      */
     uint16_t wss_right_front;
@@ -3045,24 +3055,33 @@ struct feb_can_wss_front_data_t {
 /**
  * Signals in message wss_rear_data.
  *
- * Wheel speed sensor data for left and right rear wheels.
+ * Rear wheel speeds (uint16, 0.01 mph/LSB) + direction flags.
  *
  * All signal values are as on the CAN bus.
  */
 struct feb_can_wss_rear_data_t {
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.01
      * Offset: 0
      */
-    uint32_t wss_right_rear;
+    uint16_t wss_left_rear;
 
     /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    uint16_t wss_right_rear;
+
+    /**
+     * bit0: left wheel direction (0=fwd, 1=rev); bit1: right wheel direction
+     *
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint32_t wss_left_rear;
+    uint8_t wss_dir_flags;
 };
 
 /**
@@ -3400,21 +3419,21 @@ struct feb_can_dcu_tps_t {
 struct feb_can_pcu_raw_acc_t {
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.01
      * Offset: 0
      */
     uint16_t acc0;
 
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.01
      * Offset: 0
      */
     uint16_t acc1;
 
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.01
      * Offset: 0
      */
     uint16_t accel;
@@ -3439,6 +3458,43 @@ struct feb_can_pcu_raw_acc_t {
      * Offset: 0
      */
     uint8_t open_circuit;
+};
+
+/**
+ * Signals in message pcu_pedal_voltages.
+ *
+ * PCU raw pedal sensor voltages (sensor-side mV): APPS1/2, brake 1/2
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_pcu_pedal_voltages_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t acc1_mv;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t acc2_mv;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t brake1_mv;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t brake2_mv;
 };
 
 /**
@@ -13679,28 +13735,28 @@ struct feb_can_bms_module_10_temperature_10_t {
 struct feb_can_ebs_pressure_status_t {
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.0625
      * Offset: 0
      */
     int16_t ebs_pressure_1;
 
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.0625
      * Offset: 0
      */
     int16_t ebs_pressure_2;
 
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.0625
      * Offset: 0
      */
     int16_t ebs_pressure_3;
 
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.0625
      * Offset: 0
      */
     int16_t ebs_pressure_4;
@@ -16485,7 +16541,7 @@ int feb_can_wss_rear_data_init(struct feb_can_wss_rear_data_t *msg_p);
  *
  * @return Encoded signal.
  */
-uint32_t feb_can_wss_rear_data_wss_right_rear_encode(double value);
+uint16_t feb_can_wss_rear_data_wss_left_rear_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -16494,7 +16550,7 @@ uint32_t feb_can_wss_rear_data_wss_right_rear_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_wss_rear_data_wss_right_rear_decode(uint32_t value);
+double feb_can_wss_rear_data_wss_left_rear_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -16503,7 +16559,7 @@ double feb_can_wss_rear_data_wss_right_rear_decode(uint32_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_wss_rear_data_wss_right_rear_is_in_range(uint32_t value);
+bool feb_can_wss_rear_data_wss_left_rear_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -16512,7 +16568,7 @@ bool feb_can_wss_rear_data_wss_right_rear_is_in_range(uint32_t value);
  *
  * @return Encoded signal.
  */
-uint32_t feb_can_wss_rear_data_wss_left_rear_encode(double value);
+uint16_t feb_can_wss_rear_data_wss_right_rear_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -16521,7 +16577,7 @@ uint32_t feb_can_wss_rear_data_wss_left_rear_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_wss_rear_data_wss_left_rear_decode(uint32_t value);
+double feb_can_wss_rear_data_wss_right_rear_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -16530,7 +16586,34 @@ double feb_can_wss_rear_data_wss_left_rear_decode(uint32_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_wss_rear_data_wss_left_rear_is_in_range(uint32_t value);
+bool feb_can_wss_rear_data_wss_right_rear_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_wss_rear_data_wss_dir_flags_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_wss_rear_data_wss_dir_flags_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_wss_rear_data_wss_dir_flags_is_in_range(uint8_t value);
 
 /**
  * Pack message imu_acceleration_data.
@@ -18011,6 +18094,151 @@ double feb_can_pcu_raw_acc_open_circuit_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_pcu_raw_acc_open_circuit_is_in_range(uint8_t value);
+
+/**
+ * Pack message pcu_pedal_voltages.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_pcu_pedal_voltages_pack(
+    uint8_t *dst_p,
+    const struct feb_can_pcu_pedal_voltages_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message pcu_pedal_voltages.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_pcu_pedal_voltages_unpack(
+    struct feb_can_pcu_pedal_voltages_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from pcu_pedal_voltages.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_pcu_pedal_voltages_init(struct feb_can_pcu_pedal_voltages_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_pcu_pedal_voltages_acc1_mv_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_pcu_pedal_voltages_acc1_mv_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_pcu_pedal_voltages_acc1_mv_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_pcu_pedal_voltages_acc2_mv_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_pcu_pedal_voltages_acc2_mv_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_pcu_pedal_voltages_acc2_mv_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_pcu_pedal_voltages_brake1_mv_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_pcu_pedal_voltages_brake1_mv_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_pcu_pedal_voltages_brake1_mv_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_pcu_pedal_voltages_brake2_mv_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_pcu_pedal_voltages_brake2_mv_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_pcu_pedal_voltages_brake2_mv_is_in_range(uint16_t value);
 
 /**
  * Pack message gps_pos_data.

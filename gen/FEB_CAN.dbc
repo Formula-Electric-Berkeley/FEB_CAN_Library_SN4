@@ -71,9 +71,9 @@ BO_ 9 brake: 8 Vector__XXX
  SG_ bots_active : 50|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ brake_pressed : 49|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ plausible : 48|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ brake2_pct : 39|16@0+ (1,0) [0|0] "" Vector__XXX
- SG_ brake1_pct : 23|16@0+ (1,0) [0|0] "" Vector__XXX
- SG_ brake_position : 7|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ brake2_pct : 39|16@0+ (0.01,0) [0|0] "%" Vector__XXX
+ SG_ brake1_pct : 23|16@0+ (0.01,0) [0|0] "%" Vector__XXX
+ SG_ brake_position : 7|16@0+ (0.01,0) [0|0] "%" Vector__XXX
 
 BO_ 10 bspd_state: 1 Vector__XXX
  SG_ bspd_state : 0|8@1+ (1,0) [0|0] "" Vector__XXX
@@ -142,12 +142,13 @@ BO_ 35 rear_right_tire_temp: 8 Vector__XXX
 
 BO_ 36 wss_front_data: 8 Vector__XXX
  SG_ wss_dir_flags : 32|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ wss_right_front : 16|16@1+ (0.1,0) [0|0] "RPM" Vector__XXX
- SG_ wss_left_front : 0|16@1+ (0.1,0) [0|0] "RPM" Vector__XXX
+ SG_ wss_right_front : 16|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
+ SG_ wss_left_front : 0|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
 
 BO_ 37 wss_rear_data: 8 Vector__XXX
- SG_ wss_left_rear : 32|32@1+ (1,0) [0|0] "" Vector__XXX
- SG_ wss_right_rear : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ wss_dir_flags : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ wss_right_rear : 16|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
+ SG_ wss_left_rear : 0|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
 
 BO_ 38 imu_acceleration_data: 6 Vector__XXX
  SG_ acceleration_z : 32|16@1- (0.061,0) [0|0] "mg" Vector__XXX
@@ -193,8 +194,8 @@ BO_ 52 bbb_tps: 4 Vector__XXX
  SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 53 pcu_tps: 4 Vector__XXX
- SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ voltage : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ current : 16|16@1+ (1,0) [0|0] "mA" Vector__XXX
+ SG_ voltage : 0|16@1+ (1,0) [0|0] "mV" Vector__XXX
 
 BO_ 54 dash_tps: 4 Vector__XXX
  SG_ current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
@@ -208,9 +209,15 @@ BO_ 56 pcu_raw_acc: 8 Vector__XXX
  SG_ open_circuit : 50|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ short_circuit : 49|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ plausible : 48|1@1+ (1,0) [0|0] "" Vector__XXX
- SG_ accel : 39|16@0+ (1,0) [0|0] "" Vector__XXX
- SG_ acc1 : 23|16@0+ (1,0) [0|0] "" Vector__XXX
- SG_ acc0 : 7|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ accel : 39|16@0+ (0.01,0) [0|0] "%" Vector__XXX
+ SG_ acc1 : 23|16@0+ (0.01,0) [0|0] "%" Vector__XXX
+ SG_ acc0 : 7|16@0+ (0.01,0) [0|0] "%" Vector__XXX
+
+BO_ 57 pcu_pedal_voltages: 8 Vector__XXX
+ SG_ brake2_mv : 48|16@1+ (1,0) [0|0] "mV" Vector__XXX
+ SG_ brake1_mv : 32|16@1+ (1,0) [0|0] "mV" Vector__XXX
+ SG_ acc2_mv : 16|16@1+ (1,0) [0|0] "mV" Vector__XXX
+ SG_ acc1_mv : 0|16@1+ (1,0) [0|0] "mV" Vector__XXX
 
 BO_ 64 gps_pos_data: 8 Vector__XXX
  SG_ longitude : 32|32@1- (1e-07,0) [0|0] "deg" Vector__XXX
@@ -1802,10 +1809,10 @@ BO_ 665 bms_module_10_temperature_10: 2 Vector__XXX
  SG_ module_10_temp_41 : 0|16@1- (1,0) [0|0] "" Vector__XXX
 
 BO_ 1280 ebs_pressure_status: 8 Vector__XXX
- SG_ ebs_pressure_4 : 48|16@1- (1,0) [0|0] "" Vector__XXX
- SG_ ebs_pressure_3 : 32|16@1- (1,0) [0|0] "" Vector__XXX
- SG_ ebs_pressure_2 : 16|16@1- (1,0) [0|0] "" Vector__XXX
- SG_ ebs_pressure_1 : 0|16@1- (1,0) [0|0] "" Vector__XXX
+ SG_ ebs_pressure_4 : 48|16@1- (0.0625,0) [0|0] "bar" Vector__XXX
+ SG_ ebs_pressure_3 : 32|16@1- (0.0625,0) [0|0] "bar" Vector__XXX
+ SG_ ebs_pressure_2 : 16|16@1- (0.0625,0) [0|0] "bar" Vector__XXX
+ SG_ ebs_pressure_1 : 0|16@1- (0.0625,0) [0|0] "bar" Vector__XXX
 
 BO_ 1313 IVTCurrent: 6 Vector__XXX
  SG_ current : 23|32@0- (-0.001,0) [0|0] "A" Vector__XXX
@@ -1848,9 +1855,10 @@ CM_ BO_ 32 "Message for front left tire temp data.";
 CM_ BO_ 33 "Message for front right tire temp data.";
 CM_ BO_ 34 "Message for rear left tire temp data.";
 CM_ BO_ 35 "Message for rear right tire temp data.";
-CM_ BO_ 36 "Front wheel speeds (uint16, 0.1 RPM/LSB) + direction flags.";
+CM_ BO_ 36 "Front wheel speeds (uint16, 0.01 mph/LSB) + direction flags.";
 CM_ SG_ 36 wss_dir_flags "bit0: left wheel direction (0=fwd, 1=rev); bit1: right wheel direction";
-CM_ BO_ 37 "Wheel speed sensor data for left and right rear wheels.";
+CM_ BO_ 37 "Rear wheel speeds (uint16, 0.01 mph/LSB) + direction flags.";
+CM_ SG_ 37 wss_dir_flags "bit0: left wheel direction (0=fwd, 1=rev); bit1: right wheel direction";
 CM_ BO_ 38 "IMU acceleration (LSM6DSOX, FS=2g, 0.061 mg/LSB).";
 CM_ BO_ 39 "REAR IMU acceleration (LSM6DSOX, FS=2g, 0.061 mg/LSB).";
 CM_ BO_ 40 "IMU gyro (LSM6DSOX, FS=2000dps, 70 mdps/LSB).";
@@ -1864,6 +1872,7 @@ CM_ BO_ 53 "PCU TPS Chip";
 CM_ BO_ 54 "Dash TPS Chip";
 CM_ BO_ 55 "DCU TPS Chip";
 CM_ BO_ 56 "PCU RAW ACC ADC";
+CM_ BO_ 57 "PCU raw pedal sensor voltages (sensor-side mV): APPS1/2, brake 1/2";
 CM_ BO_ 64 "GPS lat/lon as int32 * 1e7 deg (~11mm/LSB globally).";
 CM_ BO_ 65 "GPS altitude (cm) + horizontal/vertical DOP (x100).";
 CM_ BO_ 66 "GPS speed (0.01 km/h) and course-over-ground (0.01 deg).";
@@ -2163,6 +2172,7 @@ BA_DEF_DEF_  "SystemSignalLongSymbol" "";
 BA_DEF_DEF_  "GenMsgCycleTime" 0;
 BA_ "GenMsgCycleTime" BO_ 9 20;
 BA_ "SystemMessageLongSymbol" BO_ 22 "lvpdb_lv_24v_bus_and_12v_bus_voltages";
+BA_ "GenMsgCycleTime" BO_ 57 100;
 BA_ "GenMsgCycleTime" BO_ 160 100;
 BA_ "GenMsgCycleTime" BO_ 161 100;
 BA_ "GenMsgCycleTime" BO_ 162 100;

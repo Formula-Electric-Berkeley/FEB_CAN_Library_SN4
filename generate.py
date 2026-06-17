@@ -152,7 +152,8 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x36: (dash_msg.get_tps_voltage_current, "DASH TPS voltage/current"),
     0x37: (dcu_msg.get_tps_voltage_current, "DCU TPS voltage/current"),
     0x38: (pcu_msg.get_raw_acc, "PCU raw accelerator ADC"),
-    # 0x39-0x3F: Reserved for future TPS / PCU ADC messages
+    0x39: (pcu_msg.get_pedal_voltages, "PCU raw pedal sensor voltages (mV)"),
+    # 0x3A-0x3F: Reserved for future TPS / PCU ADC messages
 
     # ----- Sensor Nodes FRONT (extended): GPS / Fusion / die temps (0x40-0x4F) -----
     0x40: (sensor_msg.get_gps_pos_data, "[GPS][FRONT] latitude/longitude (int32 * 1e-7 deg)"),
