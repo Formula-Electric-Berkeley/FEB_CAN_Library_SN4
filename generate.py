@@ -29,6 +29,17 @@ from typing import Callable, Dict, List, Tuple
 INVERTER_DBC = os.path.join(os.path.dirname(__file__), "inverter.dbc")
 _VECTOR_INDEPENDENT_ID = 3221225472     # cantools sentinel, not a real CAN frame
 
+# ---------------------------------------------------------------------------
+# Elcon / HK CAN charger DBC (part HK-J-H650-12 GEN3, 170-650 VDC) — merged
+# verbatim into the output FEB_CAN.dbc exactly like inverter.dbc. elcon.dbc is
+# the single source of truth for the two extended-ID charger frames.
+# Upstream: https://github.com/karlding/elcon-charger-dbc (dbc/elcon.dbc).
+# Local patch: the two BO_ names are prefixed (Status -> Charger_Status,
+# ChargingLimits -> Charger_Limits) so the generated C identifiers don't collide
+# with the existing 'status' message and are self-describing.
+# ---------------------------------------------------------------------------
+CHARGER_DBC = os.path.join(os.path.dirname(__file__), "elcon.dbc")
+
 # CANopen predefined connection set — these IDs MUST NOT be used for custom messages.
 # 0x000 NMT | 0x080 SYNC | 0x081 EMCY node-1 | 0x100 TIME
 # 0x181 TPDO1-n1 | 0x201 RPDO1-n1 | 0x581 SDO-tx-n1 | 0x601 SDO-rx-n1
@@ -48,6 +59,18 @@ def load_inverter_messages() -> List[cantools.db.Message]:
     db = cantools.db.load_file(INVERTER_DBC)
     if not isinstance(db, cantools.db.Database):
         raise TypeError(f"{INVERTER_DBC} is not a CAN database")
+    return [m for m in db.messages if m.frame_id != _VECTOR_INDEPENDENT_ID]
+
+
+def load_charger_messages() -> List[cantools.db.Message]:
+    """Return all Elcon/HK charger messages from elcon.dbc."""
+    if not os.path.exists(CHARGER_DBC):
+        print(f"[WARN] {CHARGER_DBC} not found — skipping charger merge",
+              file=sys.stderr)
+        return []
+    db = cantools.db.load_file(CHARGER_DBC)
+    if not isinstance(db, cantools.db.Database):
+        raise TypeError(f"{CHARGER_DBC} is not a CAN database")
     return [m for m in db.messages if m.frame_id != _VECTOR_INDEPENDENT_ID]
 
 # CAN message modules
@@ -369,12 +392,16 @@ def generate_dbc() -> None:
 
     inv_msgs = load_inverter_messages()
     messages.extend(inv_msgs)
+
+    chg_msgs = load_charger_messages()
+    messages.extend(chg_msgs)
+
     messages.sort(key=lambda m: m.frame_id)
 
     db = cantools.db.Database(messages=messages)
     cantools.db.dump_file(db, "gen/FEB_CAN.dbc")
     print(f"Generated gen/FEB_CAN.dbc with {len(messages)} messages "
-          f"({len(inv_msgs)} from inverter.dbc)")
+          f"({len(inv_msgs)} from inverter.dbc, {len(chg_msgs)} from elcon.dbc)")
 
 
 def _cantools_name(name: str) -> str:
@@ -422,6 +449,9 @@ def generate_state_files() -> None:
 
     for inv_msg in sorted(load_inverter_messages(), key=lambda m: m.frame_id):
         messages.append((inv_msg.frame_id, inv_msg))
+
+    for chg_msg in sorted(load_charger_messages(), key=lambda m: m.frame_id):
+        messages.append((chg_msg.frame_id, chg_msg))
 
     # ---- header ----
     h_lines = []

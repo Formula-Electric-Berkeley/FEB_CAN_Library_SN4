@@ -1834,6 +1834,20 @@ BO_ 1317 IVTTemperature: 6 Vector__XXX
  SG_ temperature : 23|32@0- (0.1,0) [0|0] "degC" Vector__XXX
  SG_ counter : 7|16@0+ (1,0) [0|0] "" Vector__XXX
 
+BO_ 2550588916 Charger_Limits: 8 BMS
+ SG_ Control : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MaxCurrent : 23|16@0+ (0.1,0) [0|0] "A" Vector__XXX
+ SG_ MaxVoltage : 7|16@0+ (0.1,0) [0|0] "V" Vector__XXX
+
+BO_ 2566869221 Charger_Status: 8 ElconCharger
+ SG_ CommunicationState : 36|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ State : 35|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ InputVoltage : 34|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Temperature : 33|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ HWStatus : 32|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OutputCurrent : 23|16@0+ (0.1,0) [0|0] "A" Vector__XXX
+ SG_ OutputVoltage : 7|16@0+ (0.1,0) [0|0] "V" Vector__XXX
+
 
 
 
@@ -2164,6 +2178,16 @@ CM_ BO_ 1314 "Isabellenhutte IVT-S voltage 1 / pack voltage (V).";
 CM_ BO_ 1315 "Isabellenhutte IVT-S voltage 2 (V).";
 CM_ BO_ 1316 "Isabellenhutte IVT-S voltage 3 (V).";
 CM_ BO_ 1317 "Isabellenhutte IVT-S temperature (degC).";
+CM_ SG_ 2550588916 Control "Toggle charging";
+CM_ SG_ 2550588916 MaxCurrent "Max Allowable Charging Current";
+CM_ SG_ 2550588916 MaxVoltage "Max Allowable Charging Terminal Voltage";
+CM_ SG_ 2566869221 CommunicationState "Charger communication state";
+CM_ SG_ 2566869221 State "Charger starting state";
+CM_ SG_ 2566869221 InputVoltage "Charger input voltage";
+CM_ SG_ 2566869221 Temperature "Charger temperature";
+CM_ SG_ 2566869221 HWStatus "Charger status";
+CM_ SG_ 2566869221 OutputCurrent "Output Current";
+CM_ SG_ 2566869221 OutputVoltage "Output Voltage";
 BA_DEF_ BO_  "SystemMessageLongSymbol" STRING ;
 BA_DEF_ SG_  "SystemSignalLongSymbol" STRING ;
 BA_DEF_ BO_  "GenMsgCycleTime" INT 0 65535;
@@ -2192,9 +2216,17 @@ BA_ "GenMsgCycleTime" BO_ 192 5;
 BA_ "SystemSignalLongSymbol" SG_ 193 VCU_INV_Parameter_Address_Comman "VCU_INV_Parameter_Address_Command";
 BA_ "SystemSignalLongSymbol" SG_ 469 INV_HV_Input_Current_Sensor_Vali "INV_HV_Input_Current_Sensor_Validity";
 BA_ "GenMsgCycleTime" BO_ 1280 100;
+BA_ "GenMsgCycleTime" BO_ 2550588916 1000;
+BA_ "GenMsgCycleTime" BO_ 2566869221 1000;
 VAL_ 5 bms_state 0 "BMS_STATE_BOOT" 1 "BMS_STATE_LV_POWER" 2 "BMS_STATE_BUS_HEALTH_CHECK" 3 "BMS_STATE_PRECHARGE" 4 "BMS_STATE_ENERGIZED" 5 "BMS_STATE_DRIVE" 6 "BMS_STATE_BATTERY_FREE" 7 "BMS_STATE_CHARGER_PRECHARGE" 8 "BMS_STATE_CHARGING" 9 "BMS_STATE_BALANCE" 10 "BMS_STATE_FAULT_BMS" 11 "BMS_STATE_FAULT_BSPD" 12 "BMS_STATE_FAULT_IMD" 13 "BMS_STATE_FAULT_CHARGING" 14 "BMS_STATE_COUNT" ;
 VAL_ 170 INV_Inverter_State 0 "Power up" 1 "Stop" 2 "Open Loop" 3 "Closed Loop" 4 "Internal State" 5 "Internal State" 6 "Internal State" 7 "Internal State" 8 "Idle Run" 9 "Idle Stop" 10 "Internal State" 11 "Intern State" 12 "Internal State" ;
 VAL_ 170 INV_VSM_State 0 "VSM Start State" 1 "Pre-Charge Init state" 2 "pre-charge active state" 3 "pre-charge complete state" 4 "VSM wait state" 5 "VSM ready state" 6 "Motor Running State" 7 "blink fault code state" 14 "Shutdown state for Key Switch Mode 1" 15 "Reset the inverter" ;
+VAL_ 2550588916 Control 1 "CHARGING_STOP" 0 "CHARGING_START" ;
+VAL_ 2566869221 CommunicationState 0 "COMM_STATE_OK" 1 "COMM_STATE_TIMEOUT" ;
+VAL_ 2566869221 State 0 "STATE_CHARGING" 1 "STATE_OFF" ;
+VAL_ 2566869221 InputVoltage 0 "INPUT_VOLTAGE_OK" 1 "INPUT_VOLTAGE_FAULT" ;
+VAL_ 2566869221 Temperature 0 "TEMP_OK" 1 "TEMP_FAULT" ;
+VAL_ 2566869221 HWStatus 0 "HW_STATUS_OK" 1 "HW_STATUS_FAIL" ;
 
 
 

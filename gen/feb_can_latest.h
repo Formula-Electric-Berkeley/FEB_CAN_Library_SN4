@@ -268,6 +268,8 @@ typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m194_read_write_param
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m188_u2_c_message_rxd_t data; } FEB_CAN_State_m188_u2_c_message_rxd_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_m187_u2_c_command_txd_t data; } FEB_CAN_State_m187_u2_c_command_txd_t;
 typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_bms_current_limit_t data; } FEB_CAN_State_bms_current_limit_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_charger_limits_t data; } FEB_CAN_State_charger_limits_t;
+typedef struct { FEB_CAN_State_Meta_t meta; struct feb_can_charger_status_t data; } FEB_CAN_State_charger_status_t;
 
 typedef struct {
     FEB_CAN_State_bms_cell_data_t bms_cell_data;
@@ -519,6 +521,8 @@ typedef struct {
     FEB_CAN_State_m188_u2_c_message_rxd_t m188_u2_c_message_rxd;
     FEB_CAN_State_m187_u2_c_command_txd_t m187_u2_c_command_txd;
     FEB_CAN_State_bms_current_limit_t bms_current_limit;
+    FEB_CAN_State_charger_limits_t charger_limits;
+    FEB_CAN_State_charger_status_t charger_status;
 } FEB_CAN_State_t;
 
 extern FEB_CAN_State_t feb_can_state;

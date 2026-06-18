@@ -37300,3 +37300,265 @@ bool feb_can_ivt_temperature_temperature_is_in_range(int32_t value)
 
     return (true);
 }
+
+int feb_can_charger_limits_pack(
+    uint8_t *dst_p,
+    const struct feb_can_charger_limits_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_right_shift_u16(src_p->max_voltage, 8u, 0xffu);
+    dst_p[1] |= pack_left_shift_u16(src_p->max_voltage, 0u, 0xffu);
+    dst_p[2] |= pack_right_shift_u16(src_p->max_current, 8u, 0xffu);
+    dst_p[3] |= pack_left_shift_u16(src_p->max_current, 0u, 0xffu);
+    dst_p[4] |= pack_left_shift_u8(src_p->control, 0u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_charger_limits_unpack(
+    struct feb_can_charger_limits_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->max_voltage = unpack_left_shift_u16(src_p[0], 8u, 0xffu);
+    dst_p->max_voltage |= unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+    dst_p->max_current = unpack_left_shift_u16(src_p[2], 8u, 0xffu);
+    dst_p->max_current |= unpack_right_shift_u16(src_p[3], 0u, 0xffu);
+    dst_p->control = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_charger_limits_init(struct feb_can_charger_limits_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_charger_limits_t));
+
+    return 0;
+}
+
+uint16_t feb_can_charger_limits_max_voltage_encode(double value)
+{
+    return (uint16_t)(value / 0.1);
+}
+
+double feb_can_charger_limits_max_voltage_decode(uint16_t value)
+{
+    return ((double)value * 0.1);
+}
+
+bool feb_can_charger_limits_max_voltage_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_charger_limits_max_current_encode(double value)
+{
+    return (uint16_t)(value / 0.1);
+}
+
+double feb_can_charger_limits_max_current_decode(uint16_t value)
+{
+    return ((double)value * 0.1);
+}
+
+bool feb_can_charger_limits_max_current_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_charger_limits_control_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_charger_limits_control_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_charger_limits_control_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_charger_status_pack(
+    uint8_t *dst_p,
+    const struct feb_can_charger_status_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_right_shift_u16(src_p->output_voltage, 8u, 0xffu);
+    dst_p[1] |= pack_left_shift_u16(src_p->output_voltage, 0u, 0xffu);
+    dst_p[2] |= pack_right_shift_u16(src_p->output_current, 8u, 0xffu);
+    dst_p[3] |= pack_left_shift_u16(src_p->output_current, 0u, 0xffu);
+    dst_p[4] |= pack_left_shift_u8(src_p->hw_status, 0u, 0x01u);
+    dst_p[4] |= pack_left_shift_u8(src_p->temperature, 1u, 0x02u);
+    dst_p[4] |= pack_left_shift_u8(src_p->input_voltage, 2u, 0x04u);
+    dst_p[4] |= pack_left_shift_u8(src_p->state, 3u, 0x08u);
+    dst_p[4] |= pack_left_shift_u8(src_p->communication_state, 4u, 0x10u);
+
+    return (8);
+}
+
+int feb_can_charger_status_unpack(
+    struct feb_can_charger_status_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->output_voltage = unpack_left_shift_u16(src_p[0], 8u, 0xffu);
+    dst_p->output_voltage |= unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+    dst_p->output_current = unpack_left_shift_u16(src_p[2], 8u, 0xffu);
+    dst_p->output_current |= unpack_right_shift_u16(src_p[3], 0u, 0xffu);
+    dst_p->hw_status = unpack_right_shift_u8(src_p[4], 0u, 0x01u);
+    dst_p->temperature = unpack_right_shift_u8(src_p[4], 1u, 0x02u);
+    dst_p->input_voltage = unpack_right_shift_u8(src_p[4], 2u, 0x04u);
+    dst_p->state = unpack_right_shift_u8(src_p[4], 3u, 0x08u);
+    dst_p->communication_state = unpack_right_shift_u8(src_p[4], 4u, 0x10u);
+
+    return (0);
+}
+
+int feb_can_charger_status_init(struct feb_can_charger_status_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_charger_status_t));
+
+    return 0;
+}
+
+uint16_t feb_can_charger_status_output_voltage_encode(double value)
+{
+    return (uint16_t)(value / 0.1);
+}
+
+double feb_can_charger_status_output_voltage_decode(uint16_t value)
+{
+    return ((double)value * 0.1);
+}
+
+bool feb_can_charger_status_output_voltage_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_charger_status_output_current_encode(double value)
+{
+    return (uint16_t)(value / 0.1);
+}
+
+double feb_can_charger_status_output_current_decode(uint16_t value)
+{
+    return ((double)value * 0.1);
+}
+
+bool feb_can_charger_status_output_current_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_charger_status_hw_status_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_charger_status_hw_status_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_charger_status_hw_status_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_charger_status_temperature_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_charger_status_temperature_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_charger_status_temperature_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_charger_status_input_voltage_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_charger_status_input_voltage_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_charger_status_input_voltage_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_charger_status_state_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_charger_status_state_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_charger_status_state_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_charger_status_communication_state_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_charger_status_communication_state_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_charger_status_communication_state_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}

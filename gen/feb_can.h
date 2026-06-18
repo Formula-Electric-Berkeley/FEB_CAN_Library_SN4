@@ -263,6 +263,8 @@ extern "C" {
 #define FEB_CAN_IVT_VOLTAGE2_FRAME_ID (0x523u)
 #define FEB_CAN_IVT_VOLTAGE3_FRAME_ID (0x524u)
 #define FEB_CAN_IVT_TEMPERATURE_FRAME_ID (0x525u)
+#define FEB_CAN_CHARGER_LIMITS_FRAME_ID (0x1806e5f4u)
+#define FEB_CAN_CHARGER_STATUS_FRAME_ID (0x18ff50e5u)
 
 /* Frame lengths in bytes. */
 #define FEB_CAN_BMS_CELL_DATA_LENGTH (8u)
@@ -514,6 +516,8 @@ extern "C" {
 #define FEB_CAN_IVT_VOLTAGE2_LENGTH (6u)
 #define FEB_CAN_IVT_VOLTAGE3_LENGTH (6u)
 #define FEB_CAN_IVT_TEMPERATURE_LENGTH (6u)
+#define FEB_CAN_CHARGER_LIMITS_LENGTH (8u)
+#define FEB_CAN_CHARGER_STATUS_LENGTH (8u)
 
 /* Extended or standard frame types. */
 #define FEB_CAN_BMS_CELL_DATA_IS_EXTENDED (0)
@@ -765,6 +769,8 @@ extern "C" {
 #define FEB_CAN_IVT_VOLTAGE2_IS_EXTENDED (0)
 #define FEB_CAN_IVT_VOLTAGE3_IS_EXTENDED (0)
 #define FEB_CAN_IVT_TEMPERATURE_IS_EXTENDED (0)
+#define FEB_CAN_CHARGER_LIMITS_IS_EXTENDED (1)
+#define FEB_CAN_CHARGER_STATUS_IS_EXTENDED (1)
 
 /* Frame cycle times in milliseconds. */
 #define FEB_CAN_BRAKE_CYCLE_TIME_MS (20u)
@@ -786,6 +792,8 @@ extern "C" {
 #define FEB_CAN_M176_FAST_INFO_CYCLE_TIME_MS (3u)
 #define FEB_CAN_M192_COMMAND_MESSAGE_CYCLE_TIME_MS (5u)
 #define FEB_CAN_EBS_PRESSURE_STATUS_CYCLE_TIME_MS (100u)
+#define FEB_CAN_CHARGER_LIMITS_CYCLE_TIME_MS (1000u)
+#define FEB_CAN_CHARGER_STATUS_CYCLE_TIME_MS (1000u)
 
 /* Signal choices. */
 #define FEB_CAN_BMS_STATE_BMS_STATE_BMS_STATE_BOOT_CHOICE (0u)
@@ -828,6 +836,24 @@ extern "C" {
 #define FEB_CAN_M170_INTERNAL_STATES_INV_INVERTER_STATE_INTERNAL__STATE_10_CHOICE (10u)
 #define FEB_CAN_M170_INTERNAL_STATES_INV_INVERTER_STATE_INTERN__STATE_CHOICE (11u)
 #define FEB_CAN_M170_INTERNAL_STATES_INV_INVERTER_STATE_INTERNAL__STATE_12_CHOICE (12u)
+
+#define FEB_CAN_CHARGER_LIMITS_CONTROL_CHARGING_START_CHOICE (0u)
+#define FEB_CAN_CHARGER_LIMITS_CONTROL_CHARGING_STOP_CHOICE (1u)
+
+#define FEB_CAN_CHARGER_STATUS_HW_STATUS_HW_STATUS_OK_CHOICE (0u)
+#define FEB_CAN_CHARGER_STATUS_HW_STATUS_HW_STATUS_FAIL_CHOICE (1u)
+
+#define FEB_CAN_CHARGER_STATUS_TEMPERATURE_TEMP_OK_CHOICE (0u)
+#define FEB_CAN_CHARGER_STATUS_TEMPERATURE_TEMP_FAULT_CHOICE (1u)
+
+#define FEB_CAN_CHARGER_STATUS_INPUT_VOLTAGE_INPUT_VOLTAGE_OK_CHOICE (0u)
+#define FEB_CAN_CHARGER_STATUS_INPUT_VOLTAGE_INPUT_VOLTAGE_FAULT_CHOICE (1u)
+
+#define FEB_CAN_CHARGER_STATUS_STATE_STATE_CHARGING_CHOICE (0u)
+#define FEB_CAN_CHARGER_STATUS_STATE_STATE_OFF_CHOICE (1u)
+
+#define FEB_CAN_CHARGER_STATUS_COMMUNICATION_STATE_COMM_STATE_OK_CHOICE (0u)
+#define FEB_CAN_CHARGER_STATUS_COMMUNICATION_STATE_COMM_STATE_TIMEOUT_CHOICE (1u)
 
 /* Frame Names. */
 #define FEB_CAN_BMS_CELL_DATA_NAME "bms_cell_data"
@@ -1079,6 +1105,8 @@ extern "C" {
 #define FEB_CAN_IVT_VOLTAGE2_NAME "IVTVoltage2"
 #define FEB_CAN_IVT_VOLTAGE3_NAME "IVTVoltage3"
 #define FEB_CAN_IVT_TEMPERATURE_NAME "IVTTemperature"
+#define FEB_CAN_CHARGER_LIMITS_NAME "Charger_Limits"
+#define FEB_CAN_CHARGER_STATUS_NAME "Charger_Status"
 
 /* Signal Names. */
 #define FEB_CAN_BMS_CELL_DATA_BMS_FLAGS_NAME "bms_flags"
@@ -2381,6 +2409,16 @@ extern "C" {
 #define FEB_CAN_IVT_VOLTAGE3_VOLTAGE3_NAME "voltage3"
 #define FEB_CAN_IVT_TEMPERATURE_COUNTER_NAME "counter"
 #define FEB_CAN_IVT_TEMPERATURE_TEMPERATURE_NAME "temperature"
+#define FEB_CAN_CHARGER_LIMITS_MAX_VOLTAGE_NAME "MaxVoltage"
+#define FEB_CAN_CHARGER_LIMITS_MAX_CURRENT_NAME "MaxCurrent"
+#define FEB_CAN_CHARGER_LIMITS_CONTROL_NAME "Control"
+#define FEB_CAN_CHARGER_STATUS_OUTPUT_VOLTAGE_NAME "OutputVoltage"
+#define FEB_CAN_CHARGER_STATUS_OUTPUT_CURRENT_NAME "OutputCurrent"
+#define FEB_CAN_CHARGER_STATUS_HW_STATUS_NAME "HWStatus"
+#define FEB_CAN_CHARGER_STATUS_TEMPERATURE_NAME "Temperature"
+#define FEB_CAN_CHARGER_STATUS_INPUT_VOLTAGE_NAME "InputVoltage"
+#define FEB_CAN_CHARGER_STATUS_STATE_NAME "State"
+#define FEB_CAN_CHARGER_STATUS_COMMUNICATION_STATE_NAME "CommunicationState"
 
 /**
  * Signals in message bms_cell_data.
@@ -13875,6 +13913,110 @@ struct feb_can_ivt_temperature_t {
      * Offset: 0
      */
     int32_t temperature;
+};
+
+/**
+ * Signals in message Charger_Limits.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_charger_limits_t {
+    /**
+     * Max Allowable Charging Terminal Voltage
+     *
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint16_t max_voltage;
+
+    /**
+     * Max Allowable Charging Current
+     *
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint16_t max_current;
+
+    /**
+     * Toggle charging
+     *
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t control;
+};
+
+/**
+ * Signals in message Charger_Status.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_charger_status_t {
+    /**
+     * Output Voltage
+     *
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint16_t output_voltage;
+
+    /**
+     * Output Current
+     *
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint16_t output_current;
+
+    /**
+     * Charger status
+     *
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t hw_status;
+
+    /**
+     * Charger temperature
+     *
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t temperature;
+
+    /**
+     * Charger input voltage
+     *
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t input_voltage;
+
+    /**
+     * Charger starting state
+     *
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t state;
+
+    /**
+     * Charger communication state
+     *
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t communication_state;
 };
 
 /**
@@ -58189,6 +58331,350 @@ double feb_can_ivt_temperature_temperature_decode(int32_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_ivt_temperature_temperature_is_in_range(int32_t value);
+
+/**
+ * Pack message Charger_Limits.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_charger_limits_pack(
+    uint8_t *dst_p,
+    const struct feb_can_charger_limits_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message Charger_Limits.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_charger_limits_unpack(
+    struct feb_can_charger_limits_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from Charger_Limits.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_charger_limits_init(struct feb_can_charger_limits_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_charger_limits_max_voltage_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_charger_limits_max_voltage_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_charger_limits_max_voltage_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_charger_limits_max_current_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_charger_limits_max_current_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_charger_limits_max_current_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_charger_limits_control_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_charger_limits_control_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_charger_limits_control_is_in_range(uint8_t value);
+
+/**
+ * Pack message Charger_Status.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_charger_status_pack(
+    uint8_t *dst_p,
+    const struct feb_can_charger_status_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message Charger_Status.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_charger_status_unpack(
+    struct feb_can_charger_status_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from Charger_Status.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_charger_status_init(struct feb_can_charger_status_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_charger_status_output_voltage_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_charger_status_output_voltage_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_charger_status_output_voltage_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_charger_status_output_current_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_charger_status_output_current_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_charger_status_output_current_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_charger_status_hw_status_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_charger_status_hw_status_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_charger_status_hw_status_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_charger_status_temperature_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_charger_status_temperature_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_charger_status_temperature_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_charger_status_input_voltage_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_charger_status_input_voltage_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_charger_status_input_voltage_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_charger_status_state_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_charger_status_state_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_charger_status_state_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_charger_status_communication_state_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_charger_status_communication_state_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_charger_status_communication_state_is_in_range(uint8_t value);
 
 
 #ifdef __cplusplus

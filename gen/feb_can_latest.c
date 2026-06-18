@@ -1504,6 +1504,18 @@ int FEB_CAN_State_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, ui
         feb_can_state.bms_current_limit.meta.last_rx_ms = now_ms;
         feb_can_state.bms_current_limit.meta.rx_count++;
         return 0;
+    case FEB_CAN_CHARGER_LIMITS_FRAME_ID:
+        if (feb_can_charger_limits_unpack(&feb_can_state.charger_limits.data, data, dlc) < 0) return -2;
+        feb_can_state.charger_limits.meta.present = true;
+        feb_can_state.charger_limits.meta.last_rx_ms = now_ms;
+        feb_can_state.charger_limits.meta.rx_count++;
+        return 0;
+    case FEB_CAN_CHARGER_STATUS_FRAME_ID:
+        if (feb_can_charger_status_unpack(&feb_can_state.charger_status.data, data, dlc) < 0) return -2;
+        feb_can_state.charger_status.meta.present = true;
+        feb_can_state.charger_status.meta.last_rx_ms = now_ms;
+        feb_can_state.charger_status.meta.rx_count++;
+        return 0;
     default:
         return -1;
     }
@@ -1762,6 +1774,8 @@ void FEB_CAN_State_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_state.m188_u2_c_message_rxd.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x1D5, "m188_u2_c_message_rxd", (unsigned long)feb_can_state.m188_u2_c_message_rxd.meta.last_rx_ms, (unsigned long)feb_can_state.m188_u2_c_message_rxd.meta.rx_count);
     if (feb_can_state.m187_u2_c_command_txd.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x1D7, "m187_u2_c_command_txd", (unsigned long)feb_can_state.m187_u2_c_command_txd.meta.last_rx_ms, (unsigned long)feb_can_state.m187_u2_c_command_txd.meta.rx_count);
     if (feb_can_state.bms_current_limit.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x202, "bms_current_limit", (unsigned long)feb_can_state.bms_current_limit.meta.last_rx_ms, (unsigned long)feb_can_state.bms_current_limit.meta.rx_count);
+    if (feb_can_state.charger_limits.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x1806E5F4, "charger_limits", (unsigned long)feb_can_state.charger_limits.meta.last_rx_ms, (unsigned long)feb_can_state.charger_limits.meta.rx_count);
+    if (feb_can_state.charger_status.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x18FF50E5, "charger_status", (unsigned long)feb_can_state.charger_status.meta.last_rx_ms, (unsigned long)feb_can_state.charger_status.meta.rx_count);
 }
 
 int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...))
@@ -4309,6 +4323,26 @@ int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, .
         printf_fn("0x%02X  bms_current_limit  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x202, (int)feb_can_state.bms_current_limit.meta.present, (unsigned long)feb_can_state.bms_current_limit.meta.last_rx_ms, (unsigned long)feb_can_state.bms_current_limit.meta.rx_count);
         printf_fn("  inv_max_discharge_current        = %ld\r\n", (long)feb_can_state.bms_current_limit.data.inv_max_discharge_current);
         printf_fn("  inv_max_charge_current           = %ld\r\n", (long)feb_can_state.bms_current_limit.data.inv_max_charge_current);
+        return 0;
+    }
+    if (strcmp(name, "charger_limits") == 0)
+    {
+        printf_fn("0x%02X  charger_limits  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x1806E5F4, (int)feb_can_state.charger_limits.meta.present, (unsigned long)feb_can_state.charger_limits.meta.last_rx_ms, (unsigned long)feb_can_state.charger_limits.meta.rx_count);
+        printf_fn("  max_voltage                      = %ld\r\n", (long)feb_can_state.charger_limits.data.max_voltage);
+        printf_fn("  max_current                      = %ld\r\n", (long)feb_can_state.charger_limits.data.max_current);
+        printf_fn("  control                          = %ld\r\n", (long)feb_can_state.charger_limits.data.control);
+        return 0;
+    }
+    if (strcmp(name, "charger_status") == 0)
+    {
+        printf_fn("0x%02X  charger_status  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x18FF50E5, (int)feb_can_state.charger_status.meta.present, (unsigned long)feb_can_state.charger_status.meta.last_rx_ms, (unsigned long)feb_can_state.charger_status.meta.rx_count);
+        printf_fn("  output_voltage                   = %ld\r\n", (long)feb_can_state.charger_status.data.output_voltage);
+        printf_fn("  output_current                   = %ld\r\n", (long)feb_can_state.charger_status.data.output_current);
+        printf_fn("  hw_status                        = %ld\r\n", (long)feb_can_state.charger_status.data.hw_status);
+        printf_fn("  temperature                      = %ld\r\n", (long)feb_can_state.charger_status.data.temperature);
+        printf_fn("  input_voltage                    = %ld\r\n", (long)feb_can_state.charger_status.data.input_voltage);
+        printf_fn("  state                            = %ld\r\n", (long)feb_can_state.charger_status.data.state);
+        printf_fn("  communication_state              = %ld\r\n", (long)feb_can_state.charger_status.data.communication_state);
         return 0;
     }
     return -1;
