@@ -265,84 +265,95 @@ def get_accumulator_faults(frame_id: int):
 
     return msg
 
-def generate_get_cell_voltage(module: int, page: int):
-    def get_cell_voltage(frame_id: int):
-        cell1 = cantools.db.Signal(
-            name=f"module_{module}_cell_{page * 4 + 1}",
-            start=0,
-            length=16,
-            byte_order="little_endian",
-            is_signed=False,
-        )
-
-        cell2 = cantools.db.Signal(
-            name=f"module_{module}_cell_{page * 4 + 2}",
-            start=16,
-            length=16,
-            byte_order="little_endian",
-            is_signed=False,
-        )
-
-        cell3 = cantools.db.Signal(
-            name=f"module_{module}_cell_{page * 4 + 3}",
-            start=32,
-            length=16,
-            byte_order="little_endian",
-            is_signed=False,
-        )
-
-        cell4 = cantools.db.Signal(
-            name=f"module_{module}_cell_{page * 4 + 4}",
-            start=48,
-            length=16,
-            byte_order="little_endian",
-            is_signed=False,
-        )
-
-        msg = cantools.db.Message(
-            frame_id=frame_id,
-            name=f"bms_module_{module}_voltage_{page}",
-            length=(4 if page ==4 else 8),
-            signals=([cell1, cell2] if page == 4 else [cell1, cell2, cell3, cell4]),
-            comment="BMS message for accumulator voltage.",
-            strict=True
-        )
-
-        return msg
-
-    get_cell_voltage.__name__ = f"get_cell_voltage_module_{module}_page_{page}"
-    return get_cell_voltage
-
-
+MODULE_COUNT = 10
+CELLS_PER_MODULE = 16
 SENSORS_PER_MODULE = 41
-SENSORS_PER_PAGE = 4
 
-def generate_get_cell_temperature(module: int, page: int):
-    def get_cell_temperature(frame_id: int):
-        base = page * SENSORS_PER_PAGE
-        count = min(SENSORS_PER_PAGE, SENSORS_PER_MODULE - base)
+_PAYLOAD_BITS = 64
+_SELECTOR_BITS = 8
+VALUES_PER_PAGE = 4
+_SLOT_BITS = (_PAYLOAD_BITS - _SELECTOR_BITS) // VALUES_PER_PAGE
 
-        signals = [
-            cantools.db.Signal(
-                name=f"module_{module}_temp_{base + i + 1}",
-                start=i * 16,
-                length=16,
-                byte_order="little_endian",
-                is_signed=True,
-            )
-            for i in range(count)
-        ]
+VOLTAGE_PAGES_PER_MODULE = -(-CELLS_PER_MODULE // VALUES_PER_PAGE)
+TEMP_PAGES_PER_MODULE = -(-SENSORS_PER_MODULE // VALUES_PER_PAGE)
 
-        msg = cantools.db.Message(
-            frame_id=frame_id,
-            name=f"bms_module_{module}_temperature_{page}",
-            length=count * 2,
-            signals=signals,
-            comment="BMS message for accumulator temperature.",
-            strict=True,
-        )
+_VOLTAGE_SCALE = 0.0005    # V per LSB
+_TEMP_SCALE = 0.1          # degC per LSB
 
-        return msg
 
-    get_cell_temperature.__name__ = f"get_cell_temperature_module_{module}_page_{page}"
-    return get_cell_temperature
+def _page_selector():
+    return cantools.db.Signal(
+        name="page",
+        start=0,
+        length=8,
+        byte_order="little_endian",
+        is_signed=False,
+        is_multiplexer=True,
+        comment="Page index: selects which cells occupy the four value slots.",
+    )
+
+
+def _slot_start(slot: int) -> int:
+    return _SELECTOR_BITS + slot * _SLOT_BITS
+
+
+def _slot(name: str, slot: int, page: int, *, is_signed: bool,
+          scale: float, unit: str):
+    return cantools.db.Signal(
+        name=name,
+        start=_slot_start(slot),
+        length=_SLOT_BITS,
+        byte_order="little_endian",
+        is_signed=is_signed,
+        conversion=BaseConversion.factory(scale=scale),
+        unit=unit,
+        multiplexer_ids=[page],
+        multiplexer_signal="page",
+    )
+
+
+def get_cell_voltages(frame_id: int):
+    signals = [_page_selector()]
+
+    for module in range(1, MODULE_COUNT + 1):
+        for p in range(VOLTAGE_PAGES_PER_MODULE):
+            page = (module - 1) * VOLTAGE_PAGES_PER_MODULE + p
+            for slot in range(VALUES_PER_PAGE):
+                cell = p * VALUES_PER_PAGE + slot + 1
+                signals.append(_slot(
+                    f"module_{module}_cell_{cell}", slot, page,
+                    is_signed=False, scale=_VOLTAGE_SCALE, unit="V",
+                ))
+
+    return cantools.db.Message(
+        frame_id=frame_id,
+        name="bms_cell_voltages",
+        length=8,
+        signals=signals,
+        comment="Accumulator cell voltages, paged via the page multiplexer.",
+        strict=True,
+    )
+
+
+def get_cell_temperatures(frame_id: int):
+    signals = [_page_selector()]
+
+    for module in range(1, MODULE_COUNT + 1):
+        for p in range(TEMP_PAGES_PER_MODULE):
+            page = (module - 1) * TEMP_PAGES_PER_MODULE + p
+            base = p * VALUES_PER_PAGE
+            count = min(VALUES_PER_PAGE, SENSORS_PER_MODULE - base)
+            for slot in range(count):
+                signals.append(_slot(
+                    f"module_{module}_temp_{base + slot + 1}", slot, page,
+                    is_signed=True, scale=_TEMP_SCALE, unit="degC",
+                ))
+
+    return cantools.db.Message(
+        frame_id=frame_id,
+        name="bms_cell_temperatures",
+        length=8,
+        signals=signals,
+        comment="Accumulator cell temperatures, paged via the page multiplexer.",
+        strict=True,
+    )

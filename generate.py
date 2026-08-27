@@ -10,35 +10,18 @@ Usage:
     python generate.py -l, --list       # List all messages with their IDs
     python generate.py -i, --ids        # Show frame ID allocation map
     python generate.py -v, --validate   # Validate message registry
+    python generate.py --emit-db DIR     # Consolidate cantools output into gen/feb_can_db.{h,c}
     python generate.py -h, --help       # Show help
 """
+import glob
 import re
 import cantools
 import os
 import sys
 from typing import Callable, Dict, List, Tuple
 
-# ---------------------------------------------------------------------------
-# Cascadia PM100 inverter DBC — every message is merged verbatim into the
-# output FEB_CAN.dbc.  inverter.dbc is the single source of truth for all
-# inverter frames (including M192 / M193); our own Python definitions of those
-# messages are removed from MESSAGE_REGISTRY so there are no duplicate IDs.
-# The only frame excluded is the cantools VECTOR__INDEPENDENT_SIG_MSG sentinel
-# (ID 3221225472) which is a tool artifact, not a real CAN frame.
-# ---------------------------------------------------------------------------
-INVERTER_DBC = os.path.join(os.path.dirname(__file__), "inverter.dbc")
+EXTERNAL_DBC_DIR = os.path.join(os.path.dirname(__file__), "external_dbc")
 _VECTOR_INDEPENDENT_ID = 3221225472     # cantools sentinel, not a real CAN frame
-
-# ---------------------------------------------------------------------------
-# Elcon / HK CAN charger DBC (part HK-J-H650-12 GEN3, 170-650 VDC) — merged
-# verbatim into the output FEB_CAN.dbc exactly like inverter.dbc. elcon.dbc is
-# the single source of truth for the two extended-ID charger frames.
-# Upstream: https://github.com/karlding/elcon-charger-dbc (dbc/elcon.dbc).
-# Local patch: the two BO_ names are prefixed (Status -> Charger_Status,
-# ChargingLimits -> Charger_Limits) so the generated C identifiers don't collide
-# with the existing 'status' message and are self-describing.
-# ---------------------------------------------------------------------------
-CHARGER_DBC = os.path.join(os.path.dirname(__file__), "elcon.dbc")
 
 # CANopen predefined connection set — these IDs MUST NOT be used for custom messages.
 # 0x000 NMT | 0x080 SYNC | 0x081 EMCY node-1 | 0x100 TIME
@@ -50,28 +33,36 @@ CANOPEN_RESERVED_IDS: set = {
 }
 
 
-def load_inverter_messages() -> List[cantools.db.Message]:
-    """Return all Cascadia PM100 messages from inverter.dbc."""
-    if not os.path.exists(INVERTER_DBC):
-        print(f"[WARN] {INVERTER_DBC} not found — skipping inverter merge",
+def external_dbc_files() -> List[str]:
+    # Sorted so --check stays deterministic.
+    if not os.path.isdir(EXTERNAL_DBC_DIR):
+        print(f"[WARN] {EXTERNAL_DBC_DIR} not found: skipping external merge",
               file=sys.stderr)
         return []
-    db = cantools.db.load_file(INVERTER_DBC)
-    if not isinstance(db, cantools.db.Database):
-        raise TypeError(f"{INVERTER_DBC} is not a CAN database")
-    return [m for m in db.messages if m.frame_id != _VECTOR_INDEPENDENT_ID]
+    return sorted(glob.glob(os.path.join(EXTERNAL_DBC_DIR, "*.dbc")))
 
 
-def load_charger_messages() -> List[cantools.db.Message]:
-    """Return all Elcon/HK charger messages from elcon.dbc."""
-    if not os.path.exists(CHARGER_DBC):
-        print(f"[WARN] {CHARGER_DBC} not found — skipping charger merge",
-              file=sys.stderr)
-        return []
-    db = cantools.db.load_file(CHARGER_DBC)
-    if not isinstance(db, cantools.db.Database):
-        raise TypeError(f"{CHARGER_DBC} is not a CAN database")
-    return [m for m in db.messages if m.frame_id != _VECTOR_INDEPENDENT_ID]
+def load_external_messages() -> List[Tuple[str, cantools.db.Message]]:
+    """Returns (source_filename, message) pairs in (filename, frame_id) order."""
+    out: List[Tuple[str, cantools.db.Message]] = []
+
+    for path in external_dbc_files():
+        name = os.path.basename(path)
+        db = cantools.db.load_file(path)
+        if not isinstance(db, cantools.db.Database):
+            raise TypeError(f"{path} is not a CAN database")
+        msgs = [m for m in db.messages if m.frame_id != _VECTOR_INDEPENDENT_ID]
+        out.extend((name, m) for m in sorted(msgs, key=lambda m: m.frame_id))
+
+    return out
+
+
+def external_message_counts() -> Dict[str, int]:
+    counts: Dict[str, int] = {}
+    for name, _ in load_external_messages():
+        counts[name] = counts.get(name, 0) + 1
+    return counts
+
 
 # CAN message modules
 from msg_defs import bms_messages as bms_msg
@@ -106,6 +97,7 @@ from msg_defs import res_messages as res_msg
 #   0xD0-0xDF:  Heartbeat messages (6 used, 10 reserved)
 #   0xE0-0xEF:  Debug/test messages (4 used, 12 reserved)
 #   0x500-0x50F: EBS / Driverless safety (1 used, 15 reserved)
+#   0x204-0x205: BMS accumulator cell data, multiplexed
 #   0x520-0x52F: IVT-S current/voltage sensor (5 used, 11 reserved; 0x526-0x528 reserved)
 # =============================================================================
 
@@ -217,10 +209,10 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
 
 
     # ----- RMS/Inverter Messages (0xA0-0xCF) -----
-    # IMMUTABLE: All IDs in this block come verbatim from inverter.dbc (Cascadia PM100).
-    # Do not add duplicate entries here; inverter.dbc is the single source of truth.
+    # IMMUTABLE: All IDs in this block come verbatim from external_dbc/inverter.dbc (Cascadia PM100).
+    # Do not add duplicate entries here; external_dbc/inverter.dbc is the single source of truth.
     # 0xC0 (M192_Command_Message) and 0xC1 (M193_Read_Write_Param_Command)
-    # come from inverter.dbc — do not duplicate here.
+    # come from external_dbc/inverter.dbc — do not duplicate here.
     # 0xC2-0xCF: Reserved for future RMS messages
 
     # ----- Heartbeat Messages (0xD0-0xDF) -----
@@ -254,6 +246,10 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x524: (ivt_msg.get_ivt_voltage_3, "IVT-S voltage 3 (raw int32, mV)"),
     0x525: (ivt_msg.get_ivt_temperature, "IVT-S temperature (raw int32, 0.1 degC)"),
     # 0x526-0x528: Reserved (IVT-S power / coulomb counter / energy counter, not yet decoded)
+
+    # ----- BMS Accumulator Cell Data (0x204-0x205) -----
+    0x204: (bms_msg.get_cell_voltages, "BMS accumulator cell voltages (muxed, 40 pages)"),
+    0x205: (bms_msg.get_cell_temperatures, "BMS accumulator cell temperatures (muxed, 110 pages)"),
 }
 
 # Frame ID allocation ranges for documentation and validation
@@ -267,27 +263,14 @@ ID_RANGES = [
     (0x34, 0x3F, "TPS Chips / PCU ADC"),
     (0x40, 0x4F, "Sensor Nodes FRONT (extended): GPS / Fusion / die temps + REAR temps"),
     (0x50, 0x5F, "Sensor Nodes REAR (extended): GPS / Fusion"),
-    (0xA0, 0xC2, "Inverter (Cascadia PM100, via inverter.dbc)"),
+    (0xA0, 0xC2, "Inverter (Cascadia PM100, via external_dbc/inverter.dbc)"),
     (0xC0, 0xCF, "RMS/Inverter"),
     (0xD0, 0xDF, "Heartbeats"),
     (0xE0, 0xEF, "Debug/Test"),
-    (0x200, 0x2ff, "BMS Accumulator Cell Data (voltages + temperatures)"),
+    (0x200, 0x2ff, "BMS Accumulator Cell Data (muxed: 0x204 voltages, 0x205 temperatures)"),
     (0x500, 0x50F, "EBS / Driverless Safety"),
     (0x520, 0x52F, "IVT-S current/voltage sensor"),
 ]
-
-# first real frame at 0x204, skipping CANopen-reserved 0x201 and inverter 0x202.
-for module in range(1, 11):
-    for page in range(0, 4):
-        MESSAGE_REGISTRY[0x200 + (module * 4 + page)] = (bms_msg.generate_get_cell_voltage(module, page), f"BMS Accumulator Module {module} Voltage {page}")
-
-# voltage block (0x204-0x22B).
-BMS_TEMP_BASE_ID = 0x22C
-BMS_TEMP_PAGES = 11
-for module in range(1, 11):
-    for page in range(0, BMS_TEMP_PAGES):
-        frame_id = BMS_TEMP_BASE_ID + (module - 1) * BMS_TEMP_PAGES + page
-        MESSAGE_REGISTRY[frame_id] = (bms_msg.generate_get_cell_temperature(module, page), f"BMS Accumulator Module {module} Temperature {page}")
 
 def validate_registry() -> bool:
     """Validate the message registry for common errors."""
@@ -335,6 +318,26 @@ def validate_registry() -> bool:
                 break
         if not found_range:
             errors.append(f"Frame ID 0x{fid:02X} is not within any defined range")
+
+    # A dropped-in vendor file could silently shadow one of our frames.
+    external_ids: Dict[int, Tuple[str, str]] = {}
+    for src, msg in load_external_messages():
+        if msg.frame_id in external_ids:
+            other_src, other_name = external_ids[msg.frame_id]
+            errors.append(
+                f"Frame ID 0x{msg.frame_id:X} defined by both "
+                f"external_dbc/{other_src} ({other_name}) and "
+                f"external_dbc/{src} ({msg.name})"
+            )
+        else:
+            external_ids[msg.frame_id] = (src, msg.name)
+
+        if msg.frame_id in MESSAGE_REGISTRY:
+            errors.append(
+                f"Frame ID 0x{msg.frame_id:X} is defined by both "
+                f"external_dbc/{src} ({msg.name}) and MESSAGE_REGISTRY. "
+                f"remove the MESSAGE_REGISTRY entry, the external DBC wins"
+            )
 
     if errors:
         for err in errors:
@@ -384,24 +387,24 @@ def show_id_map() -> None:
 
 
 def generate_dbc() -> None:
-    """Generate the DBC file from the message registry merged with inverter.dbc."""
+    """Generate the DBC file from the message registry merged with external_dbc/inverter.dbc."""
     messages = []
     for frame_id in sorted(MESSAGE_REGISTRY.keys()):
         func, _ = MESSAGE_REGISTRY[frame_id]
         messages.append(func(frame_id))
 
-    inv_msgs = load_inverter_messages()
-    messages.extend(inv_msgs)
-
-    chg_msgs = load_charger_messages()
-    messages.extend(chg_msgs)
+    external = load_external_messages()
+    messages.extend(m for _, m in external)
 
     messages.sort(key=lambda m: m.frame_id)
 
     db = cantools.db.Database(messages=messages)
     cantools.db.dump_file(db, "gen/FEB_CAN.dbc")
-    print(f"Generated gen/FEB_CAN.dbc with {len(messages)} messages "
-          f"({len(inv_msgs)} from inverter.dbc, {len(chg_msgs)} from elcon.dbc)")
+
+    counts = external_message_counts()
+    detail = ", ".join(f"{n} from external_dbc/{f}" for f, n in sorted(counts.items()))
+    print(f"Generated gen/FEB_CAN.dbc with {len(messages)} messages"
+          + (f" ({detail})" if detail else ""))
 
 
 def _cantools_name(name: str) -> str:
@@ -434,156 +437,193 @@ def _signal_c_name(sig) -> str:
     return _cantools_name(sig.name)
 
 
-def generate_state_files() -> None:
-    """Generate feb_can_state.{h,c}: one aggregate struct holding the latest
-    decoded value of every registered CAN message, plus a frame_id dispatcher
-    that unpacks an incoming frame into its slot.
+DB_BASENAME = "feb_can_db"
+DB_GUARD = "FEB_CAN_DB_H"
 
-    Output is deterministic (sorted by frame_id, no timestamps) so that
-    ./generate_can.sh --check can diff it against the committed version.
-    """
+
+def _split_cantools_header(text: str) -> str:
+    """Header body between the include guard's extern "C" block and its close."""
+    lines = text.split("\n")
+    start = next(i for i, l in enumerate(lines) if l.startswith("#include <stdint.h>"))
+    end = len(lines) - 1 - next(i for i, l in enumerate(reversed(lines))
+                                if l.startswith("#ifdef __cplusplus"))
+    return "\n".join(lines[start:end]).rstrip()
+
+
+def _split_cantools_source(text: str) -> str:
+    """Return the cantools source body, minus its banner and its self-include."""
+    lines = text.split("\n")
+    start = next(i for i, l in enumerate(lines) if l.startswith("#include"))
+    body = [l for l in lines[start:] if not l.startswith('#include "feb_can.h"')]
+    return "\n".join(body).rstrip()
+
+
+def _cantools_license(text: str) -> str:
+    """MIT banner verbatim, minus the timestamp line that breaks --check."""
+    return text.split("*/", 1)[0] + "*/"
+
+
+def _state_header_body(messages) -> str:
+    L = []
+    L.append("/* Latest decoded payload per message, populated by FEB_CAN_DB_Update(). */")
+    L.append("")
+    L.append("typedef struct {")
+    L.append("    uint32_t rx_count;")
+    L.append("    uint32_t last_rx_ms;")
+    L.append("    bool     present;")
+    L.append("} FEB_CAN_DB_Meta_t;")
+    L.append("")
+
+    for _, msg in messages:
+        c = _msg_c_name(msg)
+        L.append(f"typedef struct {{ FEB_CAN_DB_Meta_t meta; struct feb_can_{c}_t data; }} FEB_CAN_DB_{c}_t;")
+    L.append("")
+
+    L.append("typedef struct {")
+    for _, msg in messages:
+        c = _msg_c_name(msg)
+        L.append(f"    FEB_CAN_DB_{c}_t {c};")
+    L.append("} FEB_CAN_DB_t;")
+    L.append("")
+    L.append("extern FEB_CAN_DB_t feb_can_db;")
+    L.append("")
+    L.append("/* Dispatch on frame_id, call the matching generated unpack, update meta.")
+    L.append(" * Returns 0 on success, -1 if frame_id is unknown, -2 if unpack fails. */")
+    L.append("int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint32_t now_ms);")
+    L.append("")
+    L.append("/* Print a one-line summary for each *present* message. */")
+    L.append("void FEB_CAN_DB_Print(int (*printf_fn)(const char *fmt, ...));")
+    L.append("")
+    L.append("/* Print one message's full signal breakdown. Returns 0 on match, -1 if name unknown. */")
+    L.append("int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...));")
+    return "\n".join(L)
+
+
+def _state_source_body(messages) -> str:
+    L = []
+    L.append("FEB_CAN_DB_t feb_can_db;")
+    L.append("")
+
+    L.append("int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint32_t now_ms)")
+    L.append("{")
+    L.append("    switch (frame_id)")
+    L.append("    {")
+    for _, msg in messages:
+        c = _msg_c_name(msg)
+        MAC = _msg_macro_name(msg)
+        L.append(f"    case FEB_CAN_{MAC}_FRAME_ID:")
+        L.append(f"        if (feb_can_{c}_unpack(&feb_can_db.{c}.data, data, dlc) < 0) return -2;")
+        L.append(f"        feb_can_db.{c}.meta.present = true;")
+        L.append(f"        feb_can_db.{c}.meta.last_rx_ms = now_ms;")
+        L.append(f"        feb_can_db.{c}.meta.rx_count++;")
+        L.append("        return 0;")
+    L.append("    default:")
+    L.append("        return -1;")
+    L.append("    }")
+    L.append("}")
+    L.append("")
+
+    L.append("void FEB_CAN_DB_Print(int (*printf_fn)(const char *fmt, ...))")
+    L.append("{")
+    L.append("    printf_fn(\"CAN state (present messages only):\\r\\n\");")
+    L.append("    printf_fn(\"  ID    name                                          last_rx_ms      rx_count\\r\\n\");")
+    for frame_id, msg in messages:
+        c = _msg_c_name(msg)
+        L.append(f"    if (feb_can_db.{c}.meta.present) printf_fn(\"  0x%02X  %-45s %10lu      %8lu\\r\\n\", "
+                 f"(unsigned)0x{frame_id:02X}, \"{c}\", "
+                 f"(unsigned long)feb_can_db.{c}.meta.last_rx_ms, "
+                 f"(unsigned long)feb_can_db.{c}.meta.rx_count);")
+    L.append("}")
+    L.append("")
+
+    L.append("int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...))")
+    L.append("{")
+    for frame_id, msg in messages:
+        c = _msg_c_name(msg)
+        L.append(f"    if (strcmp(name, \"{c}\") == 0)")
+        L.append("    {")
+        L.append(f"        printf_fn(\"0x%02X  {c}  present=%d  last_rx_ms=%lu  rx_count=%lu\\r\\n\","
+                 f" (unsigned)0x{frame_id:02X},"
+                 f" (int)feb_can_db.{c}.meta.present,"
+                 f" (unsigned long)feb_can_db.{c}.meta.last_rx_ms,"
+                 f" (unsigned long)feb_can_db.{c}.meta.rx_count);")
+        for sig in msg.signals:
+            s = _signal_c_name(sig)
+            # Cast to signed long for uniform printing; signal widths are <=32 bits.
+            L.append(f"        printf_fn(\"  {s:<32s} = %ld\\r\\n\", (long)feb_can_db.{c}.data.{s});")
+        L.append("        return 0;")
+        L.append("    }")
+    L.append("    return -1;")
+    L.append("}")
+    return "\n".join(L)
+
+
+def generate_db_files(cantools_dir: str) -> None:
+    """Consolidate the cantools codec and latest-value aggregate into gen/feb_can_db.{h,c}."""
     messages = []
     for frame_id in sorted(MESSAGE_REGISTRY.keys()):
         func, _ = MESSAGE_REGISTRY[frame_id]
         messages.append((frame_id, func(frame_id)))
 
-    for inv_msg in sorted(load_inverter_messages(), key=lambda m: m.frame_id):
-        messages.append((inv_msg.frame_id, inv_msg))
+    for _, ext_msg in load_external_messages():
+        messages.append((ext_msg.frame_id, ext_msg))
 
-    for chg_msg in sorted(load_charger_messages(), key=lambda m: m.frame_id):
-        messages.append((chg_msg.frame_id, chg_msg))
+    ct_h = open(os.path.join(cantools_dir, "feb_can.h")).read()
+    ct_c = open(os.path.join(cantools_dir, "feb_can.c")).read()
+
+    banner = (
+        "/* Auto-generated. Do Not Edit.\n"
+        " * Regenerate via: cd common/FEB_CAN_Library_SN4 && ./generate_can.sh\n"
+        " */"
+    )
 
     # ---- header ----
-    h_lines = []
-    h_lines.append("/* Auto-generated by generate.py — DO NOT EDIT. */")
-    h_lines.append("/* Regenerate via: cd common/FEB_CAN_Library_SN4 && ./generate_can.sh */")
-    h_lines.append("")
-    h_lines.append("#ifndef FEB_CAN_LATEST_H")
-    h_lines.append("#define FEB_CAN_LATEST_H")
-    h_lines.append("")
-    h_lines.append("#ifdef __cplusplus")
-    h_lines.append("extern \"C\" {")
-    h_lines.append("#endif")
-    h_lines.append("")
-    h_lines.append("#include \"feb_can.h\"")
-    h_lines.append("#include <stdint.h>")
-    h_lines.append("#include <stdbool.h>")
-    h_lines.append("")
-    h_lines.append("/* Per-message bookkeeping (present-flag + timestamp + RX counter). */")
-    h_lines.append("typedef struct {")
-    h_lines.append("    uint32_t rx_count;")
-    h_lines.append("    uint32_t last_rx_ms;")
-    h_lines.append("    bool     present;")
-    h_lines.append("} FEB_CAN_State_Meta_t;")
-    h_lines.append("")
-
-    # Per-message wrapper typedefs
-    for frame_id, msg in messages:
-        c = _msg_c_name(msg)
-        h_lines.append(f"typedef struct {{ FEB_CAN_State_Meta_t meta; struct feb_can_{c}_t data; }} FEB_CAN_State_{c}_t;")
-    h_lines.append("")
-
-    # Aggregate struct
-    h_lines.append("typedef struct {")
-    for frame_id, msg in messages:
-        c = _msg_c_name(msg)
-        h_lines.append(f"    FEB_CAN_State_{c}_t {c};")
-    h_lines.append("} FEB_CAN_State_t;")
-    h_lines.append("")
-
-    h_lines.append("extern FEB_CAN_State_t feb_can_state;")
-    h_lines.append("")
-    h_lines.append("/* Dispatch on frame_id, call the matching generated unpack, update meta.")
-    h_lines.append(" * Returns 0 on success, -1 if frame_id is unknown, -2 if unpack fails. */")
-    h_lines.append("int FEB_CAN_State_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint32_t now_ms);")
-    h_lines.append("")
-    h_lines.append("/* Print a one-line summary for each *present* message. */")
-    h_lines.append("void FEB_CAN_State_Print(int (*printf_fn)(const char *fmt, ...));")
-    h_lines.append("")
-    h_lines.append("/* Print one message's full signal breakdown. Returns 0 on match, -1 if name unknown. */")
-    h_lines.append("int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...));")
-    h_lines.append("")
-    h_lines.append("#ifdef __cplusplus")
-    h_lines.append("}")
-    h_lines.append("#endif")
-    h_lines.append("")
-    h_lines.append("#endif /* FEB_CAN_LATEST_H */")
-    h_lines.append("")
-
-    with open("gen/feb_can_latest.h", "w") as f:
-        f.write("\n".join(h_lines))
+    h = [
+        _cantools_license(ct_h),
+        "",
+        banner,
+        "",
+        f"#ifndef {DB_GUARD}",
+        f"#define {DB_GUARD}",
+        "",
+        "#ifdef __cplusplus",
+        'extern "C" {',
+        "#endif",
+        "",
+        _split_cantools_header(ct_h),
+        "",
+        "",
+        _state_header_body(messages),
+        "",
+        "#ifdef __cplusplus",
+        "}",
+        "#endif",
+        "",
+        f"#endif /* {DB_GUARD} */",
+        "",
+    ]
+    with open(f"gen/{DB_BASENAME}.h", "w") as f:
+        f.write("\n".join(h))
 
     # ---- source ----
-    c_lines = []
-    c_lines.append("/* Auto-generated by generate.py — DO NOT EDIT. */")
-    c_lines.append("/* Regenerate via: cd common/FEB_CAN_Library_SN4 && ./generate_can.sh */")
-    c_lines.append("")
-    c_lines.append("#include \"feb_can_latest.h\"")
-    c_lines.append("#include <string.h>")
-    c_lines.append("")
-    c_lines.append("FEB_CAN_State_t feb_can_state;")
-    c_lines.append("")
+    c = [
+        _cantools_license(ct_c),
+        "",
+        banner,
+        "",
+        f'#include "{DB_BASENAME}.h"',
+        "",
+        _split_cantools_source(ct_c),
+        "",
+        "",
+        _state_source_body(messages),
+        "",
+    ]
+    with open(f"gen/{DB_BASENAME}.c", "w") as f:
+        f.write("\n".join(c))
 
-    # Update dispatcher
-    c_lines.append("int FEB_CAN_State_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint32_t now_ms)")
-    c_lines.append("{")
-    c_lines.append("    switch (frame_id)")
-    c_lines.append("    {")
-    for frame_id, msg in messages:
-        c = _msg_c_name(msg)
-        MAC = _msg_macro_name(msg)
-        c_lines.append(f"    case FEB_CAN_{MAC}_FRAME_ID:")
-        c_lines.append(f"        if (feb_can_{c}_unpack(&feb_can_state.{c}.data, data, dlc) < 0) return -2;")
-        c_lines.append(f"        feb_can_state.{c}.meta.present = true;")
-        c_lines.append(f"        feb_can_state.{c}.meta.last_rx_ms = now_ms;")
-        c_lines.append(f"        feb_can_state.{c}.meta.rx_count++;")
-        c_lines.append("        return 0;")
-    c_lines.append("    default:")
-    c_lines.append("        return -1;")
-    c_lines.append("    }")
-    c_lines.append("}")
-    c_lines.append("")
+    print(f"Generated gen/{DB_BASENAME}.h / gen/{DB_BASENAME}.c ({len(messages)} messages)")
 
-    # Compact print
-    c_lines.append("void FEB_CAN_State_Print(int (*printf_fn)(const char *fmt, ...))")
-    c_lines.append("{")
-    c_lines.append("    printf_fn(\"CAN state (present messages only):\\r\\n\");")
-    c_lines.append("    printf_fn(\"  ID    name                                          last_rx_ms      rx_count\\r\\n\");")
-    for frame_id, msg in messages:
-        c = _msg_c_name(msg)
-        c_lines.append(f"    if (feb_can_state.{c}.meta.present) printf_fn(\"  0x%02X  %-45s %10lu      %8lu\\r\\n\", "
-                       f"(unsigned)0x{frame_id:02X}, \"{c}\", "
-                       f"(unsigned long)feb_can_state.{c}.meta.last_rx_ms, "
-                       f"(unsigned long)feb_can_state.{c}.meta.rx_count);")
-    c_lines.append("}")
-    c_lines.append("")
-
-    # PrintOne: signal-by-signal dump for one message, selected by name
-    c_lines.append("int FEB_CAN_State_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...))")
-    c_lines.append("{")
-    for frame_id, msg in messages:
-        c = _msg_c_name(msg)
-        c_lines.append(f"    if (strcmp(name, \"{c}\") == 0)")
-        c_lines.append("    {")
-        c_lines.append(f"        printf_fn(\"0x%02X  {c}  present=%d  last_rx_ms=%lu  rx_count=%lu\\r\\n\","
-                       f" (unsigned)0x{frame_id:02X},"
-                       f" (int)feb_can_state.{c}.meta.present,"
-                       f" (unsigned long)feb_can_state.{c}.meta.last_rx_ms,"
-                       f" (unsigned long)feb_can_state.{c}.meta.rx_count);")
-        for sig in msg.signals:
-            s = _signal_c_name(sig)
-            # Cast to signed long for uniform printing; signal widths are <=32 bits.
-            c_lines.append(f"        printf_fn(\"  {s:<32s} = %ld\\r\\n\", (long)feb_can_state.{c}.data.{s});")
-        c_lines.append("        return 0;")
-        c_lines.append("    }")
-    c_lines.append("    return -1;")
-    c_lines.append("}")
-    c_lines.append("")
-
-    with open("gen/feb_can_latest.c", "w") as f:
-        f.write("\n".join(c_lines))
-
-    print(f"Generated gen/feb_can_latest.h / gen/feb_can_latest.c ({len(messages)} messages)")
 
 
 def show_help() -> None:
@@ -597,7 +637,7 @@ def show_help() -> None:
     print("  -l, --list          List all messages with their IDs")
     print("  -i, --ids           Show frame ID allocation map")
     print("  -v, --validate      Validate message registry only")
-    print("  --gen-state         Generate feb_can_state.{h,c} (call after cantools)")
+    print("  --emit-db DIR       Consolidate cantools output in DIR into gen/feb_can_db.{h,c}")
     print("  -h, --help          Show this help")
     print("")
     print("Note: Run via ./generate_can.sh for full generation pipeline.")
@@ -622,10 +662,14 @@ def main():
         elif cmd in ("-h", "--help"):
             show_help()
             return
-        elif cmd == "--gen-state":
+        elif cmd == "--emit-db":
+            if len(sys.argv) < 3:
+                print("--emit-db requires the directory holding cantools output",
+                      file=sys.stderr)
+                sys.exit(1)
             if not validate_registry():
                 sys.exit(1)
-            generate_state_files()
+            generate_db_files(sys.argv[2])
             return
         else:
             print(f"Unknown option: {cmd}", file=sys.stderr)

@@ -17,6 +17,39 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 VENV_DIR="$SCRIPT_DIR/.venv"
 CANTOOLS_VERSION="39.4.13"
 GEN_DIR="$SCRIPT_DIR/gen"
+GEN_FILES="FEB_CAN.dbc feb_can_db.h feb_can_db.c"
+
+SCRATCH_ROOT=""
+SCRATCH_CANTOOLS=""
+SCRATCH_COMPARE=""
+
+scratch_init() {
+    [ -n "$SCRATCH_ROOT" ] && return 0
+
+    SCRATCH_ROOT=$(mktemp -d) || { echo "[ERROR] mktemp -d failed" >&2; exit 1; }
+    if [ -z "$SCRATCH_ROOT" ] || [ ! -d "$SCRATCH_ROOT" ]; then
+        echo "[ERROR] mktemp -d returned no usable directory" >&2
+        exit 1
+    fi
+
+    SCRATCH_CANTOOLS="$SCRATCH_ROOT/cantools"
+    SCRATCH_COMPARE="$SCRATCH_ROOT/compare"
+    mkdir -p "$SCRATCH_CANTOOLS" "$SCRATCH_COMPARE"
+}
+
+cleanup_scratch() {
+    [ -n "$SCRATCH_ROOT" ] && [ -d "$SCRATCH_ROOT" ] || return 0
+
+    rm -f "$SCRATCH_CANTOOLS/feb_can.h" "$SCRATCH_CANTOOLS/feb_can.c"
+    for _f in $GEN_FILES; do
+        rm -f "$SCRATCH_COMPARE/$_f.orig" "$SCRATCH_COMPARE/$_f.new"
+    done
+
+    rmdir "$SCRATCH_CANTOOLS" "$SCRATCH_COMPARE" "$SCRATCH_ROOT" 2>/dev/null \
+        || echo "[WARN] scratch dir not empty, left for inspection: $SCRATCH_ROOT" >&2
+}
+
+trap cleanup_scratch EXIT
 
 # Colors for output
 RED='\033[0;31m'
@@ -59,43 +92,22 @@ setup_env() {
     fi
 }
 
-# Strip the file header for comparison
-# cantools generates different header comments on different platforms,
-# so we strip everything before the actual code starts.
-# For .h files: keep from #ifndef onwards
-# For .c files: keep from #include onwards
-strip_header() {
-    local file="$1"
-    local temp_file="${file}.tmp"
-
-    # Check if filename contains .h (handles both .h and .h.orig)
-    if [[ "$file" == *".h"* ]]; then
-        # For header files, keep from #ifndef onwards
-        sed -n '/#ifndef/,$p' "$file" > "$temp_file"
-    else
-        # For source files, keep from first #include onwards
-        sed -n '/#include/,$p' "$file" > "$temp_file"
-    fi
-
-    mv "$temp_file" "$file"
-}
 
 # Generate CAN library files
 generate() {
     cd "$SCRIPT_DIR"
 
+    scratch_init
+    CT_DIR="$SCRATCH_CANTOOLS"
+
     log_info "Generating DBC file from Python definitions..."
     python generate.py
 
-    log_info "Generating C source files from DBC..."
-    python -m cantools generate_c_source -o gen gen/FEB_CAN.dbc
+    log_info "Generating C source from DBC (cantools -> scratch)..."
+    python -m cantools generate_c_source -o "$CT_DIR" gen/FEB_CAN.dbc
 
-    log_info "Stripping headers from generated files..."
-    strip_header "$GEN_DIR/feb_can.h"
-    strip_header "$GEN_DIR/feb_can.c"
-
-    log_info "Generating feb_can_latest.{h,c}..."
-    python generate.py --gen-state
+    log_info "Consolidating into gen/feb_can_db.{h,c}..."
+    python generate.py --emit-db "$CT_DIR"
 
     log_info "Generation complete!"
 }
@@ -104,97 +116,41 @@ generate() {
 check() {
     cd "$SCRIPT_DIR"
 
-    # Create temp directory for fresh generation
-    TEMP_DIR=$(mktemp -d)
-    trap "rm -rf $TEMP_DIR" EXIT
+    scratch_init
+    TEMP_DIR="$SCRATCH_COMPARE"
+    CT_DIR="$SCRATCH_CANTOOLS"
 
-    # Copy current gen files to temp for comparison
-    cp "$GEN_DIR/FEB_CAN.dbc" "$TEMP_DIR/FEB_CAN.dbc.orig"
-    cp "$GEN_DIR/feb_can.h" "$TEMP_DIR/feb_can.h.orig"
-    cp "$GEN_DIR/feb_can.c" "$TEMP_DIR/feb_can.c.orig"
-    cp "$GEN_DIR/feb_can_latest.h" "$TEMP_DIR/feb_can_latest.h.orig"
-    cp "$GEN_DIR/feb_can_latest.c" "$TEMP_DIR/feb_can_latest.c.orig"
-
-    # Strip timestamps from originals for comparison
-    strip_header "$TEMP_DIR/feb_can.h.orig"
-    strip_header "$TEMP_DIR/feb_can.c.orig"
+    for f in $GEN_FILES; do
+        cp "$GEN_DIR/$f" "$TEMP_DIR/$f.orig"
+    done
 
     log_info "Generating fresh files for comparison..."
     log_info "Using cantools version: $(python -c 'import cantools; print(cantools.__version__)')"
     log_info "Python version: $(python --version)"
+
     python generate.py
+    python -m cantools generate_c_source -o "$CT_DIR" gen/FEB_CAN.dbc
+    python generate.py --emit-db "$CT_DIR"
 
-    python -m cantools generate_c_source -o "$TEMP_DIR" gen/FEB_CAN.dbc
+    for f in $GEN_FILES; do
+        cp "$GEN_DIR/$f" "$TEMP_DIR/$f.new"
+        cp "$TEMP_DIR/$f.orig" "$GEN_DIR/$f"
+    done
 
-    # Strip timestamps from newly generated files
-    strip_header "$TEMP_DIR/feb_can.h"
-    strip_header "$TEMP_DIR/feb_can.c"
-
-    # Regenerate state files (generate.py --gen-state writes to gen/, copy into temp for diffing)
-    python generate.py --gen-state
-    cp "$GEN_DIR/feb_can_latest.h" "$TEMP_DIR/feb_can_latest.h"
-    cp "$GEN_DIR/feb_can_latest.c" "$TEMP_DIR/feb_can_latest.c"
-    # Restore the committed versions in gen/ so --check never mutates the tree
-    cp "$TEMP_DIR/feb_can_latest.h.orig" "$GEN_DIR/feb_can_latest.h"
-    cp "$TEMP_DIR/feb_can_latest.c.orig" "$GEN_DIR/feb_can_latest.c"
-
-    # Copy DBC to temp for comparison
-    cp "$GEN_DIR/FEB_CAN.dbc" "$TEMP_DIR/FEB_CAN.dbc"
-
-    # Compare files
     DIFF_FOUND=false
 
     log_info "Comparing generated files..."
-
-    if ! diff -q "$TEMP_DIR/FEB_CAN.dbc" "$TEMP_DIR/FEB_CAN.dbc.orig" > /dev/null 2>&1; then
-        log_error "gen/FEB_CAN.dbc differs from committed version"
-        echo "--- Diff output ---"
-        diff "$TEMP_DIR/FEB_CAN.dbc.orig" "$TEMP_DIR/FEB_CAN.dbc" | head -50 || true
-        echo "-------------------"
-        DIFF_FOUND=true
-    else
-        echo "  gen/FEB_CAN.dbc: OK"
-    fi
-
-    if ! diff -q "$TEMP_DIR/feb_can.h" "$TEMP_DIR/feb_can.h.orig" > /dev/null 2>&1; then
-        log_error "gen/feb_can.h differs from committed version"
-        echo "--- Diff output ---"
-        diff "$TEMP_DIR/feb_can.h.orig" "$TEMP_DIR/feb_can.h" | head -50 || true
-        echo "-------------------"
-        DIFF_FOUND=true
-    else
-        echo "  gen/feb_can.h: OK"
-    fi
-
-    if ! diff -q "$TEMP_DIR/feb_can.c" "$TEMP_DIR/feb_can.c.orig" > /dev/null 2>&1; then
-        log_error "gen/feb_can.c differs from committed version"
-        echo "--- Diff output ---"
-        diff "$TEMP_DIR/feb_can.c.orig" "$TEMP_DIR/feb_can.c" | head -50 || true
-        echo "-------------------"
-        DIFF_FOUND=true
-    else
-        echo "  gen/feb_can.c: OK"
-    fi
-
-    if ! diff -q "$TEMP_DIR/feb_can_latest.h" "$TEMP_DIR/feb_can_latest.h.orig" > /dev/null 2>&1; then
-        log_error "gen/feb_can_latest.h differs from committed version"
-        echo "--- Diff output ---"
-        diff "$TEMP_DIR/feb_can_latest.h.orig" "$TEMP_DIR/feb_can_latest.h" | head -50 || true
-        echo "-------------------"
-        DIFF_FOUND=true
-    else
-        echo "  gen/feb_can_latest.h: OK"
-    fi
-
-    if ! diff -q "$TEMP_DIR/feb_can_latest.c" "$TEMP_DIR/feb_can_latest.c.orig" > /dev/null 2>&1; then
-        log_error "gen/feb_can_latest.c differs from committed version"
-        echo "--- Diff output ---"
-        diff "$TEMP_DIR/feb_can_latest.c.orig" "$TEMP_DIR/feb_can_latest.c" | head -50 || true
-        echo "-------------------"
-        DIFF_FOUND=true
-    else
-        echo "  gen/feb_can_latest.c: OK"
-    fi
+    for f in $GEN_FILES; do
+        if ! diff -q "$TEMP_DIR/$f.new" "$TEMP_DIR/$f.orig" > /dev/null 2>&1; then
+            log_error "gen/$f differs from committed version"
+            echo "--- Diff output ---"
+            diff "$TEMP_DIR/$f.orig" "$TEMP_DIR/$f.new" | head -50 || true
+            echo "-------------------"
+            DIFF_FOUND=true
+        else
+            echo "  gen/$f: OK"
+        fi
+    done
 
     if [ "$DIFF_FOUND" = true ]; then
         echo ""
@@ -210,6 +166,7 @@ check() {
         log_info "All generated files are up to date."
     fi
 }
+
 
 # List all registered messages
 cmd_list() {
