@@ -24,6 +24,8 @@ def get_lvpdb_lv_24v_bus_and_12v_bus_voltages(frame_id: int):
         length=4,
         signals=[lv_24v_voltage, lv_12v_voltage],
         comment="LVPDB message for voltages of 24v bus and 12v bus",
+        senders=['LVPDB'],
+        cycle_time=100,
         strict=True
     )
 
@@ -68,6 +70,8 @@ def get_lvpdb_lv_sh_lt_bm_l_currents(frame_id: int):
         length=8,
         signals=[lv_current, sh_current, lt_current, bm_l_current],
         comment="LVPDB message for currents of LV, SH, LT, BM_L",
+        senders=['LVPDB'],
+        cycle_time=100,
         strict=True
     )
 
@@ -103,6 +107,8 @@ def get_lvpdb_sm_af1_af2_cp_rf_currents(frame_id : int):
         length=8,
         signals=[sm_current, af1_af2_current, cp_rf_current],
         comment="LVPDB message for currents of SM, AF1_AF2, CP_RF",
+        senders=['LVPDB'],
+        cycle_time=100,
         strict=True
     )
 
@@ -193,6 +199,8 @@ def get_lvpdb_heartbeat(frame_id: int):
             error56, error57, error58, error59, error60, error61, error62, error63
         ],
         comment="LVPDB Heartbeat",
+        senders=['LVPDB'],
+        cycle_time=100,
         strict=True
     )
 

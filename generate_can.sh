@@ -17,7 +17,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 VENV_DIR="$SCRIPT_DIR/.venv"
 CANTOOLS_VERSION="39.4.13"
 GEN_DIR="$SCRIPT_DIR/gen"
-GEN_FILES="FEB_CAN.dbc feb_can_db.h feb_can_db.c"
+GEN_FILES="FEB_CAN.dbc feb_can_db.h feb_can_db.c feb_can_traits.hpp"
 
 SCRATCH_ROOT=""
 SCRATCH_CANTOOLS=""

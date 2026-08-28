@@ -60,6 +60,8 @@ def get_bms_state(frame_id: int):
         length=2,
         signals=[bms_state, ping_lv_nodes, relay_state, gpio_sense],
         comment="BMS message for BMS state.",
+        senders=['BMS'],
+        cycle_time=100,
         strict=True
     )
 
@@ -120,6 +122,8 @@ def get_bms_cell_data(frame_id: int):
         length=8,
         signals=[bms_flags, bms_cell, bms_bank, bms_voltage, bms_temperature, bms_send_time],
         comment="BMS message for cell data.",
+        senders=['BMS'],
+        cycle_time=100,
         strict=True
     )
 
@@ -164,6 +168,8 @@ def get_accumulator_voltage(frame_id: int):
         length=8,
         signals=[total_pack_voltage, min_cell_voltage, max_cell_voltage, send_time],
         comment="BMS message for accumulator voltage.",
+        senders=['BMS'],
+        cycle_time=100,
         strict=True
     )
 
@@ -208,6 +214,8 @@ def get_accumulator_temperature(frame_id: int):
         length=8,
         signals=[total_pack_voltage, min_cell_temperature, max_cell_temperature, send_time],
         comment="BMS message for accumulator temperature.",
+        senders=['BMS'],
+        cycle_time=100,
         strict=True
     )
 
@@ -234,6 +242,8 @@ def get_tps_voltage_current(frame_id: int):
         length=4,
         signals=[bbb_voltage_signal, bbb_current_signal],
         comment="BBB TPS Chip",
+        senders=['BMS'],
+        cycle_time=100,
         strict=True
     )
 
@@ -260,6 +270,8 @@ def get_accumulator_faults(frame_id: int):
         length=1,
         signals=[bms_fault, imd_fault],
         comment="Accumulator Faults",
+        senders=['BMS'],
+        cycle_time=100,
         strict=True
     )
 
@@ -331,6 +343,8 @@ def get_cell_voltages(frame_id: int):
         length=8,
         signals=signals,
         comment="Accumulator cell voltages, paged via the page multiplexer.",
+        senders=['BMS'],
+        cycle_time=10,
         strict=True,
     )
 
@@ -355,5 +369,7 @@ def get_cell_temperatures(frame_id: int):
         length=8,
         signals=signals,
         comment="Accumulator cell temperatures, paged via the page multiplexer.",
+        senders=['BMS'],
+        cycle_time=10,
         strict=True,
     )

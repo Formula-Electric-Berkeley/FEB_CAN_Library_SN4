@@ -51,6 +51,7 @@ def _ivt_message(frame_id: int, msg_name: str, value_name: str, comment: str,
         length=6,
         signals=[counter, value],
         comment=comment,
+        senders=['IVT'],
         strict=True,
     )
 

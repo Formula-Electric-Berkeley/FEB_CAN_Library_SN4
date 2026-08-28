@@ -23,6 +23,51 @@ from typing import Callable, Dict, List, Tuple
 EXTERNAL_DBC_DIR = os.path.join(os.path.dirname(__file__), "external_dbc")
 _VECTOR_INDEPENDENT_ID = 3221225472     # cantools sentinel, not a real CAN frame
 
+BUS_BITRATE = 500_000
+BUS_LOAD_CEILING = 0.40
+TOTAL_LOAD_WARN = 0.60
+
+FD_BUS = False
+
+NODES = ["BMS", "PCU", "DASH", "DCU", "LVPDB", "DART", "SN_FRONT", "SN_REAR", "IVT"]
+
+
+def _frame_bits(msg) -> int:
+    """Worst case: frame overhead plus one stuff bit per 4 stuffable bits."""
+    overhead = 67 if msg.is_extended_frame else 47
+    raw = overhead + 8 * msg.length
+    return raw + (raw - 13) // 4
+
+
+def validate_bus_load(messages: List[cantools.db.Message]) -> bool:
+    """Gate on traffic we author. External rates come from vendor DBCs and are
+    reported but not gated, since no change here can lower them."""
+    ours = theirs = 0.0
+    for m in messages:
+        if not m.cycle_time:
+            continue
+        bps = _frame_bits(m) * (1000.0 / m.cycle_time)
+        if m.frame_id in MESSAGE_REGISTRY:
+            ours += bps
+        else:
+            theirs += bps
+
+    k = BUS_BITRATE // 1000
+    print(f"[INFO] periodic bus load @{k}k: "
+          f"{ours / BUS_BITRATE:.1%} FEB + {theirs / BUS_BITRATE:.1%} external "
+          f"= {(ours + theirs) / BUS_BITRATE:.1%}")
+
+    if ours / BUS_BITRATE > BUS_LOAD_CEILING:
+        print(f"[ERROR] FEB periodic traffic exceeds the "
+              f"{BUS_LOAD_CEILING:.0%} budget", file=sys.stderr)
+        return False
+    if (ours + theirs) / BUS_BITRATE > TOTAL_LOAD_WARN:
+        print(f"[WARN] total periodic load is above {TOTAL_LOAD_WARN:.0%}; "
+              f"inverter broadcast rates dominate and are configurable on the "
+              f"controller", file=sys.stderr)
+    return True
+
+
 # CANopen predefined connection set — these IDs MUST NOT be used for custom messages.
 # 0x000 NMT | 0x080 SYNC | 0x081 EMCY node-1 | 0x100 TIME
 # 0x181 TPDO1-n1 | 0x201 RPDO1-n1 | 0x581 SDO-tx-n1 | 0x601 SDO-rx-n1
@@ -386,6 +431,18 @@ def show_id_map() -> None:
     print(f"Total: {total_used} messages, {total_available} IDs available")
 
 
+def _bus_specifics():
+    from cantools.database.can.attribute import Attribute
+    from cantools.database.can.attribute_definition import AttributeDefinition
+    from cantools.database.can.formats.dbc_specifics import DbcSpecifics
+
+    definition = AttributeDefinition("BusType", default_value="CAN",
+                                     kind=None, type_name="STRING")
+    value = "CAN FD" if FD_BUS else "CAN"
+    return DbcSpecifics(attributes={"BusType": Attribute(value, definition)},
+                        attribute_definitions={"BusType": definition})
+
+
 def generate_dbc() -> None:
     """Generate the DBC file from the message registry merged with external_dbc/inverter.dbc."""
     messages = []
@@ -397,8 +454,15 @@ def generate_dbc() -> None:
     messages.extend(m for _, m in external)
 
     messages.sort(key=lambda m: m.frame_id)
+    for m in messages:
+        m.is_fd = FD_BUS
 
-    db = cantools.db.Database(messages=messages)
+    if not validate_bus_load(messages):
+        sys.exit(1)
+
+    nodes = [cantools.db.Node(name=n) for n in NODES]
+    db = cantools.db.Database(messages=messages, nodes=nodes,
+                              dbc_specifics=_bus_specifics())
     cantools.db.dump_file(db, "gen/FEB_CAN.dbc")
 
     counts = external_message_counts()
@@ -558,6 +622,69 @@ def _state_source_body(messages) -> str:
     return "\n".join(L)
 
 
+TRAITS_BASENAME = "feb_can_traits"
+
+
+def _cpp_name(name: str) -> str:
+    return "".join(part[:1].upper() + part[1:] for part in _cantools_name(name).split("_"))
+
+
+def _node_enum(node: str) -> str:
+    return "k" + "".join(p[:1].upper() + p[1:].lower() for p in node.split("_"))
+
+
+def generate_traits_file(messages) -> None:
+    """Compile-time metadata per message: the input to Publisher<M>/Subscriber<M>."""
+    L = ["/* Auto-generated. Do Not Edit.",
+         " * Regenerate via: cd common/FEB_CAN_Library_SN4 && ./generate_can.sh",
+         " */",
+         "",
+         "#ifndef FEB_CAN_TRAITS_HPP",
+         "#define FEB_CAN_TRAITS_HPP",
+         "",
+         '#include "feb_can_db.h"',
+         "",
+         "#include <cstdint>",
+         "",
+         "namespace feb::can",
+         "{",
+         "",
+         f"inline constexpr bool kFdBus = {'true' if FD_BUS else 'false'};",
+         "",
+         "enum class Node : std::uint8_t",
+         "{",
+         "  kNone = 0,"]
+    for n in NODES:
+        L.append(f"  {_node_enum(n)},")
+    L += ["};", "", "namespace msg", "{", ""]
+
+    for frame_id, msg in messages:
+        c = _msg_c_name(msg)
+        senders = [n for n in (msg.senders or []) if n in NODES]
+        # kNone where ownership is shared or external: the TX static_assert
+        # cannot name a single owner, so it does not fire.
+        sender = _node_enum(senders[0]) if len(senders) == 1 else "kNone"
+        L += [f"struct {_cpp_name(msg.name)}",
+              "{",
+              f"  using Data = feb_can_{c}_t;",
+              f"  static constexpr std::uint32_t kFrameId = 0x{frame_id:X}u;",
+              f"  static constexpr std::uint8_t kLength = {msg.length}u;",
+              f"  static constexpr bool kExtended = {'true' if msg.is_extended_frame else 'false'};",
+              f"  static constexpr std::uint32_t kCycleMs = {msg.cycle_time or 0}u;",
+              f"  static constexpr Node kSender = Node::{sender};",
+              f"  static constexpr auto kPack = &feb_can_{c}_pack;",
+              f"  static constexpr auto kUnpack = &feb_can_{c}_unpack;",
+              "};",
+              ""]
+
+    L += ["}  // namespace msg", "", "}  // namespace feb::can", "",
+          "#endif  /* FEB_CAN_TRAITS_HPP */", ""]
+
+    with open(f"gen/{TRAITS_BASENAME}.hpp", "w") as f:
+        f.write("\n".join(L))
+    print(f"Generated gen/{TRAITS_BASENAME}.hpp ({len(messages)} messages)")
+
+
 def generate_db_files(cantools_dir: str) -> None:
     """Consolidate the cantools codec and latest-value aggregate into gen/feb_can_db.{h,c}."""
     messages = []
@@ -623,6 +750,8 @@ def generate_db_files(cantools_dir: str) -> None:
         f.write("\n".join(c))
 
     print(f"Generated gen/{DB_BASENAME}.h / gen/{DB_BASENAME}.c ({len(messages)} messages)")
+
+    generate_traits_file(messages)
 
 
 

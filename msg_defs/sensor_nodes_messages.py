@@ -36,6 +36,8 @@ def get_steering_angle_data(frame_id: int):
         length=5,
         signals=[angle, raw_angle, agc],
         comment="Steering encoder filtered angle, raw angle, and AGC gain.",
+        senders=['SN_FRONT'],
+        cycle_time=100,
         strict=True,
     )
     return msg
@@ -67,6 +69,8 @@ def get_steering_status_data(frame_id: int):
         length=3,
         signals=[status, magnitude],
         comment="Steering encoder magnet status flags and CORDIC magnitude.",
+        senders=['SN_FRONT'],
+        cycle_time=100,
         strict=True,
     )
     return msg
@@ -140,6 +144,8 @@ def get_rear_left_tire_temp_data(frame_id: int):
         length=8,
         signals=[leftmost_temp, center_left_temp, center_right_temp, rightmost_temp],
         comment="Message for rear left tire temp data.",
+        senders=['SN_REAR'],
+        cycle_time=1000,
         strict=True
     )
 
@@ -182,6 +188,8 @@ def get_rear_right_tire_temp_data(frame_id: int):
         length=8,
         signals=[leftmost_temp, center_left_temp, center_right_temp, rightmost_temp],
         comment="Message for rear right tire temp data.",
+        senders=['SN_REAR'],
+        cycle_time=1000,
         strict=True
     )
 
@@ -224,6 +232,8 @@ def get_front_left_tire_temp_data(frame_id: int):
         length=8,
         signals=[leftmost_temp, center_left_temp, center_right_temp, rightmost_temp],
         comment="Message for front left tire temp data.",
+        senders=['SN_FRONT'],
+        cycle_time=1000,
         strict=True
     )
 
@@ -266,6 +276,8 @@ def get_front_right_tire_temp_data(frame_id: int):
         length=8,
         signals=[leftmost_temp, center_left_temp, center_right_temp, rightmost_temp],
         comment="Message for front right tire temp data.",
+        senders=['SN_FRONT'],
+        cycle_time=1000,
         strict=True
     )
 
@@ -307,6 +319,8 @@ def get_imu_acceleration_data_front(frame_id: int):
         length=6,
         signals=[accelX, accelY, accelZ],
         comment="IMU acceleration (LSM6DSOX, FS=2g, 0.061 mg/LSB).",
+        senders=['SN_FRONT'],
+        cycle_time=100,
         strict=True
     )
 
@@ -349,6 +363,8 @@ def get_imu_acceleration_data_rear(frame_id: int):
         length=6,
         signals=[accelX, accelY, accelZ],
         comment="REAR IMU acceleration (LSM6DSOX, FS=2g, 0.061 mg/LSB).",
+        senders=['SN_REAR'],
+        cycle_time=100,
         strict=True
     )
 
@@ -391,6 +407,8 @@ def get_imu_gyro_data_front(frame_id: int):
         length=6,
         signals=[gyroX, gyroY, gyroZ],
         comment="IMU gyro (LSM6DSOX, FS=2000dps, 70 mdps/LSB).",
+        senders=['SN_FRONT'],
+        cycle_time=100,
         strict=True
     )
 
@@ -433,6 +451,8 @@ def get_imu_gyro_data_rear(frame_id: int):
         length=6,
         signals=[gyroX, gyroY, gyroZ],
         comment="REAR IMU gyro (LSM6DSOX, FS=2000dps, 70 mdps/LSB).",
+        senders=['SN_REAR'],
+        cycle_time=100,
         strict=True
     )
 
@@ -475,6 +495,8 @@ def get_magnetometer_data_front(frame_id: int):
         length=6,
         signals=[magX, magY, magZ],
         comment="Magnetometer (LIS3MDL, FS=16gauss, 0.5844 mG/LSB).",
+        senders=['SN_FRONT'],
+        cycle_time=100,
         strict=True
     )
 
@@ -517,6 +539,8 @@ def get_magnetometer_data_rear(frame_id: int):
         length=6,
         signals=[magX, magY, magZ],
         comment="REAR Magnetometer (LIS3MDL, FS=16gauss, 0.5844 mG/LSB).",
+        senders=['SN_REAR'],
+        cycle_time=100,
         strict=True
     )
 
@@ -552,6 +576,8 @@ def get_gps_pos_data(frame_id: int):
         length=8,
         signals=[lat, lon],
         comment="GPS lat/lon as int32 * 1e7 deg (~11mm/LSB globally).",
+        senders=['SN_FRONT'],
+        cycle_time=200,
         strict=True
     )
 
@@ -585,6 +611,8 @@ def get_gps_pos_data_rear(frame_id: int):
         length=8,
         signals=[lat, lon],
         comment="REAR GPS lat/lon as int32 * 1e7 deg (~11mm/LSB globally).",
+        senders=['SN_REAR'],
+        cycle_time=200,
         strict=True
     )
 
@@ -619,6 +647,8 @@ def get_gps_motion_data(frame_id: int):
         length=4,
         signals=[speed, course],
         comment="GPS speed (0.01 km/h) and course-over-ground (0.01 deg).",
+        senders=['SN_FRONT'],
+        cycle_time=200,
         strict=True
     )
 
@@ -652,6 +682,8 @@ def get_gps_motion_data_rear(frame_id: int):
         length=4,
         signals=[speed, course],
         comment="REAR GPS speed (0.01 km/h) and course-over-ground (0.01 deg).",
+        senders=['SN_REAR'],
+        cycle_time=200,
         strict=True
     )
 
@@ -687,6 +719,8 @@ def get_gps_time_data(frame_id: int):
         length=3,
         signals=[hours, minutes, seconds],
         comment="GPS Time data message (UTC).",
+        senders=['SN_FRONT'],
+        cycle_time=200,
         strict=True
     )
 
@@ -723,6 +757,8 @@ def get_gps_time_data_rear(frame_id: int):
         length=3,
         signals=[hours, minutes, seconds],
         comment="REAR GPS Time data message (UTC).",
+        senders=['SN_REAR'],
+        cycle_time=200,
         strict=True
     )
 
@@ -758,6 +794,8 @@ def get_gps_date_data(frame_id: int):
         length=3,
         signals=[day, month, year],
         comment="GPS Date data message.",
+        senders=['SN_FRONT'],
+        cycle_time=200,
         strict=True
     )
 
@@ -794,6 +832,8 @@ def get_gps_date_data_rear(frame_id: int):
         length=3,
         signals=[day, month, year],
         comment="REAR GPS Date data message.",
+        senders=['SN_REAR'],
+        cycle_time=200,
         strict=True
     )
 
@@ -831,6 +871,8 @@ def get_gps_altitude_data(frame_id: int):
         length=8,
         signals=[altitude, hdop, vdop],
         comment="GPS altitude (cm) + horizontal/vertical DOP (x100).",
+        senders=['SN_FRONT'],
+        cycle_time=200,
         strict=True
     )
     return msg
@@ -868,6 +910,8 @@ def get_gps_altitude_data_rear(frame_id: int):
         length=8,
         signals=[altitude, hdop, vdop],
         comment="REAR GPS altitude (cm) + horizontal/vertical DOP (x100).",
+        senders=['SN_REAR'],
+        cycle_time=200,
         strict=True
     )
     return msg
@@ -905,6 +949,8 @@ def get_gps_status_data(frame_id: int):
         length=8,
         signals=[fix_type, fix_mode, sats_in_use, sats_in_view, valid, has_fix, pdop],
         comment="GPS fix quality, satellite counts, validity flags, position DOP.",
+        senders=['SN_FRONT'],
+        cycle_time=200,
         strict=True
     )
     return msg
@@ -943,6 +989,8 @@ def get_gps_status_data_rear(frame_id: int):
         length=8,
         signals=[fix_type, fix_mode, sats_in_use, sats_in_view, valid, has_fix, pdop],
         comment="REAR GPS fix quality, satellite counts, validity flags, position DOP.",
+        senders=['SN_REAR'],
+        cycle_time=200,
         strict=True
     )
     return msg
@@ -971,6 +1019,8 @@ def get_fusion_quaternion_data(frame_id: int):
         length=8,
         signals=[qw, qx, qy, qz],
         comment="Fusion AHRS orientation quaternion (w, x, y, z).",
+        senders=['SN_FRONT'],
+        cycle_time=100,
         strict=True
     )
     return msg
@@ -1000,6 +1050,8 @@ def get_fusion_quaternion_data_rear(frame_id: int):
         length=8,
         signals=[qw, qx, qy, qz],
         comment="REAR Fusion AHRS orientation quaternion (w, x, y, z).",
+        senders=['SN_REAR'],
+        cycle_time=100,
         strict=True
     )
     return msg
@@ -1023,6 +1075,8 @@ def get_fusion_euler_data(frame_id: int):
         length=6,
         signals=[roll, pitch, yaw],
         comment="Fusion AHRS Euler angles (0.01 deg/LSB).",
+        senders=['SN_FRONT'],
+        cycle_time=100,
         strict=True
     )
     return msg
@@ -1047,6 +1101,8 @@ def get_fusion_euler_data_rear(frame_id: int):
         length=6,
         signals=[roll, pitch, yaw],
         comment="REAR Fusion AHRS Euler angles (0.01 deg/LSB).",
+        senders=['SN_REAR'],
+        cycle_time=100,
         strict=True
     )
     return msg
@@ -1071,6 +1127,8 @@ def get_fusion_linear_accel_data(frame_id: int):
         length=6,
         signals=[ax, ay, az],
         comment="Fusion linear acceleration (gravity removed, body frame, mg).",
+        senders=['SN_FRONT'],
+        cycle_time=100,
         strict=True
     )
     return msg
@@ -1096,6 +1154,8 @@ def get_fusion_linear_accel_data_rear(frame_id: int):
         length=6,
         signals=[ax, ay, az],
         comment="REAR Fusion linear acceleration (gravity removed, body frame, mg).",
+        senders=['SN_REAR'],
+        cycle_time=100,
         strict=True
     )
     return msg
@@ -1120,6 +1180,8 @@ def get_fusion_earth_accel_data(frame_id: int):
         length=6,
         signals=[ax, ay, az],
         comment="Fusion linear acceleration (gravity removed, earth frame, mg).",
+        senders=['SN_FRONT'],
+        cycle_time=100,
         strict=True
     )
     return msg
@@ -1145,6 +1207,8 @@ def get_fusion_earth_accel_data_rear(frame_id: int):
         length=6,
         signals=[ax, ay, az],
         comment="REAR Fusion linear acceleration (gravity removed, earth frame, mg).",
+        senders=['SN_REAR'],
+        cycle_time=100,
         strict=True
     )
     return msg
@@ -1168,6 +1232,8 @@ def get_fusion_status_data(frame_id: int):
         length=3,
         signals=[flags, accel_error, mag_error],
         comment="Fusion AHRS internal flags + accel/mag rejection errors.",
+        senders=['SN_FRONT'],
+        cycle_time=100,
         strict=True
     )
     return msg
@@ -1192,6 +1258,8 @@ def get_fusion_status_data_rear(frame_id: int):
         length=3,
         signals=[flags, accel_error, mag_error],
         comment="REAR Fusion AHRS internal flags + accel/mag rejection errors.",
+        senders=['SN_REAR'],
+        cycle_time=100,
         strict=True
     )
     return msg
@@ -1211,6 +1279,8 @@ def get_sensor_temps_data(frame_id: int):
         length=4,
         signals=[imu_temp, mag_temp],
         comment="LSM6DSOX IMU and LIS3MDL magnetometer die temperatures (0.01 degC/LSB).",
+        senders=['SN_FRONT'],
+        cycle_time=1000,
         strict=True
     )
     return msg
@@ -1231,6 +1301,8 @@ def get_sensor_temps_data_rear(frame_id: int):
         length=4,
         signals=[imu_temp, mag_temp],
         comment="REAR LSM6DSOX IMU and LIS3MDL magnetometer die temperatures (0.01 degC/LSB).",
+        senders=['SN_REAR'],
+        cycle_time=1000,
         strict=True
     )
     return msg
@@ -1269,6 +1341,8 @@ def get_wss_data_front(frame_id: int):
         length=8,
         signals=[wss_left_front, wss_right_front, wss_dir_flags],
         comment="Front wheel speeds (uint16, 0.01 mph/LSB) + direction flags.",
+        senders=['SN_FRONT'],
+        cycle_time=20,
         strict=True
     )
 
@@ -1308,6 +1382,8 @@ def get_wss_data_rear(frame_id: int):
         length=8,
         signals=[wss_left_rear, wss_right_rear, wss_dir_flags],
         comment="Rear wheel speeds (uint16, 0.01 mph/LSB) + direction flags.",
+        senders=['SN_REAR'],
+        cycle_time=20,
         strict=True
     )
 
@@ -1336,6 +1412,8 @@ def get_LinPot_Front(frame_id: int):
         length=4,
         signals=[lin_pot_1, lin_pot_2],
         comment="Linear Potentiometer Front.",
+        senders=['SN_FRONT'],
+        cycle_time=20,
         strict=True
      )
  
@@ -1364,6 +1442,8 @@ def get_LinPot_Rear(frame_id: int):
         length=4,
         signals=[lin_pot_1, lin_pot_2],
         comment="Linear Potentiometer Rear.",
+        senders=['SN_REAR'],
+        cycle_time=20,
         strict=True
      )
  
@@ -1476,6 +1556,8 @@ def get_front_sensor_heartbeat(frame_id: int):
             error56, error57, error58, error59, error60, error61, error62, error63
         ],
         comment="Front Sensor Heartbeat",
+        senders=['SN_FRONT'],
+        cycle_time=100,
         strict=True
     )
 
@@ -1564,6 +1646,8 @@ def get_rear_sensor_heartbeat(frame_id: int):
             error56, error57, error58, error59, error60, error61, error62, error63
         ],
         comment="Rear Sensor Heartbeat",
+        senders=['SN_REAR'],
+        cycle_time=100,
         strict=True
     )
 

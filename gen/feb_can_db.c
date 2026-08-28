@@ -24,7 +24,7 @@
  * SOFTWARE.
  */
 
-/* Auto-generated — DO NOT EDIT.
+/* Auto-generated. Do Not Edit.
  * Regenerate via: cd common/FEB_CAN_Library_SN4 && ./generate_can.sh
  */
 

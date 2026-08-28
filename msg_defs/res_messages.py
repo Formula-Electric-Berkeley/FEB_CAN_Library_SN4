@@ -16,6 +16,8 @@ def get_res_state(frame_id: int):
         length=2,
         signals=[res_state],
         comment="RES message for RES state.",
+        senders=['PCU'],
+        cycle_time=100,
         strict=True
     )
 

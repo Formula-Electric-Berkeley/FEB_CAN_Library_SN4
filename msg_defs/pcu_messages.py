@@ -77,7 +77,8 @@ def normalized_brake(frame_id: int):
         length=8,
         signals=[brake_position, brake1_pct, brake2_pct, plausible, brake_pressed, bots_active, brake_switch],
         comment="PCU brake: position + 2 pressure sensors (centi-percent) + status flags",
-        cycle_time=20,
+        cycle_time=100,
+        senders=['PCU'],
         strict=True
     )
 
@@ -132,6 +133,7 @@ def ebs_pressure_status(frame_id: int):
         signals=[ebs_pressure_1, ebs_pressure_2, ebs_pressure_3, ebs_pressure_4],
         comment="EBS Pressure Status - 4 pressure sensors (scale: 1/16, unit: bar)",
         cycle_time=100,
+        senders=['PCU'],
         strict=True
     )
 
@@ -257,6 +259,8 @@ def bspd(frame_id: int):
         length=1,
         signals=[bspd_state],
         comment="BSPD message.",
+        senders=['PCU'],
+        cycle_time=100,
         strict=True
     )
 
@@ -288,6 +292,8 @@ def get_tps_voltage_current(frame_id: int):
         length=4,
         signals=[pcu_voltage_signal, pcu_current_signal],
         comment="PCU TPS Chip",
+        senders=['PCU'],
+        cycle_time=100,
         strict=True
     )
 
@@ -359,6 +365,8 @@ def get_raw_acc(frame_id: int):
             open_circuit_signal,
         ],
         comment="PCU RAW ACC ADC",
+        senders=['PCU'],
+        cycle_time=50,
         strict=True,
     )
 
@@ -412,6 +420,7 @@ def get_pedal_voltages(frame_id: int):
         signals=[acc1_mv, acc2_mv, brake1_mv, brake2_mv],
         comment="PCU raw pedal sensor voltages (sensor-side mV): APPS1/2, brake 1/2",
         cycle_time=100,
+        senders=['PCU'],
         strict=True,
     )
 
@@ -498,6 +507,8 @@ def get_pcu_heartbeat(frame_id: int):
             error56, error57, error58, error59, error60, error61, error62, error63
         ],
         comment="PCU heartbeat",
+        senders=['PCU'],
+        cycle_time=100,
         strict=True
     )
 
