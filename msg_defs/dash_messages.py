@@ -83,6 +83,8 @@ def get_dash_state(frame_id: int):
         length=2,
         signals=[button1, button2, button3, button4, switch1, switch2, switch3, switch4, buzzer, rtd],
         comment="Dash state + buttons and switches",
+        senders=['DASH'],
+        cycle_time=100,
         strict=True
     )
 
@@ -109,6 +111,8 @@ def get_tps_voltage_current(frame_id: int):
         length=4,
         signals=[dash_voltage_signal, dash_current_signal],
         comment="Dash TPS Chip",
+        senders=['DASH'],
+        cycle_time=100,
         strict=True
     )
 
@@ -195,6 +199,8 @@ def get_dash_heartbeat(frame_id: int):
             error56, error57, error58, error59, error60, error61, error62, error63
         ],
         comment="Dash Heartbeat",
+        senders=['DASH'],
+        cycle_time=100,
         strict=True
     )
 

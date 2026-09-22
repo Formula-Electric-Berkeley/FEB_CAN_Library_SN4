@@ -41,6 +41,8 @@ def get_measured_fan_speeds_1234(frame_id: int):
         length=8,
         signals=[fan1_speed_signal,fan2_speed_signal,fan3_speed_signal,fan4_speed_signal],
         comment="DART message for Tachometer measurements first 4 fan speeds.",
+        senders=['DART'],
+        cycle_time=100,
         strict=True
     )
 
@@ -62,6 +64,8 @@ def get_measured_fan_speeds_5(frame_id: int):
         length=2,
         signals=[fan5_speed_signal],
         comment="DART message for Tachometer measurements 5th fan speed.",
+        senders=['DART'],
+        cycle_time=100,
         strict=True
     )
 

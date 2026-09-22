@@ -23,6 +23,8 @@ def get_tps_voltage_current(frame_id: int):
         length=4,
         signals=[dcu_voltage_signal, dcu_current_signal],
         comment="DCU TPS Chip",
+        senders=['DCU'],
+        cycle_time=100,
         strict=True
     )
 
@@ -109,6 +111,8 @@ def get_dcu_heartbeat(frame_id: int):
             error56, error57, error58, error59, error60, error61, error62, error63
         ],
         comment="DCU Heartbeat",
+        senders=['DCU'],
+        cycle_time=100,
         strict=True
     )
 

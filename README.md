@@ -186,7 +186,7 @@ Used for board health monitoring. See `lvpdb_messages.py:get_lvpdb_heartbeat()` 
 The generated files in `gen/` provide pack/unpack functions:
 
 ```c
-#include "feb_can.h"
+#include "feb_can_db.h"
 
 // Sending a message
 struct feb_can_lvpdb_flags_bus_voltage_lv_current_t data = {
@@ -233,10 +233,13 @@ FEB_CAN_Library_SN4/
 │   ├── sensor_nodes_messsages.py
 │   ├── dart_messages.py
 │   └── ...
+├── external_dbc/             # Vendor DBCs — every *.dbc here is auto-merged
+│   ├── inverter.dbc         # Cascadia PM100 inverter
+│   └── elcon.dbc            # Elcon / HK charger
 ├── gen/                      # Generated files (DO NOT EDIT)
 │   ├── FEB_CAN.dbc          # DBC database file
-│   ├── feb_can.h            # C header with pack/unpack declarations
-│   └── feb_can.c            # C implementation
+│   ├── feb_can_db.h         # Codec (pack/unpack) + latest-value database
+│   └── feb_can_db.c         # Implementation of both
 └── .venv/                    # Python virtual environment (auto-created)
 ```
 
@@ -271,7 +274,7 @@ git commit -m "Regenerate CAN library"
 Check byte order and signedness in your signal definition. FEB uses little-endian throughout.
 
 ### Cannot find my message's pack function
-Message names are normalized to C identifiers. Check `gen/feb_can.h` for the exact function name (underscores, lowercase).
+Message names are normalized to C identifiers. Check `gen/feb_can_db.h` for the exact function name (underscores, lowercase).
 
 ### Validation error: "Duplicate function"
 The same message function is registered at multiple frame IDs. Each function should only be registered once.

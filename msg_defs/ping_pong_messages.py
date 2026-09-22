@@ -16,6 +16,8 @@ def get_ping_pong_counter1(frame_id: int):
         length=8,
         signals=[counter_signal],
         comment="PING PONG counter1.",
+        senders=['BMS', 'DASH', 'LVPDB', 'SN_FRONT'],
+        cycle_time=100,
         strict=True
     )
 
@@ -36,6 +38,8 @@ def get_ping_pong_counter2(frame_id: int):
         length=8,
         signals=[counter_signal],
         comment="PING PONG counter2.",
+        senders=['BMS', 'DASH', 'LVPDB', 'SN_FRONT'],
+        cycle_time=100,
         strict=True
     )
 
@@ -56,6 +60,8 @@ def get_ping_pong_counter3(frame_id: int):
         length=8,
         signals=[counter_signal],
         comment="PING PONG counter3.",
+        senders=['BMS', 'DASH', 'LVPDB', 'SN_FRONT'],
+        cycle_time=100,
         strict=True
     )
 
@@ -76,6 +82,8 @@ def get_ping_pong_counter4(frame_id: int):
         length=8,
         signals=[counter_signal],
         comment="PING PONG counter4.",
+        senders=['BMS', 'DASH', 'LVPDB', 'SN_FRONT'],
+        cycle_time=100,
         strict=True
     )
 
