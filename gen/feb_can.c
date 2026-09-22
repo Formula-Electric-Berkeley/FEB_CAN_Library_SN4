@@ -14499,25 +14499,25 @@ int feb_can_front_sensor_heartbeat_message_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u8(src_p->error0, 0u, 0x01u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error1, 1u, 0x02u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error2, 2u, 0x04u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error3, 3u, 0x08u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error4, 4u, 0x10u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error5, 5u, 0x20u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error6, 6u, 0x40u);
+    dst_p[0] |= pack_left_shift_u8(src_p->imu_init_failed, 0u, 0x01u);
+    dst_p[0] |= pack_left_shift_u8(src_p->imu_read_failed, 1u, 0x02u);
+    dst_p[0] |= pack_left_shift_u8(src_p->mag_init_failed, 2u, 0x04u);
+    dst_p[0] |= pack_left_shift_u8(src_p->mag_read_failed, 3u, 0x08u);
+    dst_p[0] |= pack_left_shift_u8(src_p->gps_init_failed, 4u, 0x10u);
+    dst_p[0] |= pack_left_shift_u8(src_p->fusion_uncalibrated, 5u, 0x20u);
+    dst_p[0] |= pack_left_shift_u8(src_p->lp_out_of_range, 6u, 0x40u);
     dst_p[0] |= pack_left_shift_u8(src_p->error7, 7u, 0x80u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error8, 0u, 0x01u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error9, 1u, 0x02u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error10, 2u, 0x04u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error11, 3u, 0x08u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error12, 4u, 0x10u);
+    dst_p[1] |= pack_left_shift_u8(src_p->gps_no_fix, 0u, 0x01u);
+    dst_p[1] |= pack_left_shift_u8(src_p->gps_stale, 1u, 0x02u);
+    dst_p[1] |= pack_left_shift_u8(src_p->gps_link_slow, 2u, 0x04u);
+    dst_p[1] |= pack_left_shift_u8(src_p->wss_left_no_signal, 3u, 0x08u);
+    dst_p[1] |= pack_left_shift_u8(src_p->wss_right_no_signal, 4u, 0x10u);
     dst_p[1] |= pack_left_shift_u8(src_p->error13, 5u, 0x20u);
     dst_p[1] |= pack_left_shift_u8(src_p->error14, 6u, 0x40u);
     dst_p[1] |= pack_left_shift_u8(src_p->error15, 7u, 0x80u);
-    dst_p[2] |= pack_left_shift_u8(src_p->error16, 0u, 0x01u);
-    dst_p[2] |= pack_left_shift_u8(src_p->error17, 1u, 0x02u);
-    dst_p[2] |= pack_left_shift_u8(src_p->error18, 2u, 0x04u);
+    dst_p[2] |= pack_left_shift_u8(src_p->can_bus_off, 0u, 0x01u);
+    dst_p[2] |= pack_left_shift_u8(src_p->can_tx_overflow, 1u, 0x02u);
+    dst_p[2] |= pack_left_shift_u8(src_p->can_rx_overflow, 2u, 0x04u);
     dst_p[2] |= pack_left_shift_u8(src_p->error19, 3u, 0x08u);
     dst_p[2] |= pack_left_shift_u8(src_p->error20, 4u, 0x10u);
     dst_p[2] |= pack_left_shift_u8(src_p->error21, 5u, 0x20u);
@@ -14576,25 +14576,25 @@ int feb_can_front_sensor_heartbeat_message_unpack(
         return (-EINVAL);
     }
 
-    dst_p->error0 = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
-    dst_p->error1 = unpack_right_shift_u8(src_p[0], 1u, 0x02u);
-    dst_p->error2 = unpack_right_shift_u8(src_p[0], 2u, 0x04u);
-    dst_p->error3 = unpack_right_shift_u8(src_p[0], 3u, 0x08u);
-    dst_p->error4 = unpack_right_shift_u8(src_p[0], 4u, 0x10u);
-    dst_p->error5 = unpack_right_shift_u8(src_p[0], 5u, 0x20u);
-    dst_p->error6 = unpack_right_shift_u8(src_p[0], 6u, 0x40u);
+    dst_p->imu_init_failed = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
+    dst_p->imu_read_failed = unpack_right_shift_u8(src_p[0], 1u, 0x02u);
+    dst_p->mag_init_failed = unpack_right_shift_u8(src_p[0], 2u, 0x04u);
+    dst_p->mag_read_failed = unpack_right_shift_u8(src_p[0], 3u, 0x08u);
+    dst_p->gps_init_failed = unpack_right_shift_u8(src_p[0], 4u, 0x10u);
+    dst_p->fusion_uncalibrated = unpack_right_shift_u8(src_p[0], 5u, 0x20u);
+    dst_p->lp_out_of_range = unpack_right_shift_u8(src_p[0], 6u, 0x40u);
     dst_p->error7 = unpack_right_shift_u8(src_p[0], 7u, 0x80u);
-    dst_p->error8 = unpack_right_shift_u8(src_p[1], 0u, 0x01u);
-    dst_p->error9 = unpack_right_shift_u8(src_p[1], 1u, 0x02u);
-    dst_p->error10 = unpack_right_shift_u8(src_p[1], 2u, 0x04u);
-    dst_p->error11 = unpack_right_shift_u8(src_p[1], 3u, 0x08u);
-    dst_p->error12 = unpack_right_shift_u8(src_p[1], 4u, 0x10u);
+    dst_p->gps_no_fix = unpack_right_shift_u8(src_p[1], 0u, 0x01u);
+    dst_p->gps_stale = unpack_right_shift_u8(src_p[1], 1u, 0x02u);
+    dst_p->gps_link_slow = unpack_right_shift_u8(src_p[1], 2u, 0x04u);
+    dst_p->wss_left_no_signal = unpack_right_shift_u8(src_p[1], 3u, 0x08u);
+    dst_p->wss_right_no_signal = unpack_right_shift_u8(src_p[1], 4u, 0x10u);
     dst_p->error13 = unpack_right_shift_u8(src_p[1], 5u, 0x20u);
     dst_p->error14 = unpack_right_shift_u8(src_p[1], 6u, 0x40u);
     dst_p->error15 = unpack_right_shift_u8(src_p[1], 7u, 0x80u);
-    dst_p->error16 = unpack_right_shift_u8(src_p[2], 0u, 0x01u);
-    dst_p->error17 = unpack_right_shift_u8(src_p[2], 1u, 0x02u);
-    dst_p->error18 = unpack_right_shift_u8(src_p[2], 2u, 0x04u);
+    dst_p->can_bus_off = unpack_right_shift_u8(src_p[2], 0u, 0x01u);
+    dst_p->can_tx_overflow = unpack_right_shift_u8(src_p[2], 1u, 0x02u);
+    dst_p->can_rx_overflow = unpack_right_shift_u8(src_p[2], 2u, 0x04u);
     dst_p->error19 = unpack_right_shift_u8(src_p[2], 3u, 0x08u);
     dst_p->error20 = unpack_right_shift_u8(src_p[2], 4u, 0x10u);
     dst_p->error21 = unpack_right_shift_u8(src_p[2], 5u, 0x20u);
@@ -14653,107 +14653,107 @@ int feb_can_front_sensor_heartbeat_message_init(struct feb_can_front_sensor_hear
     return 0;
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error0_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_imu_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error0_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_imu_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error0_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_imu_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error1_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_imu_read_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error1_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_imu_read_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error1_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_imu_read_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error2_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_mag_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error2_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_mag_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error2_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_mag_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error3_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_mag_read_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error3_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_mag_read_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error3_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_mag_read_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error4_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_gps_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error4_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_gps_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error4_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_gps_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error5_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_fusion_uncalibrated_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error5_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_fusion_uncalibrated_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error5_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_fusion_uncalibrated_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error6_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_lp_out_of_range_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error6_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_lp_out_of_range_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error6_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_lp_out_of_range_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
@@ -14773,77 +14773,77 @@ bool feb_can_front_sensor_heartbeat_message_error7_is_in_range(uint8_t value)
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error8_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_gps_no_fix_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error8_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_gps_no_fix_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error8_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_gps_no_fix_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error9_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_gps_stale_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error9_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_gps_stale_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error9_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_gps_stale_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error10_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_gps_link_slow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error10_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_gps_link_slow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error10_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_gps_link_slow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error11_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_wss_left_no_signal_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error11_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_wss_left_no_signal_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error11_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_wss_left_no_signal_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error12_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_wss_right_no_signal_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error12_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_wss_right_no_signal_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error12_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_wss_right_no_signal_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
@@ -14893,47 +14893,47 @@ bool feb_can_front_sensor_heartbeat_message_error15_is_in_range(uint8_t value)
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error16_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_can_bus_off_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error16_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_can_bus_off_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error16_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_can_bus_off_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error17_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_can_tx_overflow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error17_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_can_tx_overflow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error17_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_can_tx_overflow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error18_encode(double value)
+uint8_t feb_can_front_sensor_heartbeat_message_can_rx_overflow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error18_decode(uint8_t value)
+double feb_can_front_sensor_heartbeat_message_can_rx_overflow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error18_is_in_range(uint8_t value)
+bool feb_can_front_sensor_heartbeat_message_can_rx_overflow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
@@ -15624,25 +15624,25 @@ int feb_can_rear_sensor_heartbeat_message_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u8(src_p->error0, 0u, 0x01u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error1, 1u, 0x02u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error2, 2u, 0x04u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error3, 3u, 0x08u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error4, 4u, 0x10u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error5, 5u, 0x20u);
-    dst_p[0] |= pack_left_shift_u8(src_p->error6, 6u, 0x40u);
+    dst_p[0] |= pack_left_shift_u8(src_p->imu_init_failed, 0u, 0x01u);
+    dst_p[0] |= pack_left_shift_u8(src_p->imu_read_failed, 1u, 0x02u);
+    dst_p[0] |= pack_left_shift_u8(src_p->mag_init_failed, 2u, 0x04u);
+    dst_p[0] |= pack_left_shift_u8(src_p->mag_read_failed, 3u, 0x08u);
+    dst_p[0] |= pack_left_shift_u8(src_p->gps_init_failed, 4u, 0x10u);
+    dst_p[0] |= pack_left_shift_u8(src_p->fusion_uncalibrated, 5u, 0x20u);
+    dst_p[0] |= pack_left_shift_u8(src_p->lp_out_of_range, 6u, 0x40u);
     dst_p[0] |= pack_left_shift_u8(src_p->error7, 7u, 0x80u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error8, 0u, 0x01u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error9, 1u, 0x02u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error10, 2u, 0x04u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error11, 3u, 0x08u);
-    dst_p[1] |= pack_left_shift_u8(src_p->error12, 4u, 0x10u);
+    dst_p[1] |= pack_left_shift_u8(src_p->gps_no_fix, 0u, 0x01u);
+    dst_p[1] |= pack_left_shift_u8(src_p->gps_stale, 1u, 0x02u);
+    dst_p[1] |= pack_left_shift_u8(src_p->gps_link_slow, 2u, 0x04u);
+    dst_p[1] |= pack_left_shift_u8(src_p->wss_left_no_signal, 3u, 0x08u);
+    dst_p[1] |= pack_left_shift_u8(src_p->wss_right_no_signal, 4u, 0x10u);
     dst_p[1] |= pack_left_shift_u8(src_p->error13, 5u, 0x20u);
     dst_p[1] |= pack_left_shift_u8(src_p->error14, 6u, 0x40u);
     dst_p[1] |= pack_left_shift_u8(src_p->error15, 7u, 0x80u);
-    dst_p[2] |= pack_left_shift_u8(src_p->error16, 0u, 0x01u);
-    dst_p[2] |= pack_left_shift_u8(src_p->error17, 1u, 0x02u);
-    dst_p[2] |= pack_left_shift_u8(src_p->error18, 2u, 0x04u);
+    dst_p[2] |= pack_left_shift_u8(src_p->can_bus_off, 0u, 0x01u);
+    dst_p[2] |= pack_left_shift_u8(src_p->can_tx_overflow, 1u, 0x02u);
+    dst_p[2] |= pack_left_shift_u8(src_p->can_rx_overflow, 2u, 0x04u);
     dst_p[2] |= pack_left_shift_u8(src_p->error19, 3u, 0x08u);
     dst_p[2] |= pack_left_shift_u8(src_p->error20, 4u, 0x10u);
     dst_p[2] |= pack_left_shift_u8(src_p->error21, 5u, 0x20u);
@@ -15701,25 +15701,25 @@ int feb_can_rear_sensor_heartbeat_message_unpack(
         return (-EINVAL);
     }
 
-    dst_p->error0 = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
-    dst_p->error1 = unpack_right_shift_u8(src_p[0], 1u, 0x02u);
-    dst_p->error2 = unpack_right_shift_u8(src_p[0], 2u, 0x04u);
-    dst_p->error3 = unpack_right_shift_u8(src_p[0], 3u, 0x08u);
-    dst_p->error4 = unpack_right_shift_u8(src_p[0], 4u, 0x10u);
-    dst_p->error5 = unpack_right_shift_u8(src_p[0], 5u, 0x20u);
-    dst_p->error6 = unpack_right_shift_u8(src_p[0], 6u, 0x40u);
+    dst_p->imu_init_failed = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
+    dst_p->imu_read_failed = unpack_right_shift_u8(src_p[0], 1u, 0x02u);
+    dst_p->mag_init_failed = unpack_right_shift_u8(src_p[0], 2u, 0x04u);
+    dst_p->mag_read_failed = unpack_right_shift_u8(src_p[0], 3u, 0x08u);
+    dst_p->gps_init_failed = unpack_right_shift_u8(src_p[0], 4u, 0x10u);
+    dst_p->fusion_uncalibrated = unpack_right_shift_u8(src_p[0], 5u, 0x20u);
+    dst_p->lp_out_of_range = unpack_right_shift_u8(src_p[0], 6u, 0x40u);
     dst_p->error7 = unpack_right_shift_u8(src_p[0], 7u, 0x80u);
-    dst_p->error8 = unpack_right_shift_u8(src_p[1], 0u, 0x01u);
-    dst_p->error9 = unpack_right_shift_u8(src_p[1], 1u, 0x02u);
-    dst_p->error10 = unpack_right_shift_u8(src_p[1], 2u, 0x04u);
-    dst_p->error11 = unpack_right_shift_u8(src_p[1], 3u, 0x08u);
-    dst_p->error12 = unpack_right_shift_u8(src_p[1], 4u, 0x10u);
+    dst_p->gps_no_fix = unpack_right_shift_u8(src_p[1], 0u, 0x01u);
+    dst_p->gps_stale = unpack_right_shift_u8(src_p[1], 1u, 0x02u);
+    dst_p->gps_link_slow = unpack_right_shift_u8(src_p[1], 2u, 0x04u);
+    dst_p->wss_left_no_signal = unpack_right_shift_u8(src_p[1], 3u, 0x08u);
+    dst_p->wss_right_no_signal = unpack_right_shift_u8(src_p[1], 4u, 0x10u);
     dst_p->error13 = unpack_right_shift_u8(src_p[1], 5u, 0x20u);
     dst_p->error14 = unpack_right_shift_u8(src_p[1], 6u, 0x40u);
     dst_p->error15 = unpack_right_shift_u8(src_p[1], 7u, 0x80u);
-    dst_p->error16 = unpack_right_shift_u8(src_p[2], 0u, 0x01u);
-    dst_p->error17 = unpack_right_shift_u8(src_p[2], 1u, 0x02u);
-    dst_p->error18 = unpack_right_shift_u8(src_p[2], 2u, 0x04u);
+    dst_p->can_bus_off = unpack_right_shift_u8(src_p[2], 0u, 0x01u);
+    dst_p->can_tx_overflow = unpack_right_shift_u8(src_p[2], 1u, 0x02u);
+    dst_p->can_rx_overflow = unpack_right_shift_u8(src_p[2], 2u, 0x04u);
     dst_p->error19 = unpack_right_shift_u8(src_p[2], 3u, 0x08u);
     dst_p->error20 = unpack_right_shift_u8(src_p[2], 4u, 0x10u);
     dst_p->error21 = unpack_right_shift_u8(src_p[2], 5u, 0x20u);
@@ -15778,107 +15778,107 @@ int feb_can_rear_sensor_heartbeat_message_init(struct feb_can_rear_sensor_heartb
     return 0;
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error0_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_imu_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error0_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_imu_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error0_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_imu_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error1_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_imu_read_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error1_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_imu_read_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error1_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_imu_read_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error2_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_mag_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error2_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_mag_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error2_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_mag_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error3_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_mag_read_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error3_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_mag_read_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error3_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_mag_read_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error4_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_gps_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error4_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_gps_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error4_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_gps_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error5_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_fusion_uncalibrated_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error5_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_fusion_uncalibrated_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error5_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_fusion_uncalibrated_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error6_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_lp_out_of_range_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error6_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_lp_out_of_range_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error6_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_lp_out_of_range_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
@@ -15898,77 +15898,77 @@ bool feb_can_rear_sensor_heartbeat_message_error7_is_in_range(uint8_t value)
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error8_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_gps_no_fix_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error8_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_gps_no_fix_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error8_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_gps_no_fix_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error9_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_gps_stale_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error9_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_gps_stale_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error9_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_gps_stale_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error10_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_gps_link_slow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error10_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_gps_link_slow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error10_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_gps_link_slow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error11_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_wss_left_no_signal_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error11_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_wss_left_no_signal_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error11_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_wss_left_no_signal_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error12_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_wss_right_no_signal_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error12_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_wss_right_no_signal_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error12_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_wss_right_no_signal_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
@@ -16018,47 +16018,47 @@ bool feb_can_rear_sensor_heartbeat_message_error15_is_in_range(uint8_t value)
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error16_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_can_bus_off_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error16_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_can_bus_off_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error16_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_can_bus_off_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error17_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_can_tx_overflow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error17_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_can_tx_overflow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error17_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_can_tx_overflow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error18_encode(double value)
+uint8_t feb_can_rear_sensor_heartbeat_message_can_rx_overflow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error18_decode(uint8_t value)
+double feb_can_rear_sensor_heartbeat_message_can_rx_overflow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error18_is_in_range(uint8_t value)
+bool feb_can_rear_sensor_heartbeat_message_can_rx_overflow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }

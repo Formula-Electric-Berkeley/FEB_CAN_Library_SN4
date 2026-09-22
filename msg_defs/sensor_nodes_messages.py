@@ -1395,31 +1395,52 @@ def get_CoolantPressure(frame_id: int):
          )
     return msg
 
+# ---------------------------------------------------------------------------
+# Sensor node heartbeats (0xD4 FRONT / 0xD5 REAR).
+#
+# Both variants share one bit layout so a single decoder handles either node.
+# Bits are grouped by byte: device faults, data freshness, then CAN health.
+# Unallocated bits keep their generic errorN names and are claimed by renaming
+# in place, which keeps existing bit positions stable (same convention as
+# lvpdb_messages.get_lvpdb_heartbeat).
+#
+# Transmitted by Sensor_Nodes/Core/User/Src/FEB_CAN_Heartbeat.c at 10 Hz.
+# Consumed by BMS/Core/User/Src/FEB_CAN_Heartbeat.c (FEB_HB_FSN / FEB_HB_RSN).
+# ---------------------------------------------------------------------------
+
 def get_front_sensor_heartbeat(frame_id: int):
-    error0 = cantools.db.Signal(name="error0", start=0, length=1, byte_order="little_endian", is_signed=False)
-    error1 = cantools.db.Signal(name="error1", start=1, length=1, byte_order="little_endian", is_signed=False)
-    error2 = cantools.db.Signal(name="error2", start=2, length=1, byte_order="little_endian", is_signed=False)
-    error3 = cantools.db.Signal(name="error3", start=3, length=1, byte_order="little_endian", is_signed=False)
-    error4 = cantools.db.Signal(name="error4", start=4, length=1, byte_order="little_endian", is_signed=False)
-    error5 = cantools.db.Signal(name="error5", start=5, length=1, byte_order="little_endian", is_signed=False)
-    error6 = cantools.db.Signal(name="error6", start=6, length=1, byte_order="little_endian", is_signed=False)
+
+    # Byte 0: device init / read faults
+    error0 = cantools.db.Signal(name="imu_init_failed", start=0, length=1, byte_order="little_endian", is_signed=False)
+    error1 = cantools.db.Signal(name="imu_read_failed", start=1, length=1, byte_order="little_endian", is_signed=False)
+    error2 = cantools.db.Signal(name="mag_init_failed", start=2, length=1, byte_order="little_endian", is_signed=False)
+    error3 = cantools.db.Signal(name="mag_read_failed", start=3, length=1, byte_order="little_endian", is_signed=False)
+    error4 = cantools.db.Signal(name="gps_init_failed", start=4, length=1, byte_order="little_endian", is_signed=False)
+    error5 = cantools.db.Signal(name="fusion_uncalibrated", start=5, length=1, byte_order="little_endian", is_signed=False)
+    error6 = cantools.db.Signal(name="lp_out_of_range", start=6, length=1, byte_order="little_endian", is_signed=False)
     error7 = cantools.db.Signal(name="error7", start=7, length=1, byte_order="little_endian", is_signed=False)
-    error8 = cantools.db.Signal(name="error8", start=8, length=1, byte_order="little_endian", is_signed=False)
-    error9 = cantools.db.Signal(name="error9", start=9, length=1, byte_order="little_endian", is_signed=False)
-    error10 = cantools.db.Signal(name="error10", start=10, length=1, byte_order="little_endian", is_signed=False)
-    error11 = cantools.db.Signal(name="error11", start=11, length=1, byte_order="little_endian", is_signed=False)
-    error12 = cantools.db.Signal(name="error12", start=12, length=1, byte_order="little_endian", is_signed=False)
+
+    # Byte 1: data freshness
+    error8 = cantools.db.Signal(name="gps_no_fix", start=8, length=1, byte_order="little_endian", is_signed=False)
+    error9 = cantools.db.Signal(name="gps_stale", start=9, length=1, byte_order="little_endian", is_signed=False)
+    error10 = cantools.db.Signal(name="gps_link_slow", start=10, length=1, byte_order="little_endian", is_signed=False)
+    error11 = cantools.db.Signal(name="wss_left_no_signal", start=11, length=1, byte_order="little_endian", is_signed=False)
+    error12 = cantools.db.Signal(name="wss_right_no_signal", start=12, length=1, byte_order="little_endian", is_signed=False)
     error13 = cantools.db.Signal(name="error13", start=13, length=1, byte_order="little_endian", is_signed=False)
     error14 = cantools.db.Signal(name="error14", start=14, length=1, byte_order="little_endian", is_signed=False)
     error15 = cantools.db.Signal(name="error15", start=15, length=1, byte_order="little_endian", is_signed=False)
-    error16 = cantools.db.Signal(name="error16", start=16, length=1, byte_order="little_endian", is_signed=False)
-    error17 = cantools.db.Signal(name="error17", start=17, length=1, byte_order="little_endian", is_signed=False)
-    error18 = cantools.db.Signal(name="error18", start=18, length=1, byte_order="little_endian", is_signed=False)
+
+    # Byte 2: CAN controller health
+    error16 = cantools.db.Signal(name="can_bus_off", start=16, length=1, byte_order="little_endian", is_signed=False)
+    error17 = cantools.db.Signal(name="can_tx_overflow", start=17, length=1, byte_order="little_endian", is_signed=False)
+    error18 = cantools.db.Signal(name="can_rx_overflow", start=18, length=1, byte_order="little_endian", is_signed=False)
     error19 = cantools.db.Signal(name="error19", start=19, length=1, byte_order="little_endian", is_signed=False)
     error20 = cantools.db.Signal(name="error20", start=20, length=1, byte_order="little_endian", is_signed=False)
     error21 = cantools.db.Signal(name="error21", start=21, length=1, byte_order="little_endian", is_signed=False)
     error22 = cantools.db.Signal(name="error22", start=22, length=1, byte_order="little_endian", is_signed=False)
     error23 = cantools.db.Signal(name="error23", start=23, length=1, byte_order="little_endian", is_signed=False)
+
+    # Bytes 3-7: unallocated
     error24 = cantools.db.Signal(name="error24", start=24, length=1, byte_order="little_endian", is_signed=False)
     error25 = cantools.db.Signal(name="error25", start=25, length=1, byte_order="little_endian", is_signed=False)
     error26 = cantools.db.Signal(name="error26", start=26, length=1, byte_order="little_endian", is_signed=False)
@@ -1473,7 +1494,7 @@ def get_front_sensor_heartbeat(frame_id: int):
             error32, error33, error34, error35, error36, error37, error38, error39,
             error40, error41, error42, error43, error44, error45, error46, error47,
             error48, error49, error50, error51, error52, error53, error54, error55,
-            error56, error57, error58, error59, error60, error61, error62, error63
+            error56, error57, error58, error59, error60, error61, error62, error63,
         ],
         comment="Front Sensor Heartbeat",
         strict=True
@@ -1481,33 +1502,40 @@ def get_front_sensor_heartbeat(frame_id: int):
 
     return msg
 
+
 def get_rear_sensor_heartbeat(frame_id: int):
 
-
-    error0 = cantools.db.Signal(name="error0", start=0, length=1, byte_order="little_endian", is_signed=False)
-    error1 = cantools.db.Signal(name="error1", start=1, length=1, byte_order="little_endian", is_signed=False)
-    error2 = cantools.db.Signal(name="error2", start=2, length=1, byte_order="little_endian", is_signed=False)
-    error3 = cantools.db.Signal(name="error3", start=3, length=1, byte_order="little_endian", is_signed=False)
-    error4 = cantools.db.Signal(name="error4", start=4, length=1, byte_order="little_endian", is_signed=False)
-    error5 = cantools.db.Signal(name="error5", start=5, length=1, byte_order="little_endian", is_signed=False)
-    error6 = cantools.db.Signal(name="error6", start=6, length=1, byte_order="little_endian", is_signed=False)
+    # Byte 0: device init / read faults
+    error0 = cantools.db.Signal(name="imu_init_failed", start=0, length=1, byte_order="little_endian", is_signed=False)
+    error1 = cantools.db.Signal(name="imu_read_failed", start=1, length=1, byte_order="little_endian", is_signed=False)
+    error2 = cantools.db.Signal(name="mag_init_failed", start=2, length=1, byte_order="little_endian", is_signed=False)
+    error3 = cantools.db.Signal(name="mag_read_failed", start=3, length=1, byte_order="little_endian", is_signed=False)
+    error4 = cantools.db.Signal(name="gps_init_failed", start=4, length=1, byte_order="little_endian", is_signed=False)
+    error5 = cantools.db.Signal(name="fusion_uncalibrated", start=5, length=1, byte_order="little_endian", is_signed=False)
+    error6 = cantools.db.Signal(name="lp_out_of_range", start=6, length=1, byte_order="little_endian", is_signed=False)
     error7 = cantools.db.Signal(name="error7", start=7, length=1, byte_order="little_endian", is_signed=False)
-    error8 = cantools.db.Signal(name="error8", start=8, length=1, byte_order="little_endian", is_signed=False)
-    error9 = cantools.db.Signal(name="error9", start=9, length=1, byte_order="little_endian", is_signed=False)
-    error10 = cantools.db.Signal(name="error10", start=10, length=1, byte_order="little_endian", is_signed=False)
-    error11 = cantools.db.Signal(name="error11", start=11, length=1, byte_order="little_endian", is_signed=False)
-    error12 = cantools.db.Signal(name="error12", start=12, length=1, byte_order="little_endian", is_signed=False)
+
+    # Byte 1: data freshness
+    error8 = cantools.db.Signal(name="gps_no_fix", start=8, length=1, byte_order="little_endian", is_signed=False)
+    error9 = cantools.db.Signal(name="gps_stale", start=9, length=1, byte_order="little_endian", is_signed=False)
+    error10 = cantools.db.Signal(name="gps_link_slow", start=10, length=1, byte_order="little_endian", is_signed=False)
+    error11 = cantools.db.Signal(name="wss_left_no_signal", start=11, length=1, byte_order="little_endian", is_signed=False)
+    error12 = cantools.db.Signal(name="wss_right_no_signal", start=12, length=1, byte_order="little_endian", is_signed=False)
     error13 = cantools.db.Signal(name="error13", start=13, length=1, byte_order="little_endian", is_signed=False)
     error14 = cantools.db.Signal(name="error14", start=14, length=1, byte_order="little_endian", is_signed=False)
     error15 = cantools.db.Signal(name="error15", start=15, length=1, byte_order="little_endian", is_signed=False)
-    error16 = cantools.db.Signal(name="error16", start=16, length=1, byte_order="little_endian", is_signed=False)
-    error17 = cantools.db.Signal(name="error17", start=17, length=1, byte_order="little_endian", is_signed=False)
-    error18 = cantools.db.Signal(name="error18", start=18, length=1, byte_order="little_endian", is_signed=False)
+
+    # Byte 2: CAN controller health
+    error16 = cantools.db.Signal(name="can_bus_off", start=16, length=1, byte_order="little_endian", is_signed=False)
+    error17 = cantools.db.Signal(name="can_tx_overflow", start=17, length=1, byte_order="little_endian", is_signed=False)
+    error18 = cantools.db.Signal(name="can_rx_overflow", start=18, length=1, byte_order="little_endian", is_signed=False)
     error19 = cantools.db.Signal(name="error19", start=19, length=1, byte_order="little_endian", is_signed=False)
     error20 = cantools.db.Signal(name="error20", start=20, length=1, byte_order="little_endian", is_signed=False)
     error21 = cantools.db.Signal(name="error21", start=21, length=1, byte_order="little_endian", is_signed=False)
     error22 = cantools.db.Signal(name="error22", start=22, length=1, byte_order="little_endian", is_signed=False)
     error23 = cantools.db.Signal(name="error23", start=23, length=1, byte_order="little_endian", is_signed=False)
+
+    # Bytes 3-7: unallocated
     error24 = cantools.db.Signal(name="error24", start=24, length=1, byte_order="little_endian", is_signed=False)
     error25 = cantools.db.Signal(name="error25", start=25, length=1, byte_order="little_endian", is_signed=False)
     error26 = cantools.db.Signal(name="error26", start=26, length=1, byte_order="little_endian", is_signed=False)
@@ -1561,7 +1589,7 @@ def get_rear_sensor_heartbeat(frame_id: int):
             error32, error33, error34, error35, error36, error37, error38, error39,
             error40, error41, error42, error43, error44, error45, error46, error47,
             error48, error49, error50, error51, error52, error53, error54, error55,
-            error56, error57, error58, error59, error60, error61, error62, error63
+            error56, error57, error58, error59, error60, error61, error62, error63,
         ],
         comment="Rear Sensor Heartbeat",
         strict=True

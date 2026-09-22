@@ -1681,25 +1681,25 @@ extern "C" {
 #define FEB_CAN_DCU_HEARTBEAT_ERROR61_NAME "error61"
 #define FEB_CAN_DCU_HEARTBEAT_ERROR62_NAME "error62"
 #define FEB_CAN_DCU_HEARTBEAT_ERROR63_NAME "error63"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR0_NAME "error0"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR1_NAME "error1"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR2_NAME "error2"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR3_NAME "error3"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR4_NAME "error4"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR5_NAME "error5"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR6_NAME "error6"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_IMU_INIT_FAILED_NAME "imu_init_failed"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_IMU_READ_FAILED_NAME "imu_read_failed"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_MAG_INIT_FAILED_NAME "mag_init_failed"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_MAG_READ_FAILED_NAME "mag_read_failed"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_GPS_INIT_FAILED_NAME "gps_init_failed"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_FUSION_UNCALIBRATED_NAME "fusion_uncalibrated"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_LP_OUT_OF_RANGE_NAME "lp_out_of_range"
 #define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR7_NAME "error7"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR8_NAME "error8"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR9_NAME "error9"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR10_NAME "error10"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR11_NAME "error11"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR12_NAME "error12"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_GPS_NO_FIX_NAME "gps_no_fix"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_GPS_STALE_NAME "gps_stale"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_GPS_LINK_SLOW_NAME "gps_link_slow"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_WSS_LEFT_NO_SIGNAL_NAME "wss_left_no_signal"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_WSS_RIGHT_NO_SIGNAL_NAME "wss_right_no_signal"
 #define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR13_NAME "error13"
 #define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR14_NAME "error14"
 #define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR15_NAME "error15"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR16_NAME "error16"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR17_NAME "error17"
-#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR18_NAME "error18"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_CAN_BUS_OFF_NAME "can_bus_off"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_CAN_TX_OVERFLOW_NAME "can_tx_overflow"
+#define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_CAN_RX_OVERFLOW_NAME "can_rx_overflow"
 #define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR19_NAME "error19"
 #define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR20_NAME "error20"
 #define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR21_NAME "error21"
@@ -1745,25 +1745,25 @@ extern "C" {
 #define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR61_NAME "error61"
 #define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR62_NAME "error62"
 #define FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_ERROR63_NAME "error63"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR0_NAME "error0"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR1_NAME "error1"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR2_NAME "error2"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR3_NAME "error3"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR4_NAME "error4"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR5_NAME "error5"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR6_NAME "error6"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_IMU_INIT_FAILED_NAME "imu_init_failed"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_IMU_READ_FAILED_NAME "imu_read_failed"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_MAG_INIT_FAILED_NAME "mag_init_failed"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_MAG_READ_FAILED_NAME "mag_read_failed"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_GPS_INIT_FAILED_NAME "gps_init_failed"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_FUSION_UNCALIBRATED_NAME "fusion_uncalibrated"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_LP_OUT_OF_RANGE_NAME "lp_out_of_range"
 #define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR7_NAME "error7"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR8_NAME "error8"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR9_NAME "error9"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR10_NAME "error10"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR11_NAME "error11"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR12_NAME "error12"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_GPS_NO_FIX_NAME "gps_no_fix"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_GPS_STALE_NAME "gps_stale"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_GPS_LINK_SLOW_NAME "gps_link_slow"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_WSS_LEFT_NO_SIGNAL_NAME "wss_left_no_signal"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_WSS_RIGHT_NO_SIGNAL_NAME "wss_right_no_signal"
 #define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR13_NAME "error13"
 #define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR14_NAME "error14"
 #define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR15_NAME "error15"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR16_NAME "error16"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR17_NAME "error17"
-#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR18_NAME "error18"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_CAN_BUS_OFF_NAME "can_bus_off"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_CAN_TX_OVERFLOW_NAME "can_tx_overflow"
+#define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_CAN_RX_OVERFLOW_NAME "can_rx_overflow"
 #define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR19_NAME "error19"
 #define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR20_NAME "error20"
 #define FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_ERROR21_NAME "error21"
@@ -7343,49 +7343,49 @@ struct feb_can_front_sensor_heartbeat_message_t {
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error0;
+    uint8_t imu_init_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error1;
+    uint8_t imu_read_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error2;
+    uint8_t mag_init_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error3;
+    uint8_t mag_read_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error4;
+    uint8_t gps_init_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error5;
+    uint8_t fusion_uncalibrated;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error6;
+    uint8_t lp_out_of_range;
 
     /**
      * Range: -
@@ -7399,35 +7399,35 @@ struct feb_can_front_sensor_heartbeat_message_t {
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error8;
+    uint8_t gps_no_fix;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error9;
+    uint8_t gps_stale;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error10;
+    uint8_t gps_link_slow;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error11;
+    uint8_t wss_left_no_signal;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error12;
+    uint8_t wss_right_no_signal;
 
     /**
      * Range: -
@@ -7455,21 +7455,21 @@ struct feb_can_front_sensor_heartbeat_message_t {
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error16;
+    uint8_t can_bus_off;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error17;
+    uint8_t can_tx_overflow;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error18;
+    uint8_t can_rx_overflow;
 
     /**
      * Range: -
@@ -7800,49 +7800,49 @@ struct feb_can_rear_sensor_heartbeat_message_t {
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error0;
+    uint8_t imu_init_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error1;
+    uint8_t imu_read_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error2;
+    uint8_t mag_init_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error3;
+    uint8_t mag_read_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error4;
+    uint8_t gps_init_failed;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error5;
+    uint8_t fusion_uncalibrated;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error6;
+    uint8_t lp_out_of_range;
 
     /**
      * Range: -
@@ -7856,35 +7856,35 @@ struct feb_can_rear_sensor_heartbeat_message_t {
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error8;
+    uint8_t gps_no_fix;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error9;
+    uint8_t gps_stale;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error10;
+    uint8_t gps_link_slow;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error11;
+    uint8_t wss_left_no_signal;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error12;
+    uint8_t wss_right_no_signal;
 
     /**
      * Range: -
@@ -7912,21 +7912,21 @@ struct feb_can_rear_sensor_heartbeat_message_t {
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error16;
+    uint8_t can_bus_off;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error17;
+    uint8_t can_tx_overflow;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint8_t error18;
+    uint8_t can_rx_overflow;
 
     /**
      * Range: -
@@ -32615,7 +32615,7 @@ int feb_can_front_sensor_heartbeat_message_init(struct feb_can_front_sensor_hear
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error0_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_imu_init_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32624,7 +32624,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error0_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error0_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_imu_init_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32633,7 +32633,7 @@ double feb_can_front_sensor_heartbeat_message_error0_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error0_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_imu_init_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32642,7 +32642,7 @@ bool feb_can_front_sensor_heartbeat_message_error0_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error1_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_imu_read_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32651,7 +32651,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error1_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error1_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_imu_read_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32660,7 +32660,7 @@ double feb_can_front_sensor_heartbeat_message_error1_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error1_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_imu_read_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32669,7 +32669,7 @@ bool feb_can_front_sensor_heartbeat_message_error1_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error2_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_mag_init_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32678,7 +32678,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error2_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error2_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_mag_init_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32687,7 +32687,7 @@ double feb_can_front_sensor_heartbeat_message_error2_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error2_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_mag_init_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32696,7 +32696,7 @@ bool feb_can_front_sensor_heartbeat_message_error2_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error3_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_mag_read_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32705,7 +32705,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error3_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error3_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_mag_read_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32714,7 +32714,7 @@ double feb_can_front_sensor_heartbeat_message_error3_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error3_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_mag_read_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32723,7 +32723,7 @@ bool feb_can_front_sensor_heartbeat_message_error3_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error4_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_gps_init_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32732,7 +32732,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error4_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error4_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_gps_init_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32741,7 +32741,7 @@ double feb_can_front_sensor_heartbeat_message_error4_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error4_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_gps_init_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32750,7 +32750,7 @@ bool feb_can_front_sensor_heartbeat_message_error4_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error5_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_fusion_uncalibrated_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32759,7 +32759,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error5_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error5_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_fusion_uncalibrated_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32768,7 +32768,7 @@ double feb_can_front_sensor_heartbeat_message_error5_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error5_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_fusion_uncalibrated_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32777,7 +32777,7 @@ bool feb_can_front_sensor_heartbeat_message_error5_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error6_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_lp_out_of_range_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32786,7 +32786,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error6_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error6_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_lp_out_of_range_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32795,7 +32795,7 @@ double feb_can_front_sensor_heartbeat_message_error6_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error6_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_lp_out_of_range_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32831,7 +32831,7 @@ bool feb_can_front_sensor_heartbeat_message_error7_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error8_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_gps_no_fix_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32840,7 +32840,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error8_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error8_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_gps_no_fix_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32849,7 +32849,7 @@ double feb_can_front_sensor_heartbeat_message_error8_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error8_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_gps_no_fix_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32858,7 +32858,7 @@ bool feb_can_front_sensor_heartbeat_message_error8_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error9_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_gps_stale_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32867,7 +32867,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error9_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error9_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_gps_stale_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32876,7 +32876,7 @@ double feb_can_front_sensor_heartbeat_message_error9_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error9_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_gps_stale_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32885,7 +32885,7 @@ bool feb_can_front_sensor_heartbeat_message_error9_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error10_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_gps_link_slow_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32894,7 +32894,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error10_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error10_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_gps_link_slow_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32903,7 +32903,7 @@ double feb_can_front_sensor_heartbeat_message_error10_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error10_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_gps_link_slow_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32912,7 +32912,7 @@ bool feb_can_front_sensor_heartbeat_message_error10_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error11_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_wss_left_no_signal_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32921,7 +32921,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error11_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error11_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_wss_left_no_signal_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32930,7 +32930,7 @@ double feb_can_front_sensor_heartbeat_message_error11_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error11_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_wss_left_no_signal_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32939,7 +32939,7 @@ bool feb_can_front_sensor_heartbeat_message_error11_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error12_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_wss_right_no_signal_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32948,7 +32948,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error12_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error12_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_wss_right_no_signal_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32957,7 +32957,7 @@ double feb_can_front_sensor_heartbeat_message_error12_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error12_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_wss_right_no_signal_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33047,7 +33047,7 @@ bool feb_can_front_sensor_heartbeat_message_error15_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error16_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_can_bus_off_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33056,7 +33056,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error16_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error16_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_can_bus_off_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33065,7 +33065,7 @@ double feb_can_front_sensor_heartbeat_message_error16_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error16_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_can_bus_off_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33074,7 +33074,7 @@ bool feb_can_front_sensor_heartbeat_message_error16_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error17_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_can_tx_overflow_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33083,7 +33083,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error17_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error17_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_can_tx_overflow_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33092,7 +33092,7 @@ double feb_can_front_sensor_heartbeat_message_error17_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error17_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_can_tx_overflow_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33101,7 +33101,7 @@ bool feb_can_front_sensor_heartbeat_message_error17_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_front_sensor_heartbeat_message_error18_encode(double value);
+uint8_t feb_can_front_sensor_heartbeat_message_can_rx_overflow_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33110,7 +33110,7 @@ uint8_t feb_can_front_sensor_heartbeat_message_error18_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_front_sensor_heartbeat_message_error18_decode(uint8_t value);
+double feb_can_front_sensor_heartbeat_message_can_rx_overflow_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33119,7 +33119,7 @@ double feb_can_front_sensor_heartbeat_message_error18_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_front_sensor_heartbeat_message_error18_is_in_range(uint8_t value);
+bool feb_can_front_sensor_heartbeat_message_can_rx_overflow_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34380,7 +34380,7 @@ int feb_can_rear_sensor_heartbeat_message_init(struct feb_can_rear_sensor_heartb
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error0_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_imu_init_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34389,7 +34389,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error0_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error0_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_imu_init_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34398,7 +34398,7 @@ double feb_can_rear_sensor_heartbeat_message_error0_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error0_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_imu_init_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34407,7 +34407,7 @@ bool feb_can_rear_sensor_heartbeat_message_error0_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error1_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_imu_read_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34416,7 +34416,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error1_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error1_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_imu_read_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34425,7 +34425,7 @@ double feb_can_rear_sensor_heartbeat_message_error1_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error1_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_imu_read_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34434,7 +34434,7 @@ bool feb_can_rear_sensor_heartbeat_message_error1_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error2_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_mag_init_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34443,7 +34443,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error2_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error2_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_mag_init_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34452,7 +34452,7 @@ double feb_can_rear_sensor_heartbeat_message_error2_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error2_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_mag_init_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34461,7 +34461,7 @@ bool feb_can_rear_sensor_heartbeat_message_error2_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error3_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_mag_read_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34470,7 +34470,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error3_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error3_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_mag_read_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34479,7 +34479,7 @@ double feb_can_rear_sensor_heartbeat_message_error3_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error3_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_mag_read_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34488,7 +34488,7 @@ bool feb_can_rear_sensor_heartbeat_message_error3_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error4_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_gps_init_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34497,7 +34497,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error4_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error4_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_gps_init_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34506,7 +34506,7 @@ double feb_can_rear_sensor_heartbeat_message_error4_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error4_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_gps_init_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34515,7 +34515,7 @@ bool feb_can_rear_sensor_heartbeat_message_error4_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error5_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_fusion_uncalibrated_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34524,7 +34524,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error5_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error5_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_fusion_uncalibrated_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34533,7 +34533,7 @@ double feb_can_rear_sensor_heartbeat_message_error5_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error5_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_fusion_uncalibrated_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34542,7 +34542,7 @@ bool feb_can_rear_sensor_heartbeat_message_error5_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error6_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_lp_out_of_range_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34551,7 +34551,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error6_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error6_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_lp_out_of_range_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34560,7 +34560,7 @@ double feb_can_rear_sensor_heartbeat_message_error6_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error6_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_lp_out_of_range_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34596,7 +34596,7 @@ bool feb_can_rear_sensor_heartbeat_message_error7_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error8_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_gps_no_fix_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34605,7 +34605,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error8_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error8_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_gps_no_fix_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34614,7 +34614,7 @@ double feb_can_rear_sensor_heartbeat_message_error8_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error8_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_gps_no_fix_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34623,7 +34623,7 @@ bool feb_can_rear_sensor_heartbeat_message_error8_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error9_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_gps_stale_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34632,7 +34632,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error9_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error9_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_gps_stale_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34641,7 +34641,7 @@ double feb_can_rear_sensor_heartbeat_message_error9_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error9_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_gps_stale_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34650,7 +34650,7 @@ bool feb_can_rear_sensor_heartbeat_message_error9_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error10_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_gps_link_slow_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34659,7 +34659,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error10_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error10_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_gps_link_slow_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34668,7 +34668,7 @@ double feb_can_rear_sensor_heartbeat_message_error10_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error10_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_gps_link_slow_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34677,7 +34677,7 @@ bool feb_can_rear_sensor_heartbeat_message_error10_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error11_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_wss_left_no_signal_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34686,7 +34686,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error11_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error11_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_wss_left_no_signal_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34695,7 +34695,7 @@ double feb_can_rear_sensor_heartbeat_message_error11_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error11_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_wss_left_no_signal_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34704,7 +34704,7 @@ bool feb_can_rear_sensor_heartbeat_message_error11_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error12_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_wss_right_no_signal_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34713,7 +34713,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error12_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error12_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_wss_right_no_signal_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34722,7 +34722,7 @@ double feb_can_rear_sensor_heartbeat_message_error12_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error12_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_wss_right_no_signal_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34812,7 +34812,7 @@ bool feb_can_rear_sensor_heartbeat_message_error15_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error16_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_can_bus_off_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34821,7 +34821,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error16_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error16_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_can_bus_off_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34830,7 +34830,7 @@ double feb_can_rear_sensor_heartbeat_message_error16_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error16_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_can_bus_off_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34839,7 +34839,7 @@ bool feb_can_rear_sensor_heartbeat_message_error16_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error17_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_can_tx_overflow_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34848,7 +34848,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error17_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error17_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_can_tx_overflow_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34857,7 +34857,7 @@ double feb_can_rear_sensor_heartbeat_message_error17_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error17_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_can_tx_overflow_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34866,7 +34866,7 @@ bool feb_can_rear_sensor_heartbeat_message_error17_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_rear_sensor_heartbeat_message_error18_encode(double value);
+uint8_t feb_can_rear_sensor_heartbeat_message_can_rx_overflow_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34875,7 +34875,7 @@ uint8_t feb_can_rear_sensor_heartbeat_message_error18_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_rear_sensor_heartbeat_message_error18_decode(uint8_t value);
+double feb_can_rear_sensor_heartbeat_message_can_rx_overflow_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34884,7 +34884,7 @@ double feb_can_rear_sensor_heartbeat_message_error18_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_rear_sensor_heartbeat_message_error18_is_in_range(uint8_t value);
+bool feb_can_rear_sensor_heartbeat_message_can_rx_overflow_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
