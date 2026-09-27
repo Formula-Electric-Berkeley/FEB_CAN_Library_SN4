@@ -125,8 +125,8 @@ extern "C" {
 #define FEB_CAN_DASH_HEARTBEAT_FRAME_ID (0xd1u)
 #define FEB_CAN_LVPDB_HEARTBEAT_FRAME_ID (0xd2u)
 #define FEB_CAN_DCU_HEARTBEAT_FRAME_ID (0xd3u)
-#define FEB_CAN_HEARTBEAT_FRONT_FRAME_ID (0xd4u)
-#define FEB_CAN_HEARTBEAT_REAR_FRAME_ID (0xd5u)
+#define FEB_CAN_SN_FRONT_HEARTBEAT_FRAME_ID (0xd4u)
+#define FEB_CAN_SN_REAR_HEARTBEAT_FRAME_ID (0xd5u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER1_FRAME_ID (0xe0u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_FRAME_ID (0xe1u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_FRAME_ID (0xe2u)
@@ -227,8 +227,8 @@ extern "C" {
 #define FEB_CAN_DASH_HEARTBEAT_LENGTH (8u)
 #define FEB_CAN_LVPDB_HEARTBEAT_LENGTH (8u)
 #define FEB_CAN_DCU_HEARTBEAT_LENGTH (8u)
-#define FEB_CAN_HEARTBEAT_FRONT_LENGTH (8u)
-#define FEB_CAN_HEARTBEAT_REAR_LENGTH (8u)
+#define FEB_CAN_SN_FRONT_HEARTBEAT_LENGTH (8u)
+#define FEB_CAN_SN_REAR_HEARTBEAT_LENGTH (8u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER1_LENGTH (8u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_LENGTH (8u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_LENGTH (8u)
@@ -329,8 +329,8 @@ extern "C" {
 #define FEB_CAN_DASH_HEARTBEAT_IS_EXTENDED (0)
 #define FEB_CAN_LVPDB_HEARTBEAT_IS_EXTENDED (0)
 #define FEB_CAN_DCU_HEARTBEAT_IS_EXTENDED (0)
-#define FEB_CAN_HEARTBEAT_FRONT_IS_EXTENDED (0)
-#define FEB_CAN_HEARTBEAT_REAR_IS_EXTENDED (0)
+#define FEB_CAN_SN_FRONT_HEARTBEAT_IS_EXTENDED (0)
+#define FEB_CAN_SN_REAR_HEARTBEAT_IS_EXTENDED (0)
 #define FEB_CAN_FEB_PING_PONG_COUNTER1_IS_EXTENDED (0)
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_IS_EXTENDED (0)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_IS_EXTENDED (0)
@@ -427,8 +427,8 @@ extern "C" {
 #define FEB_CAN_DASH_HEARTBEAT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_LVPDB_HEARTBEAT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_DCU_HEARTBEAT_CYCLE_TIME_MS (100u)
-#define FEB_CAN_HEARTBEAT_FRONT_CYCLE_TIME_MS (100u)
-#define FEB_CAN_HEARTBEAT_REAR_CYCLE_TIME_MS (100u)
+#define FEB_CAN_SN_FRONT_HEARTBEAT_CYCLE_TIME_MS (100u)
+#define FEB_CAN_SN_REAR_HEARTBEAT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER1_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_CYCLE_TIME_MS (100u)
@@ -581,8 +581,8 @@ extern "C" {
 #define FEB_CAN_DASH_HEARTBEAT_NAME "dash_heartbeat"
 #define FEB_CAN_LVPDB_HEARTBEAT_NAME "lvpdb_heartbeat"
 #define FEB_CAN_DCU_HEARTBEAT_NAME "dcu_heartbeat"
-#define FEB_CAN_HEARTBEAT_FRONT_NAME "heartbeat_front"
-#define FEB_CAN_HEARTBEAT_REAR_NAME "heartbeat_rear"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_NAME "sn_front_heartbeat"
+#define FEB_CAN_SN_REAR_HEARTBEAT_NAME "sn_rear_heartbeat"
 #define FEB_CAN_FEB_PING_PONG_COUNTER1_NAME "FEB_PING_PONG_counter1"
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_NAME "FEB_PING_PONG_counter2"
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_NAME "FEB_PING_PONG_counter3"
@@ -1174,134 +1174,134 @@ extern "C" {
 #define FEB_CAN_DCU_HEARTBEAT_ERROR61_NAME "error61"
 #define FEB_CAN_DCU_HEARTBEAT_ERROR62_NAME "error62"
 #define FEB_CAN_DCU_HEARTBEAT_ERROR63_NAME "error63"
-#define FEB_CAN_HEARTBEAT_FRONT_IMU_INIT_FAILED_NAME "imu_init_failed"
-#define FEB_CAN_HEARTBEAT_FRONT_IMU_READ_FAILED_NAME "imu_read_failed"
-#define FEB_CAN_HEARTBEAT_FRONT_MAG_INIT_FAILED_NAME "mag_init_failed"
-#define FEB_CAN_HEARTBEAT_FRONT_MAG_READ_FAILED_NAME "mag_read_failed"
-#define FEB_CAN_HEARTBEAT_FRONT_GPS_INIT_FAILED_NAME "gps_init_failed"
-#define FEB_CAN_HEARTBEAT_FRONT_FUSION_UNCALIBRATED_NAME "fusion_uncalibrated"
-#define FEB_CAN_HEARTBEAT_FRONT_LP_OUT_OF_RANGE_NAME "lp_out_of_range"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR7_NAME "error7"
-#define FEB_CAN_HEARTBEAT_FRONT_GPS_NO_FIX_NAME "gps_no_fix"
-#define FEB_CAN_HEARTBEAT_FRONT_GPS_STALE_NAME "gps_stale"
-#define FEB_CAN_HEARTBEAT_FRONT_GPS_LINK_SLOW_NAME "gps_link_slow"
-#define FEB_CAN_HEARTBEAT_FRONT_WSS_LEFT_NO_SIGNAL_NAME "wss_left_no_signal"
-#define FEB_CAN_HEARTBEAT_FRONT_WSS_RIGHT_NO_SIGNAL_NAME "wss_right_no_signal"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR13_NAME "error13"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR14_NAME "error14"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR15_NAME "error15"
-#define FEB_CAN_HEARTBEAT_FRONT_CAN_BUS_OFF_NAME "can_bus_off"
-#define FEB_CAN_HEARTBEAT_FRONT_CAN_TX_OVERFLOW_NAME "can_tx_overflow"
-#define FEB_CAN_HEARTBEAT_FRONT_CAN_RX_OVERFLOW_NAME "can_rx_overflow"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR19_NAME "error19"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR20_NAME "error20"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR21_NAME "error21"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR22_NAME "error22"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR23_NAME "error23"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR24_NAME "error24"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR25_NAME "error25"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR26_NAME "error26"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR27_NAME "error27"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR28_NAME "error28"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR29_NAME "error29"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR30_NAME "error30"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR31_NAME "error31"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR32_NAME "error32"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR33_NAME "error33"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR34_NAME "error34"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR35_NAME "error35"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR36_NAME "error36"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR37_NAME "error37"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR38_NAME "error38"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR39_NAME "error39"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR40_NAME "error40"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR41_NAME "error41"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR42_NAME "error42"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR43_NAME "error43"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR44_NAME "error44"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR45_NAME "error45"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR46_NAME "error46"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR47_NAME "error47"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR48_NAME "error48"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR49_NAME "error49"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR50_NAME "error50"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR51_NAME "error51"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR52_NAME "error52"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR53_NAME "error53"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR54_NAME "error54"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR55_NAME "error55"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR56_NAME "error56"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR57_NAME "error57"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR58_NAME "error58"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR59_NAME "error59"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR60_NAME "error60"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR61_NAME "error61"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR62_NAME "error62"
-#define FEB_CAN_HEARTBEAT_FRONT_ERROR63_NAME "error63"
-#define FEB_CAN_HEARTBEAT_REAR_IMU_INIT_FAILED_NAME "imu_init_failed"
-#define FEB_CAN_HEARTBEAT_REAR_IMU_READ_FAILED_NAME "imu_read_failed"
-#define FEB_CAN_HEARTBEAT_REAR_MAG_INIT_FAILED_NAME "mag_init_failed"
-#define FEB_CAN_HEARTBEAT_REAR_MAG_READ_FAILED_NAME "mag_read_failed"
-#define FEB_CAN_HEARTBEAT_REAR_GPS_INIT_FAILED_NAME "gps_init_failed"
-#define FEB_CAN_HEARTBEAT_REAR_FUSION_UNCALIBRATED_NAME "fusion_uncalibrated"
-#define FEB_CAN_HEARTBEAT_REAR_LP_OUT_OF_RANGE_NAME "lp_out_of_range"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR7_NAME "error7"
-#define FEB_CAN_HEARTBEAT_REAR_GPS_NO_FIX_NAME "gps_no_fix"
-#define FEB_CAN_HEARTBEAT_REAR_GPS_STALE_NAME "gps_stale"
-#define FEB_CAN_HEARTBEAT_REAR_GPS_LINK_SLOW_NAME "gps_link_slow"
-#define FEB_CAN_HEARTBEAT_REAR_WSS_LEFT_NO_SIGNAL_NAME "wss_left_no_signal"
-#define FEB_CAN_HEARTBEAT_REAR_WSS_RIGHT_NO_SIGNAL_NAME "wss_right_no_signal"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR13_NAME "error13"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR14_NAME "error14"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR15_NAME "error15"
-#define FEB_CAN_HEARTBEAT_REAR_CAN_BUS_OFF_NAME "can_bus_off"
-#define FEB_CAN_HEARTBEAT_REAR_CAN_TX_OVERFLOW_NAME "can_tx_overflow"
-#define FEB_CAN_HEARTBEAT_REAR_CAN_RX_OVERFLOW_NAME "can_rx_overflow"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR19_NAME "error19"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR20_NAME "error20"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR21_NAME "error21"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR22_NAME "error22"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR23_NAME "error23"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR24_NAME "error24"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR25_NAME "error25"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR26_NAME "error26"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR27_NAME "error27"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR28_NAME "error28"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR29_NAME "error29"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR30_NAME "error30"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR31_NAME "error31"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR32_NAME "error32"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR33_NAME "error33"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR34_NAME "error34"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR35_NAME "error35"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR36_NAME "error36"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR37_NAME "error37"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR38_NAME "error38"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR39_NAME "error39"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR40_NAME "error40"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR41_NAME "error41"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR42_NAME "error42"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR43_NAME "error43"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR44_NAME "error44"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR45_NAME "error45"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR46_NAME "error46"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR47_NAME "error47"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR48_NAME "error48"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR49_NAME "error49"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR50_NAME "error50"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR51_NAME "error51"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR52_NAME "error52"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR53_NAME "error53"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR54_NAME "error54"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR55_NAME "error55"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR56_NAME "error56"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR57_NAME "error57"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR58_NAME "error58"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR59_NAME "error59"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR60_NAME "error60"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR61_NAME "error61"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR62_NAME "error62"
-#define FEB_CAN_HEARTBEAT_REAR_ERROR63_NAME "error63"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_IMU_INIT_FAILED_NAME "imu_init_failed"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_IMU_READ_FAILED_NAME "imu_read_failed"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_MAG_INIT_FAILED_NAME "mag_init_failed"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_MAG_READ_FAILED_NAME "mag_read_failed"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_GPS_INIT_FAILED_NAME "gps_init_failed"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_FUSION_UNCALIBRATED_NAME "fusion_uncalibrated"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_LP_OUT_OF_RANGE_NAME "lp_out_of_range"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR7_NAME "error7"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_GPS_NO_FIX_NAME "gps_no_fix"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_GPS_STALE_NAME "gps_stale"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_GPS_LINK_SLOW_NAME "gps_link_slow"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_WSS_LEFT_NO_SIGNAL_NAME "wss_left_no_signal"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_WSS_RIGHT_NO_SIGNAL_NAME "wss_right_no_signal"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR13_NAME "error13"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR14_NAME "error14"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR15_NAME "error15"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_CAN_BUS_OFF_NAME "can_bus_off"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_CAN_TX_OVERFLOW_NAME "can_tx_overflow"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_CAN_RX_OVERFLOW_NAME "can_rx_overflow"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR19_NAME "error19"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR20_NAME "error20"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR21_NAME "error21"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR22_NAME "error22"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR23_NAME "error23"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR24_NAME "error24"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR25_NAME "error25"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR26_NAME "error26"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR27_NAME "error27"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR28_NAME "error28"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR29_NAME "error29"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR30_NAME "error30"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR31_NAME "error31"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR32_NAME "error32"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR33_NAME "error33"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR34_NAME "error34"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR35_NAME "error35"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR36_NAME "error36"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR37_NAME "error37"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR38_NAME "error38"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR39_NAME "error39"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR40_NAME "error40"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR41_NAME "error41"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR42_NAME "error42"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR43_NAME "error43"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR44_NAME "error44"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR45_NAME "error45"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR46_NAME "error46"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR47_NAME "error47"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR48_NAME "error48"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR49_NAME "error49"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR50_NAME "error50"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR51_NAME "error51"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR52_NAME "error52"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR53_NAME "error53"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR54_NAME "error54"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR55_NAME "error55"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR56_NAME "error56"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR57_NAME "error57"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR58_NAME "error58"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR59_NAME "error59"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR60_NAME "error60"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR61_NAME "error61"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR62_NAME "error62"
+#define FEB_CAN_SN_FRONT_HEARTBEAT_ERROR63_NAME "error63"
+#define FEB_CAN_SN_REAR_HEARTBEAT_IMU_INIT_FAILED_NAME "imu_init_failed"
+#define FEB_CAN_SN_REAR_HEARTBEAT_IMU_READ_FAILED_NAME "imu_read_failed"
+#define FEB_CAN_SN_REAR_HEARTBEAT_MAG_INIT_FAILED_NAME "mag_init_failed"
+#define FEB_CAN_SN_REAR_HEARTBEAT_MAG_READ_FAILED_NAME "mag_read_failed"
+#define FEB_CAN_SN_REAR_HEARTBEAT_GPS_INIT_FAILED_NAME "gps_init_failed"
+#define FEB_CAN_SN_REAR_HEARTBEAT_FUSION_UNCALIBRATED_NAME "fusion_uncalibrated"
+#define FEB_CAN_SN_REAR_HEARTBEAT_LP_OUT_OF_RANGE_NAME "lp_out_of_range"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR7_NAME "error7"
+#define FEB_CAN_SN_REAR_HEARTBEAT_GPS_NO_FIX_NAME "gps_no_fix"
+#define FEB_CAN_SN_REAR_HEARTBEAT_GPS_STALE_NAME "gps_stale"
+#define FEB_CAN_SN_REAR_HEARTBEAT_GPS_LINK_SLOW_NAME "gps_link_slow"
+#define FEB_CAN_SN_REAR_HEARTBEAT_WSS_LEFT_NO_SIGNAL_NAME "wss_left_no_signal"
+#define FEB_CAN_SN_REAR_HEARTBEAT_WSS_RIGHT_NO_SIGNAL_NAME "wss_right_no_signal"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR13_NAME "error13"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR14_NAME "error14"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR15_NAME "error15"
+#define FEB_CAN_SN_REAR_HEARTBEAT_CAN_BUS_OFF_NAME "can_bus_off"
+#define FEB_CAN_SN_REAR_HEARTBEAT_CAN_TX_OVERFLOW_NAME "can_tx_overflow"
+#define FEB_CAN_SN_REAR_HEARTBEAT_CAN_RX_OVERFLOW_NAME "can_rx_overflow"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR19_NAME "error19"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR20_NAME "error20"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR21_NAME "error21"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR22_NAME "error22"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR23_NAME "error23"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR24_NAME "error24"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR25_NAME "error25"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR26_NAME "error26"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR27_NAME "error27"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR28_NAME "error28"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR29_NAME "error29"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR30_NAME "error30"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR31_NAME "error31"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR32_NAME "error32"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR33_NAME "error33"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR34_NAME "error34"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR35_NAME "error35"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR36_NAME "error36"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR37_NAME "error37"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR38_NAME "error38"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR39_NAME "error39"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR40_NAME "error40"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR41_NAME "error41"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR42_NAME "error42"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR43_NAME "error43"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR44_NAME "error44"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR45_NAME "error45"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR46_NAME "error46"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR47_NAME "error47"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR48_NAME "error48"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR49_NAME "error49"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR50_NAME "error50"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR51_NAME "error51"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR52_NAME "error52"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR53_NAME "error53"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR54_NAME "error54"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR55_NAME "error55"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR56_NAME "error56"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR57_NAME "error57"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR58_NAME "error58"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR59_NAME "error59"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR60_NAME "error60"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR61_NAME "error61"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR62_NAME "error62"
+#define FEB_CAN_SN_REAR_HEARTBEAT_ERROR63_NAME "error63"
 #define FEB_CAN_FEB_PING_PONG_COUNTER1_COUNTER_NAME "counter"
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_COUNTER_NAME "counter"
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_COUNTER_NAME "counter"
@@ -6853,16 +6853,14 @@ struct feb_can_dcu_heartbeat_t {
 };
 
 /**
- * Signals in message heartbeat_front.
+ * Signals in message sn_front_heartbeat.
  *
  * Sensor Node Heartbeat
  *
  * All signal values are as on the CAN bus.
  */
-struct feb_can_heartbeat_front_t {
+struct feb_can_sn_front_heartbeat_t {
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6870,8 +6868,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t imu_init_failed;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6879,8 +6875,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t imu_read_failed;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6888,8 +6882,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t mag_init_failed;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6897,8 +6889,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t mag_read_failed;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6906,8 +6896,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t gps_init_failed;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6915,8 +6903,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t fusion_uncalibrated;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6924,8 +6910,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t lp_out_of_range;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6933,8 +6917,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error7;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6942,8 +6924,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t gps_no_fix;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6951,8 +6931,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t gps_stale;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6960,8 +6938,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t gps_link_slow;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6969,8 +6945,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t wss_left_no_signal;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6978,8 +6952,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t wss_right_no_signal;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6987,8 +6959,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error13;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -6996,8 +6966,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error14;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7005,8 +6973,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error15;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7014,8 +6980,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t can_bus_off;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7023,8 +6987,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t can_tx_overflow;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7032,8 +6994,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t can_rx_overflow;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7041,8 +7001,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error19;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7050,8 +7008,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error20;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7059,8 +7015,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error21;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7068,8 +7022,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error22;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7077,8 +7029,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error23;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7086,8 +7036,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error24;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7095,8 +7043,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error25;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7104,8 +7050,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error26;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7113,8 +7057,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error27;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7122,8 +7064,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error28;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7131,8 +7071,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error29;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7140,8 +7078,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error30;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7149,8 +7085,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error31;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7158,8 +7092,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error32;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7167,8 +7099,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error33;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7176,8 +7106,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error34;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7185,8 +7113,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error35;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7194,8 +7120,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error36;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7203,8 +7127,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error37;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7212,8 +7134,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error38;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7221,8 +7141,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error39;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7230,8 +7148,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error40;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7239,8 +7155,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error41;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7248,8 +7162,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error42;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7257,8 +7169,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error43;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7266,8 +7176,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error44;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7275,8 +7183,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error45;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7284,8 +7190,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error46;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7293,8 +7197,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error47;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7302,8 +7204,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error48;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7311,8 +7211,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error49;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7320,8 +7218,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error50;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7329,8 +7225,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error51;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7338,8 +7232,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error52;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7347,8 +7239,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error53;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7356,8 +7246,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error54;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7365,8 +7253,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error55;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7374,8 +7260,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error56;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7383,8 +7267,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error57;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7392,8 +7274,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error58;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7401,8 +7281,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error59;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7410,8 +7288,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error60;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7419,8 +7295,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error61;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7428,8 +7302,6 @@ struct feb_can_heartbeat_front_t {
     uint8_t error62;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7438,16 +7310,14 @@ struct feb_can_heartbeat_front_t {
 };
 
 /**
- * Signals in message heartbeat_rear.
+ * Signals in message sn_rear_heartbeat.
  *
  * Sensor Node Heartbeat
  *
  * All signal values are as on the CAN bus.
  */
-struct feb_can_heartbeat_rear_t {
+struct feb_can_sn_rear_heartbeat_t {
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7455,8 +7325,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t imu_init_failed;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7464,8 +7332,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t imu_read_failed;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7473,8 +7339,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t mag_init_failed;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7482,8 +7346,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t mag_read_failed;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7491,8 +7353,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t gps_init_failed;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7500,8 +7360,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t fusion_uncalibrated;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7509,8 +7367,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t lp_out_of_range;
 
     /**
-     * Device init / read fault
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7518,8 +7374,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error7;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7527,8 +7381,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t gps_no_fix;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7536,8 +7388,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t gps_stale;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7545,8 +7395,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t gps_link_slow;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7554,8 +7402,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t wss_left_no_signal;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7563,8 +7409,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t wss_right_no_signal;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7572,8 +7416,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error13;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7581,8 +7423,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error14;
 
     /**
-     * Data freshness
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7590,8 +7430,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error15;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7599,8 +7437,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t can_bus_off;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7608,8 +7444,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t can_tx_overflow;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7617,8 +7451,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t can_rx_overflow;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7626,8 +7458,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error19;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7635,8 +7465,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error20;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7644,8 +7472,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error21;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7653,8 +7479,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error22;
 
     /**
-     * CAN controller health
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7662,8 +7486,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error23;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7671,8 +7493,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error24;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7680,8 +7500,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error25;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7689,8 +7507,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error26;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7698,8 +7514,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error27;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7707,8 +7521,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error28;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7716,8 +7528,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error29;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7725,8 +7535,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error30;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7734,8 +7542,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error31;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7743,8 +7549,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error32;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7752,8 +7556,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error33;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7761,8 +7563,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error34;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7770,8 +7570,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error35;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7779,8 +7577,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error36;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7788,8 +7584,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error37;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7797,8 +7591,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error38;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7806,8 +7598,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error39;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7815,8 +7605,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error40;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7824,8 +7612,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error41;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7833,8 +7619,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error42;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7842,8 +7626,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error43;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7851,8 +7633,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error44;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7860,8 +7640,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error45;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7869,8 +7647,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error46;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7878,8 +7654,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error47;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7887,8 +7661,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error48;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7896,8 +7668,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error49;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7905,8 +7675,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error50;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7914,8 +7682,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error51;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7923,8 +7689,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error52;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7932,8 +7696,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error53;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7941,8 +7703,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error54;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7950,8 +7710,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error55;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7959,8 +7717,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error56;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7968,8 +7724,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error57;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7977,8 +7731,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error58;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7986,8 +7738,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error59;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -7995,8 +7745,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error60;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -8004,8 +7752,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error61;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -8013,8 +7759,6 @@ struct feb_can_heartbeat_rear_t {
     uint8_t error62;
 
     /**
-     * Unallocated
-     *
      * Range: -
      * Scale: 1
      * Offset: 0
@@ -30925,7 +30669,7 @@ double feb_can_dcu_heartbeat_error63_decode(uint8_t value);
 bool feb_can_dcu_heartbeat_error63_is_in_range(uint8_t value);
 
 /**
- * Pack message heartbeat_front.
+ * Pack message sn_front_heartbeat.
  *
  * @param[out] dst_p Buffer to pack the message into.
  * @param[in] src_p Data to pack.
@@ -30933,13 +30677,13 @@ bool feb_can_dcu_heartbeat_error63_is_in_range(uint8_t value);
  *
  * @return Size of packed data, or negative error code.
  */
-int feb_can_heartbeat_front_pack(
+int feb_can_sn_front_heartbeat_pack(
     uint8_t *dst_p,
-    const struct feb_can_heartbeat_front_t *src_p,
+    const struct feb_can_sn_front_heartbeat_t *src_p,
     size_t size);
 
 /**
- * Unpack message heartbeat_front.
+ * Unpack message sn_front_heartbeat.
  *
  * @param[out] dst_p Object to unpack the message into.
  * @param[in] src_p Message to unpack.
@@ -30947,19 +30691,19 @@ int feb_can_heartbeat_front_pack(
  *
  * @return zero(0) or negative error code.
  */
-int feb_can_heartbeat_front_unpack(
-    struct feb_can_heartbeat_front_t *dst_p,
+int feb_can_sn_front_heartbeat_unpack(
+    struct feb_can_sn_front_heartbeat_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
- * Init message fields to default values from heartbeat_front.
+ * Init message fields to default values from sn_front_heartbeat.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int feb_can_heartbeat_front_init(struct feb_can_heartbeat_front_t *msg_p);
+int feb_can_sn_front_heartbeat_init(struct feb_can_sn_front_heartbeat_t *msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -30968,7 +30712,7 @@ int feb_can_heartbeat_front_init(struct feb_can_heartbeat_front_t *msg_p);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_imu_init_failed_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_imu_init_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -30977,7 +30721,7 @@ uint8_t feb_can_heartbeat_front_imu_init_failed_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_imu_init_failed_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_imu_init_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -30986,7 +30730,7 @@ double feb_can_heartbeat_front_imu_init_failed_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_imu_init_failed_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_imu_init_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -30995,7 +30739,7 @@ bool feb_can_heartbeat_front_imu_init_failed_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_imu_read_failed_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_imu_read_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31004,7 +30748,7 @@ uint8_t feb_can_heartbeat_front_imu_read_failed_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_imu_read_failed_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_imu_read_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31013,7 +30757,7 @@ double feb_can_heartbeat_front_imu_read_failed_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_imu_read_failed_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_imu_read_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31022,7 +30766,7 @@ bool feb_can_heartbeat_front_imu_read_failed_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_mag_init_failed_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_mag_init_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31031,7 +30775,7 @@ uint8_t feb_can_heartbeat_front_mag_init_failed_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_mag_init_failed_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_mag_init_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31040,7 +30784,7 @@ double feb_can_heartbeat_front_mag_init_failed_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_mag_init_failed_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_mag_init_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31049,7 +30793,7 @@ bool feb_can_heartbeat_front_mag_init_failed_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_mag_read_failed_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_mag_read_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31058,7 +30802,7 @@ uint8_t feb_can_heartbeat_front_mag_read_failed_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_mag_read_failed_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_mag_read_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31067,7 +30811,7 @@ double feb_can_heartbeat_front_mag_read_failed_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_mag_read_failed_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_mag_read_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31076,7 +30820,7 @@ bool feb_can_heartbeat_front_mag_read_failed_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_gps_init_failed_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_gps_init_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31085,7 +30829,7 @@ uint8_t feb_can_heartbeat_front_gps_init_failed_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_gps_init_failed_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_gps_init_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31094,7 +30838,7 @@ double feb_can_heartbeat_front_gps_init_failed_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_gps_init_failed_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_gps_init_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31103,7 +30847,7 @@ bool feb_can_heartbeat_front_gps_init_failed_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_fusion_uncalibrated_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_fusion_uncalibrated_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31112,7 +30856,7 @@ uint8_t feb_can_heartbeat_front_fusion_uncalibrated_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_fusion_uncalibrated_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_fusion_uncalibrated_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31121,7 +30865,7 @@ double feb_can_heartbeat_front_fusion_uncalibrated_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_fusion_uncalibrated_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_fusion_uncalibrated_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31130,7 +30874,7 @@ bool feb_can_heartbeat_front_fusion_uncalibrated_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_lp_out_of_range_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_lp_out_of_range_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31139,7 +30883,7 @@ uint8_t feb_can_heartbeat_front_lp_out_of_range_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_lp_out_of_range_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_lp_out_of_range_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31148,7 +30892,7 @@ double feb_can_heartbeat_front_lp_out_of_range_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_lp_out_of_range_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_lp_out_of_range_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31157,7 +30901,7 @@ bool feb_can_heartbeat_front_lp_out_of_range_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error7_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error7_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31166,7 +30910,7 @@ uint8_t feb_can_heartbeat_front_error7_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error7_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error7_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31175,7 +30919,7 @@ double feb_can_heartbeat_front_error7_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error7_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error7_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31184,7 +30928,7 @@ bool feb_can_heartbeat_front_error7_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_gps_no_fix_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_gps_no_fix_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31193,7 +30937,7 @@ uint8_t feb_can_heartbeat_front_gps_no_fix_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_gps_no_fix_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_gps_no_fix_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31202,7 +30946,7 @@ double feb_can_heartbeat_front_gps_no_fix_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_gps_no_fix_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_gps_no_fix_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31211,7 +30955,7 @@ bool feb_can_heartbeat_front_gps_no_fix_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_gps_stale_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_gps_stale_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31220,7 +30964,7 @@ uint8_t feb_can_heartbeat_front_gps_stale_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_gps_stale_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_gps_stale_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31229,7 +30973,7 @@ double feb_can_heartbeat_front_gps_stale_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_gps_stale_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_gps_stale_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31238,7 +30982,7 @@ bool feb_can_heartbeat_front_gps_stale_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_gps_link_slow_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_gps_link_slow_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31247,7 +30991,7 @@ uint8_t feb_can_heartbeat_front_gps_link_slow_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_gps_link_slow_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_gps_link_slow_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31256,7 +31000,7 @@ double feb_can_heartbeat_front_gps_link_slow_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_gps_link_slow_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_gps_link_slow_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31265,7 +31009,7 @@ bool feb_can_heartbeat_front_gps_link_slow_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_wss_left_no_signal_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_wss_left_no_signal_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31274,7 +31018,7 @@ uint8_t feb_can_heartbeat_front_wss_left_no_signal_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_wss_left_no_signal_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_wss_left_no_signal_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31283,7 +31027,7 @@ double feb_can_heartbeat_front_wss_left_no_signal_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_wss_left_no_signal_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_wss_left_no_signal_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31292,7 +31036,7 @@ bool feb_can_heartbeat_front_wss_left_no_signal_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_wss_right_no_signal_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_wss_right_no_signal_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31301,7 +31045,7 @@ uint8_t feb_can_heartbeat_front_wss_right_no_signal_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_wss_right_no_signal_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_wss_right_no_signal_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31310,7 +31054,7 @@ double feb_can_heartbeat_front_wss_right_no_signal_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_wss_right_no_signal_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_wss_right_no_signal_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31319,7 +31063,7 @@ bool feb_can_heartbeat_front_wss_right_no_signal_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error13_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error13_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31328,7 +31072,7 @@ uint8_t feb_can_heartbeat_front_error13_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error13_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error13_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31337,7 +31081,7 @@ double feb_can_heartbeat_front_error13_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error13_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error13_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31346,7 +31090,7 @@ bool feb_can_heartbeat_front_error13_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error14_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error14_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31355,7 +31099,7 @@ uint8_t feb_can_heartbeat_front_error14_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error14_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error14_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31364,7 +31108,7 @@ double feb_can_heartbeat_front_error14_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error14_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error14_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31373,7 +31117,7 @@ bool feb_can_heartbeat_front_error14_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error15_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error15_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31382,7 +31126,7 @@ uint8_t feb_can_heartbeat_front_error15_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error15_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error15_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31391,7 +31135,7 @@ double feb_can_heartbeat_front_error15_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error15_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error15_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31400,7 +31144,7 @@ bool feb_can_heartbeat_front_error15_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_can_bus_off_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_can_bus_off_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31409,7 +31153,7 @@ uint8_t feb_can_heartbeat_front_can_bus_off_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_can_bus_off_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_can_bus_off_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31418,7 +31162,7 @@ double feb_can_heartbeat_front_can_bus_off_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_can_bus_off_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_can_bus_off_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31427,7 +31171,7 @@ bool feb_can_heartbeat_front_can_bus_off_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_can_tx_overflow_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_can_tx_overflow_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31436,7 +31180,7 @@ uint8_t feb_can_heartbeat_front_can_tx_overflow_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_can_tx_overflow_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_can_tx_overflow_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31445,7 +31189,7 @@ double feb_can_heartbeat_front_can_tx_overflow_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_can_tx_overflow_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_can_tx_overflow_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31454,7 +31198,7 @@ bool feb_can_heartbeat_front_can_tx_overflow_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_can_rx_overflow_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_can_rx_overflow_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31463,7 +31207,7 @@ uint8_t feb_can_heartbeat_front_can_rx_overflow_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_can_rx_overflow_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_can_rx_overflow_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31472,7 +31216,7 @@ double feb_can_heartbeat_front_can_rx_overflow_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_can_rx_overflow_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_can_rx_overflow_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31481,7 +31225,7 @@ bool feb_can_heartbeat_front_can_rx_overflow_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error19_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error19_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31490,7 +31234,7 @@ uint8_t feb_can_heartbeat_front_error19_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error19_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error19_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31499,7 +31243,7 @@ double feb_can_heartbeat_front_error19_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error19_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error19_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31508,7 +31252,7 @@ bool feb_can_heartbeat_front_error19_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error20_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error20_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31517,7 +31261,7 @@ uint8_t feb_can_heartbeat_front_error20_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error20_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error20_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31526,7 +31270,7 @@ double feb_can_heartbeat_front_error20_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error20_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error20_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31535,7 +31279,7 @@ bool feb_can_heartbeat_front_error20_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error21_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error21_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31544,7 +31288,7 @@ uint8_t feb_can_heartbeat_front_error21_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error21_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error21_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31553,7 +31297,7 @@ double feb_can_heartbeat_front_error21_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error21_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error21_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31562,7 +31306,7 @@ bool feb_can_heartbeat_front_error21_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error22_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error22_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31571,7 +31315,7 @@ uint8_t feb_can_heartbeat_front_error22_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error22_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error22_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31580,7 +31324,7 @@ double feb_can_heartbeat_front_error22_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error22_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error22_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31589,7 +31333,7 @@ bool feb_can_heartbeat_front_error22_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error23_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error23_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31598,7 +31342,7 @@ uint8_t feb_can_heartbeat_front_error23_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error23_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error23_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31607,7 +31351,7 @@ double feb_can_heartbeat_front_error23_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error23_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error23_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31616,7 +31360,7 @@ bool feb_can_heartbeat_front_error23_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error24_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error24_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31625,7 +31369,7 @@ uint8_t feb_can_heartbeat_front_error24_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error24_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error24_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31634,7 +31378,7 @@ double feb_can_heartbeat_front_error24_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error24_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error24_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31643,7 +31387,7 @@ bool feb_can_heartbeat_front_error24_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error25_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error25_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31652,7 +31396,7 @@ uint8_t feb_can_heartbeat_front_error25_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error25_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error25_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31661,7 +31405,7 @@ double feb_can_heartbeat_front_error25_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error25_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error25_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31670,7 +31414,7 @@ bool feb_can_heartbeat_front_error25_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error26_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error26_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31679,7 +31423,7 @@ uint8_t feb_can_heartbeat_front_error26_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error26_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error26_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31688,7 +31432,7 @@ double feb_can_heartbeat_front_error26_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error26_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error26_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31697,7 +31441,7 @@ bool feb_can_heartbeat_front_error26_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error27_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error27_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31706,7 +31450,7 @@ uint8_t feb_can_heartbeat_front_error27_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error27_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error27_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31715,7 +31459,7 @@ double feb_can_heartbeat_front_error27_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error27_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error27_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31724,7 +31468,7 @@ bool feb_can_heartbeat_front_error27_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error28_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error28_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31733,7 +31477,7 @@ uint8_t feb_can_heartbeat_front_error28_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error28_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error28_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31742,7 +31486,7 @@ double feb_can_heartbeat_front_error28_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error28_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error28_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31751,7 +31495,7 @@ bool feb_can_heartbeat_front_error28_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error29_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error29_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31760,7 +31504,7 @@ uint8_t feb_can_heartbeat_front_error29_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error29_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error29_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31769,7 +31513,7 @@ double feb_can_heartbeat_front_error29_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error29_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error29_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31778,7 +31522,7 @@ bool feb_can_heartbeat_front_error29_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error30_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error30_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31787,7 +31531,7 @@ uint8_t feb_can_heartbeat_front_error30_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error30_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error30_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31796,7 +31540,7 @@ double feb_can_heartbeat_front_error30_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error30_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error30_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31805,7 +31549,7 @@ bool feb_can_heartbeat_front_error30_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error31_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error31_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31814,7 +31558,7 @@ uint8_t feb_can_heartbeat_front_error31_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error31_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error31_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31823,7 +31567,7 @@ double feb_can_heartbeat_front_error31_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error31_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error31_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31832,7 +31576,7 @@ bool feb_can_heartbeat_front_error31_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error32_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error32_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31841,7 +31585,7 @@ uint8_t feb_can_heartbeat_front_error32_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error32_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error32_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31850,7 +31594,7 @@ double feb_can_heartbeat_front_error32_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error32_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error32_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31859,7 +31603,7 @@ bool feb_can_heartbeat_front_error32_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error33_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error33_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31868,7 +31612,7 @@ uint8_t feb_can_heartbeat_front_error33_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error33_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error33_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31877,7 +31621,7 @@ double feb_can_heartbeat_front_error33_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error33_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error33_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31886,7 +31630,7 @@ bool feb_can_heartbeat_front_error33_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error34_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error34_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31895,7 +31639,7 @@ uint8_t feb_can_heartbeat_front_error34_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error34_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error34_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31904,7 +31648,7 @@ double feb_can_heartbeat_front_error34_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error34_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error34_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31913,7 +31657,7 @@ bool feb_can_heartbeat_front_error34_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error35_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error35_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31922,7 +31666,7 @@ uint8_t feb_can_heartbeat_front_error35_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error35_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error35_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31931,7 +31675,7 @@ double feb_can_heartbeat_front_error35_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error35_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error35_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31940,7 +31684,7 @@ bool feb_can_heartbeat_front_error35_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error36_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error36_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31949,7 +31693,7 @@ uint8_t feb_can_heartbeat_front_error36_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error36_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error36_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31958,7 +31702,7 @@ double feb_can_heartbeat_front_error36_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error36_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error36_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31967,7 +31711,7 @@ bool feb_can_heartbeat_front_error36_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error37_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error37_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -31976,7 +31720,7 @@ uint8_t feb_can_heartbeat_front_error37_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error37_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error37_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -31985,7 +31729,7 @@ double feb_can_heartbeat_front_error37_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error37_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error37_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -31994,7 +31738,7 @@ bool feb_can_heartbeat_front_error37_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error38_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error38_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32003,7 +31747,7 @@ uint8_t feb_can_heartbeat_front_error38_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error38_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error38_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32012,7 +31756,7 @@ double feb_can_heartbeat_front_error38_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error38_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error38_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32021,7 +31765,7 @@ bool feb_can_heartbeat_front_error38_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error39_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error39_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32030,7 +31774,7 @@ uint8_t feb_can_heartbeat_front_error39_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error39_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error39_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32039,7 +31783,7 @@ double feb_can_heartbeat_front_error39_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error39_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error39_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32048,7 +31792,7 @@ bool feb_can_heartbeat_front_error39_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error40_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error40_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32057,7 +31801,7 @@ uint8_t feb_can_heartbeat_front_error40_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error40_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error40_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32066,7 +31810,7 @@ double feb_can_heartbeat_front_error40_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error40_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error40_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32075,7 +31819,7 @@ bool feb_can_heartbeat_front_error40_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error41_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error41_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32084,7 +31828,7 @@ uint8_t feb_can_heartbeat_front_error41_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error41_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error41_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32093,7 +31837,7 @@ double feb_can_heartbeat_front_error41_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error41_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error41_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32102,7 +31846,7 @@ bool feb_can_heartbeat_front_error41_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error42_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error42_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32111,7 +31855,7 @@ uint8_t feb_can_heartbeat_front_error42_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error42_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error42_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32120,7 +31864,7 @@ double feb_can_heartbeat_front_error42_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error42_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error42_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32129,7 +31873,7 @@ bool feb_can_heartbeat_front_error42_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error43_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error43_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32138,7 +31882,7 @@ uint8_t feb_can_heartbeat_front_error43_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error43_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error43_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32147,7 +31891,7 @@ double feb_can_heartbeat_front_error43_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error43_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error43_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32156,7 +31900,7 @@ bool feb_can_heartbeat_front_error43_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error44_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error44_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32165,7 +31909,7 @@ uint8_t feb_can_heartbeat_front_error44_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error44_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error44_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32174,7 +31918,7 @@ double feb_can_heartbeat_front_error44_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error44_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error44_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32183,7 +31927,7 @@ bool feb_can_heartbeat_front_error44_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error45_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error45_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32192,7 +31936,7 @@ uint8_t feb_can_heartbeat_front_error45_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error45_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error45_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32201,7 +31945,7 @@ double feb_can_heartbeat_front_error45_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error45_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error45_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32210,7 +31954,7 @@ bool feb_can_heartbeat_front_error45_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error46_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error46_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32219,7 +31963,7 @@ uint8_t feb_can_heartbeat_front_error46_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error46_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error46_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32228,7 +31972,7 @@ double feb_can_heartbeat_front_error46_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error46_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error46_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32237,7 +31981,7 @@ bool feb_can_heartbeat_front_error46_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error47_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error47_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32246,7 +31990,7 @@ uint8_t feb_can_heartbeat_front_error47_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error47_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error47_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32255,7 +31999,7 @@ double feb_can_heartbeat_front_error47_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error47_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error47_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32264,7 +32008,7 @@ bool feb_can_heartbeat_front_error47_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error48_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error48_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32273,7 +32017,7 @@ uint8_t feb_can_heartbeat_front_error48_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error48_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error48_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32282,7 +32026,7 @@ double feb_can_heartbeat_front_error48_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error48_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error48_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32291,7 +32035,7 @@ bool feb_can_heartbeat_front_error48_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error49_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error49_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32300,7 +32044,7 @@ uint8_t feb_can_heartbeat_front_error49_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error49_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error49_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32309,7 +32053,7 @@ double feb_can_heartbeat_front_error49_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error49_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error49_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32318,7 +32062,7 @@ bool feb_can_heartbeat_front_error49_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error50_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error50_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32327,7 +32071,7 @@ uint8_t feb_can_heartbeat_front_error50_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error50_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error50_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32336,7 +32080,7 @@ double feb_can_heartbeat_front_error50_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error50_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error50_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32345,7 +32089,7 @@ bool feb_can_heartbeat_front_error50_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error51_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error51_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32354,7 +32098,7 @@ uint8_t feb_can_heartbeat_front_error51_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error51_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error51_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32363,7 +32107,7 @@ double feb_can_heartbeat_front_error51_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error51_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error51_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32372,7 +32116,7 @@ bool feb_can_heartbeat_front_error51_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error52_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error52_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32381,7 +32125,7 @@ uint8_t feb_can_heartbeat_front_error52_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error52_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error52_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32390,7 +32134,7 @@ double feb_can_heartbeat_front_error52_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error52_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error52_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32399,7 +32143,7 @@ bool feb_can_heartbeat_front_error52_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error53_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error53_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32408,7 +32152,7 @@ uint8_t feb_can_heartbeat_front_error53_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error53_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error53_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32417,7 +32161,7 @@ double feb_can_heartbeat_front_error53_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error53_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error53_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32426,7 +32170,7 @@ bool feb_can_heartbeat_front_error53_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error54_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error54_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32435,7 +32179,7 @@ uint8_t feb_can_heartbeat_front_error54_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error54_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error54_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32444,7 +32188,7 @@ double feb_can_heartbeat_front_error54_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error54_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error54_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32453,7 +32197,7 @@ bool feb_can_heartbeat_front_error54_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error55_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error55_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32462,7 +32206,7 @@ uint8_t feb_can_heartbeat_front_error55_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error55_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error55_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32471,7 +32215,7 @@ double feb_can_heartbeat_front_error55_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error55_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error55_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32480,7 +32224,7 @@ bool feb_can_heartbeat_front_error55_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error56_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error56_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32489,7 +32233,7 @@ uint8_t feb_can_heartbeat_front_error56_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error56_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error56_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32498,7 +32242,7 @@ double feb_can_heartbeat_front_error56_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error56_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error56_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32507,7 +32251,7 @@ bool feb_can_heartbeat_front_error56_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error57_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error57_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32516,7 +32260,7 @@ uint8_t feb_can_heartbeat_front_error57_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error57_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error57_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32525,7 +32269,7 @@ double feb_can_heartbeat_front_error57_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error57_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error57_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32534,7 +32278,7 @@ bool feb_can_heartbeat_front_error57_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error58_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error58_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32543,7 +32287,7 @@ uint8_t feb_can_heartbeat_front_error58_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error58_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error58_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32552,7 +32296,7 @@ double feb_can_heartbeat_front_error58_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error58_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error58_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32561,7 +32305,7 @@ bool feb_can_heartbeat_front_error58_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error59_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error59_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32570,7 +32314,7 @@ uint8_t feb_can_heartbeat_front_error59_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error59_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error59_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32579,7 +32323,7 @@ double feb_can_heartbeat_front_error59_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error59_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error59_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32588,7 +32332,7 @@ bool feb_can_heartbeat_front_error59_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error60_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error60_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32597,7 +32341,7 @@ uint8_t feb_can_heartbeat_front_error60_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error60_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error60_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32606,7 +32350,7 @@ double feb_can_heartbeat_front_error60_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error60_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error60_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32615,7 +32359,7 @@ bool feb_can_heartbeat_front_error60_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error61_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error61_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32624,7 +32368,7 @@ uint8_t feb_can_heartbeat_front_error61_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error61_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error61_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32633,7 +32377,7 @@ double feb_can_heartbeat_front_error61_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error61_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error61_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32642,7 +32386,7 @@ bool feb_can_heartbeat_front_error61_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error62_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error62_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32651,7 +32395,7 @@ uint8_t feb_can_heartbeat_front_error62_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error62_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error62_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32660,7 +32404,7 @@ double feb_can_heartbeat_front_error62_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error62_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error62_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32669,7 +32413,7 @@ bool feb_can_heartbeat_front_error62_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_front_error63_encode(double value);
+uint8_t feb_can_sn_front_heartbeat_error63_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32678,7 +32422,7 @@ uint8_t feb_can_heartbeat_front_error63_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_front_error63_decode(uint8_t value);
+double feb_can_sn_front_heartbeat_error63_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32687,10 +32431,10 @@ double feb_can_heartbeat_front_error63_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_front_error63_is_in_range(uint8_t value);
+bool feb_can_sn_front_heartbeat_error63_is_in_range(uint8_t value);
 
 /**
- * Pack message heartbeat_rear.
+ * Pack message sn_rear_heartbeat.
  *
  * @param[out] dst_p Buffer to pack the message into.
  * @param[in] src_p Data to pack.
@@ -32698,13 +32442,13 @@ bool feb_can_heartbeat_front_error63_is_in_range(uint8_t value);
  *
  * @return Size of packed data, or negative error code.
  */
-int feb_can_heartbeat_rear_pack(
+int feb_can_sn_rear_heartbeat_pack(
     uint8_t *dst_p,
-    const struct feb_can_heartbeat_rear_t *src_p,
+    const struct feb_can_sn_rear_heartbeat_t *src_p,
     size_t size);
 
 /**
- * Unpack message heartbeat_rear.
+ * Unpack message sn_rear_heartbeat.
  *
  * @param[out] dst_p Object to unpack the message into.
  * @param[in] src_p Message to unpack.
@@ -32712,19 +32456,19 @@ int feb_can_heartbeat_rear_pack(
  *
  * @return zero(0) or negative error code.
  */
-int feb_can_heartbeat_rear_unpack(
-    struct feb_can_heartbeat_rear_t *dst_p,
+int feb_can_sn_rear_heartbeat_unpack(
+    struct feb_can_sn_rear_heartbeat_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
 /**
- * Init message fields to default values from heartbeat_rear.
+ * Init message fields to default values from sn_rear_heartbeat.
  *
  * @param[in] msg_p Message to init.
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int feb_can_heartbeat_rear_init(struct feb_can_heartbeat_rear_t *msg_p);
+int feb_can_sn_rear_heartbeat_init(struct feb_can_sn_rear_heartbeat_t *msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32733,7 +32477,7 @@ int feb_can_heartbeat_rear_init(struct feb_can_heartbeat_rear_t *msg_p);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_imu_init_failed_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_imu_init_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32742,7 +32486,7 @@ uint8_t feb_can_heartbeat_rear_imu_init_failed_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_imu_init_failed_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_imu_init_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32751,7 +32495,7 @@ double feb_can_heartbeat_rear_imu_init_failed_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_imu_init_failed_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_imu_init_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32760,7 +32504,7 @@ bool feb_can_heartbeat_rear_imu_init_failed_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_imu_read_failed_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_imu_read_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32769,7 +32513,7 @@ uint8_t feb_can_heartbeat_rear_imu_read_failed_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_imu_read_failed_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_imu_read_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32778,7 +32522,7 @@ double feb_can_heartbeat_rear_imu_read_failed_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_imu_read_failed_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_imu_read_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32787,7 +32531,7 @@ bool feb_can_heartbeat_rear_imu_read_failed_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_mag_init_failed_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_mag_init_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32796,7 +32540,7 @@ uint8_t feb_can_heartbeat_rear_mag_init_failed_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_mag_init_failed_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_mag_init_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32805,7 +32549,7 @@ double feb_can_heartbeat_rear_mag_init_failed_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_mag_init_failed_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_mag_init_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32814,7 +32558,7 @@ bool feb_can_heartbeat_rear_mag_init_failed_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_mag_read_failed_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_mag_read_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32823,7 +32567,7 @@ uint8_t feb_can_heartbeat_rear_mag_read_failed_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_mag_read_failed_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_mag_read_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32832,7 +32576,7 @@ double feb_can_heartbeat_rear_mag_read_failed_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_mag_read_failed_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_mag_read_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32841,7 +32585,7 @@ bool feb_can_heartbeat_rear_mag_read_failed_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_gps_init_failed_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_gps_init_failed_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32850,7 +32594,7 @@ uint8_t feb_can_heartbeat_rear_gps_init_failed_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_gps_init_failed_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_gps_init_failed_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32859,7 +32603,7 @@ double feb_can_heartbeat_rear_gps_init_failed_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_gps_init_failed_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_gps_init_failed_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32868,7 +32612,7 @@ bool feb_can_heartbeat_rear_gps_init_failed_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_fusion_uncalibrated_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_fusion_uncalibrated_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32877,7 +32621,7 @@ uint8_t feb_can_heartbeat_rear_fusion_uncalibrated_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_fusion_uncalibrated_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_fusion_uncalibrated_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32886,7 +32630,7 @@ double feb_can_heartbeat_rear_fusion_uncalibrated_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_fusion_uncalibrated_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_fusion_uncalibrated_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32895,7 +32639,7 @@ bool feb_can_heartbeat_rear_fusion_uncalibrated_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_lp_out_of_range_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_lp_out_of_range_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32904,7 +32648,7 @@ uint8_t feb_can_heartbeat_rear_lp_out_of_range_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_lp_out_of_range_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_lp_out_of_range_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32913,7 +32657,7 @@ double feb_can_heartbeat_rear_lp_out_of_range_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_lp_out_of_range_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_lp_out_of_range_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32922,7 +32666,7 @@ bool feb_can_heartbeat_rear_lp_out_of_range_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error7_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error7_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32931,7 +32675,7 @@ uint8_t feb_can_heartbeat_rear_error7_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error7_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error7_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32940,7 +32684,7 @@ double feb_can_heartbeat_rear_error7_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error7_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error7_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32949,7 +32693,7 @@ bool feb_can_heartbeat_rear_error7_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_gps_no_fix_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_gps_no_fix_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32958,7 +32702,7 @@ uint8_t feb_can_heartbeat_rear_gps_no_fix_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_gps_no_fix_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_gps_no_fix_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32967,7 +32711,7 @@ double feb_can_heartbeat_rear_gps_no_fix_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_gps_no_fix_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_gps_no_fix_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -32976,7 +32720,7 @@ bool feb_can_heartbeat_rear_gps_no_fix_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_gps_stale_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_gps_stale_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -32985,7 +32729,7 @@ uint8_t feb_can_heartbeat_rear_gps_stale_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_gps_stale_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_gps_stale_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -32994,7 +32738,7 @@ double feb_can_heartbeat_rear_gps_stale_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_gps_stale_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_gps_stale_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33003,7 +32747,7 @@ bool feb_can_heartbeat_rear_gps_stale_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_gps_link_slow_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_gps_link_slow_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33012,7 +32756,7 @@ uint8_t feb_can_heartbeat_rear_gps_link_slow_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_gps_link_slow_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_gps_link_slow_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33021,7 +32765,7 @@ double feb_can_heartbeat_rear_gps_link_slow_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_gps_link_slow_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_gps_link_slow_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33030,7 +32774,7 @@ bool feb_can_heartbeat_rear_gps_link_slow_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_wss_left_no_signal_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_wss_left_no_signal_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33039,7 +32783,7 @@ uint8_t feb_can_heartbeat_rear_wss_left_no_signal_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_wss_left_no_signal_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_wss_left_no_signal_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33048,7 +32792,7 @@ double feb_can_heartbeat_rear_wss_left_no_signal_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_wss_left_no_signal_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_wss_left_no_signal_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33057,7 +32801,7 @@ bool feb_can_heartbeat_rear_wss_left_no_signal_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_wss_right_no_signal_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_wss_right_no_signal_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33066,7 +32810,7 @@ uint8_t feb_can_heartbeat_rear_wss_right_no_signal_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_wss_right_no_signal_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_wss_right_no_signal_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33075,7 +32819,7 @@ double feb_can_heartbeat_rear_wss_right_no_signal_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_wss_right_no_signal_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_wss_right_no_signal_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33084,7 +32828,7 @@ bool feb_can_heartbeat_rear_wss_right_no_signal_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error13_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error13_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33093,7 +32837,7 @@ uint8_t feb_can_heartbeat_rear_error13_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error13_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error13_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33102,7 +32846,7 @@ double feb_can_heartbeat_rear_error13_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error13_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error13_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33111,7 +32855,7 @@ bool feb_can_heartbeat_rear_error13_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error14_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error14_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33120,7 +32864,7 @@ uint8_t feb_can_heartbeat_rear_error14_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error14_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error14_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33129,7 +32873,7 @@ double feb_can_heartbeat_rear_error14_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error14_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error14_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33138,7 +32882,7 @@ bool feb_can_heartbeat_rear_error14_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error15_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error15_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33147,7 +32891,7 @@ uint8_t feb_can_heartbeat_rear_error15_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error15_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error15_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33156,7 +32900,7 @@ double feb_can_heartbeat_rear_error15_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error15_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error15_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33165,7 +32909,7 @@ bool feb_can_heartbeat_rear_error15_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_can_bus_off_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_can_bus_off_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33174,7 +32918,7 @@ uint8_t feb_can_heartbeat_rear_can_bus_off_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_can_bus_off_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_can_bus_off_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33183,7 +32927,7 @@ double feb_can_heartbeat_rear_can_bus_off_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_can_bus_off_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_can_bus_off_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33192,7 +32936,7 @@ bool feb_can_heartbeat_rear_can_bus_off_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_can_tx_overflow_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_can_tx_overflow_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33201,7 +32945,7 @@ uint8_t feb_can_heartbeat_rear_can_tx_overflow_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_can_tx_overflow_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_can_tx_overflow_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33210,7 +32954,7 @@ double feb_can_heartbeat_rear_can_tx_overflow_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_can_tx_overflow_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_can_tx_overflow_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33219,7 +32963,7 @@ bool feb_can_heartbeat_rear_can_tx_overflow_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_can_rx_overflow_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_can_rx_overflow_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33228,7 +32972,7 @@ uint8_t feb_can_heartbeat_rear_can_rx_overflow_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_can_rx_overflow_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_can_rx_overflow_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33237,7 +32981,7 @@ double feb_can_heartbeat_rear_can_rx_overflow_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_can_rx_overflow_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_can_rx_overflow_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33246,7 +32990,7 @@ bool feb_can_heartbeat_rear_can_rx_overflow_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error19_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error19_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33255,7 +32999,7 @@ uint8_t feb_can_heartbeat_rear_error19_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error19_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error19_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33264,7 +33008,7 @@ double feb_can_heartbeat_rear_error19_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error19_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error19_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33273,7 +33017,7 @@ bool feb_can_heartbeat_rear_error19_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error20_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error20_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33282,7 +33026,7 @@ uint8_t feb_can_heartbeat_rear_error20_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error20_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error20_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33291,7 +33035,7 @@ double feb_can_heartbeat_rear_error20_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error20_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error20_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33300,7 +33044,7 @@ bool feb_can_heartbeat_rear_error20_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error21_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error21_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33309,7 +33053,7 @@ uint8_t feb_can_heartbeat_rear_error21_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error21_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error21_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33318,7 +33062,7 @@ double feb_can_heartbeat_rear_error21_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error21_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error21_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33327,7 +33071,7 @@ bool feb_can_heartbeat_rear_error21_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error22_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error22_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33336,7 +33080,7 @@ uint8_t feb_can_heartbeat_rear_error22_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error22_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error22_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33345,7 +33089,7 @@ double feb_can_heartbeat_rear_error22_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error22_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error22_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33354,7 +33098,7 @@ bool feb_can_heartbeat_rear_error22_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error23_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error23_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33363,7 +33107,7 @@ uint8_t feb_can_heartbeat_rear_error23_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error23_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error23_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33372,7 +33116,7 @@ double feb_can_heartbeat_rear_error23_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error23_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error23_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33381,7 +33125,7 @@ bool feb_can_heartbeat_rear_error23_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error24_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error24_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33390,7 +33134,7 @@ uint8_t feb_can_heartbeat_rear_error24_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error24_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error24_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33399,7 +33143,7 @@ double feb_can_heartbeat_rear_error24_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error24_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error24_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33408,7 +33152,7 @@ bool feb_can_heartbeat_rear_error24_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error25_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error25_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33417,7 +33161,7 @@ uint8_t feb_can_heartbeat_rear_error25_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error25_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error25_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33426,7 +33170,7 @@ double feb_can_heartbeat_rear_error25_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error25_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error25_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33435,7 +33179,7 @@ bool feb_can_heartbeat_rear_error25_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error26_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error26_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33444,7 +33188,7 @@ uint8_t feb_can_heartbeat_rear_error26_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error26_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error26_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33453,7 +33197,7 @@ double feb_can_heartbeat_rear_error26_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error26_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error26_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33462,7 +33206,7 @@ bool feb_can_heartbeat_rear_error26_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error27_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error27_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33471,7 +33215,7 @@ uint8_t feb_can_heartbeat_rear_error27_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error27_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error27_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33480,7 +33224,7 @@ double feb_can_heartbeat_rear_error27_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error27_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error27_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33489,7 +33233,7 @@ bool feb_can_heartbeat_rear_error27_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error28_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error28_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33498,7 +33242,7 @@ uint8_t feb_can_heartbeat_rear_error28_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error28_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error28_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33507,7 +33251,7 @@ double feb_can_heartbeat_rear_error28_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error28_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error28_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33516,7 +33260,7 @@ bool feb_can_heartbeat_rear_error28_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error29_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error29_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33525,7 +33269,7 @@ uint8_t feb_can_heartbeat_rear_error29_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error29_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error29_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33534,7 +33278,7 @@ double feb_can_heartbeat_rear_error29_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error29_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error29_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33543,7 +33287,7 @@ bool feb_can_heartbeat_rear_error29_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error30_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error30_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33552,7 +33296,7 @@ uint8_t feb_can_heartbeat_rear_error30_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error30_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error30_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33561,7 +33305,7 @@ double feb_can_heartbeat_rear_error30_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error30_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error30_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33570,7 +33314,7 @@ bool feb_can_heartbeat_rear_error30_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error31_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error31_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33579,7 +33323,7 @@ uint8_t feb_can_heartbeat_rear_error31_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error31_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error31_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33588,7 +33332,7 @@ double feb_can_heartbeat_rear_error31_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error31_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error31_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33597,7 +33341,7 @@ bool feb_can_heartbeat_rear_error31_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error32_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error32_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33606,7 +33350,7 @@ uint8_t feb_can_heartbeat_rear_error32_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error32_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error32_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33615,7 +33359,7 @@ double feb_can_heartbeat_rear_error32_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error32_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error32_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33624,7 +33368,7 @@ bool feb_can_heartbeat_rear_error32_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error33_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error33_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33633,7 +33377,7 @@ uint8_t feb_can_heartbeat_rear_error33_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error33_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error33_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33642,7 +33386,7 @@ double feb_can_heartbeat_rear_error33_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error33_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error33_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33651,7 +33395,7 @@ bool feb_can_heartbeat_rear_error33_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error34_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error34_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33660,7 +33404,7 @@ uint8_t feb_can_heartbeat_rear_error34_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error34_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error34_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33669,7 +33413,7 @@ double feb_can_heartbeat_rear_error34_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error34_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error34_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33678,7 +33422,7 @@ bool feb_can_heartbeat_rear_error34_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error35_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error35_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33687,7 +33431,7 @@ uint8_t feb_can_heartbeat_rear_error35_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error35_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error35_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33696,7 +33440,7 @@ double feb_can_heartbeat_rear_error35_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error35_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error35_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33705,7 +33449,7 @@ bool feb_can_heartbeat_rear_error35_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error36_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error36_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33714,7 +33458,7 @@ uint8_t feb_can_heartbeat_rear_error36_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error36_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error36_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33723,7 +33467,7 @@ double feb_can_heartbeat_rear_error36_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error36_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error36_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33732,7 +33476,7 @@ bool feb_can_heartbeat_rear_error36_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error37_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error37_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33741,7 +33485,7 @@ uint8_t feb_can_heartbeat_rear_error37_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error37_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error37_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33750,7 +33494,7 @@ double feb_can_heartbeat_rear_error37_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error37_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error37_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33759,7 +33503,7 @@ bool feb_can_heartbeat_rear_error37_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error38_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error38_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33768,7 +33512,7 @@ uint8_t feb_can_heartbeat_rear_error38_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error38_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error38_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33777,7 +33521,7 @@ double feb_can_heartbeat_rear_error38_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error38_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error38_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33786,7 +33530,7 @@ bool feb_can_heartbeat_rear_error38_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error39_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error39_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33795,7 +33539,7 @@ uint8_t feb_can_heartbeat_rear_error39_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error39_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error39_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33804,7 +33548,7 @@ double feb_can_heartbeat_rear_error39_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error39_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error39_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33813,7 +33557,7 @@ bool feb_can_heartbeat_rear_error39_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error40_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error40_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33822,7 +33566,7 @@ uint8_t feb_can_heartbeat_rear_error40_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error40_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error40_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33831,7 +33575,7 @@ double feb_can_heartbeat_rear_error40_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error40_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error40_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33840,7 +33584,7 @@ bool feb_can_heartbeat_rear_error40_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error41_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error41_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33849,7 +33593,7 @@ uint8_t feb_can_heartbeat_rear_error41_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error41_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error41_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33858,7 +33602,7 @@ double feb_can_heartbeat_rear_error41_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error41_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error41_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33867,7 +33611,7 @@ bool feb_can_heartbeat_rear_error41_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error42_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error42_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33876,7 +33620,7 @@ uint8_t feb_can_heartbeat_rear_error42_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error42_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error42_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33885,7 +33629,7 @@ double feb_can_heartbeat_rear_error42_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error42_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error42_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33894,7 +33638,7 @@ bool feb_can_heartbeat_rear_error42_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error43_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error43_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33903,7 +33647,7 @@ uint8_t feb_can_heartbeat_rear_error43_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error43_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error43_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33912,7 +33656,7 @@ double feb_can_heartbeat_rear_error43_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error43_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error43_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33921,7 +33665,7 @@ bool feb_can_heartbeat_rear_error43_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error44_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error44_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33930,7 +33674,7 @@ uint8_t feb_can_heartbeat_rear_error44_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error44_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error44_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33939,7 +33683,7 @@ double feb_can_heartbeat_rear_error44_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error44_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error44_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33948,7 +33692,7 @@ bool feb_can_heartbeat_rear_error44_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error45_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error45_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33957,7 +33701,7 @@ uint8_t feb_can_heartbeat_rear_error45_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error45_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error45_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33966,7 +33710,7 @@ double feb_can_heartbeat_rear_error45_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error45_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error45_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -33975,7 +33719,7 @@ bool feb_can_heartbeat_rear_error45_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error46_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error46_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -33984,7 +33728,7 @@ uint8_t feb_can_heartbeat_rear_error46_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error46_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error46_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -33993,7 +33737,7 @@ double feb_can_heartbeat_rear_error46_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error46_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error46_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34002,7 +33746,7 @@ bool feb_can_heartbeat_rear_error46_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error47_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error47_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34011,7 +33755,7 @@ uint8_t feb_can_heartbeat_rear_error47_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error47_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error47_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34020,7 +33764,7 @@ double feb_can_heartbeat_rear_error47_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error47_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error47_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34029,7 +33773,7 @@ bool feb_can_heartbeat_rear_error47_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error48_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error48_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34038,7 +33782,7 @@ uint8_t feb_can_heartbeat_rear_error48_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error48_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error48_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34047,7 +33791,7 @@ double feb_can_heartbeat_rear_error48_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error48_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error48_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34056,7 +33800,7 @@ bool feb_can_heartbeat_rear_error48_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error49_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error49_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34065,7 +33809,7 @@ uint8_t feb_can_heartbeat_rear_error49_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error49_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error49_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34074,7 +33818,7 @@ double feb_can_heartbeat_rear_error49_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error49_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error49_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34083,7 +33827,7 @@ bool feb_can_heartbeat_rear_error49_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error50_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error50_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34092,7 +33836,7 @@ uint8_t feb_can_heartbeat_rear_error50_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error50_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error50_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34101,7 +33845,7 @@ double feb_can_heartbeat_rear_error50_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error50_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error50_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34110,7 +33854,7 @@ bool feb_can_heartbeat_rear_error50_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error51_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error51_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34119,7 +33863,7 @@ uint8_t feb_can_heartbeat_rear_error51_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error51_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error51_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34128,7 +33872,7 @@ double feb_can_heartbeat_rear_error51_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error51_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error51_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34137,7 +33881,7 @@ bool feb_can_heartbeat_rear_error51_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error52_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error52_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34146,7 +33890,7 @@ uint8_t feb_can_heartbeat_rear_error52_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error52_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error52_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34155,7 +33899,7 @@ double feb_can_heartbeat_rear_error52_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error52_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error52_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34164,7 +33908,7 @@ bool feb_can_heartbeat_rear_error52_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error53_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error53_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34173,7 +33917,7 @@ uint8_t feb_can_heartbeat_rear_error53_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error53_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error53_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34182,7 +33926,7 @@ double feb_can_heartbeat_rear_error53_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error53_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error53_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34191,7 +33935,7 @@ bool feb_can_heartbeat_rear_error53_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error54_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error54_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34200,7 +33944,7 @@ uint8_t feb_can_heartbeat_rear_error54_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error54_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error54_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34209,7 +33953,7 @@ double feb_can_heartbeat_rear_error54_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error54_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error54_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34218,7 +33962,7 @@ bool feb_can_heartbeat_rear_error54_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error55_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error55_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34227,7 +33971,7 @@ uint8_t feb_can_heartbeat_rear_error55_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error55_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error55_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34236,7 +33980,7 @@ double feb_can_heartbeat_rear_error55_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error55_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error55_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34245,7 +33989,7 @@ bool feb_can_heartbeat_rear_error55_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error56_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error56_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34254,7 +33998,7 @@ uint8_t feb_can_heartbeat_rear_error56_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error56_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error56_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34263,7 +34007,7 @@ double feb_can_heartbeat_rear_error56_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error56_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error56_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34272,7 +34016,7 @@ bool feb_can_heartbeat_rear_error56_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error57_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error57_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34281,7 +34025,7 @@ uint8_t feb_can_heartbeat_rear_error57_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error57_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error57_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34290,7 +34034,7 @@ double feb_can_heartbeat_rear_error57_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error57_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error57_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34299,7 +34043,7 @@ bool feb_can_heartbeat_rear_error57_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error58_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error58_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34308,7 +34052,7 @@ uint8_t feb_can_heartbeat_rear_error58_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error58_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error58_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34317,7 +34061,7 @@ double feb_can_heartbeat_rear_error58_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error58_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error58_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34326,7 +34070,7 @@ bool feb_can_heartbeat_rear_error58_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error59_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error59_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34335,7 +34079,7 @@ uint8_t feb_can_heartbeat_rear_error59_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error59_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error59_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34344,7 +34088,7 @@ double feb_can_heartbeat_rear_error59_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error59_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error59_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34353,7 +34097,7 @@ bool feb_can_heartbeat_rear_error59_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error60_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error60_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34362,7 +34106,7 @@ uint8_t feb_can_heartbeat_rear_error60_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error60_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error60_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34371,7 +34115,7 @@ double feb_can_heartbeat_rear_error60_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error60_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error60_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34380,7 +34124,7 @@ bool feb_can_heartbeat_rear_error60_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error61_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error61_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34389,7 +34133,7 @@ uint8_t feb_can_heartbeat_rear_error61_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error61_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error61_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34398,7 +34142,7 @@ double feb_can_heartbeat_rear_error61_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error61_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error61_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34407,7 +34151,7 @@ bool feb_can_heartbeat_rear_error61_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error62_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error62_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34416,7 +34160,7 @@ uint8_t feb_can_heartbeat_rear_error62_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error62_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error62_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34425,7 +34169,7 @@ double feb_can_heartbeat_rear_error62_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error62_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error62_is_in_range(uint8_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -34434,7 +34178,7 @@ bool feb_can_heartbeat_rear_error62_is_in_range(uint8_t value);
  *
  * @return Encoded signal.
  */
-uint8_t feb_can_heartbeat_rear_error63_encode(double value);
+uint8_t feb_can_sn_rear_heartbeat_error63_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -34443,7 +34187,7 @@ uint8_t feb_can_heartbeat_rear_error63_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_heartbeat_rear_error63_decode(uint8_t value);
+double feb_can_sn_rear_heartbeat_error63_decode(uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -34452,7 +34196,7 @@ double feb_can_heartbeat_rear_error63_decode(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_heartbeat_rear_error63_is_in_range(uint8_t value);
+bool feb_can_sn_rear_heartbeat_error63_is_in_range(uint8_t value);
 
 /**
  * Pack message FEB_PING_PONG_counter1.
@@ -51677,8 +51421,8 @@ typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_pcu_heartbeat_t data; } 
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_dash_heartbeat_t data; } FEB_CAN_DB_dash_heartbeat_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_lvpdb_heartbeat_t data; } FEB_CAN_DB_lvpdb_heartbeat_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_dcu_heartbeat_t data; } FEB_CAN_DB_dcu_heartbeat_t;
-typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_heartbeat_front_t data; } FEB_CAN_DB_heartbeat_front_t;
-typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_heartbeat_rear_t data; } FEB_CAN_DB_heartbeat_rear_t;
+typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_sn_front_heartbeat_t data; } FEB_CAN_DB_sn_front_heartbeat_t;
+typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_sn_rear_heartbeat_t data; } FEB_CAN_DB_sn_rear_heartbeat_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_feb_ping_pong_counter1_t data; } FEB_CAN_DB_feb_ping_pong_counter1_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_feb_ping_pong_counter2_t data; } FEB_CAN_DB_feb_ping_pong_counter2_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_feb_ping_pong_counter3_t data; } FEB_CAN_DB_feb_ping_pong_counter3_t;
@@ -51779,8 +51523,8 @@ typedef struct {
     FEB_CAN_DB_dash_heartbeat_t dash_heartbeat;
     FEB_CAN_DB_lvpdb_heartbeat_t lvpdb_heartbeat;
     FEB_CAN_DB_dcu_heartbeat_t dcu_heartbeat;
-    FEB_CAN_DB_heartbeat_front_t heartbeat_front;
-    FEB_CAN_DB_heartbeat_rear_t heartbeat_rear;
+    FEB_CAN_DB_sn_front_heartbeat_t sn_front_heartbeat;
+    FEB_CAN_DB_sn_rear_heartbeat_t sn_rear_heartbeat;
     FEB_CAN_DB_feb_ping_pong_counter1_t feb_ping_pong_counter1;
     FEB_CAN_DB_feb_ping_pong_counter2_t feb_ping_pong_counter2;
     FEB_CAN_DB_feb_ping_pong_counter3_t feb_ping_pong_counter3;

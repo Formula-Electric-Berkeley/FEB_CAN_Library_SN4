@@ -770,7 +770,7 @@ BO_ 211 dcu_heartbeat: 8 DCU
  SG_ error1 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error0 : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 212 heartbeat_front: 8 SN_FRONT
+BO_ 212 sn_front_heartbeat: 8 SN_FRONT
  SG_ error63 : 63|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error62 : 62|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error61 : 61|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -836,7 +836,7 @@ BO_ 212 heartbeat_front: 8 SN_FRONT
  SG_ imu_read_failed : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ imu_init_failed : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 213 heartbeat_rear: 8 SN_REAR
+BO_ 213 sn_rear_heartbeat: 8 SN_REAR
  SG_ error63 : 63|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error62 : 62|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error61 : 61|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -1739,135 +1739,7 @@ CM_ BO_ 209 "Dash Heartbeat";
 CM_ BO_ 210 "LVPDB Heartbeat";
 CM_ BO_ 211 "DCU Heartbeat";
 CM_ BO_ 212 "Sensor Node Heartbeat";
-CM_ SG_ 212 error63 "Unallocated";
-CM_ SG_ 212 error62 "Unallocated";
-CM_ SG_ 212 error61 "Unallocated";
-CM_ SG_ 212 error60 "Unallocated";
-CM_ SG_ 212 error59 "Unallocated";
-CM_ SG_ 212 error58 "Unallocated";
-CM_ SG_ 212 error57 "Unallocated";
-CM_ SG_ 212 error56 "Unallocated";
-CM_ SG_ 212 error55 "Unallocated";
-CM_ SG_ 212 error54 "Unallocated";
-CM_ SG_ 212 error53 "Unallocated";
-CM_ SG_ 212 error52 "Unallocated";
-CM_ SG_ 212 error51 "Unallocated";
-CM_ SG_ 212 error50 "Unallocated";
-CM_ SG_ 212 error49 "Unallocated";
-CM_ SG_ 212 error48 "Unallocated";
-CM_ SG_ 212 error47 "Unallocated";
-CM_ SG_ 212 error46 "Unallocated";
-CM_ SG_ 212 error45 "Unallocated";
-CM_ SG_ 212 error44 "Unallocated";
-CM_ SG_ 212 error43 "Unallocated";
-CM_ SG_ 212 error42 "Unallocated";
-CM_ SG_ 212 error41 "Unallocated";
-CM_ SG_ 212 error40 "Unallocated";
-CM_ SG_ 212 error39 "Unallocated";
-CM_ SG_ 212 error38 "Unallocated";
-CM_ SG_ 212 error37 "Unallocated";
-CM_ SG_ 212 error36 "Unallocated";
-CM_ SG_ 212 error35 "Unallocated";
-CM_ SG_ 212 error34 "Unallocated";
-CM_ SG_ 212 error33 "Unallocated";
-CM_ SG_ 212 error32 "Unallocated";
-CM_ SG_ 212 error31 "Unallocated";
-CM_ SG_ 212 error30 "Unallocated";
-CM_ SG_ 212 error29 "Unallocated";
-CM_ SG_ 212 error28 "Unallocated";
-CM_ SG_ 212 error27 "Unallocated";
-CM_ SG_ 212 error26 "Unallocated";
-CM_ SG_ 212 error25 "Unallocated";
-CM_ SG_ 212 error24 "Unallocated";
-CM_ SG_ 212 error23 "CAN controller health";
-CM_ SG_ 212 error22 "CAN controller health";
-CM_ SG_ 212 error21 "CAN controller health";
-CM_ SG_ 212 error20 "CAN controller health";
-CM_ SG_ 212 error19 "CAN controller health";
-CM_ SG_ 212 can_rx_overflow "CAN controller health";
-CM_ SG_ 212 can_tx_overflow "CAN controller health";
-CM_ SG_ 212 can_bus_off "CAN controller health";
-CM_ SG_ 212 error15 "Data freshness";
-CM_ SG_ 212 error14 "Data freshness";
-CM_ SG_ 212 error13 "Data freshness";
-CM_ SG_ 212 wss_right_no_signal "Data freshness";
-CM_ SG_ 212 wss_left_no_signal "Data freshness";
-CM_ SG_ 212 gps_link_slow "Data freshness";
-CM_ SG_ 212 gps_stale "Data freshness";
-CM_ SG_ 212 gps_no_fix "Data freshness";
-CM_ SG_ 212 error7 "Device init / read fault";
-CM_ SG_ 212 lp_out_of_range "Device init / read fault";
-CM_ SG_ 212 fusion_uncalibrated "Device init / read fault";
-CM_ SG_ 212 gps_init_failed "Device init / read fault";
-CM_ SG_ 212 mag_read_failed "Device init / read fault";
-CM_ SG_ 212 mag_init_failed "Device init / read fault";
-CM_ SG_ 212 imu_read_failed "Device init / read fault";
-CM_ SG_ 212 imu_init_failed "Device init / read fault";
 CM_ BO_ 213 "Sensor Node Heartbeat";
-CM_ SG_ 213 error63 "Unallocated";
-CM_ SG_ 213 error62 "Unallocated";
-CM_ SG_ 213 error61 "Unallocated";
-CM_ SG_ 213 error60 "Unallocated";
-CM_ SG_ 213 error59 "Unallocated";
-CM_ SG_ 213 error58 "Unallocated";
-CM_ SG_ 213 error57 "Unallocated";
-CM_ SG_ 213 error56 "Unallocated";
-CM_ SG_ 213 error55 "Unallocated";
-CM_ SG_ 213 error54 "Unallocated";
-CM_ SG_ 213 error53 "Unallocated";
-CM_ SG_ 213 error52 "Unallocated";
-CM_ SG_ 213 error51 "Unallocated";
-CM_ SG_ 213 error50 "Unallocated";
-CM_ SG_ 213 error49 "Unallocated";
-CM_ SG_ 213 error48 "Unallocated";
-CM_ SG_ 213 error47 "Unallocated";
-CM_ SG_ 213 error46 "Unallocated";
-CM_ SG_ 213 error45 "Unallocated";
-CM_ SG_ 213 error44 "Unallocated";
-CM_ SG_ 213 error43 "Unallocated";
-CM_ SG_ 213 error42 "Unallocated";
-CM_ SG_ 213 error41 "Unallocated";
-CM_ SG_ 213 error40 "Unallocated";
-CM_ SG_ 213 error39 "Unallocated";
-CM_ SG_ 213 error38 "Unallocated";
-CM_ SG_ 213 error37 "Unallocated";
-CM_ SG_ 213 error36 "Unallocated";
-CM_ SG_ 213 error35 "Unallocated";
-CM_ SG_ 213 error34 "Unallocated";
-CM_ SG_ 213 error33 "Unallocated";
-CM_ SG_ 213 error32 "Unallocated";
-CM_ SG_ 213 error31 "Unallocated";
-CM_ SG_ 213 error30 "Unallocated";
-CM_ SG_ 213 error29 "Unallocated";
-CM_ SG_ 213 error28 "Unallocated";
-CM_ SG_ 213 error27 "Unallocated";
-CM_ SG_ 213 error26 "Unallocated";
-CM_ SG_ 213 error25 "Unallocated";
-CM_ SG_ 213 error24 "Unallocated";
-CM_ SG_ 213 error23 "CAN controller health";
-CM_ SG_ 213 error22 "CAN controller health";
-CM_ SG_ 213 error21 "CAN controller health";
-CM_ SG_ 213 error20 "CAN controller health";
-CM_ SG_ 213 error19 "CAN controller health";
-CM_ SG_ 213 can_rx_overflow "CAN controller health";
-CM_ SG_ 213 can_tx_overflow "CAN controller health";
-CM_ SG_ 213 can_bus_off "CAN controller health";
-CM_ SG_ 213 error15 "Data freshness";
-CM_ SG_ 213 error14 "Data freshness";
-CM_ SG_ 213 error13 "Data freshness";
-CM_ SG_ 213 wss_right_no_signal "Data freshness";
-CM_ SG_ 213 wss_left_no_signal "Data freshness";
-CM_ SG_ 213 gps_link_slow "Data freshness";
-CM_ SG_ 213 gps_stale "Data freshness";
-CM_ SG_ 213 gps_no_fix "Data freshness";
-CM_ SG_ 213 error7 "Device init / read fault";
-CM_ SG_ 213 lp_out_of_range "Device init / read fault";
-CM_ SG_ 213 fusion_uncalibrated "Device init / read fault";
-CM_ SG_ 213 gps_init_failed "Device init / read fault";
-CM_ SG_ 213 mag_read_failed "Device init / read fault";
-CM_ SG_ 213 mag_init_failed "Device init / read fault";
-CM_ SG_ 213 imu_read_failed "Device init / read fault";
-CM_ SG_ 213 imu_init_failed "Device init / read fault";
 CM_ BO_ 224 "PING PONG counter1.";
 CM_ BO_ 225 "PING PONG counter2.";
 CM_ BO_ 226 "PING PONG counter3.";

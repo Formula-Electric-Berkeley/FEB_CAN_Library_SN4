@@ -14404,9 +14404,9 @@ bool feb_can_dcu_heartbeat_error63_is_in_range(uint8_t value)
     return (value <= 1u);
 }
 
-int feb_can_heartbeat_front_pack(
+int feb_can_sn_front_heartbeat_pack(
     uint8_t *dst_p,
-    const struct feb_can_heartbeat_front_t *src_p,
+    const struct feb_can_sn_front_heartbeat_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -14483,8 +14483,8 @@ int feb_can_heartbeat_front_pack(
     return (8);
 }
 
-int feb_can_heartbeat_front_unpack(
-    struct feb_can_heartbeat_front_t *dst_p,
+int feb_can_sn_front_heartbeat_unpack(
+    struct feb_can_sn_front_heartbeat_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -14560,978 +14560,978 @@ int feb_can_heartbeat_front_unpack(
     return (0);
 }
 
-int feb_can_heartbeat_front_init(struct feb_can_heartbeat_front_t *msg_p)
+int feb_can_sn_front_heartbeat_init(struct feb_can_sn_front_heartbeat_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_heartbeat_front_t));
+    memset(msg_p, 0, sizeof(struct feb_can_sn_front_heartbeat_t));
 
     return 0;
 }
 
-uint8_t feb_can_heartbeat_front_imu_init_failed_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_imu_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_imu_init_failed_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_imu_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_imu_init_failed_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_imu_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_imu_read_failed_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_imu_read_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_imu_read_failed_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_imu_read_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_imu_read_failed_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_imu_read_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_mag_init_failed_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_mag_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_mag_init_failed_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_mag_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_mag_init_failed_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_mag_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_mag_read_failed_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_mag_read_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_mag_read_failed_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_mag_read_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_mag_read_failed_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_mag_read_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_gps_init_failed_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_gps_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_gps_init_failed_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_gps_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_gps_init_failed_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_gps_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_fusion_uncalibrated_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_fusion_uncalibrated_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_fusion_uncalibrated_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_fusion_uncalibrated_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_fusion_uncalibrated_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_fusion_uncalibrated_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_lp_out_of_range_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_lp_out_of_range_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_lp_out_of_range_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_lp_out_of_range_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_lp_out_of_range_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_lp_out_of_range_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error7_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error7_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error7_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error7_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error7_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error7_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_gps_no_fix_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_gps_no_fix_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_gps_no_fix_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_gps_no_fix_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_gps_no_fix_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_gps_no_fix_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_gps_stale_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_gps_stale_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_gps_stale_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_gps_stale_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_gps_stale_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_gps_stale_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_gps_link_slow_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_gps_link_slow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_gps_link_slow_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_gps_link_slow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_gps_link_slow_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_gps_link_slow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_wss_left_no_signal_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_wss_left_no_signal_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_wss_left_no_signal_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_wss_left_no_signal_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_wss_left_no_signal_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_wss_left_no_signal_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_wss_right_no_signal_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_wss_right_no_signal_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_wss_right_no_signal_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_wss_right_no_signal_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_wss_right_no_signal_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_wss_right_no_signal_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error13_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error13_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error13_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error13_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error13_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error13_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error14_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error14_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error14_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error14_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error14_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error14_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error15_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error15_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error15_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error15_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error15_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error15_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_can_bus_off_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_can_bus_off_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_can_bus_off_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_can_bus_off_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_can_bus_off_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_can_bus_off_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_can_tx_overflow_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_can_tx_overflow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_can_tx_overflow_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_can_tx_overflow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_can_tx_overflow_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_can_tx_overflow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_can_rx_overflow_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_can_rx_overflow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_can_rx_overflow_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_can_rx_overflow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_can_rx_overflow_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_can_rx_overflow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error19_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error19_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error19_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error19_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error19_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error19_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error20_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error20_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error20_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error20_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error20_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error20_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error21_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error21_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error21_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error21_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error21_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error21_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error22_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error22_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error22_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error22_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error22_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error22_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error23_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error23_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error23_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error23_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error23_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error23_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error24_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error24_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error24_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error24_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error24_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error24_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error25_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error25_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error25_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error25_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error25_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error25_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error26_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error26_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error26_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error26_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error26_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error26_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error27_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error27_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error27_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error27_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error27_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error27_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error28_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error28_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error28_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error28_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error28_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error28_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error29_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error29_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error29_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error29_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error29_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error29_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error30_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error30_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error30_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error30_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error30_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error30_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error31_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error31_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error31_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error31_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error31_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error31_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error32_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error32_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error32_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error32_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error32_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error32_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error33_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error33_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error33_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error33_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error33_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error33_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error34_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error34_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error34_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error34_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error34_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error34_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error35_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error35_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error35_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error35_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error35_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error35_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error36_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error36_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error36_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error36_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error36_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error36_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error37_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error37_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error37_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error37_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error37_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error37_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error38_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error38_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error38_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error38_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error38_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error38_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error39_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error39_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error39_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error39_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error39_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error39_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error40_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error40_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error40_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error40_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error40_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error40_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error41_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error41_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error41_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error41_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error41_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error41_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error42_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error42_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error42_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error42_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error42_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error42_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error43_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error43_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error43_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error43_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error43_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error43_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error44_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error44_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error44_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error44_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error44_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error44_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error45_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error45_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error45_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error45_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error45_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error45_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error46_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error46_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error46_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error46_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error46_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error46_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error47_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error47_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error47_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error47_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error47_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error47_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error48_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error48_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error48_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error48_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error48_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error48_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error49_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error49_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error49_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error49_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error49_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error49_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error50_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error50_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error50_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error50_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error50_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error50_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error51_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error51_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error51_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error51_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error51_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error51_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error52_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error52_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error52_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error52_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error52_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error52_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error53_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error53_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error53_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error53_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error53_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error53_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error54_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error54_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error54_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error54_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error54_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error54_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error55_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error55_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error55_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error55_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error55_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error55_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error56_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error56_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error56_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error56_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error56_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error56_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error57_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error57_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error57_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error57_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error57_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error57_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error58_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error58_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error58_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error58_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error58_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error58_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error59_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error59_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error59_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error59_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error59_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error59_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error60_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error60_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error60_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error60_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error60_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error60_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error61_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error61_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error61_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error61_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error61_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error61_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error62_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error62_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error62_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error62_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error62_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error62_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_front_error63_encode(double value)
+uint8_t feb_can_sn_front_heartbeat_error63_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_front_error63_decode(uint8_t value)
+double feb_can_sn_front_heartbeat_error63_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_front_error63_is_in_range(uint8_t value)
+bool feb_can_sn_front_heartbeat_error63_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-int feb_can_heartbeat_rear_pack(
+int feb_can_sn_rear_heartbeat_pack(
     uint8_t *dst_p,
-    const struct feb_can_heartbeat_rear_t *src_p,
+    const struct feb_can_sn_rear_heartbeat_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -15608,8 +15608,8 @@ int feb_can_heartbeat_rear_pack(
     return (8);
 }
 
-int feb_can_heartbeat_rear_unpack(
-    struct feb_can_heartbeat_rear_t *dst_p,
+int feb_can_sn_rear_heartbeat_unpack(
+    struct feb_can_sn_rear_heartbeat_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -15685,971 +15685,971 @@ int feb_can_heartbeat_rear_unpack(
     return (0);
 }
 
-int feb_can_heartbeat_rear_init(struct feb_can_heartbeat_rear_t *msg_p)
+int feb_can_sn_rear_heartbeat_init(struct feb_can_sn_rear_heartbeat_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_heartbeat_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_sn_rear_heartbeat_t));
 
     return 0;
 }
 
-uint8_t feb_can_heartbeat_rear_imu_init_failed_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_imu_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_imu_init_failed_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_imu_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_imu_init_failed_is_in_range(uint8_t value)
-{
-    return (value <= 1u);
-}
-
-uint8_t feb_can_heartbeat_rear_imu_read_failed_encode(double value)
-{
-    return (uint8_t)(value);
-}
-
-double feb_can_heartbeat_rear_imu_read_failed_decode(uint8_t value)
-{
-    return ((double)value);
-}
-
-bool feb_can_heartbeat_rear_imu_read_failed_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_imu_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_mag_init_failed_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_imu_read_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_mag_init_failed_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_imu_read_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_mag_init_failed_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_imu_read_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_mag_read_failed_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_mag_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_mag_read_failed_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_mag_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_mag_read_failed_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_mag_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_gps_init_failed_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_mag_read_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_gps_init_failed_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_mag_read_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_gps_init_failed_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_mag_read_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_fusion_uncalibrated_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_gps_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_fusion_uncalibrated_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_gps_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_fusion_uncalibrated_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_gps_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_lp_out_of_range_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_fusion_uncalibrated_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_lp_out_of_range_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_fusion_uncalibrated_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_lp_out_of_range_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_fusion_uncalibrated_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error7_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_lp_out_of_range_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error7_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_lp_out_of_range_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error7_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_lp_out_of_range_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_gps_no_fix_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error7_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_gps_no_fix_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error7_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_gps_no_fix_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error7_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_gps_stale_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_gps_no_fix_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_gps_stale_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_gps_no_fix_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_gps_stale_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_gps_no_fix_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_gps_link_slow_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_gps_stale_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_gps_link_slow_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_gps_stale_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_gps_link_slow_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_gps_stale_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_wss_left_no_signal_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_gps_link_slow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_wss_left_no_signal_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_gps_link_slow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_wss_left_no_signal_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_gps_link_slow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_wss_right_no_signal_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_wss_left_no_signal_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_wss_right_no_signal_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_wss_left_no_signal_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_wss_right_no_signal_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_wss_left_no_signal_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error13_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_wss_right_no_signal_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error13_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_wss_right_no_signal_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error13_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_wss_right_no_signal_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error14_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error13_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error14_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error13_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error14_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error13_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error15_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error14_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error15_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error14_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error15_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error14_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_can_bus_off_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error15_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_can_bus_off_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error15_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_can_bus_off_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error15_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_can_tx_overflow_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_can_bus_off_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_can_tx_overflow_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_can_bus_off_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_can_tx_overflow_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_can_bus_off_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_can_rx_overflow_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_can_tx_overflow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_can_rx_overflow_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_can_tx_overflow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_can_rx_overflow_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_can_tx_overflow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error19_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_can_rx_overflow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error19_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_can_rx_overflow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error19_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_can_rx_overflow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error20_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error19_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error20_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error19_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error20_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error19_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error21_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error20_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error21_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error20_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error21_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error20_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error22_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error21_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error22_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error21_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error22_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error21_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error23_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error22_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error23_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error22_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error23_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error22_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error24_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error23_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error24_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error23_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error24_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error23_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error25_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error24_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error25_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error24_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error25_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error24_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error26_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error25_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error26_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error25_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error26_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error25_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error27_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error26_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error27_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error26_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error27_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error26_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error28_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error27_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error28_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error27_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error28_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error27_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error29_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error28_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error29_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error28_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error29_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error28_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error30_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error29_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error30_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error29_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error30_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error29_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error31_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error30_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error31_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error30_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error31_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error30_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error32_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error31_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error32_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error31_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error32_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error31_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error33_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error32_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error33_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error32_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error33_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error32_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error34_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error33_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error34_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error33_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error34_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error33_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error35_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error34_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error35_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error34_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error35_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error34_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error36_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error35_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error36_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error35_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error36_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error35_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error37_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error36_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error37_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error36_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error37_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error36_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error38_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error37_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error38_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error37_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error38_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error37_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error39_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error38_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error39_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error38_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error39_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error38_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error40_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error39_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error40_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error39_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error40_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error39_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error41_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error40_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error41_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error40_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error41_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error40_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error42_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error41_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error42_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error41_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error42_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error41_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error43_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error42_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error43_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error42_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error43_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error42_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error44_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error43_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error44_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error43_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error44_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error43_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error45_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error44_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error45_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error44_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error45_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error44_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error46_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error45_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error46_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error45_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error46_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error45_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error47_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error46_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error47_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error46_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error47_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error46_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error48_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error47_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error48_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error47_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error48_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error47_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error49_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error48_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error49_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error48_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error49_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error48_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error50_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error49_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error50_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error49_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error50_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error49_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error51_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error50_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error51_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error50_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error51_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error50_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error52_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error51_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error52_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error51_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error52_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error51_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error53_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error52_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error53_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error52_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error53_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error52_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error54_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error53_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error54_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error53_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error54_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error53_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error55_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error54_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error55_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error54_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error55_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error54_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error56_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error55_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error56_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error55_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error56_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error55_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error57_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error56_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error57_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error56_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error57_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error56_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error58_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error57_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error58_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error57_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error58_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error57_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error59_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error58_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error59_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error58_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error59_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error58_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error60_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error59_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error60_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error59_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error60_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error59_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error61_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error60_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error61_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error60_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error61_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error60_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error62_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error61_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error62_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error61_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error62_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error61_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_heartbeat_rear_error63_encode(double value)
+uint8_t feb_can_sn_rear_heartbeat_error62_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_heartbeat_rear_error63_decode(uint8_t value)
+double feb_can_sn_rear_heartbeat_error62_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_heartbeat_rear_error63_is_in_range(uint8_t value)
+bool feb_can_sn_rear_heartbeat_error62_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_sn_rear_heartbeat_error63_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_sn_rear_heartbeat_error63_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_sn_rear_heartbeat_error63_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
@@ -34590,17 +34590,17 @@ int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint3
         feb_can_db.dcu_heartbeat.meta.last_rx_ms = now_ms;
         feb_can_db.dcu_heartbeat.meta.rx_count++;
         return 0;
-    case FEB_CAN_HEARTBEAT_FRONT_FRAME_ID:
-        if (feb_can_heartbeat_front_unpack(&feb_can_db.heartbeat_front.data, data, dlc) < 0) return -2;
-        feb_can_db.heartbeat_front.meta.present = true;
-        feb_can_db.heartbeat_front.meta.last_rx_ms = now_ms;
-        feb_can_db.heartbeat_front.meta.rx_count++;
+    case FEB_CAN_SN_FRONT_HEARTBEAT_FRAME_ID:
+        if (feb_can_sn_front_heartbeat_unpack(&feb_can_db.sn_front_heartbeat.data, data, dlc) < 0) return -2;
+        feb_can_db.sn_front_heartbeat.meta.present = true;
+        feb_can_db.sn_front_heartbeat.meta.last_rx_ms = now_ms;
+        feb_can_db.sn_front_heartbeat.meta.rx_count++;
         return 0;
-    case FEB_CAN_HEARTBEAT_REAR_FRAME_ID:
-        if (feb_can_heartbeat_rear_unpack(&feb_can_db.heartbeat_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.heartbeat_rear.meta.present = true;
-        feb_can_db.heartbeat_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.heartbeat_rear.meta.rx_count++;
+    case FEB_CAN_SN_REAR_HEARTBEAT_FRAME_ID:
+        if (feb_can_sn_rear_heartbeat_unpack(&feb_can_db.sn_rear_heartbeat.data, data, dlc) < 0) return -2;
+        feb_can_db.sn_rear_heartbeat.meta.present = true;
+        feb_can_db.sn_rear_heartbeat.meta.last_rx_ms = now_ms;
+        feb_can_db.sn_rear_heartbeat.meta.rx_count++;
         return 0;
     case FEB_CAN_FEB_PING_PONG_COUNTER1_FRAME_ID:
         if (feb_can_feb_ping_pong_counter1_unpack(&feb_can_db.feb_ping_pong_counter1.data, data, dlc) < 0) return -2;
@@ -34894,8 +34894,8 @@ void FEB_CAN_DB_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_db.dash_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD1, "dash_heartbeat", (unsigned long)feb_can_db.dash_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.dash_heartbeat.meta.rx_count);
     if (feb_can_db.lvpdb_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD2, "lvpdb_heartbeat", (unsigned long)feb_can_db.lvpdb_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.lvpdb_heartbeat.meta.rx_count);
     if (feb_can_db.dcu_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD3, "dcu_heartbeat", (unsigned long)feb_can_db.dcu_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.dcu_heartbeat.meta.rx_count);
-    if (feb_can_db.heartbeat_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD4, "heartbeat_front", (unsigned long)feb_can_db.heartbeat_front.meta.last_rx_ms, (unsigned long)feb_can_db.heartbeat_front.meta.rx_count);
-    if (feb_can_db.heartbeat_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD5, "heartbeat_rear", (unsigned long)feb_can_db.heartbeat_rear.meta.last_rx_ms, (unsigned long)feb_can_db.heartbeat_rear.meta.rx_count);
+    if (feb_can_db.sn_front_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD4, "sn_front_heartbeat", (unsigned long)feb_can_db.sn_front_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.sn_front_heartbeat.meta.rx_count);
+    if (feb_can_db.sn_rear_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD5, "sn_rear_heartbeat", (unsigned long)feb_can_db.sn_rear_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.sn_rear_heartbeat.meta.rx_count);
     if (feb_can_db.feb_ping_pong_counter1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE0, "feb_ping_pong_counter1", (unsigned long)feb_can_db.feb_ping_pong_counter1.meta.last_rx_ms, (unsigned long)feb_can_db.feb_ping_pong_counter1.meta.rx_count);
     if (feb_can_db.feb_ping_pong_counter2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE1, "feb_ping_pong_counter2", (unsigned long)feb_can_db.feb_ping_pong_counter2.meta.last_rx_ms, (unsigned long)feb_can_db.feb_ping_pong_counter2.meta.rx_count);
     if (feb_can_db.feb_ping_pong_counter3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE2, "feb_ping_pong_counter3", (unsigned long)feb_can_db.feb_ping_pong_counter3.meta.last_rx_ms, (unsigned long)feb_can_db.feb_ping_pong_counter3.meta.rx_count);
@@ -35694,142 +35694,142 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
         printf_fn("  error63                          = %ld\r\n", (long)feb_can_db.dcu_heartbeat.data.error63);
         return 0;
     }
-    if (strcmp(name, "heartbeat_front") == 0)
+    if (strcmp(name, "sn_front_heartbeat") == 0)
     {
-        printf_fn("0x%02X  heartbeat_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xD4, (int)feb_can_db.heartbeat_front.meta.present, (unsigned long)feb_can_db.heartbeat_front.meta.last_rx_ms, (unsigned long)feb_can_db.heartbeat_front.meta.rx_count);
-        printf_fn("  imu_init_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.imu_init_failed);
-        printf_fn("  imu_read_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.imu_read_failed);
-        printf_fn("  mag_init_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.mag_init_failed);
-        printf_fn("  mag_read_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.mag_read_failed);
-        printf_fn("  gps_init_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.gps_init_failed);
-        printf_fn("  fusion_uncalibrated              = %ld\r\n", (long)feb_can_db.heartbeat_front.data.fusion_uncalibrated);
-        printf_fn("  lp_out_of_range                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.lp_out_of_range);
-        printf_fn("  error7                           = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error7);
-        printf_fn("  gps_no_fix                       = %ld\r\n", (long)feb_can_db.heartbeat_front.data.gps_no_fix);
-        printf_fn("  gps_stale                        = %ld\r\n", (long)feb_can_db.heartbeat_front.data.gps_stale);
-        printf_fn("  gps_link_slow                    = %ld\r\n", (long)feb_can_db.heartbeat_front.data.gps_link_slow);
-        printf_fn("  wss_left_no_signal               = %ld\r\n", (long)feb_can_db.heartbeat_front.data.wss_left_no_signal);
-        printf_fn("  wss_right_no_signal              = %ld\r\n", (long)feb_can_db.heartbeat_front.data.wss_right_no_signal);
-        printf_fn("  error13                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error13);
-        printf_fn("  error14                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error14);
-        printf_fn("  error15                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error15);
-        printf_fn("  can_bus_off                      = %ld\r\n", (long)feb_can_db.heartbeat_front.data.can_bus_off);
-        printf_fn("  can_tx_overflow                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.can_tx_overflow);
-        printf_fn("  can_rx_overflow                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.can_rx_overflow);
-        printf_fn("  error19                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error19);
-        printf_fn("  error20                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error20);
-        printf_fn("  error21                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error21);
-        printf_fn("  error22                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error22);
-        printf_fn("  error23                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error23);
-        printf_fn("  error24                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error24);
-        printf_fn("  error25                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error25);
-        printf_fn("  error26                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error26);
-        printf_fn("  error27                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error27);
-        printf_fn("  error28                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error28);
-        printf_fn("  error29                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error29);
-        printf_fn("  error30                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error30);
-        printf_fn("  error31                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error31);
-        printf_fn("  error32                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error32);
-        printf_fn("  error33                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error33);
-        printf_fn("  error34                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error34);
-        printf_fn("  error35                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error35);
-        printf_fn("  error36                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error36);
-        printf_fn("  error37                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error37);
-        printf_fn("  error38                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error38);
-        printf_fn("  error39                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error39);
-        printf_fn("  error40                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error40);
-        printf_fn("  error41                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error41);
-        printf_fn("  error42                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error42);
-        printf_fn("  error43                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error43);
-        printf_fn("  error44                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error44);
-        printf_fn("  error45                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error45);
-        printf_fn("  error46                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error46);
-        printf_fn("  error47                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error47);
-        printf_fn("  error48                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error48);
-        printf_fn("  error49                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error49);
-        printf_fn("  error50                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error50);
-        printf_fn("  error51                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error51);
-        printf_fn("  error52                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error52);
-        printf_fn("  error53                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error53);
-        printf_fn("  error54                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error54);
-        printf_fn("  error55                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error55);
-        printf_fn("  error56                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error56);
-        printf_fn("  error57                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error57);
-        printf_fn("  error58                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error58);
-        printf_fn("  error59                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error59);
-        printf_fn("  error60                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error60);
-        printf_fn("  error61                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error61);
-        printf_fn("  error62                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error62);
-        printf_fn("  error63                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error63);
+        printf_fn("0x%02X  sn_front_heartbeat  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xD4, (int)feb_can_db.sn_front_heartbeat.meta.present, (unsigned long)feb_can_db.sn_front_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.sn_front_heartbeat.meta.rx_count);
+        printf_fn("  imu_init_failed                  = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.imu_init_failed);
+        printf_fn("  imu_read_failed                  = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.imu_read_failed);
+        printf_fn("  mag_init_failed                  = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.mag_init_failed);
+        printf_fn("  mag_read_failed                  = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.mag_read_failed);
+        printf_fn("  gps_init_failed                  = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.gps_init_failed);
+        printf_fn("  fusion_uncalibrated              = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.fusion_uncalibrated);
+        printf_fn("  lp_out_of_range                  = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.lp_out_of_range);
+        printf_fn("  error7                           = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error7);
+        printf_fn("  gps_no_fix                       = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.gps_no_fix);
+        printf_fn("  gps_stale                        = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.gps_stale);
+        printf_fn("  gps_link_slow                    = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.gps_link_slow);
+        printf_fn("  wss_left_no_signal               = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.wss_left_no_signal);
+        printf_fn("  wss_right_no_signal              = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.wss_right_no_signal);
+        printf_fn("  error13                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error13);
+        printf_fn("  error14                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error14);
+        printf_fn("  error15                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error15);
+        printf_fn("  can_bus_off                      = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.can_bus_off);
+        printf_fn("  can_tx_overflow                  = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.can_tx_overflow);
+        printf_fn("  can_rx_overflow                  = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.can_rx_overflow);
+        printf_fn("  error19                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error19);
+        printf_fn("  error20                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error20);
+        printf_fn("  error21                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error21);
+        printf_fn("  error22                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error22);
+        printf_fn("  error23                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error23);
+        printf_fn("  error24                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error24);
+        printf_fn("  error25                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error25);
+        printf_fn("  error26                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error26);
+        printf_fn("  error27                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error27);
+        printf_fn("  error28                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error28);
+        printf_fn("  error29                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error29);
+        printf_fn("  error30                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error30);
+        printf_fn("  error31                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error31);
+        printf_fn("  error32                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error32);
+        printf_fn("  error33                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error33);
+        printf_fn("  error34                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error34);
+        printf_fn("  error35                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error35);
+        printf_fn("  error36                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error36);
+        printf_fn("  error37                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error37);
+        printf_fn("  error38                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error38);
+        printf_fn("  error39                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error39);
+        printf_fn("  error40                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error40);
+        printf_fn("  error41                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error41);
+        printf_fn("  error42                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error42);
+        printf_fn("  error43                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error43);
+        printf_fn("  error44                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error44);
+        printf_fn("  error45                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error45);
+        printf_fn("  error46                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error46);
+        printf_fn("  error47                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error47);
+        printf_fn("  error48                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error48);
+        printf_fn("  error49                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error49);
+        printf_fn("  error50                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error50);
+        printf_fn("  error51                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error51);
+        printf_fn("  error52                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error52);
+        printf_fn("  error53                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error53);
+        printf_fn("  error54                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error54);
+        printf_fn("  error55                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error55);
+        printf_fn("  error56                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error56);
+        printf_fn("  error57                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error57);
+        printf_fn("  error58                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error58);
+        printf_fn("  error59                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error59);
+        printf_fn("  error60                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error60);
+        printf_fn("  error61                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error61);
+        printf_fn("  error62                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error62);
+        printf_fn("  error63                          = %ld\r\n", (long)feb_can_db.sn_front_heartbeat.data.error63);
         return 0;
     }
-    if (strcmp(name, "heartbeat_rear") == 0)
+    if (strcmp(name, "sn_rear_heartbeat") == 0)
     {
-        printf_fn("0x%02X  heartbeat_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xD5, (int)feb_can_db.heartbeat_rear.meta.present, (unsigned long)feb_can_db.heartbeat_rear.meta.last_rx_ms, (unsigned long)feb_can_db.heartbeat_rear.meta.rx_count);
-        printf_fn("  imu_init_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.imu_init_failed);
-        printf_fn("  imu_read_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.imu_read_failed);
-        printf_fn("  mag_init_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.mag_init_failed);
-        printf_fn("  mag_read_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.mag_read_failed);
-        printf_fn("  gps_init_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.gps_init_failed);
-        printf_fn("  fusion_uncalibrated              = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.fusion_uncalibrated);
-        printf_fn("  lp_out_of_range                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.lp_out_of_range);
-        printf_fn("  error7                           = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error7);
-        printf_fn("  gps_no_fix                       = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.gps_no_fix);
-        printf_fn("  gps_stale                        = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.gps_stale);
-        printf_fn("  gps_link_slow                    = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.gps_link_slow);
-        printf_fn("  wss_left_no_signal               = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.wss_left_no_signal);
-        printf_fn("  wss_right_no_signal              = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.wss_right_no_signal);
-        printf_fn("  error13                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error13);
-        printf_fn("  error14                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error14);
-        printf_fn("  error15                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error15);
-        printf_fn("  can_bus_off                      = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.can_bus_off);
-        printf_fn("  can_tx_overflow                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.can_tx_overflow);
-        printf_fn("  can_rx_overflow                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.can_rx_overflow);
-        printf_fn("  error19                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error19);
-        printf_fn("  error20                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error20);
-        printf_fn("  error21                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error21);
-        printf_fn("  error22                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error22);
-        printf_fn("  error23                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error23);
-        printf_fn("  error24                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error24);
-        printf_fn("  error25                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error25);
-        printf_fn("  error26                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error26);
-        printf_fn("  error27                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error27);
-        printf_fn("  error28                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error28);
-        printf_fn("  error29                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error29);
-        printf_fn("  error30                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error30);
-        printf_fn("  error31                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error31);
-        printf_fn("  error32                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error32);
-        printf_fn("  error33                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error33);
-        printf_fn("  error34                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error34);
-        printf_fn("  error35                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error35);
-        printf_fn("  error36                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error36);
-        printf_fn("  error37                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error37);
-        printf_fn("  error38                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error38);
-        printf_fn("  error39                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error39);
-        printf_fn("  error40                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error40);
-        printf_fn("  error41                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error41);
-        printf_fn("  error42                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error42);
-        printf_fn("  error43                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error43);
-        printf_fn("  error44                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error44);
-        printf_fn("  error45                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error45);
-        printf_fn("  error46                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error46);
-        printf_fn("  error47                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error47);
-        printf_fn("  error48                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error48);
-        printf_fn("  error49                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error49);
-        printf_fn("  error50                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error50);
-        printf_fn("  error51                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error51);
-        printf_fn("  error52                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error52);
-        printf_fn("  error53                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error53);
-        printf_fn("  error54                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error54);
-        printf_fn("  error55                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error55);
-        printf_fn("  error56                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error56);
-        printf_fn("  error57                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error57);
-        printf_fn("  error58                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error58);
-        printf_fn("  error59                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error59);
-        printf_fn("  error60                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error60);
-        printf_fn("  error61                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error61);
-        printf_fn("  error62                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error62);
-        printf_fn("  error63                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error63);
+        printf_fn("0x%02X  sn_rear_heartbeat  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xD5, (int)feb_can_db.sn_rear_heartbeat.meta.present, (unsigned long)feb_can_db.sn_rear_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.sn_rear_heartbeat.meta.rx_count);
+        printf_fn("  imu_init_failed                  = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.imu_init_failed);
+        printf_fn("  imu_read_failed                  = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.imu_read_failed);
+        printf_fn("  mag_init_failed                  = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.mag_init_failed);
+        printf_fn("  mag_read_failed                  = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.mag_read_failed);
+        printf_fn("  gps_init_failed                  = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.gps_init_failed);
+        printf_fn("  fusion_uncalibrated              = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.fusion_uncalibrated);
+        printf_fn("  lp_out_of_range                  = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.lp_out_of_range);
+        printf_fn("  error7                           = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error7);
+        printf_fn("  gps_no_fix                       = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.gps_no_fix);
+        printf_fn("  gps_stale                        = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.gps_stale);
+        printf_fn("  gps_link_slow                    = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.gps_link_slow);
+        printf_fn("  wss_left_no_signal               = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.wss_left_no_signal);
+        printf_fn("  wss_right_no_signal              = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.wss_right_no_signal);
+        printf_fn("  error13                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error13);
+        printf_fn("  error14                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error14);
+        printf_fn("  error15                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error15);
+        printf_fn("  can_bus_off                      = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.can_bus_off);
+        printf_fn("  can_tx_overflow                  = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.can_tx_overflow);
+        printf_fn("  can_rx_overflow                  = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.can_rx_overflow);
+        printf_fn("  error19                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error19);
+        printf_fn("  error20                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error20);
+        printf_fn("  error21                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error21);
+        printf_fn("  error22                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error22);
+        printf_fn("  error23                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error23);
+        printf_fn("  error24                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error24);
+        printf_fn("  error25                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error25);
+        printf_fn("  error26                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error26);
+        printf_fn("  error27                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error27);
+        printf_fn("  error28                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error28);
+        printf_fn("  error29                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error29);
+        printf_fn("  error30                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error30);
+        printf_fn("  error31                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error31);
+        printf_fn("  error32                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error32);
+        printf_fn("  error33                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error33);
+        printf_fn("  error34                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error34);
+        printf_fn("  error35                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error35);
+        printf_fn("  error36                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error36);
+        printf_fn("  error37                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error37);
+        printf_fn("  error38                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error38);
+        printf_fn("  error39                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error39);
+        printf_fn("  error40                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error40);
+        printf_fn("  error41                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error41);
+        printf_fn("  error42                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error42);
+        printf_fn("  error43                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error43);
+        printf_fn("  error44                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error44);
+        printf_fn("  error45                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error45);
+        printf_fn("  error46                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error46);
+        printf_fn("  error47                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error47);
+        printf_fn("  error48                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error48);
+        printf_fn("  error49                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error49);
+        printf_fn("  error50                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error50);
+        printf_fn("  error51                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error51);
+        printf_fn("  error52                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error52);
+        printf_fn("  error53                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error53);
+        printf_fn("  error54                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error54);
+        printf_fn("  error55                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error55);
+        printf_fn("  error56                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error56);
+        printf_fn("  error57                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error57);
+        printf_fn("  error58                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error58);
+        printf_fn("  error59                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error59);
+        printf_fn("  error60                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error60);
+        printf_fn("  error61                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error61);
+        printf_fn("  error62                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error62);
+        printf_fn("  error63                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error63);
         return 0;
     }
     if (strcmp(name, "feb_ping_pong_counter1") == 0)

@@ -841,7 +841,7 @@ def get_heartbeat(frame_id: int, variant: str):
 
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name=f"heartbeat_{variant}",
+        name=f"sn_{variant}_heartbeat",
         length=8,
         signals=[
             error0, error1, error2, error3, error4, error5, error6, error7,

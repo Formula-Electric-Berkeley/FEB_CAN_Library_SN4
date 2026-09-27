@@ -763,28 +763,28 @@ struct DcuHeartbeat
   static constexpr auto kUnpack = &feb_can_dcu_heartbeat_unpack;
 };
 
-struct HeartbeatFront
+struct SnFrontHeartbeat
 {
-  using Data = feb_can_heartbeat_front_t;
+  using Data = feb_can_sn_front_heartbeat_t;
   static constexpr std::uint32_t kFrameId = 0xD4u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_heartbeat_front_pack;
-  static constexpr auto kUnpack = &feb_can_heartbeat_front_unpack;
+  static constexpr auto kPack = &feb_can_sn_front_heartbeat_pack;
+  static constexpr auto kUnpack = &feb_can_sn_front_heartbeat_unpack;
 };
 
-struct HeartbeatRear
+struct SnRearHeartbeat
 {
-  using Data = feb_can_heartbeat_rear_t;
+  using Data = feb_can_sn_rear_heartbeat_t;
   static constexpr std::uint32_t kFrameId = 0xD5u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_heartbeat_rear_pack;
-  static constexpr auto kUnpack = &feb_can_heartbeat_rear_unpack;
+  static constexpr auto kPack = &feb_can_sn_rear_heartbeat_pack;
+  static constexpr auto kUnpack = &feb_can_sn_rear_heartbeat_unpack;
 };
 
 struct FebPingPongCounter1
