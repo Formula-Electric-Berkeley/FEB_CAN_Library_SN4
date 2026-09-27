@@ -4870,12 +4870,12 @@ int feb_can_fusion_lin_accel_front_init(struct feb_can_fusion_lin_accel_front_t 
 
 int16_t feb_can_fusion_lin_accel_front_lin_accel_x_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.001);
 }
 
 double feb_can_fusion_lin_accel_front_lin_accel_x_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.001);
 }
 
 bool feb_can_fusion_lin_accel_front_lin_accel_x_is_in_range(int16_t value)
@@ -4887,12 +4887,12 @@ bool feb_can_fusion_lin_accel_front_lin_accel_x_is_in_range(int16_t value)
 
 int16_t feb_can_fusion_lin_accel_front_lin_accel_y_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.001);
 }
 
 double feb_can_fusion_lin_accel_front_lin_accel_y_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.001);
 }
 
 bool feb_can_fusion_lin_accel_front_lin_accel_y_is_in_range(int16_t value)
@@ -4904,12 +4904,12 @@ bool feb_can_fusion_lin_accel_front_lin_accel_y_is_in_range(int16_t value)
 
 int16_t feb_can_fusion_lin_accel_front_lin_accel_z_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.001);
 }
 
 double feb_can_fusion_lin_accel_front_lin_accel_z_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.001);
 }
 
 bool feb_can_fusion_lin_accel_front_lin_accel_z_is_in_range(int16_t value)
@@ -6257,12 +6257,12 @@ int feb_can_fusion_lin_accel_rear_init(struct feb_can_fusion_lin_accel_rear_t *m
 
 int16_t feb_can_fusion_lin_accel_rear_lin_accel_x_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.001);
 }
 
 double feb_can_fusion_lin_accel_rear_lin_accel_x_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.001);
 }
 
 bool feb_can_fusion_lin_accel_rear_lin_accel_x_is_in_range(int16_t value)
@@ -6274,12 +6274,12 @@ bool feb_can_fusion_lin_accel_rear_lin_accel_x_is_in_range(int16_t value)
 
 int16_t feb_can_fusion_lin_accel_rear_lin_accel_y_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.001);
 }
 
 double feb_can_fusion_lin_accel_rear_lin_accel_y_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.001);
 }
 
 bool feb_can_fusion_lin_accel_rear_lin_accel_y_is_in_range(int16_t value)
@@ -6291,12 +6291,12 @@ bool feb_can_fusion_lin_accel_rear_lin_accel_y_is_in_range(int16_t value)
 
 int16_t feb_can_fusion_lin_accel_rear_lin_accel_z_encode(double value)
 {
-    return (int16_t)(value);
+    return (int16_t)(value / 0.001);
 }
 
 double feb_can_fusion_lin_accel_rear_lin_accel_z_decode(int16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.001);
 }
 
 bool feb_can_fusion_lin_accel_rear_lin_accel_z_is_in_range(int16_t value)

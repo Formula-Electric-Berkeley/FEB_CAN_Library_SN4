@@ -541,7 +541,7 @@ struct FusionLinAccelFront
   static constexpr std::uint32_t kFrameId = 0x49u;
   static constexpr std::uint8_t kLength = 6u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 100u;
+  static constexpr std::uint32_t kCycleMs = 10u;
   static constexpr Node kSender = Node::kSnFront;
   static constexpr auto kPack = &feb_can_fusion_lin_accel_front_pack;
   static constexpr auto kUnpack = &feb_can_fusion_lin_accel_front_unpack;
@@ -685,7 +685,7 @@ struct FusionLinAccelRear
   static constexpr std::uint32_t kFrameId = 0x59u;
   static constexpr std::uint8_t kLength = 6u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 100u;
+  static constexpr std::uint32_t kCycleMs = 10u;
   static constexpr Node kSender = Node::kSnRear;
   static constexpr auto kPack = &feb_can_fusion_lin_accel_rear_pack;
   static constexpr auto kUnpack = &feb_can_fusion_lin_accel_rear_unpack;

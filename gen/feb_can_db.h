@@ -392,7 +392,7 @@ extern "C" {
 #define FEB_CAN_GPS_STATUS_FRONT_CYCLE_TIME_MS (200u)
 #define FEB_CAN_FUSION_QUAT_FRONT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FUSION_EULER_FRONT_CYCLE_TIME_MS (100u)
-#define FEB_CAN_FUSION_LIN_ACCEL_FRONT_CYCLE_TIME_MS (100u)
+#define FEB_CAN_FUSION_LIN_ACCEL_FRONT_CYCLE_TIME_MS (10u)
 #define FEB_CAN_FUSION_EARTH_ACCEL_FRONT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FUSION_STATUS_FRONT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_STEER_FRONT_CYCLE_TIME_MS (100u)
@@ -404,7 +404,7 @@ extern "C" {
 #define FEB_CAN_GPS_STATUS_REAR_CYCLE_TIME_MS (200u)
 #define FEB_CAN_FUSION_QUAT_REAR_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FUSION_EULER_REAR_CYCLE_TIME_MS (100u)
-#define FEB_CAN_FUSION_LIN_ACCEL_REAR_CYCLE_TIME_MS (100u)
+#define FEB_CAN_FUSION_LIN_ACCEL_REAR_CYCLE_TIME_MS (10u)
 #define FEB_CAN_FUSION_EARTH_ACCEL_REAR_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FUSION_STATUS_REAR_CYCLE_TIME_MS (100u)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_CYCLE_TIME_MS (100u)
@@ -3377,21 +3377,21 @@ struct feb_can_fusion_euler_front_t {
 struct feb_can_fusion_lin_accel_front_t {
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.001
      * Offset: 0
      */
     int16_t lin_accel_x;
 
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.001
      * Offset: 0
      */
     int16_t lin_accel_y;
 
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.001
      * Offset: 0
      */
     int16_t lin_accel_z;
@@ -3788,21 +3788,21 @@ struct feb_can_fusion_euler_rear_t {
 struct feb_can_fusion_lin_accel_rear_t {
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.001
      * Offset: 0
      */
     int16_t lin_accel_x;
 
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.001
      * Offset: 0
      */
     int16_t lin_accel_y;
 
     /**
      * Range: -
-     * Scale: 1
+     * Scale: 0.001
      * Offset: 0
      */
     int16_t lin_accel_z;

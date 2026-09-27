@@ -590,15 +590,18 @@ def get_fusion_euler(frame_id: int, variant: str):
 def get_fusion_lin_accel(frame_id: int, variant: str):
     ax = cantools.db.Signal(
         name="lin_accel_x", start=0, length=16, byte_order="little_endian", is_signed=True,
-        unit="mg",
+        conversion=BaseConversion.factory(scale=0.001),
+        unit="G",
     )
     ay = cantools.db.Signal(
         name="lin_accel_y", start=16, length=16, byte_order="little_endian", is_signed=True,
-        unit="mg",
+        conversion=BaseConversion.factory(scale=0.001),
+        unit="G",
     )
     az = cantools.db.Signal(
         name="lin_accel_z", start=32, length=16, byte_order="little_endian", is_signed=True,
-        unit="mg",
+        conversion=BaseConversion.factory(scale=0.001),
+        unit="G",
     )
     msg = cantools.db.Message(
         frame_id=frame_id,
@@ -607,7 +610,7 @@ def get_fusion_lin_accel(frame_id: int, variant: str):
         signals=[ax, ay, az],
         comment="Fusion linear acceleration (gravity removed, body frame).",
         senders=[f"SN_{variant.upper()}"],
-        cycle_time=100,
+        cycle_time=10,
         strict=True
     )
     return msg

@@ -267,9 +267,9 @@ BO_ 72 fusion_euler_front: 6 SN_FRONT
  SG_ roll : 0|16@1- (0.01,0) [0|0] "deg" Vector__XXX
 
 BO_ 73 fusion_lin_accel_front: 6 SN_FRONT
- SG_ lin_accel_z : 32|16@1- (1,0) [0|0] "mg" Vector__XXX
- SG_ lin_accel_y : 16|16@1- (1,0) [0|0] "mg" Vector__XXX
- SG_ lin_accel_x : 0|16@1- (1,0) [0|0] "mg" Vector__XXX
+ SG_ lin_accel_z : 32|16@1- (0.001,0) [0|0] "G" Vector__XXX
+ SG_ lin_accel_y : 16|16@1- (0.001,0) [0|0] "G" Vector__XXX
+ SG_ lin_accel_x : 0|16@1- (0.001,0) [0|0] "G" Vector__XXX
 
 BO_ 74 fusion_earth_accel_front: 6 SN_FRONT
  SG_ earth_accel_z : 32|16@1- (1,0) [0|0] "mg" Vector__XXX
@@ -332,9 +332,9 @@ BO_ 88 fusion_euler_rear: 6 SN_REAR
  SG_ roll : 0|16@1- (0.01,0) [0|0] "deg" Vector__XXX
 
 BO_ 89 fusion_lin_accel_rear: 6 SN_REAR
- SG_ lin_accel_z : 32|16@1- (1,0) [0|0] "mg" Vector__XXX
- SG_ lin_accel_y : 16|16@1- (1,0) [0|0] "mg" Vector__XXX
- SG_ lin_accel_x : 0|16@1- (1,0) [0|0] "mg" Vector__XXX
+ SG_ lin_accel_z : 32|16@1- (0.001,0) [0|0] "G" Vector__XXX
+ SG_ lin_accel_y : 16|16@1- (0.001,0) [0|0] "G" Vector__XXX
+ SG_ lin_accel_x : 0|16@1- (0.001,0) [0|0] "G" Vector__XXX
 
 BO_ 90 fusion_earth_accel_rear: 6 SN_REAR
  SG_ earth_accel_z : 32|16@1- (1,0) [0|0] "mg" Vector__XXX
@@ -1821,7 +1821,7 @@ BA_ "GenMsgCycleTime" BO_ 68 200;
 BA_ "GenMsgCycleTime" BO_ 69 200;
 BA_ "GenMsgCycleTime" BO_ 71 100;
 BA_ "GenMsgCycleTime" BO_ 72 100;
-BA_ "GenMsgCycleTime" BO_ 73 100;
+BA_ "GenMsgCycleTime" BO_ 73 10;
 BA_ "GenMsgCycleTime" BO_ 74 100;
 BA_ "GenMsgCycleTime" BO_ 75 100;
 BA_ "GenMsgCycleTime" BO_ 78 100;
@@ -1833,7 +1833,7 @@ BA_ "GenMsgCycleTime" BO_ 84 200;
 BA_ "GenMsgCycleTime" BO_ 85 200;
 BA_ "GenMsgCycleTime" BO_ 87 100;
 BA_ "GenMsgCycleTime" BO_ 88 100;
-BA_ "GenMsgCycleTime" BO_ 89 100;
+BA_ "GenMsgCycleTime" BO_ 89 10;
 BA_ "GenMsgCycleTime" BO_ 90 100;
 BA_ "GenMsgCycleTime" BO_ 91 100;
 BA_ "GenMsgCycleTime" BO_ 160 100;
