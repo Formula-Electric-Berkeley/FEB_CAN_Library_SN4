@@ -445,7 +445,7 @@ struct GpsPosFront
   static constexpr std::uint32_t kFrameId = 0x40u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 200u;
+  static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnFront;
   static constexpr auto kPack = &feb_can_gps_pos_front_pack;
   static constexpr auto kUnpack = &feb_can_gps_pos_front_unpack;
@@ -457,7 +457,7 @@ struct GpsAltitudeFront
   static constexpr std::uint32_t kFrameId = 0x41u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 200u;
+  static constexpr std::uint32_t kCycleMs = 1000u;
   static constexpr Node kSender = Node::kSnFront;
   static constexpr auto kPack = &feb_can_gps_altitude_front_pack;
   static constexpr auto kUnpack = &feb_can_gps_altitude_front_unpack;
@@ -469,7 +469,7 @@ struct GpsMotionFront
   static constexpr std::uint32_t kFrameId = 0x42u;
   static constexpr std::uint8_t kLength = 4u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 200u;
+  static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnFront;
   static constexpr auto kPack = &feb_can_gps_motion_front_pack;
   static constexpr auto kUnpack = &feb_can_gps_motion_front_unpack;
@@ -481,7 +481,7 @@ struct GpsTimeFront
   static constexpr std::uint32_t kFrameId = 0x43u;
   static constexpr std::uint8_t kLength = 3u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 200u;
+  static constexpr std::uint32_t kCycleMs = 1000u;
   static constexpr Node kSender = Node::kSnFront;
   static constexpr auto kPack = &feb_can_gps_time_front_pack;
   static constexpr auto kUnpack = &feb_can_gps_time_front_unpack;
@@ -493,7 +493,7 @@ struct GpsDateFront
   static constexpr std::uint32_t kFrameId = 0x44u;
   static constexpr std::uint8_t kLength = 3u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 200u;
+  static constexpr std::uint32_t kCycleMs = 1000u;
   static constexpr Node kSender = Node::kSnFront;
   static constexpr auto kPack = &feb_can_gps_date_front_pack;
   static constexpr auto kUnpack = &feb_can_gps_date_front_unpack;
@@ -505,7 +505,7 @@ struct GpsStatusFront
   static constexpr std::uint32_t kFrameId = 0x45u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 200u;
+  static constexpr std::uint32_t kCycleMs = 1000u;
   static constexpr Node kSender = Node::kSnFront;
   static constexpr auto kPack = &feb_can_gps_status_front_pack;
   static constexpr auto kUnpack = &feb_can_gps_status_front_unpack;
@@ -589,7 +589,7 @@ struct GpsPosRear
   static constexpr std::uint32_t kFrameId = 0x50u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 200u;
+  static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnRear;
   static constexpr auto kPack = &feb_can_gps_pos_rear_pack;
   static constexpr auto kUnpack = &feb_can_gps_pos_rear_unpack;
@@ -601,7 +601,7 @@ struct GpsAltitudeRear
   static constexpr std::uint32_t kFrameId = 0x51u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 200u;
+  static constexpr std::uint32_t kCycleMs = 1000u;
   static constexpr Node kSender = Node::kSnRear;
   static constexpr auto kPack = &feb_can_gps_altitude_rear_pack;
   static constexpr auto kUnpack = &feb_can_gps_altitude_rear_unpack;
@@ -613,7 +613,7 @@ struct GpsMotionRear
   static constexpr std::uint32_t kFrameId = 0x52u;
   static constexpr std::uint8_t kLength = 4u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 200u;
+  static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnRear;
   static constexpr auto kPack = &feb_can_gps_motion_rear_pack;
   static constexpr auto kUnpack = &feb_can_gps_motion_rear_unpack;
@@ -625,7 +625,7 @@ struct GpsTimeRear
   static constexpr std::uint32_t kFrameId = 0x53u;
   static constexpr std::uint8_t kLength = 3u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 200u;
+  static constexpr std::uint32_t kCycleMs = 1000u;
   static constexpr Node kSender = Node::kSnRear;
   static constexpr auto kPack = &feb_can_gps_time_rear_pack;
   static constexpr auto kUnpack = &feb_can_gps_time_rear_unpack;
@@ -637,7 +637,7 @@ struct GpsDateRear
   static constexpr std::uint32_t kFrameId = 0x54u;
   static constexpr std::uint8_t kLength = 3u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 200u;
+  static constexpr std::uint32_t kCycleMs = 1000u;
   static constexpr Node kSender = Node::kSnRear;
   static constexpr auto kPack = &feb_can_gps_date_rear_pack;
   static constexpr auto kUnpack = &feb_can_gps_date_rear_unpack;
@@ -649,7 +649,7 @@ struct GpsStatusRear
   static constexpr std::uint32_t kFrameId = 0x55u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 200u;
+  static constexpr std::uint32_t kCycleMs = 1000u;
   static constexpr Node kSender = Node::kSnRear;
   static constexpr auto kPack = &feb_can_gps_status_rear_pack;
   static constexpr auto kUnpack = &feb_can_gps_status_rear_unpack;

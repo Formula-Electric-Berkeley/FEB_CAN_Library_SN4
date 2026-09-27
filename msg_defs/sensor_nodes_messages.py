@@ -335,7 +335,7 @@ def get_gps_pos(frame_id: int, variant: str):
         signals=[lat, lon],
         comment="GPS latitude/longitude.",
         senders=[f"SN_{variant.upper()}"],
-        cycle_time=200,
+        cycle_time=100,
         strict=True
     )
 
@@ -369,7 +369,7 @@ def get_gps_motion(frame_id: int, variant: str):
         signals=[speed, course],
         comment="GPS speed and course-over-ground.",
         senders=[f"SN_{variant.upper()}"],
-        cycle_time=200,
+        cycle_time=100,
         strict=True
     )
 
@@ -407,7 +407,7 @@ def get_gps_time(frame_id: int, variant: str):
         signals=[hours, minutes, seconds],
         comment="GPS Time data message (UTC).",
         senders=[f"SN_{variant.upper()}"],
-        cycle_time=200,
+        cycle_time=1000,
         strict=True
     )
 
@@ -445,7 +445,7 @@ def get_gps_date(frame_id: int, variant: str):
         signals=[day, month, year],
         comment="GPS Date data message.",
         senders=[f"SN_{variant.upper()}"],
-        cycle_time=200,
+        cycle_time=1000,
         strict=True
     )
 
@@ -485,7 +485,7 @@ def get_gps_altitude(frame_id: int, variant: str):
         signals=[altitude, hdop, vdop],
         comment="GPS altitude + horizontal/vertical DOP.",
         senders=[f"SN_{variant.upper()}"],
-        cycle_time=200,
+        cycle_time=1000,
         strict=True
     )
     return msg
@@ -525,7 +525,7 @@ def get_gps_status(frame_id: int, variant: str):
         signals=[fix_type, fix_mode, sats_in_use, sats_in_view, valid, has_fix, pdop],
         comment="GPS fix quality, satellite counts, validity flags, position DOP.",
         senders=[f"SN_{variant.upper()}"],
-        cycle_time=200,
+        cycle_time=1000,
         strict=True
     )
     return msg
