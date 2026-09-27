@@ -108,74 +108,78 @@ BO_ 24 lvpdb_sm_af1_af2_cp_rf_currents: 8 LVPDB
  SG_ af1_af2_current : 16|16@1+ (1,0) [0|0] "" Vector__XXX
  SG_ sm_current : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 30 linear_potentiometer_front: 4 SN_FRONT
- SG_ linear_potentiometer_2_front : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ linear_potentiometer_1_front : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 30 linpot_front: 4 SN_FRONT
+ SG_ linpot_right : 16|16@1+ (0.01,0) [0|0] "mm" Vector__XXX
+ SG_ linpot_left : 0|16@1+ (0.01,0) [0|0] "mm" Vector__XXX
 
-BO_ 31 linear_potentiometer_rear: 4 SN_REAR
- SG_ linear_potentiometer_2_rear : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ linear_potentiometer_1_rear : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 31 linpot_rear: 4 SN_REAR
+ SG_ linpot_right : 16|16@1+ (0.01,0) [0|0] "mm" Vector__XXX
+ SG_ linpot_left : 0|16@1+ (0.01,0) [0|0] "mm" Vector__XXX
 
-BO_ 32 front_left_tire_temp: 8 SN_FRONT
- SG_ rightmost_temp_FL : 48|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ center_right_temp_FL : 32|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ center_left_temp_FL : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ leftmost_temp_FL : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 32 tire_temp_left_front: 8 SN_FRONT
+ SG_ rightmost_temp : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ center_right_temp : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ center_left_temp : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ leftmost_temp : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 33 front_right_tire_temp: 8 SN_FRONT
- SG_ rightmost_temp_FR : 48|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ center_right_temp_FR : 32|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ center_left_temp_FR : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ leftmost_temp_FR : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 33 tire_temp_right_front: 8 SN_FRONT
+ SG_ rightmost_temp : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ center_right_temp : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ center_left_temp : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ leftmost_temp : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 34 rear_left_tire_temp: 8 SN_REAR
- SG_ rightmost_temp_RL : 48|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ center_right_temp_RL : 32|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ center_left_temp_RL : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ leftmost_temp_RL : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 34 tire_temp_left_rear: 8 SN_REAR
+ SG_ rightmost_temp : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ center_right_temp : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ center_left_temp : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ leftmost_temp : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 35 rear_right_tire_temp: 8 SN_REAR
- SG_ rightmost_temp_RR : 48|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ center_right_temp_RR : 32|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ center_left_temp_RR : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ leftmost_temp_RR : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 35 tire_temp_right_rear: 8 SN_REAR
+ SG_ rightmost_temp : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ center_right_temp : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ center_left_temp : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ leftmost_temp : 0|16@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 36 wss_front_data: 8 SN_FRONT
+BO_ 36 wss_front: 8 SN_FRONT
  SG_ wss_dir_flags : 32|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ wss_right_front : 16|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
- SG_ wss_left_front : 0|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
+ SG_ wss_right : 16|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
+ SG_ wss_left : 0|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
 
-BO_ 37 wss_rear_data: 8 SN_REAR
+BO_ 37 wss_rear: 8 SN_REAR
  SG_ wss_dir_flags : 32|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ wss_right_rear : 16|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
- SG_ wss_left_rear : 0|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
+ SG_ wss_right : 16|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
+ SG_ wss_left : 0|16@1+ (0.01,0) [0|0] "mph" Vector__XXX
 
-BO_ 38 imu_acceleration_data: 6 SN_FRONT
+BO_ 38 imu_accel_front: 8 SN_FRONT
+ SG_ imu_temp : 48|16@1- (0.01,0) [0|0] "degC" Vector__XXX
  SG_ acceleration_z : 32|16@1- (0.061,0) [0|0] "mg" Vector__XXX
  SG_ acceleration_y : 16|16@1- (0.061,0) [0|0] "mg" Vector__XXX
  SG_ acceleration_x : 0|16@1- (0.061,0) [0|0] "mg" Vector__XXX
 
-BO_ 39 imu_acceleration_data_rear: 6 SN_REAR
+BO_ 39 imu_accel_rear: 8 SN_REAR
+ SG_ imu_temp : 48|16@1- (0.01,0) [0|0] "degC" Vector__XXX
  SG_ acceleration_z : 32|16@1- (0.061,0) [0|0] "mg" Vector__XXX
  SG_ acceleration_y : 16|16@1- (0.061,0) [0|0] "mg" Vector__XXX
  SG_ acceleration_x : 0|16@1- (0.061,0) [0|0] "mg" Vector__XXX
 
-BO_ 40 imu_gyro_data: 6 SN_FRONT
+BO_ 40 imu_gyro_front: 6 SN_FRONT
  SG_ gyro_z : 32|16@1- (70,0) [0|0] "mdps" Vector__XXX
  SG_ gyro_y : 16|16@1- (70,0) [0|0] "mdps" Vector__XXX
  SG_ gyro_x : 0|16@1- (70,0) [0|0] "mdps" Vector__XXX
 
-BO_ 41 imu_gyro_data_rear: 6 SN_REAR
+BO_ 41 imu_gyro_rear: 6 SN_REAR
  SG_ gyro_z : 32|16@1- (70,0) [0|0] "mdps" Vector__XXX
  SG_ gyro_y : 16|16@1- (70,0) [0|0] "mdps" Vector__XXX
  SG_ gyro_x : 0|16@1- (70,0) [0|0] "mdps" Vector__XXX
 
-BO_ 42 magnetometer_data: 6 SN_FRONT
+BO_ 42 mag_front: 8 SN_FRONT
+ SG_ mag_temp : 48|16@1- (0.01,0) [0|0] "degC" Vector__XXX
  SG_ magnetometer_z : 32|16@1- (0.5844,0) [0|0] "mG" Vector__XXX
  SG_ magnetometer_y : 16|16@1- (0.5844,0) [0|0] "mG" Vector__XXX
  SG_ magnetometer_x : 0|16@1- (0.5844,0) [0|0] "mG" Vector__XXX
 
-BO_ 43 magnetometer_data_rear: 6 SN_REAR
+BO_ 43 mag_rear: 8 SN_REAR
+ SG_ mag_temp : 48|16@1- (0.01,0) [0|0] "degC" Vector__XXX
  SG_ magnetometer_z : 32|16@1- (0.5844,0) [0|0] "mG" Vector__XXX
  SG_ magnetometer_y : 16|16@1- (0.5844,0) [0|0] "mG" Vector__XXX
  SG_ magnetometer_x : 0|16@1- (0.5844,0) [0|0] "mG" Vector__XXX
@@ -219,30 +223,30 @@ BO_ 57 pcu_pedal_voltages: 8 PCU
  SG_ acc2_mv : 16|16@1+ (1,0) [0|0] "mV" Vector__XXX
  SG_ acc1_mv : 0|16@1+ (1,0) [0|0] "mV" Vector__XXX
 
-BO_ 64 gps_pos_data: 8 SN_FRONT
+BO_ 64 gps_pos_front: 8 SN_FRONT
  SG_ longitude : 32|32@1- (1e-07,0) [0|0] "deg" Vector__XXX
  SG_ latitude : 0|32@1- (1e-07,0) [0|0] "deg" Vector__XXX
 
-BO_ 65 gps_altitude_data: 8 SN_FRONT
+BO_ 65 gps_altitude_front: 8 SN_FRONT
  SG_ vdop : 48|16@1+ (0.01,0) [0|0] "" Vector__XXX
  SG_ hdop : 32|16@1+ (0.01,0) [0|0] "" Vector__XXX
  SG_ altitude : 0|32@1- (0.01,0) [0|0] "m" Vector__XXX
 
-BO_ 66 gps_motion_data: 4 SN_FRONT
+BO_ 66 gps_motion_front: 4 SN_FRONT
  SG_ course : 16|16@1+ (0.01,0) [0|0] "deg" Vector__XXX
  SG_ speed : 0|16@1+ (0.01,0) [0|0] "km/h" Vector__XXX
 
-BO_ 67 gps_time_data: 3 SN_FRONT
+BO_ 67 gps_time_front: 3 SN_FRONT
  SG_ seconds : 16|8@1- (1,0) [0|0] "" Vector__XXX
  SG_ minutes : 8|8@1- (1,0) [0|0] "" Vector__XXX
  SG_ hours : 0|8@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 68 gps_date_data: 3 SN_FRONT
+BO_ 68 gps_date_front: 3 SN_FRONT
  SG_ year : 16|8@1- (1,0) [0|0] "" Vector__XXX
  SG_ month : 8|8@1- (1,0) [0|0] "" Vector__XXX
  SG_ day : 0|8@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 69 gps_status_data: 8 SN_FRONT
+BO_ 69 gps_status_front: 8 SN_FRONT
  SG_ pdop : 48|16@1+ (0.01,0) [0|0] "" Vector__XXX
  SG_ has_fix : 40|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ valid : 32|8@1+ (1,0) [0|0] "" Vector__XXX
@@ -251,73 +255,63 @@ BO_ 69 gps_status_data: 8 SN_FRONT
  SG_ fix_mode : 8|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ fix_type : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 71 fusion_quaternion_data: 8 SN_FRONT
+BO_ 71 fusion_quat_front: 8 SN_FRONT
  SG_ q_z : 48|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
  SG_ q_y : 32|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
  SG_ q_x : 16|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
  SG_ q_w : 0|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
 
-BO_ 72 fusion_euler_data: 6 SN_FRONT
+BO_ 72 fusion_euler_front: 6 SN_FRONT
  SG_ yaw : 32|16@1- (0.01,0) [0|0] "deg" Vector__XXX
  SG_ pitch : 16|16@1- (0.01,0) [0|0] "deg" Vector__XXX
  SG_ roll : 0|16@1- (0.01,0) [0|0] "deg" Vector__XXX
 
-BO_ 73 fusion_linear_accel_data: 6 SN_FRONT
+BO_ 73 fusion_lin_accel_front: 6 SN_FRONT
  SG_ lin_accel_z : 32|16@1- (1,0) [0|0] "mg" Vector__XXX
  SG_ lin_accel_y : 16|16@1- (1,0) [0|0] "mg" Vector__XXX
  SG_ lin_accel_x : 0|16@1- (1,0) [0|0] "mg" Vector__XXX
 
-BO_ 74 fusion_earth_accel_data: 6 SN_FRONT
+BO_ 74 fusion_earth_accel_front: 6 SN_FRONT
  SG_ earth_accel_z : 32|16@1- (1,0) [0|0] "mg" Vector__XXX
  SG_ earth_accel_y : 16|16@1- (1,0) [0|0] "mg" Vector__XXX
  SG_ earth_accel_x : 0|16@1- (1,0) [0|0] "mg" Vector__XXX
 
-BO_ 75 fusion_status_data: 3 SN_FRONT
+BO_ 75 fusion_status_front: 3 SN_FRONT
  SG_ mag_error : 16|8@1+ (0.1,0) [0|0] "deg" Vector__XXX
  SG_ accel_error : 8|8@1+ (0.1,0) [0|0] "deg" Vector__XXX
  SG_ flags : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 76 sensor_temps_data: 4 SN_FRONT
- SG_ mag_temp : 16|16@1- (0.01,0) [0|0] "degC" Vector__XXX
- SG_ imu_temp : 0|16@1- (0.01,0) [0|0] "degC" Vector__XXX
-
-BO_ 77 sensor_temps_data_rear: 4 SN_REAR
- SG_ mag_temp : 16|16@1- (0.01,0) [0|0] "degC" Vector__XXX
- SG_ imu_temp : 0|16@1- (0.01,0) [0|0] "degC" Vector__XXX
-
-BO_ 78 steer_angle_data: 5 SN_FRONT
+BO_ 78 steer_front: 8 SN_FRONT
+ SG_ magnitude : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ status : 40|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ agc : 32|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ raw_angle : 16|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ angle : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ raw_angle : 16|16@1+ (0.087890625,0) [0|0] "deg" Vector__XXX
+ SG_ angle : 0|16@1+ (0.087890625,0) [0|0] "deg" Vector__XXX
 
-BO_ 79 steer_status_data: 3 SN_FRONT
- SG_ magnitude : 8|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ status : 0|8@1+ (1,0) [0|0] "" Vector__XXX
-
-BO_ 80 gps_pos_data_rear: 8 SN_REAR
+BO_ 80 gps_pos_rear: 8 SN_REAR
  SG_ longitude : 32|32@1- (1e-07,0) [0|0] "deg" Vector__XXX
  SG_ latitude : 0|32@1- (1e-07,0) [0|0] "deg" Vector__XXX
 
-BO_ 81 gps_altitude_data_rear: 8 SN_REAR
+BO_ 81 gps_altitude_rear: 8 SN_REAR
  SG_ vdop : 48|16@1+ (0.01,0) [0|0] "" Vector__XXX
  SG_ hdop : 32|16@1+ (0.01,0) [0|0] "" Vector__XXX
  SG_ altitude : 0|32@1- (0.01,0) [0|0] "m" Vector__XXX
 
-BO_ 82 gps_motion_data_rear: 4 SN_REAR
+BO_ 82 gps_motion_rear: 4 SN_REAR
  SG_ course : 16|16@1+ (0.01,0) [0|0] "deg" Vector__XXX
  SG_ speed : 0|16@1+ (0.01,0) [0|0] "km/h" Vector__XXX
 
-BO_ 83 gps_time_data_rear: 3 SN_REAR
+BO_ 83 gps_time_rear: 3 SN_REAR
  SG_ seconds : 16|8@1- (1,0) [0|0] "" Vector__XXX
  SG_ minutes : 8|8@1- (1,0) [0|0] "" Vector__XXX
  SG_ hours : 0|8@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 84 gps_date_data_rear: 3 SN_REAR
+BO_ 84 gps_date_rear: 3 SN_REAR
  SG_ year : 16|8@1- (1,0) [0|0] "" Vector__XXX
  SG_ month : 8|8@1- (1,0) [0|0] "" Vector__XXX
  SG_ day : 0|8@1- (1,0) [0|0] "" Vector__XXX
 
-BO_ 85 gps_status_data_rear: 8 SN_REAR
+BO_ 85 gps_status_rear: 8 SN_REAR
  SG_ pdop : 48|16@1+ (0.01,0) [0|0] "" Vector__XXX
  SG_ has_fix : 40|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ valid : 32|8@1+ (1,0) [0|0] "" Vector__XXX
@@ -326,28 +320,28 @@ BO_ 85 gps_status_data_rear: 8 SN_REAR
  SG_ fix_mode : 8|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ fix_type : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 87 fusion_quaternion_data_rear: 8 SN_REAR
+BO_ 87 fusion_quat_rear: 8 SN_REAR
  SG_ q_z : 48|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
  SG_ q_y : 32|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
  SG_ q_x : 16|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
  SG_ q_w : 0|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
 
-BO_ 88 fusion_euler_data_rear: 6 SN_REAR
+BO_ 88 fusion_euler_rear: 6 SN_REAR
  SG_ yaw : 32|16@1- (0.01,0) [0|0] "deg" Vector__XXX
  SG_ pitch : 16|16@1- (0.01,0) [0|0] "deg" Vector__XXX
  SG_ roll : 0|16@1- (0.01,0) [0|0] "deg" Vector__XXX
 
-BO_ 89 fusion_linear_accel_data_rear: 6 SN_REAR
+BO_ 89 fusion_lin_accel_rear: 6 SN_REAR
  SG_ lin_accel_z : 32|16@1- (1,0) [0|0] "mg" Vector__XXX
  SG_ lin_accel_y : 16|16@1- (1,0) [0|0] "mg" Vector__XXX
  SG_ lin_accel_x : 0|16@1- (1,0) [0|0] "mg" Vector__XXX
 
-BO_ 90 fusion_earth_accel_data_rear: 6 SN_REAR
+BO_ 90 fusion_earth_accel_rear: 6 SN_REAR
  SG_ earth_accel_z : 32|16@1- (1,0) [0|0] "mg" Vector__XXX
  SG_ earth_accel_y : 16|16@1- (1,0) [0|0] "mg" Vector__XXX
  SG_ earth_accel_x : 0|16@1- (1,0) [0|0] "mg" Vector__XXX
 
-BO_ 91 fusion_status_data_rear: 3 SN_REAR
+BO_ 91 fusion_status_rear: 3 SN_REAR
  SG_ mag_error : 16|8@1+ (0.1,0) [0|0] "deg" Vector__XXX
  SG_ accel_error : 8|8@1+ (0.1,0) [0|0] "deg" Vector__XXX
  SG_ flags : 0|8@1+ (1,0) [0|0] "" Vector__XXX
@@ -776,7 +770,7 @@ BO_ 211 dcu_heartbeat: 8 DCU
  SG_ error1 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error0 : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 212 front_sensor_heartbeat_message: 8 SN_FRONT
+BO_ 212 heartbeat_front: 8 SN_FRONT
  SG_ error63 : 63|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error62 : 62|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error61 : 61|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -842,7 +836,7 @@ BO_ 212 front_sensor_heartbeat_message: 8 SN_FRONT
  SG_ imu_read_failed : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ imu_init_failed : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 213 rear_sensor_heartbeat_message: 8 SN_REAR
+BO_ 213 heartbeat_rear: 8 SN_REAR
  SG_ error63 : 63|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error62 : 62|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ error61 : 61|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -1572,22 +1566,44 @@ CM_ BO_ 16 "Dash state + buttons and switches";
 CM_ BO_ 22 "LVPDB message for voltages of 24v bus and 12v bus";
 CM_ BO_ 23 "LVPDB message for currents of LV, SH, LT, BM_L";
 CM_ BO_ 24 "LVPDB message for currents of SM, AF1_AF2, CP_RF";
-CM_ BO_ 30 "Linear Potentiometer Front.";
-CM_ BO_ 31 "Linear Potentiometer Rear.";
-CM_ BO_ 32 "Message for front left tire temp data.";
-CM_ BO_ 33 "Message for front right tire temp data.";
-CM_ BO_ 34 "Message for rear left tire temp data.";
-CM_ BO_ 35 "Message for rear right tire temp data.";
-CM_ BO_ 36 "Front wheel speeds (uint16, 0.01 mph/LSB) + direction flags.";
+CM_ BO_ 30 "Linear potentiometer positions.";
+CM_ BO_ 31 "Linear potentiometer positions.";
+CM_ BO_ 32 "Message for left tire temp data.";
+CM_ BO_ 33 "Message for right tire temp data.";
+CM_ BO_ 34 "Message for left tire temp data.";
+CM_ BO_ 35 "Message for right tire temp data.";
+CM_ BO_ 36 "Wheel speeds + direction flags.";
 CM_ SG_ 36 wss_dir_flags "bit0: left wheel direction (0=fwd, 1=rev); bit1: right wheel direction";
-CM_ BO_ 37 "Rear wheel speeds (uint16, 0.01 mph/LSB) + direction flags.";
+CM_ BO_ 37 "Wheel speeds + direction flags.";
 CM_ SG_ 37 wss_dir_flags "bit0: left wheel direction (0=fwd, 1=rev); bit1: right wheel direction";
-CM_ BO_ 38 "IMU acceleration (LSM6DSOX, FS=2g, 0.061 mg/LSB).";
-CM_ BO_ 39 "REAR IMU acceleration (LSM6DSOX, FS=2g, 0.061 mg/LSB).";
-CM_ BO_ 40 "IMU gyro (LSM6DSOX, FS=2000dps, 70 mdps/LSB).";
-CM_ BO_ 41 "REAR IMU gyro (LSM6DSOX, FS=2000dps, 70 mdps/LSB).";
-CM_ BO_ 42 "Magnetometer (LIS3MDL, FS=16gauss, 0.5844 mG/LSB).";
-CM_ BO_ 43 "REAR Magnetometer (LIS3MDL, FS=16gauss, 0.5844 mG/LSB).";
+CM_ BO_ 38 "IMU acceleration (LSM6DSOX, FS=2g) + die temperature.";
+CM_ SG_ 38 imu_temp "LSM6DSOX die temperature";
+CM_ SG_ 38 acceleration_z "LSM6DSOX @ FS=2g (matches lsm6dsox_from_fs2_to_mg)";
+CM_ SG_ 38 acceleration_y "LSM6DSOX @ FS=2g (matches lsm6dsox_from_fs2_to_mg)";
+CM_ SG_ 38 acceleration_x "LSM6DSOX @ FS=2g (matches lsm6dsox_from_fs2_to_mg)";
+CM_ BO_ 39 "IMU acceleration (LSM6DSOX, FS=2g) + die temperature.";
+CM_ SG_ 39 imu_temp "LSM6DSOX die temperature";
+CM_ SG_ 39 acceleration_z "LSM6DSOX @ FS=2g (matches lsm6dsox_from_fs2_to_mg)";
+CM_ SG_ 39 acceleration_y "LSM6DSOX @ FS=2g (matches lsm6dsox_from_fs2_to_mg)";
+CM_ SG_ 39 acceleration_x "LSM6DSOX @ FS=2g (matches lsm6dsox_from_fs2_to_mg)";
+CM_ BO_ 40 "IMU gyro (LSM6DSOX, FS=2000dps).";
+CM_ SG_ 40 gyro_z "LSM6DSOX @ FS=2000dps (matches lsm6dsox_from_fs2000_to_mdps)";
+CM_ SG_ 40 gyro_y "LSM6DSOX @ FS=2000dps (matches lsm6dsox_from_fs2000_to_mdps)";
+CM_ SG_ 40 gyro_x "LSM6DSOX @ FS=2000dps (matches lsm6dsox_from_fs2000_to_mdps)";
+CM_ BO_ 41 "IMU gyro (LSM6DSOX, FS=2000dps).";
+CM_ SG_ 41 gyro_z "LSM6DSOX @ FS=2000dps (matches lsm6dsox_from_fs2000_to_mdps)";
+CM_ SG_ 41 gyro_y "LSM6DSOX @ FS=2000dps (matches lsm6dsox_from_fs2000_to_mdps)";
+CM_ SG_ 41 gyro_x "LSM6DSOX @ FS=2000dps (matches lsm6dsox_from_fs2000_to_mdps)";
+CM_ BO_ 42 "Magnetometer (LIS3MDL, FS=16gauss) + die temperature.";
+CM_ SG_ 42 mag_temp "LIS3MDL die temperature";
+CM_ SG_ 42 magnetometer_z "LIS3MDL @ FS=16gauss (matches lis3mdl_from_fs16_to_gauss * 1000)";
+CM_ SG_ 42 magnetometer_y "LIS3MDL @ FS=16gauss (matches lis3mdl_from_fs16_to_gauss * 1000)";
+CM_ SG_ 42 magnetometer_x "LIS3MDL @ FS=16gauss (matches lis3mdl_from_fs16_to_gauss * 1000)";
+CM_ BO_ 43 "Magnetometer (LIS3MDL, FS=16gauss) + die temperature.";
+CM_ SG_ 43 mag_temp "LIS3MDL die temperature";
+CM_ SG_ 43 magnetometer_z "LIS3MDL @ FS=16gauss (matches lis3mdl_from_fs16_to_gauss * 1000)";
+CM_ SG_ 43 magnetometer_y "LIS3MDL @ FS=16gauss (matches lis3mdl_from_fs16_to_gauss * 1000)";
+CM_ SG_ 43 magnetometer_x "LIS3MDL @ FS=16gauss (matches lis3mdl_from_fs16_to_gauss * 1000)";
 CM_ BO_ 45 "DART message for Tachometer measurements first 4 fan speeds.";
 CM_ BO_ 46 "DART message for Tachometer measurements 5th fan speed.";
 CM_ BO_ 52 "BBB TPS Chip";
@@ -1596,37 +1612,39 @@ CM_ BO_ 54 "Dash TPS Chip";
 CM_ BO_ 55 "DCU TPS Chip";
 CM_ BO_ 56 "PCU RAW ACC ADC";
 CM_ BO_ 57 "PCU raw pedal sensor voltages (sensor-side mV): APPS1/2, brake 1/2";
-CM_ BO_ 64 "GPS lat/lon as int32 * 1e7 deg (~11mm/LSB globally).";
-CM_ BO_ 65 "GPS altitude (cm) + horizontal/vertical DOP (x100).";
-CM_ BO_ 66 "GPS speed (0.01 km/h) and course-over-ground (0.01 deg).";
+CM_ BO_ 64 "GPS latitude/longitude.";
+CM_ BO_ 65 "GPS altitude + horizontal/vertical DOP.";
+CM_ BO_ 66 "GPS speed and course-over-ground.";
 CM_ BO_ 67 "GPS Time data message (UTC).";
 CM_ BO_ 68 "GPS Date data message.";
 CM_ BO_ 69 "GPS fix quality, satellite counts, validity flags, position DOP.";
 CM_ SG_ 69 fix_mode "1=NoFix, 2=2D, 3=3D";
 CM_ SG_ 69 fix_type "0=Invalid, 1=GPS, 2=DGPS, 3=PPS";
 CM_ BO_ 71 "Fusion AHRS orientation quaternion (w, x, y, z).";
-CM_ BO_ 72 "Fusion AHRS Euler angles (0.01 deg/LSB).";
-CM_ BO_ 73 "Fusion linear acceleration (gravity removed, body frame, mg).";
-CM_ BO_ 74 "Fusion linear acceleration (gravity removed, earth frame, mg).";
+CM_ BO_ 72 "Fusion AHRS Euler angles.";
+CM_ BO_ 73 "Fusion linear acceleration (gravity removed, body frame).";
+CM_ BO_ 74 "Fusion linear acceleration (gravity removed, earth frame).";
 CM_ BO_ 75 "Fusion AHRS internal flags + accel/mag rejection errors.";
 CM_ SG_ 75 flags "bit0 startup, bit1 angRateRecov, bit2 accelRecov, bit3 magRecov, bit4 accelIgnored, bit5 magIgnored";
-CM_ BO_ 76 "LSM6DSOX IMU and LIS3MDL magnetometer die temperatures (0.01 degC/LSB).";
-CM_ BO_ 77 "REAR LSM6DSOX IMU and LIS3MDL magnetometer die temperatures (0.01 degC/LSB).";
-CM_ BO_ 78 "Steering encoder filtered angle, raw angle, and AGC gain.";
-CM_ BO_ 79 "Steering encoder magnet status flags and CORDIC magnitude.";
-CM_ BO_ 80 "REAR GPS lat/lon as int32 * 1e7 deg (~11mm/LSB globally).";
-CM_ BO_ 81 "REAR GPS altitude (cm) + horizontal/vertical DOP (x100).";
-CM_ BO_ 82 "REAR GPS speed (0.01 km/h) and course-over-ground (0.01 deg).";
-CM_ BO_ 83 "REAR GPS Time data message (UTC).";
-CM_ BO_ 84 "REAR GPS Date data message.";
-CM_ BO_ 85 "REAR GPS fix quality, satellite counts, validity flags, position DOP.";
+CM_ BO_ 78 "Steering encoder filtered/raw angle, AGC gain, magnet status flags, and CORDIC magnitude.";
+CM_ SG_ 78 magnitude "12-bit CORDIC magnitude";
+CM_ SG_ 78 status "magnet flags (bit0=MH, bit1=ML, bit2=MD)";
+CM_ SG_ 78 agc "AGC gain value";
+CM_ SG_ 78 raw_angle "12-bit raw angle";
+CM_ SG_ 78 angle "12-bit filtered angle";
+CM_ BO_ 80 "GPS latitude/longitude.";
+CM_ BO_ 81 "GPS altitude + horizontal/vertical DOP.";
+CM_ BO_ 82 "GPS speed and course-over-ground.";
+CM_ BO_ 83 "GPS Time data message (UTC).";
+CM_ BO_ 84 "GPS Date data message.";
+CM_ BO_ 85 "GPS fix quality, satellite counts, validity flags, position DOP.";
 CM_ SG_ 85 fix_mode "1=NoFix, 2=2D, 3=3D";
 CM_ SG_ 85 fix_type "0=Invalid, 1=GPS, 2=DGPS, 3=PPS";
-CM_ BO_ 87 "REAR Fusion AHRS orientation quaternion (w, x, y, z).";
-CM_ BO_ 88 "REAR Fusion AHRS Euler angles (0.01 deg/LSB).";
-CM_ BO_ 89 "REAR Fusion linear acceleration (gravity removed, body frame, mg).";
-CM_ BO_ 90 "REAR Fusion linear acceleration (gravity removed, earth frame, mg).";
-CM_ BO_ 91 "REAR Fusion AHRS internal flags + accel/mag rejection errors.";
+CM_ BO_ 87 "Fusion AHRS orientation quaternion (w, x, y, z).";
+CM_ BO_ 88 "Fusion AHRS Euler angles.";
+CM_ BO_ 89 "Fusion linear acceleration (gravity removed, body frame).";
+CM_ BO_ 90 "Fusion linear acceleration (gravity removed, earth frame).";
+CM_ BO_ 91 "Fusion AHRS internal flags + accel/mag rejection errors.";
 CM_ SG_ 91 flags "bit0 startup, bit1 angRateRecov, bit2 accelRecov, bit3 magRecov, bit4 accelIgnored, bit5 magIgnored";
 CM_ SG_ 160 INV_Gate_Driver_Board "Gate Driver Board Temperature";
 CM_ SG_ 160 INV_Module_C "IGBT Module C Temperature";
@@ -1720,8 +1738,136 @@ CM_ BO_ 208 "PCU heartbeat";
 CM_ BO_ 209 "Dash Heartbeat";
 CM_ BO_ 210 "LVPDB Heartbeat";
 CM_ BO_ 211 "DCU Heartbeat";
-CM_ BO_ 212 "Front Sensor Heartbeat";
-CM_ BO_ 213 "Rear Sensor Heartbeat";
+CM_ BO_ 212 "Sensor Node Heartbeat";
+CM_ SG_ 212 error63 "Unallocated";
+CM_ SG_ 212 error62 "Unallocated";
+CM_ SG_ 212 error61 "Unallocated";
+CM_ SG_ 212 error60 "Unallocated";
+CM_ SG_ 212 error59 "Unallocated";
+CM_ SG_ 212 error58 "Unallocated";
+CM_ SG_ 212 error57 "Unallocated";
+CM_ SG_ 212 error56 "Unallocated";
+CM_ SG_ 212 error55 "Unallocated";
+CM_ SG_ 212 error54 "Unallocated";
+CM_ SG_ 212 error53 "Unallocated";
+CM_ SG_ 212 error52 "Unallocated";
+CM_ SG_ 212 error51 "Unallocated";
+CM_ SG_ 212 error50 "Unallocated";
+CM_ SG_ 212 error49 "Unallocated";
+CM_ SG_ 212 error48 "Unallocated";
+CM_ SG_ 212 error47 "Unallocated";
+CM_ SG_ 212 error46 "Unallocated";
+CM_ SG_ 212 error45 "Unallocated";
+CM_ SG_ 212 error44 "Unallocated";
+CM_ SG_ 212 error43 "Unallocated";
+CM_ SG_ 212 error42 "Unallocated";
+CM_ SG_ 212 error41 "Unallocated";
+CM_ SG_ 212 error40 "Unallocated";
+CM_ SG_ 212 error39 "Unallocated";
+CM_ SG_ 212 error38 "Unallocated";
+CM_ SG_ 212 error37 "Unallocated";
+CM_ SG_ 212 error36 "Unallocated";
+CM_ SG_ 212 error35 "Unallocated";
+CM_ SG_ 212 error34 "Unallocated";
+CM_ SG_ 212 error33 "Unallocated";
+CM_ SG_ 212 error32 "Unallocated";
+CM_ SG_ 212 error31 "Unallocated";
+CM_ SG_ 212 error30 "Unallocated";
+CM_ SG_ 212 error29 "Unallocated";
+CM_ SG_ 212 error28 "Unallocated";
+CM_ SG_ 212 error27 "Unallocated";
+CM_ SG_ 212 error26 "Unallocated";
+CM_ SG_ 212 error25 "Unallocated";
+CM_ SG_ 212 error24 "Unallocated";
+CM_ SG_ 212 error23 "CAN controller health";
+CM_ SG_ 212 error22 "CAN controller health";
+CM_ SG_ 212 error21 "CAN controller health";
+CM_ SG_ 212 error20 "CAN controller health";
+CM_ SG_ 212 error19 "CAN controller health";
+CM_ SG_ 212 can_rx_overflow "CAN controller health";
+CM_ SG_ 212 can_tx_overflow "CAN controller health";
+CM_ SG_ 212 can_bus_off "CAN controller health";
+CM_ SG_ 212 error15 "Data freshness";
+CM_ SG_ 212 error14 "Data freshness";
+CM_ SG_ 212 error13 "Data freshness";
+CM_ SG_ 212 wss_right_no_signal "Data freshness";
+CM_ SG_ 212 wss_left_no_signal "Data freshness";
+CM_ SG_ 212 gps_link_slow "Data freshness";
+CM_ SG_ 212 gps_stale "Data freshness";
+CM_ SG_ 212 gps_no_fix "Data freshness";
+CM_ SG_ 212 error7 "Device init / read fault";
+CM_ SG_ 212 lp_out_of_range "Device init / read fault";
+CM_ SG_ 212 fusion_uncalibrated "Device init / read fault";
+CM_ SG_ 212 gps_init_failed "Device init / read fault";
+CM_ SG_ 212 mag_read_failed "Device init / read fault";
+CM_ SG_ 212 mag_init_failed "Device init / read fault";
+CM_ SG_ 212 imu_read_failed "Device init / read fault";
+CM_ SG_ 212 imu_init_failed "Device init / read fault";
+CM_ BO_ 213 "Sensor Node Heartbeat";
+CM_ SG_ 213 error63 "Unallocated";
+CM_ SG_ 213 error62 "Unallocated";
+CM_ SG_ 213 error61 "Unallocated";
+CM_ SG_ 213 error60 "Unallocated";
+CM_ SG_ 213 error59 "Unallocated";
+CM_ SG_ 213 error58 "Unallocated";
+CM_ SG_ 213 error57 "Unallocated";
+CM_ SG_ 213 error56 "Unallocated";
+CM_ SG_ 213 error55 "Unallocated";
+CM_ SG_ 213 error54 "Unallocated";
+CM_ SG_ 213 error53 "Unallocated";
+CM_ SG_ 213 error52 "Unallocated";
+CM_ SG_ 213 error51 "Unallocated";
+CM_ SG_ 213 error50 "Unallocated";
+CM_ SG_ 213 error49 "Unallocated";
+CM_ SG_ 213 error48 "Unallocated";
+CM_ SG_ 213 error47 "Unallocated";
+CM_ SG_ 213 error46 "Unallocated";
+CM_ SG_ 213 error45 "Unallocated";
+CM_ SG_ 213 error44 "Unallocated";
+CM_ SG_ 213 error43 "Unallocated";
+CM_ SG_ 213 error42 "Unallocated";
+CM_ SG_ 213 error41 "Unallocated";
+CM_ SG_ 213 error40 "Unallocated";
+CM_ SG_ 213 error39 "Unallocated";
+CM_ SG_ 213 error38 "Unallocated";
+CM_ SG_ 213 error37 "Unallocated";
+CM_ SG_ 213 error36 "Unallocated";
+CM_ SG_ 213 error35 "Unallocated";
+CM_ SG_ 213 error34 "Unallocated";
+CM_ SG_ 213 error33 "Unallocated";
+CM_ SG_ 213 error32 "Unallocated";
+CM_ SG_ 213 error31 "Unallocated";
+CM_ SG_ 213 error30 "Unallocated";
+CM_ SG_ 213 error29 "Unallocated";
+CM_ SG_ 213 error28 "Unallocated";
+CM_ SG_ 213 error27 "Unallocated";
+CM_ SG_ 213 error26 "Unallocated";
+CM_ SG_ 213 error25 "Unallocated";
+CM_ SG_ 213 error24 "Unallocated";
+CM_ SG_ 213 error23 "CAN controller health";
+CM_ SG_ 213 error22 "CAN controller health";
+CM_ SG_ 213 error21 "CAN controller health";
+CM_ SG_ 213 error20 "CAN controller health";
+CM_ SG_ 213 error19 "CAN controller health";
+CM_ SG_ 213 can_rx_overflow "CAN controller health";
+CM_ SG_ 213 can_tx_overflow "CAN controller health";
+CM_ SG_ 213 can_bus_off "CAN controller health";
+CM_ SG_ 213 error15 "Data freshness";
+CM_ SG_ 213 error14 "Data freshness";
+CM_ SG_ 213 error13 "Data freshness";
+CM_ SG_ 213 wss_right_no_signal "Data freshness";
+CM_ SG_ 213 wss_left_no_signal "Data freshness";
+CM_ SG_ 213 gps_link_slow "Data freshness";
+CM_ SG_ 213 gps_stale "Data freshness";
+CM_ SG_ 213 gps_no_fix "Data freshness";
+CM_ SG_ 213 error7 "Device init / read fault";
+CM_ SG_ 213 lp_out_of_range "Device init / read fault";
+CM_ SG_ 213 fusion_uncalibrated "Device init / read fault";
+CM_ SG_ 213 gps_init_failed "Device init / read fault";
+CM_ SG_ 213 mag_read_failed "Device init / read fault";
+CM_ SG_ 213 mag_init_failed "Device init / read fault";
+CM_ SG_ 213 imu_read_failed "Device init / read fault";
+CM_ SG_ 213 imu_init_failed "Device init / read fault";
 CM_ BO_ 224 "PING PONG counter1.";
 CM_ BO_ 225 "PING PONG counter2.";
 CM_ BO_ 226 "PING PONG counter3.";
@@ -1806,10 +1952,7 @@ BA_ "GenMsgCycleTime" BO_ 72 100;
 BA_ "GenMsgCycleTime" BO_ 73 100;
 BA_ "GenMsgCycleTime" BO_ 74 100;
 BA_ "GenMsgCycleTime" BO_ 75 100;
-BA_ "GenMsgCycleTime" BO_ 76 1000;
-BA_ "GenMsgCycleTime" BO_ 77 1000;
 BA_ "GenMsgCycleTime" BO_ 78 100;
-BA_ "GenMsgCycleTime" BO_ 79 100;
 BA_ "GenMsgCycleTime" BO_ 80 200;
 BA_ "GenMsgCycleTime" BO_ 81 200;
 BA_ "GenMsgCycleTime" BO_ 82 200;

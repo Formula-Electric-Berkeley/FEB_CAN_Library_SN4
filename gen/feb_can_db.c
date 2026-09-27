@@ -1489,9 +1489,9 @@ bool feb_can_lvpdb_sm_af1_af2_cp_rf_currents_cp_rf_current_is_in_range(uint16_t 
     return (true);
 }
 
-int feb_can_linear_potentiometer_front_pack(
+int feb_can_linpot_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_linear_potentiometer_front_t *src_p,
+    const struct feb_can_linpot_front_t *src_p,
     size_t size)
 {
     if (size < 4u) {
@@ -1500,16 +1500,16 @@ int feb_can_linear_potentiometer_front_pack(
 
     memset(&dst_p[0], 0, 4);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->linear_potentiometer_1_front, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->linear_potentiometer_1_front, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->linear_potentiometer_2_front, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->linear_potentiometer_2_front, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->linpot_left, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->linpot_left, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->linpot_right, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->linpot_right, 8u, 0xffu);
 
     return (4);
 }
 
-int feb_can_linear_potentiometer_front_unpack(
-    struct feb_can_linear_potentiometer_front_t *dst_p,
+int feb_can_linpot_front_unpack(
+    struct feb_can_linpot_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -1517,60 +1517,60 @@ int feb_can_linear_potentiometer_front_unpack(
         return (-EINVAL);
     }
 
-    dst_p->linear_potentiometer_1_front = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->linear_potentiometer_1_front |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->linear_potentiometer_2_front = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->linear_potentiometer_2_front |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->linpot_left = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->linpot_left |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->linpot_right = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->linpot_right |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
 
     return (0);
 }
 
-int feb_can_linear_potentiometer_front_init(struct feb_can_linear_potentiometer_front_t *msg_p)
+int feb_can_linpot_front_init(struct feb_can_linpot_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_linear_potentiometer_front_t));
+    memset(msg_p, 0, sizeof(struct feb_can_linpot_front_t));
 
     return 0;
 }
 
-uint16_t feb_can_linear_potentiometer_front_linear_potentiometer_1_front_encode(double value)
+uint16_t feb_can_linpot_front_linpot_left_encode(double value)
 {
-    return (uint16_t)(value);
+    return (uint16_t)(value / 0.01);
 }
 
-double feb_can_linear_potentiometer_front_linear_potentiometer_1_front_decode(uint16_t value)
+double feb_can_linpot_front_linpot_left_decode(uint16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.01);
 }
 
-bool feb_can_linear_potentiometer_front_linear_potentiometer_1_front_is_in_range(uint16_t value)
-{
-    (void)value;
-
-    return (true);
-}
-
-uint16_t feb_can_linear_potentiometer_front_linear_potentiometer_2_front_encode(double value)
-{
-    return (uint16_t)(value);
-}
-
-double feb_can_linear_potentiometer_front_linear_potentiometer_2_front_decode(uint16_t value)
-{
-    return ((double)value);
-}
-
-bool feb_can_linear_potentiometer_front_linear_potentiometer_2_front_is_in_range(uint16_t value)
+bool feb_can_linpot_front_linpot_left_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_linear_potentiometer_rear_pack(
+uint16_t feb_can_linpot_front_linpot_right_encode(double value)
+{
+    return (uint16_t)(value / 0.01);
+}
+
+double feb_can_linpot_front_linpot_right_decode(uint16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_linpot_front_linpot_right_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_linpot_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_linear_potentiometer_rear_t *src_p,
+    const struct feb_can_linpot_rear_t *src_p,
     size_t size)
 {
     if (size < 4u) {
@@ -1579,16 +1579,16 @@ int feb_can_linear_potentiometer_rear_pack(
 
     memset(&dst_p[0], 0, 4);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->linear_potentiometer_1_rear, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->linear_potentiometer_1_rear, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->linear_potentiometer_2_rear, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->linear_potentiometer_2_rear, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->linpot_left, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->linpot_left, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->linpot_right, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->linpot_right, 8u, 0xffu);
 
     return (4);
 }
 
-int feb_can_linear_potentiometer_rear_unpack(
-    struct feb_can_linear_potentiometer_rear_t *dst_p,
+int feb_can_linpot_rear_unpack(
+    struct feb_can_linpot_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -1596,60 +1596,60 @@ int feb_can_linear_potentiometer_rear_unpack(
         return (-EINVAL);
     }
 
-    dst_p->linear_potentiometer_1_rear = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->linear_potentiometer_1_rear |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->linear_potentiometer_2_rear = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->linear_potentiometer_2_rear |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->linpot_left = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->linpot_left |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->linpot_right = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->linpot_right |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
 
     return (0);
 }
 
-int feb_can_linear_potentiometer_rear_init(struct feb_can_linear_potentiometer_rear_t *msg_p)
+int feb_can_linpot_rear_init(struct feb_can_linpot_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_linear_potentiometer_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_linpot_rear_t));
 
     return 0;
 }
 
-uint16_t feb_can_linear_potentiometer_rear_linear_potentiometer_1_rear_encode(double value)
+uint16_t feb_can_linpot_rear_linpot_left_encode(double value)
 {
-    return (uint16_t)(value);
+    return (uint16_t)(value / 0.01);
 }
 
-double feb_can_linear_potentiometer_rear_linear_potentiometer_1_rear_decode(uint16_t value)
+double feb_can_linpot_rear_linpot_left_decode(uint16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.01);
 }
 
-bool feb_can_linear_potentiometer_rear_linear_potentiometer_1_rear_is_in_range(uint16_t value)
-{
-    (void)value;
-
-    return (true);
-}
-
-uint16_t feb_can_linear_potentiometer_rear_linear_potentiometer_2_rear_encode(double value)
-{
-    return (uint16_t)(value);
-}
-
-double feb_can_linear_potentiometer_rear_linear_potentiometer_2_rear_decode(uint16_t value)
-{
-    return ((double)value);
-}
-
-bool feb_can_linear_potentiometer_rear_linear_potentiometer_2_rear_is_in_range(uint16_t value)
+bool feb_can_linpot_rear_linpot_left_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_front_left_tire_temp_pack(
+uint16_t feb_can_linpot_rear_linpot_right_encode(double value)
+{
+    return (uint16_t)(value / 0.01);
+}
+
+double feb_can_linpot_rear_linpot_right_decode(uint16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_linpot_rear_linpot_right_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_tire_temp_left_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_front_left_tire_temp_t *src_p,
+    const struct feb_can_tire_temp_left_front_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -1658,20 +1658,20 @@ int feb_can_front_left_tire_temp_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->leftmost_temp_fl, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->leftmost_temp_fl, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->center_left_temp_fl, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->center_left_temp_fl, 8u, 0xffu);
-    dst_p[4] |= pack_left_shift_u16(src_p->center_right_temp_fl, 0u, 0xffu);
-    dst_p[5] |= pack_right_shift_u16(src_p->center_right_temp_fl, 8u, 0xffu);
-    dst_p[6] |= pack_left_shift_u16(src_p->rightmost_temp_fl, 0u, 0xffu);
-    dst_p[7] |= pack_right_shift_u16(src_p->rightmost_temp_fl, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->leftmost_temp, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->leftmost_temp, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->center_left_temp, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->center_left_temp, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->center_right_temp, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->center_right_temp, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->rightmost_temp, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->rightmost_temp, 8u, 0xffu);
 
     return (8);
 }
 
-int feb_can_front_left_tire_temp_unpack(
-    struct feb_can_front_left_tire_temp_t *dst_p,
+int feb_can_tire_temp_left_front_unpack(
+    struct feb_can_tire_temp_left_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -1679,98 +1679,98 @@ int feb_can_front_left_tire_temp_unpack(
         return (-EINVAL);
     }
 
-    dst_p->leftmost_temp_fl = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->leftmost_temp_fl |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->center_left_temp_fl = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->center_left_temp_fl |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
-    dst_p->center_right_temp_fl = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
-    dst_p->center_right_temp_fl |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
-    dst_p->rightmost_temp_fl = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
-    dst_p->rightmost_temp_fl |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->leftmost_temp = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->leftmost_temp |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->center_left_temp = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->center_left_temp |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->center_right_temp = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->center_right_temp |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->rightmost_temp = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->rightmost_temp |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
 
     return (0);
 }
 
-int feb_can_front_left_tire_temp_init(struct feb_can_front_left_tire_temp_t *msg_p)
+int feb_can_tire_temp_left_front_init(struct feb_can_tire_temp_left_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_front_left_tire_temp_t));
+    memset(msg_p, 0, sizeof(struct feb_can_tire_temp_left_front_t));
 
     return 0;
 }
 
-uint16_t feb_can_front_left_tire_temp_leftmost_temp_fl_encode(double value)
+uint16_t feb_can_tire_temp_left_front_leftmost_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_front_left_tire_temp_leftmost_temp_fl_decode(uint16_t value)
+double feb_can_tire_temp_left_front_leftmost_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_left_tire_temp_leftmost_temp_fl_is_in_range(uint16_t value)
+bool feb_can_tire_temp_left_front_leftmost_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_front_left_tire_temp_center_left_temp_fl_encode(double value)
+uint16_t feb_can_tire_temp_left_front_center_left_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_front_left_tire_temp_center_left_temp_fl_decode(uint16_t value)
+double feb_can_tire_temp_left_front_center_left_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_left_tire_temp_center_left_temp_fl_is_in_range(uint16_t value)
+bool feb_can_tire_temp_left_front_center_left_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_front_left_tire_temp_center_right_temp_fl_encode(double value)
+uint16_t feb_can_tire_temp_left_front_center_right_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_front_left_tire_temp_center_right_temp_fl_decode(uint16_t value)
+double feb_can_tire_temp_left_front_center_right_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_left_tire_temp_center_right_temp_fl_is_in_range(uint16_t value)
+bool feb_can_tire_temp_left_front_center_right_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_front_left_tire_temp_rightmost_temp_fl_encode(double value)
+uint16_t feb_can_tire_temp_left_front_rightmost_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_front_left_tire_temp_rightmost_temp_fl_decode(uint16_t value)
+double feb_can_tire_temp_left_front_rightmost_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_left_tire_temp_rightmost_temp_fl_is_in_range(uint16_t value)
+bool feb_can_tire_temp_left_front_rightmost_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_front_right_tire_temp_pack(
+int feb_can_tire_temp_right_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_front_right_tire_temp_t *src_p,
+    const struct feb_can_tire_temp_right_front_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -1779,20 +1779,20 @@ int feb_can_front_right_tire_temp_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->leftmost_temp_fr, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->leftmost_temp_fr, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->center_left_temp_fr, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->center_left_temp_fr, 8u, 0xffu);
-    dst_p[4] |= pack_left_shift_u16(src_p->center_right_temp_fr, 0u, 0xffu);
-    dst_p[5] |= pack_right_shift_u16(src_p->center_right_temp_fr, 8u, 0xffu);
-    dst_p[6] |= pack_left_shift_u16(src_p->rightmost_temp_fr, 0u, 0xffu);
-    dst_p[7] |= pack_right_shift_u16(src_p->rightmost_temp_fr, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->leftmost_temp, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->leftmost_temp, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->center_left_temp, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->center_left_temp, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->center_right_temp, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->center_right_temp, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->rightmost_temp, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->rightmost_temp, 8u, 0xffu);
 
     return (8);
 }
 
-int feb_can_front_right_tire_temp_unpack(
-    struct feb_can_front_right_tire_temp_t *dst_p,
+int feb_can_tire_temp_right_front_unpack(
+    struct feb_can_tire_temp_right_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -1800,98 +1800,98 @@ int feb_can_front_right_tire_temp_unpack(
         return (-EINVAL);
     }
 
-    dst_p->leftmost_temp_fr = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->leftmost_temp_fr |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->center_left_temp_fr = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->center_left_temp_fr |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
-    dst_p->center_right_temp_fr = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
-    dst_p->center_right_temp_fr |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
-    dst_p->rightmost_temp_fr = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
-    dst_p->rightmost_temp_fr |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->leftmost_temp = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->leftmost_temp |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->center_left_temp = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->center_left_temp |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->center_right_temp = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->center_right_temp |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->rightmost_temp = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->rightmost_temp |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
 
     return (0);
 }
 
-int feb_can_front_right_tire_temp_init(struct feb_can_front_right_tire_temp_t *msg_p)
+int feb_can_tire_temp_right_front_init(struct feb_can_tire_temp_right_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_front_right_tire_temp_t));
+    memset(msg_p, 0, sizeof(struct feb_can_tire_temp_right_front_t));
 
     return 0;
 }
 
-uint16_t feb_can_front_right_tire_temp_leftmost_temp_fr_encode(double value)
+uint16_t feb_can_tire_temp_right_front_leftmost_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_front_right_tire_temp_leftmost_temp_fr_decode(uint16_t value)
+double feb_can_tire_temp_right_front_leftmost_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_right_tire_temp_leftmost_temp_fr_is_in_range(uint16_t value)
+bool feb_can_tire_temp_right_front_leftmost_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_front_right_tire_temp_center_left_temp_fr_encode(double value)
+uint16_t feb_can_tire_temp_right_front_center_left_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_front_right_tire_temp_center_left_temp_fr_decode(uint16_t value)
+double feb_can_tire_temp_right_front_center_left_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_right_tire_temp_center_left_temp_fr_is_in_range(uint16_t value)
+bool feb_can_tire_temp_right_front_center_left_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_front_right_tire_temp_center_right_temp_fr_encode(double value)
+uint16_t feb_can_tire_temp_right_front_center_right_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_front_right_tire_temp_center_right_temp_fr_decode(uint16_t value)
+double feb_can_tire_temp_right_front_center_right_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_right_tire_temp_center_right_temp_fr_is_in_range(uint16_t value)
+bool feb_can_tire_temp_right_front_center_right_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_front_right_tire_temp_rightmost_temp_fr_encode(double value)
+uint16_t feb_can_tire_temp_right_front_rightmost_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_front_right_tire_temp_rightmost_temp_fr_decode(uint16_t value)
+double feb_can_tire_temp_right_front_rightmost_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_right_tire_temp_rightmost_temp_fr_is_in_range(uint16_t value)
+bool feb_can_tire_temp_right_front_rightmost_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_rear_left_tire_temp_pack(
+int feb_can_tire_temp_left_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_rear_left_tire_temp_t *src_p,
+    const struct feb_can_tire_temp_left_rear_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -1900,20 +1900,20 @@ int feb_can_rear_left_tire_temp_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->leftmost_temp_rl, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->leftmost_temp_rl, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->center_left_temp_rl, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->center_left_temp_rl, 8u, 0xffu);
-    dst_p[4] |= pack_left_shift_u16(src_p->center_right_temp_rl, 0u, 0xffu);
-    dst_p[5] |= pack_right_shift_u16(src_p->center_right_temp_rl, 8u, 0xffu);
-    dst_p[6] |= pack_left_shift_u16(src_p->rightmost_temp_rl, 0u, 0xffu);
-    dst_p[7] |= pack_right_shift_u16(src_p->rightmost_temp_rl, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->leftmost_temp, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->leftmost_temp, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->center_left_temp, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->center_left_temp, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->center_right_temp, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->center_right_temp, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->rightmost_temp, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->rightmost_temp, 8u, 0xffu);
 
     return (8);
 }
 
-int feb_can_rear_left_tire_temp_unpack(
-    struct feb_can_rear_left_tire_temp_t *dst_p,
+int feb_can_tire_temp_left_rear_unpack(
+    struct feb_can_tire_temp_left_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -1921,98 +1921,98 @@ int feb_can_rear_left_tire_temp_unpack(
         return (-EINVAL);
     }
 
-    dst_p->leftmost_temp_rl = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->leftmost_temp_rl |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->center_left_temp_rl = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->center_left_temp_rl |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
-    dst_p->center_right_temp_rl = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
-    dst_p->center_right_temp_rl |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
-    dst_p->rightmost_temp_rl = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
-    dst_p->rightmost_temp_rl |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->leftmost_temp = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->leftmost_temp |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->center_left_temp = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->center_left_temp |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->center_right_temp = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->center_right_temp |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->rightmost_temp = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->rightmost_temp |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
 
     return (0);
 }
 
-int feb_can_rear_left_tire_temp_init(struct feb_can_rear_left_tire_temp_t *msg_p)
+int feb_can_tire_temp_left_rear_init(struct feb_can_tire_temp_left_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_rear_left_tire_temp_t));
+    memset(msg_p, 0, sizeof(struct feb_can_tire_temp_left_rear_t));
 
     return 0;
 }
 
-uint16_t feb_can_rear_left_tire_temp_leftmost_temp_rl_encode(double value)
+uint16_t feb_can_tire_temp_left_rear_leftmost_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_rear_left_tire_temp_leftmost_temp_rl_decode(uint16_t value)
+double feb_can_tire_temp_left_rear_leftmost_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_left_tire_temp_leftmost_temp_rl_is_in_range(uint16_t value)
+bool feb_can_tire_temp_left_rear_leftmost_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_rear_left_tire_temp_center_left_temp_rl_encode(double value)
+uint16_t feb_can_tire_temp_left_rear_center_left_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_rear_left_tire_temp_center_left_temp_rl_decode(uint16_t value)
+double feb_can_tire_temp_left_rear_center_left_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_left_tire_temp_center_left_temp_rl_is_in_range(uint16_t value)
+bool feb_can_tire_temp_left_rear_center_left_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_rear_left_tire_temp_center_right_temp_rl_encode(double value)
+uint16_t feb_can_tire_temp_left_rear_center_right_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_rear_left_tire_temp_center_right_temp_rl_decode(uint16_t value)
+double feb_can_tire_temp_left_rear_center_right_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_left_tire_temp_center_right_temp_rl_is_in_range(uint16_t value)
+bool feb_can_tire_temp_left_rear_center_right_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_rear_left_tire_temp_rightmost_temp_rl_encode(double value)
+uint16_t feb_can_tire_temp_left_rear_rightmost_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_rear_left_tire_temp_rightmost_temp_rl_decode(uint16_t value)
+double feb_can_tire_temp_left_rear_rightmost_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_left_tire_temp_rightmost_temp_rl_is_in_range(uint16_t value)
+bool feb_can_tire_temp_left_rear_rightmost_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_rear_right_tire_temp_pack(
+int feb_can_tire_temp_right_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_rear_right_tire_temp_t *src_p,
+    const struct feb_can_tire_temp_right_rear_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -2021,20 +2021,20 @@ int feb_can_rear_right_tire_temp_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->leftmost_temp_rr, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->leftmost_temp_rr, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->center_left_temp_rr, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->center_left_temp_rr, 8u, 0xffu);
-    dst_p[4] |= pack_left_shift_u16(src_p->center_right_temp_rr, 0u, 0xffu);
-    dst_p[5] |= pack_right_shift_u16(src_p->center_right_temp_rr, 8u, 0xffu);
-    dst_p[6] |= pack_left_shift_u16(src_p->rightmost_temp_rr, 0u, 0xffu);
-    dst_p[7] |= pack_right_shift_u16(src_p->rightmost_temp_rr, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->leftmost_temp, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->leftmost_temp, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->center_left_temp, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->center_left_temp, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->center_right_temp, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->center_right_temp, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->rightmost_temp, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->rightmost_temp, 8u, 0xffu);
 
     return (8);
 }
 
-int feb_can_rear_right_tire_temp_unpack(
-    struct feb_can_rear_right_tire_temp_t *dst_p,
+int feb_can_tire_temp_right_rear_unpack(
+    struct feb_can_tire_temp_right_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -2042,98 +2042,98 @@ int feb_can_rear_right_tire_temp_unpack(
         return (-EINVAL);
     }
 
-    dst_p->leftmost_temp_rr = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->leftmost_temp_rr |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->center_left_temp_rr = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->center_left_temp_rr |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
-    dst_p->center_right_temp_rr = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
-    dst_p->center_right_temp_rr |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
-    dst_p->rightmost_temp_rr = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
-    dst_p->rightmost_temp_rr |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->leftmost_temp = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->leftmost_temp |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->center_left_temp = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->center_left_temp |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->center_right_temp = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->center_right_temp |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->rightmost_temp = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->rightmost_temp |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
 
     return (0);
 }
 
-int feb_can_rear_right_tire_temp_init(struct feb_can_rear_right_tire_temp_t *msg_p)
+int feb_can_tire_temp_right_rear_init(struct feb_can_tire_temp_right_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_rear_right_tire_temp_t));
+    memset(msg_p, 0, sizeof(struct feb_can_tire_temp_right_rear_t));
 
     return 0;
 }
 
-uint16_t feb_can_rear_right_tire_temp_leftmost_temp_rr_encode(double value)
+uint16_t feb_can_tire_temp_right_rear_leftmost_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_rear_right_tire_temp_leftmost_temp_rr_decode(uint16_t value)
+double feb_can_tire_temp_right_rear_leftmost_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_right_tire_temp_leftmost_temp_rr_is_in_range(uint16_t value)
+bool feb_can_tire_temp_right_rear_leftmost_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_rear_right_tire_temp_center_left_temp_rr_encode(double value)
+uint16_t feb_can_tire_temp_right_rear_center_left_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_rear_right_tire_temp_center_left_temp_rr_decode(uint16_t value)
+double feb_can_tire_temp_right_rear_center_left_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_right_tire_temp_center_left_temp_rr_is_in_range(uint16_t value)
+bool feb_can_tire_temp_right_rear_center_left_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_rear_right_tire_temp_center_right_temp_rr_encode(double value)
+uint16_t feb_can_tire_temp_right_rear_center_right_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_rear_right_tire_temp_center_right_temp_rr_decode(uint16_t value)
+double feb_can_tire_temp_right_rear_center_right_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_right_tire_temp_center_right_temp_rr_is_in_range(uint16_t value)
+bool feb_can_tire_temp_right_rear_center_right_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_rear_right_tire_temp_rightmost_temp_rr_encode(double value)
+uint16_t feb_can_tire_temp_right_rear_rightmost_temp_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_rear_right_tire_temp_rightmost_temp_rr_decode(uint16_t value)
+double feb_can_tire_temp_right_rear_rightmost_temp_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_right_tire_temp_rightmost_temp_rr_is_in_range(uint16_t value)
+bool feb_can_tire_temp_right_rear_rightmost_temp_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_wss_front_data_pack(
+int feb_can_wss_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_wss_front_data_t *src_p,
+    const struct feb_can_wss_front_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -2142,17 +2142,17 @@ int feb_can_wss_front_data_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->wss_left_front, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->wss_left_front, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->wss_right_front, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->wss_right_front, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->wss_left, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->wss_left, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->wss_right, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->wss_right, 8u, 0xffu);
     dst_p[4] |= pack_left_shift_u8(src_p->wss_dir_flags, 0u, 0xffu);
 
     return (8);
 }
 
-int feb_can_wss_front_data_unpack(
-    struct feb_can_wss_front_data_t *dst_p,
+int feb_can_wss_front_unpack(
+    struct feb_can_wss_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -2160,78 +2160,78 @@ int feb_can_wss_front_data_unpack(
         return (-EINVAL);
     }
 
-    dst_p->wss_left_front = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->wss_left_front |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->wss_right_front = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->wss_right_front |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->wss_left = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->wss_left |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->wss_right = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->wss_right |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
     dst_p->wss_dir_flags = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
 
     return (0);
 }
 
-int feb_can_wss_front_data_init(struct feb_can_wss_front_data_t *msg_p)
+int feb_can_wss_front_init(struct feb_can_wss_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_wss_front_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_wss_front_t));
 
     return 0;
 }
 
-uint16_t feb_can_wss_front_data_wss_left_front_encode(double value)
+uint16_t feb_can_wss_front_wss_left_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_wss_front_data_wss_left_front_decode(uint16_t value)
+double feb_can_wss_front_wss_left_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_wss_front_data_wss_left_front_is_in_range(uint16_t value)
+bool feb_can_wss_front_wss_left_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_wss_front_data_wss_right_front_encode(double value)
+uint16_t feb_can_wss_front_wss_right_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_wss_front_data_wss_right_front_decode(uint16_t value)
+double feb_can_wss_front_wss_right_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_wss_front_data_wss_right_front_is_in_range(uint16_t value)
+bool feb_can_wss_front_wss_right_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_wss_front_data_wss_dir_flags_encode(double value)
+uint8_t feb_can_wss_front_wss_dir_flags_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_wss_front_data_wss_dir_flags_decode(uint8_t value)
+double feb_can_wss_front_wss_dir_flags_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_wss_front_data_wss_dir_flags_is_in_range(uint8_t value)
+bool feb_can_wss_front_wss_dir_flags_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_wss_rear_data_pack(
+int feb_can_wss_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_wss_rear_data_t *src_p,
+    const struct feb_can_wss_rear_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -2240,17 +2240,17 @@ int feb_can_wss_rear_data_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->wss_left_rear, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->wss_left_rear, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->wss_right_rear, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->wss_right_rear, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->wss_left, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->wss_left, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->wss_right, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->wss_right, 8u, 0xffu);
     dst_p[4] |= pack_left_shift_u8(src_p->wss_dir_flags, 0u, 0xffu);
 
     return (8);
 }
 
-int feb_can_wss_rear_data_unpack(
-    struct feb_can_wss_rear_data_t *dst_p,
+int feb_can_wss_rear_unpack(
+    struct feb_can_wss_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -2258,89 +2258,90 @@ int feb_can_wss_rear_data_unpack(
         return (-EINVAL);
     }
 
-    dst_p->wss_left_rear = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->wss_left_rear |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->wss_right_rear = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->wss_right_rear |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->wss_left = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->wss_left |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->wss_right = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->wss_right |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
     dst_p->wss_dir_flags = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
 
     return (0);
 }
 
-int feb_can_wss_rear_data_init(struct feb_can_wss_rear_data_t *msg_p)
+int feb_can_wss_rear_init(struct feb_can_wss_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_wss_rear_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_wss_rear_t));
 
     return 0;
 }
 
-uint16_t feb_can_wss_rear_data_wss_left_rear_encode(double value)
+uint16_t feb_can_wss_rear_wss_left_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_wss_rear_data_wss_left_rear_decode(uint16_t value)
+double feb_can_wss_rear_wss_left_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_wss_rear_data_wss_left_rear_is_in_range(uint16_t value)
+bool feb_can_wss_rear_wss_left_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_wss_rear_data_wss_right_rear_encode(double value)
+uint16_t feb_can_wss_rear_wss_right_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_wss_rear_data_wss_right_rear_decode(uint16_t value)
+double feb_can_wss_rear_wss_right_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_wss_rear_data_wss_right_rear_is_in_range(uint16_t value)
+bool feb_can_wss_rear_wss_right_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_wss_rear_data_wss_dir_flags_encode(double value)
+uint8_t feb_can_wss_rear_wss_dir_flags_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_wss_rear_data_wss_dir_flags_decode(uint8_t value)
+double feb_can_wss_rear_wss_dir_flags_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_wss_rear_data_wss_dir_flags_is_in_range(uint8_t value)
+bool feb_can_wss_rear_wss_dir_flags_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_imu_acceleration_data_pack(
+int feb_can_imu_accel_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_imu_acceleration_data_t *src_p,
+    const struct feb_can_imu_accel_front_t *src_p,
     size_t size)
 {
     uint16_t acceleration_x;
     uint16_t acceleration_y;
     uint16_t acceleration_z;
+    uint16_t imu_temp;
 
-    if (size < 6u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, 6);
+    memset(&dst_p[0], 0, 8);
 
     acceleration_x = (uint16_t)src_p->acceleration_x;
     dst_p[0] |= pack_left_shift_u16(acceleration_x, 0u, 0xffu);
@@ -2351,20 +2352,24 @@ int feb_can_imu_acceleration_data_pack(
     acceleration_z = (uint16_t)src_p->acceleration_z;
     dst_p[4] |= pack_left_shift_u16(acceleration_z, 0u, 0xffu);
     dst_p[5] |= pack_right_shift_u16(acceleration_z, 8u, 0xffu);
+    imu_temp = (uint16_t)src_p->imu_temp;
+    dst_p[6] |= pack_left_shift_u16(imu_temp, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(imu_temp, 8u, 0xffu);
 
-    return (6);
+    return (8);
 }
 
-int feb_can_imu_acceleration_data_unpack(
-    struct feb_can_imu_acceleration_data_t *dst_p,
+int feb_can_imu_accel_front_unpack(
+    struct feb_can_imu_accel_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
     uint16_t acceleration_x;
     uint16_t acceleration_y;
     uint16_t acceleration_z;
+    uint16_t imu_temp;
 
-    if (size < 6u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
@@ -2377,84 +2382,105 @@ int feb_can_imu_acceleration_data_unpack(
     acceleration_z = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
     acceleration_z |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
     dst_p->acceleration_z = (int16_t)acceleration_z;
+    imu_temp = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    imu_temp |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->imu_temp = (int16_t)imu_temp;
 
     return (0);
 }
 
-int feb_can_imu_acceleration_data_init(struct feb_can_imu_acceleration_data_t *msg_p)
+int feb_can_imu_accel_front_init(struct feb_can_imu_accel_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_imu_acceleration_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_imu_accel_front_t));
 
     return 0;
 }
 
-int16_t feb_can_imu_acceleration_data_acceleration_x_encode(double value)
+int16_t feb_can_imu_accel_front_acceleration_x_encode(double value)
 {
     return (int16_t)(value / 0.061);
 }
 
-double feb_can_imu_acceleration_data_acceleration_x_decode(int16_t value)
+double feb_can_imu_accel_front_acceleration_x_decode(int16_t value)
 {
     return ((double)value * 0.061);
 }
 
-bool feb_can_imu_acceleration_data_acceleration_x_is_in_range(int16_t value)
+bool feb_can_imu_accel_front_acceleration_x_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_imu_acceleration_data_acceleration_y_encode(double value)
+int16_t feb_can_imu_accel_front_acceleration_y_encode(double value)
 {
     return (int16_t)(value / 0.061);
 }
 
-double feb_can_imu_acceleration_data_acceleration_y_decode(int16_t value)
+double feb_can_imu_accel_front_acceleration_y_decode(int16_t value)
 {
     return ((double)value * 0.061);
 }
 
-bool feb_can_imu_acceleration_data_acceleration_y_is_in_range(int16_t value)
+bool feb_can_imu_accel_front_acceleration_y_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_imu_acceleration_data_acceleration_z_encode(double value)
+int16_t feb_can_imu_accel_front_acceleration_z_encode(double value)
 {
     return (int16_t)(value / 0.061);
 }
 
-double feb_can_imu_acceleration_data_acceleration_z_decode(int16_t value)
+double feb_can_imu_accel_front_acceleration_z_decode(int16_t value)
 {
     return ((double)value * 0.061);
 }
 
-bool feb_can_imu_acceleration_data_acceleration_z_is_in_range(int16_t value)
+bool feb_can_imu_accel_front_acceleration_z_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_imu_acceleration_data_rear_pack(
+int16_t feb_can_imu_accel_front_imu_temp_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_imu_accel_front_imu_temp_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_imu_accel_front_imu_temp_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_imu_accel_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_imu_acceleration_data_rear_t *src_p,
+    const struct feb_can_imu_accel_rear_t *src_p,
     size_t size)
 {
     uint16_t acceleration_x;
     uint16_t acceleration_y;
     uint16_t acceleration_z;
+    uint16_t imu_temp;
 
-    if (size < 6u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, 6);
+    memset(&dst_p[0], 0, 8);
 
     acceleration_x = (uint16_t)src_p->acceleration_x;
     dst_p[0] |= pack_left_shift_u16(acceleration_x, 0u, 0xffu);
@@ -2465,20 +2491,24 @@ int feb_can_imu_acceleration_data_rear_pack(
     acceleration_z = (uint16_t)src_p->acceleration_z;
     dst_p[4] |= pack_left_shift_u16(acceleration_z, 0u, 0xffu);
     dst_p[5] |= pack_right_shift_u16(acceleration_z, 8u, 0xffu);
+    imu_temp = (uint16_t)src_p->imu_temp;
+    dst_p[6] |= pack_left_shift_u16(imu_temp, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(imu_temp, 8u, 0xffu);
 
-    return (6);
+    return (8);
 }
 
-int feb_can_imu_acceleration_data_rear_unpack(
-    struct feb_can_imu_acceleration_data_rear_t *dst_p,
+int feb_can_imu_accel_rear_unpack(
+    struct feb_can_imu_accel_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
     uint16_t acceleration_x;
     uint16_t acceleration_y;
     uint16_t acceleration_z;
+    uint16_t imu_temp;
 
-    if (size < 6u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
@@ -2491,73 +2521,93 @@ int feb_can_imu_acceleration_data_rear_unpack(
     acceleration_z = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
     acceleration_z |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
     dst_p->acceleration_z = (int16_t)acceleration_z;
+    imu_temp = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    imu_temp |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->imu_temp = (int16_t)imu_temp;
 
     return (0);
 }
 
-int feb_can_imu_acceleration_data_rear_init(struct feb_can_imu_acceleration_data_rear_t *msg_p)
+int feb_can_imu_accel_rear_init(struct feb_can_imu_accel_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_imu_acceleration_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_imu_accel_rear_t));
 
     return 0;
 }
 
-int16_t feb_can_imu_acceleration_data_rear_acceleration_x_encode(double value)
+int16_t feb_can_imu_accel_rear_acceleration_x_encode(double value)
 {
     return (int16_t)(value / 0.061);
 }
 
-double feb_can_imu_acceleration_data_rear_acceleration_x_decode(int16_t value)
+double feb_can_imu_accel_rear_acceleration_x_decode(int16_t value)
 {
     return ((double)value * 0.061);
 }
 
-bool feb_can_imu_acceleration_data_rear_acceleration_x_is_in_range(int16_t value)
+bool feb_can_imu_accel_rear_acceleration_x_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_imu_acceleration_data_rear_acceleration_y_encode(double value)
+int16_t feb_can_imu_accel_rear_acceleration_y_encode(double value)
 {
     return (int16_t)(value / 0.061);
 }
 
-double feb_can_imu_acceleration_data_rear_acceleration_y_decode(int16_t value)
+double feb_can_imu_accel_rear_acceleration_y_decode(int16_t value)
 {
     return ((double)value * 0.061);
 }
 
-bool feb_can_imu_acceleration_data_rear_acceleration_y_is_in_range(int16_t value)
+bool feb_can_imu_accel_rear_acceleration_y_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_imu_acceleration_data_rear_acceleration_z_encode(double value)
+int16_t feb_can_imu_accel_rear_acceleration_z_encode(double value)
 {
     return (int16_t)(value / 0.061);
 }
 
-double feb_can_imu_acceleration_data_rear_acceleration_z_decode(int16_t value)
+double feb_can_imu_accel_rear_acceleration_z_decode(int16_t value)
 {
     return ((double)value * 0.061);
 }
 
-bool feb_can_imu_acceleration_data_rear_acceleration_z_is_in_range(int16_t value)
+bool feb_can_imu_accel_rear_acceleration_z_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_imu_gyro_data_pack(
+int16_t feb_can_imu_accel_rear_imu_temp_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_imu_accel_rear_imu_temp_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_imu_accel_rear_imu_temp_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_imu_gyro_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_imu_gyro_data_t *src_p,
+    const struct feb_can_imu_gyro_front_t *src_p,
     size_t size)
 {
     uint16_t gyro_x;
@@ -2583,8 +2633,8 @@ int feb_can_imu_gyro_data_pack(
     return (6);
 }
 
-int feb_can_imu_gyro_data_unpack(
-    struct feb_can_imu_gyro_data_t *dst_p,
+int feb_can_imu_gyro_front_unpack(
+    struct feb_can_imu_gyro_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -2609,69 +2659,69 @@ int feb_can_imu_gyro_data_unpack(
     return (0);
 }
 
-int feb_can_imu_gyro_data_init(struct feb_can_imu_gyro_data_t *msg_p)
+int feb_can_imu_gyro_front_init(struct feb_can_imu_gyro_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_imu_gyro_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_imu_gyro_front_t));
 
     return 0;
 }
 
-int16_t feb_can_imu_gyro_data_gyro_x_encode(double value)
+int16_t feb_can_imu_gyro_front_gyro_x_encode(double value)
 {
     return (int16_t)(value / 70.0);
 }
 
-double feb_can_imu_gyro_data_gyro_x_decode(int16_t value)
+double feb_can_imu_gyro_front_gyro_x_decode(int16_t value)
 {
     return ((double)value * 70.0);
 }
 
-bool feb_can_imu_gyro_data_gyro_x_is_in_range(int16_t value)
+bool feb_can_imu_gyro_front_gyro_x_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_imu_gyro_data_gyro_y_encode(double value)
+int16_t feb_can_imu_gyro_front_gyro_y_encode(double value)
 {
     return (int16_t)(value / 70.0);
 }
 
-double feb_can_imu_gyro_data_gyro_y_decode(int16_t value)
+double feb_can_imu_gyro_front_gyro_y_decode(int16_t value)
 {
     return ((double)value * 70.0);
 }
 
-bool feb_can_imu_gyro_data_gyro_y_is_in_range(int16_t value)
+bool feb_can_imu_gyro_front_gyro_y_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_imu_gyro_data_gyro_z_encode(double value)
+int16_t feb_can_imu_gyro_front_gyro_z_encode(double value)
 {
     return (int16_t)(value / 70.0);
 }
 
-double feb_can_imu_gyro_data_gyro_z_decode(int16_t value)
+double feb_can_imu_gyro_front_gyro_z_decode(int16_t value)
 {
     return ((double)value * 70.0);
 }
 
-bool feb_can_imu_gyro_data_gyro_z_is_in_range(int16_t value)
+bool feb_can_imu_gyro_front_gyro_z_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_imu_gyro_data_rear_pack(
+int feb_can_imu_gyro_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_imu_gyro_data_rear_t *src_p,
+    const struct feb_can_imu_gyro_rear_t *src_p,
     size_t size)
 {
     uint16_t gyro_x;
@@ -2697,8 +2747,8 @@ int feb_can_imu_gyro_data_rear_pack(
     return (6);
 }
 
-int feb_can_imu_gyro_data_rear_unpack(
-    struct feb_can_imu_gyro_data_rear_t *dst_p,
+int feb_can_imu_gyro_rear_unpack(
+    struct feb_can_imu_gyro_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -2723,80 +2773,81 @@ int feb_can_imu_gyro_data_rear_unpack(
     return (0);
 }
 
-int feb_can_imu_gyro_data_rear_init(struct feb_can_imu_gyro_data_rear_t *msg_p)
+int feb_can_imu_gyro_rear_init(struct feb_can_imu_gyro_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_imu_gyro_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_imu_gyro_rear_t));
 
     return 0;
 }
 
-int16_t feb_can_imu_gyro_data_rear_gyro_x_encode(double value)
+int16_t feb_can_imu_gyro_rear_gyro_x_encode(double value)
 {
     return (int16_t)(value / 70.0);
 }
 
-double feb_can_imu_gyro_data_rear_gyro_x_decode(int16_t value)
+double feb_can_imu_gyro_rear_gyro_x_decode(int16_t value)
 {
     return ((double)value * 70.0);
 }
 
-bool feb_can_imu_gyro_data_rear_gyro_x_is_in_range(int16_t value)
+bool feb_can_imu_gyro_rear_gyro_x_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_imu_gyro_data_rear_gyro_y_encode(double value)
+int16_t feb_can_imu_gyro_rear_gyro_y_encode(double value)
 {
     return (int16_t)(value / 70.0);
 }
 
-double feb_can_imu_gyro_data_rear_gyro_y_decode(int16_t value)
+double feb_can_imu_gyro_rear_gyro_y_decode(int16_t value)
 {
     return ((double)value * 70.0);
 }
 
-bool feb_can_imu_gyro_data_rear_gyro_y_is_in_range(int16_t value)
+bool feb_can_imu_gyro_rear_gyro_y_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_imu_gyro_data_rear_gyro_z_encode(double value)
+int16_t feb_can_imu_gyro_rear_gyro_z_encode(double value)
 {
     return (int16_t)(value / 70.0);
 }
 
-double feb_can_imu_gyro_data_rear_gyro_z_decode(int16_t value)
+double feb_can_imu_gyro_rear_gyro_z_decode(int16_t value)
 {
     return ((double)value * 70.0);
 }
 
-bool feb_can_imu_gyro_data_rear_gyro_z_is_in_range(int16_t value)
+bool feb_can_imu_gyro_rear_gyro_z_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_magnetometer_data_pack(
+int feb_can_mag_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_magnetometer_data_t *src_p,
+    const struct feb_can_mag_front_t *src_p,
     size_t size)
 {
+    uint16_t mag_temp;
     uint16_t magnetometer_x;
     uint16_t magnetometer_y;
     uint16_t magnetometer_z;
 
-    if (size < 6u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, 6);
+    memset(&dst_p[0], 0, 8);
 
     magnetometer_x = (uint16_t)src_p->magnetometer_x;
     dst_p[0] |= pack_left_shift_u16(magnetometer_x, 0u, 0xffu);
@@ -2807,20 +2858,24 @@ int feb_can_magnetometer_data_pack(
     magnetometer_z = (uint16_t)src_p->magnetometer_z;
     dst_p[4] |= pack_left_shift_u16(magnetometer_z, 0u, 0xffu);
     dst_p[5] |= pack_right_shift_u16(magnetometer_z, 8u, 0xffu);
+    mag_temp = (uint16_t)src_p->mag_temp;
+    dst_p[6] |= pack_left_shift_u16(mag_temp, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(mag_temp, 8u, 0xffu);
 
-    return (6);
+    return (8);
 }
 
-int feb_can_magnetometer_data_unpack(
-    struct feb_can_magnetometer_data_t *dst_p,
+int feb_can_mag_front_unpack(
+    struct feb_can_mag_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
+    uint16_t mag_temp;
     uint16_t magnetometer_x;
     uint16_t magnetometer_y;
     uint16_t magnetometer_z;
 
-    if (size < 6u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
@@ -2833,84 +2888,105 @@ int feb_can_magnetometer_data_unpack(
     magnetometer_z = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
     magnetometer_z |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
     dst_p->magnetometer_z = (int16_t)magnetometer_z;
+    mag_temp = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    mag_temp |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->mag_temp = (int16_t)mag_temp;
 
     return (0);
 }
 
-int feb_can_magnetometer_data_init(struct feb_can_magnetometer_data_t *msg_p)
+int feb_can_mag_front_init(struct feb_can_mag_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_magnetometer_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_mag_front_t));
 
     return 0;
 }
 
-int16_t feb_can_magnetometer_data_magnetometer_x_encode(double value)
+int16_t feb_can_mag_front_magnetometer_x_encode(double value)
 {
     return (int16_t)(value / 0.5844);
 }
 
-double feb_can_magnetometer_data_magnetometer_x_decode(int16_t value)
+double feb_can_mag_front_magnetometer_x_decode(int16_t value)
 {
     return ((double)value * 0.5844);
 }
 
-bool feb_can_magnetometer_data_magnetometer_x_is_in_range(int16_t value)
+bool feb_can_mag_front_magnetometer_x_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_magnetometer_data_magnetometer_y_encode(double value)
+int16_t feb_can_mag_front_magnetometer_y_encode(double value)
 {
     return (int16_t)(value / 0.5844);
 }
 
-double feb_can_magnetometer_data_magnetometer_y_decode(int16_t value)
+double feb_can_mag_front_magnetometer_y_decode(int16_t value)
 {
     return ((double)value * 0.5844);
 }
 
-bool feb_can_magnetometer_data_magnetometer_y_is_in_range(int16_t value)
+bool feb_can_mag_front_magnetometer_y_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_magnetometer_data_magnetometer_z_encode(double value)
+int16_t feb_can_mag_front_magnetometer_z_encode(double value)
 {
     return (int16_t)(value / 0.5844);
 }
 
-double feb_can_magnetometer_data_magnetometer_z_decode(int16_t value)
+double feb_can_mag_front_magnetometer_z_decode(int16_t value)
 {
     return ((double)value * 0.5844);
 }
 
-bool feb_can_magnetometer_data_magnetometer_z_is_in_range(int16_t value)
+bool feb_can_mag_front_magnetometer_z_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_magnetometer_data_rear_pack(
+int16_t feb_can_mag_front_mag_temp_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_mag_front_mag_temp_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_mag_front_mag_temp_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_mag_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_magnetometer_data_rear_t *src_p,
+    const struct feb_can_mag_rear_t *src_p,
     size_t size)
 {
+    uint16_t mag_temp;
     uint16_t magnetometer_x;
     uint16_t magnetometer_y;
     uint16_t magnetometer_z;
 
-    if (size < 6u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, 6);
+    memset(&dst_p[0], 0, 8);
 
     magnetometer_x = (uint16_t)src_p->magnetometer_x;
     dst_p[0] |= pack_left_shift_u16(magnetometer_x, 0u, 0xffu);
@@ -2921,20 +2997,24 @@ int feb_can_magnetometer_data_rear_pack(
     magnetometer_z = (uint16_t)src_p->magnetometer_z;
     dst_p[4] |= pack_left_shift_u16(magnetometer_z, 0u, 0xffu);
     dst_p[5] |= pack_right_shift_u16(magnetometer_z, 8u, 0xffu);
+    mag_temp = (uint16_t)src_p->mag_temp;
+    dst_p[6] |= pack_left_shift_u16(mag_temp, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(mag_temp, 8u, 0xffu);
 
-    return (6);
+    return (8);
 }
 
-int feb_can_magnetometer_data_rear_unpack(
-    struct feb_can_magnetometer_data_rear_t *dst_p,
+int feb_can_mag_rear_unpack(
+    struct feb_can_mag_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
+    uint16_t mag_temp;
     uint16_t magnetometer_x;
     uint16_t magnetometer_y;
     uint16_t magnetometer_z;
 
-    if (size < 6u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
@@ -2947,64 +3027,84 @@ int feb_can_magnetometer_data_rear_unpack(
     magnetometer_z = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
     magnetometer_z |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
     dst_p->magnetometer_z = (int16_t)magnetometer_z;
+    mag_temp = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    mag_temp |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+    dst_p->mag_temp = (int16_t)mag_temp;
 
     return (0);
 }
 
-int feb_can_magnetometer_data_rear_init(struct feb_can_magnetometer_data_rear_t *msg_p)
+int feb_can_mag_rear_init(struct feb_can_mag_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_magnetometer_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_mag_rear_t));
 
     return 0;
 }
 
-int16_t feb_can_magnetometer_data_rear_magnetometer_x_encode(double value)
+int16_t feb_can_mag_rear_magnetometer_x_encode(double value)
 {
     return (int16_t)(value / 0.5844);
 }
 
-double feb_can_magnetometer_data_rear_magnetometer_x_decode(int16_t value)
+double feb_can_mag_rear_magnetometer_x_decode(int16_t value)
 {
     return ((double)value * 0.5844);
 }
 
-bool feb_can_magnetometer_data_rear_magnetometer_x_is_in_range(int16_t value)
+bool feb_can_mag_rear_magnetometer_x_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_magnetometer_data_rear_magnetometer_y_encode(double value)
+int16_t feb_can_mag_rear_magnetometer_y_encode(double value)
 {
     return (int16_t)(value / 0.5844);
 }
 
-double feb_can_magnetometer_data_rear_magnetometer_y_decode(int16_t value)
+double feb_can_mag_rear_magnetometer_y_decode(int16_t value)
 {
     return ((double)value * 0.5844);
 }
 
-bool feb_can_magnetometer_data_rear_magnetometer_y_is_in_range(int16_t value)
+bool feb_can_mag_rear_magnetometer_y_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_magnetometer_data_rear_magnetometer_z_encode(double value)
+int16_t feb_can_mag_rear_magnetometer_z_encode(double value)
 {
     return (int16_t)(value / 0.5844);
 }
 
-double feb_can_magnetometer_data_rear_magnetometer_z_decode(int16_t value)
+double feb_can_mag_rear_magnetometer_z_decode(int16_t value)
 {
     return ((double)value * 0.5844);
 }
 
-bool feb_can_magnetometer_data_rear_magnetometer_z_is_in_range(int16_t value)
+bool feb_can_mag_rear_magnetometer_z_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_mag_rear_mag_temp_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_mag_rear_mag_temp_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_mag_rear_mag_temp_is_in_range(int16_t value)
 {
     (void)value;
 
@@ -3778,9 +3878,9 @@ bool feb_can_pcu_pedal_voltages_brake2_mv_is_in_range(uint16_t value)
     return (true);
 }
 
-int feb_can_gps_pos_data_pack(
+int feb_can_gps_pos_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_pos_data_t *src_p,
+    const struct feb_can_gps_pos_front_t *src_p,
     size_t size)
 {
     uint32_t latitude;
@@ -3806,8 +3906,8 @@ int feb_can_gps_pos_data_pack(
     return (8);
 }
 
-int feb_can_gps_pos_data_unpack(
-    struct feb_can_gps_pos_data_t *dst_p,
+int feb_can_gps_pos_front_unpack(
+    struct feb_can_gps_pos_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -3832,52 +3932,52 @@ int feb_can_gps_pos_data_unpack(
     return (0);
 }
 
-int feb_can_gps_pos_data_init(struct feb_can_gps_pos_data_t *msg_p)
+int feb_can_gps_pos_front_init(struct feb_can_gps_pos_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_gps_pos_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_gps_pos_front_t));
 
     return 0;
 }
 
-int32_t feb_can_gps_pos_data_latitude_encode(double value)
+int32_t feb_can_gps_pos_front_latitude_encode(double value)
 {
     return (int32_t)(value / 1e-07);
 }
 
-double feb_can_gps_pos_data_latitude_decode(int32_t value)
+double feb_can_gps_pos_front_latitude_decode(int32_t value)
 {
     return ((double)value * 1e-07);
 }
 
-bool feb_can_gps_pos_data_latitude_is_in_range(int32_t value)
+bool feb_can_gps_pos_front_latitude_is_in_range(int32_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int32_t feb_can_gps_pos_data_longitude_encode(double value)
+int32_t feb_can_gps_pos_front_longitude_encode(double value)
 {
     return (int32_t)(value / 1e-07);
 }
 
-double feb_can_gps_pos_data_longitude_decode(int32_t value)
+double feb_can_gps_pos_front_longitude_decode(int32_t value)
 {
     return ((double)value * 1e-07);
 }
 
-bool feb_can_gps_pos_data_longitude_is_in_range(int32_t value)
+bool feb_can_gps_pos_front_longitude_is_in_range(int32_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_gps_altitude_data_pack(
+int feb_can_gps_altitude_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_altitude_data_t *src_p,
+    const struct feb_can_gps_altitude_front_t *src_p,
     size_t size)
 {
     uint32_t altitude;
@@ -3901,8 +4001,8 @@ int feb_can_gps_altitude_data_pack(
     return (8);
 }
 
-int feb_can_gps_altitude_data_unpack(
-    struct feb_can_gps_altitude_data_t *dst_p,
+int feb_can_gps_altitude_front_unpack(
+    struct feb_can_gps_altitude_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -3925,69 +4025,69 @@ int feb_can_gps_altitude_data_unpack(
     return (0);
 }
 
-int feb_can_gps_altitude_data_init(struct feb_can_gps_altitude_data_t *msg_p)
+int feb_can_gps_altitude_front_init(struct feb_can_gps_altitude_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_gps_altitude_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_gps_altitude_front_t));
 
     return 0;
 }
 
-int32_t feb_can_gps_altitude_data_altitude_encode(double value)
+int32_t feb_can_gps_altitude_front_altitude_encode(double value)
 {
     return (int32_t)(value / 0.01);
 }
 
-double feb_can_gps_altitude_data_altitude_decode(int32_t value)
+double feb_can_gps_altitude_front_altitude_decode(int32_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_gps_altitude_data_altitude_is_in_range(int32_t value)
+bool feb_can_gps_altitude_front_altitude_is_in_range(int32_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_gps_altitude_data_hdop_encode(double value)
+uint16_t feb_can_gps_altitude_front_hdop_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_gps_altitude_data_hdop_decode(uint16_t value)
+double feb_can_gps_altitude_front_hdop_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_gps_altitude_data_hdop_is_in_range(uint16_t value)
+bool feb_can_gps_altitude_front_hdop_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_gps_altitude_data_vdop_encode(double value)
+uint16_t feb_can_gps_altitude_front_vdop_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_gps_altitude_data_vdop_decode(uint16_t value)
+double feb_can_gps_altitude_front_vdop_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_gps_altitude_data_vdop_is_in_range(uint16_t value)
+bool feb_can_gps_altitude_front_vdop_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_gps_motion_data_pack(
+int feb_can_gps_motion_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_motion_data_t *src_p,
+    const struct feb_can_gps_motion_front_t *src_p,
     size_t size)
 {
     if (size < 4u) {
@@ -4004,8 +4104,8 @@ int feb_can_gps_motion_data_pack(
     return (4);
 }
 
-int feb_can_gps_motion_data_unpack(
-    struct feb_can_gps_motion_data_t *dst_p,
+int feb_can_gps_motion_front_unpack(
+    struct feb_can_gps_motion_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -4021,52 +4121,52 @@ int feb_can_gps_motion_data_unpack(
     return (0);
 }
 
-int feb_can_gps_motion_data_init(struct feb_can_gps_motion_data_t *msg_p)
+int feb_can_gps_motion_front_init(struct feb_can_gps_motion_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_gps_motion_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_gps_motion_front_t));
 
     return 0;
 }
 
-uint16_t feb_can_gps_motion_data_speed_encode(double value)
+uint16_t feb_can_gps_motion_front_speed_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_gps_motion_data_speed_decode(uint16_t value)
+double feb_can_gps_motion_front_speed_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_gps_motion_data_speed_is_in_range(uint16_t value)
+bool feb_can_gps_motion_front_speed_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_gps_motion_data_course_encode(double value)
+uint16_t feb_can_gps_motion_front_course_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_gps_motion_data_course_decode(uint16_t value)
+double feb_can_gps_motion_front_course_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_gps_motion_data_course_is_in_range(uint16_t value)
+bool feb_can_gps_motion_front_course_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_gps_time_data_pack(
+int feb_can_gps_time_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_time_data_t *src_p,
+    const struct feb_can_gps_time_front_t *src_p,
     size_t size)
 {
     uint8_t hours;
@@ -4089,8 +4189,8 @@ int feb_can_gps_time_data_pack(
     return (3);
 }
 
-int feb_can_gps_time_data_unpack(
-    struct feb_can_gps_time_data_t *dst_p,
+int feb_can_gps_time_front_unpack(
+    struct feb_can_gps_time_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -4112,69 +4212,69 @@ int feb_can_gps_time_data_unpack(
     return (0);
 }
 
-int feb_can_gps_time_data_init(struct feb_can_gps_time_data_t *msg_p)
+int feb_can_gps_time_front_init(struct feb_can_gps_time_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_gps_time_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_gps_time_front_t));
 
     return 0;
 }
 
-int8_t feb_can_gps_time_data_hours_encode(double value)
+int8_t feb_can_gps_time_front_hours_encode(double value)
 {
     return (int8_t)(value);
 }
 
-double feb_can_gps_time_data_hours_decode(int8_t value)
+double feb_can_gps_time_front_hours_decode(int8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_time_data_hours_is_in_range(int8_t value)
+bool feb_can_gps_time_front_hours_is_in_range(int8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int8_t feb_can_gps_time_data_minutes_encode(double value)
+int8_t feb_can_gps_time_front_minutes_encode(double value)
 {
     return (int8_t)(value);
 }
 
-double feb_can_gps_time_data_minutes_decode(int8_t value)
+double feb_can_gps_time_front_minutes_decode(int8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_time_data_minutes_is_in_range(int8_t value)
+bool feb_can_gps_time_front_minutes_is_in_range(int8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int8_t feb_can_gps_time_data_seconds_encode(double value)
+int8_t feb_can_gps_time_front_seconds_encode(double value)
 {
     return (int8_t)(value);
 }
 
-double feb_can_gps_time_data_seconds_decode(int8_t value)
+double feb_can_gps_time_front_seconds_decode(int8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_time_data_seconds_is_in_range(int8_t value)
+bool feb_can_gps_time_front_seconds_is_in_range(int8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_gps_date_data_pack(
+int feb_can_gps_date_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_date_data_t *src_p,
+    const struct feb_can_gps_date_front_t *src_p,
     size_t size)
 {
     uint8_t day;
@@ -4197,8 +4297,8 @@ int feb_can_gps_date_data_pack(
     return (3);
 }
 
-int feb_can_gps_date_data_unpack(
-    struct feb_can_gps_date_data_t *dst_p,
+int feb_can_gps_date_front_unpack(
+    struct feb_can_gps_date_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -4220,69 +4320,69 @@ int feb_can_gps_date_data_unpack(
     return (0);
 }
 
-int feb_can_gps_date_data_init(struct feb_can_gps_date_data_t *msg_p)
+int feb_can_gps_date_front_init(struct feb_can_gps_date_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_gps_date_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_gps_date_front_t));
 
     return 0;
 }
 
-int8_t feb_can_gps_date_data_day_encode(double value)
+int8_t feb_can_gps_date_front_day_encode(double value)
 {
     return (int8_t)(value);
 }
 
-double feb_can_gps_date_data_day_decode(int8_t value)
+double feb_can_gps_date_front_day_decode(int8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_date_data_day_is_in_range(int8_t value)
+bool feb_can_gps_date_front_day_is_in_range(int8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int8_t feb_can_gps_date_data_month_encode(double value)
+int8_t feb_can_gps_date_front_month_encode(double value)
 {
     return (int8_t)(value);
 }
 
-double feb_can_gps_date_data_month_decode(int8_t value)
+double feb_can_gps_date_front_month_decode(int8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_date_data_month_is_in_range(int8_t value)
+bool feb_can_gps_date_front_month_is_in_range(int8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int8_t feb_can_gps_date_data_year_encode(double value)
+int8_t feb_can_gps_date_front_year_encode(double value)
 {
     return (int8_t)(value);
 }
 
-double feb_can_gps_date_data_year_decode(int8_t value)
+double feb_can_gps_date_front_year_decode(int8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_date_data_year_is_in_range(int8_t value)
+bool feb_can_gps_date_front_year_is_in_range(int8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_gps_status_data_pack(
+int feb_can_gps_status_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_status_data_t *src_p,
+    const struct feb_can_gps_status_front_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -4303,8 +4403,8 @@ int feb_can_gps_status_data_pack(
     return (8);
 }
 
-int feb_can_gps_status_data_unpack(
-    struct feb_can_gps_status_data_t *dst_p,
+int feb_can_gps_status_front_unpack(
+    struct feb_can_gps_status_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -4324,137 +4424,137 @@ int feb_can_gps_status_data_unpack(
     return (0);
 }
 
-int feb_can_gps_status_data_init(struct feb_can_gps_status_data_t *msg_p)
+int feb_can_gps_status_front_init(struct feb_can_gps_status_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_gps_status_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_gps_status_front_t));
 
     return 0;
 }
 
-uint8_t feb_can_gps_status_data_fix_type_encode(double value)
+uint8_t feb_can_gps_status_front_fix_type_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_gps_status_data_fix_type_decode(uint8_t value)
+double feb_can_gps_status_front_fix_type_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_status_data_fix_type_is_in_range(uint8_t value)
+bool feb_can_gps_status_front_fix_type_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_gps_status_data_fix_mode_encode(double value)
+uint8_t feb_can_gps_status_front_fix_mode_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_gps_status_data_fix_mode_decode(uint8_t value)
+double feb_can_gps_status_front_fix_mode_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_status_data_fix_mode_is_in_range(uint8_t value)
+bool feb_can_gps_status_front_fix_mode_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_gps_status_data_sats_in_use_encode(double value)
+uint8_t feb_can_gps_status_front_sats_in_use_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_gps_status_data_sats_in_use_decode(uint8_t value)
+double feb_can_gps_status_front_sats_in_use_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_status_data_sats_in_use_is_in_range(uint8_t value)
+bool feb_can_gps_status_front_sats_in_use_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_gps_status_data_sats_in_view_encode(double value)
+uint8_t feb_can_gps_status_front_sats_in_view_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_gps_status_data_sats_in_view_decode(uint8_t value)
+double feb_can_gps_status_front_sats_in_view_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_status_data_sats_in_view_is_in_range(uint8_t value)
+bool feb_can_gps_status_front_sats_in_view_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_gps_status_data_valid_encode(double value)
+uint8_t feb_can_gps_status_front_valid_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_gps_status_data_valid_decode(uint8_t value)
+double feb_can_gps_status_front_valid_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_status_data_valid_is_in_range(uint8_t value)
+bool feb_can_gps_status_front_valid_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_gps_status_data_has_fix_encode(double value)
+uint8_t feb_can_gps_status_front_has_fix_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_gps_status_data_has_fix_decode(uint8_t value)
+double feb_can_gps_status_front_has_fix_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_status_data_has_fix_is_in_range(uint8_t value)
+bool feb_can_gps_status_front_has_fix_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_gps_status_data_pdop_encode(double value)
+uint16_t feb_can_gps_status_front_pdop_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_gps_status_data_pdop_decode(uint16_t value)
+double feb_can_gps_status_front_pdop_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_gps_status_data_pdop_is_in_range(uint16_t value)
+bool feb_can_gps_status_front_pdop_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_fusion_quaternion_data_pack(
+int feb_can_fusion_quat_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_fusion_quaternion_data_t *src_p,
+    const struct feb_can_fusion_quat_front_t *src_p,
     size_t size)
 {
     uint16_t q_w;
@@ -4484,8 +4584,8 @@ int feb_can_fusion_quaternion_data_pack(
     return (8);
 }
 
-int feb_can_fusion_quaternion_data_unpack(
-    struct feb_can_fusion_quaternion_data_t *dst_p,
+int feb_can_fusion_quat_front_unpack(
+    struct feb_can_fusion_quat_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -4514,86 +4614,86 @@ int feb_can_fusion_quaternion_data_unpack(
     return (0);
 }
 
-int feb_can_fusion_quaternion_data_init(struct feb_can_fusion_quaternion_data_t *msg_p)
+int feb_can_fusion_quat_front_init(struct feb_can_fusion_quat_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_fusion_quaternion_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_quat_front_t));
 
     return 0;
 }
 
-int16_t feb_can_fusion_quaternion_data_q_w_encode(double value)
+int16_t feb_can_fusion_quat_front_q_w_encode(double value)
 {
     return (int16_t)(value / 3.051850947599719e-05);
 }
 
-double feb_can_fusion_quaternion_data_q_w_decode(int16_t value)
+double feb_can_fusion_quat_front_q_w_decode(int16_t value)
 {
     return ((double)value * 3.051850947599719e-05);
 }
 
-bool feb_can_fusion_quaternion_data_q_w_is_in_range(int16_t value)
+bool feb_can_fusion_quat_front_q_w_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_quaternion_data_q_x_encode(double value)
+int16_t feb_can_fusion_quat_front_q_x_encode(double value)
 {
     return (int16_t)(value / 3.051850947599719e-05);
 }
 
-double feb_can_fusion_quaternion_data_q_x_decode(int16_t value)
+double feb_can_fusion_quat_front_q_x_decode(int16_t value)
 {
     return ((double)value * 3.051850947599719e-05);
 }
 
-bool feb_can_fusion_quaternion_data_q_x_is_in_range(int16_t value)
+bool feb_can_fusion_quat_front_q_x_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_quaternion_data_q_y_encode(double value)
+int16_t feb_can_fusion_quat_front_q_y_encode(double value)
 {
     return (int16_t)(value / 3.051850947599719e-05);
 }
 
-double feb_can_fusion_quaternion_data_q_y_decode(int16_t value)
+double feb_can_fusion_quat_front_q_y_decode(int16_t value)
 {
     return ((double)value * 3.051850947599719e-05);
 }
 
-bool feb_can_fusion_quaternion_data_q_y_is_in_range(int16_t value)
+bool feb_can_fusion_quat_front_q_y_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_quaternion_data_q_z_encode(double value)
+int16_t feb_can_fusion_quat_front_q_z_encode(double value)
 {
     return (int16_t)(value / 3.051850947599719e-05);
 }
 
-double feb_can_fusion_quaternion_data_q_z_decode(int16_t value)
+double feb_can_fusion_quat_front_q_z_decode(int16_t value)
 {
     return ((double)value * 3.051850947599719e-05);
 }
 
-bool feb_can_fusion_quaternion_data_q_z_is_in_range(int16_t value)
+bool feb_can_fusion_quat_front_q_z_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_fusion_euler_data_pack(
+int feb_can_fusion_euler_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_fusion_euler_data_t *src_p,
+    const struct feb_can_fusion_euler_front_t *src_p,
     size_t size)
 {
     uint16_t pitch;
@@ -4619,8 +4719,8 @@ int feb_can_fusion_euler_data_pack(
     return (6);
 }
 
-int feb_can_fusion_euler_data_unpack(
-    struct feb_can_fusion_euler_data_t *dst_p,
+int feb_can_fusion_euler_front_unpack(
+    struct feb_can_fusion_euler_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -4645,69 +4745,69 @@ int feb_can_fusion_euler_data_unpack(
     return (0);
 }
 
-int feb_can_fusion_euler_data_init(struct feb_can_fusion_euler_data_t *msg_p)
+int feb_can_fusion_euler_front_init(struct feb_can_fusion_euler_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_fusion_euler_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_euler_front_t));
 
     return 0;
 }
 
-int16_t feb_can_fusion_euler_data_roll_encode(double value)
+int16_t feb_can_fusion_euler_front_roll_encode(double value)
 {
     return (int16_t)(value / 0.01);
 }
 
-double feb_can_fusion_euler_data_roll_decode(int16_t value)
+double feb_can_fusion_euler_front_roll_decode(int16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_fusion_euler_data_roll_is_in_range(int16_t value)
+bool feb_can_fusion_euler_front_roll_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_euler_data_pitch_encode(double value)
+int16_t feb_can_fusion_euler_front_pitch_encode(double value)
 {
     return (int16_t)(value / 0.01);
 }
 
-double feb_can_fusion_euler_data_pitch_decode(int16_t value)
+double feb_can_fusion_euler_front_pitch_decode(int16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_fusion_euler_data_pitch_is_in_range(int16_t value)
+bool feb_can_fusion_euler_front_pitch_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_euler_data_yaw_encode(double value)
+int16_t feb_can_fusion_euler_front_yaw_encode(double value)
 {
     return (int16_t)(value / 0.01);
 }
 
-double feb_can_fusion_euler_data_yaw_decode(int16_t value)
+double feb_can_fusion_euler_front_yaw_decode(int16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_fusion_euler_data_yaw_is_in_range(int16_t value)
+bool feb_can_fusion_euler_front_yaw_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_fusion_linear_accel_data_pack(
+int feb_can_fusion_lin_accel_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_fusion_linear_accel_data_t *src_p,
+    const struct feb_can_fusion_lin_accel_front_t *src_p,
     size_t size)
 {
     uint16_t lin_accel_x;
@@ -4733,8 +4833,8 @@ int feb_can_fusion_linear_accel_data_pack(
     return (6);
 }
 
-int feb_can_fusion_linear_accel_data_unpack(
-    struct feb_can_fusion_linear_accel_data_t *dst_p,
+int feb_can_fusion_lin_accel_front_unpack(
+    struct feb_can_fusion_lin_accel_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -4759,69 +4859,69 @@ int feb_can_fusion_linear_accel_data_unpack(
     return (0);
 }
 
-int feb_can_fusion_linear_accel_data_init(struct feb_can_fusion_linear_accel_data_t *msg_p)
+int feb_can_fusion_lin_accel_front_init(struct feb_can_fusion_lin_accel_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_fusion_linear_accel_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_lin_accel_front_t));
 
     return 0;
 }
 
-int16_t feb_can_fusion_linear_accel_data_lin_accel_x_encode(double value)
+int16_t feb_can_fusion_lin_accel_front_lin_accel_x_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_fusion_linear_accel_data_lin_accel_x_decode(int16_t value)
+double feb_can_fusion_lin_accel_front_lin_accel_x_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_linear_accel_data_lin_accel_x_is_in_range(int16_t value)
+bool feb_can_fusion_lin_accel_front_lin_accel_x_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_linear_accel_data_lin_accel_y_encode(double value)
+int16_t feb_can_fusion_lin_accel_front_lin_accel_y_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_fusion_linear_accel_data_lin_accel_y_decode(int16_t value)
+double feb_can_fusion_lin_accel_front_lin_accel_y_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_linear_accel_data_lin_accel_y_is_in_range(int16_t value)
+bool feb_can_fusion_lin_accel_front_lin_accel_y_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_linear_accel_data_lin_accel_z_encode(double value)
+int16_t feb_can_fusion_lin_accel_front_lin_accel_z_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_fusion_linear_accel_data_lin_accel_z_decode(int16_t value)
+double feb_can_fusion_lin_accel_front_lin_accel_z_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_linear_accel_data_lin_accel_z_is_in_range(int16_t value)
+bool feb_can_fusion_lin_accel_front_lin_accel_z_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_fusion_earth_accel_data_pack(
+int feb_can_fusion_earth_accel_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_fusion_earth_accel_data_t *src_p,
+    const struct feb_can_fusion_earth_accel_front_t *src_p,
     size_t size)
 {
     uint16_t earth_accel_x;
@@ -4847,8 +4947,8 @@ int feb_can_fusion_earth_accel_data_pack(
     return (6);
 }
 
-int feb_can_fusion_earth_accel_data_unpack(
-    struct feb_can_fusion_earth_accel_data_t *dst_p,
+int feb_can_fusion_earth_accel_front_unpack(
+    struct feb_can_fusion_earth_accel_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -4873,69 +4973,69 @@ int feb_can_fusion_earth_accel_data_unpack(
     return (0);
 }
 
-int feb_can_fusion_earth_accel_data_init(struct feb_can_fusion_earth_accel_data_t *msg_p)
+int feb_can_fusion_earth_accel_front_init(struct feb_can_fusion_earth_accel_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_fusion_earth_accel_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_earth_accel_front_t));
 
     return 0;
 }
 
-int16_t feb_can_fusion_earth_accel_data_earth_accel_x_encode(double value)
+int16_t feb_can_fusion_earth_accel_front_earth_accel_x_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_fusion_earth_accel_data_earth_accel_x_decode(int16_t value)
+double feb_can_fusion_earth_accel_front_earth_accel_x_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_earth_accel_data_earth_accel_x_is_in_range(int16_t value)
+bool feb_can_fusion_earth_accel_front_earth_accel_x_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_earth_accel_data_earth_accel_y_encode(double value)
+int16_t feb_can_fusion_earth_accel_front_earth_accel_y_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_fusion_earth_accel_data_earth_accel_y_decode(int16_t value)
+double feb_can_fusion_earth_accel_front_earth_accel_y_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_earth_accel_data_earth_accel_y_is_in_range(int16_t value)
+bool feb_can_fusion_earth_accel_front_earth_accel_y_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_earth_accel_data_earth_accel_z_encode(double value)
+int16_t feb_can_fusion_earth_accel_front_earth_accel_z_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_fusion_earth_accel_data_earth_accel_z_decode(int16_t value)
+double feb_can_fusion_earth_accel_front_earth_accel_z_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_earth_accel_data_earth_accel_z_is_in_range(int16_t value)
+bool feb_can_fusion_earth_accel_front_earth_accel_z_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_fusion_status_data_pack(
+int feb_can_fusion_status_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_fusion_status_data_t *src_p,
+    const struct feb_can_fusion_status_front_t *src_p,
     size_t size)
 {
     if (size < 3u) {
@@ -4951,8 +5051,8 @@ int feb_can_fusion_status_data_pack(
     return (3);
 }
 
-int feb_can_fusion_status_data_unpack(
-    struct feb_can_fusion_status_data_t *dst_p,
+int feb_can_fusion_status_front_unpack(
+    struct feb_can_fusion_status_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -4967,270 +5067,95 @@ int feb_can_fusion_status_data_unpack(
     return (0);
 }
 
-int feb_can_fusion_status_data_init(struct feb_can_fusion_status_data_t *msg_p)
+int feb_can_fusion_status_front_init(struct feb_can_fusion_status_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_fusion_status_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_status_front_t));
 
     return 0;
 }
 
-uint8_t feb_can_fusion_status_data_flags_encode(double value)
+uint8_t feb_can_fusion_status_front_flags_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_fusion_status_data_flags_decode(uint8_t value)
+double feb_can_fusion_status_front_flags_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_status_data_flags_is_in_range(uint8_t value)
+bool feb_can_fusion_status_front_flags_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_fusion_status_data_accel_error_encode(double value)
+uint8_t feb_can_fusion_status_front_accel_error_encode(double value)
 {
     return (uint8_t)(value / 0.1);
 }
 
-double feb_can_fusion_status_data_accel_error_decode(uint8_t value)
+double feb_can_fusion_status_front_accel_error_decode(uint8_t value)
 {
     return ((double)value * 0.1);
 }
 
-bool feb_can_fusion_status_data_accel_error_is_in_range(uint8_t value)
+bool feb_can_fusion_status_front_accel_error_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_fusion_status_data_mag_error_encode(double value)
+uint8_t feb_can_fusion_status_front_mag_error_encode(double value)
 {
     return (uint8_t)(value / 0.1);
 }
 
-double feb_can_fusion_status_data_mag_error_decode(uint8_t value)
+double feb_can_fusion_status_front_mag_error_decode(uint8_t value)
 {
     return ((double)value * 0.1);
 }
 
-bool feb_can_fusion_status_data_mag_error_is_in_range(uint8_t value)
+bool feb_can_fusion_status_front_mag_error_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_sensor_temps_data_pack(
+int feb_can_steer_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_sensor_temps_data_t *src_p,
+    const struct feb_can_steer_front_t *src_p,
     size_t size)
 {
-    uint16_t imu_temp;
-    uint16_t mag_temp;
-
-    if (size < 4u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, 4);
-
-    imu_temp = (uint16_t)src_p->imu_temp;
-    dst_p[0] |= pack_left_shift_u16(imu_temp, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(imu_temp, 8u, 0xffu);
-    mag_temp = (uint16_t)src_p->mag_temp;
-    dst_p[2] |= pack_left_shift_u16(mag_temp, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(mag_temp, 8u, 0xffu);
-
-    return (4);
-}
-
-int feb_can_sensor_temps_data_unpack(
-    struct feb_can_sensor_temps_data_t *dst_p,
-    const uint8_t *src_p,
-    size_t size)
-{
-    uint16_t imu_temp;
-    uint16_t mag_temp;
-
-    if (size < 4u) {
-        return (-EINVAL);
-    }
-
-    imu_temp = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    imu_temp |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->imu_temp = (int16_t)imu_temp;
-    mag_temp = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    mag_temp |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
-    dst_p->mag_temp = (int16_t)mag_temp;
-
-    return (0);
-}
-
-int feb_can_sensor_temps_data_init(struct feb_can_sensor_temps_data_t *msg_p)
-{
-    if (msg_p == NULL) return -1;
-
-    memset(msg_p, 0, sizeof(struct feb_can_sensor_temps_data_t));
-
-    return 0;
-}
-
-int16_t feb_can_sensor_temps_data_imu_temp_encode(double value)
-{
-    return (int16_t)(value / 0.01);
-}
-
-double feb_can_sensor_temps_data_imu_temp_decode(int16_t value)
-{
-    return ((double)value * 0.01);
-}
-
-bool feb_can_sensor_temps_data_imu_temp_is_in_range(int16_t value)
-{
-    (void)value;
-
-    return (true);
-}
-
-int16_t feb_can_sensor_temps_data_mag_temp_encode(double value)
-{
-    return (int16_t)(value / 0.01);
-}
-
-double feb_can_sensor_temps_data_mag_temp_decode(int16_t value)
-{
-    return ((double)value * 0.01);
-}
-
-bool feb_can_sensor_temps_data_mag_temp_is_in_range(int16_t value)
-{
-    (void)value;
-
-    return (true);
-}
-
-int feb_can_sensor_temps_data_rear_pack(
-    uint8_t *dst_p,
-    const struct feb_can_sensor_temps_data_rear_t *src_p,
-    size_t size)
-{
-    uint16_t imu_temp;
-    uint16_t mag_temp;
-
-    if (size < 4u) {
-        return (-EINVAL);
-    }
-
-    memset(&dst_p[0], 0, 4);
-
-    imu_temp = (uint16_t)src_p->imu_temp;
-    dst_p[0] |= pack_left_shift_u16(imu_temp, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(imu_temp, 8u, 0xffu);
-    mag_temp = (uint16_t)src_p->mag_temp;
-    dst_p[2] |= pack_left_shift_u16(mag_temp, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(mag_temp, 8u, 0xffu);
-
-    return (4);
-}
-
-int feb_can_sensor_temps_data_rear_unpack(
-    struct feb_can_sensor_temps_data_rear_t *dst_p,
-    const uint8_t *src_p,
-    size_t size)
-{
-    uint16_t imu_temp;
-    uint16_t mag_temp;
-
-    if (size < 4u) {
-        return (-EINVAL);
-    }
-
-    imu_temp = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    imu_temp |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->imu_temp = (int16_t)imu_temp;
-    mag_temp = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    mag_temp |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
-    dst_p->mag_temp = (int16_t)mag_temp;
-
-    return (0);
-}
-
-int feb_can_sensor_temps_data_rear_init(struct feb_can_sensor_temps_data_rear_t *msg_p)
-{
-    if (msg_p == NULL) return -1;
-
-    memset(msg_p, 0, sizeof(struct feb_can_sensor_temps_data_rear_t));
-
-    return 0;
-}
-
-int16_t feb_can_sensor_temps_data_rear_imu_temp_encode(double value)
-{
-    return (int16_t)(value / 0.01);
-}
-
-double feb_can_sensor_temps_data_rear_imu_temp_decode(int16_t value)
-{
-    return ((double)value * 0.01);
-}
-
-bool feb_can_sensor_temps_data_rear_imu_temp_is_in_range(int16_t value)
-{
-    (void)value;
-
-    return (true);
-}
-
-int16_t feb_can_sensor_temps_data_rear_mag_temp_encode(double value)
-{
-    return (int16_t)(value / 0.01);
-}
-
-double feb_can_sensor_temps_data_rear_mag_temp_decode(int16_t value)
-{
-    return ((double)value * 0.01);
-}
-
-bool feb_can_sensor_temps_data_rear_mag_temp_is_in_range(int16_t value)
-{
-    (void)value;
-
-    return (true);
-}
-
-int feb_can_steer_angle_data_pack(
-    uint8_t *dst_p,
-    const struct feb_can_steer_angle_data_t *src_p,
-    size_t size)
-{
-    if (size < 5u) {
-        return (-EINVAL);
-    }
-
-    memset(&dst_p[0], 0, 5);
+    memset(&dst_p[0], 0, 8);
 
     dst_p[0] |= pack_left_shift_u16(src_p->angle, 0u, 0xffu);
     dst_p[1] |= pack_right_shift_u16(src_p->angle, 8u, 0xffu);
     dst_p[2] |= pack_left_shift_u16(src_p->raw_angle, 0u, 0xffu);
     dst_p[3] |= pack_right_shift_u16(src_p->raw_angle, 8u, 0xffu);
     dst_p[4] |= pack_left_shift_u8(src_p->agc, 0u, 0xffu);
+    dst_p[5] |= pack_left_shift_u8(src_p->status, 0u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->magnitude, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->magnitude, 8u, 0xffu);
 
-    return (5);
+    return (8);
 }
 
-int feb_can_steer_angle_data_unpack(
-    struct feb_can_steer_angle_data_t *dst_p,
+int feb_can_steer_front_unpack(
+    struct feb_can_steer_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
-    if (size < 5u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
@@ -5239,150 +5164,110 @@ int feb_can_steer_angle_data_unpack(
     dst_p->raw_angle = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
     dst_p->raw_angle |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
     dst_p->agc = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
+    dst_p->status = unpack_right_shift_u8(src_p[5], 0u, 0xffu);
+    dst_p->magnitude = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->magnitude |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
 
     return (0);
 }
 
-int feb_can_steer_angle_data_init(struct feb_can_steer_angle_data_t *msg_p)
+int feb_can_steer_front_init(struct feb_can_steer_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_steer_angle_data_t));
+    memset(msg_p, 0, sizeof(struct feb_can_steer_front_t));
 
     return 0;
 }
 
-uint16_t feb_can_steer_angle_data_angle_encode(double value)
+uint16_t feb_can_steer_front_angle_encode(double value)
 {
-    return (uint16_t)(value);
+    return (uint16_t)(value / 0.087890625);
 }
 
-double feb_can_steer_angle_data_angle_decode(uint16_t value)
+double feb_can_steer_front_angle_decode(uint16_t value)
 {
-    return ((double)value);
+    return ((double)value * 0.087890625);
 }
 
-bool feb_can_steer_angle_data_angle_is_in_range(uint16_t value)
-{
-    (void)value;
-
-    return (true);
-}
-
-uint16_t feb_can_steer_angle_data_raw_angle_encode(double value)
-{
-    return (uint16_t)(value);
-}
-
-double feb_can_steer_angle_data_raw_angle_decode(uint16_t value)
-{
-    return ((double)value);
-}
-
-bool feb_can_steer_angle_data_raw_angle_is_in_range(uint16_t value)
+bool feb_can_steer_front_angle_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_steer_angle_data_agc_encode(double value)
+uint16_t feb_can_steer_front_raw_angle_encode(double value)
+{
+    return (uint16_t)(value / 0.087890625);
+}
+
+double feb_can_steer_front_raw_angle_decode(uint16_t value)
+{
+    return ((double)value * 0.087890625);
+}
+
+bool feb_can_steer_front_raw_angle_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_steer_front_agc_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_steer_angle_data_agc_decode(uint8_t value)
+double feb_can_steer_front_agc_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_steer_angle_data_agc_is_in_range(uint8_t value)
+bool feb_can_steer_front_agc_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_steer_status_data_pack(
-    uint8_t *dst_p,
-    const struct feb_can_steer_status_data_t *src_p,
-    size_t size)
-{
-    if (size < 3u) {
-        return (-EINVAL);
-    }
-
-    memset(&dst_p[0], 0, 3);
-
-    dst_p[0] |= pack_left_shift_u8(src_p->status, 0u, 0xffu);
-    dst_p[1] |= pack_left_shift_u16(src_p->magnitude, 0u, 0xffu);
-    dst_p[2] |= pack_right_shift_u16(src_p->magnitude, 8u, 0xffu);
-
-    return (3);
-}
-
-int feb_can_steer_status_data_unpack(
-    struct feb_can_steer_status_data_t *dst_p,
-    const uint8_t *src_p,
-    size_t size)
-{
-    if (size < 3u) {
-        return (-EINVAL);
-    }
-
-    dst_p->status = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
-    dst_p->magnitude = unpack_right_shift_u16(src_p[1], 0u, 0xffu);
-    dst_p->magnitude |= unpack_left_shift_u16(src_p[2], 8u, 0xffu);
-
-    return (0);
-}
-
-int feb_can_steer_status_data_init(struct feb_can_steer_status_data_t *msg_p)
-{
-    if (msg_p == NULL) return -1;
-
-    memset(msg_p, 0, sizeof(struct feb_can_steer_status_data_t));
-
-    return 0;
-}
-
-uint8_t feb_can_steer_status_data_status_encode(double value)
+uint8_t feb_can_steer_front_status_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_steer_status_data_status_decode(uint8_t value)
+double feb_can_steer_front_status_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_steer_status_data_status_is_in_range(uint8_t value)
+bool feb_can_steer_front_status_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_steer_status_data_magnitude_encode(double value)
+uint16_t feb_can_steer_front_magnitude_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_steer_status_data_magnitude_decode(uint16_t value)
+double feb_can_steer_front_magnitude_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_steer_status_data_magnitude_is_in_range(uint16_t value)
+bool feb_can_steer_front_magnitude_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_gps_pos_data_rear_pack(
+int feb_can_gps_pos_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_pos_data_rear_t *src_p,
+    const struct feb_can_gps_pos_rear_t *src_p,
     size_t size)
 {
     uint32_t latitude;
@@ -5408,8 +5293,8 @@ int feb_can_gps_pos_data_rear_pack(
     return (8);
 }
 
-int feb_can_gps_pos_data_rear_unpack(
-    struct feb_can_gps_pos_data_rear_t *dst_p,
+int feb_can_gps_pos_rear_unpack(
+    struct feb_can_gps_pos_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -5434,52 +5319,52 @@ int feb_can_gps_pos_data_rear_unpack(
     return (0);
 }
 
-int feb_can_gps_pos_data_rear_init(struct feb_can_gps_pos_data_rear_t *msg_p)
+int feb_can_gps_pos_rear_init(struct feb_can_gps_pos_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_gps_pos_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_gps_pos_rear_t));
 
     return 0;
 }
 
-int32_t feb_can_gps_pos_data_rear_latitude_encode(double value)
+int32_t feb_can_gps_pos_rear_latitude_encode(double value)
 {
     return (int32_t)(value / 1e-07);
 }
 
-double feb_can_gps_pos_data_rear_latitude_decode(int32_t value)
+double feb_can_gps_pos_rear_latitude_decode(int32_t value)
 {
     return ((double)value * 1e-07);
 }
 
-bool feb_can_gps_pos_data_rear_latitude_is_in_range(int32_t value)
+bool feb_can_gps_pos_rear_latitude_is_in_range(int32_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int32_t feb_can_gps_pos_data_rear_longitude_encode(double value)
+int32_t feb_can_gps_pos_rear_longitude_encode(double value)
 {
     return (int32_t)(value / 1e-07);
 }
 
-double feb_can_gps_pos_data_rear_longitude_decode(int32_t value)
+double feb_can_gps_pos_rear_longitude_decode(int32_t value)
 {
     return ((double)value * 1e-07);
 }
 
-bool feb_can_gps_pos_data_rear_longitude_is_in_range(int32_t value)
+bool feb_can_gps_pos_rear_longitude_is_in_range(int32_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_gps_altitude_data_rear_pack(
+int feb_can_gps_altitude_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_altitude_data_rear_t *src_p,
+    const struct feb_can_gps_altitude_rear_t *src_p,
     size_t size)
 {
     uint32_t altitude;
@@ -5503,8 +5388,8 @@ int feb_can_gps_altitude_data_rear_pack(
     return (8);
 }
 
-int feb_can_gps_altitude_data_rear_unpack(
-    struct feb_can_gps_altitude_data_rear_t *dst_p,
+int feb_can_gps_altitude_rear_unpack(
+    struct feb_can_gps_altitude_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -5527,69 +5412,69 @@ int feb_can_gps_altitude_data_rear_unpack(
     return (0);
 }
 
-int feb_can_gps_altitude_data_rear_init(struct feb_can_gps_altitude_data_rear_t *msg_p)
+int feb_can_gps_altitude_rear_init(struct feb_can_gps_altitude_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_gps_altitude_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_gps_altitude_rear_t));
 
     return 0;
 }
 
-int32_t feb_can_gps_altitude_data_rear_altitude_encode(double value)
+int32_t feb_can_gps_altitude_rear_altitude_encode(double value)
 {
     return (int32_t)(value / 0.01);
 }
 
-double feb_can_gps_altitude_data_rear_altitude_decode(int32_t value)
+double feb_can_gps_altitude_rear_altitude_decode(int32_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_gps_altitude_data_rear_altitude_is_in_range(int32_t value)
+bool feb_can_gps_altitude_rear_altitude_is_in_range(int32_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_gps_altitude_data_rear_hdop_encode(double value)
+uint16_t feb_can_gps_altitude_rear_hdop_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_gps_altitude_data_rear_hdop_decode(uint16_t value)
+double feb_can_gps_altitude_rear_hdop_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_gps_altitude_data_rear_hdop_is_in_range(uint16_t value)
+bool feb_can_gps_altitude_rear_hdop_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_gps_altitude_data_rear_vdop_encode(double value)
+uint16_t feb_can_gps_altitude_rear_vdop_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_gps_altitude_data_rear_vdop_decode(uint16_t value)
+double feb_can_gps_altitude_rear_vdop_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_gps_altitude_data_rear_vdop_is_in_range(uint16_t value)
+bool feb_can_gps_altitude_rear_vdop_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_gps_motion_data_rear_pack(
+int feb_can_gps_motion_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_motion_data_rear_t *src_p,
+    const struct feb_can_gps_motion_rear_t *src_p,
     size_t size)
 {
     if (size < 4u) {
@@ -5606,8 +5491,8 @@ int feb_can_gps_motion_data_rear_pack(
     return (4);
 }
 
-int feb_can_gps_motion_data_rear_unpack(
-    struct feb_can_gps_motion_data_rear_t *dst_p,
+int feb_can_gps_motion_rear_unpack(
+    struct feb_can_gps_motion_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -5623,52 +5508,52 @@ int feb_can_gps_motion_data_rear_unpack(
     return (0);
 }
 
-int feb_can_gps_motion_data_rear_init(struct feb_can_gps_motion_data_rear_t *msg_p)
+int feb_can_gps_motion_rear_init(struct feb_can_gps_motion_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_gps_motion_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_gps_motion_rear_t));
 
     return 0;
 }
 
-uint16_t feb_can_gps_motion_data_rear_speed_encode(double value)
+uint16_t feb_can_gps_motion_rear_speed_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_gps_motion_data_rear_speed_decode(uint16_t value)
+double feb_can_gps_motion_rear_speed_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_gps_motion_data_rear_speed_is_in_range(uint16_t value)
+bool feb_can_gps_motion_rear_speed_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_gps_motion_data_rear_course_encode(double value)
+uint16_t feb_can_gps_motion_rear_course_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_gps_motion_data_rear_course_decode(uint16_t value)
+double feb_can_gps_motion_rear_course_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_gps_motion_data_rear_course_is_in_range(uint16_t value)
+bool feb_can_gps_motion_rear_course_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_gps_time_data_rear_pack(
+int feb_can_gps_time_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_time_data_rear_t *src_p,
+    const struct feb_can_gps_time_rear_t *src_p,
     size_t size)
 {
     uint8_t hours;
@@ -5691,8 +5576,8 @@ int feb_can_gps_time_data_rear_pack(
     return (3);
 }
 
-int feb_can_gps_time_data_rear_unpack(
-    struct feb_can_gps_time_data_rear_t *dst_p,
+int feb_can_gps_time_rear_unpack(
+    struct feb_can_gps_time_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -5714,69 +5599,69 @@ int feb_can_gps_time_data_rear_unpack(
     return (0);
 }
 
-int feb_can_gps_time_data_rear_init(struct feb_can_gps_time_data_rear_t *msg_p)
+int feb_can_gps_time_rear_init(struct feb_can_gps_time_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_gps_time_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_gps_time_rear_t));
 
     return 0;
 }
 
-int8_t feb_can_gps_time_data_rear_hours_encode(double value)
+int8_t feb_can_gps_time_rear_hours_encode(double value)
 {
     return (int8_t)(value);
 }
 
-double feb_can_gps_time_data_rear_hours_decode(int8_t value)
+double feb_can_gps_time_rear_hours_decode(int8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_time_data_rear_hours_is_in_range(int8_t value)
+bool feb_can_gps_time_rear_hours_is_in_range(int8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int8_t feb_can_gps_time_data_rear_minutes_encode(double value)
+int8_t feb_can_gps_time_rear_minutes_encode(double value)
 {
     return (int8_t)(value);
 }
 
-double feb_can_gps_time_data_rear_minutes_decode(int8_t value)
+double feb_can_gps_time_rear_minutes_decode(int8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_time_data_rear_minutes_is_in_range(int8_t value)
+bool feb_can_gps_time_rear_minutes_is_in_range(int8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int8_t feb_can_gps_time_data_rear_seconds_encode(double value)
+int8_t feb_can_gps_time_rear_seconds_encode(double value)
 {
     return (int8_t)(value);
 }
 
-double feb_can_gps_time_data_rear_seconds_decode(int8_t value)
+double feb_can_gps_time_rear_seconds_decode(int8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_time_data_rear_seconds_is_in_range(int8_t value)
+bool feb_can_gps_time_rear_seconds_is_in_range(int8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_gps_date_data_rear_pack(
+int feb_can_gps_date_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_date_data_rear_t *src_p,
+    const struct feb_can_gps_date_rear_t *src_p,
     size_t size)
 {
     uint8_t day;
@@ -5799,8 +5684,8 @@ int feb_can_gps_date_data_rear_pack(
     return (3);
 }
 
-int feb_can_gps_date_data_rear_unpack(
-    struct feb_can_gps_date_data_rear_t *dst_p,
+int feb_can_gps_date_rear_unpack(
+    struct feb_can_gps_date_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -5822,69 +5707,69 @@ int feb_can_gps_date_data_rear_unpack(
     return (0);
 }
 
-int feb_can_gps_date_data_rear_init(struct feb_can_gps_date_data_rear_t *msg_p)
+int feb_can_gps_date_rear_init(struct feb_can_gps_date_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_gps_date_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_gps_date_rear_t));
 
     return 0;
 }
 
-int8_t feb_can_gps_date_data_rear_day_encode(double value)
+int8_t feb_can_gps_date_rear_day_encode(double value)
 {
     return (int8_t)(value);
 }
 
-double feb_can_gps_date_data_rear_day_decode(int8_t value)
+double feb_can_gps_date_rear_day_decode(int8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_date_data_rear_day_is_in_range(int8_t value)
+bool feb_can_gps_date_rear_day_is_in_range(int8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int8_t feb_can_gps_date_data_rear_month_encode(double value)
+int8_t feb_can_gps_date_rear_month_encode(double value)
 {
     return (int8_t)(value);
 }
 
-double feb_can_gps_date_data_rear_month_decode(int8_t value)
+double feb_can_gps_date_rear_month_decode(int8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_date_data_rear_month_is_in_range(int8_t value)
+bool feb_can_gps_date_rear_month_is_in_range(int8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int8_t feb_can_gps_date_data_rear_year_encode(double value)
+int8_t feb_can_gps_date_rear_year_encode(double value)
 {
     return (int8_t)(value);
 }
 
-double feb_can_gps_date_data_rear_year_decode(int8_t value)
+double feb_can_gps_date_rear_year_decode(int8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_date_data_rear_year_is_in_range(int8_t value)
+bool feb_can_gps_date_rear_year_is_in_range(int8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_gps_status_data_rear_pack(
+int feb_can_gps_status_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_gps_status_data_rear_t *src_p,
+    const struct feb_can_gps_status_rear_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -5905,8 +5790,8 @@ int feb_can_gps_status_data_rear_pack(
     return (8);
 }
 
-int feb_can_gps_status_data_rear_unpack(
-    struct feb_can_gps_status_data_rear_t *dst_p,
+int feb_can_gps_status_rear_unpack(
+    struct feb_can_gps_status_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -5926,137 +5811,137 @@ int feb_can_gps_status_data_rear_unpack(
     return (0);
 }
 
-int feb_can_gps_status_data_rear_init(struct feb_can_gps_status_data_rear_t *msg_p)
+int feb_can_gps_status_rear_init(struct feb_can_gps_status_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_gps_status_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_gps_status_rear_t));
 
     return 0;
 }
 
-uint8_t feb_can_gps_status_data_rear_fix_type_encode(double value)
+uint8_t feb_can_gps_status_rear_fix_type_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_gps_status_data_rear_fix_type_decode(uint8_t value)
+double feb_can_gps_status_rear_fix_type_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_status_data_rear_fix_type_is_in_range(uint8_t value)
+bool feb_can_gps_status_rear_fix_type_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_gps_status_data_rear_fix_mode_encode(double value)
+uint8_t feb_can_gps_status_rear_fix_mode_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_gps_status_data_rear_fix_mode_decode(uint8_t value)
+double feb_can_gps_status_rear_fix_mode_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_status_data_rear_fix_mode_is_in_range(uint8_t value)
+bool feb_can_gps_status_rear_fix_mode_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_gps_status_data_rear_sats_in_use_encode(double value)
+uint8_t feb_can_gps_status_rear_sats_in_use_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_gps_status_data_rear_sats_in_use_decode(uint8_t value)
+double feb_can_gps_status_rear_sats_in_use_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_status_data_rear_sats_in_use_is_in_range(uint8_t value)
+bool feb_can_gps_status_rear_sats_in_use_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_gps_status_data_rear_sats_in_view_encode(double value)
+uint8_t feb_can_gps_status_rear_sats_in_view_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_gps_status_data_rear_sats_in_view_decode(uint8_t value)
+double feb_can_gps_status_rear_sats_in_view_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_status_data_rear_sats_in_view_is_in_range(uint8_t value)
+bool feb_can_gps_status_rear_sats_in_view_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_gps_status_data_rear_valid_encode(double value)
+uint8_t feb_can_gps_status_rear_valid_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_gps_status_data_rear_valid_decode(uint8_t value)
+double feb_can_gps_status_rear_valid_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_status_data_rear_valid_is_in_range(uint8_t value)
+bool feb_can_gps_status_rear_valid_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_gps_status_data_rear_has_fix_encode(double value)
+uint8_t feb_can_gps_status_rear_has_fix_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_gps_status_data_rear_has_fix_decode(uint8_t value)
+double feb_can_gps_status_rear_has_fix_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_gps_status_data_rear_has_fix_is_in_range(uint8_t value)
+bool feb_can_gps_status_rear_has_fix_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_gps_status_data_rear_pdop_encode(double value)
+uint16_t feb_can_gps_status_rear_pdop_encode(double value)
 {
     return (uint16_t)(value / 0.01);
 }
 
-double feb_can_gps_status_data_rear_pdop_decode(uint16_t value)
+double feb_can_gps_status_rear_pdop_decode(uint16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_gps_status_data_rear_pdop_is_in_range(uint16_t value)
+bool feb_can_gps_status_rear_pdop_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_fusion_quaternion_data_rear_pack(
+int feb_can_fusion_quat_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_fusion_quaternion_data_rear_t *src_p,
+    const struct feb_can_fusion_quat_rear_t *src_p,
     size_t size)
 {
     uint16_t q_w;
@@ -6086,8 +5971,8 @@ int feb_can_fusion_quaternion_data_rear_pack(
     return (8);
 }
 
-int feb_can_fusion_quaternion_data_rear_unpack(
-    struct feb_can_fusion_quaternion_data_rear_t *dst_p,
+int feb_can_fusion_quat_rear_unpack(
+    struct feb_can_fusion_quat_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -6116,86 +6001,86 @@ int feb_can_fusion_quaternion_data_rear_unpack(
     return (0);
 }
 
-int feb_can_fusion_quaternion_data_rear_init(struct feb_can_fusion_quaternion_data_rear_t *msg_p)
+int feb_can_fusion_quat_rear_init(struct feb_can_fusion_quat_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_fusion_quaternion_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_quat_rear_t));
 
     return 0;
 }
 
-int16_t feb_can_fusion_quaternion_data_rear_q_w_encode(double value)
+int16_t feb_can_fusion_quat_rear_q_w_encode(double value)
 {
     return (int16_t)(value / 3.051850947599719e-05);
 }
 
-double feb_can_fusion_quaternion_data_rear_q_w_decode(int16_t value)
+double feb_can_fusion_quat_rear_q_w_decode(int16_t value)
 {
     return ((double)value * 3.051850947599719e-05);
 }
 
-bool feb_can_fusion_quaternion_data_rear_q_w_is_in_range(int16_t value)
+bool feb_can_fusion_quat_rear_q_w_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_quaternion_data_rear_q_x_encode(double value)
+int16_t feb_can_fusion_quat_rear_q_x_encode(double value)
 {
     return (int16_t)(value / 3.051850947599719e-05);
 }
 
-double feb_can_fusion_quaternion_data_rear_q_x_decode(int16_t value)
+double feb_can_fusion_quat_rear_q_x_decode(int16_t value)
 {
     return ((double)value * 3.051850947599719e-05);
 }
 
-bool feb_can_fusion_quaternion_data_rear_q_x_is_in_range(int16_t value)
+bool feb_can_fusion_quat_rear_q_x_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_quaternion_data_rear_q_y_encode(double value)
+int16_t feb_can_fusion_quat_rear_q_y_encode(double value)
 {
     return (int16_t)(value / 3.051850947599719e-05);
 }
 
-double feb_can_fusion_quaternion_data_rear_q_y_decode(int16_t value)
+double feb_can_fusion_quat_rear_q_y_decode(int16_t value)
 {
     return ((double)value * 3.051850947599719e-05);
 }
 
-bool feb_can_fusion_quaternion_data_rear_q_y_is_in_range(int16_t value)
+bool feb_can_fusion_quat_rear_q_y_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_quaternion_data_rear_q_z_encode(double value)
+int16_t feb_can_fusion_quat_rear_q_z_encode(double value)
 {
     return (int16_t)(value / 3.051850947599719e-05);
 }
 
-double feb_can_fusion_quaternion_data_rear_q_z_decode(int16_t value)
+double feb_can_fusion_quat_rear_q_z_decode(int16_t value)
 {
     return ((double)value * 3.051850947599719e-05);
 }
 
-bool feb_can_fusion_quaternion_data_rear_q_z_is_in_range(int16_t value)
+bool feb_can_fusion_quat_rear_q_z_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_fusion_euler_data_rear_pack(
+int feb_can_fusion_euler_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_fusion_euler_data_rear_t *src_p,
+    const struct feb_can_fusion_euler_rear_t *src_p,
     size_t size)
 {
     uint16_t pitch;
@@ -6221,8 +6106,8 @@ int feb_can_fusion_euler_data_rear_pack(
     return (6);
 }
 
-int feb_can_fusion_euler_data_rear_unpack(
-    struct feb_can_fusion_euler_data_rear_t *dst_p,
+int feb_can_fusion_euler_rear_unpack(
+    struct feb_can_fusion_euler_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -6247,69 +6132,69 @@ int feb_can_fusion_euler_data_rear_unpack(
     return (0);
 }
 
-int feb_can_fusion_euler_data_rear_init(struct feb_can_fusion_euler_data_rear_t *msg_p)
+int feb_can_fusion_euler_rear_init(struct feb_can_fusion_euler_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_fusion_euler_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_euler_rear_t));
 
     return 0;
 }
 
-int16_t feb_can_fusion_euler_data_rear_roll_encode(double value)
+int16_t feb_can_fusion_euler_rear_roll_encode(double value)
 {
     return (int16_t)(value / 0.01);
 }
 
-double feb_can_fusion_euler_data_rear_roll_decode(int16_t value)
+double feb_can_fusion_euler_rear_roll_decode(int16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_fusion_euler_data_rear_roll_is_in_range(int16_t value)
+bool feb_can_fusion_euler_rear_roll_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_euler_data_rear_pitch_encode(double value)
+int16_t feb_can_fusion_euler_rear_pitch_encode(double value)
 {
     return (int16_t)(value / 0.01);
 }
 
-double feb_can_fusion_euler_data_rear_pitch_decode(int16_t value)
+double feb_can_fusion_euler_rear_pitch_decode(int16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_fusion_euler_data_rear_pitch_is_in_range(int16_t value)
+bool feb_can_fusion_euler_rear_pitch_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_euler_data_rear_yaw_encode(double value)
+int16_t feb_can_fusion_euler_rear_yaw_encode(double value)
 {
     return (int16_t)(value / 0.01);
 }
 
-double feb_can_fusion_euler_data_rear_yaw_decode(int16_t value)
+double feb_can_fusion_euler_rear_yaw_decode(int16_t value)
 {
     return ((double)value * 0.01);
 }
 
-bool feb_can_fusion_euler_data_rear_yaw_is_in_range(int16_t value)
+bool feb_can_fusion_euler_rear_yaw_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_fusion_linear_accel_data_rear_pack(
+int feb_can_fusion_lin_accel_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_fusion_linear_accel_data_rear_t *src_p,
+    const struct feb_can_fusion_lin_accel_rear_t *src_p,
     size_t size)
 {
     uint16_t lin_accel_x;
@@ -6335,8 +6220,8 @@ int feb_can_fusion_linear_accel_data_rear_pack(
     return (6);
 }
 
-int feb_can_fusion_linear_accel_data_rear_unpack(
-    struct feb_can_fusion_linear_accel_data_rear_t *dst_p,
+int feb_can_fusion_lin_accel_rear_unpack(
+    struct feb_can_fusion_lin_accel_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -6361,69 +6246,69 @@ int feb_can_fusion_linear_accel_data_rear_unpack(
     return (0);
 }
 
-int feb_can_fusion_linear_accel_data_rear_init(struct feb_can_fusion_linear_accel_data_rear_t *msg_p)
+int feb_can_fusion_lin_accel_rear_init(struct feb_can_fusion_lin_accel_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_fusion_linear_accel_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_lin_accel_rear_t));
 
     return 0;
 }
 
-int16_t feb_can_fusion_linear_accel_data_rear_lin_accel_x_encode(double value)
+int16_t feb_can_fusion_lin_accel_rear_lin_accel_x_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_fusion_linear_accel_data_rear_lin_accel_x_decode(int16_t value)
+double feb_can_fusion_lin_accel_rear_lin_accel_x_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_linear_accel_data_rear_lin_accel_x_is_in_range(int16_t value)
+bool feb_can_fusion_lin_accel_rear_lin_accel_x_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_linear_accel_data_rear_lin_accel_y_encode(double value)
+int16_t feb_can_fusion_lin_accel_rear_lin_accel_y_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_fusion_linear_accel_data_rear_lin_accel_y_decode(int16_t value)
+double feb_can_fusion_lin_accel_rear_lin_accel_y_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_linear_accel_data_rear_lin_accel_y_is_in_range(int16_t value)
+bool feb_can_fusion_lin_accel_rear_lin_accel_y_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_linear_accel_data_rear_lin_accel_z_encode(double value)
+int16_t feb_can_fusion_lin_accel_rear_lin_accel_z_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_fusion_linear_accel_data_rear_lin_accel_z_decode(int16_t value)
+double feb_can_fusion_lin_accel_rear_lin_accel_z_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_linear_accel_data_rear_lin_accel_z_is_in_range(int16_t value)
+bool feb_can_fusion_lin_accel_rear_lin_accel_z_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_fusion_earth_accel_data_rear_pack(
+int feb_can_fusion_earth_accel_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_fusion_earth_accel_data_rear_t *src_p,
+    const struct feb_can_fusion_earth_accel_rear_t *src_p,
     size_t size)
 {
     uint16_t earth_accel_x;
@@ -6449,8 +6334,8 @@ int feb_can_fusion_earth_accel_data_rear_pack(
     return (6);
 }
 
-int feb_can_fusion_earth_accel_data_rear_unpack(
-    struct feb_can_fusion_earth_accel_data_rear_t *dst_p,
+int feb_can_fusion_earth_accel_rear_unpack(
+    struct feb_can_fusion_earth_accel_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -6475,69 +6360,69 @@ int feb_can_fusion_earth_accel_data_rear_unpack(
     return (0);
 }
 
-int feb_can_fusion_earth_accel_data_rear_init(struct feb_can_fusion_earth_accel_data_rear_t *msg_p)
+int feb_can_fusion_earth_accel_rear_init(struct feb_can_fusion_earth_accel_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_fusion_earth_accel_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_earth_accel_rear_t));
 
     return 0;
 }
 
-int16_t feb_can_fusion_earth_accel_data_rear_earth_accel_x_encode(double value)
+int16_t feb_can_fusion_earth_accel_rear_earth_accel_x_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_fusion_earth_accel_data_rear_earth_accel_x_decode(int16_t value)
+double feb_can_fusion_earth_accel_rear_earth_accel_x_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_earth_accel_data_rear_earth_accel_x_is_in_range(int16_t value)
+bool feb_can_fusion_earth_accel_rear_earth_accel_x_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_earth_accel_data_rear_earth_accel_y_encode(double value)
+int16_t feb_can_fusion_earth_accel_rear_earth_accel_y_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_fusion_earth_accel_data_rear_earth_accel_y_decode(int16_t value)
+double feb_can_fusion_earth_accel_rear_earth_accel_y_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_earth_accel_data_rear_earth_accel_y_is_in_range(int16_t value)
+bool feb_can_fusion_earth_accel_rear_earth_accel_y_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int16_t feb_can_fusion_earth_accel_data_rear_earth_accel_z_encode(double value)
+int16_t feb_can_fusion_earth_accel_rear_earth_accel_z_encode(double value)
 {
     return (int16_t)(value);
 }
 
-double feb_can_fusion_earth_accel_data_rear_earth_accel_z_decode(int16_t value)
+double feb_can_fusion_earth_accel_rear_earth_accel_z_decode(int16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_earth_accel_data_rear_earth_accel_z_is_in_range(int16_t value)
+bool feb_can_fusion_earth_accel_rear_earth_accel_z_is_in_range(int16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-int feb_can_fusion_status_data_rear_pack(
+int feb_can_fusion_status_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_fusion_status_data_rear_t *src_p,
+    const struct feb_can_fusion_status_rear_t *src_p,
     size_t size)
 {
     if (size < 3u) {
@@ -6553,8 +6438,8 @@ int feb_can_fusion_status_data_rear_pack(
     return (3);
 }
 
-int feb_can_fusion_status_data_rear_unpack(
-    struct feb_can_fusion_status_data_rear_t *dst_p,
+int feb_can_fusion_status_rear_unpack(
+    struct feb_can_fusion_status_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -6569,60 +6454,60 @@ int feb_can_fusion_status_data_rear_unpack(
     return (0);
 }
 
-int feb_can_fusion_status_data_rear_init(struct feb_can_fusion_status_data_rear_t *msg_p)
+int feb_can_fusion_status_rear_init(struct feb_can_fusion_status_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_fusion_status_data_rear_t));
+    memset(msg_p, 0, sizeof(struct feb_can_fusion_status_rear_t));
 
     return 0;
 }
 
-uint8_t feb_can_fusion_status_data_rear_flags_encode(double value)
+uint8_t feb_can_fusion_status_rear_flags_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_fusion_status_data_rear_flags_decode(uint8_t value)
+double feb_can_fusion_status_rear_flags_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_fusion_status_data_rear_flags_is_in_range(uint8_t value)
+bool feb_can_fusion_status_rear_flags_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_fusion_status_data_rear_accel_error_encode(double value)
+uint8_t feb_can_fusion_status_rear_accel_error_encode(double value)
 {
     return (uint8_t)(value / 0.1);
 }
 
-double feb_can_fusion_status_data_rear_accel_error_decode(uint8_t value)
+double feb_can_fusion_status_rear_accel_error_decode(uint8_t value)
 {
     return ((double)value * 0.1);
 }
 
-bool feb_can_fusion_status_data_rear_accel_error_is_in_range(uint8_t value)
+bool feb_can_fusion_status_rear_accel_error_is_in_range(uint8_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint8_t feb_can_fusion_status_data_rear_mag_error_encode(double value)
+uint8_t feb_can_fusion_status_rear_mag_error_encode(double value)
 {
     return (uint8_t)(value / 0.1);
 }
 
-double feb_can_fusion_status_data_rear_mag_error_decode(uint8_t value)
+double feb_can_fusion_status_rear_mag_error_decode(uint8_t value)
 {
     return ((double)value * 0.1);
 }
 
-bool feb_can_fusion_status_data_rear_mag_error_is_in_range(uint8_t value)
+bool feb_can_fusion_status_rear_mag_error_is_in_range(uint8_t value)
 {
     (void)value;
 
@@ -14519,9 +14404,9 @@ bool feb_can_dcu_heartbeat_error63_is_in_range(uint8_t value)
     return (value <= 1u);
 }
 
-int feb_can_front_sensor_heartbeat_message_pack(
+int feb_can_heartbeat_front_pack(
     uint8_t *dst_p,
-    const struct feb_can_front_sensor_heartbeat_message_t *src_p,
+    const struct feb_can_heartbeat_front_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -14598,8 +14483,8 @@ int feb_can_front_sensor_heartbeat_message_pack(
     return (8);
 }
 
-int feb_can_front_sensor_heartbeat_message_unpack(
-    struct feb_can_front_sensor_heartbeat_message_t *dst_p,
+int feb_can_heartbeat_front_unpack(
+    struct feb_can_heartbeat_front_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -14675,978 +14560,978 @@ int feb_can_front_sensor_heartbeat_message_unpack(
     return (0);
 }
 
-int feb_can_front_sensor_heartbeat_message_init(struct feb_can_front_sensor_heartbeat_message_t *msg_p)
+int feb_can_heartbeat_front_init(struct feb_can_heartbeat_front_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_front_sensor_heartbeat_message_t));
+    memset(msg_p, 0, sizeof(struct feb_can_heartbeat_front_t));
 
     return 0;
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_imu_init_failed_encode(double value)
+uint8_t feb_can_heartbeat_front_imu_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_imu_init_failed_decode(uint8_t value)
+double feb_can_heartbeat_front_imu_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_imu_init_failed_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_imu_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_imu_read_failed_encode(double value)
+uint8_t feb_can_heartbeat_front_imu_read_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_imu_read_failed_decode(uint8_t value)
+double feb_can_heartbeat_front_imu_read_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_imu_read_failed_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_imu_read_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_mag_init_failed_encode(double value)
+uint8_t feb_can_heartbeat_front_mag_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_mag_init_failed_decode(uint8_t value)
+double feb_can_heartbeat_front_mag_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_mag_init_failed_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_mag_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_mag_read_failed_encode(double value)
+uint8_t feb_can_heartbeat_front_mag_read_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_mag_read_failed_decode(uint8_t value)
+double feb_can_heartbeat_front_mag_read_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_mag_read_failed_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_mag_read_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_gps_init_failed_encode(double value)
+uint8_t feb_can_heartbeat_front_gps_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_gps_init_failed_decode(uint8_t value)
+double feb_can_heartbeat_front_gps_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_gps_init_failed_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_gps_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_fusion_uncalibrated_encode(double value)
+uint8_t feb_can_heartbeat_front_fusion_uncalibrated_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_fusion_uncalibrated_decode(uint8_t value)
+double feb_can_heartbeat_front_fusion_uncalibrated_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_fusion_uncalibrated_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_fusion_uncalibrated_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_lp_out_of_range_encode(double value)
+uint8_t feb_can_heartbeat_front_lp_out_of_range_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_lp_out_of_range_decode(uint8_t value)
+double feb_can_heartbeat_front_lp_out_of_range_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_lp_out_of_range_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_lp_out_of_range_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error7_encode(double value)
+uint8_t feb_can_heartbeat_front_error7_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error7_decode(uint8_t value)
+double feb_can_heartbeat_front_error7_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error7_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error7_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_gps_no_fix_encode(double value)
+uint8_t feb_can_heartbeat_front_gps_no_fix_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_gps_no_fix_decode(uint8_t value)
+double feb_can_heartbeat_front_gps_no_fix_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_gps_no_fix_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_gps_no_fix_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_gps_stale_encode(double value)
+uint8_t feb_can_heartbeat_front_gps_stale_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_gps_stale_decode(uint8_t value)
+double feb_can_heartbeat_front_gps_stale_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_gps_stale_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_gps_stale_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_gps_link_slow_encode(double value)
+uint8_t feb_can_heartbeat_front_gps_link_slow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_gps_link_slow_decode(uint8_t value)
+double feb_can_heartbeat_front_gps_link_slow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_gps_link_slow_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_gps_link_slow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_wss_left_no_signal_encode(double value)
+uint8_t feb_can_heartbeat_front_wss_left_no_signal_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_wss_left_no_signal_decode(uint8_t value)
+double feb_can_heartbeat_front_wss_left_no_signal_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_wss_left_no_signal_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_wss_left_no_signal_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_wss_right_no_signal_encode(double value)
+uint8_t feb_can_heartbeat_front_wss_right_no_signal_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_wss_right_no_signal_decode(uint8_t value)
+double feb_can_heartbeat_front_wss_right_no_signal_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_wss_right_no_signal_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_wss_right_no_signal_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error13_encode(double value)
+uint8_t feb_can_heartbeat_front_error13_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error13_decode(uint8_t value)
+double feb_can_heartbeat_front_error13_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error13_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error13_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error14_encode(double value)
+uint8_t feb_can_heartbeat_front_error14_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error14_decode(uint8_t value)
+double feb_can_heartbeat_front_error14_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error14_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error14_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error15_encode(double value)
+uint8_t feb_can_heartbeat_front_error15_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error15_decode(uint8_t value)
+double feb_can_heartbeat_front_error15_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error15_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error15_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_can_bus_off_encode(double value)
+uint8_t feb_can_heartbeat_front_can_bus_off_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_can_bus_off_decode(uint8_t value)
+double feb_can_heartbeat_front_can_bus_off_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_can_bus_off_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_can_bus_off_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_can_tx_overflow_encode(double value)
+uint8_t feb_can_heartbeat_front_can_tx_overflow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_can_tx_overflow_decode(uint8_t value)
+double feb_can_heartbeat_front_can_tx_overflow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_can_tx_overflow_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_can_tx_overflow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_can_rx_overflow_encode(double value)
+uint8_t feb_can_heartbeat_front_can_rx_overflow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_can_rx_overflow_decode(uint8_t value)
+double feb_can_heartbeat_front_can_rx_overflow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_can_rx_overflow_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_can_rx_overflow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error19_encode(double value)
+uint8_t feb_can_heartbeat_front_error19_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error19_decode(uint8_t value)
+double feb_can_heartbeat_front_error19_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error19_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error19_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error20_encode(double value)
+uint8_t feb_can_heartbeat_front_error20_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error20_decode(uint8_t value)
+double feb_can_heartbeat_front_error20_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error20_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error20_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error21_encode(double value)
+uint8_t feb_can_heartbeat_front_error21_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error21_decode(uint8_t value)
+double feb_can_heartbeat_front_error21_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error21_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error21_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error22_encode(double value)
+uint8_t feb_can_heartbeat_front_error22_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error22_decode(uint8_t value)
+double feb_can_heartbeat_front_error22_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error22_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error22_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error23_encode(double value)
+uint8_t feb_can_heartbeat_front_error23_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error23_decode(uint8_t value)
+double feb_can_heartbeat_front_error23_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error23_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error23_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error24_encode(double value)
+uint8_t feb_can_heartbeat_front_error24_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error24_decode(uint8_t value)
+double feb_can_heartbeat_front_error24_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error24_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error24_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error25_encode(double value)
+uint8_t feb_can_heartbeat_front_error25_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error25_decode(uint8_t value)
+double feb_can_heartbeat_front_error25_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error25_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error25_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error26_encode(double value)
+uint8_t feb_can_heartbeat_front_error26_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error26_decode(uint8_t value)
+double feb_can_heartbeat_front_error26_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error26_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error26_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error27_encode(double value)
+uint8_t feb_can_heartbeat_front_error27_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error27_decode(uint8_t value)
+double feb_can_heartbeat_front_error27_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error27_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error27_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error28_encode(double value)
+uint8_t feb_can_heartbeat_front_error28_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error28_decode(uint8_t value)
+double feb_can_heartbeat_front_error28_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error28_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error28_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error29_encode(double value)
+uint8_t feb_can_heartbeat_front_error29_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error29_decode(uint8_t value)
+double feb_can_heartbeat_front_error29_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error29_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error29_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error30_encode(double value)
+uint8_t feb_can_heartbeat_front_error30_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error30_decode(uint8_t value)
+double feb_can_heartbeat_front_error30_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error30_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error30_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error31_encode(double value)
+uint8_t feb_can_heartbeat_front_error31_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error31_decode(uint8_t value)
+double feb_can_heartbeat_front_error31_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error31_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error31_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error32_encode(double value)
+uint8_t feb_can_heartbeat_front_error32_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error32_decode(uint8_t value)
+double feb_can_heartbeat_front_error32_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error32_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error32_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error33_encode(double value)
+uint8_t feb_can_heartbeat_front_error33_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error33_decode(uint8_t value)
+double feb_can_heartbeat_front_error33_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error33_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error33_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error34_encode(double value)
+uint8_t feb_can_heartbeat_front_error34_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error34_decode(uint8_t value)
+double feb_can_heartbeat_front_error34_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error34_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error34_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error35_encode(double value)
+uint8_t feb_can_heartbeat_front_error35_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error35_decode(uint8_t value)
+double feb_can_heartbeat_front_error35_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error35_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error35_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error36_encode(double value)
+uint8_t feb_can_heartbeat_front_error36_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error36_decode(uint8_t value)
+double feb_can_heartbeat_front_error36_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error36_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error36_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error37_encode(double value)
+uint8_t feb_can_heartbeat_front_error37_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error37_decode(uint8_t value)
+double feb_can_heartbeat_front_error37_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error37_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error37_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error38_encode(double value)
+uint8_t feb_can_heartbeat_front_error38_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error38_decode(uint8_t value)
+double feb_can_heartbeat_front_error38_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error38_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error38_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error39_encode(double value)
+uint8_t feb_can_heartbeat_front_error39_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error39_decode(uint8_t value)
+double feb_can_heartbeat_front_error39_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error39_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error39_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error40_encode(double value)
+uint8_t feb_can_heartbeat_front_error40_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error40_decode(uint8_t value)
+double feb_can_heartbeat_front_error40_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error40_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error40_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error41_encode(double value)
+uint8_t feb_can_heartbeat_front_error41_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error41_decode(uint8_t value)
+double feb_can_heartbeat_front_error41_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error41_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error41_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error42_encode(double value)
+uint8_t feb_can_heartbeat_front_error42_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error42_decode(uint8_t value)
+double feb_can_heartbeat_front_error42_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error42_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error42_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error43_encode(double value)
+uint8_t feb_can_heartbeat_front_error43_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error43_decode(uint8_t value)
+double feb_can_heartbeat_front_error43_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error43_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error43_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error44_encode(double value)
+uint8_t feb_can_heartbeat_front_error44_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error44_decode(uint8_t value)
+double feb_can_heartbeat_front_error44_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error44_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error44_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error45_encode(double value)
+uint8_t feb_can_heartbeat_front_error45_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error45_decode(uint8_t value)
+double feb_can_heartbeat_front_error45_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error45_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error45_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error46_encode(double value)
+uint8_t feb_can_heartbeat_front_error46_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error46_decode(uint8_t value)
+double feb_can_heartbeat_front_error46_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error46_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error46_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error47_encode(double value)
+uint8_t feb_can_heartbeat_front_error47_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error47_decode(uint8_t value)
+double feb_can_heartbeat_front_error47_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error47_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error47_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error48_encode(double value)
+uint8_t feb_can_heartbeat_front_error48_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error48_decode(uint8_t value)
+double feb_can_heartbeat_front_error48_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error48_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error48_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error49_encode(double value)
+uint8_t feb_can_heartbeat_front_error49_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error49_decode(uint8_t value)
+double feb_can_heartbeat_front_error49_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error49_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error49_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error50_encode(double value)
+uint8_t feb_can_heartbeat_front_error50_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error50_decode(uint8_t value)
+double feb_can_heartbeat_front_error50_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error50_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error50_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error51_encode(double value)
+uint8_t feb_can_heartbeat_front_error51_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error51_decode(uint8_t value)
+double feb_can_heartbeat_front_error51_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error51_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error51_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error52_encode(double value)
+uint8_t feb_can_heartbeat_front_error52_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error52_decode(uint8_t value)
+double feb_can_heartbeat_front_error52_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error52_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error52_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error53_encode(double value)
+uint8_t feb_can_heartbeat_front_error53_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error53_decode(uint8_t value)
+double feb_can_heartbeat_front_error53_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error53_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error53_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error54_encode(double value)
+uint8_t feb_can_heartbeat_front_error54_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error54_decode(uint8_t value)
+double feb_can_heartbeat_front_error54_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error54_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error54_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error55_encode(double value)
+uint8_t feb_can_heartbeat_front_error55_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error55_decode(uint8_t value)
+double feb_can_heartbeat_front_error55_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error55_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error55_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error56_encode(double value)
+uint8_t feb_can_heartbeat_front_error56_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error56_decode(uint8_t value)
+double feb_can_heartbeat_front_error56_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error56_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error56_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error57_encode(double value)
+uint8_t feb_can_heartbeat_front_error57_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error57_decode(uint8_t value)
+double feb_can_heartbeat_front_error57_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error57_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error57_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error58_encode(double value)
+uint8_t feb_can_heartbeat_front_error58_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error58_decode(uint8_t value)
+double feb_can_heartbeat_front_error58_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error58_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error58_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error59_encode(double value)
+uint8_t feb_can_heartbeat_front_error59_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error59_decode(uint8_t value)
+double feb_can_heartbeat_front_error59_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error59_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error59_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error60_encode(double value)
+uint8_t feb_can_heartbeat_front_error60_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error60_decode(uint8_t value)
+double feb_can_heartbeat_front_error60_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error60_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error60_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error61_encode(double value)
+uint8_t feb_can_heartbeat_front_error61_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error61_decode(uint8_t value)
+double feb_can_heartbeat_front_error61_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error61_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error61_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error62_encode(double value)
+uint8_t feb_can_heartbeat_front_error62_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error62_decode(uint8_t value)
+double feb_can_heartbeat_front_error62_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error62_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error62_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_front_sensor_heartbeat_message_error63_encode(double value)
+uint8_t feb_can_heartbeat_front_error63_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_front_sensor_heartbeat_message_error63_decode(uint8_t value)
+double feb_can_heartbeat_front_error63_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_front_sensor_heartbeat_message_error63_is_in_range(uint8_t value)
+bool feb_can_heartbeat_front_error63_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-int feb_can_rear_sensor_heartbeat_message_pack(
+int feb_can_heartbeat_rear_pack(
     uint8_t *dst_p,
-    const struct feb_can_rear_sensor_heartbeat_message_t *src_p,
+    const struct feb_can_heartbeat_rear_t *src_p,
     size_t size)
 {
     if (size < 8u) {
@@ -15723,8 +15608,8 @@ int feb_can_rear_sensor_heartbeat_message_pack(
     return (8);
 }
 
-int feb_can_rear_sensor_heartbeat_message_unpack(
-    struct feb_can_rear_sensor_heartbeat_message_t *dst_p,
+int feb_can_heartbeat_rear_unpack(
+    struct feb_can_heartbeat_rear_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
@@ -15800,971 +15685,971 @@ int feb_can_rear_sensor_heartbeat_message_unpack(
     return (0);
 }
 
-int feb_can_rear_sensor_heartbeat_message_init(struct feb_can_rear_sensor_heartbeat_message_t *msg_p)
+int feb_can_heartbeat_rear_init(struct feb_can_heartbeat_rear_t *msg_p)
 {
     if (msg_p == NULL) return -1;
 
-    memset(msg_p, 0, sizeof(struct feb_can_rear_sensor_heartbeat_message_t));
+    memset(msg_p, 0, sizeof(struct feb_can_heartbeat_rear_t));
 
     return 0;
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_imu_init_failed_encode(double value)
+uint8_t feb_can_heartbeat_rear_imu_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_imu_init_failed_decode(uint8_t value)
+double feb_can_heartbeat_rear_imu_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_imu_init_failed_is_in_range(uint8_t value)
-{
-    return (value <= 1u);
-}
-
-uint8_t feb_can_rear_sensor_heartbeat_message_imu_read_failed_encode(double value)
-{
-    return (uint8_t)(value);
-}
-
-double feb_can_rear_sensor_heartbeat_message_imu_read_failed_decode(uint8_t value)
-{
-    return ((double)value);
-}
-
-bool feb_can_rear_sensor_heartbeat_message_imu_read_failed_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_imu_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_mag_init_failed_encode(double value)
+uint8_t feb_can_heartbeat_rear_imu_read_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_mag_init_failed_decode(uint8_t value)
+double feb_can_heartbeat_rear_imu_read_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_mag_init_failed_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_imu_read_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_mag_read_failed_encode(double value)
+uint8_t feb_can_heartbeat_rear_mag_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_mag_read_failed_decode(uint8_t value)
+double feb_can_heartbeat_rear_mag_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_mag_read_failed_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_mag_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_gps_init_failed_encode(double value)
+uint8_t feb_can_heartbeat_rear_mag_read_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_gps_init_failed_decode(uint8_t value)
+double feb_can_heartbeat_rear_mag_read_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_gps_init_failed_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_mag_read_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_fusion_uncalibrated_encode(double value)
+uint8_t feb_can_heartbeat_rear_gps_init_failed_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_fusion_uncalibrated_decode(uint8_t value)
+double feb_can_heartbeat_rear_gps_init_failed_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_fusion_uncalibrated_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_gps_init_failed_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_lp_out_of_range_encode(double value)
+uint8_t feb_can_heartbeat_rear_fusion_uncalibrated_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_lp_out_of_range_decode(uint8_t value)
+double feb_can_heartbeat_rear_fusion_uncalibrated_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_lp_out_of_range_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_fusion_uncalibrated_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error7_encode(double value)
+uint8_t feb_can_heartbeat_rear_lp_out_of_range_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error7_decode(uint8_t value)
+double feb_can_heartbeat_rear_lp_out_of_range_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error7_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_lp_out_of_range_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_gps_no_fix_encode(double value)
+uint8_t feb_can_heartbeat_rear_error7_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_gps_no_fix_decode(uint8_t value)
+double feb_can_heartbeat_rear_error7_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_gps_no_fix_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error7_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_gps_stale_encode(double value)
+uint8_t feb_can_heartbeat_rear_gps_no_fix_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_gps_stale_decode(uint8_t value)
+double feb_can_heartbeat_rear_gps_no_fix_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_gps_stale_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_gps_no_fix_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_gps_link_slow_encode(double value)
+uint8_t feb_can_heartbeat_rear_gps_stale_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_gps_link_slow_decode(uint8_t value)
+double feb_can_heartbeat_rear_gps_stale_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_gps_link_slow_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_gps_stale_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_wss_left_no_signal_encode(double value)
+uint8_t feb_can_heartbeat_rear_gps_link_slow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_wss_left_no_signal_decode(uint8_t value)
+double feb_can_heartbeat_rear_gps_link_slow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_wss_left_no_signal_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_gps_link_slow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_wss_right_no_signal_encode(double value)
+uint8_t feb_can_heartbeat_rear_wss_left_no_signal_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_wss_right_no_signal_decode(uint8_t value)
+double feb_can_heartbeat_rear_wss_left_no_signal_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_wss_right_no_signal_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_wss_left_no_signal_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error13_encode(double value)
+uint8_t feb_can_heartbeat_rear_wss_right_no_signal_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error13_decode(uint8_t value)
+double feb_can_heartbeat_rear_wss_right_no_signal_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error13_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_wss_right_no_signal_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error14_encode(double value)
+uint8_t feb_can_heartbeat_rear_error13_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error14_decode(uint8_t value)
+double feb_can_heartbeat_rear_error13_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error14_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error13_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error15_encode(double value)
+uint8_t feb_can_heartbeat_rear_error14_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error15_decode(uint8_t value)
+double feb_can_heartbeat_rear_error14_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error15_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error14_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_can_bus_off_encode(double value)
+uint8_t feb_can_heartbeat_rear_error15_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_can_bus_off_decode(uint8_t value)
+double feb_can_heartbeat_rear_error15_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_can_bus_off_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error15_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_can_tx_overflow_encode(double value)
+uint8_t feb_can_heartbeat_rear_can_bus_off_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_can_tx_overflow_decode(uint8_t value)
+double feb_can_heartbeat_rear_can_bus_off_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_can_tx_overflow_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_can_bus_off_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_can_rx_overflow_encode(double value)
+uint8_t feb_can_heartbeat_rear_can_tx_overflow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_can_rx_overflow_decode(uint8_t value)
+double feb_can_heartbeat_rear_can_tx_overflow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_can_rx_overflow_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_can_tx_overflow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error19_encode(double value)
+uint8_t feb_can_heartbeat_rear_can_rx_overflow_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error19_decode(uint8_t value)
+double feb_can_heartbeat_rear_can_rx_overflow_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error19_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_can_rx_overflow_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error20_encode(double value)
+uint8_t feb_can_heartbeat_rear_error19_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error20_decode(uint8_t value)
+double feb_can_heartbeat_rear_error19_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error20_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error19_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error21_encode(double value)
+uint8_t feb_can_heartbeat_rear_error20_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error21_decode(uint8_t value)
+double feb_can_heartbeat_rear_error20_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error21_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error20_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error22_encode(double value)
+uint8_t feb_can_heartbeat_rear_error21_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error22_decode(uint8_t value)
+double feb_can_heartbeat_rear_error21_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error22_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error21_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error23_encode(double value)
+uint8_t feb_can_heartbeat_rear_error22_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error23_decode(uint8_t value)
+double feb_can_heartbeat_rear_error22_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error23_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error22_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error24_encode(double value)
+uint8_t feb_can_heartbeat_rear_error23_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error24_decode(uint8_t value)
+double feb_can_heartbeat_rear_error23_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error24_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error23_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error25_encode(double value)
+uint8_t feb_can_heartbeat_rear_error24_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error25_decode(uint8_t value)
+double feb_can_heartbeat_rear_error24_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error25_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error24_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error26_encode(double value)
+uint8_t feb_can_heartbeat_rear_error25_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error26_decode(uint8_t value)
+double feb_can_heartbeat_rear_error25_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error26_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error25_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error27_encode(double value)
+uint8_t feb_can_heartbeat_rear_error26_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error27_decode(uint8_t value)
+double feb_can_heartbeat_rear_error26_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error27_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error26_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error28_encode(double value)
+uint8_t feb_can_heartbeat_rear_error27_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error28_decode(uint8_t value)
+double feb_can_heartbeat_rear_error27_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error28_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error27_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error29_encode(double value)
+uint8_t feb_can_heartbeat_rear_error28_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error29_decode(uint8_t value)
+double feb_can_heartbeat_rear_error28_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error29_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error28_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error30_encode(double value)
+uint8_t feb_can_heartbeat_rear_error29_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error30_decode(uint8_t value)
+double feb_can_heartbeat_rear_error29_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error30_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error29_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error31_encode(double value)
+uint8_t feb_can_heartbeat_rear_error30_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error31_decode(uint8_t value)
+double feb_can_heartbeat_rear_error30_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error31_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error30_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error32_encode(double value)
+uint8_t feb_can_heartbeat_rear_error31_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error32_decode(uint8_t value)
+double feb_can_heartbeat_rear_error31_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error32_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error31_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error33_encode(double value)
+uint8_t feb_can_heartbeat_rear_error32_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error33_decode(uint8_t value)
+double feb_can_heartbeat_rear_error32_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error33_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error32_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error34_encode(double value)
+uint8_t feb_can_heartbeat_rear_error33_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error34_decode(uint8_t value)
+double feb_can_heartbeat_rear_error33_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error34_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error33_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error35_encode(double value)
+uint8_t feb_can_heartbeat_rear_error34_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error35_decode(uint8_t value)
+double feb_can_heartbeat_rear_error34_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error35_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error34_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error36_encode(double value)
+uint8_t feb_can_heartbeat_rear_error35_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error36_decode(uint8_t value)
+double feb_can_heartbeat_rear_error35_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error36_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error35_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error37_encode(double value)
+uint8_t feb_can_heartbeat_rear_error36_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error37_decode(uint8_t value)
+double feb_can_heartbeat_rear_error36_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error37_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error36_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error38_encode(double value)
+uint8_t feb_can_heartbeat_rear_error37_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error38_decode(uint8_t value)
+double feb_can_heartbeat_rear_error37_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error38_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error37_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error39_encode(double value)
+uint8_t feb_can_heartbeat_rear_error38_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error39_decode(uint8_t value)
+double feb_can_heartbeat_rear_error38_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error39_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error38_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error40_encode(double value)
+uint8_t feb_can_heartbeat_rear_error39_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error40_decode(uint8_t value)
+double feb_can_heartbeat_rear_error39_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error40_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error39_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error41_encode(double value)
+uint8_t feb_can_heartbeat_rear_error40_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error41_decode(uint8_t value)
+double feb_can_heartbeat_rear_error40_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error41_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error40_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error42_encode(double value)
+uint8_t feb_can_heartbeat_rear_error41_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error42_decode(uint8_t value)
+double feb_can_heartbeat_rear_error41_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error42_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error41_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error43_encode(double value)
+uint8_t feb_can_heartbeat_rear_error42_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error43_decode(uint8_t value)
+double feb_can_heartbeat_rear_error42_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error43_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error42_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error44_encode(double value)
+uint8_t feb_can_heartbeat_rear_error43_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error44_decode(uint8_t value)
+double feb_can_heartbeat_rear_error43_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error44_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error43_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error45_encode(double value)
+uint8_t feb_can_heartbeat_rear_error44_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error45_decode(uint8_t value)
+double feb_can_heartbeat_rear_error44_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error45_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error44_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error46_encode(double value)
+uint8_t feb_can_heartbeat_rear_error45_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error46_decode(uint8_t value)
+double feb_can_heartbeat_rear_error45_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error46_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error45_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error47_encode(double value)
+uint8_t feb_can_heartbeat_rear_error46_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error47_decode(uint8_t value)
+double feb_can_heartbeat_rear_error46_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error47_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error46_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error48_encode(double value)
+uint8_t feb_can_heartbeat_rear_error47_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error48_decode(uint8_t value)
+double feb_can_heartbeat_rear_error47_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error48_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error47_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error49_encode(double value)
+uint8_t feb_can_heartbeat_rear_error48_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error49_decode(uint8_t value)
+double feb_can_heartbeat_rear_error48_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error49_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error48_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error50_encode(double value)
+uint8_t feb_can_heartbeat_rear_error49_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error50_decode(uint8_t value)
+double feb_can_heartbeat_rear_error49_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error50_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error49_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error51_encode(double value)
+uint8_t feb_can_heartbeat_rear_error50_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error51_decode(uint8_t value)
+double feb_can_heartbeat_rear_error50_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error51_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error50_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error52_encode(double value)
+uint8_t feb_can_heartbeat_rear_error51_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error52_decode(uint8_t value)
+double feb_can_heartbeat_rear_error51_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error52_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error51_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error53_encode(double value)
+uint8_t feb_can_heartbeat_rear_error52_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error53_decode(uint8_t value)
+double feb_can_heartbeat_rear_error52_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error53_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error52_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error54_encode(double value)
+uint8_t feb_can_heartbeat_rear_error53_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error54_decode(uint8_t value)
+double feb_can_heartbeat_rear_error53_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error54_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error53_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error55_encode(double value)
+uint8_t feb_can_heartbeat_rear_error54_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error55_decode(uint8_t value)
+double feb_can_heartbeat_rear_error54_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error55_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error54_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error56_encode(double value)
+uint8_t feb_can_heartbeat_rear_error55_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error56_decode(uint8_t value)
+double feb_can_heartbeat_rear_error55_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error56_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error55_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error57_encode(double value)
+uint8_t feb_can_heartbeat_rear_error56_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error57_decode(uint8_t value)
+double feb_can_heartbeat_rear_error56_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error57_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error56_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error58_encode(double value)
+uint8_t feb_can_heartbeat_rear_error57_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error58_decode(uint8_t value)
+double feb_can_heartbeat_rear_error57_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error58_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error57_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error59_encode(double value)
+uint8_t feb_can_heartbeat_rear_error58_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error59_decode(uint8_t value)
+double feb_can_heartbeat_rear_error58_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error59_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error58_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error60_encode(double value)
+uint8_t feb_can_heartbeat_rear_error59_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error60_decode(uint8_t value)
+double feb_can_heartbeat_rear_error59_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error60_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error59_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error61_encode(double value)
+uint8_t feb_can_heartbeat_rear_error60_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error61_decode(uint8_t value)
+double feb_can_heartbeat_rear_error60_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error61_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error60_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error62_encode(double value)
+uint8_t feb_can_heartbeat_rear_error61_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error62_decode(uint8_t value)
+double feb_can_heartbeat_rear_error61_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error62_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error61_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
 
-uint8_t feb_can_rear_sensor_heartbeat_message_error63_encode(double value)
+uint8_t feb_can_heartbeat_rear_error62_encode(double value)
 {
     return (uint8_t)(value);
 }
 
-double feb_can_rear_sensor_heartbeat_message_error63_decode(uint8_t value)
+double feb_can_heartbeat_rear_error62_decode(uint8_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_rear_sensor_heartbeat_message_error63_is_in_range(uint8_t value)
+bool feb_can_heartbeat_rear_error62_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_heartbeat_rear_error63_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_heartbeat_rear_error63_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_heartbeat_rear_error63_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
@@ -34411,89 +34296,89 @@ int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint3
         feb_can_db.lvpdb_sm_af1_af2_cp_rf_currents.meta.last_rx_ms = now_ms;
         feb_can_db.lvpdb_sm_af1_af2_cp_rf_currents.meta.rx_count++;
         return 0;
-    case FEB_CAN_LINEAR_POTENTIOMETER_FRONT_FRAME_ID:
-        if (feb_can_linear_potentiometer_front_unpack(&feb_can_db.linear_potentiometer_front.data, data, dlc) < 0) return -2;
-        feb_can_db.linear_potentiometer_front.meta.present = true;
-        feb_can_db.linear_potentiometer_front.meta.last_rx_ms = now_ms;
-        feb_can_db.linear_potentiometer_front.meta.rx_count++;
+    case FEB_CAN_LINPOT_FRONT_FRAME_ID:
+        if (feb_can_linpot_front_unpack(&feb_can_db.linpot_front.data, data, dlc) < 0) return -2;
+        feb_can_db.linpot_front.meta.present = true;
+        feb_can_db.linpot_front.meta.last_rx_ms = now_ms;
+        feb_can_db.linpot_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_LINEAR_POTENTIOMETER_REAR_FRAME_ID:
-        if (feb_can_linear_potentiometer_rear_unpack(&feb_can_db.linear_potentiometer_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.linear_potentiometer_rear.meta.present = true;
-        feb_can_db.linear_potentiometer_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.linear_potentiometer_rear.meta.rx_count++;
+    case FEB_CAN_LINPOT_REAR_FRAME_ID:
+        if (feb_can_linpot_rear_unpack(&feb_can_db.linpot_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.linpot_rear.meta.present = true;
+        feb_can_db.linpot_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.linpot_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_FRONT_LEFT_TIRE_TEMP_FRAME_ID:
-        if (feb_can_front_left_tire_temp_unpack(&feb_can_db.front_left_tire_temp.data, data, dlc) < 0) return -2;
-        feb_can_db.front_left_tire_temp.meta.present = true;
-        feb_can_db.front_left_tire_temp.meta.last_rx_ms = now_ms;
-        feb_can_db.front_left_tire_temp.meta.rx_count++;
+    case FEB_CAN_TIRE_TEMP_LEFT_FRONT_FRAME_ID:
+        if (feb_can_tire_temp_left_front_unpack(&feb_can_db.tire_temp_left_front.data, data, dlc) < 0) return -2;
+        feb_can_db.tire_temp_left_front.meta.present = true;
+        feb_can_db.tire_temp_left_front.meta.last_rx_ms = now_ms;
+        feb_can_db.tire_temp_left_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_FRONT_RIGHT_TIRE_TEMP_FRAME_ID:
-        if (feb_can_front_right_tire_temp_unpack(&feb_can_db.front_right_tire_temp.data, data, dlc) < 0) return -2;
-        feb_can_db.front_right_tire_temp.meta.present = true;
-        feb_can_db.front_right_tire_temp.meta.last_rx_ms = now_ms;
-        feb_can_db.front_right_tire_temp.meta.rx_count++;
+    case FEB_CAN_TIRE_TEMP_RIGHT_FRONT_FRAME_ID:
+        if (feb_can_tire_temp_right_front_unpack(&feb_can_db.tire_temp_right_front.data, data, dlc) < 0) return -2;
+        feb_can_db.tire_temp_right_front.meta.present = true;
+        feb_can_db.tire_temp_right_front.meta.last_rx_ms = now_ms;
+        feb_can_db.tire_temp_right_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_REAR_LEFT_TIRE_TEMP_FRAME_ID:
-        if (feb_can_rear_left_tire_temp_unpack(&feb_can_db.rear_left_tire_temp.data, data, dlc) < 0) return -2;
-        feb_can_db.rear_left_tire_temp.meta.present = true;
-        feb_can_db.rear_left_tire_temp.meta.last_rx_ms = now_ms;
-        feb_can_db.rear_left_tire_temp.meta.rx_count++;
+    case FEB_CAN_TIRE_TEMP_LEFT_REAR_FRAME_ID:
+        if (feb_can_tire_temp_left_rear_unpack(&feb_can_db.tire_temp_left_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.tire_temp_left_rear.meta.present = true;
+        feb_can_db.tire_temp_left_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.tire_temp_left_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_REAR_RIGHT_TIRE_TEMP_FRAME_ID:
-        if (feb_can_rear_right_tire_temp_unpack(&feb_can_db.rear_right_tire_temp.data, data, dlc) < 0) return -2;
-        feb_can_db.rear_right_tire_temp.meta.present = true;
-        feb_can_db.rear_right_tire_temp.meta.last_rx_ms = now_ms;
-        feb_can_db.rear_right_tire_temp.meta.rx_count++;
+    case FEB_CAN_TIRE_TEMP_RIGHT_REAR_FRAME_ID:
+        if (feb_can_tire_temp_right_rear_unpack(&feb_can_db.tire_temp_right_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.tire_temp_right_rear.meta.present = true;
+        feb_can_db.tire_temp_right_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.tire_temp_right_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_WSS_FRONT_DATA_FRAME_ID:
-        if (feb_can_wss_front_data_unpack(&feb_can_db.wss_front_data.data, data, dlc) < 0) return -2;
-        feb_can_db.wss_front_data.meta.present = true;
-        feb_can_db.wss_front_data.meta.last_rx_ms = now_ms;
-        feb_can_db.wss_front_data.meta.rx_count++;
+    case FEB_CAN_WSS_FRONT_FRAME_ID:
+        if (feb_can_wss_front_unpack(&feb_can_db.wss_front.data, data, dlc) < 0) return -2;
+        feb_can_db.wss_front.meta.present = true;
+        feb_can_db.wss_front.meta.last_rx_ms = now_ms;
+        feb_can_db.wss_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_WSS_REAR_DATA_FRAME_ID:
-        if (feb_can_wss_rear_data_unpack(&feb_can_db.wss_rear_data.data, data, dlc) < 0) return -2;
-        feb_can_db.wss_rear_data.meta.present = true;
-        feb_can_db.wss_rear_data.meta.last_rx_ms = now_ms;
-        feb_can_db.wss_rear_data.meta.rx_count++;
+    case FEB_CAN_WSS_REAR_FRAME_ID:
+        if (feb_can_wss_rear_unpack(&feb_can_db.wss_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.wss_rear.meta.present = true;
+        feb_can_db.wss_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.wss_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_IMU_ACCELERATION_DATA_FRAME_ID:
-        if (feb_can_imu_acceleration_data_unpack(&feb_can_db.imu_acceleration_data.data, data, dlc) < 0) return -2;
-        feb_can_db.imu_acceleration_data.meta.present = true;
-        feb_can_db.imu_acceleration_data.meta.last_rx_ms = now_ms;
-        feb_can_db.imu_acceleration_data.meta.rx_count++;
+    case FEB_CAN_IMU_ACCEL_FRONT_FRAME_ID:
+        if (feb_can_imu_accel_front_unpack(&feb_can_db.imu_accel_front.data, data, dlc) < 0) return -2;
+        feb_can_db.imu_accel_front.meta.present = true;
+        feb_can_db.imu_accel_front.meta.last_rx_ms = now_ms;
+        feb_can_db.imu_accel_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_IMU_ACCELERATION_DATA_REAR_FRAME_ID:
-        if (feb_can_imu_acceleration_data_rear_unpack(&feb_can_db.imu_acceleration_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.imu_acceleration_data_rear.meta.present = true;
-        feb_can_db.imu_acceleration_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.imu_acceleration_data_rear.meta.rx_count++;
+    case FEB_CAN_IMU_ACCEL_REAR_FRAME_ID:
+        if (feb_can_imu_accel_rear_unpack(&feb_can_db.imu_accel_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.imu_accel_rear.meta.present = true;
+        feb_can_db.imu_accel_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.imu_accel_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_IMU_GYRO_DATA_FRAME_ID:
-        if (feb_can_imu_gyro_data_unpack(&feb_can_db.imu_gyro_data.data, data, dlc) < 0) return -2;
-        feb_can_db.imu_gyro_data.meta.present = true;
-        feb_can_db.imu_gyro_data.meta.last_rx_ms = now_ms;
-        feb_can_db.imu_gyro_data.meta.rx_count++;
+    case FEB_CAN_IMU_GYRO_FRONT_FRAME_ID:
+        if (feb_can_imu_gyro_front_unpack(&feb_can_db.imu_gyro_front.data, data, dlc) < 0) return -2;
+        feb_can_db.imu_gyro_front.meta.present = true;
+        feb_can_db.imu_gyro_front.meta.last_rx_ms = now_ms;
+        feb_can_db.imu_gyro_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_IMU_GYRO_DATA_REAR_FRAME_ID:
-        if (feb_can_imu_gyro_data_rear_unpack(&feb_can_db.imu_gyro_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.imu_gyro_data_rear.meta.present = true;
-        feb_can_db.imu_gyro_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.imu_gyro_data_rear.meta.rx_count++;
+    case FEB_CAN_IMU_GYRO_REAR_FRAME_ID:
+        if (feb_can_imu_gyro_rear_unpack(&feb_can_db.imu_gyro_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.imu_gyro_rear.meta.present = true;
+        feb_can_db.imu_gyro_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.imu_gyro_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_MAGNETOMETER_DATA_FRAME_ID:
-        if (feb_can_magnetometer_data_unpack(&feb_can_db.magnetometer_data.data, data, dlc) < 0) return -2;
-        feb_can_db.magnetometer_data.meta.present = true;
-        feb_can_db.magnetometer_data.meta.last_rx_ms = now_ms;
-        feb_can_db.magnetometer_data.meta.rx_count++;
+    case FEB_CAN_MAG_FRONT_FRAME_ID:
+        if (feb_can_mag_front_unpack(&feb_can_db.mag_front.data, data, dlc) < 0) return -2;
+        feb_can_db.mag_front.meta.present = true;
+        feb_can_db.mag_front.meta.last_rx_ms = now_ms;
+        feb_can_db.mag_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_MAGNETOMETER_DATA_REAR_FRAME_ID:
-        if (feb_can_magnetometer_data_rear_unpack(&feb_can_db.magnetometer_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.magnetometer_data_rear.meta.present = true;
-        feb_can_db.magnetometer_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.magnetometer_data_rear.meta.rx_count++;
+    case FEB_CAN_MAG_REAR_FRAME_ID:
+        if (feb_can_mag_rear_unpack(&feb_can_db.mag_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.mag_rear.meta.present = true;
+        feb_can_db.mag_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.mag_rear.meta.rx_count++;
         return 0;
     case FEB_CAN_DART_TACH_MEASUREMENTS_1234_FRAME_ID:
         if (feb_can_dart_tach_measurements_1234_unpack(&feb_can_db.dart_tach_measurements_1234.data, data, dlc) < 0) return -2;
@@ -34543,161 +34428,143 @@ int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint3
         feb_can_db.pcu_pedal_voltages.meta.last_rx_ms = now_ms;
         feb_can_db.pcu_pedal_voltages.meta.rx_count++;
         return 0;
-    case FEB_CAN_GPS_POS_DATA_FRAME_ID:
-        if (feb_can_gps_pos_data_unpack(&feb_can_db.gps_pos_data.data, data, dlc) < 0) return -2;
-        feb_can_db.gps_pos_data.meta.present = true;
-        feb_can_db.gps_pos_data.meta.last_rx_ms = now_ms;
-        feb_can_db.gps_pos_data.meta.rx_count++;
+    case FEB_CAN_GPS_POS_FRONT_FRAME_ID:
+        if (feb_can_gps_pos_front_unpack(&feb_can_db.gps_pos_front.data, data, dlc) < 0) return -2;
+        feb_can_db.gps_pos_front.meta.present = true;
+        feb_can_db.gps_pos_front.meta.last_rx_ms = now_ms;
+        feb_can_db.gps_pos_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_GPS_ALTITUDE_DATA_FRAME_ID:
-        if (feb_can_gps_altitude_data_unpack(&feb_can_db.gps_altitude_data.data, data, dlc) < 0) return -2;
-        feb_can_db.gps_altitude_data.meta.present = true;
-        feb_can_db.gps_altitude_data.meta.last_rx_ms = now_ms;
-        feb_can_db.gps_altitude_data.meta.rx_count++;
+    case FEB_CAN_GPS_ALTITUDE_FRONT_FRAME_ID:
+        if (feb_can_gps_altitude_front_unpack(&feb_can_db.gps_altitude_front.data, data, dlc) < 0) return -2;
+        feb_can_db.gps_altitude_front.meta.present = true;
+        feb_can_db.gps_altitude_front.meta.last_rx_ms = now_ms;
+        feb_can_db.gps_altitude_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_GPS_MOTION_DATA_FRAME_ID:
-        if (feb_can_gps_motion_data_unpack(&feb_can_db.gps_motion_data.data, data, dlc) < 0) return -2;
-        feb_can_db.gps_motion_data.meta.present = true;
-        feb_can_db.gps_motion_data.meta.last_rx_ms = now_ms;
-        feb_can_db.gps_motion_data.meta.rx_count++;
+    case FEB_CAN_GPS_MOTION_FRONT_FRAME_ID:
+        if (feb_can_gps_motion_front_unpack(&feb_can_db.gps_motion_front.data, data, dlc) < 0) return -2;
+        feb_can_db.gps_motion_front.meta.present = true;
+        feb_can_db.gps_motion_front.meta.last_rx_ms = now_ms;
+        feb_can_db.gps_motion_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_GPS_TIME_DATA_FRAME_ID:
-        if (feb_can_gps_time_data_unpack(&feb_can_db.gps_time_data.data, data, dlc) < 0) return -2;
-        feb_can_db.gps_time_data.meta.present = true;
-        feb_can_db.gps_time_data.meta.last_rx_ms = now_ms;
-        feb_can_db.gps_time_data.meta.rx_count++;
+    case FEB_CAN_GPS_TIME_FRONT_FRAME_ID:
+        if (feb_can_gps_time_front_unpack(&feb_can_db.gps_time_front.data, data, dlc) < 0) return -2;
+        feb_can_db.gps_time_front.meta.present = true;
+        feb_can_db.gps_time_front.meta.last_rx_ms = now_ms;
+        feb_can_db.gps_time_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_GPS_DATE_DATA_FRAME_ID:
-        if (feb_can_gps_date_data_unpack(&feb_can_db.gps_date_data.data, data, dlc) < 0) return -2;
-        feb_can_db.gps_date_data.meta.present = true;
-        feb_can_db.gps_date_data.meta.last_rx_ms = now_ms;
-        feb_can_db.gps_date_data.meta.rx_count++;
+    case FEB_CAN_GPS_DATE_FRONT_FRAME_ID:
+        if (feb_can_gps_date_front_unpack(&feb_can_db.gps_date_front.data, data, dlc) < 0) return -2;
+        feb_can_db.gps_date_front.meta.present = true;
+        feb_can_db.gps_date_front.meta.last_rx_ms = now_ms;
+        feb_can_db.gps_date_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_GPS_STATUS_DATA_FRAME_ID:
-        if (feb_can_gps_status_data_unpack(&feb_can_db.gps_status_data.data, data, dlc) < 0) return -2;
-        feb_can_db.gps_status_data.meta.present = true;
-        feb_can_db.gps_status_data.meta.last_rx_ms = now_ms;
-        feb_can_db.gps_status_data.meta.rx_count++;
+    case FEB_CAN_GPS_STATUS_FRONT_FRAME_ID:
+        if (feb_can_gps_status_front_unpack(&feb_can_db.gps_status_front.data, data, dlc) < 0) return -2;
+        feb_can_db.gps_status_front.meta.present = true;
+        feb_can_db.gps_status_front.meta.last_rx_ms = now_ms;
+        feb_can_db.gps_status_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_FUSION_QUATERNION_DATA_FRAME_ID:
-        if (feb_can_fusion_quaternion_data_unpack(&feb_can_db.fusion_quaternion_data.data, data, dlc) < 0) return -2;
-        feb_can_db.fusion_quaternion_data.meta.present = true;
-        feb_can_db.fusion_quaternion_data.meta.last_rx_ms = now_ms;
-        feb_can_db.fusion_quaternion_data.meta.rx_count++;
+    case FEB_CAN_FUSION_QUAT_FRONT_FRAME_ID:
+        if (feb_can_fusion_quat_front_unpack(&feb_can_db.fusion_quat_front.data, data, dlc) < 0) return -2;
+        feb_can_db.fusion_quat_front.meta.present = true;
+        feb_can_db.fusion_quat_front.meta.last_rx_ms = now_ms;
+        feb_can_db.fusion_quat_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_FUSION_EULER_DATA_FRAME_ID:
-        if (feb_can_fusion_euler_data_unpack(&feb_can_db.fusion_euler_data.data, data, dlc) < 0) return -2;
-        feb_can_db.fusion_euler_data.meta.present = true;
-        feb_can_db.fusion_euler_data.meta.last_rx_ms = now_ms;
-        feb_can_db.fusion_euler_data.meta.rx_count++;
+    case FEB_CAN_FUSION_EULER_FRONT_FRAME_ID:
+        if (feb_can_fusion_euler_front_unpack(&feb_can_db.fusion_euler_front.data, data, dlc) < 0) return -2;
+        feb_can_db.fusion_euler_front.meta.present = true;
+        feb_can_db.fusion_euler_front.meta.last_rx_ms = now_ms;
+        feb_can_db.fusion_euler_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_FUSION_LINEAR_ACCEL_DATA_FRAME_ID:
-        if (feb_can_fusion_linear_accel_data_unpack(&feb_can_db.fusion_linear_accel_data.data, data, dlc) < 0) return -2;
-        feb_can_db.fusion_linear_accel_data.meta.present = true;
-        feb_can_db.fusion_linear_accel_data.meta.last_rx_ms = now_ms;
-        feb_can_db.fusion_linear_accel_data.meta.rx_count++;
+    case FEB_CAN_FUSION_LIN_ACCEL_FRONT_FRAME_ID:
+        if (feb_can_fusion_lin_accel_front_unpack(&feb_can_db.fusion_lin_accel_front.data, data, dlc) < 0) return -2;
+        feb_can_db.fusion_lin_accel_front.meta.present = true;
+        feb_can_db.fusion_lin_accel_front.meta.last_rx_ms = now_ms;
+        feb_can_db.fusion_lin_accel_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_FUSION_EARTH_ACCEL_DATA_FRAME_ID:
-        if (feb_can_fusion_earth_accel_data_unpack(&feb_can_db.fusion_earth_accel_data.data, data, dlc) < 0) return -2;
-        feb_can_db.fusion_earth_accel_data.meta.present = true;
-        feb_can_db.fusion_earth_accel_data.meta.last_rx_ms = now_ms;
-        feb_can_db.fusion_earth_accel_data.meta.rx_count++;
+    case FEB_CAN_FUSION_EARTH_ACCEL_FRONT_FRAME_ID:
+        if (feb_can_fusion_earth_accel_front_unpack(&feb_can_db.fusion_earth_accel_front.data, data, dlc) < 0) return -2;
+        feb_can_db.fusion_earth_accel_front.meta.present = true;
+        feb_can_db.fusion_earth_accel_front.meta.last_rx_ms = now_ms;
+        feb_can_db.fusion_earth_accel_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_FUSION_STATUS_DATA_FRAME_ID:
-        if (feb_can_fusion_status_data_unpack(&feb_can_db.fusion_status_data.data, data, dlc) < 0) return -2;
-        feb_can_db.fusion_status_data.meta.present = true;
-        feb_can_db.fusion_status_data.meta.last_rx_ms = now_ms;
-        feb_can_db.fusion_status_data.meta.rx_count++;
+    case FEB_CAN_FUSION_STATUS_FRONT_FRAME_ID:
+        if (feb_can_fusion_status_front_unpack(&feb_can_db.fusion_status_front.data, data, dlc) < 0) return -2;
+        feb_can_db.fusion_status_front.meta.present = true;
+        feb_can_db.fusion_status_front.meta.last_rx_ms = now_ms;
+        feb_can_db.fusion_status_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_SENSOR_TEMPS_DATA_FRAME_ID:
-        if (feb_can_sensor_temps_data_unpack(&feb_can_db.sensor_temps_data.data, data, dlc) < 0) return -2;
-        feb_can_db.sensor_temps_data.meta.present = true;
-        feb_can_db.sensor_temps_data.meta.last_rx_ms = now_ms;
-        feb_can_db.sensor_temps_data.meta.rx_count++;
+    case FEB_CAN_STEER_FRONT_FRAME_ID:
+        if (feb_can_steer_front_unpack(&feb_can_db.steer_front.data, data, dlc) < 0) return -2;
+        feb_can_db.steer_front.meta.present = true;
+        feb_can_db.steer_front.meta.last_rx_ms = now_ms;
+        feb_can_db.steer_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_SENSOR_TEMPS_DATA_REAR_FRAME_ID:
-        if (feb_can_sensor_temps_data_rear_unpack(&feb_can_db.sensor_temps_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.sensor_temps_data_rear.meta.present = true;
-        feb_can_db.sensor_temps_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.sensor_temps_data_rear.meta.rx_count++;
+    case FEB_CAN_GPS_POS_REAR_FRAME_ID:
+        if (feb_can_gps_pos_rear_unpack(&feb_can_db.gps_pos_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.gps_pos_rear.meta.present = true;
+        feb_can_db.gps_pos_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.gps_pos_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_STEER_ANGLE_DATA_FRAME_ID:
-        if (feb_can_steer_angle_data_unpack(&feb_can_db.steer_angle_data.data, data, dlc) < 0) return -2;
-        feb_can_db.steer_angle_data.meta.present = true;
-        feb_can_db.steer_angle_data.meta.last_rx_ms = now_ms;
-        feb_can_db.steer_angle_data.meta.rx_count++;
+    case FEB_CAN_GPS_ALTITUDE_REAR_FRAME_ID:
+        if (feb_can_gps_altitude_rear_unpack(&feb_can_db.gps_altitude_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.gps_altitude_rear.meta.present = true;
+        feb_can_db.gps_altitude_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.gps_altitude_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_STEER_STATUS_DATA_FRAME_ID:
-        if (feb_can_steer_status_data_unpack(&feb_can_db.steer_status_data.data, data, dlc) < 0) return -2;
-        feb_can_db.steer_status_data.meta.present = true;
-        feb_can_db.steer_status_data.meta.last_rx_ms = now_ms;
-        feb_can_db.steer_status_data.meta.rx_count++;
+    case FEB_CAN_GPS_MOTION_REAR_FRAME_ID:
+        if (feb_can_gps_motion_rear_unpack(&feb_can_db.gps_motion_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.gps_motion_rear.meta.present = true;
+        feb_can_db.gps_motion_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.gps_motion_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_GPS_POS_DATA_REAR_FRAME_ID:
-        if (feb_can_gps_pos_data_rear_unpack(&feb_can_db.gps_pos_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.gps_pos_data_rear.meta.present = true;
-        feb_can_db.gps_pos_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.gps_pos_data_rear.meta.rx_count++;
+    case FEB_CAN_GPS_TIME_REAR_FRAME_ID:
+        if (feb_can_gps_time_rear_unpack(&feb_can_db.gps_time_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.gps_time_rear.meta.present = true;
+        feb_can_db.gps_time_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.gps_time_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_GPS_ALTITUDE_DATA_REAR_FRAME_ID:
-        if (feb_can_gps_altitude_data_rear_unpack(&feb_can_db.gps_altitude_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.gps_altitude_data_rear.meta.present = true;
-        feb_can_db.gps_altitude_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.gps_altitude_data_rear.meta.rx_count++;
+    case FEB_CAN_GPS_DATE_REAR_FRAME_ID:
+        if (feb_can_gps_date_rear_unpack(&feb_can_db.gps_date_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.gps_date_rear.meta.present = true;
+        feb_can_db.gps_date_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.gps_date_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_GPS_MOTION_DATA_REAR_FRAME_ID:
-        if (feb_can_gps_motion_data_rear_unpack(&feb_can_db.gps_motion_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.gps_motion_data_rear.meta.present = true;
-        feb_can_db.gps_motion_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.gps_motion_data_rear.meta.rx_count++;
+    case FEB_CAN_GPS_STATUS_REAR_FRAME_ID:
+        if (feb_can_gps_status_rear_unpack(&feb_can_db.gps_status_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.gps_status_rear.meta.present = true;
+        feb_can_db.gps_status_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.gps_status_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_GPS_TIME_DATA_REAR_FRAME_ID:
-        if (feb_can_gps_time_data_rear_unpack(&feb_can_db.gps_time_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.gps_time_data_rear.meta.present = true;
-        feb_can_db.gps_time_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.gps_time_data_rear.meta.rx_count++;
+    case FEB_CAN_FUSION_QUAT_REAR_FRAME_ID:
+        if (feb_can_fusion_quat_rear_unpack(&feb_can_db.fusion_quat_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.fusion_quat_rear.meta.present = true;
+        feb_can_db.fusion_quat_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.fusion_quat_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_GPS_DATE_DATA_REAR_FRAME_ID:
-        if (feb_can_gps_date_data_rear_unpack(&feb_can_db.gps_date_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.gps_date_data_rear.meta.present = true;
-        feb_can_db.gps_date_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.gps_date_data_rear.meta.rx_count++;
+    case FEB_CAN_FUSION_EULER_REAR_FRAME_ID:
+        if (feb_can_fusion_euler_rear_unpack(&feb_can_db.fusion_euler_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.fusion_euler_rear.meta.present = true;
+        feb_can_db.fusion_euler_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.fusion_euler_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_GPS_STATUS_DATA_REAR_FRAME_ID:
-        if (feb_can_gps_status_data_rear_unpack(&feb_can_db.gps_status_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.gps_status_data_rear.meta.present = true;
-        feb_can_db.gps_status_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.gps_status_data_rear.meta.rx_count++;
+    case FEB_CAN_FUSION_LIN_ACCEL_REAR_FRAME_ID:
+        if (feb_can_fusion_lin_accel_rear_unpack(&feb_can_db.fusion_lin_accel_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.fusion_lin_accel_rear.meta.present = true;
+        feb_can_db.fusion_lin_accel_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.fusion_lin_accel_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_FUSION_QUATERNION_DATA_REAR_FRAME_ID:
-        if (feb_can_fusion_quaternion_data_rear_unpack(&feb_can_db.fusion_quaternion_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.fusion_quaternion_data_rear.meta.present = true;
-        feb_can_db.fusion_quaternion_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.fusion_quaternion_data_rear.meta.rx_count++;
+    case FEB_CAN_FUSION_EARTH_ACCEL_REAR_FRAME_ID:
+        if (feb_can_fusion_earth_accel_rear_unpack(&feb_can_db.fusion_earth_accel_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.fusion_earth_accel_rear.meta.present = true;
+        feb_can_db.fusion_earth_accel_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.fusion_earth_accel_rear.meta.rx_count++;
         return 0;
-    case FEB_CAN_FUSION_EULER_DATA_REAR_FRAME_ID:
-        if (feb_can_fusion_euler_data_rear_unpack(&feb_can_db.fusion_euler_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.fusion_euler_data_rear.meta.present = true;
-        feb_can_db.fusion_euler_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.fusion_euler_data_rear.meta.rx_count++;
-        return 0;
-    case FEB_CAN_FUSION_LINEAR_ACCEL_DATA_REAR_FRAME_ID:
-        if (feb_can_fusion_linear_accel_data_rear_unpack(&feb_can_db.fusion_linear_accel_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.fusion_linear_accel_data_rear.meta.present = true;
-        feb_can_db.fusion_linear_accel_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.fusion_linear_accel_data_rear.meta.rx_count++;
-        return 0;
-    case FEB_CAN_FUSION_EARTH_ACCEL_DATA_REAR_FRAME_ID:
-        if (feb_can_fusion_earth_accel_data_rear_unpack(&feb_can_db.fusion_earth_accel_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.fusion_earth_accel_data_rear.meta.present = true;
-        feb_can_db.fusion_earth_accel_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.fusion_earth_accel_data_rear.meta.rx_count++;
-        return 0;
-    case FEB_CAN_FUSION_STATUS_DATA_REAR_FRAME_ID:
-        if (feb_can_fusion_status_data_rear_unpack(&feb_can_db.fusion_status_data_rear.data, data, dlc) < 0) return -2;
-        feb_can_db.fusion_status_data_rear.meta.present = true;
-        feb_can_db.fusion_status_data_rear.meta.last_rx_ms = now_ms;
-        feb_can_db.fusion_status_data_rear.meta.rx_count++;
+    case FEB_CAN_FUSION_STATUS_REAR_FRAME_ID:
+        if (feb_can_fusion_status_rear_unpack(&feb_can_db.fusion_status_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.fusion_status_rear.meta.present = true;
+        feb_can_db.fusion_status_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.fusion_status_rear.meta.rx_count++;
         return 0;
     case FEB_CAN_PCU_HEARTBEAT_FRAME_ID:
         if (feb_can_pcu_heartbeat_unpack(&feb_can_db.pcu_heartbeat.data, data, dlc) < 0) return -2;
@@ -34723,17 +34590,17 @@ int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint3
         feb_can_db.dcu_heartbeat.meta.last_rx_ms = now_ms;
         feb_can_db.dcu_heartbeat.meta.rx_count++;
         return 0;
-    case FEB_CAN_FRONT_SENSOR_HEARTBEAT_MESSAGE_FRAME_ID:
-        if (feb_can_front_sensor_heartbeat_message_unpack(&feb_can_db.front_sensor_heartbeat_message.data, data, dlc) < 0) return -2;
-        feb_can_db.front_sensor_heartbeat_message.meta.present = true;
-        feb_can_db.front_sensor_heartbeat_message.meta.last_rx_ms = now_ms;
-        feb_can_db.front_sensor_heartbeat_message.meta.rx_count++;
+    case FEB_CAN_HEARTBEAT_FRONT_FRAME_ID:
+        if (feb_can_heartbeat_front_unpack(&feb_can_db.heartbeat_front.data, data, dlc) < 0) return -2;
+        feb_can_db.heartbeat_front.meta.present = true;
+        feb_can_db.heartbeat_front.meta.last_rx_ms = now_ms;
+        feb_can_db.heartbeat_front.meta.rx_count++;
         return 0;
-    case FEB_CAN_REAR_SENSOR_HEARTBEAT_MESSAGE_FRAME_ID:
-        if (feb_can_rear_sensor_heartbeat_message_unpack(&feb_can_db.rear_sensor_heartbeat_message.data, data, dlc) < 0) return -2;
-        feb_can_db.rear_sensor_heartbeat_message.meta.present = true;
-        feb_can_db.rear_sensor_heartbeat_message.meta.last_rx_ms = now_ms;
-        feb_can_db.rear_sensor_heartbeat_message.meta.rx_count++;
+    case FEB_CAN_HEARTBEAT_REAR_FRAME_ID:
+        if (feb_can_heartbeat_rear_unpack(&feb_can_db.heartbeat_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.heartbeat_rear.meta.present = true;
+        feb_can_db.heartbeat_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.heartbeat_rear.meta.rx_count++;
         return 0;
     case FEB_CAN_FEB_PING_PONG_COUNTER1_FRAME_ID:
         if (feb_can_feb_ping_pong_counter1_unpack(&feb_can_db.feb_ping_pong_counter1.data, data, dlc) < 0) return -2;
@@ -34978,20 +34845,20 @@ void FEB_CAN_DB_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_db.lvpdb_lv_24v_bus_and_12v_bus_voltages.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x16, "lvpdb_lv_24v_bus_and_12v_bus_voltages", (unsigned long)feb_can_db.lvpdb_lv_24v_bus_and_12v_bus_voltages.meta.last_rx_ms, (unsigned long)feb_can_db.lvpdb_lv_24v_bus_and_12v_bus_voltages.meta.rx_count);
     if (feb_can_db.lvpdb_lv_sh_lt_bm_l_currents.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x17, "lvpdb_lv_sh_lt_bm_l_currents", (unsigned long)feb_can_db.lvpdb_lv_sh_lt_bm_l_currents.meta.last_rx_ms, (unsigned long)feb_can_db.lvpdb_lv_sh_lt_bm_l_currents.meta.rx_count);
     if (feb_can_db.lvpdb_sm_af1_af2_cp_rf_currents.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x18, "lvpdb_sm_af1_af2_cp_rf_currents", (unsigned long)feb_can_db.lvpdb_sm_af1_af2_cp_rf_currents.meta.last_rx_ms, (unsigned long)feb_can_db.lvpdb_sm_af1_af2_cp_rf_currents.meta.rx_count);
-    if (feb_can_db.linear_potentiometer_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x1E, "linear_potentiometer_front", (unsigned long)feb_can_db.linear_potentiometer_front.meta.last_rx_ms, (unsigned long)feb_can_db.linear_potentiometer_front.meta.rx_count);
-    if (feb_can_db.linear_potentiometer_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x1F, "linear_potentiometer_rear", (unsigned long)feb_can_db.linear_potentiometer_rear.meta.last_rx_ms, (unsigned long)feb_can_db.linear_potentiometer_rear.meta.rx_count);
-    if (feb_can_db.front_left_tire_temp.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x20, "front_left_tire_temp", (unsigned long)feb_can_db.front_left_tire_temp.meta.last_rx_ms, (unsigned long)feb_can_db.front_left_tire_temp.meta.rx_count);
-    if (feb_can_db.front_right_tire_temp.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x21, "front_right_tire_temp", (unsigned long)feb_can_db.front_right_tire_temp.meta.last_rx_ms, (unsigned long)feb_can_db.front_right_tire_temp.meta.rx_count);
-    if (feb_can_db.rear_left_tire_temp.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x22, "rear_left_tire_temp", (unsigned long)feb_can_db.rear_left_tire_temp.meta.last_rx_ms, (unsigned long)feb_can_db.rear_left_tire_temp.meta.rx_count);
-    if (feb_can_db.rear_right_tire_temp.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x23, "rear_right_tire_temp", (unsigned long)feb_can_db.rear_right_tire_temp.meta.last_rx_ms, (unsigned long)feb_can_db.rear_right_tire_temp.meta.rx_count);
-    if (feb_can_db.wss_front_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x24, "wss_front_data", (unsigned long)feb_can_db.wss_front_data.meta.last_rx_ms, (unsigned long)feb_can_db.wss_front_data.meta.rx_count);
-    if (feb_can_db.wss_rear_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x25, "wss_rear_data", (unsigned long)feb_can_db.wss_rear_data.meta.last_rx_ms, (unsigned long)feb_can_db.wss_rear_data.meta.rx_count);
-    if (feb_can_db.imu_acceleration_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x26, "imu_acceleration_data", (unsigned long)feb_can_db.imu_acceleration_data.meta.last_rx_ms, (unsigned long)feb_can_db.imu_acceleration_data.meta.rx_count);
-    if (feb_can_db.imu_acceleration_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x27, "imu_acceleration_data_rear", (unsigned long)feb_can_db.imu_acceleration_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.imu_acceleration_data_rear.meta.rx_count);
-    if (feb_can_db.imu_gyro_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x28, "imu_gyro_data", (unsigned long)feb_can_db.imu_gyro_data.meta.last_rx_ms, (unsigned long)feb_can_db.imu_gyro_data.meta.rx_count);
-    if (feb_can_db.imu_gyro_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x29, "imu_gyro_data_rear", (unsigned long)feb_can_db.imu_gyro_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.imu_gyro_data_rear.meta.rx_count);
-    if (feb_can_db.magnetometer_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x2A, "magnetometer_data", (unsigned long)feb_can_db.magnetometer_data.meta.last_rx_ms, (unsigned long)feb_can_db.magnetometer_data.meta.rx_count);
-    if (feb_can_db.magnetometer_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x2B, "magnetometer_data_rear", (unsigned long)feb_can_db.magnetometer_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.magnetometer_data_rear.meta.rx_count);
+    if (feb_can_db.linpot_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x1E, "linpot_front", (unsigned long)feb_can_db.linpot_front.meta.last_rx_ms, (unsigned long)feb_can_db.linpot_front.meta.rx_count);
+    if (feb_can_db.linpot_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x1F, "linpot_rear", (unsigned long)feb_can_db.linpot_rear.meta.last_rx_ms, (unsigned long)feb_can_db.linpot_rear.meta.rx_count);
+    if (feb_can_db.tire_temp_left_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x20, "tire_temp_left_front", (unsigned long)feb_can_db.tire_temp_left_front.meta.last_rx_ms, (unsigned long)feb_can_db.tire_temp_left_front.meta.rx_count);
+    if (feb_can_db.tire_temp_right_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x21, "tire_temp_right_front", (unsigned long)feb_can_db.tire_temp_right_front.meta.last_rx_ms, (unsigned long)feb_can_db.tire_temp_right_front.meta.rx_count);
+    if (feb_can_db.tire_temp_left_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x22, "tire_temp_left_rear", (unsigned long)feb_can_db.tire_temp_left_rear.meta.last_rx_ms, (unsigned long)feb_can_db.tire_temp_left_rear.meta.rx_count);
+    if (feb_can_db.tire_temp_right_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x23, "tire_temp_right_rear", (unsigned long)feb_can_db.tire_temp_right_rear.meta.last_rx_ms, (unsigned long)feb_can_db.tire_temp_right_rear.meta.rx_count);
+    if (feb_can_db.wss_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x24, "wss_front", (unsigned long)feb_can_db.wss_front.meta.last_rx_ms, (unsigned long)feb_can_db.wss_front.meta.rx_count);
+    if (feb_can_db.wss_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x25, "wss_rear", (unsigned long)feb_can_db.wss_rear.meta.last_rx_ms, (unsigned long)feb_can_db.wss_rear.meta.rx_count);
+    if (feb_can_db.imu_accel_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x26, "imu_accel_front", (unsigned long)feb_can_db.imu_accel_front.meta.last_rx_ms, (unsigned long)feb_can_db.imu_accel_front.meta.rx_count);
+    if (feb_can_db.imu_accel_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x27, "imu_accel_rear", (unsigned long)feb_can_db.imu_accel_rear.meta.last_rx_ms, (unsigned long)feb_can_db.imu_accel_rear.meta.rx_count);
+    if (feb_can_db.imu_gyro_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x28, "imu_gyro_front", (unsigned long)feb_can_db.imu_gyro_front.meta.last_rx_ms, (unsigned long)feb_can_db.imu_gyro_front.meta.rx_count);
+    if (feb_can_db.imu_gyro_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x29, "imu_gyro_rear", (unsigned long)feb_can_db.imu_gyro_rear.meta.last_rx_ms, (unsigned long)feb_can_db.imu_gyro_rear.meta.rx_count);
+    if (feb_can_db.mag_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x2A, "mag_front", (unsigned long)feb_can_db.mag_front.meta.last_rx_ms, (unsigned long)feb_can_db.mag_front.meta.rx_count);
+    if (feb_can_db.mag_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x2B, "mag_rear", (unsigned long)feb_can_db.mag_rear.meta.last_rx_ms, (unsigned long)feb_can_db.mag_rear.meta.rx_count);
     if (feb_can_db.dart_tach_measurements_1234.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x2D, "dart_tach_measurements_1234", (unsigned long)feb_can_db.dart_tach_measurements_1234.meta.last_rx_ms, (unsigned long)feb_can_db.dart_tach_measurements_1234.meta.rx_count);
     if (feb_can_db.dart_tach_measurements_5.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x2E, "dart_tach_measurements_5", (unsigned long)feb_can_db.dart_tach_measurements_5.meta.last_rx_ms, (unsigned long)feb_can_db.dart_tach_measurements_5.meta.rx_count);
     if (feb_can_db.bbb_tps.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x34, "bbb_tps", (unsigned long)feb_can_db.bbb_tps.meta.last_rx_ms, (unsigned long)feb_can_db.bbb_tps.meta.rx_count);
@@ -35000,38 +34867,35 @@ void FEB_CAN_DB_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_db.dcu_tps.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x37, "dcu_tps", (unsigned long)feb_can_db.dcu_tps.meta.last_rx_ms, (unsigned long)feb_can_db.dcu_tps.meta.rx_count);
     if (feb_can_db.pcu_raw_acc.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x38, "pcu_raw_acc", (unsigned long)feb_can_db.pcu_raw_acc.meta.last_rx_ms, (unsigned long)feb_can_db.pcu_raw_acc.meta.rx_count);
     if (feb_can_db.pcu_pedal_voltages.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x39, "pcu_pedal_voltages", (unsigned long)feb_can_db.pcu_pedal_voltages.meta.last_rx_ms, (unsigned long)feb_can_db.pcu_pedal_voltages.meta.rx_count);
-    if (feb_can_db.gps_pos_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x40, "gps_pos_data", (unsigned long)feb_can_db.gps_pos_data.meta.last_rx_ms, (unsigned long)feb_can_db.gps_pos_data.meta.rx_count);
-    if (feb_can_db.gps_altitude_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x41, "gps_altitude_data", (unsigned long)feb_can_db.gps_altitude_data.meta.last_rx_ms, (unsigned long)feb_can_db.gps_altitude_data.meta.rx_count);
-    if (feb_can_db.gps_motion_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x42, "gps_motion_data", (unsigned long)feb_can_db.gps_motion_data.meta.last_rx_ms, (unsigned long)feb_can_db.gps_motion_data.meta.rx_count);
-    if (feb_can_db.gps_time_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x43, "gps_time_data", (unsigned long)feb_can_db.gps_time_data.meta.last_rx_ms, (unsigned long)feb_can_db.gps_time_data.meta.rx_count);
-    if (feb_can_db.gps_date_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x44, "gps_date_data", (unsigned long)feb_can_db.gps_date_data.meta.last_rx_ms, (unsigned long)feb_can_db.gps_date_data.meta.rx_count);
-    if (feb_can_db.gps_status_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x45, "gps_status_data", (unsigned long)feb_can_db.gps_status_data.meta.last_rx_ms, (unsigned long)feb_can_db.gps_status_data.meta.rx_count);
-    if (feb_can_db.fusion_quaternion_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x47, "fusion_quaternion_data", (unsigned long)feb_can_db.fusion_quaternion_data.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_quaternion_data.meta.rx_count);
-    if (feb_can_db.fusion_euler_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x48, "fusion_euler_data", (unsigned long)feb_can_db.fusion_euler_data.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_euler_data.meta.rx_count);
-    if (feb_can_db.fusion_linear_accel_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x49, "fusion_linear_accel_data", (unsigned long)feb_can_db.fusion_linear_accel_data.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_linear_accel_data.meta.rx_count);
-    if (feb_can_db.fusion_earth_accel_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4A, "fusion_earth_accel_data", (unsigned long)feb_can_db.fusion_earth_accel_data.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_earth_accel_data.meta.rx_count);
-    if (feb_can_db.fusion_status_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4B, "fusion_status_data", (unsigned long)feb_can_db.fusion_status_data.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_status_data.meta.rx_count);
-    if (feb_can_db.sensor_temps_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4C, "sensor_temps_data", (unsigned long)feb_can_db.sensor_temps_data.meta.last_rx_ms, (unsigned long)feb_can_db.sensor_temps_data.meta.rx_count);
-    if (feb_can_db.sensor_temps_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4D, "sensor_temps_data_rear", (unsigned long)feb_can_db.sensor_temps_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.sensor_temps_data_rear.meta.rx_count);
-    if (feb_can_db.steer_angle_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4E, "steer_angle_data", (unsigned long)feb_can_db.steer_angle_data.meta.last_rx_ms, (unsigned long)feb_can_db.steer_angle_data.meta.rx_count);
-    if (feb_can_db.steer_status_data.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4F, "steer_status_data", (unsigned long)feb_can_db.steer_status_data.meta.last_rx_ms, (unsigned long)feb_can_db.steer_status_data.meta.rx_count);
-    if (feb_can_db.gps_pos_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x50, "gps_pos_data_rear", (unsigned long)feb_can_db.gps_pos_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_pos_data_rear.meta.rx_count);
-    if (feb_can_db.gps_altitude_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x51, "gps_altitude_data_rear", (unsigned long)feb_can_db.gps_altitude_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_altitude_data_rear.meta.rx_count);
-    if (feb_can_db.gps_motion_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x52, "gps_motion_data_rear", (unsigned long)feb_can_db.gps_motion_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_motion_data_rear.meta.rx_count);
-    if (feb_can_db.gps_time_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x53, "gps_time_data_rear", (unsigned long)feb_can_db.gps_time_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_time_data_rear.meta.rx_count);
-    if (feb_can_db.gps_date_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x54, "gps_date_data_rear", (unsigned long)feb_can_db.gps_date_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_date_data_rear.meta.rx_count);
-    if (feb_can_db.gps_status_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x55, "gps_status_data_rear", (unsigned long)feb_can_db.gps_status_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_status_data_rear.meta.rx_count);
-    if (feb_can_db.fusion_quaternion_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x57, "fusion_quaternion_data_rear", (unsigned long)feb_can_db.fusion_quaternion_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_quaternion_data_rear.meta.rx_count);
-    if (feb_can_db.fusion_euler_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x58, "fusion_euler_data_rear", (unsigned long)feb_can_db.fusion_euler_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_euler_data_rear.meta.rx_count);
-    if (feb_can_db.fusion_linear_accel_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x59, "fusion_linear_accel_data_rear", (unsigned long)feb_can_db.fusion_linear_accel_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_linear_accel_data_rear.meta.rx_count);
-    if (feb_can_db.fusion_earth_accel_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x5A, "fusion_earth_accel_data_rear", (unsigned long)feb_can_db.fusion_earth_accel_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_earth_accel_data_rear.meta.rx_count);
-    if (feb_can_db.fusion_status_data_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x5B, "fusion_status_data_rear", (unsigned long)feb_can_db.fusion_status_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_status_data_rear.meta.rx_count);
+    if (feb_can_db.gps_pos_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x40, "gps_pos_front", (unsigned long)feb_can_db.gps_pos_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_pos_front.meta.rx_count);
+    if (feb_can_db.gps_altitude_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x41, "gps_altitude_front", (unsigned long)feb_can_db.gps_altitude_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_altitude_front.meta.rx_count);
+    if (feb_can_db.gps_motion_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x42, "gps_motion_front", (unsigned long)feb_can_db.gps_motion_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_motion_front.meta.rx_count);
+    if (feb_can_db.gps_time_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x43, "gps_time_front", (unsigned long)feb_can_db.gps_time_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_time_front.meta.rx_count);
+    if (feb_can_db.gps_date_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x44, "gps_date_front", (unsigned long)feb_can_db.gps_date_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_date_front.meta.rx_count);
+    if (feb_can_db.gps_status_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x45, "gps_status_front", (unsigned long)feb_can_db.gps_status_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_status_front.meta.rx_count);
+    if (feb_can_db.fusion_quat_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x47, "fusion_quat_front", (unsigned long)feb_can_db.fusion_quat_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_quat_front.meta.rx_count);
+    if (feb_can_db.fusion_euler_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x48, "fusion_euler_front", (unsigned long)feb_can_db.fusion_euler_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_euler_front.meta.rx_count);
+    if (feb_can_db.fusion_lin_accel_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x49, "fusion_lin_accel_front", (unsigned long)feb_can_db.fusion_lin_accel_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_lin_accel_front.meta.rx_count);
+    if (feb_can_db.fusion_earth_accel_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4A, "fusion_earth_accel_front", (unsigned long)feb_can_db.fusion_earth_accel_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_earth_accel_front.meta.rx_count);
+    if (feb_can_db.fusion_status_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4B, "fusion_status_front", (unsigned long)feb_can_db.fusion_status_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_status_front.meta.rx_count);
+    if (feb_can_db.steer_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4E, "steer_front", (unsigned long)feb_can_db.steer_front.meta.last_rx_ms, (unsigned long)feb_can_db.steer_front.meta.rx_count);
+    if (feb_can_db.gps_pos_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x50, "gps_pos_rear", (unsigned long)feb_can_db.gps_pos_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_pos_rear.meta.rx_count);
+    if (feb_can_db.gps_altitude_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x51, "gps_altitude_rear", (unsigned long)feb_can_db.gps_altitude_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_altitude_rear.meta.rx_count);
+    if (feb_can_db.gps_motion_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x52, "gps_motion_rear", (unsigned long)feb_can_db.gps_motion_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_motion_rear.meta.rx_count);
+    if (feb_can_db.gps_time_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x53, "gps_time_rear", (unsigned long)feb_can_db.gps_time_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_time_rear.meta.rx_count);
+    if (feb_can_db.gps_date_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x54, "gps_date_rear", (unsigned long)feb_can_db.gps_date_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_date_rear.meta.rx_count);
+    if (feb_can_db.gps_status_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x55, "gps_status_rear", (unsigned long)feb_can_db.gps_status_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_status_rear.meta.rx_count);
+    if (feb_can_db.fusion_quat_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x57, "fusion_quat_rear", (unsigned long)feb_can_db.fusion_quat_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_quat_rear.meta.rx_count);
+    if (feb_can_db.fusion_euler_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x58, "fusion_euler_rear", (unsigned long)feb_can_db.fusion_euler_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_euler_rear.meta.rx_count);
+    if (feb_can_db.fusion_lin_accel_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x59, "fusion_lin_accel_rear", (unsigned long)feb_can_db.fusion_lin_accel_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_lin_accel_rear.meta.rx_count);
+    if (feb_can_db.fusion_earth_accel_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x5A, "fusion_earth_accel_rear", (unsigned long)feb_can_db.fusion_earth_accel_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_earth_accel_rear.meta.rx_count);
+    if (feb_can_db.fusion_status_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x5B, "fusion_status_rear", (unsigned long)feb_can_db.fusion_status_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_status_rear.meta.rx_count);
     if (feb_can_db.pcu_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD0, "pcu_heartbeat", (unsigned long)feb_can_db.pcu_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.pcu_heartbeat.meta.rx_count);
     if (feb_can_db.dash_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD1, "dash_heartbeat", (unsigned long)feb_can_db.dash_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.dash_heartbeat.meta.rx_count);
     if (feb_can_db.lvpdb_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD2, "lvpdb_heartbeat", (unsigned long)feb_can_db.lvpdb_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.lvpdb_heartbeat.meta.rx_count);
     if (feb_can_db.dcu_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD3, "dcu_heartbeat", (unsigned long)feb_can_db.dcu_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.dcu_heartbeat.meta.rx_count);
-    if (feb_can_db.front_sensor_heartbeat_message.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD4, "front_sensor_heartbeat_message", (unsigned long)feb_can_db.front_sensor_heartbeat_message.meta.last_rx_ms, (unsigned long)feb_can_db.front_sensor_heartbeat_message.meta.rx_count);
-    if (feb_can_db.rear_sensor_heartbeat_message.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD5, "rear_sensor_heartbeat_message", (unsigned long)feb_can_db.rear_sensor_heartbeat_message.meta.last_rx_ms, (unsigned long)feb_can_db.rear_sensor_heartbeat_message.meta.rx_count);
+    if (feb_can_db.heartbeat_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD4, "heartbeat_front", (unsigned long)feb_can_db.heartbeat_front.meta.last_rx_ms, (unsigned long)feb_can_db.heartbeat_front.meta.rx_count);
+    if (feb_can_db.heartbeat_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD5, "heartbeat_rear", (unsigned long)feb_can_db.heartbeat_rear.meta.last_rx_ms, (unsigned long)feb_can_db.heartbeat_rear.meta.rx_count);
     if (feb_can_db.feb_ping_pong_counter1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE0, "feb_ping_pong_counter1", (unsigned long)feb_can_db.feb_ping_pong_counter1.meta.last_rx_ms, (unsigned long)feb_can_db.feb_ping_pong_counter1.meta.rx_count);
     if (feb_can_db.feb_ping_pong_counter2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE1, "feb_ping_pong_counter2", (unsigned long)feb_can_db.feb_ping_pong_counter2.meta.last_rx_ms, (unsigned long)feb_can_db.feb_ping_pong_counter2.meta.rx_count);
     if (feb_can_db.feb_ping_pong_counter3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE2, "feb_ping_pong_counter3", (unsigned long)feb_can_db.feb_ping_pong_counter3.meta.last_rx_ms, (unsigned long)feb_can_db.feb_ping_pong_counter3.meta.rx_count);
@@ -35181,118 +35045,122 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
         printf_fn("  cp_rf_current                    = %ld\r\n", (long)feb_can_db.lvpdb_sm_af1_af2_cp_rf_currents.data.cp_rf_current);
         return 0;
     }
-    if (strcmp(name, "linear_potentiometer_front") == 0)
+    if (strcmp(name, "linpot_front") == 0)
     {
-        printf_fn("0x%02X  linear_potentiometer_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x1E, (int)feb_can_db.linear_potentiometer_front.meta.present, (unsigned long)feb_can_db.linear_potentiometer_front.meta.last_rx_ms, (unsigned long)feb_can_db.linear_potentiometer_front.meta.rx_count);
-        printf_fn("  linear_potentiometer_1_front     = %ld\r\n", (long)feb_can_db.linear_potentiometer_front.data.linear_potentiometer_1_front);
-        printf_fn("  linear_potentiometer_2_front     = %ld\r\n", (long)feb_can_db.linear_potentiometer_front.data.linear_potentiometer_2_front);
+        printf_fn("0x%02X  linpot_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x1E, (int)feb_can_db.linpot_front.meta.present, (unsigned long)feb_can_db.linpot_front.meta.last_rx_ms, (unsigned long)feb_can_db.linpot_front.meta.rx_count);
+        printf_fn("  linpot_left                      = %ld\r\n", (long)feb_can_db.linpot_front.data.linpot_left);
+        printf_fn("  linpot_right                     = %ld\r\n", (long)feb_can_db.linpot_front.data.linpot_right);
         return 0;
     }
-    if (strcmp(name, "linear_potentiometer_rear") == 0)
+    if (strcmp(name, "linpot_rear") == 0)
     {
-        printf_fn("0x%02X  linear_potentiometer_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x1F, (int)feb_can_db.linear_potentiometer_rear.meta.present, (unsigned long)feb_can_db.linear_potentiometer_rear.meta.last_rx_ms, (unsigned long)feb_can_db.linear_potentiometer_rear.meta.rx_count);
-        printf_fn("  linear_potentiometer_1_rear      = %ld\r\n", (long)feb_can_db.linear_potentiometer_rear.data.linear_potentiometer_1_rear);
-        printf_fn("  linear_potentiometer_2_rear      = %ld\r\n", (long)feb_can_db.linear_potentiometer_rear.data.linear_potentiometer_2_rear);
+        printf_fn("0x%02X  linpot_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x1F, (int)feb_can_db.linpot_rear.meta.present, (unsigned long)feb_can_db.linpot_rear.meta.last_rx_ms, (unsigned long)feb_can_db.linpot_rear.meta.rx_count);
+        printf_fn("  linpot_left                      = %ld\r\n", (long)feb_can_db.linpot_rear.data.linpot_left);
+        printf_fn("  linpot_right                     = %ld\r\n", (long)feb_can_db.linpot_rear.data.linpot_right);
         return 0;
     }
-    if (strcmp(name, "front_left_tire_temp") == 0)
+    if (strcmp(name, "tire_temp_left_front") == 0)
     {
-        printf_fn("0x%02X  front_left_tire_temp  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x20, (int)feb_can_db.front_left_tire_temp.meta.present, (unsigned long)feb_can_db.front_left_tire_temp.meta.last_rx_ms, (unsigned long)feb_can_db.front_left_tire_temp.meta.rx_count);
-        printf_fn("  leftmost_temp_fl                 = %ld\r\n", (long)feb_can_db.front_left_tire_temp.data.leftmost_temp_fl);
-        printf_fn("  center_left_temp_fl              = %ld\r\n", (long)feb_can_db.front_left_tire_temp.data.center_left_temp_fl);
-        printf_fn("  center_right_temp_fl             = %ld\r\n", (long)feb_can_db.front_left_tire_temp.data.center_right_temp_fl);
-        printf_fn("  rightmost_temp_fl                = %ld\r\n", (long)feb_can_db.front_left_tire_temp.data.rightmost_temp_fl);
+        printf_fn("0x%02X  tire_temp_left_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x20, (int)feb_can_db.tire_temp_left_front.meta.present, (unsigned long)feb_can_db.tire_temp_left_front.meta.last_rx_ms, (unsigned long)feb_can_db.tire_temp_left_front.meta.rx_count);
+        printf_fn("  leftmost_temp                    = %ld\r\n", (long)feb_can_db.tire_temp_left_front.data.leftmost_temp);
+        printf_fn("  center_left_temp                 = %ld\r\n", (long)feb_can_db.tire_temp_left_front.data.center_left_temp);
+        printf_fn("  center_right_temp                = %ld\r\n", (long)feb_can_db.tire_temp_left_front.data.center_right_temp);
+        printf_fn("  rightmost_temp                   = %ld\r\n", (long)feb_can_db.tire_temp_left_front.data.rightmost_temp);
         return 0;
     }
-    if (strcmp(name, "front_right_tire_temp") == 0)
+    if (strcmp(name, "tire_temp_right_front") == 0)
     {
-        printf_fn("0x%02X  front_right_tire_temp  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x21, (int)feb_can_db.front_right_tire_temp.meta.present, (unsigned long)feb_can_db.front_right_tire_temp.meta.last_rx_ms, (unsigned long)feb_can_db.front_right_tire_temp.meta.rx_count);
-        printf_fn("  leftmost_temp_fr                 = %ld\r\n", (long)feb_can_db.front_right_tire_temp.data.leftmost_temp_fr);
-        printf_fn("  center_left_temp_fr              = %ld\r\n", (long)feb_can_db.front_right_tire_temp.data.center_left_temp_fr);
-        printf_fn("  center_right_temp_fr             = %ld\r\n", (long)feb_can_db.front_right_tire_temp.data.center_right_temp_fr);
-        printf_fn("  rightmost_temp_fr                = %ld\r\n", (long)feb_can_db.front_right_tire_temp.data.rightmost_temp_fr);
+        printf_fn("0x%02X  tire_temp_right_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x21, (int)feb_can_db.tire_temp_right_front.meta.present, (unsigned long)feb_can_db.tire_temp_right_front.meta.last_rx_ms, (unsigned long)feb_can_db.tire_temp_right_front.meta.rx_count);
+        printf_fn("  leftmost_temp                    = %ld\r\n", (long)feb_can_db.tire_temp_right_front.data.leftmost_temp);
+        printf_fn("  center_left_temp                 = %ld\r\n", (long)feb_can_db.tire_temp_right_front.data.center_left_temp);
+        printf_fn("  center_right_temp                = %ld\r\n", (long)feb_can_db.tire_temp_right_front.data.center_right_temp);
+        printf_fn("  rightmost_temp                   = %ld\r\n", (long)feb_can_db.tire_temp_right_front.data.rightmost_temp);
         return 0;
     }
-    if (strcmp(name, "rear_left_tire_temp") == 0)
+    if (strcmp(name, "tire_temp_left_rear") == 0)
     {
-        printf_fn("0x%02X  rear_left_tire_temp  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x22, (int)feb_can_db.rear_left_tire_temp.meta.present, (unsigned long)feb_can_db.rear_left_tire_temp.meta.last_rx_ms, (unsigned long)feb_can_db.rear_left_tire_temp.meta.rx_count);
-        printf_fn("  leftmost_temp_rl                 = %ld\r\n", (long)feb_can_db.rear_left_tire_temp.data.leftmost_temp_rl);
-        printf_fn("  center_left_temp_rl              = %ld\r\n", (long)feb_can_db.rear_left_tire_temp.data.center_left_temp_rl);
-        printf_fn("  center_right_temp_rl             = %ld\r\n", (long)feb_can_db.rear_left_tire_temp.data.center_right_temp_rl);
-        printf_fn("  rightmost_temp_rl                = %ld\r\n", (long)feb_can_db.rear_left_tire_temp.data.rightmost_temp_rl);
+        printf_fn("0x%02X  tire_temp_left_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x22, (int)feb_can_db.tire_temp_left_rear.meta.present, (unsigned long)feb_can_db.tire_temp_left_rear.meta.last_rx_ms, (unsigned long)feb_can_db.tire_temp_left_rear.meta.rx_count);
+        printf_fn("  leftmost_temp                    = %ld\r\n", (long)feb_can_db.tire_temp_left_rear.data.leftmost_temp);
+        printf_fn("  center_left_temp                 = %ld\r\n", (long)feb_can_db.tire_temp_left_rear.data.center_left_temp);
+        printf_fn("  center_right_temp                = %ld\r\n", (long)feb_can_db.tire_temp_left_rear.data.center_right_temp);
+        printf_fn("  rightmost_temp                   = %ld\r\n", (long)feb_can_db.tire_temp_left_rear.data.rightmost_temp);
         return 0;
     }
-    if (strcmp(name, "rear_right_tire_temp") == 0)
+    if (strcmp(name, "tire_temp_right_rear") == 0)
     {
-        printf_fn("0x%02X  rear_right_tire_temp  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x23, (int)feb_can_db.rear_right_tire_temp.meta.present, (unsigned long)feb_can_db.rear_right_tire_temp.meta.last_rx_ms, (unsigned long)feb_can_db.rear_right_tire_temp.meta.rx_count);
-        printf_fn("  leftmost_temp_rr                 = %ld\r\n", (long)feb_can_db.rear_right_tire_temp.data.leftmost_temp_rr);
-        printf_fn("  center_left_temp_rr              = %ld\r\n", (long)feb_can_db.rear_right_tire_temp.data.center_left_temp_rr);
-        printf_fn("  center_right_temp_rr             = %ld\r\n", (long)feb_can_db.rear_right_tire_temp.data.center_right_temp_rr);
-        printf_fn("  rightmost_temp_rr                = %ld\r\n", (long)feb_can_db.rear_right_tire_temp.data.rightmost_temp_rr);
+        printf_fn("0x%02X  tire_temp_right_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x23, (int)feb_can_db.tire_temp_right_rear.meta.present, (unsigned long)feb_can_db.tire_temp_right_rear.meta.last_rx_ms, (unsigned long)feb_can_db.tire_temp_right_rear.meta.rx_count);
+        printf_fn("  leftmost_temp                    = %ld\r\n", (long)feb_can_db.tire_temp_right_rear.data.leftmost_temp);
+        printf_fn("  center_left_temp                 = %ld\r\n", (long)feb_can_db.tire_temp_right_rear.data.center_left_temp);
+        printf_fn("  center_right_temp                = %ld\r\n", (long)feb_can_db.tire_temp_right_rear.data.center_right_temp);
+        printf_fn("  rightmost_temp                   = %ld\r\n", (long)feb_can_db.tire_temp_right_rear.data.rightmost_temp);
         return 0;
     }
-    if (strcmp(name, "wss_front_data") == 0)
+    if (strcmp(name, "wss_front") == 0)
     {
-        printf_fn("0x%02X  wss_front_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x24, (int)feb_can_db.wss_front_data.meta.present, (unsigned long)feb_can_db.wss_front_data.meta.last_rx_ms, (unsigned long)feb_can_db.wss_front_data.meta.rx_count);
-        printf_fn("  wss_left_front                   = %ld\r\n", (long)feb_can_db.wss_front_data.data.wss_left_front);
-        printf_fn("  wss_right_front                  = %ld\r\n", (long)feb_can_db.wss_front_data.data.wss_right_front);
-        printf_fn("  wss_dir_flags                    = %ld\r\n", (long)feb_can_db.wss_front_data.data.wss_dir_flags);
+        printf_fn("0x%02X  wss_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x24, (int)feb_can_db.wss_front.meta.present, (unsigned long)feb_can_db.wss_front.meta.last_rx_ms, (unsigned long)feb_can_db.wss_front.meta.rx_count);
+        printf_fn("  wss_left                         = %ld\r\n", (long)feb_can_db.wss_front.data.wss_left);
+        printf_fn("  wss_right                        = %ld\r\n", (long)feb_can_db.wss_front.data.wss_right);
+        printf_fn("  wss_dir_flags                    = %ld\r\n", (long)feb_can_db.wss_front.data.wss_dir_flags);
         return 0;
     }
-    if (strcmp(name, "wss_rear_data") == 0)
+    if (strcmp(name, "wss_rear") == 0)
     {
-        printf_fn("0x%02X  wss_rear_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x25, (int)feb_can_db.wss_rear_data.meta.present, (unsigned long)feb_can_db.wss_rear_data.meta.last_rx_ms, (unsigned long)feb_can_db.wss_rear_data.meta.rx_count);
-        printf_fn("  wss_left_rear                    = %ld\r\n", (long)feb_can_db.wss_rear_data.data.wss_left_rear);
-        printf_fn("  wss_right_rear                   = %ld\r\n", (long)feb_can_db.wss_rear_data.data.wss_right_rear);
-        printf_fn("  wss_dir_flags                    = %ld\r\n", (long)feb_can_db.wss_rear_data.data.wss_dir_flags);
+        printf_fn("0x%02X  wss_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x25, (int)feb_can_db.wss_rear.meta.present, (unsigned long)feb_can_db.wss_rear.meta.last_rx_ms, (unsigned long)feb_can_db.wss_rear.meta.rx_count);
+        printf_fn("  wss_left                         = %ld\r\n", (long)feb_can_db.wss_rear.data.wss_left);
+        printf_fn("  wss_right                        = %ld\r\n", (long)feb_can_db.wss_rear.data.wss_right);
+        printf_fn("  wss_dir_flags                    = %ld\r\n", (long)feb_can_db.wss_rear.data.wss_dir_flags);
         return 0;
     }
-    if (strcmp(name, "imu_acceleration_data") == 0)
+    if (strcmp(name, "imu_accel_front") == 0)
     {
-        printf_fn("0x%02X  imu_acceleration_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x26, (int)feb_can_db.imu_acceleration_data.meta.present, (unsigned long)feb_can_db.imu_acceleration_data.meta.last_rx_ms, (unsigned long)feb_can_db.imu_acceleration_data.meta.rx_count);
-        printf_fn("  acceleration_x                   = %ld\r\n", (long)feb_can_db.imu_acceleration_data.data.acceleration_x);
-        printf_fn("  acceleration_y                   = %ld\r\n", (long)feb_can_db.imu_acceleration_data.data.acceleration_y);
-        printf_fn("  acceleration_z                   = %ld\r\n", (long)feb_can_db.imu_acceleration_data.data.acceleration_z);
+        printf_fn("0x%02X  imu_accel_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x26, (int)feb_can_db.imu_accel_front.meta.present, (unsigned long)feb_can_db.imu_accel_front.meta.last_rx_ms, (unsigned long)feb_can_db.imu_accel_front.meta.rx_count);
+        printf_fn("  acceleration_x                   = %ld\r\n", (long)feb_can_db.imu_accel_front.data.acceleration_x);
+        printf_fn("  acceleration_y                   = %ld\r\n", (long)feb_can_db.imu_accel_front.data.acceleration_y);
+        printf_fn("  acceleration_z                   = %ld\r\n", (long)feb_can_db.imu_accel_front.data.acceleration_z);
+        printf_fn("  imu_temp                         = %ld\r\n", (long)feb_can_db.imu_accel_front.data.imu_temp);
         return 0;
     }
-    if (strcmp(name, "imu_acceleration_data_rear") == 0)
+    if (strcmp(name, "imu_accel_rear") == 0)
     {
-        printf_fn("0x%02X  imu_acceleration_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x27, (int)feb_can_db.imu_acceleration_data_rear.meta.present, (unsigned long)feb_can_db.imu_acceleration_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.imu_acceleration_data_rear.meta.rx_count);
-        printf_fn("  acceleration_x                   = %ld\r\n", (long)feb_can_db.imu_acceleration_data_rear.data.acceleration_x);
-        printf_fn("  acceleration_y                   = %ld\r\n", (long)feb_can_db.imu_acceleration_data_rear.data.acceleration_y);
-        printf_fn("  acceleration_z                   = %ld\r\n", (long)feb_can_db.imu_acceleration_data_rear.data.acceleration_z);
+        printf_fn("0x%02X  imu_accel_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x27, (int)feb_can_db.imu_accel_rear.meta.present, (unsigned long)feb_can_db.imu_accel_rear.meta.last_rx_ms, (unsigned long)feb_can_db.imu_accel_rear.meta.rx_count);
+        printf_fn("  acceleration_x                   = %ld\r\n", (long)feb_can_db.imu_accel_rear.data.acceleration_x);
+        printf_fn("  acceleration_y                   = %ld\r\n", (long)feb_can_db.imu_accel_rear.data.acceleration_y);
+        printf_fn("  acceleration_z                   = %ld\r\n", (long)feb_can_db.imu_accel_rear.data.acceleration_z);
+        printf_fn("  imu_temp                         = %ld\r\n", (long)feb_can_db.imu_accel_rear.data.imu_temp);
         return 0;
     }
-    if (strcmp(name, "imu_gyro_data") == 0)
+    if (strcmp(name, "imu_gyro_front") == 0)
     {
-        printf_fn("0x%02X  imu_gyro_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x28, (int)feb_can_db.imu_gyro_data.meta.present, (unsigned long)feb_can_db.imu_gyro_data.meta.last_rx_ms, (unsigned long)feb_can_db.imu_gyro_data.meta.rx_count);
-        printf_fn("  gyro_x                           = %ld\r\n", (long)feb_can_db.imu_gyro_data.data.gyro_x);
-        printf_fn("  gyro_y                           = %ld\r\n", (long)feb_can_db.imu_gyro_data.data.gyro_y);
-        printf_fn("  gyro_z                           = %ld\r\n", (long)feb_can_db.imu_gyro_data.data.gyro_z);
+        printf_fn("0x%02X  imu_gyro_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x28, (int)feb_can_db.imu_gyro_front.meta.present, (unsigned long)feb_can_db.imu_gyro_front.meta.last_rx_ms, (unsigned long)feb_can_db.imu_gyro_front.meta.rx_count);
+        printf_fn("  gyro_x                           = %ld\r\n", (long)feb_can_db.imu_gyro_front.data.gyro_x);
+        printf_fn("  gyro_y                           = %ld\r\n", (long)feb_can_db.imu_gyro_front.data.gyro_y);
+        printf_fn("  gyro_z                           = %ld\r\n", (long)feb_can_db.imu_gyro_front.data.gyro_z);
         return 0;
     }
-    if (strcmp(name, "imu_gyro_data_rear") == 0)
+    if (strcmp(name, "imu_gyro_rear") == 0)
     {
-        printf_fn("0x%02X  imu_gyro_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x29, (int)feb_can_db.imu_gyro_data_rear.meta.present, (unsigned long)feb_can_db.imu_gyro_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.imu_gyro_data_rear.meta.rx_count);
-        printf_fn("  gyro_x                           = %ld\r\n", (long)feb_can_db.imu_gyro_data_rear.data.gyro_x);
-        printf_fn("  gyro_y                           = %ld\r\n", (long)feb_can_db.imu_gyro_data_rear.data.gyro_y);
-        printf_fn("  gyro_z                           = %ld\r\n", (long)feb_can_db.imu_gyro_data_rear.data.gyro_z);
+        printf_fn("0x%02X  imu_gyro_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x29, (int)feb_can_db.imu_gyro_rear.meta.present, (unsigned long)feb_can_db.imu_gyro_rear.meta.last_rx_ms, (unsigned long)feb_can_db.imu_gyro_rear.meta.rx_count);
+        printf_fn("  gyro_x                           = %ld\r\n", (long)feb_can_db.imu_gyro_rear.data.gyro_x);
+        printf_fn("  gyro_y                           = %ld\r\n", (long)feb_can_db.imu_gyro_rear.data.gyro_y);
+        printf_fn("  gyro_z                           = %ld\r\n", (long)feb_can_db.imu_gyro_rear.data.gyro_z);
         return 0;
     }
-    if (strcmp(name, "magnetometer_data") == 0)
+    if (strcmp(name, "mag_front") == 0)
     {
-        printf_fn("0x%02X  magnetometer_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x2A, (int)feb_can_db.magnetometer_data.meta.present, (unsigned long)feb_can_db.magnetometer_data.meta.last_rx_ms, (unsigned long)feb_can_db.magnetometer_data.meta.rx_count);
-        printf_fn("  magnetometer_x                   = %ld\r\n", (long)feb_can_db.magnetometer_data.data.magnetometer_x);
-        printf_fn("  magnetometer_y                   = %ld\r\n", (long)feb_can_db.magnetometer_data.data.magnetometer_y);
-        printf_fn("  magnetometer_z                   = %ld\r\n", (long)feb_can_db.magnetometer_data.data.magnetometer_z);
+        printf_fn("0x%02X  mag_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x2A, (int)feb_can_db.mag_front.meta.present, (unsigned long)feb_can_db.mag_front.meta.last_rx_ms, (unsigned long)feb_can_db.mag_front.meta.rx_count);
+        printf_fn("  magnetometer_x                   = %ld\r\n", (long)feb_can_db.mag_front.data.magnetometer_x);
+        printf_fn("  magnetometer_y                   = %ld\r\n", (long)feb_can_db.mag_front.data.magnetometer_y);
+        printf_fn("  magnetometer_z                   = %ld\r\n", (long)feb_can_db.mag_front.data.magnetometer_z);
+        printf_fn("  mag_temp                         = %ld\r\n", (long)feb_can_db.mag_front.data.mag_temp);
         return 0;
     }
-    if (strcmp(name, "magnetometer_data_rear") == 0)
+    if (strcmp(name, "mag_rear") == 0)
     {
-        printf_fn("0x%02X  magnetometer_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x2B, (int)feb_can_db.magnetometer_data_rear.meta.present, (unsigned long)feb_can_db.magnetometer_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.magnetometer_data_rear.meta.rx_count);
-        printf_fn("  magnetometer_x                   = %ld\r\n", (long)feb_can_db.magnetometer_data_rear.data.magnetometer_x);
-        printf_fn("  magnetometer_y                   = %ld\r\n", (long)feb_can_db.magnetometer_data_rear.data.magnetometer_y);
-        printf_fn("  magnetometer_z                   = %ld\r\n", (long)feb_can_db.magnetometer_data_rear.data.magnetometer_z);
+        printf_fn("0x%02X  mag_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x2B, (int)feb_can_db.mag_rear.meta.present, (unsigned long)feb_can_db.mag_rear.meta.last_rx_ms, (unsigned long)feb_can_db.mag_rear.meta.rx_count);
+        printf_fn("  magnetometer_x                   = %ld\r\n", (long)feb_can_db.mag_rear.data.magnetometer_x);
+        printf_fn("  magnetometer_y                   = %ld\r\n", (long)feb_can_db.mag_rear.data.magnetometer_y);
+        printf_fn("  magnetometer_z                   = %ld\r\n", (long)feb_can_db.mag_rear.data.magnetometer_z);
+        printf_fn("  mag_temp                         = %ld\r\n", (long)feb_can_db.mag_rear.data.mag_temp);
         return 0;
     }
     if (strcmp(name, "dart_tach_measurements_1234") == 0)
@@ -35358,215 +35226,196 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
         printf_fn("  brake2_mv                        = %ld\r\n", (long)feb_can_db.pcu_pedal_voltages.data.brake2_mv);
         return 0;
     }
-    if (strcmp(name, "gps_pos_data") == 0)
+    if (strcmp(name, "gps_pos_front") == 0)
     {
-        printf_fn("0x%02X  gps_pos_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x40, (int)feb_can_db.gps_pos_data.meta.present, (unsigned long)feb_can_db.gps_pos_data.meta.last_rx_ms, (unsigned long)feb_can_db.gps_pos_data.meta.rx_count);
-        printf_fn("  latitude                         = %ld\r\n", (long)feb_can_db.gps_pos_data.data.latitude);
-        printf_fn("  longitude                        = %ld\r\n", (long)feb_can_db.gps_pos_data.data.longitude);
+        printf_fn("0x%02X  gps_pos_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x40, (int)feb_can_db.gps_pos_front.meta.present, (unsigned long)feb_can_db.gps_pos_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_pos_front.meta.rx_count);
+        printf_fn("  latitude                         = %ld\r\n", (long)feb_can_db.gps_pos_front.data.latitude);
+        printf_fn("  longitude                        = %ld\r\n", (long)feb_can_db.gps_pos_front.data.longitude);
         return 0;
     }
-    if (strcmp(name, "gps_altitude_data") == 0)
+    if (strcmp(name, "gps_altitude_front") == 0)
     {
-        printf_fn("0x%02X  gps_altitude_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x41, (int)feb_can_db.gps_altitude_data.meta.present, (unsigned long)feb_can_db.gps_altitude_data.meta.last_rx_ms, (unsigned long)feb_can_db.gps_altitude_data.meta.rx_count);
-        printf_fn("  altitude                         = %ld\r\n", (long)feb_can_db.gps_altitude_data.data.altitude);
-        printf_fn("  hdop                             = %ld\r\n", (long)feb_can_db.gps_altitude_data.data.hdop);
-        printf_fn("  vdop                             = %ld\r\n", (long)feb_can_db.gps_altitude_data.data.vdop);
+        printf_fn("0x%02X  gps_altitude_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x41, (int)feb_can_db.gps_altitude_front.meta.present, (unsigned long)feb_can_db.gps_altitude_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_altitude_front.meta.rx_count);
+        printf_fn("  altitude                         = %ld\r\n", (long)feb_can_db.gps_altitude_front.data.altitude);
+        printf_fn("  hdop                             = %ld\r\n", (long)feb_can_db.gps_altitude_front.data.hdop);
+        printf_fn("  vdop                             = %ld\r\n", (long)feb_can_db.gps_altitude_front.data.vdop);
         return 0;
     }
-    if (strcmp(name, "gps_motion_data") == 0)
+    if (strcmp(name, "gps_motion_front") == 0)
     {
-        printf_fn("0x%02X  gps_motion_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x42, (int)feb_can_db.gps_motion_data.meta.present, (unsigned long)feb_can_db.gps_motion_data.meta.last_rx_ms, (unsigned long)feb_can_db.gps_motion_data.meta.rx_count);
-        printf_fn("  speed                            = %ld\r\n", (long)feb_can_db.gps_motion_data.data.speed);
-        printf_fn("  course                           = %ld\r\n", (long)feb_can_db.gps_motion_data.data.course);
+        printf_fn("0x%02X  gps_motion_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x42, (int)feb_can_db.gps_motion_front.meta.present, (unsigned long)feb_can_db.gps_motion_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_motion_front.meta.rx_count);
+        printf_fn("  speed                            = %ld\r\n", (long)feb_can_db.gps_motion_front.data.speed);
+        printf_fn("  course                           = %ld\r\n", (long)feb_can_db.gps_motion_front.data.course);
         return 0;
     }
-    if (strcmp(name, "gps_time_data") == 0)
+    if (strcmp(name, "gps_time_front") == 0)
     {
-        printf_fn("0x%02X  gps_time_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x43, (int)feb_can_db.gps_time_data.meta.present, (unsigned long)feb_can_db.gps_time_data.meta.last_rx_ms, (unsigned long)feb_can_db.gps_time_data.meta.rx_count);
-        printf_fn("  hours                            = %ld\r\n", (long)feb_can_db.gps_time_data.data.hours);
-        printf_fn("  minutes                          = %ld\r\n", (long)feb_can_db.gps_time_data.data.minutes);
-        printf_fn("  seconds                          = %ld\r\n", (long)feb_can_db.gps_time_data.data.seconds);
+        printf_fn("0x%02X  gps_time_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x43, (int)feb_can_db.gps_time_front.meta.present, (unsigned long)feb_can_db.gps_time_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_time_front.meta.rx_count);
+        printf_fn("  hours                            = %ld\r\n", (long)feb_can_db.gps_time_front.data.hours);
+        printf_fn("  minutes                          = %ld\r\n", (long)feb_can_db.gps_time_front.data.minutes);
+        printf_fn("  seconds                          = %ld\r\n", (long)feb_can_db.gps_time_front.data.seconds);
         return 0;
     }
-    if (strcmp(name, "gps_date_data") == 0)
+    if (strcmp(name, "gps_date_front") == 0)
     {
-        printf_fn("0x%02X  gps_date_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x44, (int)feb_can_db.gps_date_data.meta.present, (unsigned long)feb_can_db.gps_date_data.meta.last_rx_ms, (unsigned long)feb_can_db.gps_date_data.meta.rx_count);
-        printf_fn("  day                              = %ld\r\n", (long)feb_can_db.gps_date_data.data.day);
-        printf_fn("  month                            = %ld\r\n", (long)feb_can_db.gps_date_data.data.month);
-        printf_fn("  year                             = %ld\r\n", (long)feb_can_db.gps_date_data.data.year);
+        printf_fn("0x%02X  gps_date_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x44, (int)feb_can_db.gps_date_front.meta.present, (unsigned long)feb_can_db.gps_date_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_date_front.meta.rx_count);
+        printf_fn("  day                              = %ld\r\n", (long)feb_can_db.gps_date_front.data.day);
+        printf_fn("  month                            = %ld\r\n", (long)feb_can_db.gps_date_front.data.month);
+        printf_fn("  year                             = %ld\r\n", (long)feb_can_db.gps_date_front.data.year);
         return 0;
     }
-    if (strcmp(name, "gps_status_data") == 0)
+    if (strcmp(name, "gps_status_front") == 0)
     {
-        printf_fn("0x%02X  gps_status_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x45, (int)feb_can_db.gps_status_data.meta.present, (unsigned long)feb_can_db.gps_status_data.meta.last_rx_ms, (unsigned long)feb_can_db.gps_status_data.meta.rx_count);
-        printf_fn("  fix_type                         = %ld\r\n", (long)feb_can_db.gps_status_data.data.fix_type);
-        printf_fn("  fix_mode                         = %ld\r\n", (long)feb_can_db.gps_status_data.data.fix_mode);
-        printf_fn("  sats_in_use                      = %ld\r\n", (long)feb_can_db.gps_status_data.data.sats_in_use);
-        printf_fn("  sats_in_view                     = %ld\r\n", (long)feb_can_db.gps_status_data.data.sats_in_view);
-        printf_fn("  valid                            = %ld\r\n", (long)feb_can_db.gps_status_data.data.valid);
-        printf_fn("  has_fix                          = %ld\r\n", (long)feb_can_db.gps_status_data.data.has_fix);
-        printf_fn("  pdop                             = %ld\r\n", (long)feb_can_db.gps_status_data.data.pdop);
+        printf_fn("0x%02X  gps_status_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x45, (int)feb_can_db.gps_status_front.meta.present, (unsigned long)feb_can_db.gps_status_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_status_front.meta.rx_count);
+        printf_fn("  fix_type                         = %ld\r\n", (long)feb_can_db.gps_status_front.data.fix_type);
+        printf_fn("  fix_mode                         = %ld\r\n", (long)feb_can_db.gps_status_front.data.fix_mode);
+        printf_fn("  sats_in_use                      = %ld\r\n", (long)feb_can_db.gps_status_front.data.sats_in_use);
+        printf_fn("  sats_in_view                     = %ld\r\n", (long)feb_can_db.gps_status_front.data.sats_in_view);
+        printf_fn("  valid                            = %ld\r\n", (long)feb_can_db.gps_status_front.data.valid);
+        printf_fn("  has_fix                          = %ld\r\n", (long)feb_can_db.gps_status_front.data.has_fix);
+        printf_fn("  pdop                             = %ld\r\n", (long)feb_can_db.gps_status_front.data.pdop);
         return 0;
     }
-    if (strcmp(name, "fusion_quaternion_data") == 0)
+    if (strcmp(name, "fusion_quat_front") == 0)
     {
-        printf_fn("0x%02X  fusion_quaternion_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x47, (int)feb_can_db.fusion_quaternion_data.meta.present, (unsigned long)feb_can_db.fusion_quaternion_data.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_quaternion_data.meta.rx_count);
-        printf_fn("  q_w                              = %ld\r\n", (long)feb_can_db.fusion_quaternion_data.data.q_w);
-        printf_fn("  q_x                              = %ld\r\n", (long)feb_can_db.fusion_quaternion_data.data.q_x);
-        printf_fn("  q_y                              = %ld\r\n", (long)feb_can_db.fusion_quaternion_data.data.q_y);
-        printf_fn("  q_z                              = %ld\r\n", (long)feb_can_db.fusion_quaternion_data.data.q_z);
+        printf_fn("0x%02X  fusion_quat_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x47, (int)feb_can_db.fusion_quat_front.meta.present, (unsigned long)feb_can_db.fusion_quat_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_quat_front.meta.rx_count);
+        printf_fn("  q_w                              = %ld\r\n", (long)feb_can_db.fusion_quat_front.data.q_w);
+        printf_fn("  q_x                              = %ld\r\n", (long)feb_can_db.fusion_quat_front.data.q_x);
+        printf_fn("  q_y                              = %ld\r\n", (long)feb_can_db.fusion_quat_front.data.q_y);
+        printf_fn("  q_z                              = %ld\r\n", (long)feb_can_db.fusion_quat_front.data.q_z);
         return 0;
     }
-    if (strcmp(name, "fusion_euler_data") == 0)
+    if (strcmp(name, "fusion_euler_front") == 0)
     {
-        printf_fn("0x%02X  fusion_euler_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x48, (int)feb_can_db.fusion_euler_data.meta.present, (unsigned long)feb_can_db.fusion_euler_data.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_euler_data.meta.rx_count);
-        printf_fn("  roll                             = %ld\r\n", (long)feb_can_db.fusion_euler_data.data.roll);
-        printf_fn("  pitch                            = %ld\r\n", (long)feb_can_db.fusion_euler_data.data.pitch);
-        printf_fn("  yaw                              = %ld\r\n", (long)feb_can_db.fusion_euler_data.data.yaw);
+        printf_fn("0x%02X  fusion_euler_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x48, (int)feb_can_db.fusion_euler_front.meta.present, (unsigned long)feb_can_db.fusion_euler_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_euler_front.meta.rx_count);
+        printf_fn("  roll                             = %ld\r\n", (long)feb_can_db.fusion_euler_front.data.roll);
+        printf_fn("  pitch                            = %ld\r\n", (long)feb_can_db.fusion_euler_front.data.pitch);
+        printf_fn("  yaw                              = %ld\r\n", (long)feb_can_db.fusion_euler_front.data.yaw);
         return 0;
     }
-    if (strcmp(name, "fusion_linear_accel_data") == 0)
+    if (strcmp(name, "fusion_lin_accel_front") == 0)
     {
-        printf_fn("0x%02X  fusion_linear_accel_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x49, (int)feb_can_db.fusion_linear_accel_data.meta.present, (unsigned long)feb_can_db.fusion_linear_accel_data.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_linear_accel_data.meta.rx_count);
-        printf_fn("  lin_accel_x                      = %ld\r\n", (long)feb_can_db.fusion_linear_accel_data.data.lin_accel_x);
-        printf_fn("  lin_accel_y                      = %ld\r\n", (long)feb_can_db.fusion_linear_accel_data.data.lin_accel_y);
-        printf_fn("  lin_accel_z                      = %ld\r\n", (long)feb_can_db.fusion_linear_accel_data.data.lin_accel_z);
+        printf_fn("0x%02X  fusion_lin_accel_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x49, (int)feb_can_db.fusion_lin_accel_front.meta.present, (unsigned long)feb_can_db.fusion_lin_accel_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_lin_accel_front.meta.rx_count);
+        printf_fn("  lin_accel_x                      = %ld\r\n", (long)feb_can_db.fusion_lin_accel_front.data.lin_accel_x);
+        printf_fn("  lin_accel_y                      = %ld\r\n", (long)feb_can_db.fusion_lin_accel_front.data.lin_accel_y);
+        printf_fn("  lin_accel_z                      = %ld\r\n", (long)feb_can_db.fusion_lin_accel_front.data.lin_accel_z);
         return 0;
     }
-    if (strcmp(name, "fusion_earth_accel_data") == 0)
+    if (strcmp(name, "fusion_earth_accel_front") == 0)
     {
-        printf_fn("0x%02X  fusion_earth_accel_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4A, (int)feb_can_db.fusion_earth_accel_data.meta.present, (unsigned long)feb_can_db.fusion_earth_accel_data.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_earth_accel_data.meta.rx_count);
-        printf_fn("  earth_accel_x                    = %ld\r\n", (long)feb_can_db.fusion_earth_accel_data.data.earth_accel_x);
-        printf_fn("  earth_accel_y                    = %ld\r\n", (long)feb_can_db.fusion_earth_accel_data.data.earth_accel_y);
-        printf_fn("  earth_accel_z                    = %ld\r\n", (long)feb_can_db.fusion_earth_accel_data.data.earth_accel_z);
+        printf_fn("0x%02X  fusion_earth_accel_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4A, (int)feb_can_db.fusion_earth_accel_front.meta.present, (unsigned long)feb_can_db.fusion_earth_accel_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_earth_accel_front.meta.rx_count);
+        printf_fn("  earth_accel_x                    = %ld\r\n", (long)feb_can_db.fusion_earth_accel_front.data.earth_accel_x);
+        printf_fn("  earth_accel_y                    = %ld\r\n", (long)feb_can_db.fusion_earth_accel_front.data.earth_accel_y);
+        printf_fn("  earth_accel_z                    = %ld\r\n", (long)feb_can_db.fusion_earth_accel_front.data.earth_accel_z);
         return 0;
     }
-    if (strcmp(name, "fusion_status_data") == 0)
+    if (strcmp(name, "fusion_status_front") == 0)
     {
-        printf_fn("0x%02X  fusion_status_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4B, (int)feb_can_db.fusion_status_data.meta.present, (unsigned long)feb_can_db.fusion_status_data.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_status_data.meta.rx_count);
-        printf_fn("  flags                            = %ld\r\n", (long)feb_can_db.fusion_status_data.data.flags);
-        printf_fn("  accel_error                      = %ld\r\n", (long)feb_can_db.fusion_status_data.data.accel_error);
-        printf_fn("  mag_error                        = %ld\r\n", (long)feb_can_db.fusion_status_data.data.mag_error);
+        printf_fn("0x%02X  fusion_status_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4B, (int)feb_can_db.fusion_status_front.meta.present, (unsigned long)feb_can_db.fusion_status_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_status_front.meta.rx_count);
+        printf_fn("  flags                            = %ld\r\n", (long)feb_can_db.fusion_status_front.data.flags);
+        printf_fn("  accel_error                      = %ld\r\n", (long)feb_can_db.fusion_status_front.data.accel_error);
+        printf_fn("  mag_error                        = %ld\r\n", (long)feb_can_db.fusion_status_front.data.mag_error);
         return 0;
     }
-    if (strcmp(name, "sensor_temps_data") == 0)
+    if (strcmp(name, "steer_front") == 0)
     {
-        printf_fn("0x%02X  sensor_temps_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4C, (int)feb_can_db.sensor_temps_data.meta.present, (unsigned long)feb_can_db.sensor_temps_data.meta.last_rx_ms, (unsigned long)feb_can_db.sensor_temps_data.meta.rx_count);
-        printf_fn("  imu_temp                         = %ld\r\n", (long)feb_can_db.sensor_temps_data.data.imu_temp);
-        printf_fn("  mag_temp                         = %ld\r\n", (long)feb_can_db.sensor_temps_data.data.mag_temp);
+        printf_fn("0x%02X  steer_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4E, (int)feb_can_db.steer_front.meta.present, (unsigned long)feb_can_db.steer_front.meta.last_rx_ms, (unsigned long)feb_can_db.steer_front.meta.rx_count);
+        printf_fn("  angle                            = %ld\r\n", (long)feb_can_db.steer_front.data.angle);
+        printf_fn("  raw_angle                        = %ld\r\n", (long)feb_can_db.steer_front.data.raw_angle);
+        printf_fn("  agc                              = %ld\r\n", (long)feb_can_db.steer_front.data.agc);
+        printf_fn("  status                           = %ld\r\n", (long)feb_can_db.steer_front.data.status);
+        printf_fn("  magnitude                        = %ld\r\n", (long)feb_can_db.steer_front.data.magnitude);
         return 0;
     }
-    if (strcmp(name, "sensor_temps_data_rear") == 0)
+    if (strcmp(name, "gps_pos_rear") == 0)
     {
-        printf_fn("0x%02X  sensor_temps_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4D, (int)feb_can_db.sensor_temps_data_rear.meta.present, (unsigned long)feb_can_db.sensor_temps_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.sensor_temps_data_rear.meta.rx_count);
-        printf_fn("  imu_temp                         = %ld\r\n", (long)feb_can_db.sensor_temps_data_rear.data.imu_temp);
-        printf_fn("  mag_temp                         = %ld\r\n", (long)feb_can_db.sensor_temps_data_rear.data.mag_temp);
+        printf_fn("0x%02X  gps_pos_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x50, (int)feb_can_db.gps_pos_rear.meta.present, (unsigned long)feb_can_db.gps_pos_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_pos_rear.meta.rx_count);
+        printf_fn("  latitude                         = %ld\r\n", (long)feb_can_db.gps_pos_rear.data.latitude);
+        printf_fn("  longitude                        = %ld\r\n", (long)feb_can_db.gps_pos_rear.data.longitude);
         return 0;
     }
-    if (strcmp(name, "steer_angle_data") == 0)
+    if (strcmp(name, "gps_altitude_rear") == 0)
     {
-        printf_fn("0x%02X  steer_angle_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4E, (int)feb_can_db.steer_angle_data.meta.present, (unsigned long)feb_can_db.steer_angle_data.meta.last_rx_ms, (unsigned long)feb_can_db.steer_angle_data.meta.rx_count);
-        printf_fn("  angle                            = %ld\r\n", (long)feb_can_db.steer_angle_data.data.angle);
-        printf_fn("  raw_angle                        = %ld\r\n", (long)feb_can_db.steer_angle_data.data.raw_angle);
-        printf_fn("  agc                              = %ld\r\n", (long)feb_can_db.steer_angle_data.data.agc);
+        printf_fn("0x%02X  gps_altitude_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x51, (int)feb_can_db.gps_altitude_rear.meta.present, (unsigned long)feb_can_db.gps_altitude_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_altitude_rear.meta.rx_count);
+        printf_fn("  altitude                         = %ld\r\n", (long)feb_can_db.gps_altitude_rear.data.altitude);
+        printf_fn("  hdop                             = %ld\r\n", (long)feb_can_db.gps_altitude_rear.data.hdop);
+        printf_fn("  vdop                             = %ld\r\n", (long)feb_can_db.gps_altitude_rear.data.vdop);
         return 0;
     }
-    if (strcmp(name, "steer_status_data") == 0)
+    if (strcmp(name, "gps_motion_rear") == 0)
     {
-        printf_fn("0x%02X  steer_status_data  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4F, (int)feb_can_db.steer_status_data.meta.present, (unsigned long)feb_can_db.steer_status_data.meta.last_rx_ms, (unsigned long)feb_can_db.steer_status_data.meta.rx_count);
-        printf_fn("  status                           = %ld\r\n", (long)feb_can_db.steer_status_data.data.status);
-        printf_fn("  magnitude                        = %ld\r\n", (long)feb_can_db.steer_status_data.data.magnitude);
+        printf_fn("0x%02X  gps_motion_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x52, (int)feb_can_db.gps_motion_rear.meta.present, (unsigned long)feb_can_db.gps_motion_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_motion_rear.meta.rx_count);
+        printf_fn("  speed                            = %ld\r\n", (long)feb_can_db.gps_motion_rear.data.speed);
+        printf_fn("  course                           = %ld\r\n", (long)feb_can_db.gps_motion_rear.data.course);
         return 0;
     }
-    if (strcmp(name, "gps_pos_data_rear") == 0)
+    if (strcmp(name, "gps_time_rear") == 0)
     {
-        printf_fn("0x%02X  gps_pos_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x50, (int)feb_can_db.gps_pos_data_rear.meta.present, (unsigned long)feb_can_db.gps_pos_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_pos_data_rear.meta.rx_count);
-        printf_fn("  latitude                         = %ld\r\n", (long)feb_can_db.gps_pos_data_rear.data.latitude);
-        printf_fn("  longitude                        = %ld\r\n", (long)feb_can_db.gps_pos_data_rear.data.longitude);
+        printf_fn("0x%02X  gps_time_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x53, (int)feb_can_db.gps_time_rear.meta.present, (unsigned long)feb_can_db.gps_time_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_time_rear.meta.rx_count);
+        printf_fn("  hours                            = %ld\r\n", (long)feb_can_db.gps_time_rear.data.hours);
+        printf_fn("  minutes                          = %ld\r\n", (long)feb_can_db.gps_time_rear.data.minutes);
+        printf_fn("  seconds                          = %ld\r\n", (long)feb_can_db.gps_time_rear.data.seconds);
         return 0;
     }
-    if (strcmp(name, "gps_altitude_data_rear") == 0)
+    if (strcmp(name, "gps_date_rear") == 0)
     {
-        printf_fn("0x%02X  gps_altitude_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x51, (int)feb_can_db.gps_altitude_data_rear.meta.present, (unsigned long)feb_can_db.gps_altitude_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_altitude_data_rear.meta.rx_count);
-        printf_fn("  altitude                         = %ld\r\n", (long)feb_can_db.gps_altitude_data_rear.data.altitude);
-        printf_fn("  hdop                             = %ld\r\n", (long)feb_can_db.gps_altitude_data_rear.data.hdop);
-        printf_fn("  vdop                             = %ld\r\n", (long)feb_can_db.gps_altitude_data_rear.data.vdop);
+        printf_fn("0x%02X  gps_date_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x54, (int)feb_can_db.gps_date_rear.meta.present, (unsigned long)feb_can_db.gps_date_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_date_rear.meta.rx_count);
+        printf_fn("  day                              = %ld\r\n", (long)feb_can_db.gps_date_rear.data.day);
+        printf_fn("  month                            = %ld\r\n", (long)feb_can_db.gps_date_rear.data.month);
+        printf_fn("  year                             = %ld\r\n", (long)feb_can_db.gps_date_rear.data.year);
         return 0;
     }
-    if (strcmp(name, "gps_motion_data_rear") == 0)
+    if (strcmp(name, "gps_status_rear") == 0)
     {
-        printf_fn("0x%02X  gps_motion_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x52, (int)feb_can_db.gps_motion_data_rear.meta.present, (unsigned long)feb_can_db.gps_motion_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_motion_data_rear.meta.rx_count);
-        printf_fn("  speed                            = %ld\r\n", (long)feb_can_db.gps_motion_data_rear.data.speed);
-        printf_fn("  course                           = %ld\r\n", (long)feb_can_db.gps_motion_data_rear.data.course);
+        printf_fn("0x%02X  gps_status_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x55, (int)feb_can_db.gps_status_rear.meta.present, (unsigned long)feb_can_db.gps_status_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_status_rear.meta.rx_count);
+        printf_fn("  fix_type                         = %ld\r\n", (long)feb_can_db.gps_status_rear.data.fix_type);
+        printf_fn("  fix_mode                         = %ld\r\n", (long)feb_can_db.gps_status_rear.data.fix_mode);
+        printf_fn("  sats_in_use                      = %ld\r\n", (long)feb_can_db.gps_status_rear.data.sats_in_use);
+        printf_fn("  sats_in_view                     = %ld\r\n", (long)feb_can_db.gps_status_rear.data.sats_in_view);
+        printf_fn("  valid                            = %ld\r\n", (long)feb_can_db.gps_status_rear.data.valid);
+        printf_fn("  has_fix                          = %ld\r\n", (long)feb_can_db.gps_status_rear.data.has_fix);
+        printf_fn("  pdop                             = %ld\r\n", (long)feb_can_db.gps_status_rear.data.pdop);
         return 0;
     }
-    if (strcmp(name, "gps_time_data_rear") == 0)
+    if (strcmp(name, "fusion_quat_rear") == 0)
     {
-        printf_fn("0x%02X  gps_time_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x53, (int)feb_can_db.gps_time_data_rear.meta.present, (unsigned long)feb_can_db.gps_time_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_time_data_rear.meta.rx_count);
-        printf_fn("  hours                            = %ld\r\n", (long)feb_can_db.gps_time_data_rear.data.hours);
-        printf_fn("  minutes                          = %ld\r\n", (long)feb_can_db.gps_time_data_rear.data.minutes);
-        printf_fn("  seconds                          = %ld\r\n", (long)feb_can_db.gps_time_data_rear.data.seconds);
+        printf_fn("0x%02X  fusion_quat_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x57, (int)feb_can_db.fusion_quat_rear.meta.present, (unsigned long)feb_can_db.fusion_quat_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_quat_rear.meta.rx_count);
+        printf_fn("  q_w                              = %ld\r\n", (long)feb_can_db.fusion_quat_rear.data.q_w);
+        printf_fn("  q_x                              = %ld\r\n", (long)feb_can_db.fusion_quat_rear.data.q_x);
+        printf_fn("  q_y                              = %ld\r\n", (long)feb_can_db.fusion_quat_rear.data.q_y);
+        printf_fn("  q_z                              = %ld\r\n", (long)feb_can_db.fusion_quat_rear.data.q_z);
         return 0;
     }
-    if (strcmp(name, "gps_date_data_rear") == 0)
+    if (strcmp(name, "fusion_euler_rear") == 0)
     {
-        printf_fn("0x%02X  gps_date_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x54, (int)feb_can_db.gps_date_data_rear.meta.present, (unsigned long)feb_can_db.gps_date_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_date_data_rear.meta.rx_count);
-        printf_fn("  day                              = %ld\r\n", (long)feb_can_db.gps_date_data_rear.data.day);
-        printf_fn("  month                            = %ld\r\n", (long)feb_can_db.gps_date_data_rear.data.month);
-        printf_fn("  year                             = %ld\r\n", (long)feb_can_db.gps_date_data_rear.data.year);
+        printf_fn("0x%02X  fusion_euler_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x58, (int)feb_can_db.fusion_euler_rear.meta.present, (unsigned long)feb_can_db.fusion_euler_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_euler_rear.meta.rx_count);
+        printf_fn("  roll                             = %ld\r\n", (long)feb_can_db.fusion_euler_rear.data.roll);
+        printf_fn("  pitch                            = %ld\r\n", (long)feb_can_db.fusion_euler_rear.data.pitch);
+        printf_fn("  yaw                              = %ld\r\n", (long)feb_can_db.fusion_euler_rear.data.yaw);
         return 0;
     }
-    if (strcmp(name, "gps_status_data_rear") == 0)
+    if (strcmp(name, "fusion_lin_accel_rear") == 0)
     {
-        printf_fn("0x%02X  gps_status_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x55, (int)feb_can_db.gps_status_data_rear.meta.present, (unsigned long)feb_can_db.gps_status_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_status_data_rear.meta.rx_count);
-        printf_fn("  fix_type                         = %ld\r\n", (long)feb_can_db.gps_status_data_rear.data.fix_type);
-        printf_fn("  fix_mode                         = %ld\r\n", (long)feb_can_db.gps_status_data_rear.data.fix_mode);
-        printf_fn("  sats_in_use                      = %ld\r\n", (long)feb_can_db.gps_status_data_rear.data.sats_in_use);
-        printf_fn("  sats_in_view                     = %ld\r\n", (long)feb_can_db.gps_status_data_rear.data.sats_in_view);
-        printf_fn("  valid                            = %ld\r\n", (long)feb_can_db.gps_status_data_rear.data.valid);
-        printf_fn("  has_fix                          = %ld\r\n", (long)feb_can_db.gps_status_data_rear.data.has_fix);
-        printf_fn("  pdop                             = %ld\r\n", (long)feb_can_db.gps_status_data_rear.data.pdop);
+        printf_fn("0x%02X  fusion_lin_accel_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x59, (int)feb_can_db.fusion_lin_accel_rear.meta.present, (unsigned long)feb_can_db.fusion_lin_accel_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_lin_accel_rear.meta.rx_count);
+        printf_fn("  lin_accel_x                      = %ld\r\n", (long)feb_can_db.fusion_lin_accel_rear.data.lin_accel_x);
+        printf_fn("  lin_accel_y                      = %ld\r\n", (long)feb_can_db.fusion_lin_accel_rear.data.lin_accel_y);
+        printf_fn("  lin_accel_z                      = %ld\r\n", (long)feb_can_db.fusion_lin_accel_rear.data.lin_accel_z);
         return 0;
     }
-    if (strcmp(name, "fusion_quaternion_data_rear") == 0)
+    if (strcmp(name, "fusion_earth_accel_rear") == 0)
     {
-        printf_fn("0x%02X  fusion_quaternion_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x57, (int)feb_can_db.fusion_quaternion_data_rear.meta.present, (unsigned long)feb_can_db.fusion_quaternion_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_quaternion_data_rear.meta.rx_count);
-        printf_fn("  q_w                              = %ld\r\n", (long)feb_can_db.fusion_quaternion_data_rear.data.q_w);
-        printf_fn("  q_x                              = %ld\r\n", (long)feb_can_db.fusion_quaternion_data_rear.data.q_x);
-        printf_fn("  q_y                              = %ld\r\n", (long)feb_can_db.fusion_quaternion_data_rear.data.q_y);
-        printf_fn("  q_z                              = %ld\r\n", (long)feb_can_db.fusion_quaternion_data_rear.data.q_z);
+        printf_fn("0x%02X  fusion_earth_accel_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x5A, (int)feb_can_db.fusion_earth_accel_rear.meta.present, (unsigned long)feb_can_db.fusion_earth_accel_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_earth_accel_rear.meta.rx_count);
+        printf_fn("  earth_accel_x                    = %ld\r\n", (long)feb_can_db.fusion_earth_accel_rear.data.earth_accel_x);
+        printf_fn("  earth_accel_y                    = %ld\r\n", (long)feb_can_db.fusion_earth_accel_rear.data.earth_accel_y);
+        printf_fn("  earth_accel_z                    = %ld\r\n", (long)feb_can_db.fusion_earth_accel_rear.data.earth_accel_z);
         return 0;
     }
-    if (strcmp(name, "fusion_euler_data_rear") == 0)
+    if (strcmp(name, "fusion_status_rear") == 0)
     {
-        printf_fn("0x%02X  fusion_euler_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x58, (int)feb_can_db.fusion_euler_data_rear.meta.present, (unsigned long)feb_can_db.fusion_euler_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_euler_data_rear.meta.rx_count);
-        printf_fn("  roll                             = %ld\r\n", (long)feb_can_db.fusion_euler_data_rear.data.roll);
-        printf_fn("  pitch                            = %ld\r\n", (long)feb_can_db.fusion_euler_data_rear.data.pitch);
-        printf_fn("  yaw                              = %ld\r\n", (long)feb_can_db.fusion_euler_data_rear.data.yaw);
-        return 0;
-    }
-    if (strcmp(name, "fusion_linear_accel_data_rear") == 0)
-    {
-        printf_fn("0x%02X  fusion_linear_accel_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x59, (int)feb_can_db.fusion_linear_accel_data_rear.meta.present, (unsigned long)feb_can_db.fusion_linear_accel_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_linear_accel_data_rear.meta.rx_count);
-        printf_fn("  lin_accel_x                      = %ld\r\n", (long)feb_can_db.fusion_linear_accel_data_rear.data.lin_accel_x);
-        printf_fn("  lin_accel_y                      = %ld\r\n", (long)feb_can_db.fusion_linear_accel_data_rear.data.lin_accel_y);
-        printf_fn("  lin_accel_z                      = %ld\r\n", (long)feb_can_db.fusion_linear_accel_data_rear.data.lin_accel_z);
-        return 0;
-    }
-    if (strcmp(name, "fusion_earth_accel_data_rear") == 0)
-    {
-        printf_fn("0x%02X  fusion_earth_accel_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x5A, (int)feb_can_db.fusion_earth_accel_data_rear.meta.present, (unsigned long)feb_can_db.fusion_earth_accel_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_earth_accel_data_rear.meta.rx_count);
-        printf_fn("  earth_accel_x                    = %ld\r\n", (long)feb_can_db.fusion_earth_accel_data_rear.data.earth_accel_x);
-        printf_fn("  earth_accel_y                    = %ld\r\n", (long)feb_can_db.fusion_earth_accel_data_rear.data.earth_accel_y);
-        printf_fn("  earth_accel_z                    = %ld\r\n", (long)feb_can_db.fusion_earth_accel_data_rear.data.earth_accel_z);
-        return 0;
-    }
-    if (strcmp(name, "fusion_status_data_rear") == 0)
-    {
-        printf_fn("0x%02X  fusion_status_data_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x5B, (int)feb_can_db.fusion_status_data_rear.meta.present, (unsigned long)feb_can_db.fusion_status_data_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_status_data_rear.meta.rx_count);
-        printf_fn("  flags                            = %ld\r\n", (long)feb_can_db.fusion_status_data_rear.data.flags);
-        printf_fn("  accel_error                      = %ld\r\n", (long)feb_can_db.fusion_status_data_rear.data.accel_error);
-        printf_fn("  mag_error                        = %ld\r\n", (long)feb_can_db.fusion_status_data_rear.data.mag_error);
+        printf_fn("0x%02X  fusion_status_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x5B, (int)feb_can_db.fusion_status_rear.meta.present, (unsigned long)feb_can_db.fusion_status_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_status_rear.meta.rx_count);
+        printf_fn("  flags                            = %ld\r\n", (long)feb_can_db.fusion_status_rear.data.flags);
+        printf_fn("  accel_error                      = %ld\r\n", (long)feb_can_db.fusion_status_rear.data.accel_error);
+        printf_fn("  mag_error                        = %ld\r\n", (long)feb_can_db.fusion_status_rear.data.mag_error);
         return 0;
     }
     if (strcmp(name, "pcu_heartbeat") == 0)
@@ -35845,142 +35694,142 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
         printf_fn("  error63                          = %ld\r\n", (long)feb_can_db.dcu_heartbeat.data.error63);
         return 0;
     }
-    if (strcmp(name, "front_sensor_heartbeat_message") == 0)
+    if (strcmp(name, "heartbeat_front") == 0)
     {
-        printf_fn("0x%02X  front_sensor_heartbeat_message  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xD4, (int)feb_can_db.front_sensor_heartbeat_message.meta.present, (unsigned long)feb_can_db.front_sensor_heartbeat_message.meta.last_rx_ms, (unsigned long)feb_can_db.front_sensor_heartbeat_message.meta.rx_count);
-        printf_fn("  imu_init_failed                  = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.imu_init_failed);
-        printf_fn("  imu_read_failed                  = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.imu_read_failed);
-        printf_fn("  mag_init_failed                  = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.mag_init_failed);
-        printf_fn("  mag_read_failed                  = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.mag_read_failed);
-        printf_fn("  gps_init_failed                  = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.gps_init_failed);
-        printf_fn("  fusion_uncalibrated              = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.fusion_uncalibrated);
-        printf_fn("  lp_out_of_range                  = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.lp_out_of_range);
-        printf_fn("  error7                           = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error7);
-        printf_fn("  gps_no_fix                       = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.gps_no_fix);
-        printf_fn("  gps_stale                        = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.gps_stale);
-        printf_fn("  gps_link_slow                    = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.gps_link_slow);
-        printf_fn("  wss_left_no_signal               = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.wss_left_no_signal);
-        printf_fn("  wss_right_no_signal              = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.wss_right_no_signal);
-        printf_fn("  error13                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error13);
-        printf_fn("  error14                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error14);
-        printf_fn("  error15                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error15);
-        printf_fn("  can_bus_off                      = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.can_bus_off);
-        printf_fn("  can_tx_overflow                  = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.can_tx_overflow);
-        printf_fn("  can_rx_overflow                  = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.can_rx_overflow);
-        printf_fn("  error19                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error19);
-        printf_fn("  error20                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error20);
-        printf_fn("  error21                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error21);
-        printf_fn("  error22                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error22);
-        printf_fn("  error23                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error23);
-        printf_fn("  error24                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error24);
-        printf_fn("  error25                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error25);
-        printf_fn("  error26                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error26);
-        printf_fn("  error27                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error27);
-        printf_fn("  error28                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error28);
-        printf_fn("  error29                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error29);
-        printf_fn("  error30                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error30);
-        printf_fn("  error31                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error31);
-        printf_fn("  error32                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error32);
-        printf_fn("  error33                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error33);
-        printf_fn("  error34                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error34);
-        printf_fn("  error35                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error35);
-        printf_fn("  error36                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error36);
-        printf_fn("  error37                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error37);
-        printf_fn("  error38                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error38);
-        printf_fn("  error39                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error39);
-        printf_fn("  error40                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error40);
-        printf_fn("  error41                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error41);
-        printf_fn("  error42                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error42);
-        printf_fn("  error43                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error43);
-        printf_fn("  error44                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error44);
-        printf_fn("  error45                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error45);
-        printf_fn("  error46                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error46);
-        printf_fn("  error47                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error47);
-        printf_fn("  error48                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error48);
-        printf_fn("  error49                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error49);
-        printf_fn("  error50                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error50);
-        printf_fn("  error51                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error51);
-        printf_fn("  error52                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error52);
-        printf_fn("  error53                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error53);
-        printf_fn("  error54                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error54);
-        printf_fn("  error55                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error55);
-        printf_fn("  error56                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error56);
-        printf_fn("  error57                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error57);
-        printf_fn("  error58                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error58);
-        printf_fn("  error59                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error59);
-        printf_fn("  error60                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error60);
-        printf_fn("  error61                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error61);
-        printf_fn("  error62                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error62);
-        printf_fn("  error63                          = %ld\r\n", (long)feb_can_db.front_sensor_heartbeat_message.data.error63);
+        printf_fn("0x%02X  heartbeat_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xD4, (int)feb_can_db.heartbeat_front.meta.present, (unsigned long)feb_can_db.heartbeat_front.meta.last_rx_ms, (unsigned long)feb_can_db.heartbeat_front.meta.rx_count);
+        printf_fn("  imu_init_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.imu_init_failed);
+        printf_fn("  imu_read_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.imu_read_failed);
+        printf_fn("  mag_init_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.mag_init_failed);
+        printf_fn("  mag_read_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.mag_read_failed);
+        printf_fn("  gps_init_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.gps_init_failed);
+        printf_fn("  fusion_uncalibrated              = %ld\r\n", (long)feb_can_db.heartbeat_front.data.fusion_uncalibrated);
+        printf_fn("  lp_out_of_range                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.lp_out_of_range);
+        printf_fn("  error7                           = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error7);
+        printf_fn("  gps_no_fix                       = %ld\r\n", (long)feb_can_db.heartbeat_front.data.gps_no_fix);
+        printf_fn("  gps_stale                        = %ld\r\n", (long)feb_can_db.heartbeat_front.data.gps_stale);
+        printf_fn("  gps_link_slow                    = %ld\r\n", (long)feb_can_db.heartbeat_front.data.gps_link_slow);
+        printf_fn("  wss_left_no_signal               = %ld\r\n", (long)feb_can_db.heartbeat_front.data.wss_left_no_signal);
+        printf_fn("  wss_right_no_signal              = %ld\r\n", (long)feb_can_db.heartbeat_front.data.wss_right_no_signal);
+        printf_fn("  error13                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error13);
+        printf_fn("  error14                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error14);
+        printf_fn("  error15                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error15);
+        printf_fn("  can_bus_off                      = %ld\r\n", (long)feb_can_db.heartbeat_front.data.can_bus_off);
+        printf_fn("  can_tx_overflow                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.can_tx_overflow);
+        printf_fn("  can_rx_overflow                  = %ld\r\n", (long)feb_can_db.heartbeat_front.data.can_rx_overflow);
+        printf_fn("  error19                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error19);
+        printf_fn("  error20                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error20);
+        printf_fn("  error21                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error21);
+        printf_fn("  error22                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error22);
+        printf_fn("  error23                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error23);
+        printf_fn("  error24                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error24);
+        printf_fn("  error25                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error25);
+        printf_fn("  error26                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error26);
+        printf_fn("  error27                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error27);
+        printf_fn("  error28                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error28);
+        printf_fn("  error29                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error29);
+        printf_fn("  error30                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error30);
+        printf_fn("  error31                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error31);
+        printf_fn("  error32                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error32);
+        printf_fn("  error33                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error33);
+        printf_fn("  error34                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error34);
+        printf_fn("  error35                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error35);
+        printf_fn("  error36                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error36);
+        printf_fn("  error37                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error37);
+        printf_fn("  error38                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error38);
+        printf_fn("  error39                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error39);
+        printf_fn("  error40                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error40);
+        printf_fn("  error41                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error41);
+        printf_fn("  error42                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error42);
+        printf_fn("  error43                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error43);
+        printf_fn("  error44                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error44);
+        printf_fn("  error45                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error45);
+        printf_fn("  error46                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error46);
+        printf_fn("  error47                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error47);
+        printf_fn("  error48                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error48);
+        printf_fn("  error49                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error49);
+        printf_fn("  error50                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error50);
+        printf_fn("  error51                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error51);
+        printf_fn("  error52                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error52);
+        printf_fn("  error53                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error53);
+        printf_fn("  error54                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error54);
+        printf_fn("  error55                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error55);
+        printf_fn("  error56                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error56);
+        printf_fn("  error57                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error57);
+        printf_fn("  error58                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error58);
+        printf_fn("  error59                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error59);
+        printf_fn("  error60                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error60);
+        printf_fn("  error61                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error61);
+        printf_fn("  error62                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error62);
+        printf_fn("  error63                          = %ld\r\n", (long)feb_can_db.heartbeat_front.data.error63);
         return 0;
     }
-    if (strcmp(name, "rear_sensor_heartbeat_message") == 0)
+    if (strcmp(name, "heartbeat_rear") == 0)
     {
-        printf_fn("0x%02X  rear_sensor_heartbeat_message  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xD5, (int)feb_can_db.rear_sensor_heartbeat_message.meta.present, (unsigned long)feb_can_db.rear_sensor_heartbeat_message.meta.last_rx_ms, (unsigned long)feb_can_db.rear_sensor_heartbeat_message.meta.rx_count);
-        printf_fn("  imu_init_failed                  = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.imu_init_failed);
-        printf_fn("  imu_read_failed                  = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.imu_read_failed);
-        printf_fn("  mag_init_failed                  = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.mag_init_failed);
-        printf_fn("  mag_read_failed                  = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.mag_read_failed);
-        printf_fn("  gps_init_failed                  = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.gps_init_failed);
-        printf_fn("  fusion_uncalibrated              = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.fusion_uncalibrated);
-        printf_fn("  lp_out_of_range                  = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.lp_out_of_range);
-        printf_fn("  error7                           = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error7);
-        printf_fn("  gps_no_fix                       = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.gps_no_fix);
-        printf_fn("  gps_stale                        = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.gps_stale);
-        printf_fn("  gps_link_slow                    = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.gps_link_slow);
-        printf_fn("  wss_left_no_signal               = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.wss_left_no_signal);
-        printf_fn("  wss_right_no_signal              = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.wss_right_no_signal);
-        printf_fn("  error13                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error13);
-        printf_fn("  error14                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error14);
-        printf_fn("  error15                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error15);
-        printf_fn("  can_bus_off                      = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.can_bus_off);
-        printf_fn("  can_tx_overflow                  = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.can_tx_overflow);
-        printf_fn("  can_rx_overflow                  = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.can_rx_overflow);
-        printf_fn("  error19                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error19);
-        printf_fn("  error20                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error20);
-        printf_fn("  error21                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error21);
-        printf_fn("  error22                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error22);
-        printf_fn("  error23                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error23);
-        printf_fn("  error24                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error24);
-        printf_fn("  error25                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error25);
-        printf_fn("  error26                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error26);
-        printf_fn("  error27                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error27);
-        printf_fn("  error28                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error28);
-        printf_fn("  error29                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error29);
-        printf_fn("  error30                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error30);
-        printf_fn("  error31                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error31);
-        printf_fn("  error32                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error32);
-        printf_fn("  error33                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error33);
-        printf_fn("  error34                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error34);
-        printf_fn("  error35                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error35);
-        printf_fn("  error36                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error36);
-        printf_fn("  error37                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error37);
-        printf_fn("  error38                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error38);
-        printf_fn("  error39                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error39);
-        printf_fn("  error40                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error40);
-        printf_fn("  error41                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error41);
-        printf_fn("  error42                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error42);
-        printf_fn("  error43                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error43);
-        printf_fn("  error44                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error44);
-        printf_fn("  error45                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error45);
-        printf_fn("  error46                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error46);
-        printf_fn("  error47                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error47);
-        printf_fn("  error48                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error48);
-        printf_fn("  error49                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error49);
-        printf_fn("  error50                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error50);
-        printf_fn("  error51                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error51);
-        printf_fn("  error52                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error52);
-        printf_fn("  error53                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error53);
-        printf_fn("  error54                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error54);
-        printf_fn("  error55                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error55);
-        printf_fn("  error56                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error56);
-        printf_fn("  error57                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error57);
-        printf_fn("  error58                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error58);
-        printf_fn("  error59                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error59);
-        printf_fn("  error60                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error60);
-        printf_fn("  error61                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error61);
-        printf_fn("  error62                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error62);
-        printf_fn("  error63                          = %ld\r\n", (long)feb_can_db.rear_sensor_heartbeat_message.data.error63);
+        printf_fn("0x%02X  heartbeat_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xD5, (int)feb_can_db.heartbeat_rear.meta.present, (unsigned long)feb_can_db.heartbeat_rear.meta.last_rx_ms, (unsigned long)feb_can_db.heartbeat_rear.meta.rx_count);
+        printf_fn("  imu_init_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.imu_init_failed);
+        printf_fn("  imu_read_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.imu_read_failed);
+        printf_fn("  mag_init_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.mag_init_failed);
+        printf_fn("  mag_read_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.mag_read_failed);
+        printf_fn("  gps_init_failed                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.gps_init_failed);
+        printf_fn("  fusion_uncalibrated              = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.fusion_uncalibrated);
+        printf_fn("  lp_out_of_range                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.lp_out_of_range);
+        printf_fn("  error7                           = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error7);
+        printf_fn("  gps_no_fix                       = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.gps_no_fix);
+        printf_fn("  gps_stale                        = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.gps_stale);
+        printf_fn("  gps_link_slow                    = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.gps_link_slow);
+        printf_fn("  wss_left_no_signal               = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.wss_left_no_signal);
+        printf_fn("  wss_right_no_signal              = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.wss_right_no_signal);
+        printf_fn("  error13                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error13);
+        printf_fn("  error14                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error14);
+        printf_fn("  error15                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error15);
+        printf_fn("  can_bus_off                      = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.can_bus_off);
+        printf_fn("  can_tx_overflow                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.can_tx_overflow);
+        printf_fn("  can_rx_overflow                  = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.can_rx_overflow);
+        printf_fn("  error19                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error19);
+        printf_fn("  error20                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error20);
+        printf_fn("  error21                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error21);
+        printf_fn("  error22                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error22);
+        printf_fn("  error23                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error23);
+        printf_fn("  error24                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error24);
+        printf_fn("  error25                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error25);
+        printf_fn("  error26                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error26);
+        printf_fn("  error27                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error27);
+        printf_fn("  error28                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error28);
+        printf_fn("  error29                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error29);
+        printf_fn("  error30                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error30);
+        printf_fn("  error31                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error31);
+        printf_fn("  error32                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error32);
+        printf_fn("  error33                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error33);
+        printf_fn("  error34                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error34);
+        printf_fn("  error35                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error35);
+        printf_fn("  error36                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error36);
+        printf_fn("  error37                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error37);
+        printf_fn("  error38                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error38);
+        printf_fn("  error39                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error39);
+        printf_fn("  error40                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error40);
+        printf_fn("  error41                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error41);
+        printf_fn("  error42                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error42);
+        printf_fn("  error43                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error43);
+        printf_fn("  error44                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error44);
+        printf_fn("  error45                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error45);
+        printf_fn("  error46                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error46);
+        printf_fn("  error47                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error47);
+        printf_fn("  error48                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error48);
+        printf_fn("  error49                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error49);
+        printf_fn("  error50                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error50);
+        printf_fn("  error51                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error51);
+        printf_fn("  error52                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error52);
+        printf_fn("  error53                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error53);
+        printf_fn("  error54                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error54);
+        printf_fn("  error55                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error55);
+        printf_fn("  error56                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error56);
+        printf_fn("  error57                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error57);
+        printf_fn("  error58                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error58);
+        printf_fn("  error59                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error59);
+        printf_fn("  error60                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error60);
+        printf_fn("  error61                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error61);
+        printf_fn("  error62                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error62);
+        printf_fn("  error63                          = %ld\r\n", (long)feb_can_db.heartbeat_rear.data.error63);
         return 0;
     }
     if (strcmp(name, "feb_ping_pong_counter1") == 0)

@@ -136,7 +136,7 @@ from msg_defs import res_messages as res_msg
 #   0x1E-0x2C:  Sensor node messages — base (FRONT/REAR WSS, IMU, mag, tire/linpot) (12 used, 1 reserved)
 #   0x2D-0x33:  DART messages (2 used, 5 reserved)
 #   0x34-0x3F:  TPS chip / PCU ADC (5 used, 7 reserved)
-#   0x40-0x4F:  Sensor nodes FRONT (extended): GPS / Fusion / die temps + REAR temps
+#   0x40-0x4F:  Sensor nodes FRONT (extended): GPS / Fusion / steering
 #   0x50-0x5F:  Sensor nodes REAR (extended): GPS / Fusion
 #   0xC0-0xCF:  PCU RMS commands (2 used, 14 reserved)
 #   0xD0-0xDF:  Heartbeat messages (6 used, 10 reserved)
@@ -173,32 +173,32 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     # 0x19-0x1D: Reserved for future LVPDB messages
 
     # ----- Sensor Node Messages (0x1E-0x2C) -----
-    0x1E: (sensor_msg.get_LinPot_Front, "Front linear potentiometer"),
-    0x1F: (sensor_msg.get_LinPot_Rear, "Rear linear potentiometer"),
-    0x20: (sensor_msg.get_front_left_tire_temp_data, "Front left tire temperature"),
-    0x21: (sensor_msg.get_front_right_tire_temp_data, "Front right tire temperature"),
-    0x22: (sensor_msg.get_rear_left_tire_temp_data, "Rear left tire temperature"),
-    0x23: (sensor_msg.get_rear_right_tire_temp_data, "Rear right tire temperature"),
+    0x1E: (lambda fid: sensor_msg.get_linpot(fid, "front"), "Front linear potentiometer"),
+    0x1F: (lambda fid: sensor_msg.get_linpot(fid, "rear"), "Rear linear potentiometer"),
+    0x20: (lambda fid: sensor_msg.get_tire_temp_left(fid, "front"), "Front left tire temperature"),
+    0x21: (lambda fid: sensor_msg.get_tire_temp_right(fid, "front"), "Front right tire temperature"),
+    0x22: (lambda fid: sensor_msg.get_tire_temp_left(fid, "rear"), "Rear left tire temperature"),
+    0x23: (lambda fid: sensor_msg.get_tire_temp_right(fid, "rear"), "Rear right tire temperature"),
 
     # WSS (Wheel Speed Sensors):
     # FRONT
-    0x24: (sensor_msg.get_wss_data_front, "[WSS][FRONT] wheel speed sensor data"),
+    0x24: (lambda fid: sensor_msg.get_wss(fid, "front"), "[WSS][FRONT] wheel speed sensor data"),
     # REAR
-    0x25: (sensor_msg.get_wss_data_rear, "[WSS][REAR] wheel speed sensor data"),
+    0x25: (lambda fid: sensor_msg.get_wss(fid, "rear"), "[WSS][REAR] wheel speed sensor data"),
 
     # IMU: accelerometer/gyro
     # FRONT
-    0x26: (sensor_msg.get_imu_acceleration_data_front, "[IMU][FRONT] accelerometer data (raw)"),
-    0x28: (sensor_msg.get_imu_gyro_data_front, "[IMU][FRONT] gyroscope data (raw)"),
+    0x26: (lambda fid: sensor_msg.get_imu_accel(fid, "front"), "[IMU][FRONT] accelerometer data (raw)"),
+    0x28: (lambda fid: sensor_msg.get_imu_gyro(fid, "front"), "[IMU][FRONT] gyroscope data (raw)"),
     # REAR
-    0x27: (sensor_msg.get_imu_acceleration_data_rear, "[IMU][REAR] accelerometer data (raw)"),
-    0x29: (sensor_msg.get_imu_gyro_data_rear, "[IMU][REAR] gyroscope data (raw)"),
+    0x27: (lambda fid: sensor_msg.get_imu_accel(fid, "rear"), "[IMU][REAR] accelerometer data (raw)"),
+    0x29: (lambda fid: sensor_msg.get_imu_gyro(fid, "rear"), "[IMU][REAR] gyroscope data (raw)"),
 
     # Magnetometer
     # FRONT
-    0x2A: (sensor_msg.get_magnetometer_data_front, "[Magnetometer][FRONT] data (raw)"),
+    0x2A: (lambda fid: sensor_msg.get_mag(fid, "front"), "[Magnetometer][FRONT] data (raw)"),
     # REAR
-    0x2B: (sensor_msg.get_magnetometer_data_rear, "[Magnetometer][REAR] data (raw)"),
+    0x2B: (lambda fid: sensor_msg.get_mag(fid, "rear"), "[Magnetometer][REAR] data (raw)"),
     # 0x2C: Reserved for future sensor messages
 
     # ----- DART Messages (0x2D-0x33) -----
@@ -215,40 +215,35 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x39: (pcu_msg.get_pedal_voltages, "PCU raw pedal sensor voltages (mV)"),
     # 0x3A-0x3F: Reserved for future TPS / PCU ADC messages
 
-    # ----- Sensor Nodes FRONT (extended): GPS / Fusion / die temps (0x40-0x4F) -----
-    0x40: (sensor_msg.get_gps_pos_data, "[GPS][FRONT] latitude/longitude (int32 * 1e-7 deg)"),
-    0x41: (sensor_msg.get_gps_altitude_data, "[GPS][FRONT] altitude (cm) + HDOP/VDOP"),
-    0x42: (sensor_msg.get_gps_motion_data, "[GPS][FRONT] speed (km/h) and course (deg)"),
-    0x43: (sensor_msg.get_gps_time_data, "[GPS][FRONT] time data (UTC)"),
-    0x44: (sensor_msg.get_gps_date_data, "[GPS][FRONT] date data (UTC)"),
-    0x45: (sensor_msg.get_gps_status_data, "[GPS][FRONT] fix quality, satellite counts, PDOP"),
+    # ----- Sensor Nodes FRONT (extended): GPS / Fusion / steering (0x40-0x4F) -----
+    0x40: (lambda fid: sensor_msg.get_gps_pos(fid, "front"), "[GPS][FRONT] latitude/longitude"),
+    0x41: (lambda fid: sensor_msg.get_gps_altitude(fid, "front"), "[GPS][FRONT] altitude + HDOP/VDOP"),
+    0x42: (lambda fid: sensor_msg.get_gps_motion(fid, "front"), "[GPS][FRONT] speed and course"),
+    0x43: (lambda fid: sensor_msg.get_gps_time(fid, "front"), "[GPS][FRONT] time data (UTC)"),
+    0x44: (lambda fid: sensor_msg.get_gps_date(fid, "front"), "[GPS][FRONT] date data (UTC)"),
+    0x45: (lambda fid: sensor_msg.get_gps_status(fid, "front"), "[GPS][FRONT] fix quality, satellite counts, PDOP"),
     # 0x46: Reserved
-    0x47: (sensor_msg.get_fusion_quaternion_data, "[Fusion][FRONT] orientation quaternion"),
-    0x48: (sensor_msg.get_fusion_euler_data, "[Fusion][FRONT] Euler angles"),
-    0x49: (sensor_msg.get_fusion_linear_accel_data, "[Fusion][FRONT] linear acceleration (body frame)"),
-    0x4A: (sensor_msg.get_fusion_earth_accel_data, "[Fusion][FRONT] linear acceleration (earth frame)"),
-    0x4B: (sensor_msg.get_fusion_status_data, "[Fusion][FRONT] internal flags + rejection errors"),
-    0x4C: (sensor_msg.get_sensor_temps_data, "[Sensors][FRONT] IMU + Magnetometer die temperature"),
-    0x4D: (sensor_msg.get_sensor_temps_data_rear, "[Sensors][REAR] IMU + Magnetometer die temperature"),
-    # 0x4E-0x4F: Reserved for future extended sensor messages
-
-    0x4E: (sensor_msg.get_steering_angle_data, "[Steering][FRONT] filtered + raw angle, AGC gain"),
-    0x4F: (sensor_msg.get_steering_status_data, "[Steering][FRONT] magnet status flags + magnitude"),
+    0x47: (lambda fid: sensor_msg.get_fusion_quat(fid, "front"), "[Fusion][FRONT] orientation quaternion"),
+    0x48: (lambda fid: sensor_msg.get_fusion_euler(fid, "front"), "[Fusion][FRONT] Euler angles"),
+    0x49: (lambda fid: sensor_msg.get_fusion_lin_accel(fid, "front"), "[Fusion][FRONT] linear acceleration (body frame)"),
+    0x4A: (lambda fid: sensor_msg.get_fusion_earth_accel(fid, "front"), "[Fusion][FRONT] linear acceleration (earth frame)"),
+    0x4B: (lambda fid: sensor_msg.get_fusion_status(fid, "front"), "[Fusion][FRONT] internal flags + rejection errors"),
+    0x4E: (lambda fid: sensor_msg.get_steer(fid, "front"), "[Steering][FRONT] angle, AGC gain, magnet status + magnitude"),
 
 
     # ----- Sensor Nodes REAR (extended): GPS / Fusion (0x50-0x5F) -----
-    0x50: (sensor_msg.get_gps_pos_data_rear, "[GPS][REAR] latitude/longitude (int32 * 1e-7 deg)"),
-    0x51: (sensor_msg.get_gps_altitude_data_rear, "[GPS][REAR] altitude (cm) + HDOP/VDOP"),
-    0x52: (sensor_msg.get_gps_motion_data_rear, "[GPS][REAR] speed (km/h) and course (deg)"),
-    0x53: (sensor_msg.get_gps_time_data_rear, "[GPS][REAR] time data (UTC)"),
-    0x54: (sensor_msg.get_gps_date_data_rear, "[GPS][REAR] date data (UTC)"),
-    0x55: (sensor_msg.get_gps_status_data_rear, "[GPS][REAR] fix quality, satellite counts, PDOP"),
+    0x50: (lambda fid: sensor_msg.get_gps_pos(fid, "rear"), "[GPS][REAR] latitude/longitude"),
+    0x51: (lambda fid: sensor_msg.get_gps_altitude(fid, "rear"), "[GPS][REAR] altitude + HDOP/VDOP"),
+    0x52: (lambda fid: sensor_msg.get_gps_motion(fid, "rear"), "[GPS][REAR] speed and course"),
+    0x53: (lambda fid: sensor_msg.get_gps_time(fid, "rear"), "[GPS][REAR] time data (UTC)"),
+    0x54: (lambda fid: sensor_msg.get_gps_date(fid, "rear"), "[GPS][REAR] date data (UTC)"),
+    0x55: (lambda fid: sensor_msg.get_gps_status(fid, "rear"), "[GPS][REAR] fix quality, satellite counts, PDOP"),
     # 0x56: Reserved (mirrors 0x46 front gap)
-    0x57: (sensor_msg.get_fusion_quaternion_data_rear, "[Fusion][REAR] orientation quaternion"),
-    0x58: (sensor_msg.get_fusion_euler_data_rear, "[Fusion][REAR] Euler angles"),
-    0x59: (sensor_msg.get_fusion_linear_accel_data_rear, "[Fusion][REAR] linear acceleration (body frame)"),
-    0x5A: (sensor_msg.get_fusion_earth_accel_data_rear, "[Fusion][REAR] linear acceleration (earth frame)"),
-    0x5B: (sensor_msg.get_fusion_status_data_rear, "[Fusion][REAR] internal flags + rejection errors"),
+    0x57: (lambda fid: sensor_msg.get_fusion_quat(fid, "rear"), "[Fusion][REAR] orientation quaternion"),
+    0x58: (lambda fid: sensor_msg.get_fusion_euler(fid, "rear"), "[Fusion][REAR] Euler angles"),
+    0x59: (lambda fid: sensor_msg.get_fusion_lin_accel(fid, "rear"), "[Fusion][REAR] linear acceleration (body frame)"),
+    0x5A: (lambda fid: sensor_msg.get_fusion_earth_accel(fid, "rear"), "[Fusion][REAR] linear acceleration (earth frame)"),
+    0x5B: (lambda fid: sensor_msg.get_fusion_status(fid, "rear"), "[Fusion][REAR] internal flags + rejection errors"),
     # 0x5C-0x5F: Reserved for future REAR extended sensor messages
 
 
@@ -265,8 +260,8 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0xD1: (dash_msg.get_dash_heartbeat, "DASH heartbeat"),
     0xD2: (lvpdb_msg.get_lvpdb_heartbeat, "LVPDB heartbeat"),
     0xD3: (dcu_msg.get_dcu_heartbeat, "DCU heartbeat"),
-    0xD4: (sensor_msg.get_front_sensor_heartbeat, "Front sensor node heartbeat"),
-    0xD5: (sensor_msg.get_rear_sensor_heartbeat, "Rear sensor node heartbeat"),
+    0xD4: (lambda fid: sensor_msg.get_heartbeat(fid, "front"), "Front sensor node heartbeat"),
+    0xD5: (lambda fid: sensor_msg.get_heartbeat(fid, "rear"), "Rear sensor node heartbeat"),
     # 0xD6-0xDF: Reserved for future heartbeats
 
     # ----- Debug/Test Messages (0xE0-0xEF) -----
@@ -306,7 +301,7 @@ ID_RANGES = [
     (0x1E, 0x2C, "Sensor Nodes"),
     (0x2D, 0x33, "DART"),
     (0x34, 0x3F, "TPS Chips / PCU ADC"),
-    (0x40, 0x4F, "Sensor Nodes FRONT (extended): GPS / Fusion / die temps + REAR temps"),
+    (0x40, 0x4F, "Sensor Nodes FRONT (extended): GPS / Fusion / steering"),
     (0x50, 0x5F, "Sensor Nodes REAR (extended): GPS / Fusion"),
     (0xA0, 0xC2, "Inverter (Cascadia PM100, via external_dbc/inverter.dbc)"),
     (0xC0, 0xCF, "RMS/Inverter"),
@@ -327,19 +322,6 @@ def validate_registry() -> bool:
             errors.append(
                 f"Frame ID 0x{frame_id:03X} is a CANopen reserved identifier"
             )
-
-    # Check for duplicate functions (same function registered twice)
-    seen_funcs = {}
-    for frame_id, (func, desc) in MESSAGE_REGISTRY.items():
-        mod = getattr(func, "__module__", "?")
-        name = getattr(func, "__name__", repr(func))
-        func_name = f"{mod}.{name}"
-        if func_name in seen_funcs:
-            errors.append(
-                f"Duplicate function: {func_name} at IDs "
-                f"0x{seen_funcs[func_name]:02X} and 0x{frame_id:02X}"
-            )
-        seen_funcs[func_name] = frame_id
 
     # Check frame ID is within valid CAN range
     for frame_id in MESSAGE_REGISTRY.keys():

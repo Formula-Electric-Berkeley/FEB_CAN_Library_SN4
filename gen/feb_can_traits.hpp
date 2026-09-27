@@ -175,172 +175,172 @@ struct LvpdbSmAf1Af2CpRfCurrents
   static constexpr auto kUnpack = &feb_can_lvpdb_sm_af1_af2_cp_rf_currents_unpack;
 };
 
-struct LinearPotentiometerFront
+struct LinpotFront
 {
-  using Data = feb_can_linear_potentiometer_front_t;
+  using Data = feb_can_linpot_front_t;
   static constexpr std::uint32_t kFrameId = 0x1Eu;
   static constexpr std::uint8_t kLength = 4u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 20u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_linear_potentiometer_front_pack;
-  static constexpr auto kUnpack = &feb_can_linear_potentiometer_front_unpack;
+  static constexpr auto kPack = &feb_can_linpot_front_pack;
+  static constexpr auto kUnpack = &feb_can_linpot_front_unpack;
 };
 
-struct LinearPotentiometerRear
+struct LinpotRear
 {
-  using Data = feb_can_linear_potentiometer_rear_t;
+  using Data = feb_can_linpot_rear_t;
   static constexpr std::uint32_t kFrameId = 0x1Fu;
   static constexpr std::uint8_t kLength = 4u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 20u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_linear_potentiometer_rear_pack;
-  static constexpr auto kUnpack = &feb_can_linear_potentiometer_rear_unpack;
+  static constexpr auto kPack = &feb_can_linpot_rear_pack;
+  static constexpr auto kUnpack = &feb_can_linpot_rear_unpack;
 };
 
-struct FrontLeftTireTemp
+struct TireTempLeftFront
 {
-  using Data = feb_can_front_left_tire_temp_t;
+  using Data = feb_can_tire_temp_left_front_t;
   static constexpr std::uint32_t kFrameId = 0x20u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 1000u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_front_left_tire_temp_pack;
-  static constexpr auto kUnpack = &feb_can_front_left_tire_temp_unpack;
+  static constexpr auto kPack = &feb_can_tire_temp_left_front_pack;
+  static constexpr auto kUnpack = &feb_can_tire_temp_left_front_unpack;
 };
 
-struct FrontRightTireTemp
+struct TireTempRightFront
 {
-  using Data = feb_can_front_right_tire_temp_t;
+  using Data = feb_can_tire_temp_right_front_t;
   static constexpr std::uint32_t kFrameId = 0x21u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 1000u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_front_right_tire_temp_pack;
-  static constexpr auto kUnpack = &feb_can_front_right_tire_temp_unpack;
+  static constexpr auto kPack = &feb_can_tire_temp_right_front_pack;
+  static constexpr auto kUnpack = &feb_can_tire_temp_right_front_unpack;
 };
 
-struct RearLeftTireTemp
+struct TireTempLeftRear
 {
-  using Data = feb_can_rear_left_tire_temp_t;
+  using Data = feb_can_tire_temp_left_rear_t;
   static constexpr std::uint32_t kFrameId = 0x22u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 1000u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_rear_left_tire_temp_pack;
-  static constexpr auto kUnpack = &feb_can_rear_left_tire_temp_unpack;
+  static constexpr auto kPack = &feb_can_tire_temp_left_rear_pack;
+  static constexpr auto kUnpack = &feb_can_tire_temp_left_rear_unpack;
 };
 
-struct RearRightTireTemp
+struct TireTempRightRear
 {
-  using Data = feb_can_rear_right_tire_temp_t;
+  using Data = feb_can_tire_temp_right_rear_t;
   static constexpr std::uint32_t kFrameId = 0x23u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 1000u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_rear_right_tire_temp_pack;
-  static constexpr auto kUnpack = &feb_can_rear_right_tire_temp_unpack;
+  static constexpr auto kPack = &feb_can_tire_temp_right_rear_pack;
+  static constexpr auto kUnpack = &feb_can_tire_temp_right_rear_unpack;
 };
 
-struct WssFrontData
+struct WssFront
 {
-  using Data = feb_can_wss_front_data_t;
+  using Data = feb_can_wss_front_t;
   static constexpr std::uint32_t kFrameId = 0x24u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 20u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_wss_front_data_pack;
-  static constexpr auto kUnpack = &feb_can_wss_front_data_unpack;
+  static constexpr auto kPack = &feb_can_wss_front_pack;
+  static constexpr auto kUnpack = &feb_can_wss_front_unpack;
 };
 
-struct WssRearData
+struct WssRear
 {
-  using Data = feb_can_wss_rear_data_t;
+  using Data = feb_can_wss_rear_t;
   static constexpr std::uint32_t kFrameId = 0x25u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 20u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_wss_rear_data_pack;
-  static constexpr auto kUnpack = &feb_can_wss_rear_data_unpack;
+  static constexpr auto kPack = &feb_can_wss_rear_pack;
+  static constexpr auto kUnpack = &feb_can_wss_rear_unpack;
 };
 
-struct ImuAccelerationData
+struct ImuAccelFront
 {
-  using Data = feb_can_imu_acceleration_data_t;
+  using Data = feb_can_imu_accel_front_t;
   static constexpr std::uint32_t kFrameId = 0x26u;
-  static constexpr std::uint8_t kLength = 6u;
+  static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_imu_acceleration_data_pack;
-  static constexpr auto kUnpack = &feb_can_imu_acceleration_data_unpack;
+  static constexpr auto kPack = &feb_can_imu_accel_front_pack;
+  static constexpr auto kUnpack = &feb_can_imu_accel_front_unpack;
 };
 
-struct ImuAccelerationDataRear
+struct ImuAccelRear
 {
-  using Data = feb_can_imu_acceleration_data_rear_t;
+  using Data = feb_can_imu_accel_rear_t;
   static constexpr std::uint32_t kFrameId = 0x27u;
-  static constexpr std::uint8_t kLength = 6u;
+  static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_imu_acceleration_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_imu_acceleration_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_imu_accel_rear_pack;
+  static constexpr auto kUnpack = &feb_can_imu_accel_rear_unpack;
 };
 
-struct ImuGyroData
+struct ImuGyroFront
 {
-  using Data = feb_can_imu_gyro_data_t;
+  using Data = feb_can_imu_gyro_front_t;
   static constexpr std::uint32_t kFrameId = 0x28u;
   static constexpr std::uint8_t kLength = 6u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_imu_gyro_data_pack;
-  static constexpr auto kUnpack = &feb_can_imu_gyro_data_unpack;
+  static constexpr auto kPack = &feb_can_imu_gyro_front_pack;
+  static constexpr auto kUnpack = &feb_can_imu_gyro_front_unpack;
 };
 
-struct ImuGyroDataRear
+struct ImuGyroRear
 {
-  using Data = feb_can_imu_gyro_data_rear_t;
+  using Data = feb_can_imu_gyro_rear_t;
   static constexpr std::uint32_t kFrameId = 0x29u;
   static constexpr std::uint8_t kLength = 6u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_imu_gyro_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_imu_gyro_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_imu_gyro_rear_pack;
+  static constexpr auto kUnpack = &feb_can_imu_gyro_rear_unpack;
 };
 
-struct MagnetometerData
+struct MagFront
 {
-  using Data = feb_can_magnetometer_data_t;
+  using Data = feb_can_mag_front_t;
   static constexpr std::uint32_t kFrameId = 0x2Au;
-  static constexpr std::uint8_t kLength = 6u;
+  static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_magnetometer_data_pack;
-  static constexpr auto kUnpack = &feb_can_magnetometer_data_unpack;
+  static constexpr auto kPack = &feb_can_mag_front_pack;
+  static constexpr auto kUnpack = &feb_can_mag_front_unpack;
 };
 
-struct MagnetometerDataRear
+struct MagRear
 {
-  using Data = feb_can_magnetometer_data_rear_t;
+  using Data = feb_can_mag_rear_t;
   static constexpr std::uint32_t kFrameId = 0x2Bu;
-  static constexpr std::uint8_t kLength = 6u;
+  static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_magnetometer_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_magnetometer_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_mag_rear_pack;
+  static constexpr auto kUnpack = &feb_can_mag_rear_unpack;
 };
 
 struct DartTachMeasurements1234
@@ -439,316 +439,280 @@ struct PcuPedalVoltages
   static constexpr auto kUnpack = &feb_can_pcu_pedal_voltages_unpack;
 };
 
-struct GpsPosData
+struct GpsPosFront
 {
-  using Data = feb_can_gps_pos_data_t;
+  using Data = feb_can_gps_pos_front_t;
   static constexpr std::uint32_t kFrameId = 0x40u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 200u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_gps_pos_data_pack;
-  static constexpr auto kUnpack = &feb_can_gps_pos_data_unpack;
+  static constexpr auto kPack = &feb_can_gps_pos_front_pack;
+  static constexpr auto kUnpack = &feb_can_gps_pos_front_unpack;
 };
 
-struct GpsAltitudeData
+struct GpsAltitudeFront
 {
-  using Data = feb_can_gps_altitude_data_t;
+  using Data = feb_can_gps_altitude_front_t;
   static constexpr std::uint32_t kFrameId = 0x41u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 200u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_gps_altitude_data_pack;
-  static constexpr auto kUnpack = &feb_can_gps_altitude_data_unpack;
+  static constexpr auto kPack = &feb_can_gps_altitude_front_pack;
+  static constexpr auto kUnpack = &feb_can_gps_altitude_front_unpack;
 };
 
-struct GpsMotionData
+struct GpsMotionFront
 {
-  using Data = feb_can_gps_motion_data_t;
+  using Data = feb_can_gps_motion_front_t;
   static constexpr std::uint32_t kFrameId = 0x42u;
   static constexpr std::uint8_t kLength = 4u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 200u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_gps_motion_data_pack;
-  static constexpr auto kUnpack = &feb_can_gps_motion_data_unpack;
+  static constexpr auto kPack = &feb_can_gps_motion_front_pack;
+  static constexpr auto kUnpack = &feb_can_gps_motion_front_unpack;
 };
 
-struct GpsTimeData
+struct GpsTimeFront
 {
-  using Data = feb_can_gps_time_data_t;
+  using Data = feb_can_gps_time_front_t;
   static constexpr std::uint32_t kFrameId = 0x43u;
   static constexpr std::uint8_t kLength = 3u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 200u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_gps_time_data_pack;
-  static constexpr auto kUnpack = &feb_can_gps_time_data_unpack;
+  static constexpr auto kPack = &feb_can_gps_time_front_pack;
+  static constexpr auto kUnpack = &feb_can_gps_time_front_unpack;
 };
 
-struct GpsDateData
+struct GpsDateFront
 {
-  using Data = feb_can_gps_date_data_t;
+  using Data = feb_can_gps_date_front_t;
   static constexpr std::uint32_t kFrameId = 0x44u;
   static constexpr std::uint8_t kLength = 3u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 200u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_gps_date_data_pack;
-  static constexpr auto kUnpack = &feb_can_gps_date_data_unpack;
+  static constexpr auto kPack = &feb_can_gps_date_front_pack;
+  static constexpr auto kUnpack = &feb_can_gps_date_front_unpack;
 };
 
-struct GpsStatusData
+struct GpsStatusFront
 {
-  using Data = feb_can_gps_status_data_t;
+  using Data = feb_can_gps_status_front_t;
   static constexpr std::uint32_t kFrameId = 0x45u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 200u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_gps_status_data_pack;
-  static constexpr auto kUnpack = &feb_can_gps_status_data_unpack;
+  static constexpr auto kPack = &feb_can_gps_status_front_pack;
+  static constexpr auto kUnpack = &feb_can_gps_status_front_unpack;
 };
 
-struct FusionQuaternionData
+struct FusionQuatFront
 {
-  using Data = feb_can_fusion_quaternion_data_t;
+  using Data = feb_can_fusion_quat_front_t;
   static constexpr std::uint32_t kFrameId = 0x47u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_fusion_quaternion_data_pack;
-  static constexpr auto kUnpack = &feb_can_fusion_quaternion_data_unpack;
+  static constexpr auto kPack = &feb_can_fusion_quat_front_pack;
+  static constexpr auto kUnpack = &feb_can_fusion_quat_front_unpack;
 };
 
-struct FusionEulerData
+struct FusionEulerFront
 {
-  using Data = feb_can_fusion_euler_data_t;
+  using Data = feb_can_fusion_euler_front_t;
   static constexpr std::uint32_t kFrameId = 0x48u;
   static constexpr std::uint8_t kLength = 6u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_fusion_euler_data_pack;
-  static constexpr auto kUnpack = &feb_can_fusion_euler_data_unpack;
+  static constexpr auto kPack = &feb_can_fusion_euler_front_pack;
+  static constexpr auto kUnpack = &feb_can_fusion_euler_front_unpack;
 };
 
-struct FusionLinearAccelData
+struct FusionLinAccelFront
 {
-  using Data = feb_can_fusion_linear_accel_data_t;
+  using Data = feb_can_fusion_lin_accel_front_t;
   static constexpr std::uint32_t kFrameId = 0x49u;
   static constexpr std::uint8_t kLength = 6u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_fusion_linear_accel_data_pack;
-  static constexpr auto kUnpack = &feb_can_fusion_linear_accel_data_unpack;
+  static constexpr auto kPack = &feb_can_fusion_lin_accel_front_pack;
+  static constexpr auto kUnpack = &feb_can_fusion_lin_accel_front_unpack;
 };
 
-struct FusionEarthAccelData
+struct FusionEarthAccelFront
 {
-  using Data = feb_can_fusion_earth_accel_data_t;
+  using Data = feb_can_fusion_earth_accel_front_t;
   static constexpr std::uint32_t kFrameId = 0x4Au;
   static constexpr std::uint8_t kLength = 6u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_fusion_earth_accel_data_pack;
-  static constexpr auto kUnpack = &feb_can_fusion_earth_accel_data_unpack;
+  static constexpr auto kPack = &feb_can_fusion_earth_accel_front_pack;
+  static constexpr auto kUnpack = &feb_can_fusion_earth_accel_front_unpack;
 };
 
-struct FusionStatusData
+struct FusionStatusFront
 {
-  using Data = feb_can_fusion_status_data_t;
+  using Data = feb_can_fusion_status_front_t;
   static constexpr std::uint32_t kFrameId = 0x4Bu;
   static constexpr std::uint8_t kLength = 3u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_fusion_status_data_pack;
-  static constexpr auto kUnpack = &feb_can_fusion_status_data_unpack;
+  static constexpr auto kPack = &feb_can_fusion_status_front_pack;
+  static constexpr auto kUnpack = &feb_can_fusion_status_front_unpack;
 };
 
-struct SensorTempsData
+struct SteerFront
 {
-  using Data = feb_can_sensor_temps_data_t;
-  static constexpr std::uint32_t kFrameId = 0x4Cu;
-  static constexpr std::uint8_t kLength = 4u;
-  static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 1000u;
-  static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_sensor_temps_data_pack;
-  static constexpr auto kUnpack = &feb_can_sensor_temps_data_unpack;
-};
-
-struct SensorTempsDataRear
-{
-  using Data = feb_can_sensor_temps_data_rear_t;
-  static constexpr std::uint32_t kFrameId = 0x4Du;
-  static constexpr std::uint8_t kLength = 4u;
-  static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 1000u;
-  static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_sensor_temps_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_sensor_temps_data_rear_unpack;
-};
-
-struct SteerAngleData
-{
-  using Data = feb_can_steer_angle_data_t;
+  using Data = feb_can_steer_front_t;
   static constexpr std::uint32_t kFrameId = 0x4Eu;
-  static constexpr std::uint8_t kLength = 5u;
+  static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_steer_angle_data_pack;
-  static constexpr auto kUnpack = &feb_can_steer_angle_data_unpack;
+  static constexpr auto kPack = &feb_can_steer_front_pack;
+  static constexpr auto kUnpack = &feb_can_steer_front_unpack;
 };
 
-struct SteerStatusData
+struct GpsPosRear
 {
-  using Data = feb_can_steer_status_data_t;
-  static constexpr std::uint32_t kFrameId = 0x4Fu;
-  static constexpr std::uint8_t kLength = 3u;
-  static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 100u;
-  static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_steer_status_data_pack;
-  static constexpr auto kUnpack = &feb_can_steer_status_data_unpack;
-};
-
-struct GpsPosDataRear
-{
-  using Data = feb_can_gps_pos_data_rear_t;
+  using Data = feb_can_gps_pos_rear_t;
   static constexpr std::uint32_t kFrameId = 0x50u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 200u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_gps_pos_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_gps_pos_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_gps_pos_rear_pack;
+  static constexpr auto kUnpack = &feb_can_gps_pos_rear_unpack;
 };
 
-struct GpsAltitudeDataRear
+struct GpsAltitudeRear
 {
-  using Data = feb_can_gps_altitude_data_rear_t;
+  using Data = feb_can_gps_altitude_rear_t;
   static constexpr std::uint32_t kFrameId = 0x51u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 200u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_gps_altitude_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_gps_altitude_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_gps_altitude_rear_pack;
+  static constexpr auto kUnpack = &feb_can_gps_altitude_rear_unpack;
 };
 
-struct GpsMotionDataRear
+struct GpsMotionRear
 {
-  using Data = feb_can_gps_motion_data_rear_t;
+  using Data = feb_can_gps_motion_rear_t;
   static constexpr std::uint32_t kFrameId = 0x52u;
   static constexpr std::uint8_t kLength = 4u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 200u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_gps_motion_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_gps_motion_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_gps_motion_rear_pack;
+  static constexpr auto kUnpack = &feb_can_gps_motion_rear_unpack;
 };
 
-struct GpsTimeDataRear
+struct GpsTimeRear
 {
-  using Data = feb_can_gps_time_data_rear_t;
+  using Data = feb_can_gps_time_rear_t;
   static constexpr std::uint32_t kFrameId = 0x53u;
   static constexpr std::uint8_t kLength = 3u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 200u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_gps_time_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_gps_time_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_gps_time_rear_pack;
+  static constexpr auto kUnpack = &feb_can_gps_time_rear_unpack;
 };
 
-struct GpsDateDataRear
+struct GpsDateRear
 {
-  using Data = feb_can_gps_date_data_rear_t;
+  using Data = feb_can_gps_date_rear_t;
   static constexpr std::uint32_t kFrameId = 0x54u;
   static constexpr std::uint8_t kLength = 3u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 200u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_gps_date_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_gps_date_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_gps_date_rear_pack;
+  static constexpr auto kUnpack = &feb_can_gps_date_rear_unpack;
 };
 
-struct GpsStatusDataRear
+struct GpsStatusRear
 {
-  using Data = feb_can_gps_status_data_rear_t;
+  using Data = feb_can_gps_status_rear_t;
   static constexpr std::uint32_t kFrameId = 0x55u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 200u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_gps_status_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_gps_status_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_gps_status_rear_pack;
+  static constexpr auto kUnpack = &feb_can_gps_status_rear_unpack;
 };
 
-struct FusionQuaternionDataRear
+struct FusionQuatRear
 {
-  using Data = feb_can_fusion_quaternion_data_rear_t;
+  using Data = feb_can_fusion_quat_rear_t;
   static constexpr std::uint32_t kFrameId = 0x57u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_fusion_quaternion_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_fusion_quaternion_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_fusion_quat_rear_pack;
+  static constexpr auto kUnpack = &feb_can_fusion_quat_rear_unpack;
 };
 
-struct FusionEulerDataRear
+struct FusionEulerRear
 {
-  using Data = feb_can_fusion_euler_data_rear_t;
+  using Data = feb_can_fusion_euler_rear_t;
   static constexpr std::uint32_t kFrameId = 0x58u;
   static constexpr std::uint8_t kLength = 6u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_fusion_euler_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_fusion_euler_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_fusion_euler_rear_pack;
+  static constexpr auto kUnpack = &feb_can_fusion_euler_rear_unpack;
 };
 
-struct FusionLinearAccelDataRear
+struct FusionLinAccelRear
 {
-  using Data = feb_can_fusion_linear_accel_data_rear_t;
+  using Data = feb_can_fusion_lin_accel_rear_t;
   static constexpr std::uint32_t kFrameId = 0x59u;
   static constexpr std::uint8_t kLength = 6u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_fusion_linear_accel_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_fusion_linear_accel_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_fusion_lin_accel_rear_pack;
+  static constexpr auto kUnpack = &feb_can_fusion_lin_accel_rear_unpack;
 };
 
-struct FusionEarthAccelDataRear
+struct FusionEarthAccelRear
 {
-  using Data = feb_can_fusion_earth_accel_data_rear_t;
+  using Data = feb_can_fusion_earth_accel_rear_t;
   static constexpr std::uint32_t kFrameId = 0x5Au;
   static constexpr std::uint8_t kLength = 6u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_fusion_earth_accel_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_fusion_earth_accel_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_fusion_earth_accel_rear_pack;
+  static constexpr auto kUnpack = &feb_can_fusion_earth_accel_rear_unpack;
 };
 
-struct FusionStatusDataRear
+struct FusionStatusRear
 {
-  using Data = feb_can_fusion_status_data_rear_t;
+  using Data = feb_can_fusion_status_rear_t;
   static constexpr std::uint32_t kFrameId = 0x5Bu;
   static constexpr std::uint8_t kLength = 3u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_fusion_status_data_rear_pack;
-  static constexpr auto kUnpack = &feb_can_fusion_status_data_rear_unpack;
+  static constexpr auto kPack = &feb_can_fusion_status_rear_pack;
+  static constexpr auto kUnpack = &feb_can_fusion_status_rear_unpack;
 };
 
 struct PcuHeartbeat
@@ -799,28 +763,28 @@ struct DcuHeartbeat
   static constexpr auto kUnpack = &feb_can_dcu_heartbeat_unpack;
 };
 
-struct FrontSensorHeartbeatMessage
+struct HeartbeatFront
 {
-  using Data = feb_can_front_sensor_heartbeat_message_t;
+  using Data = feb_can_heartbeat_front_t;
   static constexpr std::uint32_t kFrameId = 0xD4u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnFront;
-  static constexpr auto kPack = &feb_can_front_sensor_heartbeat_message_pack;
-  static constexpr auto kUnpack = &feb_can_front_sensor_heartbeat_message_unpack;
+  static constexpr auto kPack = &feb_can_heartbeat_front_pack;
+  static constexpr auto kUnpack = &feb_can_heartbeat_front_unpack;
 };
 
-struct RearSensorHeartbeatMessage
+struct HeartbeatRear
 {
-  using Data = feb_can_rear_sensor_heartbeat_message_t;
+  using Data = feb_can_heartbeat_rear_t;
   static constexpr std::uint32_t kFrameId = 0xD5u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kSnRear;
-  static constexpr auto kPack = &feb_can_rear_sensor_heartbeat_message_pack;
-  static constexpr auto kUnpack = &feb_can_rear_sensor_heartbeat_message_unpack;
+  static constexpr auto kPack = &feb_can_heartbeat_rear_pack;
+  static constexpr auto kUnpack = &feb_can_heartbeat_rear_unpack;
 };
 
 struct FebPingPongCounter1
