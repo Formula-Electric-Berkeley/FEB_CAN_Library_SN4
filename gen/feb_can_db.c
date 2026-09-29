@@ -5265,6 +5265,127 @@ bool feb_can_steer_front_magnitude_is_in_range(uint16_t value)
     return (true);
 }
 
+int feb_can_strain_gauge_front_pack(
+    uint8_t *dst_p,
+    const struct feb_can_strain_gauge_front_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->strain_gauge_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->strain_gauge_1, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->strain_gauge_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->strain_gauge_2, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->strain_gauge_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->strain_gauge_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->strain_gauge_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->strain_gauge_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_strain_gauge_front_unpack(
+    struct feb_can_strain_gauge_front_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->strain_gauge_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->strain_gauge_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->strain_gauge_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->strain_gauge_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->strain_gauge_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->strain_gauge_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->strain_gauge_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->strain_gauge_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_strain_gauge_front_init(struct feb_can_strain_gauge_front_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_strain_gauge_front_t));
+
+    return 0;
+}
+
+uint16_t feb_can_strain_gauge_front_strain_gauge_1_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_strain_gauge_front_strain_gauge_1_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_strain_gauge_front_strain_gauge_1_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_strain_gauge_front_strain_gauge_2_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_strain_gauge_front_strain_gauge_2_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_strain_gauge_front_strain_gauge_2_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_strain_gauge_front_strain_gauge_3_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_strain_gauge_front_strain_gauge_3_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_strain_gauge_front_strain_gauge_3_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_strain_gauge_front_strain_gauge_4_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_strain_gauge_front_strain_gauge_4_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_strain_gauge_front_strain_gauge_4_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
 int feb_can_gps_pos_rear_pack(
     uint8_t *dst_p,
     const struct feb_can_gps_pos_rear_t *src_p,
@@ -6508,6 +6629,127 @@ double feb_can_fusion_status_rear_mag_error_decode(uint8_t value)
 }
 
 bool feb_can_fusion_status_rear_mag_error_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_strain_gauge_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_strain_gauge_rear_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->strain_gauge_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->strain_gauge_1, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->strain_gauge_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->strain_gauge_2, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->strain_gauge_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->strain_gauge_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->strain_gauge_4, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->strain_gauge_4, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_strain_gauge_rear_unpack(
+    struct feb_can_strain_gauge_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->strain_gauge_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->strain_gauge_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->strain_gauge_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->strain_gauge_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->strain_gauge_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->strain_gauge_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->strain_gauge_4 = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->strain_gauge_4 |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_strain_gauge_rear_init(struct feb_can_strain_gauge_rear_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_strain_gauge_rear_t));
+
+    return 0;
+}
+
+uint16_t feb_can_strain_gauge_rear_strain_gauge_1_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_strain_gauge_rear_strain_gauge_1_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_strain_gauge_rear_strain_gauge_1_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_strain_gauge_rear_strain_gauge_2_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_strain_gauge_rear_strain_gauge_2_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_strain_gauge_rear_strain_gauge_2_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_strain_gauge_rear_strain_gauge_3_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_strain_gauge_rear_strain_gauge_3_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_strain_gauge_rear_strain_gauge_3_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_strain_gauge_rear_strain_gauge_4_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_strain_gauge_rear_strain_gauge_4_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_strain_gauge_rear_strain_gauge_4_is_in_range(uint16_t value)
 {
     (void)value;
 
@@ -34500,6 +34742,12 @@ int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint3
         feb_can_db.steer_front.meta.last_rx_ms = now_ms;
         feb_can_db.steer_front.meta.rx_count++;
         return 0;
+    case FEB_CAN_STRAIN_GAUGE_FRONT_FRAME_ID:
+        if (feb_can_strain_gauge_front_unpack(&feb_can_db.strain_gauge_front.data, data, dlc) < 0) return -2;
+        feb_can_db.strain_gauge_front.meta.present = true;
+        feb_can_db.strain_gauge_front.meta.last_rx_ms = now_ms;
+        feb_can_db.strain_gauge_front.meta.rx_count++;
+        return 0;
     case FEB_CAN_GPS_POS_REAR_FRAME_ID:
         if (feb_can_gps_pos_rear_unpack(&feb_can_db.gps_pos_rear.data, data, dlc) < 0) return -2;
         feb_can_db.gps_pos_rear.meta.present = true;
@@ -34565,6 +34813,12 @@ int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint3
         feb_can_db.fusion_status_rear.meta.present = true;
         feb_can_db.fusion_status_rear.meta.last_rx_ms = now_ms;
         feb_can_db.fusion_status_rear.meta.rx_count++;
+        return 0;
+    case FEB_CAN_STRAIN_GAUGE_REAR_FRAME_ID:
+        if (feb_can_strain_gauge_rear_unpack(&feb_can_db.strain_gauge_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.strain_gauge_rear.meta.present = true;
+        feb_can_db.strain_gauge_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.strain_gauge_rear.meta.rx_count++;
         return 0;
     case FEB_CAN_PCU_HEARTBEAT_FRAME_ID:
         if (feb_can_pcu_heartbeat_unpack(&feb_can_db.pcu_heartbeat.data, data, dlc) < 0) return -2;
@@ -34879,6 +35133,7 @@ void FEB_CAN_DB_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_db.fusion_earth_accel_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4A, "fusion_earth_accel_front", (unsigned long)feb_can_db.fusion_earth_accel_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_earth_accel_front.meta.rx_count);
     if (feb_can_db.fusion_status_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4B, "fusion_status_front", (unsigned long)feb_can_db.fusion_status_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_status_front.meta.rx_count);
     if (feb_can_db.steer_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4E, "steer_front", (unsigned long)feb_can_db.steer_front.meta.last_rx_ms, (unsigned long)feb_can_db.steer_front.meta.rx_count);
+    if (feb_can_db.strain_gauge_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x4F, "strain_gauge_front", (unsigned long)feb_can_db.strain_gauge_front.meta.last_rx_ms, (unsigned long)feb_can_db.strain_gauge_front.meta.rx_count);
     if (feb_can_db.gps_pos_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x50, "gps_pos_rear", (unsigned long)feb_can_db.gps_pos_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_pos_rear.meta.rx_count);
     if (feb_can_db.gps_altitude_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x51, "gps_altitude_rear", (unsigned long)feb_can_db.gps_altitude_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_altitude_rear.meta.rx_count);
     if (feb_can_db.gps_motion_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x52, "gps_motion_rear", (unsigned long)feb_can_db.gps_motion_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_motion_rear.meta.rx_count);
@@ -34890,6 +35145,7 @@ void FEB_CAN_DB_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_db.fusion_lin_accel_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x59, "fusion_lin_accel_rear", (unsigned long)feb_can_db.fusion_lin_accel_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_lin_accel_rear.meta.rx_count);
     if (feb_can_db.fusion_earth_accel_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x5A, "fusion_earth_accel_rear", (unsigned long)feb_can_db.fusion_earth_accel_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_earth_accel_rear.meta.rx_count);
     if (feb_can_db.fusion_status_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x5B, "fusion_status_rear", (unsigned long)feb_can_db.fusion_status_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_status_rear.meta.rx_count);
+    if (feb_can_db.strain_gauge_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x5C, "strain_gauge_rear", (unsigned long)feb_can_db.strain_gauge_rear.meta.last_rx_ms, (unsigned long)feb_can_db.strain_gauge_rear.meta.rx_count);
     if (feb_can_db.pcu_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD0, "pcu_heartbeat", (unsigned long)feb_can_db.pcu_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.pcu_heartbeat.meta.rx_count);
     if (feb_can_db.dash_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD1, "dash_heartbeat", (unsigned long)feb_can_db.dash_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.dash_heartbeat.meta.rx_count);
     if (feb_can_db.lvpdb_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD2, "lvpdb_heartbeat", (unsigned long)feb_can_db.lvpdb_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.lvpdb_heartbeat.meta.rx_count);
@@ -35327,6 +35583,15 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
         printf_fn("  magnitude                        = %ld\r\n", (long)feb_can_db.steer_front.data.magnitude);
         return 0;
     }
+    if (strcmp(name, "strain_gauge_front") == 0)
+    {
+        printf_fn("0x%02X  strain_gauge_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x4F, (int)feb_can_db.strain_gauge_front.meta.present, (unsigned long)feb_can_db.strain_gauge_front.meta.last_rx_ms, (unsigned long)feb_can_db.strain_gauge_front.meta.rx_count);
+        printf_fn("  strain_gauge_1                   = %ld\r\n", (long)feb_can_db.strain_gauge_front.data.strain_gauge_1);
+        printf_fn("  strain_gauge_2                   = %ld\r\n", (long)feb_can_db.strain_gauge_front.data.strain_gauge_2);
+        printf_fn("  strain_gauge_3                   = %ld\r\n", (long)feb_can_db.strain_gauge_front.data.strain_gauge_3);
+        printf_fn("  strain_gauge_4                   = %ld\r\n", (long)feb_can_db.strain_gauge_front.data.strain_gauge_4);
+        return 0;
+    }
     if (strcmp(name, "gps_pos_rear") == 0)
     {
         printf_fn("0x%02X  gps_pos_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x50, (int)feb_can_db.gps_pos_rear.meta.present, (unsigned long)feb_can_db.gps_pos_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_pos_rear.meta.rx_count);
@@ -35416,6 +35681,15 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
         printf_fn("  flags                            = %ld\r\n", (long)feb_can_db.fusion_status_rear.data.flags);
         printf_fn("  accel_error                      = %ld\r\n", (long)feb_can_db.fusion_status_rear.data.accel_error);
         printf_fn("  mag_error                        = %ld\r\n", (long)feb_can_db.fusion_status_rear.data.mag_error);
+        return 0;
+    }
+    if (strcmp(name, "strain_gauge_rear") == 0)
+    {
+        printf_fn("0x%02X  strain_gauge_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x5C, (int)feb_can_db.strain_gauge_rear.meta.present, (unsigned long)feb_can_db.strain_gauge_rear.meta.last_rx_ms, (unsigned long)feb_can_db.strain_gauge_rear.meta.rx_count);
+        printf_fn("  strain_gauge_1                   = %ld\r\n", (long)feb_can_db.strain_gauge_rear.data.strain_gauge_1);
+        printf_fn("  strain_gauge_2                   = %ld\r\n", (long)feb_can_db.strain_gauge_rear.data.strain_gauge_2);
+        printf_fn("  strain_gauge_3                   = %ld\r\n", (long)feb_can_db.strain_gauge_rear.data.strain_gauge_3);
+        printf_fn("  strain_gauge_4                   = %ld\r\n", (long)feb_can_db.strain_gauge_rear.data.strain_gauge_4);
         return 0;
     }
     if (strcmp(name, "pcu_heartbeat") == 0)

@@ -583,6 +583,18 @@ struct SteerFront
   static constexpr auto kUnpack = &feb_can_steer_front_unpack;
 };
 
+struct StrainGaugeFront
+{
+  using Data = feb_can_strain_gauge_front_t;
+  static constexpr std::uint32_t kFrameId = 0x4Fu;
+  static constexpr std::uint8_t kLength = 8u;
+  static constexpr bool kExtended = false;
+  static constexpr std::uint32_t kCycleMs = 20u;
+  static constexpr Node kSender = Node::kSnFront;
+  static constexpr auto kPack = &feb_can_strain_gauge_front_pack;
+  static constexpr auto kUnpack = &feb_can_strain_gauge_front_unpack;
+};
+
 struct GpsPosRear
 {
   using Data = feb_can_gps_pos_rear_t;
@@ -713,6 +725,18 @@ struct FusionStatusRear
   static constexpr Node kSender = Node::kSnRear;
   static constexpr auto kPack = &feb_can_fusion_status_rear_pack;
   static constexpr auto kUnpack = &feb_can_fusion_status_rear_unpack;
+};
+
+struct StrainGaugeRear
+{
+  using Data = feb_can_strain_gauge_rear_t;
+  static constexpr std::uint32_t kFrameId = 0x5Cu;
+  static constexpr std::uint8_t kLength = 8u;
+  static constexpr bool kExtended = false;
+  static constexpr std::uint32_t kCycleMs = 20u;
+  static constexpr Node kSender = Node::kSnRear;
+  static constexpr auto kPack = &feb_can_strain_gauge_rear_pack;
+  static constexpr auto kUnpack = &feb_can_strain_gauge_rear_unpack;
 };
 
 struct PcuHeartbeat

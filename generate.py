@@ -229,7 +229,7 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x4A: (lambda fid: sensor_msg.get_fusion_earth_accel(fid, "front"), "[Fusion][FRONT] linear acceleration (earth frame)"),
     0x4B: (lambda fid: sensor_msg.get_fusion_status(fid, "front"), "[Fusion][FRONT] internal flags + rejection errors"),
     0x4E: (lambda fid: sensor_msg.get_steer(fid, "front"), "[Steering][FRONT] angle, AGC gain, magnet status + magnitude"),
-
+    0x4F: (lambda fid: sensor_msg.get_strain_gauge(fid, "front"), "Strain Gauges"),
 
     # ----- Sensor Nodes REAR (extended): GPS / Fusion (0x50-0x5F) -----
     0x50: (lambda fid: sensor_msg.get_gps_pos(fid, "rear"), "[GPS][REAR] latitude/longitude"),
@@ -244,7 +244,8 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x59: (lambda fid: sensor_msg.get_fusion_lin_accel(fid, "rear"), "[Fusion][REAR] linear acceleration (body frame)"),
     0x5A: (lambda fid: sensor_msg.get_fusion_earth_accel(fid, "rear"), "[Fusion][REAR] linear acceleration (earth frame)"),
     0x5B: (lambda fid: sensor_msg.get_fusion_status(fid, "rear"), "[Fusion][REAR] internal flags + rejection errors"),
-    # 0x5C-0x5F: Reserved for future REAR extended sensor messages
+    0x5C: (lambda fid: sensor_msg.get_strain_gauge(fid, "rear"), "Strain Gauges"),
+    # 0x5D-0x5F: Reserved for future REAR extended sensor messages
 
 
 

@@ -708,6 +708,52 @@ def get_wss(frame_id: int, variant: str):
 
     return msg
 
+def get_strain_gauge(frame_id: int, variant: str):
+    strain_gauge_1 = cantools.db.Signal(
+        name="strain_gauge_1",
+        start=0,
+        length=16, 
+        byte_order="little_endian",
+        is_signed=False,
+     )
+    
+    strain_gauge_2 = cantools.db.Signal(
+        name="strain_gauge_2",
+        start=16,
+        length=16, 
+        byte_order="little_endian",
+        is_signed=False,
+     )
+    
+    strain_gauge_3 = cantools.db.Signal(
+        name="strain_gauge_3",
+        start=32,
+        length=16, 
+        byte_order="little_endian",
+        is_signed=False,
+     )
+    
+    strain_gauge_4 = cantools.db.Signal(
+        name="strain_gauge_4",
+        start=48,
+        length=16, 
+        byte_order="little_endian",
+        is_signed=False,
+     )
+    
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name=f"strain_gauge_{variant}",
+        length=8,
+        signals=[strain_gauge_1, strain_gauge_2, strain_gauge_3, strain_gauge_4],
+        comment="Strain Gauges",
+        senders=[f"SN_{variant.upper()}"],
+        cycle_time=20,
+        strict=True
+     )
+ 
+    return msg
+
 def get_linpot(frame_id: int, variant: str):
     linpot_left = cantools.db.Signal(
         name="linpot_left",

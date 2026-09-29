@@ -90,6 +90,7 @@ extern "C" {
 #define FEB_CAN_FUSION_EARTH_ACCEL_FRONT_FRAME_ID (0x4au)
 #define FEB_CAN_FUSION_STATUS_FRONT_FRAME_ID (0x4bu)
 #define FEB_CAN_STEER_FRONT_FRAME_ID (0x4eu)
+#define FEB_CAN_STRAIN_GAUGE_FRONT_FRAME_ID (0x4fu)
 #define FEB_CAN_GPS_POS_REAR_FRAME_ID (0x50u)
 #define FEB_CAN_GPS_ALTITUDE_REAR_FRAME_ID (0x51u)
 #define FEB_CAN_GPS_MOTION_REAR_FRAME_ID (0x52u)
@@ -101,6 +102,7 @@ extern "C" {
 #define FEB_CAN_FUSION_LIN_ACCEL_REAR_FRAME_ID (0x59u)
 #define FEB_CAN_FUSION_EARTH_ACCEL_REAR_FRAME_ID (0x5au)
 #define FEB_CAN_FUSION_STATUS_REAR_FRAME_ID (0x5bu)
+#define FEB_CAN_STRAIN_GAUGE_REAR_FRAME_ID (0x5cu)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_FRAME_ID (0xa0u)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_FRAME_ID (0xa1u)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_FRAME_ID (0xa2u)
@@ -192,6 +194,7 @@ extern "C" {
 #define FEB_CAN_FUSION_EARTH_ACCEL_FRONT_LENGTH (6u)
 #define FEB_CAN_FUSION_STATUS_FRONT_LENGTH (3u)
 #define FEB_CAN_STEER_FRONT_LENGTH (8u)
+#define FEB_CAN_STRAIN_GAUGE_FRONT_LENGTH (8u)
 #define FEB_CAN_GPS_POS_REAR_LENGTH (8u)
 #define FEB_CAN_GPS_ALTITUDE_REAR_LENGTH (8u)
 #define FEB_CAN_GPS_MOTION_REAR_LENGTH (4u)
@@ -203,6 +206,7 @@ extern "C" {
 #define FEB_CAN_FUSION_LIN_ACCEL_REAR_LENGTH (6u)
 #define FEB_CAN_FUSION_EARTH_ACCEL_REAR_LENGTH (6u)
 #define FEB_CAN_FUSION_STATUS_REAR_LENGTH (3u)
+#define FEB_CAN_STRAIN_GAUGE_REAR_LENGTH (8u)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_LENGTH (8u)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_LENGTH (8u)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_LENGTH (8u)
@@ -294,6 +298,7 @@ extern "C" {
 #define FEB_CAN_FUSION_EARTH_ACCEL_FRONT_IS_EXTENDED (0)
 #define FEB_CAN_FUSION_STATUS_FRONT_IS_EXTENDED (0)
 #define FEB_CAN_STEER_FRONT_IS_EXTENDED (0)
+#define FEB_CAN_STRAIN_GAUGE_FRONT_IS_EXTENDED (0)
 #define FEB_CAN_GPS_POS_REAR_IS_EXTENDED (0)
 #define FEB_CAN_GPS_ALTITUDE_REAR_IS_EXTENDED (0)
 #define FEB_CAN_GPS_MOTION_REAR_IS_EXTENDED (0)
@@ -305,6 +310,7 @@ extern "C" {
 #define FEB_CAN_FUSION_LIN_ACCEL_REAR_IS_EXTENDED (0)
 #define FEB_CAN_FUSION_EARTH_ACCEL_REAR_IS_EXTENDED (0)
 #define FEB_CAN_FUSION_STATUS_REAR_IS_EXTENDED (0)
+#define FEB_CAN_STRAIN_GAUGE_REAR_IS_EXTENDED (0)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_IS_EXTENDED (0)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_IS_EXTENDED (0)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_IS_EXTENDED (0)
@@ -396,6 +402,7 @@ extern "C" {
 #define FEB_CAN_FUSION_EARTH_ACCEL_FRONT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FUSION_STATUS_FRONT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_STEER_FRONT_CYCLE_TIME_MS (100u)
+#define FEB_CAN_STRAIN_GAUGE_FRONT_CYCLE_TIME_MS (20u)
 #define FEB_CAN_GPS_POS_REAR_CYCLE_TIME_MS (100u)
 #define FEB_CAN_GPS_ALTITUDE_REAR_CYCLE_TIME_MS (1000u)
 #define FEB_CAN_GPS_MOTION_REAR_CYCLE_TIME_MS (100u)
@@ -407,6 +414,7 @@ extern "C" {
 #define FEB_CAN_FUSION_LIN_ACCEL_REAR_CYCLE_TIME_MS (10u)
 #define FEB_CAN_FUSION_EARTH_ACCEL_REAR_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FUSION_STATUS_REAR_CYCLE_TIME_MS (100u)
+#define FEB_CAN_STRAIN_GAUGE_REAR_CYCLE_TIME_MS (20u)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_CYCLE_TIME_MS (100u)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_CYCLE_TIME_MS (100u)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_CYCLE_TIME_MS (100u)
@@ -546,6 +554,7 @@ extern "C" {
 #define FEB_CAN_FUSION_EARTH_ACCEL_FRONT_NAME "fusion_earth_accel_front"
 #define FEB_CAN_FUSION_STATUS_FRONT_NAME "fusion_status_front"
 #define FEB_CAN_STEER_FRONT_NAME "steer_front"
+#define FEB_CAN_STRAIN_GAUGE_FRONT_NAME "strain_gauge_front"
 #define FEB_CAN_GPS_POS_REAR_NAME "gps_pos_rear"
 #define FEB_CAN_GPS_ALTITUDE_REAR_NAME "gps_altitude_rear"
 #define FEB_CAN_GPS_MOTION_REAR_NAME "gps_motion_rear"
@@ -557,6 +566,7 @@ extern "C" {
 #define FEB_CAN_FUSION_LIN_ACCEL_REAR_NAME "fusion_lin_accel_rear"
 #define FEB_CAN_FUSION_EARTH_ACCEL_REAR_NAME "fusion_earth_accel_rear"
 #define FEB_CAN_FUSION_STATUS_REAR_NAME "fusion_status_rear"
+#define FEB_CAN_STRAIN_GAUGE_REAR_NAME "strain_gauge_rear"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_NAME "M160_Temperature_Set_1"
 #define FEB_CAN_M161_TEMPERATURE_SET_2_NAME "M161_Temperature_Set_2"
 #define FEB_CAN_M162_TEMPERATURE_SET_3_NAME "M162_Temperature_Set_3"
@@ -762,6 +772,10 @@ extern "C" {
 #define FEB_CAN_STEER_FRONT_AGC_NAME "agc"
 #define FEB_CAN_STEER_FRONT_STATUS_NAME "status"
 #define FEB_CAN_STEER_FRONT_MAGNITUDE_NAME "magnitude"
+#define FEB_CAN_STRAIN_GAUGE_FRONT_STRAIN_GAUGE_1_NAME "strain_gauge_1"
+#define FEB_CAN_STRAIN_GAUGE_FRONT_STRAIN_GAUGE_2_NAME "strain_gauge_2"
+#define FEB_CAN_STRAIN_GAUGE_FRONT_STRAIN_GAUGE_3_NAME "strain_gauge_3"
+#define FEB_CAN_STRAIN_GAUGE_FRONT_STRAIN_GAUGE_4_NAME "strain_gauge_4"
 #define FEB_CAN_GPS_POS_REAR_LATITUDE_NAME "latitude"
 #define FEB_CAN_GPS_POS_REAR_LONGITUDE_NAME "longitude"
 #define FEB_CAN_GPS_ALTITUDE_REAR_ALTITUDE_NAME "altitude"
@@ -798,6 +812,10 @@ extern "C" {
 #define FEB_CAN_FUSION_STATUS_REAR_FLAGS_NAME "flags"
 #define FEB_CAN_FUSION_STATUS_REAR_ACCEL_ERROR_NAME "accel_error"
 #define FEB_CAN_FUSION_STATUS_REAR_MAG_ERROR_NAME "mag_error"
+#define FEB_CAN_STRAIN_GAUGE_REAR_STRAIN_GAUGE_1_NAME "strain_gauge_1"
+#define FEB_CAN_STRAIN_GAUGE_REAR_STRAIN_GAUGE_2_NAME "strain_gauge_2"
+#define FEB_CAN_STRAIN_GAUGE_REAR_STRAIN_GAUGE_3_NAME "strain_gauge_3"
+#define FEB_CAN_STRAIN_GAUGE_REAR_STRAIN_GAUGE_4_NAME "strain_gauge_4"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_INV_MODULE_A_NAME "INV_Module_A"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_INV_MODULE_B_NAME "INV_Module_B"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_INV_MODULE_C_NAME "INV_Module_C"
@@ -3514,6 +3532,43 @@ struct feb_can_steer_front_t {
 };
 
 /**
+ * Signals in message strain_gauge_front.
+ *
+ * Strain Gauges
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_strain_gauge_front_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t strain_gauge_1;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t strain_gauge_2;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t strain_gauge_3;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t strain_gauge_4;
+};
+
+/**
  * Signals in message gps_pos_rear.
  *
  * GPS latitude/longitude.
@@ -3868,6 +3923,43 @@ struct feb_can_fusion_status_rear_t {
      * Offset: 0
      */
     uint8_t mag_error;
+};
+
+/**
+ * Signals in message strain_gauge_rear.
+ *
+ * Strain Gauges
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_strain_gauge_rear_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t strain_gauge_1;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t strain_gauge_2;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t strain_gauge_3;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t strain_gauge_4;
 };
 
 /**
@@ -18250,6 +18342,151 @@ double feb_can_steer_front_magnitude_decode(uint16_t value);
 bool feb_can_steer_front_magnitude_is_in_range(uint16_t value);
 
 /**
+ * Pack message strain_gauge_front.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_strain_gauge_front_pack(
+    uint8_t *dst_p,
+    const struct feb_can_strain_gauge_front_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message strain_gauge_front.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_strain_gauge_front_unpack(
+    struct feb_can_strain_gauge_front_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from strain_gauge_front.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_strain_gauge_front_init(struct feb_can_strain_gauge_front_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_strain_gauge_front_strain_gauge_1_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_strain_gauge_front_strain_gauge_1_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_strain_gauge_front_strain_gauge_1_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_strain_gauge_front_strain_gauge_2_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_strain_gauge_front_strain_gauge_2_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_strain_gauge_front_strain_gauge_2_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_strain_gauge_front_strain_gauge_3_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_strain_gauge_front_strain_gauge_3_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_strain_gauge_front_strain_gauge_3_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_strain_gauge_front_strain_gauge_4_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_strain_gauge_front_strain_gauge_4_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_strain_gauge_front_strain_gauge_4_is_in_range(uint16_t value);
+
+/**
  * Pack message gps_pos_rear.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -19627,6 +19864,151 @@ double feb_can_fusion_status_rear_mag_error_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_fusion_status_rear_mag_error_is_in_range(uint8_t value);
+
+/**
+ * Pack message strain_gauge_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_strain_gauge_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_strain_gauge_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message strain_gauge_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_strain_gauge_rear_unpack(
+    struct feb_can_strain_gauge_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from strain_gauge_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_strain_gauge_rear_init(struct feb_can_strain_gauge_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_strain_gauge_rear_strain_gauge_1_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_strain_gauge_rear_strain_gauge_1_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_strain_gauge_rear_strain_gauge_1_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_strain_gauge_rear_strain_gauge_2_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_strain_gauge_rear_strain_gauge_2_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_strain_gauge_rear_strain_gauge_2_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_strain_gauge_rear_strain_gauge_3_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_strain_gauge_rear_strain_gauge_3_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_strain_gauge_rear_strain_gauge_3_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_strain_gauge_rear_strain_gauge_4_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_strain_gauge_rear_strain_gauge_4_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_strain_gauge_rear_strain_gauge_4_is_in_range(uint16_t value);
 
 /**
  * Pack message M160_Temperature_Set_1.
@@ -51406,6 +51788,7 @@ typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_lin_accel_front_t
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_earth_accel_front_t data; } FEB_CAN_DB_fusion_earth_accel_front_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_status_front_t data; } FEB_CAN_DB_fusion_status_front_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_steer_front_t data; } FEB_CAN_DB_steer_front_t;
+typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_strain_gauge_front_t data; } FEB_CAN_DB_strain_gauge_front_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_pos_rear_t data; } FEB_CAN_DB_gps_pos_rear_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_altitude_rear_t data; } FEB_CAN_DB_gps_altitude_rear_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_motion_rear_t data; } FEB_CAN_DB_gps_motion_rear_t;
@@ -51417,6 +51800,7 @@ typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_euler_rear_t data
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_lin_accel_rear_t data; } FEB_CAN_DB_fusion_lin_accel_rear_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_earth_accel_rear_t data; } FEB_CAN_DB_fusion_earth_accel_rear_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_status_rear_t data; } FEB_CAN_DB_fusion_status_rear_t;
+typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_strain_gauge_rear_t data; } FEB_CAN_DB_strain_gauge_rear_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_pcu_heartbeat_t data; } FEB_CAN_DB_pcu_heartbeat_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_dash_heartbeat_t data; } FEB_CAN_DB_dash_heartbeat_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_lvpdb_heartbeat_t data; } FEB_CAN_DB_lvpdb_heartbeat_t;
@@ -51508,6 +51892,7 @@ typedef struct {
     FEB_CAN_DB_fusion_earth_accel_front_t fusion_earth_accel_front;
     FEB_CAN_DB_fusion_status_front_t fusion_status_front;
     FEB_CAN_DB_steer_front_t steer_front;
+    FEB_CAN_DB_strain_gauge_front_t strain_gauge_front;
     FEB_CAN_DB_gps_pos_rear_t gps_pos_rear;
     FEB_CAN_DB_gps_altitude_rear_t gps_altitude_rear;
     FEB_CAN_DB_gps_motion_rear_t gps_motion_rear;
@@ -51519,6 +51904,7 @@ typedef struct {
     FEB_CAN_DB_fusion_lin_accel_rear_t fusion_lin_accel_rear;
     FEB_CAN_DB_fusion_earth_accel_rear_t fusion_earth_accel_rear;
     FEB_CAN_DB_fusion_status_rear_t fusion_status_rear;
+    FEB_CAN_DB_strain_gauge_rear_t strain_gauge_rear;
     FEB_CAN_DB_pcu_heartbeat_t pcu_heartbeat;
     FEB_CAN_DB_dash_heartbeat_t dash_heartbeat;
     FEB_CAN_DB_lvpdb_heartbeat_t lvpdb_heartbeat;
