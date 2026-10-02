@@ -57,6 +57,14 @@ static inline uint8_t pack_left_shift_u32(
     return (uint8_t)((uint8_t)(value << shift) & mask);
 }
 
+static inline uint8_t pack_right_shift_u8(
+    uint8_t value,
+    uint8_t shift,
+    uint8_t mask)
+{
+    return (uint8_t)((uint8_t)(value >> shift) & mask);
+}
+
 static inline uint8_t pack_right_shift_u16(
     uint16_t value,
     uint8_t shift,
@@ -71,6 +79,14 @@ static inline uint8_t pack_right_shift_u32(
     uint8_t mask)
 {
     return (uint8_t)((uint8_t)(value >> shift) & mask);
+}
+
+static inline uint8_t unpack_left_shift_u8(
+    uint8_t value,
+    uint8_t shift,
+    uint8_t mask)
+{
+    return (uint8_t)((uint8_t)(value & mask) << shift);
 }
 
 static inline uint16_t unpack_left_shift_u16(
@@ -602,18 +618,19 @@ int feb_can_bms_state_pack(
     const struct feb_can_bms_state_t *src_p,
     size_t size)
 {
-    if (size < 2u) {
+    if (size < 3u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, 2);
+    memset(&dst_p[0], 0, 3);
 
-    dst_p[0] |= pack_left_shift_u8(src_p->bms_state, 0u, 0x1fu);
-    dst_p[0] |= pack_left_shift_u8(src_p->ping_lv_nodes, 5u, 0xe0u);
-    dst_p[1] |= pack_left_shift_u8(src_p->relay_state, 0u, 0x07u);
-    dst_p[1] |= pack_left_shift_u8(src_p->gpio_sense, 3u, 0xf8u);
+    dst_p[0] |= pack_left_shift_u8(src_p->bms_state, 0u, 0xffu);
+    dst_p[1] |= pack_left_shift_u8(src_p->ping_lv_nodes, 0u, 0x07u);
+    dst_p[1] |= pack_left_shift_u8(src_p->relay_state, 3u, 0x38u);
+    dst_p[1] |= pack_left_shift_u8(src_p->gpio_sense, 6u, 0xc0u);
+    dst_p[2] |= pack_right_shift_u8(src_p->gpio_sense, 2u, 0x07u);
 
-    return (2);
+    return (3);
 }
 
 int feb_can_bms_state_unpack(
@@ -621,14 +638,15 @@ int feb_can_bms_state_unpack(
     const uint8_t *src_p,
     size_t size)
 {
-    if (size < 2u) {
+    if (size < 3u) {
         return (-EINVAL);
     }
 
-    dst_p->bms_state = unpack_right_shift_u8(src_p[0], 0u, 0x1fu);
-    dst_p->ping_lv_nodes = unpack_right_shift_u8(src_p[0], 5u, 0xe0u);
-    dst_p->relay_state = unpack_right_shift_u8(src_p[1], 0u, 0x07u);
-    dst_p->gpio_sense = unpack_right_shift_u8(src_p[1], 3u, 0xf8u);
+    dst_p->bms_state = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+    dst_p->ping_lv_nodes = unpack_right_shift_u8(src_p[1], 0u, 0x07u);
+    dst_p->relay_state = unpack_right_shift_u8(src_p[1], 3u, 0x38u);
+    dst_p->gpio_sense = unpack_right_shift_u8(src_p[1], 6u, 0xc0u);
+    dst_p->gpio_sense |= unpack_left_shift_u8(src_p[2], 2u, 0x07u);
 
     return (0);
 }
@@ -654,7 +672,9 @@ double feb_can_bms_state_bms_state_decode(uint8_t value)
 
 bool feb_can_bms_state_bms_state_is_in_range(uint8_t value)
 {
-    return (value <= 31u);
+    (void)value;
+
+    return (true);
 }
 
 uint8_t feb_can_bms_state_ping_lv_nodes_encode(double value)

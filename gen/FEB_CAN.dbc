@@ -60,11 +60,11 @@ BO_ 4 accumulator_faults: 1 BMS
  SG_ imd_fault : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ bms_fault : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
-BO_ 5 bms_state: 2 BMS
- SG_ gpio_sense : 11|5@1+ (1,0) [0|0] "" Vector__XXX
- SG_ relay_state : 8|3@1+ (1,0) [0|0] "" Vector__XXX
- SG_ ping_lv_nodes : 5|3@1+ (1,0) [0|0] "" Vector__XXX
- SG_ bms_state : 0|5@1+ (1,0) [0|0] "" Vector__XXX
+BO_ 5 bms_state: 3 BMS
+ SG_ gpio_sense : 14|5@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ relay_state : 11|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ping_lv_nodes : 8|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ bms_state : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 9 brake: 8 PCU
  SG_ brake_switch : 57|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -1885,7 +1885,7 @@ BA_ "GenMsgCycleTime" BO_ 517 10;
 BA_ "GenMsgCycleTime" BO_ 1280 100;
 BA_ "GenMsgCycleTime" BO_ 2550588916 1000;
 BA_ "GenMsgCycleTime" BO_ 2566869221 1000;
-VAL_ 5 bms_state 0 "BMS_STATE_BOOT" 1 "BMS_STATE_LV_POWER" 2 "BMS_STATE_BUS_HEALTH_CHECK" 3 "BMS_STATE_PRECHARGE" 4 "BMS_STATE_ENERGIZED" 5 "BMS_STATE_DRIVE" 6 "BMS_STATE_BATTERY_FREE" 7 "BMS_STATE_CHARGER_PRECHARGE" 8 "BMS_STATE_CHARGING" 9 "BMS_STATE_BALANCE" 10 "BMS_STATE_FAULT_BMS" 11 "BMS_STATE_FAULT_BSPD" 12 "BMS_STATE_FAULT_IMD" 13 "BMS_STATE_FAULT_CHARGING" 14 "BMS_STATE_COUNT" ;
+VAL_ 5 bms_state 0 "BMS_STATE_BOOT" 1 "BMS_STATE_LV_POWER" 2 "BMS_STATE_BUS_HEALTH_CHECK" 3 "BMS_STATE_PRECHARGE" 4 "BMS_STATE_ENERGIZED" 5 "BMS_STATE_DRIVE" 6 "BMS_STATE_BATTERY_FREE" 7 "BMS_STATE_CHARGER_PRECHARGE" 8 "BMS_STATE_CHARGING" 9 "BMS_STATE_BALANCE" 20 "BMS_STATE_FAULT_CELL_OVERVOLTAGE" 21 "BMS_STATE_FAULT_CELL_UNDERVOLTAGE" 22 "BMS_STATE_FAULT_CELL_OVERTEMP" 23 "BMS_STATE_FAULT_CELL_UNDERTEMP" 24 "BMS_STATE_FAULT_TEMP_SENSOR_LOSS" 25 "BMS_STATE_FAULT_ADBMS_INIT" 26 "BMS_STATE_FAULT_ADBMS_TIMEOUT" 27 "BMS_STATE_FAULT_IVT_TIMEOUT" 28 "BMS_STATE_FAULT_OVERCURRENT" 29 "BMS_STATE_FAULT_IMD" 30 "BMS_STATE_FAULT_BSPD" 31 "BMS_STATE_FAULT_CONTACTOR_MISMATCH" 32 "BMS_STATE_FAULT_BALANCE_HV_ACTIVE" 33 "BMS_STATE_FAULT_PRECHARGE_TIMEOUT" 34 "BMS_STATE_FAULT_PRECHARGE_TOO_FAST" 35 "BMS_STATE_FAULT_CHARGER_PRECHARGE_TIMEOUT" 36 "BMS_STATE_FAULT_SHUTDOWN_OPEN" 37 "BMS_STATE_FAULT_AIR_MINUS_OPEN" 38 "BMS_STATE_FAULT_CHARGER_HW" 39 "BMS_STATE_FAULT_MANUAL" 40 "BMS_STATE_COUNT" ;
 VAL_ 170 INV_Inverter_State 0 "Power up" 1 "Stop" 2 "Open Loop" 3 "Closed Loop" 4 "Internal State" 5 "Internal State" 6 "Internal State" 7 "Internal State" 8 "Idle Run" 9 "Idle Stop" 10 "Internal State" 11 "Intern State" 12 "Internal State" ;
 VAL_ 170 INV_VSM_State 0 "VSM Start State" 1 "Pre-Charge Init state" 2 "pre-charge active state" 3 "pre-charge complete state" 4 "VSM wait state" 5 "VSM ready state" 6 "Motor Running State" 7 "blink fault code state" 14 "Shutdown state for Key Switch Mode 1" 15 "Reset the inverter" ;
 VAL_ 2550588916 Control 1 "CHARGING_STOP" 0 "CHARGING_START" ;

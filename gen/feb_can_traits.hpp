@@ -83,7 +83,7 @@ struct BmsState
 {
   using Data = feb_can_bms_state_t;
   static constexpr std::uint32_t kFrameId = 0x5u;
-  static constexpr std::uint8_t kLength = 2u;
+  static constexpr std::uint8_t kLength = 3u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kBms;

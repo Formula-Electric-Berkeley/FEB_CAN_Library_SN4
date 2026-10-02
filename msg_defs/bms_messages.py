@@ -6,7 +6,7 @@ def get_bms_state(frame_id: int):
     bms_state = cantools.db.Signal(
         name="bms_state",
         start=0,
-        length=5,
+        length=8,
         byte_order="little_endian",
         is_signed=False,
         conversion=BaseConversion.factory(
@@ -21,18 +21,34 @@ def get_bms_state(frame_id: int):
                 (7, "BMS_STATE_CHARGER_PRECHARGE"),
                 (8, "BMS_STATE_CHARGING"),
                 (9, "BMS_STATE_BALANCE"),
-                (10, "BMS_STATE_FAULT_BMS"),
-                (11, "BMS_STATE_FAULT_BSPD"),
-                (12, "BMS_STATE_FAULT_IMD"),
-                (13, "BMS_STATE_FAULT_CHARGING"),
-                (14, "BMS_STATE_COUNT"),
+                (20, "BMS_STATE_FAULT_CELL_OVERVOLTAGE"),
+                (21, "BMS_STATE_FAULT_CELL_UNDERVOLTAGE"),
+                (22, "BMS_STATE_FAULT_CELL_OVERTEMP"),
+                (23, "BMS_STATE_FAULT_CELL_UNDERTEMP"),
+                (24, "BMS_STATE_FAULT_TEMP_SENSOR_LOSS"),
+                (25, "BMS_STATE_FAULT_ADBMS_INIT"),
+                (26, "BMS_STATE_FAULT_ADBMS_TIMEOUT"),
+                (27, "BMS_STATE_FAULT_IVT_TIMEOUT"),
+                (28, "BMS_STATE_FAULT_OVERCURRENT"),
+                (29, "BMS_STATE_FAULT_IMD"),
+                (30, "BMS_STATE_FAULT_BSPD"),
+                (31, "BMS_STATE_FAULT_CONTACTOR_MISMATCH"),
+                (32, "BMS_STATE_FAULT_BALANCE_HV_ACTIVE"),
+                (33, "BMS_STATE_FAULT_PRECHARGE_TIMEOUT"),
+                (34, "BMS_STATE_FAULT_PRECHARGE_TOO_FAST"),
+                (35, "BMS_STATE_FAULT_CHARGER_PRECHARGE_TIMEOUT"),
+                (36, "BMS_STATE_FAULT_SHUTDOWN_OPEN"),
+                (37, "BMS_STATE_FAULT_AIR_MINUS_OPEN"),
+                (38, "BMS_STATE_FAULT_CHARGER_HW"),
+                (39, "BMS_STATE_FAULT_MANUAL"),
+                (40, "BMS_STATE_COUNT"),
             ])
         )
     )
 
     ping_lv_nodes = cantools.db.Signal(
         name="ping_lv_nodes",
-        start=5,
+        start=8,
         length=3,
         byte_order="little_endian",
         is_signed=False,
@@ -40,7 +56,7 @@ def get_bms_state(frame_id: int):
 
     relay_state = cantools.db.Signal(
         name="relay_state",
-        start=8,
+        start=11,
         length=3,
         byte_order="little_endian",
         is_signed=False,
@@ -48,7 +64,7 @@ def get_bms_state(frame_id: int):
 
     gpio_sense = cantools.db.Signal(
         name="gpio_sense",
-        start=11,
+        start=14,
         length=5,
         byte_order="little_endian",
         is_signed=False,
@@ -57,7 +73,7 @@ def get_bms_state(frame_id: int):
     msg = cantools.db.Message(
         frame_id=frame_id,
         name="bms_state",
-        length=2,
+        length=3,
         signals=[bms_state, ping_lv_nodes, relay_state, gpio_sense],
         comment="BMS message for BMS state.",
         senders=['BMS'],
