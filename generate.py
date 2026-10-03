@@ -142,18 +142,16 @@ from msg_defs import res_messages as res_msg
 #   0xD0-0xDF:  Heartbeat messages (6 used, 10 reserved)
 #   0xE0-0xEF:  Debug/test messages (4 used, 12 reserved)
 #   0x500-0x50F: EBS / Driverless safety (1 used, 15 reserved)
-#   0x204-0x205: BMS accumulator cell data, multiplexed
 #   0x520-0x52F: IVT-S current/voltage sensor (5 used, 11 reserved; 0x526-0x528 reserved)
+#   0x7C0-0x7CF: Low-priority bulk telemetry (1 used, 15 reserved)
 # =============================================================================
 
 MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = {
     # ----- BMS Messages (0x01-0x09) -----
     # NOTE: 0x00 is CANopen NMT — RESERVED, DO NOT USE (see CANOPEN_RESERVED_IDS)
-    0x01: (bms_msg.get_bms_cell_data, "BMS individual cell data"),
     0x02: (bms_msg.get_accumulator_voltage, "Accumulator pack voltage"),
     0x03: (bms_msg.get_accumulator_temperature, "Accumulator pack temperature"),
-    0x04: (bms_msg.get_accumulator_faults, "Accumulator fault flags"),
-    0x05: (bms_msg.get_bms_state, "BMS state machine status"),
+    0x05: (bms_msg.get_bms_state, "General BMS info"),
     # 0x06-0x09: Reserved for future BMS messages
 
     # ----- PCU Safety Messages (0x09-0x0F) -----
@@ -288,9 +286,7 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x525: (ivt_msg.get_ivt_temperature, "IVT-S temperature (raw int32, 0.1 degC)"),
     # 0x526-0x528: Reserved (IVT-S power / coulomb counter / energy counter, not yet decoded)
 
-    # ----- BMS Accumulator Cell Data (0x204-0x205) -----
-    0x204: (bms_msg.get_cell_voltages, "BMS accumulator cell voltages (muxed, 40 pages)"),
-    0x205: (bms_msg.get_cell_temperatures, "BMS accumulator cell temperatures (muxed, 110 pages)"),
+    0x7C0: (bms_msg.get_cell_data, "BMS accumulator cell voltage + 3 temperatures (one cell per frame)"),
 }
 
 # Frame ID allocation ranges for documentation and validation
@@ -308,9 +304,9 @@ ID_RANGES = [
     (0xC0, 0xCF, "RMS/Inverter"),
     (0xD0, 0xDF, "Heartbeats"),
     (0xE0, 0xEF, "Debug/Test"),
-    (0x200, 0x2ff, "BMS Accumulator Cell Data (muxed: 0x204 voltages, 0x205 temperatures)"),
     (0x500, 0x50F, "EBS / Driverless Safety"),
     (0x520, 0x52F, "IVT-S current/voltage sensor"),
+    (0x7C0, 0x7CF, "Low-priority bulk telemetry"),
 ]
 
 def validate_registry() -> bool:

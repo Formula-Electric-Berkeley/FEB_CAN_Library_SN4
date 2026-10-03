@@ -31,18 +31,6 @@ enum class Node : std::uint8_t
 namespace msg
 {
 
-struct BmsCellData
-{
-  using Data = feb_can_bms_cell_data_t;
-  static constexpr std::uint32_t kFrameId = 0x1u;
-  static constexpr std::uint8_t kLength = 8u;
-  static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 100u;
-  static constexpr Node kSender = Node::kBms;
-  static constexpr auto kPack = &feb_can_bms_cell_data_pack;
-  static constexpr auto kUnpack = &feb_can_bms_cell_data_unpack;
-};
-
 struct BmsAccumulatorVoltage
 {
   using Data = feb_can_bms_accumulator_voltage_t;
@@ -59,7 +47,7 @@ struct BmsAccumulatorTemperature
 {
   using Data = feb_can_bms_accumulator_temperature_t;
   static constexpr std::uint32_t kFrameId = 0x3u;
-  static constexpr std::uint8_t kLength = 8u;
+  static constexpr std::uint8_t kLength = 7u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kBms;
@@ -67,23 +55,11 @@ struct BmsAccumulatorTemperature
   static constexpr auto kUnpack = &feb_can_bms_accumulator_temperature_unpack;
 };
 
-struct AccumulatorFaults
-{
-  using Data = feb_can_accumulator_faults_t;
-  static constexpr std::uint32_t kFrameId = 0x4u;
-  static constexpr std::uint8_t kLength = 1u;
-  static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 100u;
-  static constexpr Node kSender = Node::kBms;
-  static constexpr auto kPack = &feb_can_accumulator_faults_pack;
-  static constexpr auto kUnpack = &feb_can_accumulator_faults_unpack;
-};
-
 struct BmsState
 {
   using Data = feb_can_bms_state_t;
   static constexpr std::uint32_t kFrameId = 0x5u;
-  static constexpr std::uint8_t kLength = 3u;
+  static constexpr std::uint8_t kLength = 4u;
   static constexpr bool kExtended = false;
   static constexpr std::uint32_t kCycleMs = 100u;
   static constexpr Node kSender = Node::kBms;
@@ -859,30 +835,6 @@ struct FebPingPongCounter4
   static constexpr auto kUnpack = &feb_can_feb_ping_pong_counter4_unpack;
 };
 
-struct BmsCellVoltages
-{
-  using Data = feb_can_bms_cell_voltages_t;
-  static constexpr std::uint32_t kFrameId = 0x204u;
-  static constexpr std::uint8_t kLength = 8u;
-  static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 10u;
-  static constexpr Node kSender = Node::kBms;
-  static constexpr auto kPack = &feb_can_bms_cell_voltages_pack;
-  static constexpr auto kUnpack = &feb_can_bms_cell_voltages_unpack;
-};
-
-struct BmsCellTemperatures
-{
-  using Data = feb_can_bms_cell_temperatures_t;
-  static constexpr std::uint32_t kFrameId = 0x205u;
-  static constexpr std::uint8_t kLength = 8u;
-  static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 10u;
-  static constexpr Node kSender = Node::kBms;
-  static constexpr auto kPack = &feb_can_bms_cell_temperatures_pack;
-  static constexpr auto kUnpack = &feb_can_bms_cell_temperatures_unpack;
-};
-
 struct EbsPressureStatus
 {
   using Data = feb_can_ebs_pressure_status_t;
@@ -953,6 +905,18 @@ struct IvtTemperature
   static constexpr Node kSender = Node::kIvt;
   static constexpr auto kPack = &feb_can_ivt_temperature_pack;
   static constexpr auto kUnpack = &feb_can_ivt_temperature_unpack;
+};
+
+struct BmsCellData
+{
+  using Data = feb_can_bms_cell_data_t;
+  static constexpr std::uint32_t kFrameId = 0x7C0u;
+  static constexpr std::uint8_t kLength = 8u;
+  static constexpr bool kExtended = false;
+  static constexpr std::uint32_t kCycleMs = 5u;
+  static constexpr Node kSender = Node::kBms;
+  static constexpr auto kPack = &feb_can_bms_cell_data_pack;
+  static constexpr auto kUnpack = &feb_can_bms_cell_data_unpack;
 };
 
 struct ChargerLimits
