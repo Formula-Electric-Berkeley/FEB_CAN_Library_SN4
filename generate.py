@@ -220,7 +220,7 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x43: (lambda fid: sensor_msg.get_gps_time(fid, "front"), "[GPS][FRONT] time data (UTC)"),
     0x44: (lambda fid: sensor_msg.get_gps_date(fid, "front"), "[GPS][FRONT] date data (UTC)"),
     0x45: (lambda fid: sensor_msg.get_gps_status(fid, "front"), "[GPS][FRONT] fix quality, satellite counts, PDOP"),
-    # 0x46: Reserved
+    0x46: (lambda fid: sensor_msg.get_thermistor(fid, "front"), "[Thermistor][FRONT] coolant temperatures + fault flags"),
     0x47: (lambda fid: sensor_msg.get_fusion_quat(fid, "front"), "[Fusion][FRONT] orientation quaternion"),
     0x48: (lambda fid: sensor_msg.get_fusion_euler(fid, "front"), "[Fusion][FRONT] Euler angles"),
     0x49: (lambda fid: sensor_msg.get_fusion_lin_accel(fid, "front"), "[Fusion][FRONT] linear acceleration (body frame)"),
@@ -236,7 +236,7 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x53: (lambda fid: sensor_msg.get_gps_time(fid, "rear"), "[GPS][REAR] time data (UTC)"),
     0x54: (lambda fid: sensor_msg.get_gps_date(fid, "rear"), "[GPS][REAR] date data (UTC)"),
     0x55: (lambda fid: sensor_msg.get_gps_status(fid, "rear"), "[GPS][REAR] fix quality, satellite counts, PDOP"),
-    # 0x56: Reserved (mirrors 0x46 front gap)
+    0x56: (lambda fid: sensor_msg.get_thermistor(fid, "rear"), "[Thermistor][REAR] coolant temperatures + fault flags"),
     0x57: (lambda fid: sensor_msg.get_fusion_quat(fid, "rear"), "[Fusion][REAR] orientation quaternion"),
     0x58: (lambda fid: sensor_msg.get_fusion_euler(fid, "rear"), "[Fusion][REAR] Euler angles"),
     0x59: (lambda fid: sensor_msg.get_fusion_lin_accel(fid, "rear"), "[Fusion][REAR] linear acceleration (body frame)"),

@@ -487,6 +487,18 @@ struct GpsStatusFront
   static constexpr auto kUnpack = &feb_can_gps_status_front_unpack;
 };
 
+struct ThermistorFront
+{
+  using Data = feb_can_thermistor_front_t;
+  static constexpr std::uint32_t kFrameId = 0x46u;
+  static constexpr std::uint8_t kLength = 7u;
+  static constexpr bool kExtended = false;
+  static constexpr std::uint32_t kCycleMs = 100u;
+  static constexpr Node kSender = Node::kSnFront;
+  static constexpr auto kPack = &feb_can_thermistor_front_pack;
+  static constexpr auto kUnpack = &feb_can_thermistor_front_unpack;
+};
+
 struct FusionQuatFront
 {
   using Data = feb_can_fusion_quat_front_t;
@@ -641,6 +653,18 @@ struct GpsStatusRear
   static constexpr Node kSender = Node::kSnRear;
   static constexpr auto kPack = &feb_can_gps_status_rear_pack;
   static constexpr auto kUnpack = &feb_can_gps_status_rear_unpack;
+};
+
+struct ThermistorRear
+{
+  using Data = feb_can_thermistor_rear_t;
+  static constexpr std::uint32_t kFrameId = 0x56u;
+  static constexpr std::uint8_t kLength = 7u;
+  static constexpr bool kExtended = false;
+  static constexpr std::uint32_t kCycleMs = 100u;
+  static constexpr Node kSender = Node::kSnRear;
+  static constexpr auto kPack = &feb_can_thermistor_rear_pack;
+  static constexpr auto kUnpack = &feb_can_thermistor_rear_unpack;
 };
 
 struct FusionQuatRear
@@ -913,7 +937,7 @@ struct BmsCellData
   static constexpr std::uint32_t kFrameId = 0x7C0u;
   static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 5u;
+  static constexpr std::uint32_t kCycleMs = 10u;
   static constexpr Node kSender = Node::kBms;
   static constexpr auto kPack = &feb_can_bms_cell_data_pack;
   static constexpr auto kUnpack = &feb_can_bms_cell_data_unpack;

@@ -788,6 +788,57 @@ def get_linpot(frame_id: int, variant: str):
  
     return msg
 
+def get_thermistor(frame_id: int, variant: str):
+    # NTC 10k B3950, 5k pull-up to 3V3. int16 0.01 degC.
+    coolant_temp_1 = cantools.db.Signal(
+        name="coolant_temp_1",
+        start=0,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="degC",
+    )
+    coolant_temp_2 = cantools.db.Signal(
+        name="coolant_temp_2",
+        start=16,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="degC",
+    )
+    coolant_temp_3 = cantools.db.Signal(
+        name="coolant_temp_3",
+        start=32,
+        length=16,
+        byte_order="little_endian",
+        is_signed=True,
+        conversion=BaseConversion.factory(scale=0.01),
+        unit="degC",
+    )
+    therm_status = cantools.db.Signal(
+        name="therm_status",
+        start=48,
+        length=8,
+        byte_order="little_endian",
+        is_signed=False,
+        comment="bit0-2: channel 1-3 open circuit; bit3-5: channel 1-3 short circuit",
+    )
+
+    msg = cantools.db.Message(
+        frame_id=frame_id,
+        name=f"thermistor_{variant}",
+        length=7,
+        signals=[coolant_temp_1, coolant_temp_2, coolant_temp_3, therm_status],
+        comment="Coolant NTC thermistor temperatures + fault flags.",
+        senders=[f"SN_{variant.upper()}"],
+        cycle_time=100,
+        strict=True
+    )
+
+    return msg
+
 def get_CoolantPressure(frame_id: int):
     coolant_pressure_1 = cantools.db.Signal(
         name="coolant_pressure_1",

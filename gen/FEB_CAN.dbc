@@ -247,6 +247,12 @@ BO_ 69 gps_status_front: 8 SN_FRONT
  SG_ fix_mode : 8|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ fix_type : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
+BO_ 70 thermistor_front: 7 SN_FRONT
+ SG_ therm_status : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ coolant_temp_3 : 32|16@1- (0.01,0) [0|0] "degC" Vector__XXX
+ SG_ coolant_temp_2 : 16|16@1- (0.01,0) [0|0] "degC" Vector__XXX
+ SG_ coolant_temp_1 : 0|16@1- (0.01,0) [0|0] "degC" Vector__XXX
+
 BO_ 71 fusion_quat_front: 8 SN_FRONT
  SG_ q_z : 48|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
  SG_ q_y : 32|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
@@ -317,6 +323,12 @@ BO_ 85 gps_status_rear: 8 SN_REAR
  SG_ sats_in_use : 16|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ fix_mode : 8|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ fix_type : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 86 thermistor_rear: 7 SN_REAR
+ SG_ therm_status : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ coolant_temp_3 : 32|16@1- (0.01,0) [0|0] "degC" Vector__XXX
+ SG_ coolant_temp_2 : 16|16@1- (0.01,0) [0|0] "degC" Vector__XXX
+ SG_ coolant_temp_1 : 0|16@1- (0.01,0) [0|0] "degC" Vector__XXX
 
 BO_ 87 fusion_quat_rear: 8 SN_REAR
  SG_ q_z : 48|16@1- (3.051850947599719e-05,0) [0|0] "" Vector__XXX
@@ -1608,6 +1620,8 @@ CM_ BO_ 68 "GPS Date data message.";
 CM_ BO_ 69 "GPS fix quality, satellite counts, validity flags, position DOP.";
 CM_ SG_ 69 fix_mode "1=NoFix, 2=2D, 3=3D";
 CM_ SG_ 69 fix_type "0=Invalid, 1=GPS, 2=DGPS, 3=PPS";
+CM_ BO_ 70 "Coolant NTC thermistor temperatures + fault flags.";
+CM_ SG_ 70 therm_status "bit0-2: channel 1-3 open circuit; bit3-5: channel 1-3 short circuit";
 CM_ BO_ 71 "Fusion AHRS orientation quaternion (w, x, y, z).";
 CM_ BO_ 72 "Fusion AHRS Euler angles.";
 CM_ BO_ 73 "Fusion linear acceleration (gravity removed, body frame).";
@@ -1629,6 +1643,8 @@ CM_ BO_ 84 "GPS Date data message.";
 CM_ BO_ 85 "GPS fix quality, satellite counts, validity flags, position DOP.";
 CM_ SG_ 85 fix_mode "1=NoFix, 2=2D, 3=3D";
 CM_ SG_ 85 fix_type "0=Invalid, 1=GPS, 2=DGPS, 3=PPS";
+CM_ BO_ 86 "Coolant NTC thermistor temperatures + fault flags.";
+CM_ SG_ 86 therm_status "bit0-2: channel 1-3 open circuit; bit3-5: channel 1-3 short circuit";
 CM_ BO_ 87 "Fusion AHRS orientation quaternion (w, x, y, z).";
 CM_ BO_ 88 "Fusion AHRS Euler angles.";
 CM_ BO_ 89 "Fusion linear acceleration (gravity removed, body frame).";
@@ -1803,6 +1819,7 @@ BA_ "GenMsgCycleTime" BO_ 66 100;
 BA_ "GenMsgCycleTime" BO_ 67 1000;
 BA_ "GenMsgCycleTime" BO_ 68 1000;
 BA_ "GenMsgCycleTime" BO_ 69 1000;
+BA_ "GenMsgCycleTime" BO_ 70 100;
 BA_ "GenMsgCycleTime" BO_ 71 100;
 BA_ "GenMsgCycleTime" BO_ 72 100;
 BA_ "GenMsgCycleTime" BO_ 73 10;
@@ -1816,6 +1833,7 @@ BA_ "GenMsgCycleTime" BO_ 82 100;
 BA_ "GenMsgCycleTime" BO_ 83 1000;
 BA_ "GenMsgCycleTime" BO_ 84 1000;
 BA_ "GenMsgCycleTime" BO_ 85 1000;
+BA_ "GenMsgCycleTime" BO_ 86 100;
 BA_ "GenMsgCycleTime" BO_ 87 100;
 BA_ "GenMsgCycleTime" BO_ 88 100;
 BA_ "GenMsgCycleTime" BO_ 89 10;
@@ -1851,7 +1869,7 @@ BA_ "GenMsgCycleTime" BO_ 226 100;
 BA_ "GenMsgCycleTime" BO_ 227 100;
 BA_ "SystemSignalLongSymbol" SG_ 469 INV_HV_Input_Current_Sensor_Vali "INV_HV_Input_Current_Sensor_Validity";
 BA_ "GenMsgCycleTime" BO_ 1280 100;
-BA_ "GenMsgCycleTime" BO_ 1984 5;
+BA_ "GenMsgCycleTime" BO_ 1984 10;
 BA_ "GenMsgCycleTime" BO_ 2550588916 1000;
 BA_ "GenMsgCycleTime" BO_ 2566869221 1000;
 VAL_ 5 bms_state 0 "BMS_STATE_BOOT" 1 "BMS_STATE_LV_POWER" 2 "BMS_STATE_BUS_HEALTH_CHECK" 3 "BMS_STATE_PRECHARGE" 4 "BMS_STATE_ENERGIZED" 5 "BMS_STATE_DRIVE" 6 "BMS_STATE_BATTERY_FREE" 7 "BMS_STATE_CHARGER_PRECHARGE" 8 "BMS_STATE_CHARGING" 9 "BMS_STATE_BALANCE" 20 "BMS_STATE_FAULT_CELL_OVERVOLTAGE" 21 "BMS_STATE_FAULT_CELL_UNDERVOLTAGE" 22 "BMS_STATE_FAULT_CELL_OVERTEMP" 23 "BMS_STATE_FAULT_CELL_UNDERTEMP" 24 "BMS_STATE_FAULT_TEMP_SENSOR_LOSS" 25 "BMS_STATE_FAULT_ADBMS_INIT" 26 "BMS_STATE_FAULT_ADBMS_TIMEOUT" 27 "BMS_STATE_FAULT_IVT_TIMEOUT" 28 "BMS_STATE_FAULT_OVERCURRENT" 29 "BMS_STATE_FAULT_IMD" 30 "BMS_STATE_FAULT_BSPD" 31 "BMS_STATE_FAULT_CONTACTOR_MISMATCH" 32 "BMS_STATE_FAULT_BALANCE_HV_ACTIVE" 33 "BMS_STATE_FAULT_PRECHARGE_TIMEOUT" 34 "BMS_STATE_FAULT_PRECHARGE_TOO_FAST" 35 "BMS_STATE_FAULT_CHARGER_PRECHARGE_TIMEOUT" 36 "BMS_STATE_FAULT_SHUTDOWN_OPEN" 37 "BMS_STATE_FAULT_AIR_MINUS_OPEN" 38 "BMS_STATE_FAULT_CHARGER_HW" 39 "BMS_STATE_FAULT_MANUAL" 40 "BMS_STATE_COUNT" ;

@@ -4401,6 +4401,139 @@ bool feb_can_gps_status_front_pdop_is_in_range(uint16_t value)
     return (true);
 }
 
+int feb_can_thermistor_front_pack(
+    uint8_t *dst_p,
+    const struct feb_can_thermistor_front_t *src_p,
+    size_t size)
+{
+    uint16_t coolant_temp_1;
+    uint16_t coolant_temp_2;
+    uint16_t coolant_temp_3;
+
+    if (size < 7u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 7);
+
+    coolant_temp_1 = (uint16_t)src_p->coolant_temp_1;
+    dst_p[0] |= pack_left_shift_u16(coolant_temp_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(coolant_temp_1, 8u, 0xffu);
+    coolant_temp_2 = (uint16_t)src_p->coolant_temp_2;
+    dst_p[2] |= pack_left_shift_u16(coolant_temp_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(coolant_temp_2, 8u, 0xffu);
+    coolant_temp_3 = (uint16_t)src_p->coolant_temp_3;
+    dst_p[4] |= pack_left_shift_u16(coolant_temp_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(coolant_temp_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u8(src_p->therm_status, 0u, 0xffu);
+
+    return (7);
+}
+
+int feb_can_thermistor_front_unpack(
+    struct feb_can_thermistor_front_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t coolant_temp_1;
+    uint16_t coolant_temp_2;
+    uint16_t coolant_temp_3;
+
+    if (size < 7u) {
+        return (-EINVAL);
+    }
+
+    coolant_temp_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    coolant_temp_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->coolant_temp_1 = (int16_t)coolant_temp_1;
+    coolant_temp_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    coolant_temp_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->coolant_temp_2 = (int16_t)coolant_temp_2;
+    coolant_temp_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    coolant_temp_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->coolant_temp_3 = (int16_t)coolant_temp_3;
+    dst_p->therm_status = unpack_right_shift_u8(src_p[6], 0u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_thermistor_front_init(struct feb_can_thermistor_front_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_thermistor_front_t));
+
+    return 0;
+}
+
+int16_t feb_can_thermistor_front_coolant_temp_1_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_thermistor_front_coolant_temp_1_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_thermistor_front_coolant_temp_1_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_thermistor_front_coolant_temp_2_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_thermistor_front_coolant_temp_2_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_thermistor_front_coolant_temp_2_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_thermistor_front_coolant_temp_3_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_thermistor_front_coolant_temp_3_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_thermistor_front_coolant_temp_3_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_thermistor_front_therm_status_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_thermistor_front_therm_status_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_thermistor_front_therm_status_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
 int feb_can_fusion_quat_front_pack(
     uint8_t *dst_p,
     const struct feb_can_fusion_quat_front_t *src_p,
@@ -5903,6 +6036,139 @@ double feb_can_gps_status_rear_pdop_decode(uint16_t value)
 }
 
 bool feb_can_gps_status_rear_pdop_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_thermistor_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_thermistor_rear_t *src_p,
+    size_t size)
+{
+    uint16_t coolant_temp_1;
+    uint16_t coolant_temp_2;
+    uint16_t coolant_temp_3;
+
+    if (size < 7u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 7);
+
+    coolant_temp_1 = (uint16_t)src_p->coolant_temp_1;
+    dst_p[0] |= pack_left_shift_u16(coolant_temp_1, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(coolant_temp_1, 8u, 0xffu);
+    coolant_temp_2 = (uint16_t)src_p->coolant_temp_2;
+    dst_p[2] |= pack_left_shift_u16(coolant_temp_2, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(coolant_temp_2, 8u, 0xffu);
+    coolant_temp_3 = (uint16_t)src_p->coolant_temp_3;
+    dst_p[4] |= pack_left_shift_u16(coolant_temp_3, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(coolant_temp_3, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u8(src_p->therm_status, 0u, 0xffu);
+
+    return (7);
+}
+
+int feb_can_thermistor_rear_unpack(
+    struct feb_can_thermistor_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    uint16_t coolant_temp_1;
+    uint16_t coolant_temp_2;
+    uint16_t coolant_temp_3;
+
+    if (size < 7u) {
+        return (-EINVAL);
+    }
+
+    coolant_temp_1 = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    coolant_temp_1 |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->coolant_temp_1 = (int16_t)coolant_temp_1;
+    coolant_temp_2 = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    coolant_temp_2 |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->coolant_temp_2 = (int16_t)coolant_temp_2;
+    coolant_temp_3 = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    coolant_temp_3 |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->coolant_temp_3 = (int16_t)coolant_temp_3;
+    dst_p->therm_status = unpack_right_shift_u8(src_p[6], 0u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_thermistor_rear_init(struct feb_can_thermistor_rear_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_thermistor_rear_t));
+
+    return 0;
+}
+
+int16_t feb_can_thermistor_rear_coolant_temp_1_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_thermistor_rear_coolant_temp_1_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_thermistor_rear_coolant_temp_1_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_thermistor_rear_coolant_temp_2_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_thermistor_rear_coolant_temp_2_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_thermistor_rear_coolant_temp_2_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int16_t feb_can_thermistor_rear_coolant_temp_3_encode(double value)
+{
+    return (int16_t)(value / 0.01);
+}
+
+double feb_can_thermistor_rear_coolant_temp_3_decode(int16_t value)
+{
+    return ((double)value * 0.01);
+}
+
+bool feb_can_thermistor_rear_coolant_temp_3_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t feb_can_thermistor_rear_therm_status_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_thermistor_rear_therm_status_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_thermistor_rear_therm_status_is_in_range(uint8_t value)
 {
     (void)value;
 
@@ -34315,6 +34581,12 @@ int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint3
         feb_can_db.gps_status_front.meta.last_rx_ms = now_ms;
         feb_can_db.gps_status_front.meta.rx_count++;
         return 0;
+    case FEB_CAN_THERMISTOR_FRONT_FRAME_ID:
+        if (feb_can_thermistor_front_unpack(&feb_can_db.thermistor_front.data, data, dlc) < 0) return -2;
+        feb_can_db.thermistor_front.meta.present = true;
+        feb_can_db.thermistor_front.meta.last_rx_ms = now_ms;
+        feb_can_db.thermistor_front.meta.rx_count++;
+        return 0;
     case FEB_CAN_FUSION_QUAT_FRONT_FRAME_ID:
         if (feb_can_fusion_quat_front_unpack(&feb_can_db.fusion_quat_front.data, data, dlc) < 0) return -2;
         feb_can_db.fusion_quat_front.meta.present = true;
@@ -34392,6 +34664,12 @@ int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint3
         feb_can_db.gps_status_rear.meta.present = true;
         feb_can_db.gps_status_rear.meta.last_rx_ms = now_ms;
         feb_can_db.gps_status_rear.meta.rx_count++;
+        return 0;
+    case FEB_CAN_THERMISTOR_REAR_FRAME_ID:
+        if (feb_can_thermistor_rear_unpack(&feb_can_db.thermistor_rear.data, data, dlc) < 0) return -2;
+        feb_can_db.thermistor_rear.meta.present = true;
+        feb_can_db.thermistor_rear.meta.last_rx_ms = now_ms;
+        feb_can_db.thermistor_rear.meta.rx_count++;
         return 0;
     case FEB_CAN_FUSION_QUAT_REAR_FRAME_ID:
         if (feb_can_fusion_quat_rear_unpack(&feb_can_db.fusion_quat_rear.data, data, dlc) < 0) return -2;
@@ -34728,6 +35006,7 @@ void FEB_CAN_DB_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_db.gps_time_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x43, "gps_time_front", (unsigned long)feb_can_db.gps_time_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_time_front.meta.rx_count);
     if (feb_can_db.gps_date_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x44, "gps_date_front", (unsigned long)feb_can_db.gps_date_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_date_front.meta.rx_count);
     if (feb_can_db.gps_status_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x45, "gps_status_front", (unsigned long)feb_can_db.gps_status_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_status_front.meta.rx_count);
+    if (feb_can_db.thermistor_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x46, "thermistor_front", (unsigned long)feb_can_db.thermistor_front.meta.last_rx_ms, (unsigned long)feb_can_db.thermistor_front.meta.rx_count);
     if (feb_can_db.fusion_quat_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x47, "fusion_quat_front", (unsigned long)feb_can_db.fusion_quat_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_quat_front.meta.rx_count);
     if (feb_can_db.fusion_euler_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x48, "fusion_euler_front", (unsigned long)feb_can_db.fusion_euler_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_euler_front.meta.rx_count);
     if (feb_can_db.fusion_lin_accel_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x49, "fusion_lin_accel_front", (unsigned long)feb_can_db.fusion_lin_accel_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_lin_accel_front.meta.rx_count);
@@ -34741,6 +35020,7 @@ void FEB_CAN_DB_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_db.gps_time_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x53, "gps_time_rear", (unsigned long)feb_can_db.gps_time_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_time_rear.meta.rx_count);
     if (feb_can_db.gps_date_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x54, "gps_date_rear", (unsigned long)feb_can_db.gps_date_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_date_rear.meta.rx_count);
     if (feb_can_db.gps_status_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x55, "gps_status_rear", (unsigned long)feb_can_db.gps_status_rear.meta.last_rx_ms, (unsigned long)feb_can_db.gps_status_rear.meta.rx_count);
+    if (feb_can_db.thermistor_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x56, "thermistor_rear", (unsigned long)feb_can_db.thermistor_rear.meta.last_rx_ms, (unsigned long)feb_can_db.thermistor_rear.meta.rx_count);
     if (feb_can_db.fusion_quat_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x57, "fusion_quat_rear", (unsigned long)feb_can_db.fusion_quat_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_quat_rear.meta.rx_count);
     if (feb_can_db.fusion_euler_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x58, "fusion_euler_rear", (unsigned long)feb_can_db.fusion_euler_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_euler_rear.meta.rx_count);
     if (feb_can_db.fusion_lin_accel_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x59, "fusion_lin_accel_rear", (unsigned long)feb_can_db.fusion_lin_accel_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_lin_accel_rear.meta.rx_count);
@@ -35118,6 +35398,15 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
         printf_fn("  pdop                             = %ld\r\n", (long)feb_can_db.gps_status_front.data.pdop);
         return 0;
     }
+    if (strcmp(name, "thermistor_front") == 0)
+    {
+        printf_fn("0x%02X  thermistor_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x46, (int)feb_can_db.thermistor_front.meta.present, (unsigned long)feb_can_db.thermistor_front.meta.last_rx_ms, (unsigned long)feb_can_db.thermistor_front.meta.rx_count);
+        printf_fn("  coolant_temp_1                   = %ld\r\n", (long)feb_can_db.thermistor_front.data.coolant_temp_1);
+        printf_fn("  coolant_temp_2                   = %ld\r\n", (long)feb_can_db.thermistor_front.data.coolant_temp_2);
+        printf_fn("  coolant_temp_3                   = %ld\r\n", (long)feb_can_db.thermistor_front.data.coolant_temp_3);
+        printf_fn("  therm_status                     = %ld\r\n", (long)feb_can_db.thermistor_front.data.therm_status);
+        return 0;
+    }
     if (strcmp(name, "fusion_quat_front") == 0)
     {
         printf_fn("0x%02X  fusion_quat_front  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x47, (int)feb_can_db.fusion_quat_front.meta.present, (unsigned long)feb_can_db.fusion_quat_front.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_quat_front.meta.rx_count);
@@ -35226,6 +35515,15 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
         printf_fn("  valid                            = %ld\r\n", (long)feb_can_db.gps_status_rear.data.valid);
         printf_fn("  has_fix                          = %ld\r\n", (long)feb_can_db.gps_status_rear.data.has_fix);
         printf_fn("  pdop                             = %ld\r\n", (long)feb_can_db.gps_status_rear.data.pdop);
+        return 0;
+    }
+    if (strcmp(name, "thermistor_rear") == 0)
+    {
+        printf_fn("0x%02X  thermistor_rear  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x56, (int)feb_can_db.thermistor_rear.meta.present, (unsigned long)feb_can_db.thermistor_rear.meta.last_rx_ms, (unsigned long)feb_can_db.thermistor_rear.meta.rx_count);
+        printf_fn("  coolant_temp_1                   = %ld\r\n", (long)feb_can_db.thermistor_rear.data.coolant_temp_1);
+        printf_fn("  coolant_temp_2                   = %ld\r\n", (long)feb_can_db.thermistor_rear.data.coolant_temp_2);
+        printf_fn("  coolant_temp_3                   = %ld\r\n", (long)feb_can_db.thermistor_rear.data.coolant_temp_3);
+        printf_fn("  therm_status                     = %ld\r\n", (long)feb_can_db.thermistor_rear.data.therm_status);
         return 0;
     }
     if (strcmp(name, "fusion_quat_rear") == 0)

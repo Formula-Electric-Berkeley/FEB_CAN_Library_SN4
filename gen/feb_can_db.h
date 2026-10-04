@@ -82,6 +82,7 @@ extern "C" {
 #define FEB_CAN_GPS_TIME_FRONT_FRAME_ID (0x43u)
 #define FEB_CAN_GPS_DATE_FRONT_FRAME_ID (0x44u)
 #define FEB_CAN_GPS_STATUS_FRONT_FRAME_ID (0x45u)
+#define FEB_CAN_THERMISTOR_FRONT_FRAME_ID (0x46u)
 #define FEB_CAN_FUSION_QUAT_FRONT_FRAME_ID (0x47u)
 #define FEB_CAN_FUSION_EULER_FRONT_FRAME_ID (0x48u)
 #define FEB_CAN_FUSION_LIN_ACCEL_FRONT_FRAME_ID (0x49u)
@@ -95,6 +96,7 @@ extern "C" {
 #define FEB_CAN_GPS_TIME_REAR_FRAME_ID (0x53u)
 #define FEB_CAN_GPS_DATE_REAR_FRAME_ID (0x54u)
 #define FEB_CAN_GPS_STATUS_REAR_FRAME_ID (0x55u)
+#define FEB_CAN_THERMISTOR_REAR_FRAME_ID (0x56u)
 #define FEB_CAN_FUSION_QUAT_REAR_FRAME_ID (0x57u)
 #define FEB_CAN_FUSION_EULER_REAR_FRAME_ID (0x58u)
 #define FEB_CAN_FUSION_LIN_ACCEL_REAR_FRAME_ID (0x59u)
@@ -183,6 +185,7 @@ extern "C" {
 #define FEB_CAN_GPS_TIME_FRONT_LENGTH (3u)
 #define FEB_CAN_GPS_DATE_FRONT_LENGTH (3u)
 #define FEB_CAN_GPS_STATUS_FRONT_LENGTH (8u)
+#define FEB_CAN_THERMISTOR_FRONT_LENGTH (7u)
 #define FEB_CAN_FUSION_QUAT_FRONT_LENGTH (8u)
 #define FEB_CAN_FUSION_EULER_FRONT_LENGTH (6u)
 #define FEB_CAN_FUSION_LIN_ACCEL_FRONT_LENGTH (6u)
@@ -196,6 +199,7 @@ extern "C" {
 #define FEB_CAN_GPS_TIME_REAR_LENGTH (3u)
 #define FEB_CAN_GPS_DATE_REAR_LENGTH (3u)
 #define FEB_CAN_GPS_STATUS_REAR_LENGTH (8u)
+#define FEB_CAN_THERMISTOR_REAR_LENGTH (7u)
 #define FEB_CAN_FUSION_QUAT_REAR_LENGTH (8u)
 #define FEB_CAN_FUSION_EULER_REAR_LENGTH (6u)
 #define FEB_CAN_FUSION_LIN_ACCEL_REAR_LENGTH (6u)
@@ -284,6 +288,7 @@ extern "C" {
 #define FEB_CAN_GPS_TIME_FRONT_IS_EXTENDED (0)
 #define FEB_CAN_GPS_DATE_FRONT_IS_EXTENDED (0)
 #define FEB_CAN_GPS_STATUS_FRONT_IS_EXTENDED (0)
+#define FEB_CAN_THERMISTOR_FRONT_IS_EXTENDED (0)
 #define FEB_CAN_FUSION_QUAT_FRONT_IS_EXTENDED (0)
 #define FEB_CAN_FUSION_EULER_FRONT_IS_EXTENDED (0)
 #define FEB_CAN_FUSION_LIN_ACCEL_FRONT_IS_EXTENDED (0)
@@ -297,6 +302,7 @@ extern "C" {
 #define FEB_CAN_GPS_TIME_REAR_IS_EXTENDED (0)
 #define FEB_CAN_GPS_DATE_REAR_IS_EXTENDED (0)
 #define FEB_CAN_GPS_STATUS_REAR_IS_EXTENDED (0)
+#define FEB_CAN_THERMISTOR_REAR_IS_EXTENDED (0)
 #define FEB_CAN_FUSION_QUAT_REAR_IS_EXTENDED (0)
 #define FEB_CAN_FUSION_EULER_REAR_IS_EXTENDED (0)
 #define FEB_CAN_FUSION_LIN_ACCEL_REAR_IS_EXTENDED (0)
@@ -385,6 +391,7 @@ extern "C" {
 #define FEB_CAN_GPS_TIME_FRONT_CYCLE_TIME_MS (1000u)
 #define FEB_CAN_GPS_DATE_FRONT_CYCLE_TIME_MS (1000u)
 #define FEB_CAN_GPS_STATUS_FRONT_CYCLE_TIME_MS (1000u)
+#define FEB_CAN_THERMISTOR_FRONT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FUSION_QUAT_FRONT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FUSION_EULER_FRONT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FUSION_LIN_ACCEL_FRONT_CYCLE_TIME_MS (10u)
@@ -398,6 +405,7 @@ extern "C" {
 #define FEB_CAN_GPS_TIME_REAR_CYCLE_TIME_MS (1000u)
 #define FEB_CAN_GPS_DATE_REAR_CYCLE_TIME_MS (1000u)
 #define FEB_CAN_GPS_STATUS_REAR_CYCLE_TIME_MS (1000u)
+#define FEB_CAN_THERMISTOR_REAR_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FUSION_QUAT_REAR_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FUSION_EULER_REAR_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FUSION_LIN_ACCEL_REAR_CYCLE_TIME_MS (10u)
@@ -431,7 +439,7 @@ extern "C" {
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER4_CYCLE_TIME_MS (100u)
 #define FEB_CAN_EBS_PRESSURE_STATUS_CYCLE_TIME_MS (100u)
-#define FEB_CAN_BMS_CELL_DATA_CYCLE_TIME_MS (5u)
+#define FEB_CAN_BMS_CELL_DATA_CYCLE_TIME_MS (10u)
 #define FEB_CAN_CHARGER_LIMITS_CYCLE_TIME_MS (1000u)
 #define FEB_CAN_CHARGER_STATUS_CYCLE_TIME_MS (1000u)
 
@@ -550,6 +558,7 @@ extern "C" {
 #define FEB_CAN_GPS_TIME_FRONT_NAME "gps_time_front"
 #define FEB_CAN_GPS_DATE_FRONT_NAME "gps_date_front"
 #define FEB_CAN_GPS_STATUS_FRONT_NAME "gps_status_front"
+#define FEB_CAN_THERMISTOR_FRONT_NAME "thermistor_front"
 #define FEB_CAN_FUSION_QUAT_FRONT_NAME "fusion_quat_front"
 #define FEB_CAN_FUSION_EULER_FRONT_NAME "fusion_euler_front"
 #define FEB_CAN_FUSION_LIN_ACCEL_FRONT_NAME "fusion_lin_accel_front"
@@ -563,6 +572,7 @@ extern "C" {
 #define FEB_CAN_GPS_TIME_REAR_NAME "gps_time_rear"
 #define FEB_CAN_GPS_DATE_REAR_NAME "gps_date_rear"
 #define FEB_CAN_GPS_STATUS_REAR_NAME "gps_status_rear"
+#define FEB_CAN_THERMISTOR_REAR_NAME "thermistor_rear"
 #define FEB_CAN_FUSION_QUAT_REAR_NAME "fusion_quat_rear"
 #define FEB_CAN_FUSION_EULER_REAR_NAME "fusion_euler_rear"
 #define FEB_CAN_FUSION_LIN_ACCEL_REAR_NAME "fusion_lin_accel_rear"
@@ -748,6 +758,10 @@ extern "C" {
 #define FEB_CAN_GPS_STATUS_FRONT_VALID_NAME "valid"
 #define FEB_CAN_GPS_STATUS_FRONT_HAS_FIX_NAME "has_fix"
 #define FEB_CAN_GPS_STATUS_FRONT_PDOP_NAME "pdop"
+#define FEB_CAN_THERMISTOR_FRONT_COOLANT_TEMP_1_NAME "coolant_temp_1"
+#define FEB_CAN_THERMISTOR_FRONT_COOLANT_TEMP_2_NAME "coolant_temp_2"
+#define FEB_CAN_THERMISTOR_FRONT_COOLANT_TEMP_3_NAME "coolant_temp_3"
+#define FEB_CAN_THERMISTOR_FRONT_THERM_STATUS_NAME "therm_status"
 #define FEB_CAN_FUSION_QUAT_FRONT_Q_W_NAME "q_w"
 #define FEB_CAN_FUSION_QUAT_FRONT_Q_X_NAME "q_x"
 #define FEB_CAN_FUSION_QUAT_FRONT_Q_Y_NAME "q_y"
@@ -793,6 +807,10 @@ extern "C" {
 #define FEB_CAN_GPS_STATUS_REAR_VALID_NAME "valid"
 #define FEB_CAN_GPS_STATUS_REAR_HAS_FIX_NAME "has_fix"
 #define FEB_CAN_GPS_STATUS_REAR_PDOP_NAME "pdop"
+#define FEB_CAN_THERMISTOR_REAR_COOLANT_TEMP_1_NAME "coolant_temp_1"
+#define FEB_CAN_THERMISTOR_REAR_COOLANT_TEMP_2_NAME "coolant_temp_2"
+#define FEB_CAN_THERMISTOR_REAR_COOLANT_TEMP_3_NAME "coolant_temp_3"
+#define FEB_CAN_THERMISTOR_REAR_THERM_STATUS_NAME "therm_status"
 #define FEB_CAN_FUSION_QUAT_REAR_Q_W_NAME "q_w"
 #define FEB_CAN_FUSION_QUAT_REAR_Q_X_NAME "q_x"
 #define FEB_CAN_FUSION_QUAT_REAR_Q_Y_NAME "q_y"
@@ -3257,6 +3275,45 @@ struct feb_can_gps_status_front_t {
 };
 
 /**
+ * Signals in message thermistor_front.
+ *
+ * Coolant NTC thermistor temperatures + fault flags.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_thermistor_front_t {
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    int16_t coolant_temp_1;
+
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    int16_t coolant_temp_2;
+
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    int16_t coolant_temp_3;
+
+    /**
+     * bit0-2: channel 1-3 open circuit; bit3-5: channel 1-3 short circuit
+     *
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t therm_status;
+};
+
+/**
  * Signals in message fusion_quat_front.
  *
  * Fusion AHRS orientation quaternion (w, x, y, z).
@@ -3702,6 +3759,45 @@ struct feb_can_gps_status_rear_t {
      * Offset: 0
      */
     uint16_t pdop;
+};
+
+/**
+ * Signals in message thermistor_rear.
+ *
+ * Coolant NTC thermistor temperatures + fault flags.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_thermistor_rear_t {
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    int16_t coolant_temp_1;
+
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    int16_t coolant_temp_2;
+
+    /**
+     * Range: -
+     * Scale: 0.01
+     * Offset: 0
+     */
+    int16_t coolant_temp_3;
+
+    /**
+     * bit0-2: channel 1-3 open circuit; bit3-5: channel 1-3 short circuit
+     *
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t therm_status;
 };
 
 /**
@@ -17217,6 +17313,151 @@ double feb_can_gps_status_front_pdop_decode(uint16_t value);
 bool feb_can_gps_status_front_pdop_is_in_range(uint16_t value);
 
 /**
+ * Pack message thermistor_front.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_thermistor_front_pack(
+    uint8_t *dst_p,
+    const struct feb_can_thermistor_front_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message thermistor_front.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_thermistor_front_unpack(
+    struct feb_can_thermistor_front_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from thermistor_front.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_thermistor_front_init(struct feb_can_thermistor_front_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_thermistor_front_coolant_temp_1_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_thermistor_front_coolant_temp_1_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_thermistor_front_coolant_temp_1_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_thermistor_front_coolant_temp_2_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_thermistor_front_coolant_temp_2_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_thermistor_front_coolant_temp_2_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_thermistor_front_coolant_temp_3_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_thermistor_front_coolant_temp_3_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_thermistor_front_coolant_temp_3_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_thermistor_front_therm_status_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_thermistor_front_therm_status_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_thermistor_front_therm_status_is_in_range(uint8_t value);
+
+/**
  * Pack message fusion_quat_front.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -18911,6 +19152,151 @@ double feb_can_gps_status_rear_pdop_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_gps_status_rear_pdop_is_in_range(uint16_t value);
+
+/**
+ * Pack message thermistor_rear.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_thermistor_rear_pack(
+    uint8_t *dst_p,
+    const struct feb_can_thermistor_rear_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message thermistor_rear.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_thermistor_rear_unpack(
+    struct feb_can_thermistor_rear_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from thermistor_rear.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_thermistor_rear_init(struct feb_can_thermistor_rear_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_thermistor_rear_coolant_temp_1_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_thermistor_rear_coolant_temp_1_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_thermistor_rear_coolant_temp_1_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_thermistor_rear_coolant_temp_2_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_thermistor_rear_coolant_temp_2_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_thermistor_rear_coolant_temp_2_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int16_t feb_can_thermistor_rear_coolant_temp_3_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_thermistor_rear_coolant_temp_3_decode(int16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_thermistor_rear_coolant_temp_3_is_in_range(int16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_thermistor_rear_therm_status_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_thermistor_rear_therm_status_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_thermistor_rear_therm_status_is_in_range(uint8_t value);
 
 /**
  * Pack message fusion_quat_rear.
@@ -51110,6 +51496,7 @@ typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_motion_front_t data;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_time_front_t data; } FEB_CAN_DB_gps_time_front_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_date_front_t data; } FEB_CAN_DB_gps_date_front_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_status_front_t data; } FEB_CAN_DB_gps_status_front_t;
+typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_thermistor_front_t data; } FEB_CAN_DB_thermistor_front_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_quat_front_t data; } FEB_CAN_DB_fusion_quat_front_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_euler_front_t data; } FEB_CAN_DB_fusion_euler_front_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_lin_accel_front_t data; } FEB_CAN_DB_fusion_lin_accel_front_t;
@@ -51123,6 +51510,7 @@ typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_motion_rear_t data; 
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_time_rear_t data; } FEB_CAN_DB_gps_time_rear_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_date_rear_t data; } FEB_CAN_DB_gps_date_rear_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_status_rear_t data; } FEB_CAN_DB_gps_status_rear_t;
+typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_thermistor_rear_t data; } FEB_CAN_DB_thermistor_rear_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_quat_rear_t data; } FEB_CAN_DB_fusion_quat_rear_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_euler_rear_t data; } FEB_CAN_DB_fusion_euler_rear_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_lin_accel_rear_t data; } FEB_CAN_DB_fusion_lin_accel_rear_t;
@@ -51211,6 +51599,7 @@ typedef struct {
     FEB_CAN_DB_gps_time_front_t gps_time_front;
     FEB_CAN_DB_gps_date_front_t gps_date_front;
     FEB_CAN_DB_gps_status_front_t gps_status_front;
+    FEB_CAN_DB_thermistor_front_t thermistor_front;
     FEB_CAN_DB_fusion_quat_front_t fusion_quat_front;
     FEB_CAN_DB_fusion_euler_front_t fusion_euler_front;
     FEB_CAN_DB_fusion_lin_accel_front_t fusion_lin_accel_front;
@@ -51224,6 +51613,7 @@ typedef struct {
     FEB_CAN_DB_gps_time_rear_t gps_time_rear;
     FEB_CAN_DB_gps_date_rear_t gps_date_rear;
     FEB_CAN_DB_gps_status_rear_t gps_status_rear;
+    FEB_CAN_DB_thermistor_rear_t thermistor_rear;
     FEB_CAN_DB_fusion_quat_rear_t fusion_quat_rear;
     FEB_CAN_DB_fusion_euler_rear_t fusion_euler_rear;
     FEB_CAN_DB_fusion_lin_accel_rear_t fusion_lin_accel_rear;
