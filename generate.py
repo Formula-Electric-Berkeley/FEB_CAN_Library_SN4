@@ -277,6 +277,7 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     # IMMUTABLE frame ID: 0x500 is the CANopen PDO-Tx slot used by the EBS ECU.
     # Cycle time is fixed at 100 ms per CANopen specification — do not reduce it.
     0x500: (pcu_msg.ebs_pressure_status, "EBS pressure status (4 sensors)"),
+    0x501: (arc_msg.get_pressure_sensors, "DSB pressure status (2 sensors)"),
     # 0x501-0x50F: Reserved for future EBS / driverless safety messages
 
     # ----- IVT-S Current/Voltage Sensor (0x520-0x52F) -----
