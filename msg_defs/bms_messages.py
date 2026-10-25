@@ -41,7 +41,7 @@ def get_bms_state(frame_id: int):
                 (37, "BMS_STATE_FAULT_AIR_MINUS_OPEN"),
                 (38, "BMS_STATE_FAULT_CHARGER_HW"),
                 (39, "BMS_STATE_FAULT_MANUAL"),
-                (40, "BMS_STATE_COUNT"),
+                (40, "BMS_STATE_FAULT_IVT_VOLTAGE_NEGATIVE"),
             ])
         )
     )

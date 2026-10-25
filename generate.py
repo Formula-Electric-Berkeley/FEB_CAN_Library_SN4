@@ -18,6 +18,7 @@ import re
 import cantools
 import os
 import sys
+from dataclasses import dataclass
 from typing import Callable, Dict, List, Tuple
 
 EXTERNAL_DBC_DIR = os.path.join(os.path.dirname(__file__), "external_dbc")
@@ -664,6 +665,66 @@ def generate_traits_file(messages) -> None:
     print(f"Generated gen/{TRAITS_BASENAME}.hpp ({len(messages)} messages)")
 
 
+@dataclass(frozen=True)
+class ExportedEnum:
+    message_name: str
+    signal_name: str
+    type_name: str
+    strip_prefix: str
+
+
+EXPORTED_ENUMS = [
+    ExportedEnum(message_name="bms_state", signal_name="bms_state", type_name="BMS_State", strip_prefix="BMS_STATE_"),
+]
+
+
+def exported_enum_choices(messages, exported_enum: ExportedEnum) -> List[Tuple[int, str]]:
+    for _, message in messages:
+        if message.name != exported_enum.message_name:
+            continue
+        for signal in message.signals:
+            if signal.name == exported_enum.signal_name and signal.choices:
+                choices = sorted((int(value), str(choice_name)) for value, choice_name in signal.choices.items())
+                for _, choice_name in choices:
+                    if not choice_name.startswith(exported_enum.strip_prefix) or not choice_name.isidentifier():
+                        sys.exit(f"[ERROR] {exported_enum.message_name}.{exported_enum.signal_name}: choice "
+                                 f"'{choice_name}' must be a C identifier starting with '{exported_enum.strip_prefix}'")
+                return choices
+    sys.exit(f"[ERROR] EXPORTED_ENUMS: no value table on {exported_enum.message_name}.{exported_enum.signal_name}")
+
+
+def exported_enums_header_body(messages) -> str:
+    lines = []
+    for exported_enum in EXPORTED_ENUMS:
+        type_name = exported_enum.type_name
+        lines.append("typedef enum {")
+        for value, choice_name in exported_enum_choices(messages, exported_enum):
+            lines.append(f"    {choice_name} = {value},")
+        lines.append(f"}} {type_name}_t;")
+        lines.append("")
+        lines.append(f"const char *{type_name}_Name({type_name}_t value);")
+        lines.append("")
+    return "\n".join(lines).rstrip()
+
+
+def exported_enums_source_body(messages) -> str:
+    lines = []
+    for exported_enum in EXPORTED_ENUMS:
+        type_name = exported_enum.type_name
+        lines.append(f"const char *{type_name}_Name({type_name}_t value)")
+        lines.append("{")
+        lines.append("    switch (value)")
+        lines.append("    {")
+        for _, choice_name in exported_enum_choices(messages, exported_enum):
+            display_name = choice_name.removeprefix(exported_enum.strip_prefix)
+            lines.append(f'    case {choice_name}: return "{display_name}";')
+        lines.append('    default: return "UNKNOWN";')
+        lines.append("    }")
+        lines.append("}")
+        lines.append("")
+    return "\n".join(lines).rstrip()
+
+
 def generate_db_files(cantools_dir: str) -> None:
     """Consolidate the cantools codec and latest-value aggregate into gen/feb_can_db.{h,c}."""
     messages = []
@@ -701,6 +762,9 @@ def generate_db_files(cantools_dir: str) -> None:
         "",
         _state_header_body(messages),
         "",
+        "",
+        exported_enums_header_body(messages),
+        "",
         "#ifdef __cplusplus",
         "}",
         "#endif",
@@ -723,6 +787,9 @@ def generate_db_files(cantools_dir: str) -> None:
         "",
         "",
         _state_source_body(messages),
+        "",
+        "",
+        exported_enums_source_body(messages),
         "",
     ]
     with open(f"gen/{DB_BASENAME}.c", "w") as f:
