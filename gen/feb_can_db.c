@@ -3727,6 +3727,85 @@ bool feb_can_pcu_pedal_voltages_brake2_mv_is_in_range(uint16_t value)
     return (true);
 }
 
+int feb_can_arc_tps_pack(
+    uint8_t *dst_p,
+    const struct feb_can_arc_tps_t *src_p,
+    size_t size)
+{
+    if (size < 4u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 4);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->voltage, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->voltage, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->current, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->current, 8u, 0xffu);
+
+    return (4);
+}
+
+int feb_can_arc_tps_unpack(
+    struct feb_can_arc_tps_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 4u) {
+        return (-EINVAL);
+    }
+
+    dst_p->voltage = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->voltage |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->current = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->current |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_arc_tps_init(struct feb_can_arc_tps_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_arc_tps_t));
+
+    return 0;
+}
+
+uint16_t feb_can_arc_tps_voltage_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_arc_tps_voltage_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_tps_voltage_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_arc_tps_current_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_arc_tps_current_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_tps_current_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
 int feb_can_gps_pos_front_pack(
     uint8_t *dst_p,
     const struct feb_can_gps_pos_front_t *src_p,
@@ -17011,6 +17090,1131 @@ bool feb_can_sn_rear_heartbeat_error63_is_in_range(uint8_t value)
     return (value <= 1u);
 }
 
+int feb_can_arc_heartbeat_pack(
+    uint8_t *dst_p,
+    const struct feb_can_arc_heartbeat_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u8(src_p->error0, 0u, 0x01u);
+    dst_p[0] |= pack_left_shift_u8(src_p->error1, 1u, 0x02u);
+    dst_p[0] |= pack_left_shift_u8(src_p->error2, 2u, 0x04u);
+    dst_p[0] |= pack_left_shift_u8(src_p->error3, 3u, 0x08u);
+    dst_p[0] |= pack_left_shift_u8(src_p->error4, 4u, 0x10u);
+    dst_p[0] |= pack_left_shift_u8(src_p->error5, 5u, 0x20u);
+    dst_p[0] |= pack_left_shift_u8(src_p->error6, 6u, 0x40u);
+    dst_p[0] |= pack_left_shift_u8(src_p->error7, 7u, 0x80u);
+    dst_p[1] |= pack_left_shift_u8(src_p->error8, 0u, 0x01u);
+    dst_p[1] |= pack_left_shift_u8(src_p->error9, 1u, 0x02u);
+    dst_p[1] |= pack_left_shift_u8(src_p->error10, 2u, 0x04u);
+    dst_p[1] |= pack_left_shift_u8(src_p->error11, 3u, 0x08u);
+    dst_p[1] |= pack_left_shift_u8(src_p->error12, 4u, 0x10u);
+    dst_p[1] |= pack_left_shift_u8(src_p->error13, 5u, 0x20u);
+    dst_p[1] |= pack_left_shift_u8(src_p->error14, 6u, 0x40u);
+    dst_p[1] |= pack_left_shift_u8(src_p->error15, 7u, 0x80u);
+    dst_p[2] |= pack_left_shift_u8(src_p->error16, 0u, 0x01u);
+    dst_p[2] |= pack_left_shift_u8(src_p->error17, 1u, 0x02u);
+    dst_p[2] |= pack_left_shift_u8(src_p->error18, 2u, 0x04u);
+    dst_p[2] |= pack_left_shift_u8(src_p->error19, 3u, 0x08u);
+    dst_p[2] |= pack_left_shift_u8(src_p->error20, 4u, 0x10u);
+    dst_p[2] |= pack_left_shift_u8(src_p->error21, 5u, 0x20u);
+    dst_p[2] |= pack_left_shift_u8(src_p->error22, 6u, 0x40u);
+    dst_p[2] |= pack_left_shift_u8(src_p->error23, 7u, 0x80u);
+    dst_p[3] |= pack_left_shift_u8(src_p->error24, 0u, 0x01u);
+    dst_p[3] |= pack_left_shift_u8(src_p->error25, 1u, 0x02u);
+    dst_p[3] |= pack_left_shift_u8(src_p->error26, 2u, 0x04u);
+    dst_p[3] |= pack_left_shift_u8(src_p->error27, 3u, 0x08u);
+    dst_p[3] |= pack_left_shift_u8(src_p->error28, 4u, 0x10u);
+    dst_p[3] |= pack_left_shift_u8(src_p->error29, 5u, 0x20u);
+    dst_p[3] |= pack_left_shift_u8(src_p->error30, 6u, 0x40u);
+    dst_p[3] |= pack_left_shift_u8(src_p->error31, 7u, 0x80u);
+    dst_p[4] |= pack_left_shift_u8(src_p->error32, 0u, 0x01u);
+    dst_p[4] |= pack_left_shift_u8(src_p->error33, 1u, 0x02u);
+    dst_p[4] |= pack_left_shift_u8(src_p->error34, 2u, 0x04u);
+    dst_p[4] |= pack_left_shift_u8(src_p->error35, 3u, 0x08u);
+    dst_p[4] |= pack_left_shift_u8(src_p->error36, 4u, 0x10u);
+    dst_p[4] |= pack_left_shift_u8(src_p->error37, 5u, 0x20u);
+    dst_p[4] |= pack_left_shift_u8(src_p->error38, 6u, 0x40u);
+    dst_p[4] |= pack_left_shift_u8(src_p->error39, 7u, 0x80u);
+    dst_p[5] |= pack_left_shift_u8(src_p->error40, 0u, 0x01u);
+    dst_p[5] |= pack_left_shift_u8(src_p->error41, 1u, 0x02u);
+    dst_p[5] |= pack_left_shift_u8(src_p->error42, 2u, 0x04u);
+    dst_p[5] |= pack_left_shift_u8(src_p->error43, 3u, 0x08u);
+    dst_p[5] |= pack_left_shift_u8(src_p->error44, 4u, 0x10u);
+    dst_p[5] |= pack_left_shift_u8(src_p->error45, 5u, 0x20u);
+    dst_p[5] |= pack_left_shift_u8(src_p->error46, 6u, 0x40u);
+    dst_p[5] |= pack_left_shift_u8(src_p->error47, 7u, 0x80u);
+    dst_p[6] |= pack_left_shift_u8(src_p->error48, 0u, 0x01u);
+    dst_p[6] |= pack_left_shift_u8(src_p->error49, 1u, 0x02u);
+    dst_p[6] |= pack_left_shift_u8(src_p->error50, 2u, 0x04u);
+    dst_p[6] |= pack_left_shift_u8(src_p->error51, 3u, 0x08u);
+    dst_p[6] |= pack_left_shift_u8(src_p->error52, 4u, 0x10u);
+    dst_p[6] |= pack_left_shift_u8(src_p->error53, 5u, 0x20u);
+    dst_p[6] |= pack_left_shift_u8(src_p->error54, 6u, 0x40u);
+    dst_p[6] |= pack_left_shift_u8(src_p->error55, 7u, 0x80u);
+    dst_p[7] |= pack_left_shift_u8(src_p->error56, 0u, 0x01u);
+    dst_p[7] |= pack_left_shift_u8(src_p->error57, 1u, 0x02u);
+    dst_p[7] |= pack_left_shift_u8(src_p->error58, 2u, 0x04u);
+    dst_p[7] |= pack_left_shift_u8(src_p->error59, 3u, 0x08u);
+    dst_p[7] |= pack_left_shift_u8(src_p->error60, 4u, 0x10u);
+    dst_p[7] |= pack_left_shift_u8(src_p->error61, 5u, 0x20u);
+    dst_p[7] |= pack_left_shift_u8(src_p->error62, 6u, 0x40u);
+    dst_p[7] |= pack_left_shift_u8(src_p->error63, 7u, 0x80u);
+
+    return (8);
+}
+
+int feb_can_arc_heartbeat_unpack(
+    struct feb_can_arc_heartbeat_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->error0 = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
+    dst_p->error1 = unpack_right_shift_u8(src_p[0], 1u, 0x02u);
+    dst_p->error2 = unpack_right_shift_u8(src_p[0], 2u, 0x04u);
+    dst_p->error3 = unpack_right_shift_u8(src_p[0], 3u, 0x08u);
+    dst_p->error4 = unpack_right_shift_u8(src_p[0], 4u, 0x10u);
+    dst_p->error5 = unpack_right_shift_u8(src_p[0], 5u, 0x20u);
+    dst_p->error6 = unpack_right_shift_u8(src_p[0], 6u, 0x40u);
+    dst_p->error7 = unpack_right_shift_u8(src_p[0], 7u, 0x80u);
+    dst_p->error8 = unpack_right_shift_u8(src_p[1], 0u, 0x01u);
+    dst_p->error9 = unpack_right_shift_u8(src_p[1], 1u, 0x02u);
+    dst_p->error10 = unpack_right_shift_u8(src_p[1], 2u, 0x04u);
+    dst_p->error11 = unpack_right_shift_u8(src_p[1], 3u, 0x08u);
+    dst_p->error12 = unpack_right_shift_u8(src_p[1], 4u, 0x10u);
+    dst_p->error13 = unpack_right_shift_u8(src_p[1], 5u, 0x20u);
+    dst_p->error14 = unpack_right_shift_u8(src_p[1], 6u, 0x40u);
+    dst_p->error15 = unpack_right_shift_u8(src_p[1], 7u, 0x80u);
+    dst_p->error16 = unpack_right_shift_u8(src_p[2], 0u, 0x01u);
+    dst_p->error17 = unpack_right_shift_u8(src_p[2], 1u, 0x02u);
+    dst_p->error18 = unpack_right_shift_u8(src_p[2], 2u, 0x04u);
+    dst_p->error19 = unpack_right_shift_u8(src_p[2], 3u, 0x08u);
+    dst_p->error20 = unpack_right_shift_u8(src_p[2], 4u, 0x10u);
+    dst_p->error21 = unpack_right_shift_u8(src_p[2], 5u, 0x20u);
+    dst_p->error22 = unpack_right_shift_u8(src_p[2], 6u, 0x40u);
+    dst_p->error23 = unpack_right_shift_u8(src_p[2], 7u, 0x80u);
+    dst_p->error24 = unpack_right_shift_u8(src_p[3], 0u, 0x01u);
+    dst_p->error25 = unpack_right_shift_u8(src_p[3], 1u, 0x02u);
+    dst_p->error26 = unpack_right_shift_u8(src_p[3], 2u, 0x04u);
+    dst_p->error27 = unpack_right_shift_u8(src_p[3], 3u, 0x08u);
+    dst_p->error28 = unpack_right_shift_u8(src_p[3], 4u, 0x10u);
+    dst_p->error29 = unpack_right_shift_u8(src_p[3], 5u, 0x20u);
+    dst_p->error30 = unpack_right_shift_u8(src_p[3], 6u, 0x40u);
+    dst_p->error31 = unpack_right_shift_u8(src_p[3], 7u, 0x80u);
+    dst_p->error32 = unpack_right_shift_u8(src_p[4], 0u, 0x01u);
+    dst_p->error33 = unpack_right_shift_u8(src_p[4], 1u, 0x02u);
+    dst_p->error34 = unpack_right_shift_u8(src_p[4], 2u, 0x04u);
+    dst_p->error35 = unpack_right_shift_u8(src_p[4], 3u, 0x08u);
+    dst_p->error36 = unpack_right_shift_u8(src_p[4], 4u, 0x10u);
+    dst_p->error37 = unpack_right_shift_u8(src_p[4], 5u, 0x20u);
+    dst_p->error38 = unpack_right_shift_u8(src_p[4], 6u, 0x40u);
+    dst_p->error39 = unpack_right_shift_u8(src_p[4], 7u, 0x80u);
+    dst_p->error40 = unpack_right_shift_u8(src_p[5], 0u, 0x01u);
+    dst_p->error41 = unpack_right_shift_u8(src_p[5], 1u, 0x02u);
+    dst_p->error42 = unpack_right_shift_u8(src_p[5], 2u, 0x04u);
+    dst_p->error43 = unpack_right_shift_u8(src_p[5], 3u, 0x08u);
+    dst_p->error44 = unpack_right_shift_u8(src_p[5], 4u, 0x10u);
+    dst_p->error45 = unpack_right_shift_u8(src_p[5], 5u, 0x20u);
+    dst_p->error46 = unpack_right_shift_u8(src_p[5], 6u, 0x40u);
+    dst_p->error47 = unpack_right_shift_u8(src_p[5], 7u, 0x80u);
+    dst_p->error48 = unpack_right_shift_u8(src_p[6], 0u, 0x01u);
+    dst_p->error49 = unpack_right_shift_u8(src_p[6], 1u, 0x02u);
+    dst_p->error50 = unpack_right_shift_u8(src_p[6], 2u, 0x04u);
+    dst_p->error51 = unpack_right_shift_u8(src_p[6], 3u, 0x08u);
+    dst_p->error52 = unpack_right_shift_u8(src_p[6], 4u, 0x10u);
+    dst_p->error53 = unpack_right_shift_u8(src_p[6], 5u, 0x20u);
+    dst_p->error54 = unpack_right_shift_u8(src_p[6], 6u, 0x40u);
+    dst_p->error55 = unpack_right_shift_u8(src_p[6], 7u, 0x80u);
+    dst_p->error56 = unpack_right_shift_u8(src_p[7], 0u, 0x01u);
+    dst_p->error57 = unpack_right_shift_u8(src_p[7], 1u, 0x02u);
+    dst_p->error58 = unpack_right_shift_u8(src_p[7], 2u, 0x04u);
+    dst_p->error59 = unpack_right_shift_u8(src_p[7], 3u, 0x08u);
+    dst_p->error60 = unpack_right_shift_u8(src_p[7], 4u, 0x10u);
+    dst_p->error61 = unpack_right_shift_u8(src_p[7], 5u, 0x20u);
+    dst_p->error62 = unpack_right_shift_u8(src_p[7], 6u, 0x40u);
+    dst_p->error63 = unpack_right_shift_u8(src_p[7], 7u, 0x80u);
+
+    return (0);
+}
+
+int feb_can_arc_heartbeat_init(struct feb_can_arc_heartbeat_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_arc_heartbeat_t));
+
+    return 0;
+}
+
+uint8_t feb_can_arc_heartbeat_error0_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error0_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error0_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error1_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error1_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error1_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error2_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error2_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error2_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error3_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error3_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error3_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error4_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error4_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error4_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error5_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error5_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error5_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error6_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error6_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error6_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error7_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error7_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error7_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error8_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error8_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error8_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error9_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error9_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error9_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error10_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error10_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error10_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error11_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error11_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error11_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error12_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error12_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error12_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error13_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error13_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error13_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error14_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error14_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error14_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error15_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error15_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error15_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error16_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error16_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error16_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error17_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error17_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error17_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error18_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error18_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error18_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error19_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error19_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error19_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error20_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error20_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error20_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error21_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error21_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error21_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error22_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error22_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error22_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error23_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error23_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error23_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error24_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error24_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error24_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error25_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error25_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error25_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error26_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error26_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error26_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error27_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error27_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error27_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error28_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error28_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error28_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error29_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error29_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error29_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error30_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error30_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error30_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error31_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error31_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error31_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error32_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error32_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error32_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error33_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error33_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error33_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error34_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error34_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error34_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error35_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error35_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error35_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error36_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error36_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error36_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error37_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error37_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error37_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error38_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error38_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error38_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error39_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error39_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error39_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error40_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error40_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error40_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error41_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error41_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error41_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error42_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error42_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error42_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error43_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error43_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error43_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error44_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error44_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error44_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error45_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error45_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error45_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error46_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error46_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error46_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error47_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error47_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error47_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error48_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error48_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error48_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error49_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error49_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error49_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error50_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error50_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error50_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error51_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error51_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error51_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error52_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error52_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error52_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error53_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error53_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error53_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error54_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error54_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error54_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error55_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error55_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error55_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error56_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error56_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error56_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error57_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error57_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error57_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error58_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error58_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error58_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error59_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error59_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error59_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error60_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error60_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error60_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error61_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error61_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error61_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error62_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error62_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error62_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t feb_can_arc_heartbeat_error63_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double feb_can_arc_heartbeat_error63_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_heartbeat_error63_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
 int feb_can_feb_ping_pong_counter1_pack(
     uint8_t *dst_p,
     const struct feb_can_feb_ping_pong_counter1_t *src_p,
@@ -17743,6 +18947,85 @@ double feb_can_ebs_pressure_status_ebs_pressure_4_decode(int16_t value)
 }
 
 bool feb_can_ebs_pressure_status_ebs_pressure_4_is_in_range(int16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int feb_can_arc_pressure_sense_pack(
+    uint8_t *dst_p,
+    const struct feb_can_arc_pressure_sense_t *src_p,
+    size_t size)
+{
+    if (size < 4u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 4);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->p_sense_1_v, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->p_sense_1_v, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->p_sense_2_v, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->p_sense_2_v, 8u, 0xffu);
+
+    return (4);
+}
+
+int feb_can_arc_pressure_sense_unpack(
+    struct feb_can_arc_pressure_sense_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 4u) {
+        return (-EINVAL);
+    }
+
+    dst_p->p_sense_1_v = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->p_sense_1_v |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->p_sense_2_v = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->p_sense_2_v |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_arc_pressure_sense_init(struct feb_can_arc_pressure_sense_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_arc_pressure_sense_t));
+
+    return 0;
+}
+
+uint16_t feb_can_arc_pressure_sense_p_sense_1_v_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_arc_pressure_sense_p_sense_1_v_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_pressure_sense_p_sense_1_v_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_arc_pressure_sense_p_sense_2_v_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_arc_pressure_sense_p_sense_2_v_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_arc_pressure_sense_p_sense_2_v_is_in_range(uint16_t value)
 {
     (void)value;
 
@@ -34545,6 +35828,12 @@ int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint3
         feb_can_db.pcu_pedal_voltages.meta.last_rx_ms = now_ms;
         feb_can_db.pcu_pedal_voltages.meta.rx_count++;
         return 0;
+    case FEB_CAN_ARC_TPS_FRAME_ID:
+        if (feb_can_arc_tps_unpack(&feb_can_db.arc_tps.data, data, dlc) < 0) return -2;
+        feb_can_db.arc_tps.meta.present = true;
+        feb_can_db.arc_tps.meta.last_rx_ms = now_ms;
+        feb_can_db.arc_tps.meta.rx_count++;
+        return 0;
     case FEB_CAN_GPS_POS_FRONT_FRAME_ID:
         if (feb_can_gps_pos_front_unpack(&feb_can_db.gps_pos_front.data, data, dlc) < 0) return -2;
         feb_can_db.gps_pos_front.meta.present = true;
@@ -34743,6 +36032,12 @@ int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint3
         feb_can_db.sn_rear_heartbeat.meta.last_rx_ms = now_ms;
         feb_can_db.sn_rear_heartbeat.meta.rx_count++;
         return 0;
+    case FEB_CAN_ARC_HEARTBEAT_FRAME_ID:
+        if (feb_can_arc_heartbeat_unpack(&feb_can_db.arc_heartbeat.data, data, dlc) < 0) return -2;
+        feb_can_db.arc_heartbeat.meta.present = true;
+        feb_can_db.arc_heartbeat.meta.last_rx_ms = now_ms;
+        feb_can_db.arc_heartbeat.meta.rx_count++;
+        return 0;
     case FEB_CAN_FEB_PING_PONG_COUNTER1_FRAME_ID:
         if (feb_can_feb_ping_pong_counter1_unpack(&feb_can_db.feb_ping_pong_counter1.data, data, dlc) < 0) return -2;
         feb_can_db.feb_ping_pong_counter1.meta.present = true;
@@ -34772,6 +36067,12 @@ int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint3
         feb_can_db.ebs_pressure_status.meta.present = true;
         feb_can_db.ebs_pressure_status.meta.last_rx_ms = now_ms;
         feb_can_db.ebs_pressure_status.meta.rx_count++;
+        return 0;
+    case FEB_CAN_ARC_PRESSURE_SENSE_FRAME_ID:
+        if (feb_can_arc_pressure_sense_unpack(&feb_can_db.arc_pressure_sense.data, data, dlc) < 0) return -2;
+        feb_can_db.arc_pressure_sense.meta.present = true;
+        feb_can_db.arc_pressure_sense.meta.last_rx_ms = now_ms;
+        feb_can_db.arc_pressure_sense.meta.rx_count++;
         return 0;
     case FEB_CAN_IVT_CURRENT_FRAME_ID:
         if (feb_can_ivt_current_unpack(&feb_can_db.ivt_current.data, data, dlc) < 0) return -2;
@@ -35000,6 +36301,7 @@ void FEB_CAN_DB_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_db.dcu_tps.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x37, "dcu_tps", (unsigned long)feb_can_db.dcu_tps.meta.last_rx_ms, (unsigned long)feb_can_db.dcu_tps.meta.rx_count);
     if (feb_can_db.pcu_raw_acc.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x38, "pcu_raw_acc", (unsigned long)feb_can_db.pcu_raw_acc.meta.last_rx_ms, (unsigned long)feb_can_db.pcu_raw_acc.meta.rx_count);
     if (feb_can_db.pcu_pedal_voltages.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x39, "pcu_pedal_voltages", (unsigned long)feb_can_db.pcu_pedal_voltages.meta.last_rx_ms, (unsigned long)feb_can_db.pcu_pedal_voltages.meta.rx_count);
+    if (feb_can_db.arc_tps.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x3A, "arc_tps", (unsigned long)feb_can_db.arc_tps.meta.last_rx_ms, (unsigned long)feb_can_db.arc_tps.meta.rx_count);
     if (feb_can_db.gps_pos_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x40, "gps_pos_front", (unsigned long)feb_can_db.gps_pos_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_pos_front.meta.rx_count);
     if (feb_can_db.gps_altitude_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x41, "gps_altitude_front", (unsigned long)feb_can_db.gps_altitude_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_altitude_front.meta.rx_count);
     if (feb_can_db.gps_motion_front.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x42, "gps_motion_front", (unsigned long)feb_can_db.gps_motion_front.meta.last_rx_ms, (unsigned long)feb_can_db.gps_motion_front.meta.rx_count);
@@ -35033,11 +36335,13 @@ void FEB_CAN_DB_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_db.dcu_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD3, "dcu_heartbeat", (unsigned long)feb_can_db.dcu_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.dcu_heartbeat.meta.rx_count);
     if (feb_can_db.sn_front_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD4, "sn_front_heartbeat", (unsigned long)feb_can_db.sn_front_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.sn_front_heartbeat.meta.rx_count);
     if (feb_can_db.sn_rear_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD5, "sn_rear_heartbeat", (unsigned long)feb_can_db.sn_rear_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.sn_rear_heartbeat.meta.rx_count);
+    if (feb_can_db.arc_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD6, "arc_heartbeat", (unsigned long)feb_can_db.arc_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.arc_heartbeat.meta.rx_count);
     if (feb_can_db.feb_ping_pong_counter1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE0, "feb_ping_pong_counter1", (unsigned long)feb_can_db.feb_ping_pong_counter1.meta.last_rx_ms, (unsigned long)feb_can_db.feb_ping_pong_counter1.meta.rx_count);
     if (feb_can_db.feb_ping_pong_counter2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE1, "feb_ping_pong_counter2", (unsigned long)feb_can_db.feb_ping_pong_counter2.meta.last_rx_ms, (unsigned long)feb_can_db.feb_ping_pong_counter2.meta.rx_count);
     if (feb_can_db.feb_ping_pong_counter3.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE2, "feb_ping_pong_counter3", (unsigned long)feb_can_db.feb_ping_pong_counter3.meta.last_rx_ms, (unsigned long)feb_can_db.feb_ping_pong_counter3.meta.rx_count);
     if (feb_can_db.feb_ping_pong_counter4.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xE3, "feb_ping_pong_counter4", (unsigned long)feb_can_db.feb_ping_pong_counter4.meta.last_rx_ms, (unsigned long)feb_can_db.feb_ping_pong_counter4.meta.rx_count);
     if (feb_can_db.ebs_pressure_status.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x500, "ebs_pressure_status", (unsigned long)feb_can_db.ebs_pressure_status.meta.last_rx_ms, (unsigned long)feb_can_db.ebs_pressure_status.meta.rx_count);
+    if (feb_can_db.arc_pressure_sense.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x501, "arc_pressure_sense", (unsigned long)feb_can_db.arc_pressure_sense.meta.last_rx_ms, (unsigned long)feb_can_db.arc_pressure_sense.meta.rx_count);
     if (feb_can_db.ivt_current.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x521, "ivt_current", (unsigned long)feb_can_db.ivt_current.meta.last_rx_ms, (unsigned long)feb_can_db.ivt_current.meta.rx_count);
     if (feb_can_db.ivt_voltage1.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x522, "ivt_voltage1", (unsigned long)feb_can_db.ivt_voltage1.meta.last_rx_ms, (unsigned long)feb_can_db.ivt_voltage1.meta.rx_count);
     if (feb_can_db.ivt_voltage2.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x523, "ivt_voltage2", (unsigned long)feb_can_db.ivt_voltage2.meta.last_rx_ms, (unsigned long)feb_can_db.ivt_voltage2.meta.rx_count);
@@ -35346,6 +36650,13 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
         printf_fn("  acc2_mv                          = %ld\r\n", (long)feb_can_db.pcu_pedal_voltages.data.acc2_mv);
         printf_fn("  brake1_mv                        = %ld\r\n", (long)feb_can_db.pcu_pedal_voltages.data.brake1_mv);
         printf_fn("  brake2_mv                        = %ld\r\n", (long)feb_can_db.pcu_pedal_voltages.data.brake2_mv);
+        return 0;
+    }
+    if (strcmp(name, "arc_tps") == 0)
+    {
+        printf_fn("0x%02X  arc_tps  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x3A, (int)feb_can_db.arc_tps.meta.present, (unsigned long)feb_can_db.arc_tps.meta.last_rx_ms, (unsigned long)feb_can_db.arc_tps.meta.rx_count);
+        printf_fn("  voltage                          = %ld\r\n", (long)feb_can_db.arc_tps.data.voltage);
+        printf_fn("  current                          = %ld\r\n", (long)feb_can_db.arc_tps.data.current);
         return 0;
     }
     if (strcmp(name, "gps_pos_front") == 0)
@@ -35990,6 +37301,75 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
         printf_fn("  error63                          = %ld\r\n", (long)feb_can_db.sn_rear_heartbeat.data.error63);
         return 0;
     }
+    if (strcmp(name, "arc_heartbeat") == 0)
+    {
+        printf_fn("0x%02X  arc_heartbeat  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xD6, (int)feb_can_db.arc_heartbeat.meta.present, (unsigned long)feb_can_db.arc_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.arc_heartbeat.meta.rx_count);
+        printf_fn("  error0                           = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error0);
+        printf_fn("  error1                           = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error1);
+        printf_fn("  error2                           = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error2);
+        printf_fn("  error3                           = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error3);
+        printf_fn("  error4                           = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error4);
+        printf_fn("  error5                           = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error5);
+        printf_fn("  error6                           = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error6);
+        printf_fn("  error7                           = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error7);
+        printf_fn("  error8                           = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error8);
+        printf_fn("  error9                           = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error9);
+        printf_fn("  error10                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error10);
+        printf_fn("  error11                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error11);
+        printf_fn("  error12                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error12);
+        printf_fn("  error13                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error13);
+        printf_fn("  error14                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error14);
+        printf_fn("  error15                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error15);
+        printf_fn("  error16                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error16);
+        printf_fn("  error17                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error17);
+        printf_fn("  error18                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error18);
+        printf_fn("  error19                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error19);
+        printf_fn("  error20                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error20);
+        printf_fn("  error21                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error21);
+        printf_fn("  error22                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error22);
+        printf_fn("  error23                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error23);
+        printf_fn("  error24                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error24);
+        printf_fn("  error25                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error25);
+        printf_fn("  error26                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error26);
+        printf_fn("  error27                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error27);
+        printf_fn("  error28                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error28);
+        printf_fn("  error29                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error29);
+        printf_fn("  error30                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error30);
+        printf_fn("  error31                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error31);
+        printf_fn("  error32                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error32);
+        printf_fn("  error33                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error33);
+        printf_fn("  error34                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error34);
+        printf_fn("  error35                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error35);
+        printf_fn("  error36                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error36);
+        printf_fn("  error37                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error37);
+        printf_fn("  error38                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error38);
+        printf_fn("  error39                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error39);
+        printf_fn("  error40                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error40);
+        printf_fn("  error41                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error41);
+        printf_fn("  error42                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error42);
+        printf_fn("  error43                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error43);
+        printf_fn("  error44                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error44);
+        printf_fn("  error45                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error45);
+        printf_fn("  error46                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error46);
+        printf_fn("  error47                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error47);
+        printf_fn("  error48                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error48);
+        printf_fn("  error49                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error49);
+        printf_fn("  error50                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error50);
+        printf_fn("  error51                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error51);
+        printf_fn("  error52                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error52);
+        printf_fn("  error53                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error53);
+        printf_fn("  error54                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error54);
+        printf_fn("  error55                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error55);
+        printf_fn("  error56                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error56);
+        printf_fn("  error57                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error57);
+        printf_fn("  error58                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error58);
+        printf_fn("  error59                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error59);
+        printf_fn("  error60                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error60);
+        printf_fn("  error61                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error61);
+        printf_fn("  error62                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error62);
+        printf_fn("  error63                          = %ld\r\n", (long)feb_can_db.arc_heartbeat.data.error63);
+        return 0;
+    }
     if (strcmp(name, "feb_ping_pong_counter1") == 0)
     {
         printf_fn("0x%02X  feb_ping_pong_counter1  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0xE0, (int)feb_can_db.feb_ping_pong_counter1.meta.present, (unsigned long)feb_can_db.feb_ping_pong_counter1.meta.last_rx_ms, (unsigned long)feb_can_db.feb_ping_pong_counter1.meta.rx_count);
@@ -36021,6 +37401,13 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
         printf_fn("  ebs_pressure_2                   = %ld\r\n", (long)feb_can_db.ebs_pressure_status.data.ebs_pressure_2);
         printf_fn("  ebs_pressure_3                   = %ld\r\n", (long)feb_can_db.ebs_pressure_status.data.ebs_pressure_3);
         printf_fn("  ebs_pressure_4                   = %ld\r\n", (long)feb_can_db.ebs_pressure_status.data.ebs_pressure_4);
+        return 0;
+    }
+    if (strcmp(name, "arc_pressure_sense") == 0)
+    {
+        printf_fn("0x%02X  arc_pressure_sense  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x501, (int)feb_can_db.arc_pressure_sense.meta.present, (unsigned long)feb_can_db.arc_pressure_sense.meta.last_rx_ms, (unsigned long)feb_can_db.arc_pressure_sense.meta.rx_count);
+        printf_fn("  p_sense_1_v                      = %ld\r\n", (long)feb_can_db.arc_pressure_sense.data.p_sense_1_v);
+        printf_fn("  p_sense_2_v                      = %ld\r\n", (long)feb_can_db.arc_pressure_sense.data.p_sense_2_v);
         return 0;
     }
     if (strcmp(name, "ivt_current") == 0)

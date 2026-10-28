@@ -140,7 +140,7 @@ def get_pressure_sensors(frame_id: int):
         )
     msg = cantools.db.Message(
         frame_id=frame_id,
-        name="arc_tps",
+        name="arc_pressure_sense",
         length=4,
         signals=[p_sense_1, p_sense_2],
         comment="ARC Pressure Sensor Readings",
