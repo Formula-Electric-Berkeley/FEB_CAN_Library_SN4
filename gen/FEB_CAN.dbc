@@ -215,6 +215,10 @@ BO_ 57 pcu_pedal_voltages: 8 PCU
  SG_ acc2_mv : 16|16@1+ (1,0) [0|0] "mV" Vector__XXX
  SG_ acc1_mv : 0|16@1+ (1,0) [0|0] "mV" Vector__XXX
 
+BO_ 58 arc_tps: 4 ARC
+ SG_ current : 16|16@1+ (1,0) [0|0] "mA" Vector__XXX
+ SG_ voltage : 0|16@1+ (1,0) [0|0] "mV" Vector__XXX
+
 BO_ 64 gps_pos_front: 8 SN_FRONT
  SG_ longitude : 32|32@1- (1e-07,0) [0|0] "deg" Vector__XXX
  SG_ latitude : 0|32@1- (1e-07,0) [0|0] "deg" Vector__XXX
@@ -918,6 +922,72 @@ BO_ 213 sn_rear_heartbeat: 8 SN_REAR
  SG_ imu_read_failed : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ imu_init_failed : 0|1@1+ (1,0) [0|0] "" Vector__XXX
 
+BO_ 214 arc_heartbeat: 8 ARC
+ SG_ error63 : 63|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error62 : 62|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error61 : 61|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error60 : 60|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error59 : 59|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error58 : 58|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error57 : 57|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error56 : 56|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error55 : 55|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error54 : 54|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error53 : 53|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error52 : 52|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error51 : 51|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error50 : 50|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error49 : 49|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error48 : 48|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error47 : 47|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error46 : 46|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error45 : 45|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error44 : 44|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error43 : 43|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error42 : 42|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error41 : 41|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error40 : 40|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error39 : 39|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error38 : 38|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error37 : 37|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error36 : 36|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error35 : 35|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error34 : 34|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error33 : 33|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error32 : 32|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error31 : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error30 : 30|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error29 : 29|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error28 : 28|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error27 : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error26 : 26|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error25 : 25|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error24 : 24|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error23 : 23|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error22 : 22|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error21 : 21|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error20 : 20|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error19 : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error18 : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error17 : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error16 : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error15 : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error14 : 14|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error13 : 13|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error12 : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error11 : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error10 : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error9 : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error8 : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error7 : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error6 : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error5 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error4 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error3 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error2 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error1 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ error0 : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
 BO_ 224 FEB_PING_PONG_counter1: 8 BMS
  SG_ counter : 0|32@1- (1,0) [0|0] "" Vector__XXX
 
@@ -953,6 +1023,10 @@ BO_ 1280 ebs_pressure_status: 8 PCU
  SG_ ebs_pressure_3 : 32|16@1- (0.0625,0) [0|0] "bar" Vector__XXX
  SG_ ebs_pressure_2 : 16|16@1- (0.0625,0) [0|0] "bar" Vector__XXX
  SG_ ebs_pressure_1 : 0|16@1- (0.0625,0) [0|0] "bar" Vector__XXX
+
+BO_ 1281 arc_pressure_sense: 4 ARC
+ SG_ p_sense_2_V : 16|16@1+ (1,0) [0|0] "V" Vector__XXX
+ SG_ p_sense_1_V : 0|16@1+ (1,0) [0|0] "V" Vector__XXX
 
 BO_ 1313 IVTCurrent: 6 IVT
  SG_ current : 23|32@0- (-0.001,0) [0|0] "A" Vector__XXX
@@ -1612,6 +1686,7 @@ CM_ BO_ 54 "Dash TPS Chip";
 CM_ BO_ 55 "DCU TPS Chip";
 CM_ BO_ 56 "PCU RAW ACC ADC";
 CM_ BO_ 57 "PCU raw pedal sensor voltages (sensor-side mV): APPS1/2, brake 1/2";
+CM_ BO_ 58 "ARC TPS Chip";
 CM_ BO_ 64 "GPS latitude/longitude.";
 CM_ BO_ 65 "GPS altitude + horizontal/vertical DOP.";
 CM_ BO_ 66 "GPS speed and course-over-ground.";
@@ -1746,6 +1821,7 @@ CM_ BO_ 210 "LVPDB Heartbeat";
 CM_ BO_ 211 "DCU Heartbeat";
 CM_ BO_ 212 "Sensor Node Heartbeat";
 CM_ BO_ 213 "Sensor Node Heartbeat";
+CM_ BO_ 214 "ARC heartbeat";
 CM_ BO_ 224 "PING PONG counter1.";
 CM_ BO_ 225 "PING PONG counter2.";
 CM_ BO_ 226 "PING PONG counter3.";
@@ -1756,6 +1832,7 @@ CM_ BO_ 514 "Message sent by BMS for inverter DC current limiting.";
 CM_ SG_ 514 INV_Max_Charge_Current "Maximum charge current from BMS";
 CM_ SG_ 514 INV_Max_Discharge_Current "Maximum discharge current from BMS";
 CM_ BO_ 1280 "EBS Pressure Status - 4 pressure sensors (scale: 1/16, unit: bar)";
+CM_ BO_ 1281 "ARC Pressure Sensor Readings";
 CM_ BO_ 1313 "Isabellenhutte IVT-S pack current (A, FEB sign convention).";
 CM_ BO_ 1314 "Isabellenhutte IVT-S voltage 1 / pack voltage (V).";
 CM_ BO_ 1315 "Isabellenhutte IVT-S voltage 2 (V).";
@@ -1813,6 +1890,7 @@ BA_ "GenMsgCycleTime" BO_ 54 100;
 BA_ "GenMsgCycleTime" BO_ 55 100;
 BA_ "GenMsgCycleTime" BO_ 56 50;
 BA_ "GenMsgCycleTime" BO_ 57 100;
+BA_ "GenMsgCycleTime" BO_ 58 100;
 BA_ "GenMsgCycleTime" BO_ 64 100;
 BA_ "GenMsgCycleTime" BO_ 65 1000;
 BA_ "GenMsgCycleTime" BO_ 66 100;
@@ -1863,12 +1941,14 @@ BA_ "GenMsgCycleTime" BO_ 210 100;
 BA_ "GenMsgCycleTime" BO_ 211 100;
 BA_ "GenMsgCycleTime" BO_ 212 100;
 BA_ "GenMsgCycleTime" BO_ 213 100;
+BA_ "GenMsgCycleTime" BO_ 214 100;
 BA_ "GenMsgCycleTime" BO_ 224 100;
 BA_ "GenMsgCycleTime" BO_ 225 100;
 BA_ "GenMsgCycleTime" BO_ 226 100;
 BA_ "GenMsgCycleTime" BO_ 227 100;
 BA_ "SystemSignalLongSymbol" SG_ 469 INV_HV_Input_Current_Sensor_Vali "INV_HV_Input_Current_Sensor_Validity";
 BA_ "GenMsgCycleTime" BO_ 1280 100;
+BA_ "GenMsgCycleTime" BO_ 1281 100;
 BA_ "GenMsgCycleTime" BO_ 1984 10;
 BA_ "GenMsgCycleTime" BO_ 2550588916 1000;
 BA_ "GenMsgCycleTime" BO_ 2566869221 1000;

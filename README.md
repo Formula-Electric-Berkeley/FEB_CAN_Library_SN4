@@ -108,9 +108,9 @@ Frame IDs are grouped by board/subsystem. Each board has a reserved range with r
 | 0x16-0x1D | LVPDB | 3 messages | Power distribution |
 | 0x1E-0x2C | Sensors | 8 messages | Tire temp, WSS, linear pots |
 | 0x2D-0x33 | DART | 2 messages | Fan control |
-| 0x34-0x3F | TPS | 4 messages | Power monitoring chips |
+| 0x34-0x3F | TPS | 5 messages | Power monitoring chips |
 | 0xC0-0xCF | RMS | 2 messages | Inverter communication |
-| 0xD0-0xDF | Heartbeats | 6 messages | Board health monitoring |
+| 0xD0-0xDF | Heartbeats | 7 messages | Board health monitoring |
 | 0xE0-0xEF | Debug | 4 messages | Test/debug messages |
 | 0xFF | PCU | 1 message | Raw ADC values |
 

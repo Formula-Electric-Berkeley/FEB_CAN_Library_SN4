@@ -121,6 +121,7 @@ from msg_defs import dart_messages as dart_msg
 from msg_defs import ivt_messages as ivt_msg
 from msg_defs import ping_pong_messages as ping_pong_msg
 from msg_defs import res_messages as res_msg
+from msg_defs import arc_messages as arc_msg
 
 # =============================================================================
 # MESSAGE REGISTRY
@@ -212,7 +213,8 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x37: (dcu_msg.get_tps_voltage_current, "DCU TPS voltage/current"),
     0x38: (pcu_msg.get_raw_acc, "PCU raw accelerator ADC"),
     0x39: (pcu_msg.get_pedal_voltages, "PCU raw pedal sensor voltages (mV)"),
-    # 0x3A-0x3F: Reserved for future TPS / PCU ADC messages
+    0x3A: (arc_msg.get_tps_voltage_current, "ARC TPS voltage/current"),
+    # 0x3B-0x3F: Reserved for future TPS / PCU ADC messages
 
     # ----- Sensor Nodes FRONT (extended): GPS / Fusion / steering (0x40-0x4F) -----
     0x40: (lambda fid: sensor_msg.get_gps_pos(fid, "front"), "[GPS][FRONT] latitude/longitude"),
@@ -262,6 +264,7 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0xD3: (dcu_msg.get_dcu_heartbeat, "DCU heartbeat"),
     0xD4: (lambda fid: sensor_msg.get_heartbeat(fid, "front"), "Front sensor node heartbeat"),
     0xD5: (lambda fid: sensor_msg.get_heartbeat(fid, "rear"), "Rear sensor node heartbeat"),
+    0xD6: (arc_msg.get_arc_heartbeat, "ARC heartbeat"),
     # 0xD6-0xDF: Reserved for future heartbeats
 
     # ----- Debug/Test Messages (0xE0-0xEF) -----
@@ -275,6 +278,7 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     # IMMUTABLE frame ID: 0x500 is the CANopen PDO-Tx slot used by the EBS ECU.
     # Cycle time is fixed at 100 ms per CANopen specification — do not reduce it.
     0x500: (pcu_msg.ebs_pressure_status, "EBS pressure status (4 sensors)"),
+    0x501: (arc_msg.get_pressure_sensors, "DSB pressure status (2 sensors)"),
     # 0x501-0x50F: Reserved for future EBS / driverless safety messages
 
     # ----- IVT-S Current/Voltage Sensor (0x520-0x52F) -----

@@ -415,6 +415,18 @@ struct PcuPedalVoltages
   static constexpr auto kUnpack = &feb_can_pcu_pedal_voltages_unpack;
 };
 
+struct ArcTps
+{
+  using Data = feb_can_arc_tps_t;
+  static constexpr std::uint32_t kFrameId = 0x3Au;
+  static constexpr std::uint8_t kLength = 4u;
+  static constexpr bool kExtended = false;
+  static constexpr std::uint32_t kCycleMs = 100u;
+  static constexpr Node kSender = Node::kNone;
+  static constexpr auto kPack = &feb_can_arc_tps_pack;
+  static constexpr auto kUnpack = &feb_can_arc_tps_unpack;
+};
+
 struct GpsPosFront
 {
   using Data = feb_can_gps_pos_front_t;
@@ -811,6 +823,18 @@ struct SnRearHeartbeat
   static constexpr auto kUnpack = &feb_can_sn_rear_heartbeat_unpack;
 };
 
+struct ArcHeartbeat
+{
+  using Data = feb_can_arc_heartbeat_t;
+  static constexpr std::uint32_t kFrameId = 0xD6u;
+  static constexpr std::uint8_t kLength = 8u;
+  static constexpr bool kExtended = false;
+  static constexpr std::uint32_t kCycleMs = 100u;
+  static constexpr Node kSender = Node::kNone;
+  static constexpr auto kPack = &feb_can_arc_heartbeat_pack;
+  static constexpr auto kUnpack = &feb_can_arc_heartbeat_unpack;
+};
+
 struct FebPingPongCounter1
 {
   using Data = feb_can_feb_ping_pong_counter1_t;
@@ -869,6 +893,18 @@ struct EbsPressureStatus
   static constexpr Node kSender = Node::kPcu;
   static constexpr auto kPack = &feb_can_ebs_pressure_status_pack;
   static constexpr auto kUnpack = &feb_can_ebs_pressure_status_unpack;
+};
+
+struct ArcPressureSense
+{
+  using Data = feb_can_arc_pressure_sense_t;
+  static constexpr std::uint32_t kFrameId = 0x501u;
+  static constexpr std::uint8_t kLength = 4u;
+  static constexpr bool kExtended = false;
+  static constexpr std::uint32_t kCycleMs = 100u;
+  static constexpr Node kSender = Node::kNone;
+  static constexpr auto kPack = &feb_can_arc_pressure_sense_pack;
+  static constexpr auto kUnpack = &feb_can_arc_pressure_sense_unpack;
 };
 
 struct IvtCurrent

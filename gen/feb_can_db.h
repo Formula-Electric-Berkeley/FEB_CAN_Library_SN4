@@ -76,6 +76,7 @@ extern "C" {
 #define FEB_CAN_DCU_TPS_FRAME_ID (0x37u)
 #define FEB_CAN_PCU_RAW_ACC_FRAME_ID (0x38u)
 #define FEB_CAN_PCU_PEDAL_VOLTAGES_FRAME_ID (0x39u)
+#define FEB_CAN_ARC_TPS_FRAME_ID (0x3au)
 #define FEB_CAN_GPS_POS_FRONT_FRAME_ID (0x40u)
 #define FEB_CAN_GPS_ALTITUDE_FRONT_FRAME_ID (0x41u)
 #define FEB_CAN_GPS_MOTION_FRONT_FRAME_ID (0x42u)
@@ -129,6 +130,7 @@ extern "C" {
 #define FEB_CAN_DCU_HEARTBEAT_FRAME_ID (0xd3u)
 #define FEB_CAN_SN_FRONT_HEARTBEAT_FRAME_ID (0xd4u)
 #define FEB_CAN_SN_REAR_HEARTBEAT_FRAME_ID (0xd5u)
+#define FEB_CAN_ARC_HEARTBEAT_FRAME_ID (0xd6u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER1_FRAME_ID (0xe0u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_FRAME_ID (0xe1u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_FRAME_ID (0xe2u)
@@ -137,6 +139,7 @@ extern "C" {
 #define FEB_CAN_M187_U2_C_COMMAND_TXD_FRAME_ID (0x1d7u)
 #define FEB_CAN_BMS_CURRENT_LIMIT_FRAME_ID (0x202u)
 #define FEB_CAN_EBS_PRESSURE_STATUS_FRAME_ID (0x500u)
+#define FEB_CAN_ARC_PRESSURE_SENSE_FRAME_ID (0x501u)
 #define FEB_CAN_IVT_CURRENT_FRAME_ID (0x521u)
 #define FEB_CAN_IVT_VOLTAGE1_FRAME_ID (0x522u)
 #define FEB_CAN_IVT_VOLTAGE2_FRAME_ID (0x523u)
@@ -179,6 +182,7 @@ extern "C" {
 #define FEB_CAN_DCU_TPS_LENGTH (4u)
 #define FEB_CAN_PCU_RAW_ACC_LENGTH (8u)
 #define FEB_CAN_PCU_PEDAL_VOLTAGES_LENGTH (8u)
+#define FEB_CAN_ARC_TPS_LENGTH (4u)
 #define FEB_CAN_GPS_POS_FRONT_LENGTH (8u)
 #define FEB_CAN_GPS_ALTITUDE_FRONT_LENGTH (8u)
 #define FEB_CAN_GPS_MOTION_FRONT_LENGTH (4u)
@@ -232,6 +236,7 @@ extern "C" {
 #define FEB_CAN_DCU_HEARTBEAT_LENGTH (8u)
 #define FEB_CAN_SN_FRONT_HEARTBEAT_LENGTH (8u)
 #define FEB_CAN_SN_REAR_HEARTBEAT_LENGTH (8u)
+#define FEB_CAN_ARC_HEARTBEAT_LENGTH (8u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER1_LENGTH (8u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_LENGTH (8u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_LENGTH (8u)
@@ -240,6 +245,7 @@ extern "C" {
 #define FEB_CAN_M187_U2_C_COMMAND_TXD_LENGTH (8u)
 #define FEB_CAN_BMS_CURRENT_LIMIT_LENGTH (8u)
 #define FEB_CAN_EBS_PRESSURE_STATUS_LENGTH (8u)
+#define FEB_CAN_ARC_PRESSURE_SENSE_LENGTH (4u)
 #define FEB_CAN_IVT_CURRENT_LENGTH (6u)
 #define FEB_CAN_IVT_VOLTAGE1_LENGTH (6u)
 #define FEB_CAN_IVT_VOLTAGE2_LENGTH (6u)
@@ -282,6 +288,7 @@ extern "C" {
 #define FEB_CAN_DCU_TPS_IS_EXTENDED (0)
 #define FEB_CAN_PCU_RAW_ACC_IS_EXTENDED (0)
 #define FEB_CAN_PCU_PEDAL_VOLTAGES_IS_EXTENDED (0)
+#define FEB_CAN_ARC_TPS_IS_EXTENDED (0)
 #define FEB_CAN_GPS_POS_FRONT_IS_EXTENDED (0)
 #define FEB_CAN_GPS_ALTITUDE_FRONT_IS_EXTENDED (0)
 #define FEB_CAN_GPS_MOTION_FRONT_IS_EXTENDED (0)
@@ -335,6 +342,7 @@ extern "C" {
 #define FEB_CAN_DCU_HEARTBEAT_IS_EXTENDED (0)
 #define FEB_CAN_SN_FRONT_HEARTBEAT_IS_EXTENDED (0)
 #define FEB_CAN_SN_REAR_HEARTBEAT_IS_EXTENDED (0)
+#define FEB_CAN_ARC_HEARTBEAT_IS_EXTENDED (0)
 #define FEB_CAN_FEB_PING_PONG_COUNTER1_IS_EXTENDED (0)
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_IS_EXTENDED (0)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_IS_EXTENDED (0)
@@ -343,6 +351,7 @@ extern "C" {
 #define FEB_CAN_M187_U2_C_COMMAND_TXD_IS_EXTENDED (0)
 #define FEB_CAN_BMS_CURRENT_LIMIT_IS_EXTENDED (0)
 #define FEB_CAN_EBS_PRESSURE_STATUS_IS_EXTENDED (0)
+#define FEB_CAN_ARC_PRESSURE_SENSE_IS_EXTENDED (0)
 #define FEB_CAN_IVT_CURRENT_IS_EXTENDED (0)
 #define FEB_CAN_IVT_VOLTAGE1_IS_EXTENDED (0)
 #define FEB_CAN_IVT_VOLTAGE2_IS_EXTENDED (0)
@@ -385,6 +394,7 @@ extern "C" {
 #define FEB_CAN_DCU_TPS_CYCLE_TIME_MS (100u)
 #define FEB_CAN_PCU_RAW_ACC_CYCLE_TIME_MS (50u)
 #define FEB_CAN_PCU_PEDAL_VOLTAGES_CYCLE_TIME_MS (100u)
+#define FEB_CAN_ARC_TPS_CYCLE_TIME_MS (100u)
 #define FEB_CAN_GPS_POS_FRONT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_GPS_ALTITUDE_FRONT_CYCLE_TIME_MS (1000u)
 #define FEB_CAN_GPS_MOTION_FRONT_CYCLE_TIME_MS (100u)
@@ -434,11 +444,13 @@ extern "C" {
 #define FEB_CAN_DCU_HEARTBEAT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_SN_FRONT_HEARTBEAT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_SN_REAR_HEARTBEAT_CYCLE_TIME_MS (100u)
+#define FEB_CAN_ARC_HEARTBEAT_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER1_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FEB_PING_PONG_COUNTER4_CYCLE_TIME_MS (100u)
 #define FEB_CAN_EBS_PRESSURE_STATUS_CYCLE_TIME_MS (100u)
+#define FEB_CAN_ARC_PRESSURE_SENSE_CYCLE_TIME_MS (100u)
 #define FEB_CAN_BMS_CELL_DATA_CYCLE_TIME_MS (10u)
 #define FEB_CAN_CHARGER_LIMITS_CYCLE_TIME_MS (1000u)
 #define FEB_CAN_CHARGER_STATUS_CYCLE_TIME_MS (1000u)
@@ -552,6 +564,7 @@ extern "C" {
 #define FEB_CAN_DCU_TPS_NAME "dcu_tps"
 #define FEB_CAN_PCU_RAW_ACC_NAME "pcu_raw_acc"
 #define FEB_CAN_PCU_PEDAL_VOLTAGES_NAME "pcu_pedal_voltages"
+#define FEB_CAN_ARC_TPS_NAME "arc_tps"
 #define FEB_CAN_GPS_POS_FRONT_NAME "gps_pos_front"
 #define FEB_CAN_GPS_ALTITUDE_FRONT_NAME "gps_altitude_front"
 #define FEB_CAN_GPS_MOTION_FRONT_NAME "gps_motion_front"
@@ -605,6 +618,7 @@ extern "C" {
 #define FEB_CAN_DCU_HEARTBEAT_NAME "dcu_heartbeat"
 #define FEB_CAN_SN_FRONT_HEARTBEAT_NAME "sn_front_heartbeat"
 #define FEB_CAN_SN_REAR_HEARTBEAT_NAME "sn_rear_heartbeat"
+#define FEB_CAN_ARC_HEARTBEAT_NAME "arc_heartbeat"
 #define FEB_CAN_FEB_PING_PONG_COUNTER1_NAME "FEB_PING_PONG_counter1"
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_NAME "FEB_PING_PONG_counter2"
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_NAME "FEB_PING_PONG_counter3"
@@ -613,6 +627,7 @@ extern "C" {
 #define FEB_CAN_M187_U2_C_COMMAND_TXD_NAME "M187_U2C_Command_Txd"
 #define FEB_CAN_BMS_CURRENT_LIMIT_NAME "BMS_Current_Limit"
 #define FEB_CAN_EBS_PRESSURE_STATUS_NAME "ebs_pressure_status"
+#define FEB_CAN_ARC_PRESSURE_SENSE_NAME "arc_pressure_sense"
 #define FEB_CAN_IVT_CURRENT_NAME "IVTCurrent"
 #define FEB_CAN_IVT_VOLTAGE1_NAME "IVTVoltage1"
 #define FEB_CAN_IVT_VOLTAGE2_NAME "IVTVoltage2"
@@ -738,6 +753,8 @@ extern "C" {
 #define FEB_CAN_PCU_PEDAL_VOLTAGES_ACC2_MV_NAME "acc2_mv"
 #define FEB_CAN_PCU_PEDAL_VOLTAGES_BRAKE1_MV_NAME "brake1_mv"
 #define FEB_CAN_PCU_PEDAL_VOLTAGES_BRAKE2_MV_NAME "brake2_mv"
+#define FEB_CAN_ARC_TPS_VOLTAGE_NAME "voltage"
+#define FEB_CAN_ARC_TPS_CURRENT_NAME "current"
 #define FEB_CAN_GPS_POS_FRONT_LATITUDE_NAME "latitude"
 #define FEB_CAN_GPS_POS_FRONT_LONGITUDE_NAME "longitude"
 #define FEB_CAN_GPS_ALTITUDE_FRONT_ALTITUDE_NAME "altitude"
@@ -1335,6 +1352,70 @@ extern "C" {
 #define FEB_CAN_SN_REAR_HEARTBEAT_ERROR61_NAME "error61"
 #define FEB_CAN_SN_REAR_HEARTBEAT_ERROR62_NAME "error62"
 #define FEB_CAN_SN_REAR_HEARTBEAT_ERROR63_NAME "error63"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR0_NAME "error0"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR1_NAME "error1"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR2_NAME "error2"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR3_NAME "error3"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR4_NAME "error4"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR5_NAME "error5"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR6_NAME "error6"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR7_NAME "error7"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR8_NAME "error8"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR9_NAME "error9"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR10_NAME "error10"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR11_NAME "error11"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR12_NAME "error12"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR13_NAME "error13"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR14_NAME "error14"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR15_NAME "error15"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR16_NAME "error16"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR17_NAME "error17"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR18_NAME "error18"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR19_NAME "error19"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR20_NAME "error20"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR21_NAME "error21"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR22_NAME "error22"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR23_NAME "error23"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR24_NAME "error24"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR25_NAME "error25"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR26_NAME "error26"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR27_NAME "error27"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR28_NAME "error28"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR29_NAME "error29"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR30_NAME "error30"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR31_NAME "error31"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR32_NAME "error32"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR33_NAME "error33"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR34_NAME "error34"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR35_NAME "error35"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR36_NAME "error36"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR37_NAME "error37"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR38_NAME "error38"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR39_NAME "error39"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR40_NAME "error40"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR41_NAME "error41"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR42_NAME "error42"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR43_NAME "error43"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR44_NAME "error44"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR45_NAME "error45"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR46_NAME "error46"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR47_NAME "error47"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR48_NAME "error48"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR49_NAME "error49"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR50_NAME "error50"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR51_NAME "error51"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR52_NAME "error52"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR53_NAME "error53"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR54_NAME "error54"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR55_NAME "error55"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR56_NAME "error56"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR57_NAME "error57"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR58_NAME "error58"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR59_NAME "error59"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR60_NAME "error60"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR61_NAME "error61"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR62_NAME "error62"
+#define FEB_CAN_ARC_HEARTBEAT_ERROR63_NAME "error63"
 #define FEB_CAN_FEB_PING_PONG_COUNTER1_COUNTER_NAME "counter"
 #define FEB_CAN_FEB_PING_PONG_COUNTER2_COUNTER_NAME "counter"
 #define FEB_CAN_FEB_PING_PONG_COUNTER3_COUNTER_NAME "counter"
@@ -1355,6 +1436,8 @@ extern "C" {
 #define FEB_CAN_EBS_PRESSURE_STATUS_EBS_PRESSURE_2_NAME "ebs_pressure_2"
 #define FEB_CAN_EBS_PRESSURE_STATUS_EBS_PRESSURE_3_NAME "ebs_pressure_3"
 #define FEB_CAN_EBS_PRESSURE_STATUS_EBS_PRESSURE_4_NAME "ebs_pressure_4"
+#define FEB_CAN_ARC_PRESSURE_SENSE_P_SENSE_1_V_NAME "p_sense_1_V"
+#define FEB_CAN_ARC_PRESSURE_SENSE_P_SENSE_2_V_NAME "p_sense_2_V"
 #define FEB_CAN_IVT_CURRENT_COUNTER_NAME "counter"
 #define FEB_CAN_IVT_CURRENT_CURRENT_NAME "current"
 #define FEB_CAN_IVT_VOLTAGE1_COUNTER_NAME "counter"
@@ -3074,6 +3157,29 @@ struct feb_can_pcu_pedal_voltages_t {
      * Offset: 0
      */
     uint16_t brake2_mv;
+};
+
+/**
+ * Signals in message arc_tps.
+ *
+ * ARC TPS Chip
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_arc_tps_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t voltage;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t current;
 };
 
 /**
@@ -7893,6 +7999,463 @@ struct feb_can_sn_rear_heartbeat_t {
 };
 
 /**
+ * Signals in message arc_heartbeat.
+ *
+ * ARC heartbeat
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_arc_heartbeat_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error0;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error1;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error2;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error3;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error4;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error5;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error6;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error7;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error8;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error9;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error10;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error11;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error12;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error13;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error14;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error15;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error16;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error17;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error18;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error19;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error20;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error21;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error22;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error23;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error24;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error25;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error26;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error27;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error28;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error29;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error30;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error31;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error32;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error33;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error34;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error35;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error36;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error37;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error38;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error39;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error40;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error41;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error42;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error43;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error44;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error45;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error46;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error47;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error48;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error49;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error50;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error51;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error52;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error53;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error54;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error55;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error56;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error57;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error58;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error59;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error60;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error61;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error62;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t error63;
+};
+
+/**
  * Signals in message FEB_PING_PONG_counter1.
  *
  * PING PONG counter1.
@@ -8106,6 +8669,29 @@ struct feb_can_ebs_pressure_status_t {
      * Offset: 0
      */
     int16_t ebs_pressure_4;
+};
+
+/**
+ * Signals in message arc_pressure_sense.
+ *
+ * ARC Pressure Sensor Readings
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_arc_pressure_sense_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t p_sense_1_v;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t p_sense_2_v;
 };
 
 /**
@@ -16549,6 +17135,97 @@ double feb_can_pcu_pedal_voltages_brake2_mv_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_pcu_pedal_voltages_brake2_mv_is_in_range(uint16_t value);
+
+/**
+ * Pack message arc_tps.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_arc_tps_pack(
+    uint8_t *dst_p,
+    const struct feb_can_arc_tps_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message arc_tps.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_arc_tps_unpack(
+    struct feb_can_arc_tps_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from arc_tps.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_arc_tps_init(struct feb_can_arc_tps_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_arc_tps_voltage_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_tps_voltage_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_tps_voltage_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_arc_tps_current_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_tps_current_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_tps_current_is_in_range(uint16_t value);
 
 /**
  * Pack message gps_pos_front.
@@ -34631,6 +35308,1771 @@ double feb_can_sn_rear_heartbeat_error63_decode(uint8_t value);
 bool feb_can_sn_rear_heartbeat_error63_is_in_range(uint8_t value);
 
 /**
+ * Pack message arc_heartbeat.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_arc_heartbeat_pack(
+    uint8_t *dst_p,
+    const struct feb_can_arc_heartbeat_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message arc_heartbeat.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_arc_heartbeat_unpack(
+    struct feb_can_arc_heartbeat_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from arc_heartbeat.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_arc_heartbeat_init(struct feb_can_arc_heartbeat_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error0_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error0_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error0_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error1_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error1_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error1_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error2_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error2_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error2_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error3_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error3_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error3_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error4_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error4_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error4_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error5_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error5_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error5_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error6_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error6_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error6_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error7_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error7_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error7_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error8_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error8_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error8_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error9_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error9_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error9_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error10_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error10_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error10_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error11_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error11_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error11_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error12_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error12_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error12_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error13_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error13_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error13_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error14_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error14_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error14_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error15_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error15_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error15_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error16_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error16_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error16_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error17_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error17_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error17_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error18_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error18_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error18_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error19_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error19_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error19_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error20_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error20_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error20_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error21_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error21_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error21_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error22_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error22_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error22_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error23_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error23_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error23_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error24_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error24_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error24_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error25_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error25_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error25_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error26_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error26_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error26_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error27_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error27_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error27_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error28_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error28_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error28_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error29_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error29_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error29_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error30_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error30_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error30_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error31_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error31_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error31_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error32_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error32_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error32_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error33_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error33_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error33_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error34_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error34_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error34_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error35_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error35_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error35_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error36_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error36_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error36_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error37_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error37_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error37_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error38_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error38_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error38_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error39_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error39_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error39_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error40_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error40_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error40_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error41_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error41_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error41_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error42_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error42_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error42_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error43_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error43_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error43_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error44_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error44_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error44_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error45_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error45_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error45_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error46_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error46_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error46_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error47_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error47_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error47_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error48_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error48_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error48_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error49_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error49_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error49_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error50_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error50_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error50_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error51_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error51_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error51_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error52_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error52_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error52_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error53_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error53_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error53_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error54_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error54_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error54_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error55_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error55_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error55_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error56_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error56_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error56_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error57_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error57_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error57_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error58_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error58_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error58_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error59_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error59_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error59_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error60_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error60_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error60_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error61_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error61_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error61_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error62_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error62_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error62_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t feb_can_arc_heartbeat_error63_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_heartbeat_error63_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_heartbeat_error63_is_in_range(uint8_t value);
+
+/**
  * Pack message FEB_PING_PONG_counter1.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -35465,6 +37907,97 @@ double feb_can_ebs_pressure_status_ebs_pressure_4_decode(int16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_ebs_pressure_status_ebs_pressure_4_is_in_range(int16_t value);
+
+/**
+ * Pack message arc_pressure_sense.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_arc_pressure_sense_pack(
+    uint8_t *dst_p,
+    const struct feb_can_arc_pressure_sense_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message arc_pressure_sense.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_arc_pressure_sense_unpack(
+    struct feb_can_arc_pressure_sense_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from arc_pressure_sense.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_arc_pressure_sense_init(struct feb_can_arc_pressure_sense_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_arc_pressure_sense_p_sense_1_v_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_pressure_sense_p_sense_1_v_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_pressure_sense_p_sense_1_v_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_arc_pressure_sense_p_sense_2_v_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_arc_pressure_sense_p_sense_2_v_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_arc_pressure_sense_p_sense_2_v_is_in_range(uint16_t value);
 
 /**
  * Pack message IVTCurrent.
@@ -51490,6 +54023,7 @@ typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_dash_tps_t data; } FEB_C
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_dcu_tps_t data; } FEB_CAN_DB_dcu_tps_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_pcu_raw_acc_t data; } FEB_CAN_DB_pcu_raw_acc_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_pcu_pedal_voltages_t data; } FEB_CAN_DB_pcu_pedal_voltages_t;
+typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_arc_tps_t data; } FEB_CAN_DB_arc_tps_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_pos_front_t data; } FEB_CAN_DB_gps_pos_front_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_altitude_front_t data; } FEB_CAN_DB_gps_altitude_front_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_gps_motion_front_t data; } FEB_CAN_DB_gps_motion_front_t;
@@ -51523,11 +54057,13 @@ typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_lvpdb_heartbeat_t data; 
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_dcu_heartbeat_t data; } FEB_CAN_DB_dcu_heartbeat_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_sn_front_heartbeat_t data; } FEB_CAN_DB_sn_front_heartbeat_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_sn_rear_heartbeat_t data; } FEB_CAN_DB_sn_rear_heartbeat_t;
+typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_arc_heartbeat_t data; } FEB_CAN_DB_arc_heartbeat_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_feb_ping_pong_counter1_t data; } FEB_CAN_DB_feb_ping_pong_counter1_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_feb_ping_pong_counter2_t data; } FEB_CAN_DB_feb_ping_pong_counter2_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_feb_ping_pong_counter3_t data; } FEB_CAN_DB_feb_ping_pong_counter3_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_feb_ping_pong_counter4_t data; } FEB_CAN_DB_feb_ping_pong_counter4_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_ebs_pressure_status_t data; } FEB_CAN_DB_ebs_pressure_status_t;
+typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_arc_pressure_sense_t data; } FEB_CAN_DB_arc_pressure_sense_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_ivt_current_t data; } FEB_CAN_DB_ivt_current_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_ivt_voltage1_t data; } FEB_CAN_DB_ivt_voltage1_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_ivt_voltage2_t data; } FEB_CAN_DB_ivt_voltage2_t;
@@ -51593,6 +54129,7 @@ typedef struct {
     FEB_CAN_DB_dcu_tps_t dcu_tps;
     FEB_CAN_DB_pcu_raw_acc_t pcu_raw_acc;
     FEB_CAN_DB_pcu_pedal_voltages_t pcu_pedal_voltages;
+    FEB_CAN_DB_arc_tps_t arc_tps;
     FEB_CAN_DB_gps_pos_front_t gps_pos_front;
     FEB_CAN_DB_gps_altitude_front_t gps_altitude_front;
     FEB_CAN_DB_gps_motion_front_t gps_motion_front;
@@ -51626,11 +54163,13 @@ typedef struct {
     FEB_CAN_DB_dcu_heartbeat_t dcu_heartbeat;
     FEB_CAN_DB_sn_front_heartbeat_t sn_front_heartbeat;
     FEB_CAN_DB_sn_rear_heartbeat_t sn_rear_heartbeat;
+    FEB_CAN_DB_arc_heartbeat_t arc_heartbeat;
     FEB_CAN_DB_feb_ping_pong_counter1_t feb_ping_pong_counter1;
     FEB_CAN_DB_feb_ping_pong_counter2_t feb_ping_pong_counter2;
     FEB_CAN_DB_feb_ping_pong_counter3_t feb_ping_pong_counter3;
     FEB_CAN_DB_feb_ping_pong_counter4_t feb_ping_pong_counter4;
     FEB_CAN_DB_ebs_pressure_status_t ebs_pressure_status;
+    FEB_CAN_DB_arc_pressure_sense_t arc_pressure_sense;
     FEB_CAN_DB_ivt_current_t ivt_current;
     FEB_CAN_DB_ivt_voltage1_t ivt_voltage1;
     FEB_CAN_DB_ivt_voltage2_t ivt_voltage2;
