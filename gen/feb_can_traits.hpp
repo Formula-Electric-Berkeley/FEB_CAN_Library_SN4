@@ -739,6 +739,18 @@ struct StrainGaugeRear
   static constexpr auto kUnpack = &feb_can_strain_gauge_rear_unpack;
 };
 
+struct PcuAdc
+{
+  using Data = feb_can_pcu_adc_t;
+  static constexpr std::uint32_t kFrameId = 0x60u;
+  static constexpr std::uint8_t kLength = 4u;
+  static constexpr bool kExtended = false;
+  static constexpr std::uint32_t kCycleMs = 2u;
+  static constexpr Node kSender = Node::kPcu;
+  static constexpr auto kPack = &feb_can_pcu_adc_pack;
+  static constexpr auto kUnpack = &feb_can_pcu_adc_unpack;
+};
+
 struct PcuHeartbeat
 {
   using Data = feb_can_pcu_heartbeat_t;

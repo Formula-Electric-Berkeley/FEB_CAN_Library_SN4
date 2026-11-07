@@ -246,6 +246,7 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
     0x5C: (lambda fid: sensor_msg.get_strain_gauge(fid, "rear"), "Strain Gauges"),
     # 0x5D-0x5F: Reserved for future REAR extended sensor messages
 
+    0x60: (pcu_msg.get_adc_debug, "PCU ADC Debug"),
 
 
     # ----- RMS/Inverter Messages (0xA0-0xCF) -----
@@ -301,6 +302,7 @@ ID_RANGES = [
     (0x34, 0x3F, "TPS Chips / PCU ADC"),
     (0x40, 0x4F, "Sensor Nodes FRONT (extended): GPS / Fusion / steering"),
     (0x50, 0x5F, "Sensor Nodes REAR (extended): GPS / Fusion"),
+    (0x60, 0x60, "debug"),
     (0xA0, 0xC2, "Inverter (Cascadia PM100, via external_dbc/inverter.dbc)"),
     (0xC0, 0xCF, "RMS/Inverter"),
     (0xD0, 0xDF, "Heartbeats"),

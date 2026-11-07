@@ -6871,6 +6871,85 @@ bool feb_can_strain_gauge_rear_strain_gauge_4_is_in_range(uint16_t value)
     return (true);
 }
 
+int feb_can_pcu_adc_pack(
+    uint8_t *dst_p,
+    const struct feb_can_pcu_adc_t *src_p,
+    size_t size)
+{
+    if (size < 4u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 4);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->shutdown, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->shutdown, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->hecs, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->hecs, 8u, 0xffu);
+
+    return (4);
+}
+
+int feb_can_pcu_adc_unpack(
+    struct feb_can_pcu_adc_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 4u) {
+        return (-EINVAL);
+    }
+
+    dst_p->shutdown = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->shutdown |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->hecs = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->hecs |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_pcu_adc_init(struct feb_can_pcu_adc_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_pcu_adc_t));
+
+    return 0;
+}
+
+uint16_t feb_can_pcu_adc_shutdown_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_pcu_adc_shutdown_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_pcu_adc_shutdown_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_pcu_adc_hecs_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_pcu_adc_hecs_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_pcu_adc_hecs_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
 int feb_can_m160_temperature_set_1_pack(
     uint8_t *dst_p,
     const struct feb_can_m160_temperature_set_1_t *src_p,
@@ -34707,6 +34786,12 @@ int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint3
         feb_can_db.strain_gauge_rear.meta.last_rx_ms = now_ms;
         feb_can_db.strain_gauge_rear.meta.rx_count++;
         return 0;
+    case FEB_CAN_PCU_ADC_FRAME_ID:
+        if (feb_can_pcu_adc_unpack(&feb_can_db.pcu_adc.data, data, dlc) < 0) return -2;
+        feb_can_db.pcu_adc.meta.present = true;
+        feb_can_db.pcu_adc.meta.last_rx_ms = now_ms;
+        feb_can_db.pcu_adc.meta.rx_count++;
+        return 0;
     case FEB_CAN_PCU_HEARTBEAT_FRAME_ID:
         if (feb_can_pcu_heartbeat_unpack(&feb_can_db.pcu_heartbeat.data, data, dlc) < 0) return -2;
         feb_can_db.pcu_heartbeat.meta.present = true;
@@ -35027,6 +35112,7 @@ void FEB_CAN_DB_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_db.fusion_earth_accel_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x5A, "fusion_earth_accel_rear", (unsigned long)feb_can_db.fusion_earth_accel_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_earth_accel_rear.meta.rx_count);
     if (feb_can_db.fusion_status_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x5B, "fusion_status_rear", (unsigned long)feb_can_db.fusion_status_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_status_rear.meta.rx_count);
     if (feb_can_db.strain_gauge_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x5C, "strain_gauge_rear", (unsigned long)feb_can_db.strain_gauge_rear.meta.last_rx_ms, (unsigned long)feb_can_db.strain_gauge_rear.meta.rx_count);
+    if (feb_can_db.pcu_adc.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x60, "pcu_adc", (unsigned long)feb_can_db.pcu_adc.meta.last_rx_ms, (unsigned long)feb_can_db.pcu_adc.meta.rx_count);
     if (feb_can_db.pcu_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD0, "pcu_heartbeat", (unsigned long)feb_can_db.pcu_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.pcu_heartbeat.meta.rx_count);
     if (feb_can_db.dash_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD1, "dash_heartbeat", (unsigned long)feb_can_db.dash_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.dash_heartbeat.meta.rx_count);
     if (feb_can_db.lvpdb_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD2, "lvpdb_heartbeat", (unsigned long)feb_can_db.lvpdb_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.lvpdb_heartbeat.meta.rx_count);
@@ -35574,6 +35660,13 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
         printf_fn("  strain_gauge_2                   = %ld\r\n", (long)feb_can_db.strain_gauge_rear.data.strain_gauge_2);
         printf_fn("  strain_gauge_3                   = %ld\r\n", (long)feb_can_db.strain_gauge_rear.data.strain_gauge_3);
         printf_fn("  strain_gauge_4                   = %ld\r\n", (long)feb_can_db.strain_gauge_rear.data.strain_gauge_4);
+        return 0;
+    }
+    if (strcmp(name, "pcu_adc") == 0)
+    {
+        printf_fn("0x%02X  pcu_adc  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x60, (int)feb_can_db.pcu_adc.meta.present, (unsigned long)feb_can_db.pcu_adc.meta.last_rx_ms, (unsigned long)feb_can_db.pcu_adc.meta.rx_count);
+        printf_fn("  shutdown                         = %ld\r\n", (long)feb_can_db.pcu_adc.data.shutdown);
+        printf_fn("  hecs                             = %ld\r\n", (long)feb_can_db.pcu_adc.data.hecs);
         return 0;
     }
     if (strcmp(name, "pcu_heartbeat") == 0)
