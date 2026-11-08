@@ -167,8 +167,8 @@ MESSAGE_REGISTRY: Dict[int, Tuple[Callable[[int], cantools.db.Message], str]] = 
 
     # ----- LVPDB Messages (0x16-0x1D) -----
     0x16: (lvpdb_msg.get_lvpdb_lv_24v_bus_and_12v_bus_voltages, "Voltages for LV 24V bus & LV 12V bus"),
-    0x17: (lvpdb_msg.get_lvpdb_lv_sh_lt_bm_l_currents, "Currents for LV, SH, LT, BM_L"),
-    0x18: (lvpdb_msg.get_lvpdb_sm_af1_af2_cp_rf_currents, "Currents for SM, AF1_AF2, CP_RF"),
+    0x17: (lvpdb_msg.get_lvpdb_lv_sh_af1_af2_cp_currents, "Currents for LV, SH, AF1_AF2, CP"),
+    0x18: (lvpdb_msg.get_lvpdb_rf_current, "Current for RF"),
     # 0x19-0x1D: Reserved for future LVPDB messages
 
     # ----- Sensor Node Messages (0x1E-0x2C) -----
