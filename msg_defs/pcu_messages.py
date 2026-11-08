@@ -516,26 +516,23 @@ def get_pcu_heartbeat(frame_id: int):
 
 
 def get_adc_debug(frame_id: int):
-    shutdown_signal = cantools.db.Signal(
-            name="shutdown",
-            start=0,
+    signals = [
+        cantools.db.Signal(
+            name=name,
+            start=16 * i,
             length=16,
             byte_order="little_endian",
+            unit="mV",
         )
-    
-    hecs_signal = cantools.db.Signal(
-            name="hecs",
-            start=16,
-            length=16,
-            byte_order="little_endian",
-        )
+        for i, name in enumerate(["shutdown_min", "shutdown_max", "hecs_min", "hecs_max"])
+    ]
 
     return cantools.db.Message(
         frame_id=frame_id,
         name="pcu_adc",
-        length=4,
-        signals=[shutdown_signal, hecs_signal],
+        length=8,
+        signals=signals,
         senders=['PCU'],
-        cycle_time=2,
+        cycle_time=10,
         strict=True
     )

@@ -207,7 +207,7 @@ extern "C" {
 #define FEB_CAN_FUSION_EARTH_ACCEL_REAR_LENGTH (6u)
 #define FEB_CAN_FUSION_STATUS_REAR_LENGTH (3u)
 #define FEB_CAN_STRAIN_GAUGE_REAR_LENGTH (8u)
-#define FEB_CAN_PCU_ADC_LENGTH (4u)
+#define FEB_CAN_PCU_ADC_LENGTH (8u)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_LENGTH (8u)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_LENGTH (8u)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_LENGTH (8u)
@@ -415,7 +415,7 @@ extern "C" {
 #define FEB_CAN_FUSION_EARTH_ACCEL_REAR_CYCLE_TIME_MS (100u)
 #define FEB_CAN_FUSION_STATUS_REAR_CYCLE_TIME_MS (100u)
 #define FEB_CAN_STRAIN_GAUGE_REAR_CYCLE_TIME_MS (20u)
-#define FEB_CAN_PCU_ADC_CYCLE_TIME_MS (2u)
+#define FEB_CAN_PCU_ADC_CYCLE_TIME_MS (10u)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_CYCLE_TIME_MS (100u)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_CYCLE_TIME_MS (100u)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_CYCLE_TIME_MS (100u)
@@ -836,8 +836,10 @@ extern "C" {
 #define FEB_CAN_STRAIN_GAUGE_REAR_STRAIN_GAUGE_2_NAME "strain_gauge_2"
 #define FEB_CAN_STRAIN_GAUGE_REAR_STRAIN_GAUGE_3_NAME "strain_gauge_3"
 #define FEB_CAN_STRAIN_GAUGE_REAR_STRAIN_GAUGE_4_NAME "strain_gauge_4"
-#define FEB_CAN_PCU_ADC_SHUTDOWN_NAME "shutdown"
-#define FEB_CAN_PCU_ADC_HECS_NAME "hecs"
+#define FEB_CAN_PCU_ADC_SHUTDOWN_MIN_NAME "shutdown_min"
+#define FEB_CAN_PCU_ADC_SHUTDOWN_MAX_NAME "shutdown_max"
+#define FEB_CAN_PCU_ADC_HECS_MIN_NAME "hecs_min"
+#define FEB_CAN_PCU_ADC_HECS_MAX_NAME "hecs_max"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_INV_MODULE_A_NAME "INV_Module_A"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_INV_MODULE_B_NAME "INV_Module_B"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_INV_MODULE_C_NAME "INV_Module_C"
@@ -4014,14 +4016,28 @@ struct feb_can_pcu_adc_t {
      * Scale: 1
      * Offset: 0
      */
-    uint16_t shutdown;
+    uint16_t shutdown_min;
 
     /**
      * Range: -
      * Scale: 1
      * Offset: 0
      */
-    uint16_t hecs;
+    uint16_t shutdown_max;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t hecs_min;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t hecs_max;
 };
 
 /**
@@ -20132,7 +20148,7 @@ int feb_can_pcu_adc_init(struct feb_can_pcu_adc_t *msg_p);
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_pcu_adc_shutdown_encode(double value);
+uint16_t feb_can_pcu_adc_shutdown_min_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -20141,7 +20157,7 @@ uint16_t feb_can_pcu_adc_shutdown_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_pcu_adc_shutdown_decode(uint16_t value);
+double feb_can_pcu_adc_shutdown_min_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -20150,7 +20166,7 @@ double feb_can_pcu_adc_shutdown_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_pcu_adc_shutdown_is_in_range(uint16_t value);
+bool feb_can_pcu_adc_shutdown_min_is_in_range(uint16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -20159,7 +20175,7 @@ bool feb_can_pcu_adc_shutdown_is_in_range(uint16_t value);
  *
  * @return Encoded signal.
  */
-uint16_t feb_can_pcu_adc_hecs_encode(double value);
+uint16_t feb_can_pcu_adc_shutdown_max_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -20168,7 +20184,7 @@ uint16_t feb_can_pcu_adc_hecs_encode(double value);
  *
  * @return Decoded signal.
  */
-double feb_can_pcu_adc_hecs_decode(uint16_t value);
+double feb_can_pcu_adc_shutdown_max_decode(uint16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -20177,7 +20193,61 @@ double feb_can_pcu_adc_hecs_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool feb_can_pcu_adc_hecs_is_in_range(uint16_t value);
+bool feb_can_pcu_adc_shutdown_max_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_pcu_adc_hecs_min_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_pcu_adc_hecs_min_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_pcu_adc_hecs_min_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_pcu_adc_hecs_max_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_pcu_adc_hecs_max_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_pcu_adc_hecs_max_is_in_range(uint16_t value);
 
 /**
  * Pack message M160_Temperature_Set_1.

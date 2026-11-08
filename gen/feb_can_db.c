@@ -6876,18 +6876,22 @@ int feb_can_pcu_adc_pack(
     const struct feb_can_pcu_adc_t *src_p,
     size_t size)
 {
-    if (size < 4u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, 4);
+    memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->shutdown, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->shutdown, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->hecs, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->hecs, 8u, 0xffu);
+    dst_p[0] |= pack_left_shift_u16(src_p->shutdown_min, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->shutdown_min, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->shutdown_max, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->shutdown_max, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->hecs_min, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->hecs_min, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->hecs_max, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->hecs_max, 8u, 0xffu);
 
-    return (4);
+    return (8);
 }
 
 int feb_can_pcu_adc_unpack(
@@ -6895,14 +6899,18 @@ int feb_can_pcu_adc_unpack(
     const uint8_t *src_p,
     size_t size)
 {
-    if (size < 4u) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    dst_p->shutdown = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->shutdown |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->hecs = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->hecs |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->shutdown_min = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->shutdown_min |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->shutdown_max = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->shutdown_max |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->hecs_min = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->hecs_min |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->hecs_max = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->hecs_max |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
 
     return (0);
 }
@@ -6916,34 +6924,68 @@ int feb_can_pcu_adc_init(struct feb_can_pcu_adc_t *msg_p)
     return 0;
 }
 
-uint16_t feb_can_pcu_adc_shutdown_encode(double value)
+uint16_t feb_can_pcu_adc_shutdown_min_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_pcu_adc_shutdown_decode(uint16_t value)
+double feb_can_pcu_adc_shutdown_min_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_pcu_adc_shutdown_is_in_range(uint16_t value)
+bool feb_can_pcu_adc_shutdown_min_is_in_range(uint16_t value)
 {
     (void)value;
 
     return (true);
 }
 
-uint16_t feb_can_pcu_adc_hecs_encode(double value)
+uint16_t feb_can_pcu_adc_shutdown_max_encode(double value)
 {
     return (uint16_t)(value);
 }
 
-double feb_can_pcu_adc_hecs_decode(uint16_t value)
+double feb_can_pcu_adc_shutdown_max_decode(uint16_t value)
 {
     return ((double)value);
 }
 
-bool feb_can_pcu_adc_hecs_is_in_range(uint16_t value)
+bool feb_can_pcu_adc_shutdown_max_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_pcu_adc_hecs_min_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_pcu_adc_hecs_min_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_pcu_adc_hecs_min_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_pcu_adc_hecs_max_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_pcu_adc_hecs_max_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_pcu_adc_hecs_max_is_in_range(uint16_t value)
 {
     (void)value;
 
@@ -35665,8 +35707,10 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
     if (strcmp(name, "pcu_adc") == 0)
     {
         printf_fn("0x%02X  pcu_adc  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x60, (int)feb_can_db.pcu_adc.meta.present, (unsigned long)feb_can_db.pcu_adc.meta.last_rx_ms, (unsigned long)feb_can_db.pcu_adc.meta.rx_count);
-        printf_fn("  shutdown                         = %ld\r\n", (long)feb_can_db.pcu_adc.data.shutdown);
-        printf_fn("  hecs                             = %ld\r\n", (long)feb_can_db.pcu_adc.data.hecs);
+        printf_fn("  shutdown_min                     = %ld\r\n", (long)feb_can_db.pcu_adc.data.shutdown_min);
+        printf_fn("  shutdown_max                     = %ld\r\n", (long)feb_can_db.pcu_adc.data.shutdown_max);
+        printf_fn("  hecs_min                         = %ld\r\n", (long)feb_can_db.pcu_adc.data.hecs_min);
+        printf_fn("  hecs_max                         = %ld\r\n", (long)feb_can_db.pcu_adc.data.hecs_max);
         return 0;
     }
     if (strcmp(name, "pcu_heartbeat") == 0)

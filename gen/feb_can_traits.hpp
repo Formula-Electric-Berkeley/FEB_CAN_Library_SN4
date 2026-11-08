@@ -743,9 +743,9 @@ struct PcuAdc
 {
   using Data = feb_can_pcu_adc_t;
   static constexpr std::uint32_t kFrameId = 0x60u;
-  static constexpr std::uint8_t kLength = 4u;
+  static constexpr std::uint8_t kLength = 8u;
   static constexpr bool kExtended = false;
-  static constexpr std::uint32_t kCycleMs = 2u;
+  static constexpr std::uint32_t kCycleMs = 10u;
   static constexpr Node kSender = Node::kPcu;
   static constexpr auto kPack = &feb_can_pcu_adc_pack;
   static constexpr auto kUnpack = &feb_can_pcu_adc_unpack;
