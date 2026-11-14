@@ -751,6 +751,18 @@ struct PcuAdc
   static constexpr auto kUnpack = &feb_can_pcu_adc_unpack;
 };
 
+struct BmsAdc
+{
+  using Data = feb_can_bms_adc_t;
+  static constexpr std::uint32_t kFrameId = 0x61u;
+  static constexpr std::uint8_t kLength = 8u;
+  static constexpr bool kExtended = false;
+  static constexpr std::uint32_t kCycleMs = 10u;
+  static constexpr Node kSender = Node::kBms;
+  static constexpr auto kPack = &feb_can_bms_adc_pack;
+  static constexpr auto kUnpack = &feb_can_bms_adc_unpack;
+};
+
 struct PcuHeartbeat
 {
   using Data = feb_can_pcu_heartbeat_t;

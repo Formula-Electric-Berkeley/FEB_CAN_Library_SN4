@@ -368,6 +368,12 @@ BO_ 96 pcu_adc: 8 PCU
  SG_ shutdown_max : 16|16@1+ (1,0) [0|0] "mV" Vector__XXX
  SG_ shutdown_min : 0|16@1+ (1,0) [0|0] "mV" Vector__XXX
 
+BO_ 97 bms_adc: 8 BMS
+ SG_ shutdown_voltage : 48|16@1+ (1,0) [0|0] "mV" Vector__XXX
+ SG_ shutdown_peak_to_peak : 32|16@1+ (1,0) [0|0] "mV" Vector__XXX
+ SG_ shutdown_max : 16|16@1+ (1,0) [0|0] "mV" Vector__XXX
+ SG_ shutdown_min : 0|16@1+ (1,0) [0|0] "mV" Vector__XXX
+
 BO_ 160 M160_Temperature_Set_1: 8 INV
  SG_ INV_Gate_Driver_Board : 48|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
  SG_ INV_Module_C : 32|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
@@ -1847,6 +1853,7 @@ BA_ "GenMsgCycleTime" BO_ 90 100;
 BA_ "GenMsgCycleTime" BO_ 91 100;
 BA_ "GenMsgCycleTime" BO_ 92 20;
 BA_ "GenMsgCycleTime" BO_ 96 10;
+BA_ "GenMsgCycleTime" BO_ 97 10;
 BA_ "GenMsgCycleTime" BO_ 160 100;
 BA_ "GenMsgCycleTime" BO_ 161 100;
 BA_ "GenMsgCycleTime" BO_ 162 100;

@@ -218,3 +218,46 @@ def get_cell_data(frame_id: int):
     )
 
     return msg
+
+def get_bms_adc(frame_id: int):
+    signals = [
+        cantools.db.Signal(
+            name="shutdown_min",
+            start=0,
+            length=16,
+            byte_order="little_endian",
+            unit="mV",
+        ),
+        cantools.db.Signal(
+            name="shutdown_max",
+            start=16,
+            length=16,
+            byte_order="little_endian",
+            unit="mV",
+        ),
+        cantools.db.Signal(
+            name="shutdown_peak_to_peak",
+            start=32,
+            length=16,
+            byte_order="little_endian",
+            unit="mV",
+        ),
+        cantools.db.Signal(
+            name="shutdown_voltage",
+            start=48,
+            length=16,
+            byte_order="little_endian",
+            unit="mV",
+        ),
+    ]
+
+    return cantools.db.Message(
+        frame_id=frame_id,
+        name="bms_adc",
+        length=8,
+        signals=signals,
+        senders=['BMS'],
+        cycle_time=10,
+        strict=True
+    )
+

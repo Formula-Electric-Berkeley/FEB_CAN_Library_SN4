@@ -6992,6 +6992,127 @@ bool feb_can_pcu_adc_hecs_max_is_in_range(uint16_t value)
     return (true);
 }
 
+int feb_can_bms_adc_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_adc_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->shutdown_min, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->shutdown_min, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->shutdown_max, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->shutdown_max, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->shutdown_peak_to_peak, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->shutdown_peak_to_peak, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u16(src_p->shutdown_voltage, 0u, 0xffu);
+    dst_p[7] |= pack_right_shift_u16(src_p->shutdown_voltage, 8u, 0xffu);
+
+    return (8);
+}
+
+int feb_can_bms_adc_unpack(
+    struct feb_can_bms_adc_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->shutdown_min = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->shutdown_min |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->shutdown_max = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->shutdown_max |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->shutdown_peak_to_peak = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->shutdown_peak_to_peak |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->shutdown_voltage = unpack_right_shift_u16(src_p[6], 0u, 0xffu);
+    dst_p->shutdown_voltage |= unpack_left_shift_u16(src_p[7], 8u, 0xffu);
+
+    return (0);
+}
+
+int feb_can_bms_adc_init(struct feb_can_bms_adc_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct feb_can_bms_adc_t));
+
+    return 0;
+}
+
+uint16_t feb_can_bms_adc_shutdown_min_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_adc_shutdown_min_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_adc_shutdown_min_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_adc_shutdown_max_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_adc_shutdown_max_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_adc_shutdown_max_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_adc_shutdown_peak_to_peak_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_adc_shutdown_peak_to_peak_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_adc_shutdown_peak_to_peak_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t feb_can_bms_adc_shutdown_voltage_encode(double value)
+{
+    return (uint16_t)(value);
+}
+
+double feb_can_bms_adc_shutdown_voltage_decode(uint16_t value)
+{
+    return ((double)value);
+}
+
+bool feb_can_bms_adc_shutdown_voltage_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
 int feb_can_m160_temperature_set_1_pack(
     uint8_t *dst_p,
     const struct feb_can_m160_temperature_set_1_t *src_p,
@@ -34834,6 +34955,12 @@ int FEB_CAN_DB_Update(uint32_t frame_id, const uint8_t *data, uint8_t dlc, uint3
         feb_can_db.pcu_adc.meta.last_rx_ms = now_ms;
         feb_can_db.pcu_adc.meta.rx_count++;
         return 0;
+    case FEB_CAN_BMS_ADC_FRAME_ID:
+        if (feb_can_bms_adc_unpack(&feb_can_db.bms_adc.data, data, dlc) < 0) return -2;
+        feb_can_db.bms_adc.meta.present = true;
+        feb_can_db.bms_adc.meta.last_rx_ms = now_ms;
+        feb_can_db.bms_adc.meta.rx_count++;
+        return 0;
     case FEB_CAN_PCU_HEARTBEAT_FRAME_ID:
         if (feb_can_pcu_heartbeat_unpack(&feb_can_db.pcu_heartbeat.data, data, dlc) < 0) return -2;
         feb_can_db.pcu_heartbeat.meta.present = true;
@@ -35155,6 +35282,7 @@ void FEB_CAN_DB_Print(int (*printf_fn)(const char *fmt, ...))
     if (feb_can_db.fusion_status_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x5B, "fusion_status_rear", (unsigned long)feb_can_db.fusion_status_rear.meta.last_rx_ms, (unsigned long)feb_can_db.fusion_status_rear.meta.rx_count);
     if (feb_can_db.strain_gauge_rear.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x5C, "strain_gauge_rear", (unsigned long)feb_can_db.strain_gauge_rear.meta.last_rx_ms, (unsigned long)feb_can_db.strain_gauge_rear.meta.rx_count);
     if (feb_can_db.pcu_adc.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x60, "pcu_adc", (unsigned long)feb_can_db.pcu_adc.meta.last_rx_ms, (unsigned long)feb_can_db.pcu_adc.meta.rx_count);
+    if (feb_can_db.bms_adc.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0x61, "bms_adc", (unsigned long)feb_can_db.bms_adc.meta.last_rx_ms, (unsigned long)feb_can_db.bms_adc.meta.rx_count);
     if (feb_can_db.pcu_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD0, "pcu_heartbeat", (unsigned long)feb_can_db.pcu_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.pcu_heartbeat.meta.rx_count);
     if (feb_can_db.dash_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD1, "dash_heartbeat", (unsigned long)feb_can_db.dash_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.dash_heartbeat.meta.rx_count);
     if (feb_can_db.lvpdb_heartbeat.meta.present) printf_fn("  0x%02X  %-45s %10lu      %8lu\r\n", (unsigned)0xD2, "lvpdb_heartbeat", (unsigned long)feb_can_db.lvpdb_heartbeat.meta.last_rx_ms, (unsigned long)feb_can_db.lvpdb_heartbeat.meta.rx_count);
@@ -35711,6 +35839,15 @@ int FEB_CAN_DB_PrintOne(const char *name, int (*printf_fn)(const char *fmt, ...)
         printf_fn("  shutdown_max                     = %ld\r\n", (long)feb_can_db.pcu_adc.data.shutdown_max);
         printf_fn("  hecs_min                         = %ld\r\n", (long)feb_can_db.pcu_adc.data.hecs_min);
         printf_fn("  hecs_max                         = %ld\r\n", (long)feb_can_db.pcu_adc.data.hecs_max);
+        return 0;
+    }
+    if (strcmp(name, "bms_adc") == 0)
+    {
+        printf_fn("0x%02X  bms_adc  present=%d  last_rx_ms=%lu  rx_count=%lu\r\n", (unsigned)0x61, (int)feb_can_db.bms_adc.meta.present, (unsigned long)feb_can_db.bms_adc.meta.last_rx_ms, (unsigned long)feb_can_db.bms_adc.meta.rx_count);
+        printf_fn("  shutdown_min                     = %ld\r\n", (long)feb_can_db.bms_adc.data.shutdown_min);
+        printf_fn("  shutdown_max                     = %ld\r\n", (long)feb_can_db.bms_adc.data.shutdown_max);
+        printf_fn("  shutdown_peak_to_peak            = %ld\r\n", (long)feb_can_db.bms_adc.data.shutdown_peak_to_peak);
+        printf_fn("  shutdown_voltage                 = %ld\r\n", (long)feb_can_db.bms_adc.data.shutdown_voltage);
         return 0;
     }
     if (strcmp(name, "pcu_heartbeat") == 0)

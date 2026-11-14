@@ -104,6 +104,7 @@ extern "C" {
 #define FEB_CAN_FUSION_STATUS_REAR_FRAME_ID (0x5bu)
 #define FEB_CAN_STRAIN_GAUGE_REAR_FRAME_ID (0x5cu)
 #define FEB_CAN_PCU_ADC_FRAME_ID (0x60u)
+#define FEB_CAN_BMS_ADC_FRAME_ID (0x61u)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_FRAME_ID (0xa0u)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_FRAME_ID (0xa1u)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_FRAME_ID (0xa2u)
@@ -208,6 +209,7 @@ extern "C" {
 #define FEB_CAN_FUSION_STATUS_REAR_LENGTH (3u)
 #define FEB_CAN_STRAIN_GAUGE_REAR_LENGTH (8u)
 #define FEB_CAN_PCU_ADC_LENGTH (8u)
+#define FEB_CAN_BMS_ADC_LENGTH (8u)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_LENGTH (8u)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_LENGTH (8u)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_LENGTH (8u)
@@ -312,6 +314,7 @@ extern "C" {
 #define FEB_CAN_FUSION_STATUS_REAR_IS_EXTENDED (0)
 #define FEB_CAN_STRAIN_GAUGE_REAR_IS_EXTENDED (0)
 #define FEB_CAN_PCU_ADC_IS_EXTENDED (0)
+#define FEB_CAN_BMS_ADC_IS_EXTENDED (0)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_IS_EXTENDED (0)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_IS_EXTENDED (0)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_IS_EXTENDED (0)
@@ -416,6 +419,7 @@ extern "C" {
 #define FEB_CAN_FUSION_STATUS_REAR_CYCLE_TIME_MS (100u)
 #define FEB_CAN_STRAIN_GAUGE_REAR_CYCLE_TIME_MS (20u)
 #define FEB_CAN_PCU_ADC_CYCLE_TIME_MS (10u)
+#define FEB_CAN_BMS_ADC_CYCLE_TIME_MS (10u)
 #define FEB_CAN_M160_TEMPERATURE_SET_1_CYCLE_TIME_MS (100u)
 #define FEB_CAN_M161_TEMPERATURE_SET_2_CYCLE_TIME_MS (100u)
 #define FEB_CAN_M162_TEMPERATURE_SET_3_CYCLE_TIME_MS (100u)
@@ -584,6 +588,7 @@ extern "C" {
 #define FEB_CAN_FUSION_STATUS_REAR_NAME "fusion_status_rear"
 #define FEB_CAN_STRAIN_GAUGE_REAR_NAME "strain_gauge_rear"
 #define FEB_CAN_PCU_ADC_NAME "pcu_adc"
+#define FEB_CAN_BMS_ADC_NAME "bms_adc"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_NAME "M160_Temperature_Set_1"
 #define FEB_CAN_M161_TEMPERATURE_SET_2_NAME "M161_Temperature_Set_2"
 #define FEB_CAN_M162_TEMPERATURE_SET_3_NAME "M162_Temperature_Set_3"
@@ -840,6 +845,10 @@ extern "C" {
 #define FEB_CAN_PCU_ADC_SHUTDOWN_MAX_NAME "shutdown_max"
 #define FEB_CAN_PCU_ADC_HECS_MIN_NAME "hecs_min"
 #define FEB_CAN_PCU_ADC_HECS_MAX_NAME "hecs_max"
+#define FEB_CAN_BMS_ADC_SHUTDOWN_MIN_NAME "shutdown_min"
+#define FEB_CAN_BMS_ADC_SHUTDOWN_MAX_NAME "shutdown_max"
+#define FEB_CAN_BMS_ADC_SHUTDOWN_PEAK_TO_PEAK_NAME "shutdown_peak_to_peak"
+#define FEB_CAN_BMS_ADC_SHUTDOWN_VOLTAGE_NAME "shutdown_voltage"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_INV_MODULE_A_NAME "INV_Module_A"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_INV_MODULE_B_NAME "INV_Module_B"
 #define FEB_CAN_M160_TEMPERATURE_SET_1_INV_MODULE_C_NAME "INV_Module_C"
@@ -4038,6 +4047,41 @@ struct feb_can_pcu_adc_t {
      * Offset: 0
      */
     uint16_t hecs_max;
+};
+
+/**
+ * Signals in message bms_adc.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct feb_can_bms_adc_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t shutdown_min;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t shutdown_max;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t shutdown_peak_to_peak;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint16_t shutdown_voltage;
 };
 
 /**
@@ -20248,6 +20292,151 @@ double feb_can_pcu_adc_hecs_max_decode(uint16_t value);
  * @return true if in range, false otherwise.
  */
 bool feb_can_pcu_adc_hecs_max_is_in_range(uint16_t value);
+
+/**
+ * Pack message bms_adc.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int feb_can_bms_adc_pack(
+    uint8_t *dst_p,
+    const struct feb_can_bms_adc_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message bms_adc.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int feb_can_bms_adc_unpack(
+    struct feb_can_bms_adc_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Init message fields to default values from bms_adc.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int feb_can_bms_adc_init(struct feb_can_bms_adc_t *msg_p);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_bms_adc_shutdown_min_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_bms_adc_shutdown_min_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_bms_adc_shutdown_min_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_bms_adc_shutdown_max_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_bms_adc_shutdown_max_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_bms_adc_shutdown_max_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_bms_adc_shutdown_peak_to_peak_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_bms_adc_shutdown_peak_to_peak_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_bms_adc_shutdown_peak_to_peak_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t feb_can_bms_adc_shutdown_voltage_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double feb_can_bms_adc_shutdown_voltage_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool feb_can_bms_adc_shutdown_voltage_is_in_range(uint16_t value);
 
 /**
  * Pack message M160_Temperature_Set_1.
@@ -51707,6 +51896,7 @@ typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_earth_accel_rear_
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_fusion_status_rear_t data; } FEB_CAN_DB_fusion_status_rear_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_strain_gauge_rear_t data; } FEB_CAN_DB_strain_gauge_rear_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_pcu_adc_t data; } FEB_CAN_DB_pcu_adc_t;
+typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_bms_adc_t data; } FEB_CAN_DB_bms_adc_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_pcu_heartbeat_t data; } FEB_CAN_DB_pcu_heartbeat_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_dash_heartbeat_t data; } FEB_CAN_DB_dash_heartbeat_t;
 typedef struct { FEB_CAN_DB_Meta_t meta; struct feb_can_lvpdb_heartbeat_t data; } FEB_CAN_DB_lvpdb_heartbeat_t;
@@ -51811,6 +52001,7 @@ typedef struct {
     FEB_CAN_DB_fusion_status_rear_t fusion_status_rear;
     FEB_CAN_DB_strain_gauge_rear_t strain_gauge_rear;
     FEB_CAN_DB_pcu_adc_t pcu_adc;
+    FEB_CAN_DB_bms_adc_t bms_adc;
     FEB_CAN_DB_pcu_heartbeat_t pcu_heartbeat;
     FEB_CAN_DB_dash_heartbeat_t dash_heartbeat;
     FEB_CAN_DB_lvpdb_heartbeat_t lvpdb_heartbeat;
